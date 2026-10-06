@@ -553,12 +553,16 @@ Gameplay regression check (the same one CI runs on Linux and Windows) on a fresh
 
 ```bash
 tools/init_dev_database.sh --reset && tools/start_server.sh   # in one terminal
-python3 tools/smoke_test.py                                   # in another: 12 checks, exit 0 = all pass
+python3 tools/smoke_test.py                                   # in another: 12 checks
 ```
 
-It covers the logins, entering the game, Oak's starter, summon, a move, a wild battle, a catch
-attempt, return and logout. Re-run `--reset` before each run, because it plays Trainer's
-new-player path.
+It covers the logins, entering the game, Oak's starter, summon, a move, a wild battle (against
+a GM-spawned Magikarp), a catch attempt, return and logout. Re-run `--reset` before each run,
+because it plays Trainer's new-player path. Exit status 0 means every check passed and 1 means
+a check failed. Exit status 2 means the battle went the other way: wild levels and damage are
+random, and Charmander fainted first (in 6 local runs Charmander won 5 times; once it fainted
+with the Magikarp at 4% health). The defeat and catch checks are then printed as `[SKIP]`; reset and run again to
+cover them. CI turns exit 2 into a warning.
 
 ### 9.3 Scripted checks with the protocol probe
 

@@ -388,7 +388,7 @@ precompiled executables. `tools/package.sh` refuses to package a server folder c
 | `tools/package_server.sh`, `tools/package_legacy_client.sh` | `package.sh server` / `package.sh client` |
 | `tools/init_dev_database.sh [--reset]` | create/reset the MariaDB dev database from the three schema files (Linux dev tree) |
 | `tools/windows/Build-PokeNation-Windows.ps1` | Windows: `[-InstallDependencies] [-BuildType development\|release\|debug] [-Component all\|server\|client] [-Clean] [-NoArchive] [-MsysRoot C:\msys64]`; runs the scripts above in MSYS2 and stops on the first failure |
-| `tools/smoke_test.py` | gameplay smoke test against a running server on a fresh seed DB (12 checks) |
+| `tools/smoke_test.py` | gameplay smoke test against a running server on a fresh seed DB (12 checks; exit 0 pass, 1 fail, 2 starter fainted so defeat/catch skipped, see `DEVELOPER_HANDBOOK.md` §9.2) |
 | `tools/check_syntax.sh`, `tools/check_references.py --strict` | Lua/XML syntax; broken references (see `BROKEN_REFERENCES.md`) |
 
 Windows from scratch: install [MSYS2](https://www.msys2.org/) to `C:\msys64`, install Git (with

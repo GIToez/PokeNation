@@ -152,7 +152,8 @@ been tested.)*
 2. **Move:** walk with the arrow keys. Your Pokémon follows you.
 3. **Fight:** click a wild Pokémon in the battle list, or right-click it → Attack. Use moves from
    the move bar (keyboard shortcuts or by clicking). The chat shows `Your Charmander deals N damage …`.
-   (A GM can create a test opponent next to you with `/m Rattata`.)
+   (A GM can create a test opponent next to you with `/m Magikarp`. Wild levels are random within
+   the species' range, and Magikarp, levels 1-5, is the only one a level-5 starter always beats.)
 4. **Catch:** when the wild Pokémon is defeated it leaves a corpse. Open your bag (the pokebag in
    the inventory), right-click a **Poke Ball** → "Use with…" → click the corpse. Expected:
    `Gotcha!` (caught) or a message that the ball broke. Catching is random.
