@@ -141,6 +141,10 @@ void StaticText::compose()
         text += g_lua.popString();
         m_color = Color(239, 239, 0);
     } else if(m_mode == Otc::MessageMonsterSay || m_mode == Otc::MessageMonsterYell || m_mode == Otc::MessageSpell || m_mode == Otc::MessageBarkLow || m_mode == Otc::MessageBarkLoud) {
+        // 'tr' was pushed above but is not called for these modes; drop it so the Lua
+        // stack is balanced (otherwise luaCppFunctionCallback's assert aborts the client
+        // on the first monster/Pokémon speech in non-NDEBUG builds).
+        g_lua.pop();
         m_color = Color(254, 101, 0);
     } else if(m_mode == Otc::MessageNpcFrom) {
         text += m_name;
@@ -149,6 +153,7 @@ void StaticText::compose()
         text += g_lua.popString();
         m_color = Color(95, 247, 247);
     } else {
+        g_lua.pop();
         g_logger.warning(stdext::format("Unknown speak type: %d", m_mode));
     }
 
