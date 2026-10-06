@@ -1128,6 +1128,25 @@ def cmd_enter(args):
             print(f">> use item {sid} on creature {best[2]['name']!r} id={best[1]}")
             conn.send_encrypted(bytes(Writer().u8(0x84).pos(from_pos).u16(icid).u8(from_stack).u32(best[1]).buf))
             pump(args.wait)
+        elif kind == "useonslot":
+            # use item <sid> from an open container on the item equipped in inventory <slot>
+            # (e.g. a TM / vitamin / held item on the ball in slot 8)
+            sid, slot = (int(x) for x in value.split(":"))
+            found = find_in_containers(sid)
+            if not found:
+                print(f"!! item {sid} not found in open containers {list(world.containers)}")
+                ok = False
+                continue
+            if slot not in world.inventory:
+                print(f"!! inventory slot {slot} is empty")
+                ok = False
+                continue
+            cid, idx, icid, cnt = found
+            to_cid = world.inventory[slot][0]
+            print(f">> use item {sid} on inventory slot {slot} ({items.server_id(to_cid)})")
+            conn.send_encrypted(bytes(Writer().u8(0x83).pos(container_pos(cid, idx)).u16(icid).u8(idx)
+                                      .pos(inv_pos(slot)).u16(to_cid).u8(0).buf))
+            pump(args.wait)
         elif kind == "movetoslot":
             sid, slot = (int(x) for x in value.split(":"))
             found = find_in_containers(sid)
@@ -1295,6 +1314,8 @@ def main():
                     help="use an item (server id) found in an open container")
     pe.add_argument("--use-on", dest="actions", action="append", type=lambda s: "useon:" + s,
                     help="SID:NAME - use item SID on the nearest creature whose name starts with NAME")
+    pe.add_argument("--use-on-slot", dest="actions", action="append", type=lambda s: "useonslot:" + s,
+                    help="SID:SLOT - use item SID (from an open container) on the item in inventory SLOT")
     pe.add_argument("--move-to-slot", dest="actions", action="append", type=lambda s: "movetoslot:" + s)
     pe.add_argument("--move-to-bag", dest="actions", action="append", type=lambda s: "movetobag:" + s)
     pe.add_argument("--wait-dead", dest="actions", action="append", type=lambda s: "waitdead:" + s)
