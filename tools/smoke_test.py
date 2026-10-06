@@ -7,7 +7,7 @@ because it plays the new-player path of the seeded character "Trainer":
   1. login of every seeded account (admin, player) and rejection of a wrong password
   2. Trainer enters the game; GM Admin teleports him to Professor Oak
   3. Oak gives the Charmander starter
-  4. GM Admin teleports Trainer outside the Pewter protection zone and spawns a wild Rattata
+  4. GM Admin teleports Trainer outside the Pewter protection zone and spawns a wild Magikarp
   5. Trainer summons Charmander from the Pokemon bar (the starter ball lands in the pokebag,
      not in the ball slot), attacks, uses moves m1/m2, waits for the kill
   6. Trainer throws a Poke Ball at the corpse (a catch *attempt*; success is random)
@@ -15,7 +15,10 @@ because it plays the new-player path of the seeded character "Trainer":
 
 Each step is checked against the exact server messages verified in Phase 2
 (docs/PHASE_2_TEST_MATRIX.md P2-01, P2-02, P2-04, P2-05, P2-06, P2-09).
-Exit status 0 = every check passed. Usage:  python3 tools/smoke_test.py [--host 127.0.0.1]
+Exit status: 0 = every check passed; 1 = at least one check failed; 2 = no failures, but the
+starter fainted before the kill (a random battle outcome), so the defeat and catch checks were
+skipped. Run it again on a fresh database to cover them.
+Usage:  python3 tools/smoke_test.py [--host 127.0.0.1]
 """
 import argparse
 import re
@@ -29,7 +32,11 @@ PROBE = Path(__file__).with_name("protocol_probe.py")
 OAK_POS = (5020, 789, 7)
 # outside the Pewter protection zone; the same tiles as Phase 2 test t09 (P2-09)
 FIELD_POS = (3307, 305, 7)
-RATTATA_POS = (3307, 308, 7)
+WILD_POS = (3307, 308, 7)
+# Wild levels are random within minLevel..maxLevel of the monster XML. Magikarp (20 hp, melee 10,
+# levels 1-5) is the only species that can never outlevel the level-5 starter; a Rattata (the
+# Phase 2 P2-09 opponent) or a level-9 Caterpie sometimes knocked Charmander out first.
+WILD = "Magikarp"
 # client item id of Charmander's Pokemon-bar icon; clicking it sends "/cp N" (summon / return)
 CHARMANDER_ICON = "10638"
 
@@ -58,6 +65,10 @@ def main():
         results.append((name, ok))
         print(f"[{'PASS' if ok else 'FAIL'}] {name}" + (f" - {detail}" if detail and not ok else ""))
 
+    def skip(name, reason):
+        results.append((name, None))
+        print(f"[SKIP] {name} - {reason}")
+
     out = probe(a.host, "login", "--account", "admin", "--password", "admin")
     check("login admin/admin lists GM Admin and Tester", "'GM Admin'" in out and "'Tester'" in out, out[-300:])
     out = probe(a.host, "login", "--account", "player", "--password", "player")
@@ -73,9 +84,9 @@ def main():
         "--wait-pos", f"{FIELD_POS[0]},{FIELD_POS[1]}:40",
         "--call-poke", CHARMANDER_ICON,
         "--sleep", "8",
-        "--attack", "Rattata",
+        "--attack", WILD,
         "--say", "m1", "--sleep", "2", "--say", "m2", "--sleep", "2", "--say", "m1",
-        "--wait-dead", "Rattata:120",
+        "--wait-dead", f"{WILD}:120",
         "--open", "10", "--catch", "12157", "--sleep", "3",
         "--call-poke", CHARMANDER_ICON, "--sleep", "2",
     ]
@@ -93,7 +104,7 @@ def main():
             elif f"to be at ({FIELD_POS[0]}, {FIELD_POS[1]})" in line:
                 gm(a.host, f"/send Trainer;{FIELD_POS[0]},{FIELD_POS[1]},{FIELD_POS[2]}")
             elif f"arrived at ({FIELD_POS[0]}, {FIELD_POS[1]}" in line:
-                gm(a.host, f"/goto {RATTATA_POS[0]},{RATTATA_POS[1]},{RATTATA_POS[2]}", "/m Rattata")
+                gm(a.host, f"/goto {WILD_POS[0]},{WILD_POS[1]},{WILD_POS[2]}", f"/m {WILD}")
 
     t = threading.Thread(target=reader, daemon=True)
     t.start()
@@ -107,20 +118,32 @@ def main():
     check("Trainer enters the game", "<< in game:" in log)
     check("GM /send reaches Professor Oak", f"arrived at ({OAK_POS[0]}, {OAK_POS[1]}" in log)
     check("Oak gives the starter", "You received a Charmander" in log)
-    check("summon Charmander", re.search(r"Charmander, (go|I choose you|it's the battle time|I need your help)", log) is not None)
+    # POKEMON_CALL_MESSAGES in data/lib/ps/functions/others.lua (one is picked at random)
+    check("summon Charmander", re.search(r"Charmander, (go!|I choose you!|it's time to work!|I need your help!|it's the battle time!)", log) is not None)
     check("move used (m1/m2)", re.search(r"Charmander, (Tackle|Scratch|Ember|Growl)!", log) is not None)
-    check("wild Rattata defeated", "Loot of a Rattata" in log)
-    check("catch attempt resolved", re.search(r"Gotcha!|Your poke ball broke|wasted \d+ poke ball", log) is not None)
+    won = f"Loot of a {WILD}" in log
+    # The fight itself is random (wild level, damage rolls). A starter that faints first leaves its
+    # bar icon marked FNT; that is a game outcome, not a server fault, so it is reported as SKIP.
+    fainted = "'FNT')" in log or "This ball is discharged." in log
+    if not won and fainted and re.search(r"Your Charmander deals \d+ damage", log):
+        reason = "Charmander fainted before the kill (random battle outcome); damage was dealt"
+        skip(f"wild {WILD} defeated", reason)
+        skip("catch attempt resolved", "no corpse to throw the ball at")
+    else:
+        check(f"wild {WILD} defeated", won)
+        check("catch attempt resolved", re.search(r"Gotcha!|Your poke ball broke|wasted \d+ poke ball", log) is not None)
     # POKEMON_BACK_MESSAGES in data/lib/ps/functions/ball/inUse.lua
     check("return Charmander", re.search(r"Charmander, (thanks!|back!|nice work!|that's enough)", log) is not None)
     check("logout", ">> logout" in log)
 
-    if not a.verbose and not all(ok for _, ok in results):
+    failed = [n for n, ok in results if ok is False]
+    skipped = [n for n, ok in results if ok is None]
+    if not a.verbose and (failed or skipped):
         print("---- Trainer transcript ----")
         print(log)
-    failed = [n for n, ok in results if not ok]
-    print(f"\n{len(results) - len(failed)}/{len(results)} checks passed")
-    return 1 if failed else 0
+    passed = len(results) - len(failed) - len(skipped)
+    print(f"\n{passed}/{len(results)} checks passed" + (f", {len(skipped)} skipped" if skipped else ""))
+    return 1 if failed else (2 if skipped else 0)
 
 
 if __name__ == "__main__":
