@@ -358,6 +358,25 @@ jobs:
           if (-not $ok -and (Test-Path dist-mesa\client\opengl32.dll)) { $ok = Test-Client (Resolve-Path dist-mesa\client).Path 'mesa' }
           if (-not $ok) { exit 1 }
 
+      # Informational: backtrace of the client start-up with the unstripped build/ binary under gdb.
+      - name: Legacy client under gdb (informational)
+        if: steps.client.outcome == 'failure'
+        continue-on-error: true
+        shell: msys2 {0}
+        run: |
+          pacman -S --needed --noconfirm mingw-w64-x86_64-gdb > /dev/null
+          T=$(cygpath "$RUNNER_TEMP")
+          for v in as-shipped mesa; do
+            src=dist/windows/client; [ "$v" = mesa ] && src=dist-mesa/client
+            [ -d "$src" ] || continue
+            rm -rf "dist-gdb-$v" && cp -r "$src" "dist-gdb-$v"
+            cp build/windows-*/client/psoulclient.exe "dist-gdb-$v/PokeNationLegacyClient.exe"
+            ( cd "dist-gdb-$v" && timeout 180 gdb -batch -ex "set pagination off" -ex "set breakpoint pending on" \
+                -ex "break abort" -ex "break ExitProcess" -ex run -ex "bt 40" -ex "info registers rip" \
+                -ex "thread apply all bt 12" --args ./PokeNationLegacyClient.exe ) > "$T/client-gdb-$v.log" 2>&1 || true
+            echo "===== $v"; grep -vE "^\[(New|Thread) " "$T/client-gdb-$v.log" | tail -80
+          done
+
       - name: Job summary
         if: always()
         shell: powershell
