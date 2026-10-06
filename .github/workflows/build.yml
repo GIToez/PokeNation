@@ -111,18 +111,31 @@ jobs:
                  -e 's/^(\s*sqlDatabase\s*=\s*)"[^"]*"/\1"psoul"/' "$D/config.example.lua" > "$D/config.lua"
 
       - name: Smoke test packaged server (startup, logins, starter, summon, battle, catch, logout)
+        # smoke_test.py exits 2 when the starter faints before the kill (random battle outcome). The
+        # second attempt starts again from a fresh seed database; a second exit 2 is a warning.
         run: |
-          cd dist/linux/server
-          (timeout 900 ./psoul-server > /tmp/server.log 2>&1 &)
-          for i in $(seq 1 170); do grep -q "^>> Cristal server Online" /tmp/server.log && break; sleep 1; done
-          grep -q "^>> Cristal server Online" /tmp/server.log || { tail -80 /tmp/server.log; exit 1; }
-          cd "$GITHUB_WORKSPACE"
-          python3 tools/protocol_probe.py login --account admin --password admin | tee /tmp/probe.log
-          grep -q "GM Admin" /tmp/probe.log
-          rc=0; python3 tools/smoke_test.py || rc=$?
-          if [ "$rc" = 2 ]; then echo "::warning::smoke test: starter fainted before the kill (random battle outcome); defeat/catch checks skipped"; rc=0; fi
-          pkill -TERM -x psoul-server || true
-          sleep 5
+          D=dist/linux/server
+          for attempt in 1 2; do
+            if [ "$attempt" = 2 ]; then
+              mysql -h127.0.0.1 -uroot -proot -e "DROP DATABASE psoul; CREATE DATABASE psoul;"
+              for f in mysql.sql psoul_extra_mysql.sql psoul_dev_seed.sql; do
+                mysql -h127.0.0.1 -uroot -proot psoul < "$D/database/$f"
+              done
+            fi
+            log=/tmp/server-$attempt.log
+            (cd "$D" && timeout 900 ./psoul-server > "$log" 2>&1 &)
+            for i in $(seq 1 170); do grep -q "^>> Cristal server Online" "$log" && break; sleep 1; done
+            grep -q "^>> Cristal server Online" "$log" || { tail -80 "$log"; exit 1; }
+            python3 tools/protocol_probe.py login --account admin --password admin | tee /tmp/probe.log
+            grep -q "GM Admin" /tmp/probe.log
+            python3 tools/smoke_test.py > /tmp/smoke-$attempt.log 2>&1 && rc=0 || rc=$?
+            cat /tmp/smoke-$attempt.log
+            # BUG-72: the server does not exit after SIGTERM
+            pkill -TERM -x psoul-server || true; sleep 5; pkill -KILL -x psoul-server || true; sleep 2
+            [ "$rc" = 2 ] || break
+          done
+          if [ "$rc" = 2 ]; then echo "::warning::smoke test: starter fainted before the kill in both attempts (random battle outcome); defeat/catch checks skipped"; rc=0; fi
+          cp /tmp/server-1.log /tmp/server.log
           echo "---- warnings/errors printed during startup ----"
           grep -nE "Warning|Error|error" /tmp/server.log || true
           exit $rc
@@ -254,26 +267,39 @@ jobs:
 
       - name: Smoke test PokeNationServer.exe (startup, logins, starter, summon, battle, catch, logout)
         shell: powershell
+        # Exit 2 from smoke_test.py = the starter fainted (random); retry once on a fresh database.
         run: |
           $dir = (Resolve-Path dist\windows\server).Path
-          $p = Start-Process -FilePath "$dir\PokeNationServer.exe" -WorkingDirectory $dir -PassThru -NoNewWindow `
-                 -RedirectStandardOutput "$env:RUNNER_TEMP\server.log" -RedirectStandardError "$env:RUNNER_TEMP\server-stderr.log"
-          $online = $false
-          for ($i = 0; $i -lt 240; $i++) {
-            Start-Sleep -Seconds 1
-            if ($p.HasExited) { break }
-            if (Select-String -Path "$env:RUNNER_TEMP\server.log" -Pattern '^>> Cristal server Online' -Quiet) { $online = $true; break }
+          for ($attempt = 1; $attempt -le 2; $attempt++) {
+            if ($attempt -eq 2) {
+              Push-Location $dir
+              .\Setup-PokeNation-Database.ps1 -NonInteractive -RootPassword '' -Reset
+              $setup = $LASTEXITCODE
+              Pop-Location
+              if ($setup -ne 0) { exit $setup }
+            }
+            $log = "$env:RUNNER_TEMP\server-$attempt.log"
+            $p = Start-Process -FilePath "$dir\PokeNationServer.exe" -WorkingDirectory $dir -PassThru -NoNewWindow `
+                   -RedirectStandardOutput $log -RedirectStandardError "$env:RUNNER_TEMP\server-stderr-$attempt.log"
+            $online = $false
+            for ($i = 0; $i -lt 240; $i++) {
+              Start-Sleep -Seconds 1
+              if ($p.HasExited) { break }
+              if (Select-String -Path $log -Pattern '^>> Cristal server Online' -Quiet) { $online = $true; break }
+            }
+            if (-not $online) { Get-Content $log -Tail 80; Get-Content "$env:RUNNER_TEMP\server-stderr-$attempt.log"; exit 1 }
+            Write-Host "attempt ${attempt}: server online after $i s"
+            python tools\protocol_probe.py login --account admin --password admin | Tee-Object -FilePath "$env:RUNNER_TEMP\probe.log"
+            if (-not (Select-String -Path "$env:RUNNER_TEMP\probe.log" -Pattern 'GM Admin' -Quiet)) { exit 1 }
+            python tools\smoke_test.py | Tee-Object -FilePath "$env:RUNNER_TEMP\smoke-$attempt.log"
+            $code = $LASTEXITCODE
+            Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+            Start-Sleep -Seconds 3
+            if ($code -ne 2) { break }
           }
-          if (-not $online) { Get-Content "$env:RUNNER_TEMP\server.log" -Tail 80; Get-Content "$env:RUNNER_TEMP\server-stderr.log"; exit 1 }
-          Write-Host "server online after $i s"
-          python tools\protocol_probe.py login --account admin --password admin | Tee-Object -FilePath "$env:RUNNER_TEMP\probe.log"
-          if (-not (Select-String -Path "$env:RUNNER_TEMP\probe.log" -Pattern 'GM Admin' -Quiet)) { exit 1 }
-          python tools\smoke_test.py | Tee-Object -FilePath "$env:RUNNER_TEMP\smoke.log"
-          $code = $LASTEXITCODE
-          if ($code -eq 2) { Write-Host "::warning::smoke test: starter fainted before the kill (random battle outcome); defeat/catch checks skipped"; $code = 0 }
-          Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+          if ($code -eq 2) { Write-Host "::warning::smoke test: starter fainted before the kill in both attempts (random battle outcome); defeat/catch checks skipped"; $code = 0 }
           Write-Host "---- warnings/errors printed during startup ----"
-          Select-String -Path "$env:RUNNER_TEMP\server.log" -Pattern 'Warning|Error|error' | ForEach-Object { $_.Line }
+          Select-String -Path "$env:RUNNER_TEMP\server-1.log" -Pattern 'Warning|Error|error' | ForEach-Object { $_.Line }
           exit $code
 
       # Informational: hosted runners have no GPU (only the GDI OpenGL 1.1 fallback), while the client
@@ -317,13 +343,16 @@ jobs:
               if ($i -eq 15 -and -not $p.HasExited) { Save-Screen "$env:RUNNER_TEMP\client-$Tag.png" }
               if ($p.HasExited) { $exitedAt = $i; break }
             }
-            if ($p.HasExited) { $code = $p.ExitCode } else { $code = 'still running'; Stop-Process -Id $p.Id -Force }
+            if ($p.HasExited) { $code = '0x{0:X8}' -f $p.ExitCode } else { $code = 'still running'; Stop-Process -Id $p.Id -Force }
             Copy-Item $log "$env:RUNNER_TEMP\client-$Tag-psoul.log" -ErrorAction SilentlyContinue
             $modules = 0
             if (Test-Path $log) { $modules = (Select-String -Path $log -Pattern "Loaded module" | Measure-Object).Count }
-            Write-Host "[$Tag] modules loaded: $modules; exited after: $exitedAt s; exit code: $code"
-            if (Test-Path $log) { Get-Content $log -Tail 8 }
-            return ($modules -ge 48 -and $code -eq 'still running')
+            $line = "[$Tag] modules loaded: $modules; exited after: $exitedAt s; exit code: $code"
+            Write-Host $line
+            Add-Content "$env:RUNNER_TEMP\client-result.txt" $line
+            # Out-Host: anything left in the pipeline would become part of the return value.
+            if (Test-Path $log) { Get-Content $log -Tail 8 | Out-Host }
+            return [bool]($modules -ge 48 -and $code -eq 'still running')
           }
           $ok = Test-Client (Resolve-Path dist\windows\client).Path 'as-shipped'
           if (-not $ok -and (Test-Path dist-mesa\client\opengl32.dll)) { $ok = Test-Client (Resolve-Path dist-mesa\client).Path 'mesa' }
@@ -334,7 +363,8 @@ jobs:
         shell: powershell
         run: |
           $c = '${{ steps.client.outcome }}'
-          "### Windows runtime`n- Server smoke test: see step log`n- Legacy client launch on the hosted runner: $c" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
+          $d = if (Test-Path "$env:RUNNER_TEMP\client-result.txt") { (Get-Content "$env:RUNNER_TEMP\client-result.txt") -join '; ' } else { 'not run' }
+          "### Windows runtime`n- Server smoke test: see step log`n- Legacy client launch on the hosted runner: $c ($d)" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
 
       - uses: actions/upload-artifact@v4
         if: always()
