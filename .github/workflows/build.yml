@@ -28,6 +28,21 @@ jobs:
   linux:
     name: Linux x64 (GCC)
     runs-on: ubuntu-24.04
+    # The schemas use MariaDB syntax (ALTER TABLE ... ADD COLUMN IF NOT EXISTS) and
+    # MariaDB is the documented local database, so the smoke test runs against MariaDB
+    # instead of the runner's preinstalled MySQL 8.
+    services:
+      mariadb:
+        image: mariadb:11
+        env:
+          MARIADB_ROOT_PASSWORD: root
+          MARIADB_DATABASE: psoul
+          MARIADB_USER: psoul
+          MARIADB_PASSWORD: ci-password
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd "healthcheck.sh --connect --innodb_initialized"
+          --health-interval 10s --health-timeout 5s --health-retries 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -64,17 +79,14 @@ jobs:
 
       - name: Smoke test server (MySQL + login port)
         run: |
-          sudo systemctl start mysql
-          export PSOUL_DB_PASS=ci-password
-          mysql_admin() { mysql -uroot -proot "$@"; }
-          mysql_admin -e "CREATE DATABASE psoul CHARACTER SET utf8mb4; CREATE USER 'psoul'@'localhost' IDENTIFIED BY 'ci-password'; GRANT ALL ON psoul.* TO 'psoul'@'localhost'; FLUSH PRIVILEGES;"
-          # mysql.sql creates triggers; MySQL 8 with binary logging only lets SUPER users do that
-          # (ERROR 1419), so the schemas are imported as root, not as the runtime user.
-          mysql_admin -e "SET GLOBAL log_bin_trust_function_creators = 1;"
+          # Database and user are created by the MariaDB service container; the schemas are
+          # imported as root because mysql.sql creates triggers.
+          mysql_admin() { mysql -h127.0.0.1 -uroot -proot "$@"; }
           mysql_admin psoul < server/src/schemas/mysql.sql
           mysql_admin psoul < server/src/schemas/psoul_extra_mysql.sql
           mysql_admin psoul < server/src/schemas/psoul_dev_seed.sql
-          sed -E -e 's/^(\s*sqlUser\s*=\s*)"[^"]*"/\1"psoul"/' -e 's/^(\s*sqlPass\s*=\s*)"[^"]*"/\1"ci-password"/' \
+          sed -E -e 's/^(\s*sqlHost\s*=\s*)"[^"]*"/\1"127.0.0.1"/' -e 's/^(\s*sqlUser\s*=\s*)"[^"]*"/\1"psoul"/' \
+                 -e 's/^(\s*sqlPass\s*=\s*)"[^"]*"/\1"ci-password"/' \
                  -e 's/^(\s*sqlDatabase\s*=\s*)"[^"]*"/\1"psoul"/' server/config.example.lua > server/config.lua
           (cd server && timeout 180 ./psoul-server > /tmp/server.log 2>&1 &)
           for i in $(seq 1 170); do grep -q "server Online" /tmp/server.log && break; sleep 1; done
