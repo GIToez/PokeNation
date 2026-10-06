@@ -14,9 +14,13 @@
 -- Apply after mysql.sql and psoul_extra_mysql.sql:
 --   mysql -u <user> -p <database> < src/schemas/psoul_dev_seed.sql
 --
--- Spawn position / town match newPlayerSpawnPos* and newPlayerTownId (3 =
--- Cerulean) from config.lua. Outfits 611/612 are the default "Trainer"
--- outfits from data/XML/outfits.xml.
+-- "GM Admin" and "Tester" spawn at newPlayerSpawnPos* / newPlayerTownId from
+-- config.lua (3307,300,7 / town 3). "Trainer" starts like a brand-new
+-- character is meant to: in the Tutorial town (34, temple 5000,806,6), where
+-- Professor Oak (5020,788,7) hands out the starter Pokemon (Charmander /
+-- Squirtle / Bulbasaur) and the main items (quest_professorOak.lua). The login
+-- script gives a level-1 character +4 levels on the first login.
+-- Outfits 611/612 are the default "Trainer" outfits from data/XML/outfits.xml.
 
 INSERT INTO `accounts` (`id`, `name`, `password`, `premdays`, `lastday`, `email`, `key`, `blocked`, `warnings`, `group_id`)
 VALUES (2, 'admin', SHA2('admin', 256), 65535, 0, '', '0', 0, 0, 1),
@@ -39,7 +43,7 @@ VALUES
 	 0, 0, '', 0, 0, 0),
 	(4, 'Trainer', 1, 1, 3, 1, 1, 10, 10, 0,
 	 68, 76, 78, 39, 611, 0, 0, 0, 0, 0,
-	 100, 3, 3307, 300, 7, '', 400, 0, 0, 0, 1, 0,
+	 100, 34, 5000, 806, 6, '', 400, 0, 0, 0, 1, 0,
 	 0, 0, '', 0, 0, 0)
 ON DUPLICATE KEY UPDATE `name` = `name`;
 
