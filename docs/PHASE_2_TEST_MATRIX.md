@@ -166,11 +166,11 @@ level-100 Pidgeot by SQL for the NPC-battle test only).
 
 ### Eggs, field abilities, addons
 
-**P2-19 · Egg incubator (empty → hatching, remaining time) — PARTIAL (hatch not waited for)**
-- Exact test: GM `/i 14009` (Ponyta egg), `/i 14048` (incubator); `--open 3 --drop 14009` then `--use-on-tile 14048:self:3` (incubator on the dropped egg); later `--use-item 14049`.
-- Expected: incubator becomes 14049, "hatching now" message; full incubator reports remaining time; hatch after 60 min.
-- Actual: "Your Ponyta egg is hatching now! Use this incubator again after 60 minutes." (effect 31), container now holds `14049`; using it: "Sorry, not possible." + "Remaing 60 minutes (1 days) for this egg to hatch." The 60-minute hatch (`PokemonEgg.onEggHatch`) was not waited for.
-- Source: `lib/ps/events/actions/eggIncubator/{emptyIncubator,fullIncubator}.lua`, `lib/ps/systems/045-pokemonEgg.lua`.
+**P2-19 · Egg incubator (empty → hatching → hatched after 60 min) — PASS**
+- Exact test: GM `/i 14009` (Ponyta egg), `/i 14048` (incubator); `--open 3 --drop 14009` then `--use-on-tile 14048:self:3` (incubator on the dropped egg); `--open 3 --use-item 14049` one minute later and again 61 minutes later.
+- Expected: incubator becomes 14049, "hatching now" message; full incubator reports remaining time; hatch after 60 min with the new Pokémon's ball delivered.
+- Actual: "Your Ponyta egg is hatching now! Use this incubator again after 60 minutes." (effect 31), container now holds `14049`; using it early: "Sorry, not possible." + "Remaing 60 minutes (1 days) for this egg to hatch." Using it at +61 min: "Congratulations! Your Ponyta egg hatches!" and "Congratulations! You received a Ponyta, this ball will be teleported directly to the pokemon center."; the incubator was consumed (backpack now holds only the evolve icons) and `player_depotitems` gained a charged ball `12159` inside the depot chest (`2589` → `2594` → `12159`).
+- Source: `lib/ps/events/actions/eggIncubator/{emptyIncubator,fullIncubator}.lua`, `lib/ps/systems/045-pokemonEgg.lua`, `lib/ps/config/balls.lua:2140-2158` (`forceToDepot` path).
 - Errors: none. Findings: "(1 days)" for a 60-minute timer and the typo "Remaing" (P4, BUG-29); the incubator used on the *ground* (stackpos 0) says "You can only use the incubator in an Pokemon egg." because `Actions::executeUse` resolves the target by exact stackpos. Daycare (level 85 + premium) NOT TESTED. Priority: P4.
 
 **P2-20 · Ride — PASS**
@@ -348,7 +348,7 @@ start with `src/` or `client/`.
 |---|---|---|---|---|---|
 | Core progression (login, starter, kit, call/return, battle, exp, heal, catch, faint, evolution, nickname, status, commands) | 13 | 1 (feeding) | 1 (GM energy) | – | sex internals |
 | Moves / TMs / held / vitamins | 3 | 1 (damage model) | – | – | limits, modifiers |
-| Eggs / abilities / addons | 2 (Ride, Fly) | 2 (incubator, addon) | – | – | daycare, Surf/Dive/Cut…, seals |
+| Eggs / abilities / addons | 3 (incubator + hatch, Ride, Fly) | 1 (addon) | – | – | daycare, Surf/Dive/Cut…, seals |
 | NPC battles / gyms / quests | 1 (quest) | 1 (NPC battle loss path) | – | 1 under `no-pvp` | gyms, badges |
 | Economy / social | 3 (bank, Wiki Chat, guide) | 3 (transfer, Pokémon Market, PokeTrader) | 1 (autoloot persistence) | – | market UI, guilds, houses, TV, polls, shop |
 | Events / meta | 1 (tournament broadcast) | 1 (anniversary) | – | – | 4 events, safari, ranger, elite four, rocket, boss, dungeons, mastery, highscores… |
