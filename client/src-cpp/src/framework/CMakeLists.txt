@@ -273,7 +273,8 @@ if(WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mthreads")
     set(framework_DEFINITIONS ${framework_DEFINITIONS} -D_WIN32_WINNT=0x0501)
     #set(CMAKE_CXX_LINK_FLAGS "${CMAKE_CXX_LINK_FLAGS} -Wl,--large-address-aware") # strip all debug information
-    set(SYSTEM_LIBRARIES "")
+    # static libcrypto (OpenSSL 3) pulls in the Windows certificate store
+    set(SYSTEM_LIBRARIES crypt32)
 else()
     if(APPLE)
         set(framework_DEFINITIONS ${framework_DEFINITIONS} -D_REENTRANT) # enable thread safe code
@@ -467,7 +468,8 @@ if(FRAMEWORK_SOUND)
     set(framework_LIBRARIES ${OPENAL_LIBRARY} ${VORBISFILE_LIBRARY} ${VORBIS_LIBRARY} ${OGG_LIBRARY} ${framework_LIBRARIES})
 
     if(WIN32)
-        set(framework_LIBRARIES ${framework_LIBRARIES} winmm)
+        # avrt: static OpenAL's WASAPI backend (AvSetMmThreadCharacteristicsW)
+        set(framework_LIBRARIES ${framework_LIBRARIES} winmm avrt)
     elseif(APPLE)
         set(framework_LIBRARIES ${framework_LIBRARIES} System)
     endif()
