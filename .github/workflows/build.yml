@@ -194,6 +194,18 @@ jobs:
         shell: bash
         run: git lfs pull
 
+      # BUG-74 regression test of the launchers' mysql helper, under both PowerShell editions.
+      - name: Test-PokeNationCommon.ps1 (Windows PowerShell 5.1)
+        shell: powershell
+        run: |
+          & tools\windows\Test-PokeNationCommon.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Test-PokeNationCommon.ps1 (PowerShell 7)
+        shell: pwsh
+        run: |
+          & tools\windows\Test-PokeNationCommon.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
       # Same package list as tools/windows/Build-PokeNation-Windows.ps1 -InstallDependencies.
       - uses: msys2/setup-msys2@v2
         id: msys2
@@ -251,19 +263,49 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           Get-Service -Name 'MariaDB*', 'MySQL*' -ErrorAction SilentlyContinue | Format-Table Name, Status
 
-      - name: Setup-PokeNation-Database.ps1 (fresh database from the seed)
+      # Root has no password here, as on a fresh MariaDB install; MariaDB 11.4+ clients then print
+      # "insecure passwordless login" on stderr, which broke schema detection before BUG-74 was fixed.
+      - name: Setup-PokeNation-Database.ps1 (fresh database, re-run, -Reset) with the MariaDB client
         shell: powershell
         working-directory: dist/windows/server
         run: |
-          .\Setup-PokeNation-Database.ps1 -NonInteractive -RootPassword ''
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          function Invoke-Setup([string]$Tag, [switch]$Reset) {
+            $log = "$env:RUNNER_TEMP\setup-$Tag.log"
+            $out = .\Setup-PokeNation-Database.ps1 -NonInteractive -RootPassword '' -Reset:$Reset *>&1 | ForEach-Object { "$_" }
+            $code = $LASTEXITCODE
+            Set-Content -Path $log -Value $out -Encoding UTF8
+            $out | Out-Host
+            if ($code -ne 0) { Write-Host "::error::setup ($Tag) exited with $code"; exit 1 }
+            $text = $out -join "`n"
+            $client = if ($text -match '\[ OK \] MariaDB client: (.+)') { $Matches[1].Trim() } else { '(none)' }
+            if ($client -notmatch '\\MariaDB[^\\]*\\bin\\(mariadb|mysql)\.exe$') { Write-Host "::error::setup ($Tag) did not use the MariaDB client: $client"; exit 1 }
+            if ($text -notmatch '(?m)^\[ OK \] 97 tables; accounts: 1,admin,player\s*$') { Write-Host "::error::setup ($Tag): expected '97 tables; accounts: 1,admin,player'"; exit 1 }
+            $warned = $text -match 'insecure passwordless login'
+            Write-Host "setup ($Tag): client $client; passwordless-login warning seen: $warned"
+            return $text
+          }
+          Get-ChildItem 'C:\Program Files\MariaDB*\bin\mariadb.exe', 'C:\Program Files\MySQL\MySQL Server*\bin\mysql.exe' -ErrorAction SilentlyContinue | ForEach-Object { & $_.FullName --version }
+          Write-Host '---- fresh database'
+          $fresh = Invoke-Setup 'fresh'
+          if ($fresh -notmatch 'schema and development accounts imported') { Write-Host '::error::fresh setup did not import the schema'; exit 1 }
+          if ($fresh -notmatch 'insecure passwordless login') { Write-Host '::warning::the MariaDB client did not print the passwordless-login warning (older than 11.4?)' }
+          Write-Host '---- second run (tables exist)'
+          $again = Invoke-Setup 'again'
+          if ($again -notmatch 'tables already exist - import skipped') { Write-Host '::error::second run did not detect the existing tables'; exit 1 }
+          Write-Host '---- -Reset'
+          $reset = Invoke-Setup 'reset' -Reset
+          if ($reset -notmatch "-Reset: dropping database 'psoul'" -or $reset -notmatch 'schema and development accounts imported') { Write-Host '::error::-Reset did not drop and re-import'; exit 1 }
 
       - name: Start-PokeNation-Server.ps1 -CheckOnly
         shell: powershell
         working-directory: dist/windows/server
         run: |
-          .\Start-PokeNation-Server.ps1 -CheckOnly
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $out = .\Start-PokeNation-Server.ps1 -CheckOnly *>&1 | ForEach-Object { "$_" }
+          $code = $LASTEXITCODE
+          $out | Out-Host
+          Set-Content -Path "$env:RUNNER_TEMP\checkonly.log" -Value $out -Encoding UTF8
+          if ($code -ne 0) { exit $code }
+          if (($out -join "`n") -notmatch "database 'psoul' is initialised \(3 accounts\)") { Write-Host '::error::-CheckOnly did not report 3 accounts'; exit 1 }
 
       - name: Smoke test PokeNationServer.exe (startup, logins, starter, summon, battle, catch, logout)
         shell: powershell
@@ -273,10 +315,13 @@ jobs:
           for ($attempt = 1; $attempt -le 2; $attempt++) {
             if ($attempt -eq 2) {
               Push-Location $dir
-              .\Setup-PokeNation-Database.ps1 -NonInteractive -RootPassword '' -Reset
+              $out = .\Setup-PokeNation-Database.ps1 -NonInteractive -RootPassword '' -Reset *>&1 | ForEach-Object { "$_" }
               $setup = $LASTEXITCODE
               Pop-Location
+              $out | Out-Host
+              Set-Content -Path "$env:RUNNER_TEMP\setup-smoke-retry.log" -Value $out -Encoding UTF8
               if ($setup -ne 0) { exit $setup }
+              if (($out -join "`n") -notmatch '(?m)^\[ OK \] 97 tables; accounts: 1,admin,player\s*$') { Write-Host '::error::-Reset before the retry did not restore the seed'; exit 1 }
             }
             $log = "$env:RUNNER_TEMP\server-$attempt.log"
             $p = Start-Process -FilePath "$dir\PokeNationServer.exe" -WorkingDirectory $dir -PassThru -NoNewWindow `
