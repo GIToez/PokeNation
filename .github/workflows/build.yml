@@ -1,0 +1,175 @@
+# Builds the PSoul/PokeAimar server and client from the source in this repository and
+# publishes self-contained development packages as workflow artifacts.
+#
+#   PokeNation-server-windows-x64.zip   PokeNationServer.exe + data/ + schemas + start scripts
+#   PokeNation-client-windows-x64.zip   PokeNationClient.exe + DLLs + data/ + modules/
+#   PokeNation-server-linux-x64.tar.gz  psoul-server + data/ + schemas + start scripts
+#   PokeNation-client-linux-x64.tar.gz  psoulclient + data/ + modules/
+#
+# Nothing from the original archive's precompiled binaries is used; every executable is
+# compiled here. See docs/BUILDING.md ("For non-developers") for how to download and run them.
+name: Build development packages
+
+on:
+  push:
+    branches: ["**"]
+    paths-ignore: ["docs/**", "original/**", "**/*.md"]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  ARTIFACT_RETENTION_DAYS: 14
+
+jobs:
+  # --------------------------------------------------------------------------------------------
+  linux:
+    name: Linux x64 (GCC)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      # Git LFS bandwidth is metered; cache the two big assets (map.otbm, data.spr) between runs.
+      - name: Compute LFS asset id
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+      - uses: actions/cache@v4
+        with:
+          path: .git/lfs
+          key: lfs-${{ hashFiles('.lfs-assets-id') }}
+      - name: Pull LFS objects
+        run: git lfs pull
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            build-essential cmake pkg-config lua5.1 libxml2-utils \
+            libboost-system-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev libboost-chrono-dev \
+            liblua5.1-0-dev libxml2-dev libgmp-dev libmysqlclient-dev libsqlite3-dev libssl-dev \
+            libphysfs-dev libopenal-dev libglew-dev libvorbis-dev libogg-dev zlib1g-dev \
+            libgl1-mesa-dev libglu1-mesa-dev libx11-dev xvfb mesa-utils
+
+      - name: Lua/XML syntax check
+        run: tools/check_syntax.sh
+
+      - name: Build server
+        run: tools/build_server.sh
+
+      - name: Build client
+        run: tools/build_client.sh
+
+      - name: Smoke test server (MySQL + login port)
+        run: |
+          sudo systemctl start mysql
+          export PSOUL_DB_PASS=ci-password
+          mysql_admin() { mysql -uroot -proot "$@"; }
+          mysql_admin -e "CREATE DATABASE psoul CHARACTER SET utf8mb4; CREATE USER 'psoul'@'localhost' IDENTIFIED BY 'ci-password'; GRANT ALL ON psoul.* TO 'psoul'@'localhost'; FLUSH PRIVILEGES;"
+          mysql -upsoul -pci-password psoul < server/src/schemas/mysql.sql
+          mysql -upsoul -pci-password psoul < server/src/schemas/psoul_extra_mysql.sql
+          mysql -upsoul -pci-password psoul < server/src/schemas/psoul_dev_seed.sql
+          sed -E -e 's/^(\s*sqlUser\s*=\s*)"[^"]*"/\1"psoul"/' -e 's/^(\s*sqlPass\s*=\s*)"[^"]*"/\1"ci-password"/' \
+                 -e 's/^(\s*sqlDatabase\s*=\s*)"[^"]*"/\1"psoul"/' server/config.example.lua > server/config.lua
+          (cd server && timeout 180 ./psoul-server > /tmp/server.log 2>&1 &)
+          for i in $(seq 1 170); do grep -q "server Online" /tmp/server.log && break; sleep 1; done
+          grep -q "server Online" /tmp/server.log || { tail -50 /tmp/server.log; exit 1; }
+          python3 tools/protocol_probe.py login --account admin --password admin | tee /tmp/probe.log
+          grep -q "GM Admin" /tmp/probe.log
+          pkill -x psoul-server || true
+
+      - name: Smoke test client (starts under Xvfb, loads modules)
+        run: |
+          cd client
+          ALSOFT_DRIVERS=null timeout 40 xvfb-run -a -s "-screen 0 1280x800x24" ../build/client/psoulclient > /tmp/client.log 2>&1 || true
+          grep -q "Loaded module 'game_interface'" /tmp/client.log || { cat /tmp/client.log; exit 1; }
+          ! grep -q "Application crashed" /tmp/client.log
+
+      - name: Package
+        run: tools/package_builds.sh linux
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PokeNation-server-linux-x64
+          path: dist/PokeNation-server-linux-x64.tar.gz
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PokeNation-client-linux-x64
+          path: dist/PokeNation-client-linux-x64.tar.gz
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+  # --------------------------------------------------------------------------------------------
+  windows:
+    name: Windows x64 (MSYS2 MinGW-w64)
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Compute LFS asset id
+        shell: bash
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+      - uses: actions/cache@v4
+        with:
+          path: .git/lfs
+          key: lfs-${{ hashFiles('.lfs-assets-id') }}
+      - name: Pull LFS objects
+        shell: bash
+        run: git lfs pull
+
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            git zip
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-pkgconf
+            mingw-w64-x86_64-boost
+            mingw-w64-x86_64-lua51
+            mingw-w64-x86_64-libxml2
+            mingw-w64-x86_64-gmp
+            mingw-w64-x86_64-libmariadbclient
+            mingw-w64-x86_64-sqlite3
+            mingw-w64-x86_64-openssl
+            mingw-w64-x86_64-zlib
+            mingw-w64-x86_64-physfs
+            mingw-w64-x86_64-openal
+            mingw-w64-x86_64-glew
+            mingw-w64-x86_64-libvorbis
+            mingw-w64-x86_64-libogg
+
+      - name: Build server
+        run: |
+          cmake -S server -B build/server -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DROOT_PERMISSION=OFF
+          cmake --build build/server
+
+      - name: Build client
+        run: |
+          cmake -S client/src-cpp -B build/client -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+            -DUSE_STATIC_LIBS=ON -DLUAJIT=OFF -DENCRYPTED_ASSETS=OFF -Wno-dev
+          cmake --build build/client
+
+      - name: Package
+        run: tools/package_builds.sh windows
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PokeNation-server-windows-x64
+          path: dist/PokeNation-server-windows-x64.zip
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PokeNation-client-windows-x64
+          path: dist/PokeNation-client-windows-x64.zip
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}

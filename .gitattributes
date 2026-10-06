@@ -5,3 +5,5 @@
 
 # Keep original line endings exactly as imported; do not let Git normalise them.
 * -text
+*.bat text eol=crlf
+*.sh text eol=lf

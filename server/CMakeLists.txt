@@ -91,6 +91,13 @@ target_link_libraries(psoul-server PRIVATE
   ${GMP_LIBRARY}
 )
 
+if(WIN32)
+  # MinGW-w64 (MSYS2) build, as used by .github/workflows/build.yml. Makefile.win linked
+  # wsock32/ws2_32; Boost.Asio additionally needs mswsock.
+  target_link_libraries(psoul-server PRIVATE ws2_32 mswsock)
+  target_compile_definitions(psoul-server PRIVATE _WIN32_WINNT=0x0601)
+endif()
+
 set_target_properties(psoul-server PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )

@@ -82,3 +82,6 @@ server/config.lua
 
 # ---- Runtime-generated NPC files (data/lib/ps/systems/027-citizens.lua rewrites them on every startup) ----
 server/data/npc/tmpCitizen_*.xml
+
+# ---- Packaged development builds (tools/package_builds.sh) ----
+dist/

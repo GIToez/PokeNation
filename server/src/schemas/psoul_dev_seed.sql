@@ -1,9 +1,11 @@
 -- Development seed data for a LOCAL PSoul server.
 --
--- Creates one account with two characters in world 1:
---   account  "admin" / password "admin"      (group 1, no premium limits: 65535 days)
---   player   "GM Admin"  - group 6 (God, access 5) - can use /i, /m, /goto, /reload ...
---   player   "Tester"    - group 1 (regular trainer)
+-- Creates two DEVELOPMENT-ONLY accounts in world 1 (never use these on a public server):
+--   account  "admin"  / password "admin"     (no premium limits: 65535 days)
+--     player "GM Admin"  - group 6 (God, access 5) - can use /i, /m, /goto, /reload ...
+--     player "Tester"    - group 1 (regular trainer) on the GM account, handy for quick checks
+--   account  "player" / password "player"    (plain player account, 65535 premium days)
+--     player "Trainer"   - group 1 (regular trainer), the account to use for "normal player" tests
 --
 -- Passwords are stored as SHA-256 because config.lua uses
 -- encryptionType = "sha256". Change the password before exposing the server:
@@ -17,7 +19,8 @@
 -- outfits from data/XML/outfits.xml.
 
 INSERT INTO `accounts` (`id`, `name`, `password`, `premdays`, `lastday`, `email`, `key`, `blocked`, `warnings`, `group_id`)
-VALUES (2, 'admin', SHA2('admin', 256), 65535, 0, '', '0', 0, 0, 1)
+VALUES (2, 'admin', SHA2('admin', 256), 65535, 0, '', '0', 0, 0, 1),
+       (3, 'player', SHA2('player', 256), 65535, 0, '', '0', 0, 0, 1)
 ON DUPLICATE KEY UPDATE `name` = `name`;
 
 INSERT INTO `players`
@@ -33,6 +36,10 @@ VALUES
 	(3, 'Tester', 1, 1, 2, 1, 1, 10, 10, 0,
 	 68, 76, 78, 39, 611, 0, 0, 0, 0, 0,
 	 100, 3, 3307, 300, 7, '', 400, 0, 0, 0, 1, 0,
+	 0, 0, '', 0, 0, 0),
+	(4, 'Trainer', 1, 1, 3, 1, 1, 10, 10, 0,
+	 68, 76, 78, 39, 611, 0, 0, 0, 0, 0,
+	 100, 3, 3307, 300, 7, '', 400, 0, 0, 0, 1, 0,
 	 0, 0, '', 0, 0, 0)
 ON DUPLICATE KEY UPDATE `name` = `name`;
 
@@ -44,7 +51,7 @@ ON DUPLICATE KEY UPDATE `name` = `name`;
 --   10 = pokebag (12282) containing the items from doPlayerAddMainItems()
 --   (data/lib/ps/functions/player.lua:717).
 -- pid = slot id for equipped items, or the sid of the parent container.
-DELETE FROM `player_items` WHERE `player_id` IN (2, 3);
+DELETE FROM `player_items` WHERE `player_id` IN (2, 3, 4);
 INSERT INTO `player_items` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `attributes`) VALUES
 	(2,   1, 101, 13206,   1, ''),
 	(2,   5, 102, 12280,   1, ''),
@@ -63,11 +70,20 @@ INSERT INTO `player_items` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `att
 	(3, 104, 106,  2687, 100, ''),
 	(3, 104, 107, 12244,  20, ''),
 	(3, 104, 108,  2120,   1, ''),
-	(3, 104, 109, 12292,   1, '');
+	(3, 104, 109, 12292,   1, ''),
+	(4,   1, 101, 13206,   1, ''),
+	(4,   5, 102, 12280,   1, ''),
+	(4,   6, 103, 12281,   1, ''),
+	(4,  10, 104, 12282,   1, ''),
+	(4, 104, 105, 12157, 100, ''),
+	(4, 104, 106,  2687, 100, ''),
+	(4, 104, 107, 12244,  20, ''),
+	(4, 104, 108,  2120,   1, ''),
+	(4, 104, 109, 12292,   1, '');
 
 -- Skills rows (the engine updates them with UPDATE statements, so they must exist).
 INSERT IGNORE INTO `player_skills` (`player_id`, `skillid`, `value`, `count`)
 SELECT `p`.`id`, `s`.`skillid`, 10, 0
 FROM `players` `p`
 JOIN (SELECT 0 AS `skillid` UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6) `s`
-WHERE `p`.`id` IN (2, 3);
+WHERE `p`.`id` IN (2, 3, 4);
