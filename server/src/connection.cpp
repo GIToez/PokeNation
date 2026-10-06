@@ -292,7 +292,7 @@ void Connection::deleteConnection()
 	assert(!m_refCount);
 	try
 	{
-		m_service.dispatch(boost::bind(&Connection::onStop, this));
+		boost::asio::dispatch(m_service, boost::bind(&Connection::onStop, this));
 	}
 	catch(boost::system::system_error& e)
 	{
