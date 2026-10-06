@@ -40,4 +40,4 @@ choose "More info" -> "Run anyway" only if you downloaded it from the PokeNation
 Actions artifacts and the SHA-256 checksum matches the .sha256 file.
 
 Full guide: docs/WINDOWS_LOCAL_TESTING.md in the PokeNation repository.
-Licence of the server engine (The Forgotten Server, GPL v2): LICENSE-server.txt
+Licence of the server engine (The Forgotten Server, GNU GPLv3): LICENSE-server.txt

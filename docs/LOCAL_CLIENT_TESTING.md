@@ -46,7 +46,8 @@ The ports `7564`/`8548` were the production ports as well.
 Edit `G.host`/`G.port` in `client/modules/client_entergame/entergame.lua:191-192` (Lua, no
 recompilation needed) and `ip`/`loginPort`/`gamePort` in `server/config.lua`. The client stores
 the last used host/port in its settings file (`~/.psoul/config.otml` on Linux,
-`%APPDATA%\psoul\config.otml` on Windows) but `doLogin()` overrides them with the constants
+`%USERPROFILE%\psoul\config.otml` on Windows, because PhysFS's user dir is the profile folder; the log is
+`~/psoul.log` / `%USERPROFILE%\psoul.log`, see `client/init.lua:8`) but `doLogin()` overrides them with the constants
 above on every login.
 
 ---
@@ -70,7 +71,7 @@ above on every login.
 | Runtime DLLs of a VS build | `glew32.dll`, `zlib1.dll`, `libeay32.dll`, `physfs.dll`, `OpenAL32.dll`, `lua51.dll` (LuaJIT) | the archive's `Poke Aimar` folder shipped exactly these next to the exe (`SECURITY_AUDIT.md §2`); none of them was imported |
 | Asset paths | `<workdir>/data`, `<workdir>/modules`, `<workdir>/init.lua`; things from `/things/data.dat` + `/things/data.spr` (`client/modules/game_things/things.lua:24-25`) | `client/init.lua:15-20` |
 | Startup working directory | the folder that contains `init.lua` (`g_resources.getWorkDir()` searches the CWD, then the executable's directory) | `framework/core/resourcemanager.cpp` |
-| User settings | `~/.psoul/` (Linux) / `%APPDATA%\psoul\` (Windows): `config.otml`, `psoul.log` | `client/init.lua:5-8`, `client/src-cpp/src/main.cpp:34` |
+| User settings | `~/.psoul/config.otml` + `~/psoul.log` (Linux) / `%USERPROFILE%\psoul\config.otml` + `%USERPROFILE%\psoul.log` (Windows) | `client/init.lua:5-8`, `client/src-cpp/src/main.cpp:34` |
 | Two source copies | `src-cpp/src/` is the current one (has `GameServerPSoulLootList = 26`); `src-cpp/vc12/client/` is a stale copy not referenced by the project (`.vcxproj` compiles `..\src\...`) | `protocolcodes.h` diff, `otclient.vcxproj:164+` |
 
 The VS2013 project was not used: it depends on a 2014-era prebuilt library bundle
@@ -89,7 +90,7 @@ build and the GitHub Actions workflow use.
 sudo apt install build-essential cmake libboost-system-dev libboost-filesystem-dev \
   libboost-chrono-dev liblua5.1-0-dev libphysfs-dev libopenal-dev libglew-dev libvorbis-dev \
   libogg-dev libssl-dev zlib1g-dev libgl1-mesa-dev libglu1-mesa-dev libx11-dev
-tools/build_client.sh          # -> build/client/psoulclient
+tools/build_client.sh          # -> build/linux-development/client/psoulclient
 tools/start_client.sh          # runs it from client/ (needs DISPLAY)
 ```
 
@@ -100,8 +101,8 @@ tools/start_client.sh          # runs it from client/ (needs DISPLAY)
 ### 3.2 Windows (GitHub Actions)
 
 `.github/workflows/build.yml` builds the same CMake project under MSYS2 MinGW-w64 with the
-distro packages for every dependency, then packages `PokeNationClient.exe` together with the
-DLLs reported by `ldd`, `data/`, `modules/` and `init.lua`. See `BUILDING.md §8` for how to
+distro packages for every dependency, then packages `PokeNationLegacyClient.exe` together with the
+DLLs reported by `ldd`, `data/`, `modules/` and `init.lua`. See `BUILDING.md §9-10` for how to
 download it.
 
 ### 3.3 Source changes required (all in `client/src-cpp`, no protocol or gameplay code touched)

@@ -12,4 +12,4 @@ libmysqlclient/libmariadb, SQLite, OpenSSL).
   ./start_server.sh      wait for ">> Cristal server Online!"
 
 Accounts (local only): admin/admin (GM Admin, Tester), player/player (Trainer).
-Ports: login 7564, game 8548 on 127.0.0.1. Licence: LICENSE-server.txt (GPL v2).
+Ports: login 7564, game 8548 on 127.0.0.1. Licence: LICENSE-server.txt (GNU GPLv3).

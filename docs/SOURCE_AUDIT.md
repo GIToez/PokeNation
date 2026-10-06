@@ -24,7 +24,7 @@ Related documents: `BUILDING.md`, `TRANSLATION.md`, `SECURITY_AUDIT.md`, `LARGE_
 | Lua | **Lua 5.1** (`lua5.1.dll`, `lua51.dll` shipped; `luaL_openlib`, `lua_objlen` used) | `server/src/luascript.cpp`, archive manifest |
 | Database | **MySQL** (primary, `__USE_MYSQL__`) and SQLite (`__USE_SQLITE__`). PostgreSQL/ODBC drivers exist in source but were not compiled by the original Makefile. Schema is stock TFS `mysql.sql` + many tables created only by the (missing) website — reconstructed in `src/schemas/psoul_extra_mysql.sql`. | `server/src/database*.cpp`, `server/src/schemas/` |
 | Entry point | `server/src/otserv.cpp` (`main` → `otserv_main` → `ServiceManager::run`) | — |
-| Executable (Linux build) | `server/psoul-server`, run from `server/` (reads `config.lua`, `data/`, `pt_br.loc` relative to CWD) | `BUILDING.md` |
+| Executable (Linux build) | `build/linux-development/server/psoul-server` (before Phase 2A: `server/psoul-server`), run from `server/` (reads `config.lua`, `data/`, `pt_br.loc` relative to CWD) | `BUILDING.md` |
 | Data directory | `server/data/` (`actions creaturescripts globalevents items lib monster movements npc raids spells talkactions weapons world XML`) | — |
 | Map | `server/data/world/map.otbm` (130 MB, Git LFS), OTBM saved with "Remere's Map Editor 1.1.9", **5879×3541** tiles; spawn/house files `map-spawn.xml`, `map-house.xml`; extra `map-sound.xml` (client ambience) | startup log (**verified**) |
 | Items | `data/items/items.otb` (8.54 item profile, 1.1 MB) + `data/items/items.xml` (~10,100 `<item>` entries incl. Pokémon items, balls, TMs) | — |

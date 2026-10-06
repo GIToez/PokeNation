@@ -1,4 +1,9 @@
-# Building and running the PSoul server (Linux)
+# Building, packaging and running PokeNation (PSoul baseline)
+
+Sections 1-8 describe the manual Linux build in detail. Section 9 covers the build scripts,
+build types, versioning, packaging and checksums (Linux and Windows). Section 10 is for
+non-developers who only want to download and run a build. For a quick overview, see the root
+[README](../README.md).
 
 Everything below was executed on Ubuntu 24.04 (GCC 13.3, Boost 1.83, MariaDB 10.11) and the
 resulting binary was used for the verification described in `PHASE_1_REPORT.md`. The original
@@ -35,10 +40,10 @@ git lfs pull            # fetches map.otbm (130 MB) and the client sprite file
 ## 2. Build
 
 ```bash
-cd server
-CXX=g++ cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
-cmake --build build -j"$(nproc)"
-# → ./psoul-server  (the executable is written to the server/ directory, not build/)
+tools/build_server.sh            # = the two commands below, plus checks
+# CC=gcc CXX=g++ cmake -S server -B build/linux-development/server -DCMAKE_BUILD_TYPE=RelWithDebInfo
+# cmake --build build/linux-development/server -j"$(nproc)"
+# → build/linux-development/server/psoul-server  (compiler output stays in build/, see §9)
 ```
 
 Options: `-DSERVER_DIAGNOSTIC=OFF` drops `__ENABLE_SERVER_DIAGNOSTIC__` (object counters),
@@ -139,8 +144,10 @@ line for reference.
 ## 5. Run
 
 ```bash
-cd server            # must be the CWD: config.lua, data/, pt_br.loc are resolved relatively
-./psoul-server       # Ctrl+C or the in-game /shutdown command to stop
+tools/start_server.sh   # = cd server && ../build/linux-development/server/psoul-server
+# server/ must be the CWD: config.lua, data/, pt_br.loc are resolved relatively.
+# Stop: Ctrl+C (immediate; characters are saved on logout) or /shutdown in game (saves
+# everything, then the process must be killed: BUG-72).
 ```
 
 Expected startup (≈15 s on the test machine, the map alone takes ~6 s):
@@ -240,8 +247,8 @@ sudo apt-get install -y build-essential cmake pkg-config lua5.1 libxml2-utils gi
 git lfs install && git lfs pull
 
 # 3. compile both programs (≈3 min server, ≈6 min client on 4 cores)
-tools/build_server.sh          # -> server/psoul-server  (+ build/server/)
-tools/build_client.sh          # -> build/client/psoulclient
+tools/build_server.sh          # -> build/linux-development/server/psoul-server
+tools/build_client.sh          # -> build/linux-development/client/psoulclient
 
 # 4. database: starts MariaDB, creates db "psoul" + user "psoul", imports the three schema
 #    files, writes server/config.lua (git-ignored) with the generated credentials
@@ -263,8 +270,9 @@ Open three terminals (or run the first two in the background):
 pulled, the database is unreachable, or port 7564 is already taken. `tools/start_client.sh`
 needs `DISPLAY`; on machines without a sound card it sets `ALSOFT_DRIVERS=null` automatically.
 
-Windows: the GitHub Actions packages (section 9) contain `setup_database.bat`,
-`start_database.bat`, `start_server.bat` and `start_client.bat` with the same roles.
+Windows: the packages (sections 9-10) contain `Setup-PokeNation-Database.bat`,
+`Start-PokeNation-Server.bat`, `Start-PokeNation-Client.bat` and `Start-PokeNation-Local.bat`
+with the same roles and checks. See [WINDOWS_LOCAL_TESTING.md](WINDOWS_LOCAL_TESTING.md).
 
 ### 8.3 Test credentials (development only — never reuse on a public server)
 
@@ -350,39 +358,141 @@ the Wiki Chat and Help channels opening by themselves, and the Wiki Chat bot gre
 | move/Pokémon bars overlap at the bottom of the map | default layout; both windows are draggable (right-click toggles vertical) |
 | a plain player standing outside a protection zone dies instantly | wild Pokémon hit trainers; always have a Pokémon out (level-5 trainers have 50 HP) |
 
-## 9. For non-developers: downloading and running a build
+## 9. Build scripts, build types, packaging, versions and checksums
 
-Every push to the repository (except documentation-only changes) runs
-`.github/workflows/build.yml`, which compiles the server and the client **from this
-repository's source** on Linux and on Windows (MSYS2 MinGW-w64) and uploads four packages as
-workflow artifacts (kept 14 days):
+### 9.1 Source / build / distribution separation
 
-| Artifact | Contents |
-|----------|----------|
-| `PokeNation-server-windows-x64` | `PokeNationServer.exe`, required DLLs, `data/`, `src/schemas/*.sql`, `config.example.lua`, `setup_database.bat`, `start_database.bat`, `start_server.bat` |
-| `PokeNation-client-windows-x64` | `PokeNationClient.exe`, DLLs, `data/`, `modules/`, `init.lua`, `start_client.bat` |
-| `PokeNation-server-linux-x64` | `psoul-server` + the same payload with `.sh` scripts |
-| `PokeNation-client-linux-x64` | `psoulclient` + client payload |
+| Tree | What | Git |
+|---|---|---|
+| `server/`, `client/`, `tools/`, `docs/` | source | tracked |
+| `build/<platform>-<type>/{server,client}/` | CMake trees and compiled binaries **only** | ignored (`/build/`) |
+| `dist/<platform>/{server,client}/` | ready-to-run folders (`dist/windows/server/PokeNationServer.exe`, `dist/windows/client/PokeNationLegacyClient.exe`, `dist/linux/…`) | ignored (`/dist/`) |
+| `dist/debug/<platform>/…` | debug packages (symbols kept) | ignored |
+| `dist/PokeNation-*.{zip,tar.gz}` + `.sha256` | archives | ignored, never committed; published only as CI artifacts |
 
-None of the original archive's precompiled executables are used or shipped. Generated binaries
-are not committed to Git; they exist only as workflow artifacts.
+Packages contain only runtime files: executable, DLLs (Windows), `data/`, `config.example.lua`,
+SQL schemas (`database/`), launchers, `README.txt`, licence, `version.json`, `VERSION.txt`.
+They never contain C++ sources, CMake trees, object files, `config.lua` (local password), logs,
+`*.psd` sources or generated `tmpCitizen_*.xml`, and nothing from the original archive's
+precompiled executables. `tools/package.sh` refuses to package a server folder containing
+`config.lua` and refuses Git LFS pointer files.
 
-Steps:
+### 9.2 Scripts
 
-1. Open the repository on GitHub → **Actions** → the latest green run of *Build development
-   packages* → scroll to **Artifacts** and download the server and client zip for your OS
-   (a GitHub login is required to download artifacts).
-2. Unpack both zips into separate folders.
-3. Install MariaDB (Windows: the MariaDB MSI installer, remember the root password). Then run
-   `setup_database.bat` once in the server folder; it asks for the root password, creates the
-   `psoul` database and user, imports the schemas and writes `config.lua`.
-4. Run `start_server.bat` and wait for `>> Cristal server Online!`.
-5. Run `start_client.bat` in the client folder, log in with one of the development accounts
-   from section 8.3 (`admin`/`admin` or `player`/`player`).
+| Script | Does |
+|---|---|
+| `tools/build_server.sh [--clean]` | configure + compile the server into `build/<platform>-<type>/server/`, fail with a clear message |
+| `tools/build_client.sh [--clean]` | the same for the legacy client |
+| `tools/build_server_{linux,windows}.sh`, `tools/build_legacy_client_{linux,windows}.sh` | platform-checked wrappers of the two above (`windows` = inside MSYS2 MINGW64) |
+| `tools/package.sh server\|client\|all [--no-archive]` | assemble `dist/<platform>/…`, strip, copy DLLs (Windows), write `version.json`, archive + `.sha256` |
+| `tools/package_server.sh`, `tools/package_legacy_client.sh` | `package.sh server` / `package.sh client` |
+| `tools/init_dev_database.sh [--reset]` | create/reset the MariaDB dev database from the three schema files (Linux dev tree) |
+| `tools/windows/Build-PokeNation-Windows.ps1` | Windows: `[-InstallDependencies] [-BuildType development\|release\|debug] [-Component all\|server\|client] [-Clean] [-NoArchive] [-MsysRoot C:\msys64]`; runs the scripts above in MSYS2 and stops on the first failure |
+| `tools/smoke_test.py` | gameplay smoke test against a running server on a fresh seed DB (12 checks) |
+| `tools/check_syntax.sh`, `tools/check_references.py --strict` | Lua/XML syntax; broken references (see `BROKEN_REFERENCES.md`) |
 
-If the Windows job of the workflow is red, no Windows artifacts exist for that commit; use the
-most recent green run or the Linux packages. The job status is visible on the PR's checks.
+Windows from scratch: install [MSYS2](https://www.msys2.org/) to `C:\msys64`, install Git (with
+Git LFS), clone, `git lfs pull`, then:
 
-What is **not** in the packages: the PHP website (account creation, shop, polls, highscores
-ranking), so new accounts/characters must be inserted with SQL
-(`src/schemas/psoul_dev_seed.sql` shows the required rows and starter items).
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\windows\Build-PokeNation-Windows.ps1 -InstallDependencies
+```
+
+Result: `dist\windows\server\PokeNationServer.exe`, `dist\windows\client\PokeNationLegacyClient.exe`
+and the two zips. This is exactly what the CI Windows job runs.
+
+### 9.3 Build types
+
+| `BUILD_TYPE` | CMake | Binaries in packages | Archive suffix | Package folder |
+|---|---|---|---|---|
+| `development` (**default, recommended**) | `RelWithDebInfo` | optimised, debug info stripped from the packaged copy (the unstripped one stays in `build/`) | `-Dev` | `dist/<platform>/` |
+| `release` | `Release` | optimised, no debug info | `-Release` | `dist/<platform>/` |
+| `debug` | `Debug` | unoptimised, full symbols, not stripped | `-Debug` | `dist/debug/<platform>/` |
+
+Use `development` for testing and for anything you hand to testers. It is what CI builds, and
+crashes can be symbolised with the matching unstripped binary in `build/`. Use `debug` only
+with a debugger attached. Debug and release builds use separate `build/` and `dist/` folders and
+never overwrite each other. Example: `BUILD_TYPE=debug tools/build_server.sh && BUILD_TYPE=debug tools/package.sh server`.
+
+### 9.4 Version information
+
+- `VERSION` (repository root) holds the product version, currently `0.2.0`.
+- Every package contains `version.json`:
+
+```json
+{
+  "product": "PokeNation", "component": "server", "version": "0.2.0",
+  "commit": "<full git SHA>", "worktree_modified": false,
+  "build_type": "development", "cmake_build_type": "RelWithDebInfo",
+  "platform": "windows-x64", "executable": "PokeNationServer.exe",
+  "build_date": "2026-10-06T17:15:02Z"
+}
+```
+
+  and the same as text in `VERSION.txt`. `worktree_modified: true` means the build was made
+  from uncommitted changes.
+- The server banner still prints the inherited `Unknown, version Unknown` (STARTUP_AUDIT.md §1).
+
+### 9.5 Checksums
+
+`tools/package.sh` writes `<archive>.sha256` next to every archive with `sha256sum` (GNU
+coreutils, also used by MSYS2 on Windows). The format is `<64 hex digits>  <file name>`. Verify:
+
+```bash
+sha256sum -c PokeNation-Server-Linux-Dev.tar.gz.sha256          # Linux / MSYS2 / Git Bash
+```
+```powershell
+(Get-FileHash .\PokeNation-Server-Windows-Dev.zip -Algorithm SHA256).Hash   # compare with the .sha256 file
+```
+
+The CI artifacts contain the archive together with its `.sha256`.
+
+### 9.6 Continuous integration
+
+`.github/workflows/build.yml` runs on every push and pull request (documentation-only changes
+are skipped). It never publishes a GitHub Release.
+
+| Job | Steps |
+|---|---|
+| `validate` | Lua/XML syntax, `check_references.py --strict`, shell syntax |
+| `linux` | build server + client, `package.sh all`, fresh MariaDB from the packaged schemas, start the **packaged** server, protocol login, `smoke_test.py`, start the packaged client under Xvfb; artifacts `PokeNation-Server-Linux`, `PokeNation-LegacyClient-Linux` |
+| `windows` | MSYS2 MINGW64 + `Build-PokeNation-Windows.ps1`; artifacts `PokeNation-Server-Windows`, `PokeNation-LegacyClient-Windows`; MariaDB (Chocolatey) + `Setup-PokeNation-Database.ps1` + `Start-PokeNation-Server.ps1 -CheckOnly` + packaged `PokeNationServer.exe` + `smoke_test.py`; informational client launch (hosted runners have no GPU) |
+
+---
+
+## 10. For non-developers: downloading and running a development build
+
+The short version is below. The illustrated step-by-step guide with expected output is
+[WINDOWS_LOCAL_TESTING.md](WINDOWS_LOCAL_TESTING.md).
+
+1. **Where the builds come from.** GitHub Actions compiles the server and the legacy client from
+   this repository's source on every change. Nothing from the original archive's precompiled
+   programs is used or shipped, and no binaries are stored in Git.
+2. **Where to download.** Open the repository on GitHub → **Actions** → **Build development
+   packages** → the newest run with a green check → **Artifacts**. You must be logged in to
+   GitHub. Artifacts are deleted after 14 days. If the newest run is red, use an older green one.
+3. **What to download.** On Windows: `PokeNation-Server-Windows` and
+   `PokeNation-LegacyClient-Windows`. On Linux: `PokeNation-Server-Linux` and
+   `PokeNation-LegacyClient-Linux`. Each artifact contains one archive and its `.sha256`.
+4. **Check the download.** Compare the SHA-256 of the archive with its `.sha256` file (§9.5).
+   If they differ, download it again.
+5. **Extract.** Extract both archives into the **same** folder. You get `PokeNation\server\`
+   and `PokeNation\client\`.
+6. **Install the database once.** Install MariaDB (Windows: the MSI from mariadb.org, keep
+   "Install as service", note the root password; Linux: `sudo apt install mariadb-server`).
+7. **Set up the database once.** Windows: `server\Setup-PokeNation-Database.bat`. Linux:
+   `server/setup_database.sh`. It creates database `psoul`, user `psoul`, imports the schemas
+   and the development accounts, and writes `config.lua`.
+8. **Start the server.** Windows: `server\Start-PokeNation-Server.bat`. Linux:
+   `server/start_server.sh`. Wait for `>> Cristal server Online!` and keep the window open.
+9. **Start the client and log in.** Windows: `client\Start-PokeNation-Client.bat` (or
+   `server\Start-PokeNation-Local.bat` for steps 8 and 9 together). Linux:
+   `client/start_client.sh`. Log in with `player` / `player` (Trainer) or `admin` / `admin`
+   (GM Admin, Tester). These are development-only accounts, see [LOCAL_DEV_INFO.md](LOCAL_DEV_INFO.md).
+10. **If something fails.** Every launcher prints `[FAIL]` with the reason and the fix: MariaDB not
+    running, database missing, `config.lua` missing, port in use, executable missing, wrong
+    folder, incomplete download. Troubleshooting table: [WINDOWS_LOCAL_TESTING.md §7](WINDOWS_LOCAL_TESTING.md#7-troubleshooting).
+
+What is **not** included: the original PHP website (account creation, shop, polls, highscores).
+New accounts and characters have to be added with SQL. `server/src/schemas/psoul_dev_seed.sql`
+shows the required rows and starter items.
