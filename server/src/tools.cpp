@@ -312,7 +312,7 @@ bool parseXMLContentString(xmlNodePtr node, std::string& value)
 std::string getLastXMLError()
 {
 	std::stringstream ss;
-	xmlErrorPtr lastError = xmlGetLastError();
+	const xmlError* lastError = xmlGetLastError();
 	if(lastError->line)
 		ss << "Line: " << lastError->line << ", ";
 
