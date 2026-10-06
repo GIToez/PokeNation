@@ -199,3 +199,175 @@ python3 tools/protocol_probe.py enter --account admin --password admin --charact
   interface address or set `bindOnlyConfiguredIpAddress = false`.
 * `__ROOT_PERMISSION__` is enabled so the binary runs inside containers as root. Disable it for
   production.
+* Boost ≥ 1.87 (MSYS2, recent distributions) removed `boost::asio::io_service`,
+  `io_context::post/dispatch` and `address_v4::from_string`; `connection.*` / `server.*` were
+  ported to `io_context`, `boost::asio::post/dispatch`, `make_address_v4` and `steady_timer`
+  (all available since Boost 1.66, so Boost 1.83 on Ubuntu 24.04 still works).
+* libxml2 ≥ 2.12 returns `const xmlError*` from `xmlGetLastError()` (`tools.cpp`).
+
+## 8. LOCAL DEVELOPMENT QUICK START
+
+Everything below runs on one Linux machine (Ubuntu 24.04 was used). All commands are run
+from the repository root. The scripts in `tools/` are thin wrappers around the manual steps in
+sections 1–5; read them if something fails.
+
+### 8.1 One-time setup
+
+```bash
+# 1. dependencies (server + client + database + checks)
+sudo apt-get install -y build-essential cmake pkg-config lua5.1 libxml2-utils git-lfs \
+  libboost-system-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev libboost-chrono-dev \
+  liblua5.1-0-dev libxml2-dev libgmp-dev libmysqlclient-dev libsqlite3-dev libssl-dev \
+  libphysfs-dev libopenal-dev libglew-dev libvorbis-dev libogg-dev zlib1g-dev \
+  libgl1-mesa-dev libglu1-mesa-dev libx11-dev mariadb-server mariadb-client python3
+
+# 2. large assets (map.otbm 130 MB, data.spr 308 MB) are in Git LFS
+git lfs install && git lfs pull
+
+# 3. compile both programs (≈3 min server, ≈6 min client on 4 cores)
+tools/build_server.sh          # -> server/psoul-server  (+ build/server/)
+tools/build_client.sh          # -> build/client/psoulclient
+
+# 4. database: starts MariaDB, creates db "psoul" + user "psoul", imports the three schema
+#    files, writes server/config.lua (git-ignored) with the generated credentials
+export PSOUL_DB_PASS='choose-a-local-password'   # optional; default "psoul-dev"
+tools/setup_database.sh                          # add --reset to wipe and re-import
+```
+
+### 8.2 Every session
+
+Open three terminals (or run the first two in the background):
+
+| Step | Command | Wait for |
+|------|---------|----------|
+| Database | `tools/start_database.sh` | `Database is up` |
+| Server | `tools/start_server.sh` | `>> Cristal server Online!` (≈15 s; the map takes ~6 s) |
+| Client | `tools/start_client.sh` | the PSoul login window |
+
+`tools/start_server.sh` refuses to start when `config.lua` is missing, the LFS map was not
+pulled, the database is unreachable, or port 7564 is already taken. `tools/start_client.sh`
+needs `DISPLAY`; on machines without a sound card it sets `ALSOFT_DRIVERS=null` automatically.
+
+Windows: the GitHub Actions packages (section 9) contain `setup_database.bat`,
+`start_database.bat`, `start_server.bat` and `start_client.bat` with the same roles.
+
+### 8.3 Test credentials (development only — never reuse on a public server)
+
+| Account / password | Character | Group | Starts at | Purpose |
+|--------------------|-----------|-------|-----------|---------|
+| `admin` / `admin` | **GM Admin** | 6 (GM) | Pewter City temple (3307,300,7) | GM commands; has order icon, badge case, Pokédex, Pokébag with 100 poke balls / cookies / potions |
+| `admin` / `admin` | **Tester** | 1 (player) | Pewter City temple | plain player with the same startup items, no Pokémon |
+| `player` / `player` | **Trainer** | 1 (player) | Tutorial town temple (5000,806,6) | plain player that walks to Professor Oak (5020,788,7) and receives the starter Pokémon exactly like a new character |
+
+Passwords are stored as `SHA2(…, 256)` in `accounts.password`; change them with
+`UPDATE accounts SET password = SHA2('new', 256) WHERE name = 'admin';`. These are **not** the
+original production passwords (none are in the repository).
+
+The two accounts are deliberately separate so a GM and a player can be online at the same
+time (`replaceKickOnLogin = true` kicks an earlier session of the *same account*).
+
+Getting a Pokémon:
+
+* **Trainer**: talk to Professor Oak — `hi` → `charmander` (or `squirtle`, `bulbasaur`) →
+  `yes` → `male`/`female`. Oak hands over a level-5 Pokémon in a soul ball plus the main items
+  (100 poke balls, 100 cookies, 20 potions, rope, old fishing rod). On the first login the
+  server also grants +4 levels and opens the tutorial.
+* **GM Admin**: `/mypokemon Charmander,10` (optional 3rd/4th argument: extra points, egg move).
+  The ball appears in the Pokébag; click the Pokémon's icon in the Pokémon bar to summon it.
+
+Useful GM commands (full list: `server/data/talkactions/talkactions.xml`):
+`/i <itemid>,<count>` · `/m <Monster>` (`/m Rattata,Trainer` spawns next to another player) ·
+`/goto x,y,z` or `/goto Name` · `/send Name;x,y,z` · `/r` (remove the thing you face) ·
+`/attr`, `/addskill`, `/promote`, `/closeserver`, `/shutdown`.
+
+Known limitation: GM groups 4–6 carry `PlayerFlag_HasInfiniteMana`, and PSoul maps Pokémon
+energy onto the trainer's mana, so **GM Pokémon can never use moves** ("Sorry, your Pokemon has
+insufficient energy"). Test moves with Tester or Trainer, or temporarily remove flag bit 10
+from the group in `data/XML/groups.xml` (not done in the repository).
+
+### 8.4 Ports and addresses
+
+| What | Value | Where |
+|------|-------|-------|
+| Login server | `127.0.0.1:7564` | `server/config.lua` `loginPort`; client `modules/client_entergame/entergame.lua` |
+| Game server | `127.0.0.1:8548` | `server/config.lua` `gamePort`; sent to the client in the character list (`ip = "127.0.0.1"`) |
+| Database | `127.0.0.1:3306` | `server/config.lua` `sqlHost`/`sqlPort` |
+| Client protocol version | 312 (PSoul custom id on an 8.54 protocol) | `client/modules/gamelib/protocollogin.lua:38`, `client/src-cpp/src/client/protocolgamesend.cpp:57`; server `src/resources.h` (details: `docs/LOCAL_CLIENT_TESTING.md`) |
+
+### 8.5 Expected console messages
+
+Server (abridged, full list in section 5):
+
+```
+>> Loading config (config.lua)           > Using SHA256 encryption
+>> Starting SQL connection               >> Running Database Manager
+>> Loading map and spawns...             > Map size: 5879x3541.
+[Warning - Tournaments::getTournament] Tournament 2 not found.   <- benign (tournaments.xml)
+[Error - Npc interface] data/npc/scripts/tournament.lua ...        <- same cause, benign
+>> Cristal server Online!
+```
+
+Client (`tools/start_client.sh` prints to the terminal):
+
+```
+Loaded module 'game_interface' … Loaded module 'game_guide'        (48 modules)
+WARNING: widget 'tab' destroyed but still have 1 reference(s) left   <- harmless
+```
+
+In game, a normal player sees on first login: the MOTD box, "Welcome to Genesis World! …",
+the Wiki Chat and Help channels opening by themselves, and the Wiki Chat bot greeting.
+
+### 8.6 Common problems
+
+| Symptom | Cause / fix |
+|---------|-------------|
+| `server/data/world/map.otbm is an LFS pointer` | `git lfs install && git lfs pull` |
+| `ERROR 1064 … near 'IF NOT EXISTS'` while importing `psoul_extra_mysql.sql` | you are on MySQL, not MariaDB. Either install MariaDB or strip `IF NOT EXISTS` from the `ALTER TABLE` blocks |
+| `ERROR 1419 … SUPER privilege and binary logging` while importing `mysql.sql` | MySQL 8 with binlog: import as root or `SET GLOBAL log_bin_trust_function_creators = 1` |
+| `Cannot connect to database 'psoul' as 'psoul'` | password in `server/config.lua` differs from the one used by `setup_database.sh`; re-run with the same `PSOUL_DB_PASS` or edit `config.lua` |
+| `Port 7564 already in use` | a previous server is still running (`pkill -x psoul-server`) |
+| client aborts immediately with an OpenAL error | no sound device; `ALSOFT_DRIVERS=null tools/start_client.sh` |
+| client shows the login window but "Connection failed" | server not yet `Online`, or `ip` in `config.lua` is not `127.0.0.1` |
+| character list is empty after login | the account has no characters in **world 1**, or `players.deleted = 1` |
+| `First get your Pokemon.` on `/exp`, moves, `/find` | Pokémon return to their ball on logout; summon it again (Pokémon bar icon) |
+| GM Pokémon: `Sorry, your Pokemon has insufficient energy` | infinite-mana GM flag, see 8.3 |
+| `You do not have enough access to deal here!` at a soul-trade NPC | that NPC requires Orange Archipelago access; use Richard (4733,129,7) or another unrestricted one |
+| move/Pokémon bars overlap at the bottom of the map | default layout; both windows are draggable (right-click toggles vertical) |
+| a plain player standing outside a protection zone dies instantly | wild Pokémon hit trainers; always have a Pokémon out (level-5 trainers have 50 HP) |
+
+## 9. For non-developers: downloading and running a build
+
+Every push to the repository (except documentation-only changes) runs
+`.github/workflows/build.yml`, which compiles the server and the client **from this
+repository's source** on Linux and on Windows (MSYS2 MinGW-w64) and uploads four packages as
+workflow artifacts (kept 14 days):
+
+| Artifact | Contents |
+|----------|----------|
+| `PokeNation-server-windows-x64` | `PokeNationServer.exe`, required DLLs, `data/`, `src/schemas/*.sql`, `config.example.lua`, `setup_database.bat`, `start_database.bat`, `start_server.bat` |
+| `PokeNation-client-windows-x64` | `PokeNationClient.exe`, DLLs, `data/`, `modules/`, `init.lua`, `start_client.bat` |
+| `PokeNation-server-linux-x64` | `psoul-server` + the same payload with `.sh` scripts |
+| `PokeNation-client-linux-x64` | `psoulclient` + client payload |
+
+None of the original archive's precompiled executables are used or shipped. Generated binaries
+are not committed to Git; they exist only as workflow artifacts.
+
+Steps:
+
+1. Open the repository on GitHub → **Actions** → the latest green run of *Build development
+   packages* → scroll to **Artifacts** and download the server and client zip for your OS
+   (a GitHub login is required to download artifacts).
+2. Unpack both zips into separate folders.
+3. Install MariaDB (Windows: the MariaDB MSI installer, remember the root password). Then run
+   `setup_database.bat` once in the server folder; it asks for the root password, creates the
+   `psoul` database and user, imports the schemas and writes `config.lua`.
+4. Run `start_server.bat` and wait for `>> Cristal server Online!`.
+5. Run `start_client.bat` in the client folder, log in with one of the development accounts
+   from section 8.3 (`admin`/`admin` or `player`/`player`).
+
+If the Windows job of the workflow is red, no Windows artifacts exist for that commit; use the
+most recent green run or the Linux packages. The job status is visible on the PR's checks.
+
+What is **not** in the packages: the PHP website (account creation, shop, polls, highscores
+ranking), so new accounts/characters must be inserted with SQL
+(`src/schemas/psoul_dev_seed.sql` shows the required rows and starter items).
