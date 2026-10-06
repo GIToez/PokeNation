@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 2.6)
+# CMake >= 4.0 (shipped by MSYS2) refuses projects that declare compatibility with < 3.5.
+cmake_minimum_required(VERSION 3.5)
 project(psoulclient)
 
 set(VERSION "3.1.2")
