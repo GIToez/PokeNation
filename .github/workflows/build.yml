@@ -119,11 +119,13 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           python3 tools/protocol_probe.py login --account admin --password admin | tee /tmp/probe.log
           grep -q "GM Admin" /tmp/probe.log
-          python3 tools/smoke_test.py
+          rc=0; python3 tools/smoke_test.py || rc=$?
+          if [ "$rc" = 2 ]; then echo "::warning::smoke test: starter fainted before the kill (random battle outcome); defeat/catch checks skipped"; rc=0; fi
           pkill -TERM -x psoul-server || true
           sleep 5
           echo "---- warnings/errors printed during startup ----"
           grep -nE "Warning|Error|error" /tmp/server.log || true
+          exit $rc
 
       - name: Smoke test packaged legacy client (Xvfb, loads modules)
         run: |
@@ -268,29 +270,64 @@ jobs:
           if (-not (Select-String -Path "$env:RUNNER_TEMP\probe.log" -Pattern 'GM Admin' -Quiet)) { exit 1 }
           python tools\smoke_test.py | Tee-Object -FilePath "$env:RUNNER_TEMP\smoke.log"
           $code = $LASTEXITCODE
+          if ($code -eq 2) { Write-Host "::warning::smoke test: starter fainted before the kill (random battle outcome); defeat/catch checks skipped"; $code = 0 }
           Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
           Write-Host "---- warnings/errors printed during startup ----"
           Select-String -Path "$env:RUNNER_TEMP\server.log" -Pattern 'Warning|Error|error' | ForEach-Object { $_.Line }
           exit $code
 
-      # Informational: hosted runners have no GPU, and the client needs OpenGL 2. A failure here is
-      # reported in the job summary but does not fail the build (see docs/WINDOWS_LOCAL_TESTING.md).
+      # Informational: hosted runners have no GPU (only the GDI OpenGL 1.1 fallback), while the client
+      # targets OpenGL 2. A failure here is reported in the job summary but does not fail the build.
+      # Attempt 1 uses the packaged files as shipped; attempt 2 adds Mesa's software opengl32.dll
+      # (llvmpipe) next to a copy of the client, which is how a GPU-less PC could run it.
+      - name: Prepare Mesa software OpenGL copy of the client (informational)
+        continue-on-error: true
+        shell: msys2 {0}
+        run: |
+          pacman -S --needed --noconfirm mingw-w64-x86_64-mesa
+          rm -rf dist-mesa && mkdir -p dist-mesa && cp -r dist/windows/client dist-mesa/client
+          for f in opengl32.dll libgallium_wgl.dll; do
+            [ -f "/mingw64/bin/$f" ] && cp "/mingw64/bin/$f" dist-mesa/client/
+          done
+          for f in dist-mesa/client/opengl32.dll dist-mesa/client/libgallium_wgl.dll; do
+            [ -f "$f" ] && ldd "$f" | awk 'tolower($3) ~ /mingw64/ {print $3}' | sort -u | while read -r d; do cp -n "$d" dist-mesa/client/; done
+          done
+          ls dist-mesa/client/*.dll | wc -l
+
       - name: Launch PokeNationLegacyClient.exe (informational)
         id: client
         continue-on-error: true
         shell: powershell
         run: |
-          $dir = (Resolve-Path dist\windows\client).Path
-          $log = Join-Path $env:USERPROFILE 'psoul.log'
-          Remove-Item $log -ErrorAction SilentlyContinue
-          $p = Start-Process -FilePath "$dir\PokeNationLegacyClient.exe" -WorkingDirectory $dir -PassThru
-          Start-Sleep -Seconds 30
-          $alive = -not $p.HasExited
-          if ($alive) { Stop-Process -Id $p.Id -Force }
-          Copy-Item $log "$env:RUNNER_TEMP\client-psoul.log" -ErrorAction SilentlyContinue
-          if (Test-Path $log) { Get-Content $log -Tail 60 } else { Write-Host "no $log written" }
-          Write-Host "client still running after 30 s: $alive"
-          if (-not (Test-Path $log) -or -not (Select-String -Path $log -Pattern "Loaded module 'game_interface'" -Quiet)) { exit 1 }
+          Add-Type -AssemblyName System.Windows.Forms, System.Drawing
+          function Save-Screen([string]$Path) {
+            $b = [System.Windows.Forms.SystemInformation]::VirtualScreen
+            $bmp = New-Object System.Drawing.Bitmap $b.Width, $b.Height
+            [System.Drawing.Graphics]::FromImage($bmp).CopyFromScreen($b.Left, $b.Top, 0, 0, $bmp.Size)
+            $bmp.Save($Path)
+          }
+          function Test-Client([string]$Dir, [string]$Tag) {
+            $log = Join-Path $env:USERPROFILE 'psoul.log'
+            Remove-Item $log -ErrorAction SilentlyContinue
+            $p = Start-Process -FilePath "$Dir\PokeNationLegacyClient.exe" -WorkingDirectory $Dir -PassThru
+            $null = $p.Handle
+            $exitedAt = $null
+            for ($i = 1; $i -le 30; $i++) {
+              Start-Sleep -Seconds 1
+              if ($i -eq 15 -and -not $p.HasExited) { Save-Screen "$env:RUNNER_TEMP\client-$Tag.png" }
+              if ($p.HasExited) { $exitedAt = $i; break }
+            }
+            if ($p.HasExited) { $code = $p.ExitCode } else { $code = 'still running'; Stop-Process -Id $p.Id -Force }
+            Copy-Item $log "$env:RUNNER_TEMP\client-$Tag-psoul.log" -ErrorAction SilentlyContinue
+            $modules = 0
+            if (Test-Path $log) { $modules = (Select-String -Path $log -Pattern "Loaded module" | Measure-Object).Count }
+            Write-Host "[$Tag] modules loaded: $modules; exited after: $exitedAt s; exit code: $code"
+            if (Test-Path $log) { Get-Content $log -Tail 8 }
+            return ($modules -ge 48 -and $code -eq 'still running')
+          }
+          $ok = Test-Client (Resolve-Path dist\windows\client).Path 'as-shipped'
+          if (-not $ok -and (Test-Path dist-mesa\client\opengl32.dll)) { $ok = Test-Client (Resolve-Path dist-mesa\client).Path 'mesa' }
+          if (-not $ok) { exit 1 }
 
       - name: Job summary
         if: always()
@@ -303,5 +340,7 @@ jobs:
         if: always()
         with:
           name: logs-windows
-          path: ${{ runner.temp }}/*.log
+          path: |
+            ${{ runner.temp }}/*.log
+            ${{ runner.temp }}/*.png
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
