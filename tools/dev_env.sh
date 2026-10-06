@@ -8,7 +8,30 @@
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SERVER_DIR="$ROOT_DIR/server"
 CLIENT_DIR="$ROOT_DIR/client"
-BUILD_DIR="$ROOT_DIR/build"
+DIST_ROOT="$ROOT_DIR/dist"
+
+# Platform: "linux" or "windows" (MSYS2 MinGW-w64 bash).
+case "$(uname -s)" in
+  MINGW*|MSYS*|CYGWIN*) PLATFORM=windows; EXE=.exe ;;
+  *)                    PLATFORM=linux;   EXE="" ;;
+esac
+
+# Build type: development (default, optimised + symbols in build/, stripped in packages),
+# release (optimised, no symbols) or debug (no optimisation, full symbols, packaged to dist/debug/).
+BUILD_TYPE="${BUILD_TYPE:-development}"
+case "$BUILD_TYPE" in
+  development) CMAKE_BUILD_TYPE=RelWithDebInfo; PKG_SUFFIX=Dev ;;
+  release)     CMAKE_BUILD_TYPE=Release;        PKG_SUFFIX=Release ;;
+  debug)       CMAKE_BUILD_TYPE=Debug;          PKG_SUFFIX=Debug ;;
+  *) printf 'ERROR unknown BUILD_TYPE "%s" (development|release|debug)\n' "$BUILD_TYPE" >&2; exit 1 ;;
+esac
+
+# Compiler output only: build/<platform>-<type>/{server,client}. Never committed.
+BUILD_DIR="$ROOT_DIR/build/$PLATFORM-$BUILD_TYPE"
+
+POKENATION_VERSION="$(tr -d ' \r\n' < "$ROOT_DIR/VERSION" 2>/dev/null || echo 0.0.0)"
+GIT_SHA="$(git -C "$ROOT_DIR" rev-parse HEAD 2>/dev/null || echo "${GITHUB_SHA:-unknown}")"
+GIT_DIRTY="$(git -C "$ROOT_DIR" status --porcelain --untracked-files=no 2>/dev/null | head -c1)"
 
 DB_NAME="${PSOUL_DB_NAME:-psoul}"
 DB_USER="${PSOUL_DB_USER:-psoul}"
@@ -19,8 +42,17 @@ DB_PASS_DEFAULT="psoul-dev"
 LOGIN_PORT=7564
 GAME_PORT=8548
 
-SERVER_BIN="$SERVER_DIR/psoul-server"
-CLIENT_BIN="$BUILD_DIR/client/psoulclient"
+SERVER_BIN="$BUILD_DIR/server/psoul-server$EXE"
+CLIENT_BIN="$BUILD_DIR/client/psoulclient$EXE"
+
+# Names inside the packages (dist/). Linux keeps the historical names.
+if [ "$PLATFORM" = windows ]; then
+  PKG_SERVER_EXE=PokeNationServer.exe; PKG_CLIENT_EXE=PokeNationLegacyClient.exe
+else
+  PKG_SERVER_EXE=psoul-server; PKG_CLIENT_EXE=psoulclient
+fi
+
+njobs() { nproc 2>/dev/null || echo 2; }
 
 # Read sqlPass from server/config.lua if present.
 config_db_pass() {

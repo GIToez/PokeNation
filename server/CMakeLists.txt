@@ -98,6 +98,9 @@ if(WIN32)
   target_compile_definitions(psoul-server PRIVATE _WIN32_WINNT=0x0601)
 endif()
 
+# The executable stays in the build tree (build/<platform>-<type>/server/); it must be started with server/
+# (or a package folder) as the working directory because config.lua and data/ are resolved
+# relative to the CWD. tools/start_server.sh does that.
 set_target_properties(psoul-server PROPERTIES
-  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
 )
