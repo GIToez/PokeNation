@@ -35,29 +35,24 @@ function creatureSayCallback(cid, type, msg)
 	local talkUser = NPCHANDLER_CONVBEHAVIOR == CONVERSATION_DEFAULT and 0 or cid
 
 	if (msgcontains(msg, 'pokemon')) then
-		selfSay("{PT-BR}: Voc� est�� nesta ilha para capturar seu primeiro Pokemon, tente capturar um usando as suas pedras e depois usando a soul ball. Depois disso venha conversar comigo sobre sua {jornada}. A qualquer momento voc� pode sair desta ilha, diga '{sair}'.", cid)
-		selfSay("{EN-US}: You are on this island to capture your first Pokemon, try to capture a wild with your special small stones and your empty soul ball. After that come to talk about your {journey}. Anytime you can get off this island, just say '{skip}'.", cid)
+		selfSay("You are on this island to catch your first Pokemon. Try to catch a wild one using your special small stones and your empty soul ball. After that, come talk to me about your {journey}. You can leave this island at any time, just say '{skip}'.", cid)
 
 	elseif (msgcontains(msg, 'skip') or msgcontains(msg, 'sair')) then
 		talkState[talkUser] = TALK_STATE_SKIP_ISLAND
-		selfSay("{PT-BR}: Para qual cidade voc� quer ir? Vou lhe dar um Pokemon caso voc� n�o tenha um.", cid)
-		selfSay("{EN-US} To which city you want to go? I will give you a Pokemon if you dont have one.", cid)
+		selfSay("Which city do you want to go to? I will give you a Pokemon if you don't have one.", cid)
 		selfSay("({Viridian}, {Pewter}, {Cerulean}, {Saffron}, {Celadon}, {Vermilion}, {Fuchsia}, {Cinnabar}.)", cid)
 
 	elseif (msgcontains(msg, 'journey') or msgcontains(msg, 'jornada')) then
 		if (#getPlayerAllBallsWithPokemon(cid) > 1) then
-			selfSay("{PT-BR}: Voc� n�o pode sair daqui com mais de um Pokemon!", cid)
-			selfSay("{EN-US} You can't leave with more then one Pokemon!", cid)
+			selfSay("You can't leave with more than one Pokemon!", cid)
 
 		elseif (getPlayerItemCount(cid, SPECIAL_SMALL_STONE_ID) > 0 or getPlayerItemCount(cid, EMPTY_SOUL_BALL_ID) > 0) then
-			selfSay("{PT-BR}: Voc� n�o pode sair des ilha caso esteja com soul balls vazias ou pedras.", cid)
-			selfSay("{EN-US}: You can't leave this island if you are with empty soul balls or special small stones.", cid)
+			selfSay("You can't leave this island while you still have empty soul balls or special small stones.", cid)
 
 		else
 			talkState[talkUser] = TALK_STATE_CITY_CHOOSE
 
-			selfSay("{PT-BR}: Parab�ns na sua primeira captura! Agora voc� deve ir para o pr�ximo continente para come�ar sua jornada. Para qual cidade voc� quer ir?", cid)
-			selfSay("{EN-US}: Congratulations on your first catch! Now you must go to the next continent to start your journey. To which city you want to go?", cid)
+			selfSay("Congratulations on your first catch! Now you must go to the next continent to start your journey. Which city do you want to go to?", cid)
 			selfSay("({Viridian}, {Pewter}, {Cerulean}, {Saffron}, {Celadon}, {Vermilion}, {Fuchsia}, {Cinnabar}.)", cid)
 		end
 
@@ -88,8 +83,7 @@ function creatureSayCallback(cid, type, msg)
 			townId = getTownId("cinnabar")
 
 		else
-			selfSay("{PT-BR}: Por favor repita, suas op��es s�o: {Viridian}, {Pewter}, {Cerulean}, {Saffron}, {Celadon}, {Vermilion}, {Fuchsia} ou {Cinnabar}.", cid)
-			selfSay("{EN-US}: Please re-peat, your options are: {Viridian}, {Pewter}, {Cerulean}, {Saffron}, {Celadon}, {Vermilion}, {Fuchsia} or {Cinnabar}.", cid)
+			selfSay("Please repeat. Your options are: {Viridian}, {Pewter}, {Cerulean}, {Saffron}, {Celadon}, {Vermilion}, {Fuchsia} or {Cinnabar}.", cid)
 			return true
 		end
 
@@ -123,54 +117,44 @@ function creatureSayCallback(cid, type, msg)
 		doPlayerAddMainItems(cid)
 		doTeleportThing(cid, getTownTemplePosition(townId), false)
 		doPlayerSetTown(cid, townId)
-		selfSay("{PT-BR}: Certo, boa sorte!", cid)
-		selfSay("{EN-US}: Alright, good luck!", cid)
+		selfSay("Alright, good luck!", cid)
 
 	elseif (talkState[talkUser] == TALK_STATE_CITY_CHOOSE) then
 		if (msgcontains(msg, "viridian")) then
 			talkState[talkUser] = TALK_STATE_CITY_VIRIDIAN
-			selfSay("{PT-BR}: Viridian, tem certeza? {Sim} ou {Nao}", cid)
-			selfSay("{EN-US}: Viridian, are you sure? {Yes} or {No}", cid)
+			selfSay("Viridian, are you sure? {Yes} or {No}", cid)
 
 		elseif (msgcontains(msg, "pewter")) then
 			talkState[talkUser] = TALK_STATE_CITY_PEWTER
-			selfSay("{PT-BR}: Pewter, tem certeza? {Sim} ou {Nao}", cid)
-			selfSay("{EN-US}: Pewter, are you sure? {Yes} or {No}", cid)
+			selfSay("Pewter, are you sure? {Yes} or {No}", cid)
 
 		elseif (msgcontains(msg, "Cerulean")) then
 			talkState[talkUser] = TALK_STATE_CITY_CERULEAN
-			selfSay("{PT-BR}: Cerulean, tem certeza? {Sim} ou {Nao}", cid)
-			selfSay("{EN-US}: Cerulean, are you sure? {Yes} or {No}", cid)
+			selfSay("Cerulean, are you sure? {Yes} or {No}", cid)
 
 		elseif (msgcontains(msg, "Saffron")) then
 			talkState[talkUser] = TALK_STATE_CITY_SAFFRON
-			selfSay("{PT-BR}: Saffron, tem certeza? {Sim} ou {Nao}", cid)
-			selfSay("{EN-US}: Saffron, are you sure? {Yes} or {No}", cid)
+			selfSay("Saffron, are you sure? {Yes} or {No}", cid)
 
 		elseif (msgcontains(msg, "Celadon")) then
 			talkState[talkUser] = TALK_STATE_CITY_CELADON
-			selfSay("{PT-BR}: Celadon, tem certeza? {Sim} ou {Nao}", cid)
-			selfSay("{EN-US}: Celadon, are you sure? {Yes} or {No}", cid)
+			selfSay("Celadon, are you sure? {Yes} or {No}", cid)
 
 		elseif (msgcontains(msg, "Vermilion")) then
 			talkState[talkUser] = TALK_STATE_CITY_VERMILION
-			selfSay("{PT-BR}: Vermilion, tem certeza? {Sim} ou {Nao}", cid)
-			selfSay("{EN-US}: Vermilion, are you sure? {Yes} or {No}", cid)
+			selfSay("Vermilion, are you sure? {Yes} or {No}", cid)
 
 		elseif (msgcontains(msg, "Fuchsia")) then
 			talkState[talkUser] = TALK_STATE_CITY_FUCHSIA
-			selfSay("{PT-BR}: Fuchsia, tem certeza? {Sim} ou {Nao}", cid)
-			selfSay("{EN-US}: Fuchsia, are you sure? {Yes} or {No}", cid)
+			selfSay("Fuchsia, are you sure? {Yes} or {No}", cid)
 
 		elseif (msgcontains(msg, "Cinnabar")) then
 			talkState[talkUser] = TALK_STATE_CITY_CINNABAR
-			selfSay("{PT-BR}: Cinnabar, tem certeza? {Sim} ou {Nao}", cid)
-			selfSay("{EN-US}: Cinnabar, are you sure? {Yes} or {No}", cid)
+			selfSay("Cinnabar, are you sure? {Yes} or {No}", cid)
 
 		else
 			talkState[talkUser] = TALK_STATE_CITY_CHOOSE
-			selfSay("{PT-BR}: Por favor repita, suas op�oees s�o: {Viridian}, {Pewter}, {Cerulean}, {Saffron}, {Celadon}, {Vermilion}, {Fuchsia} ou {Cinnabar}.", cid)
-			selfSay("{EN-US}: Please re-peat, your options are: {Viridian}, {Pewter}, {Cerulean}, {Saffron}, {Celadon}, {Vermilion}, {Fuchsia} or {Cinnabar}.", cid)
+			selfSay("Please repeat. Your options are: {Viridian}, {Pewter}, {Cerulean}, {Saffron}, {Celadon}, {Vermilion}, {Fuchsia} or {Cinnabar}.", cid)
 		end
 
 	elseif (msgcontains(msg, "yes") or msgcontains(msg, "sim")) then
@@ -178,14 +162,12 @@ function creatureSayCallback(cid, type, msg)
 		if (ballsWithPokemon > 1) then
 			talkState[talkUser] = 0
 
-			selfSay("{PT-BR}: Voc� n�o pode sair daqui com mais de um Pokemon!", cid)
-			selfSay("{EN-US} You can't leave with more then one Pokemon!", cid)
+			selfSay("You can't leave with more than one Pokemon!", cid)
 
 		elseif (getPlayerItemCount(cid, SPECIAL_SMALL_STONE_ID) > 0 or getPlayerItemCount(cid, EMPTY_SOUL_BALL_ID) > 0) then
 			talkState[talkUser] = 0
 
-			selfSay("{PT-BR}: Voc� n�o pode sair des ilha caso esteja com soul balls vazias ou pedras.", cid)
-			selfSay("{EN-US}: You can't leave this island if you are with empty soul balls or special small stones.", cid)
+			selfSay("You can't leave this island while you still have empty soul balls or special small stones.", cid)
 
 		else
 			local newTownId
@@ -230,8 +212,7 @@ function creatureSayCallback(cid, type, msg)
 				doPlayerSetTown(cid, newTownId)
 				doPlayerAddMainItems(cid)
 
-				selfSay("{PT-BR}: Certo, boa sorte!", cid)
-				selfSay("{EN-US}: Alright, good luck!", cid)
+				selfSay("Alright, good luck!", cid)
 			end
 		end
 

@@ -1,6 +1,6 @@
 WIKICHAT_GREETS = {
-	"Bem-vindo ao Wiki Chat! Através deste canal você poderá obter informações sobre o PSoul. Antes de começar, você precisa informar qual o idioma que você vai utilizar neste diálogo. Suas opções são: 'Português' e 'English'.",
-	"Welcome to the Wiki Chat! Through this channel you can get information about PSoul. Before you begin, you need to tell what language you will use at this dialog. Your options are: 'Português' and 'English'.",
+	"Welcome to the Wiki Chat! Through this channel you can get information about PSoul. Before you begin, tell me which language you want to use in this dialog. Your options are: 'English' and 'Português'.",
+	--"Bem-vindo ao Wiki Chat! Através deste canal você poderá obter informações sobre o PSoul. Antes de começar, você precisa informar qual o idioma que você vai utilizar neste diálogo. Suas opções são: 'Português' e 'English'.",
 	--"Bienvenido a la Wiki chat! A través de este canal se puede obtener información acerca de la PSoul. Antes de empezar, tiene que decirle qué idioma que va a utilizar este cuadro de diálogo. Sus opciones son: 'Português', 'English' y 'Español'."
 }
 
