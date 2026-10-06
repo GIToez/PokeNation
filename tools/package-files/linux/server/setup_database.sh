@@ -18,9 +18,9 @@ FLUSH PRIVILEGES;
 SQL
 
 if [ "$(mysql -upsoul -p"$DB_PASS" -N -e "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='psoul' AND table_name='accounts'")" = "0" ]; then
-  mysql -upsoul -p"$DB_PASS" psoul < src/schemas/mysql.sql
-  mysql -upsoul -p"$DB_PASS" psoul < src/schemas/psoul_extra_mysql.sql
-  mysql -upsoul -p"$DB_PASS" psoul < src/schemas/psoul_dev_seed.sql
+  mysql -upsoul -p"$DB_PASS" psoul < database/mysql.sql
+  mysql -upsoul -p"$DB_PASS" psoul < database/psoul_extra_mysql.sql
+  mysql -upsoul -p"$DB_PASS" psoul < database/psoul_dev_seed.sql
   echo "Schema imported."
 else
   echo "Tables already exist - schema import skipped."
