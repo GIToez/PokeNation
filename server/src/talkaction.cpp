@@ -114,7 +114,11 @@ bool TalkActions::registerEvent(Event* event, xmlNodePtr p, bool override)
 
 bool TalkActions::onPlayerSay(Creature* creature, uint16_t channelId, const std::string& words, bool ignoreAccess)
 {
-	std::string cmdstring[TALKFILTER_LAST] = words, paramstring[TALKFILTER_LAST] = "";
+	// GCC >= 4.6 rejects initialising an array from a single std::string; fill it explicitly
+	std::string cmdstring[TALKFILTER_LAST], paramstring[TALKFILTER_LAST];
+	for(int32_t i = 0; i < TALKFILTER_LAST; ++i)
+		cmdstring[i] = words;
+
 	size_t loc = words.find('"', 0);
 	if(loc != std::string::npos && loc >= 0)
 	{

@@ -720,7 +720,7 @@ class Game
 		int32_t lastMotdId;
 		uint32_t playersRecord;
 		uint32_t checkLightEvent, checkCreatureEvent, checkDecayEvent, saveEvent;
-		bool globalSaveMessage[2];
+		bool globalSaveMessage[3]; // indexed 0..2 in Game::prepareGlobalSave()
 
 		RefreshTiles refreshTiles;
 		Trash trash;

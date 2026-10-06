@@ -135,7 +135,7 @@ Player::Player(const std::string& _name, ProtocolGame* p):
 	for(int32_t i = LOSS_FIRST; i <= LOSS_LAST; ++i)
 		lossPercent[i] = 100;
 
-	for(int8_t i = 0; i <= 13; i++)
+	for(int8_t i = 0; i < 13; i++)
 		talkState[i] = false;
 #ifdef __ENABLE_SERVER_DIAGNOSTIC__
 

@@ -72,7 +72,7 @@ class Quest
 		bool isCompleted(Player* player) const;
 
 		uint16_t getId() const {return id;}
-		const std::string& getName(Player* player) const {return (player ? Localization::t(player->getLanguage(), name) : name);}
+		std::string getName(Player* player) const {return (player ? Localization::t(player->getLanguage(), name) : name);}
 		uint16_t getMissionCount(Player* player);
 
 		inline MissionList::const_iterator getFirstMission() const {return missions.begin();}
