@@ -199,8 +199,8 @@ amount`), poll `0xFA` request / `0xFB` vote. Unknown bytes can trigger a ban whe
 ## 4. Lua data layer
 
 Load order: TFS libs `data/lib/000-constant.lua … 051-accountStorage.lua`, then `999-ps.lua`
-loads `lib/ps/others/*`, `lib/ps/config/*`, `lib/ps/functions/*` and every `lib/ps/systems/*.lua`
-(55 files; `systems/disabled/005-task.lua` is not loaded).
+loads three named `lib/ps/others/` files, eleven named `lib/ps/config/` files (the ranger-club, wiki-chat and quest configs are loaded by systems 029, 031 and 002), `lib/ps/functions/*` and every `lib/ps/systems/*.lua`
+(54 files; `systems/disabled/005-task.lua`, `lib/disabled/` and `lib/ps/tools/` are not loaded).
 
 ### 4.1 Pokémon data
 
@@ -302,7 +302,7 @@ silently fails (see §7).
 
 OTClient 0.6-era C++ (`client/src-cpp`, VS2013 project) with Pokémon modules: `game_pokemon*`,
 `game_pokedex`, `game_dollcase`, `game_badgecase`, `game_shop`, `game_market`, `game_guide`,
-`game_environment` (sounds/particles/shaders), `game_tv`, `game_poll`. Text assets were imported;
+`game_environment` (sounds/particles/shaders; present but never loaded, BUG-69), `game_poll`. There is no `game_tv` module; TV channels use the normal channel window. Text assets were imported;
 `data/things/data.spr` (308 MB) is in Git LFS; `data/images` (71 MB) and `data/sounds` (51 MB)
 are normal objects. The prebuilt `Poke Aimar.exe` and DLLs were not imported.
 

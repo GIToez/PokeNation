@@ -57,7 +57,7 @@ level-100 Pidgeot by SQL for the NPC-battle test only).
 - Exact test (Trainer, level 5, no Pokémon): GM `/send Trainer;5020,789,7`; Trainer `--say hi --npc charmander --npc yes --npc male`.
 - Expected: Oak dialogue, a Charmander ball added, Pokémon bar icon.
 - Actual: "You can choose a {Charmander} or a {Squirtle} or a {Bulbasaur}. What is your choice?" → "You really want a Charmander?" → "Your Pokemon will be {female} or {male}?" → "You received a Charmander." and "Good choice! Congratulations, here is your first {Pokemon}!…"; bar icon item 10638 `100%`.
-- Source: `server/data/npc/scripts/professorTommy.lua` (Professor Oak XML), `lib/ps/config/balls.lua doCreatePokemonBall`.
+- Source: `server/data/npc/scripts/quest_professorOak.lua` (bound by `npc/Professor Oak.xml`), `lib/ps/config/balls.lua doCreatePokemonBall`.
 - Errors: none. Note: Beginner Island / `login.lua:48-60` "+4 levels" branch does not apply to seed characters (they start with bag 12282, not the locked bag 13499). Priority: –.
 
 **P2-03 · Starting kit (Pokédex, Pokébag, order icon, ball support, evolve icon) — PASS (after seed fix)**

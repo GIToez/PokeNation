@@ -44,7 +44,7 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-27 | P3 | open (inferred) | PROTECTION/HEALBLOCK/PREVENTSTATSCHANGE conditions share the ENDURE subid; Miracle Eye mismatch | no |
 | BUG-28 | P3 | open (inferred) | Held item: nil compare at level 6→7; Dragon Fang boosts Fire | no |
 | BUG-29 | P4 | open | Incubator text "Remaing 60 minutes (1 days)" | no |
-| BUG-30 | P3 | open (inferred) | `"Strenght"` typo in 11 species → Strength never available | no |
+| BUG-30 | P3 | open (inferred) | `"Strenght"` typo in 59 species (`BROKEN_REFERENCES.md`) → Strength never available | no |
 | BUG-31 | P2 | open (inferred) | Pokémon Market: seller not paid when the depot letter fails; `LIMIT 1` inside SQL string | no |
 | BUG-32 | P3 | open (inferred) | PokeTrader `getPlayerBoughtOnPokeTrader` always true after one purchase | no |
 | BUG-33 | P3 | open (inferred) | `bonusDef` reads the attack bonus (copy-paste) | no |
@@ -231,7 +231,7 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
   `:89` Dragon Fang declared `ELEMENT_FIRE`.
 
 ### BUG-30 / BUG-50 — Ability tables — inferred
-- `"Strenght"` in `lib/ps/config/pokemon/{aggron,claydol,linoone,shelgon,seviper,regice,vibrava,rayquaza,groudon,manectric,delcatty}.lua:17`;
+- `"Strenght"` in 59 species files under `lib/ps/config/pokemon/` (e.g. `aggron,claydol,linoone,shelgon,seviper,regice,vibrava,rayquaza,groudon,manectric,delcatty.lua:17`; full list in `BROKEN_REFERENCES.md`);
   Mudkip/Latias/Latios lack `OUTFIT_DIVE_*` and `DIVE_SPEED` entries (`lib/ps/others/outfits.lua`,
   `lib/ps/functions/abilities.lua:234-291`).
 

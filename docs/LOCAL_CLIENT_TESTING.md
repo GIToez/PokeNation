@@ -20,7 +20,7 @@ logging into the local server with it (see `PHASE_2_REPORT.md §1`).
 | Server accepts | `312..312` | `server/src/resources.h:79-80` (`CLIENT_VERSION_MIN/MAX`), checked in `server/src/protocollogin.cpp:116` |
 | OS id | `10` Windows / `11` Linux / `12` macOS | `client/src-cpp/src/client/game.cpp:1648-1659` (`Game::getOs`, unless `g_game.setCustomOs` was called). Server treats `>= 0x0A` as OTClient: `server/src/player.cpp:5502` (`isUsingOtclient`), enum `server/src/enums.h:61-63` |
 | Game host / port | from the character list | the server sends them in the charlist (`server/src/protocollogin.cpp:263-298`): `ip`/`gamePort` from `server/config.lua` |
-| Server advertised IP | `127.0.0.1` | `server/config.lua:88` (`ip = "127.0.0.1"`), `loginPort = 7564` (`:90`), `gamePort = 8548` (`:91`). `config.example.lua` carries the same values |
+| Server advertised IP | `127.0.0.1` | `server/config.example.lua:93` (`ip = "127.0.0.1"`), `loginPort = 7564` (`:95`), `gamePort = 8548` (`:96`); the local `config.lua` is copied from it |
 | RSA key | OTServ public key | `client/modules/gamelib/game.lua:23-39` (`g_game.chooseRsa`: any host that is not `*.tibia.com` gets `OTSERV_RSA`) |
 | Language byte | current client locale id | `protocollogin.lua:39`; the server stores it in `accounts.lang_id` on each login (`server/src/protocollogin.cpp:162-165`) |
 
@@ -33,7 +33,7 @@ and the server's `config.lua` was already set to `127.0.0.1` in Phase 1. The cha
 
 | Item | Production value | Where |
 |------|------------------|-------|
-| Server `ip` | `191.179.192.219` / `khjyr.servegame.com` | comment on `server/config.lua:88` and `config.example.lua` |
+| Server `ip` | `191.179.192.219` / `khjyr.servegame.com` | comment on `server/config.example.lua:93` |
 | Client server-list entry | `192.99.251.233` | `client/data/servers.xml` (unused by the login flow, see `SECURITY_AUDIT.md`) |
 | Website links in the client | `http://pokenordic.com/accounts/create`, `.../lostAccount` | `client/modules/client_entergame/entergame.otui:80-87` |
 | Character list buttons | `http://www.psoul.net/players/createCharacter`, `.../accounts/donate` | `client/modules/client_entergame/newcharacterlist.otui:223,232` |
