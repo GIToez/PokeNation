@@ -15,7 +15,7 @@ recorded in [PHASE_2A_BASELINE.md](PHASE_2A_BASELINE.md).
 | Windows build | **Verified in CI** (GitHub `windows-latest`, Windows Server 2025, MSYS2 MINGW64, GCC 16.2.0). `Build-PokeNation-Windows.ps1` builds both programs and writes both zips with `.sha256` |
 | Windows runtime | **Server verified in CI** on every build: the packaged launchers set up MariaDB, `PokeNationServer.exe` starts and passes the gameplay smoke test. **Client: crashes as shipped on the GPU-less runner** (BUG-73, texture larger than the 1024x1024 software-OpenGL limit). With Mesa's software OpenGL (llvmpipe) next to it, the same client runs and shows its first screen. Not yet tried on a Windows PC with a real GPU |
 | Docs | README navigation page, baseline, audit, startup audit, client reference, Windows guide, dev info, handbook, 25 tutorials + checklists, reference catalogs, broken references |
-| New bugs | BUG-58…BUG-73 in [BUG_TRIAGE.md](BUG_TRIAGE.md). None fixed (out of scope) |
+| New bugs | BUG-58…BUG-74 in [BUG_TRIAGE.md](BUG_TRIAGE.md). BUG-58…BUG-73 not fixed (out of scope); BUG-74 (Windows database setup, found on a real PC) fixed |
 
 ## 2. Requirement checklist
 
@@ -116,6 +116,8 @@ Results on this branch (all jobs green unless noted):
 | [37513558891](https://github.com/GIToez/PokeNation/actions/runs/37513558891) | `3245d7a` | attempt 1 SKIP, attempt 2 **12/12** | **12/12** | as shipped `0xC0000374`; Mesa d3d12 driver `0x80070057` |
 | [37516068648](https://github.com/GIToez/PokeNation/actions/runs/37516068648) | `3f9c5f3` | **12/12** | **12/12** | gdb backtraces (§6) |
 | [37518468969](https://github.com/GIToez/PokeNation/actions/runs/37518468969) | `3e74dce` | **12/12** | attempt 1 SKIP, attempt 2 **12/12** | as shipped `0xC0000374`; **Mesa llvmpipe: running after 30 s, first screen rendered** |
+| [37524351264](https://github.com/GIToez/PokeNation/actions/runs/37524351264) | `584f605` | green | green | (Node 24 action versions) |
+| [37526792085](https://github.com/GIToez/PokeNation/actions/runs/37526792085) | `fd8f9e4` | **12/12** | **12/12**; setup with the MariaDB client (BUG-74) | as shipped `0xC0000374`; Mesa llvmpipe running after 30 s |
 
 The client steps are informational (`continue-on-error`), so they never fail the job.
 
@@ -134,14 +136,38 @@ noted. Nothing was run on a Windows PC with a real GPU.
 
 The hashes change with every commit because `version.json` contains the commit.
 
-**Database setup (`Setup-PokeNation-Database.ps1 -NonInteractive`).** It printed only
-`[ OK ]` lines: MariaDB running on 127.0.0.1:3306, root login, database and user created, schema
-and development accounts imported, `97 tables; accounts: 1,admin,player`, and `config.lua`
-created from `config.example.lua`. The MariaDB server came from Chocolatey. The runner also has
-MySQL 8.0 preinstalled, and the script's client search found
-`C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe` first. That client worked against
-MariaDB, but it means the script accepts any `mysql.exe` it finds first, not only MariaDB's.
-`-Reset` was also exercised, by the smoke-test retry.
+**Database setup (`Setup-PokeNation-Database.ps1 -NonInteractive -RootPassword ''`).** In run
+37518468969 and earlier it printed only `[ OK ]` lines, ending with
+`97 tables; accounts: 1,admin,player`. That evidence came from the wrong client, though. The
+runner has MySQL 8.0 preinstalled, and the script took the first `mysql.exe` on PATH,
+`C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe`, instead of the client of the MariaDB
+server installed from Chocolatey. The MySQL 8 client prints no warning for a passwordless root, so
+CI missed **BUG-74**. On a real PC with MariaDB's own client, setup failed with
+`ERROR 1146 (42S02): Table 'psoul.accounts' doesn't exist`, because the client's stderr warning
+`option --ssl-verify-server-cert is disabled, because of an insecure passwordless login` was read
+as the result of the table check.
+
+After the fix (run [37526792085](https://github.com/GIToez/PokeNation/actions/runs/37526792085)),
+the client search prefers MariaDB's client. CI asserts the client path, the table count and the
+account list for a fresh database, a second run and `-Reset`:
+
+```
+[ OK ] MariaDB client: C:\Program Files\MariaDB 13.0\bin\mariadb.exe
+[ OK ] logged in as 'root'
+       client message (not an error): WARNING: option --ssl-verify-server-cert is disabled, because of an insecure passwordless login.
+[ OK ] schema and development accounts imported          (fresh database)
+[ OK ] tables already exist - import skipped (use -Reset to start over)   (second run)
+[WARN] -Reset: dropping database 'psoul' (all characters and progress are lost)
+[ OK ] schema and development accounts imported          (-Reset)
+[ OK ] 97 tables; accounts: 1,admin,player                (all three runs)
+```
+
+The full logs are `setup-fresh.log`, `setup-again.log`, `setup-reset.log` and `checkonly.log` in
+that run's `logs-windows` artifact. The regression test `tools/windows/Test-PokeNationCommon.ps1`
+runs in the same job under Windows PowerShell 5.1 and PowerShell 7. The server package rebuilt
+there (commit `fd8f9e4`) is 54,980,207 bytes, sha256
+`417a7a1e9428f083dff7944e29b4b2096c8152886a9f40facdf53eb386df51a4`, and contains the fixed
+scripts.
 
 **Launcher checks (`Start-PokeNation-Server.ps1 -CheckOnly`).** It passed every check: package
 files, `config.lua` (database `psoul`, ports 7564/8548), MariaDB running, database initialised
@@ -194,5 +220,7 @@ Windows has **not** been performed. On Linux the same client source logged in an
   the package.
 - A full graphical Windows session (log in, walk, fight) still has to be done by a person on a
   Windows PC, following `WINDOWS_LOCAL_TESTING.md` §6.
-- `Setup-PokeNation-Database.ps1` uses the first `mysql.exe` it finds, which can be a MySQL
-  client rather than MariaDB's (it worked in CI).
+- BUG-74 (setup failing with `ERROR 1146 … 'psoul.accounts' doesn't exist` on a real PC) is fixed
+  and verified in CI with MariaDB's own client (13.0.2). The fix has not yet been re-run on the
+  PC where it was found. The earlier "setup worked in CI" evidence used the runner's MySQL 8
+  client and did not cover this case.

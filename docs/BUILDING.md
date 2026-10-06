@@ -456,7 +456,7 @@ are skipped). It never publishes a GitHub Release.
 |---|---|
 | `validate` | Lua/XML syntax, `check_references.py --strict`, shell syntax |
 | `linux` | build server + client, `package.sh all`, fresh MariaDB from the packaged schemas, start the **packaged** server, protocol login, `smoke_test.py`, start the packaged client under Xvfb; artifacts `PokeNation-Server-Linux`, `PokeNation-LegacyClient-Linux` |
-| `windows` | MSYS2 MINGW64 + `Build-PokeNation-Windows.ps1`; artifacts `PokeNation-Server-Windows`, `PokeNation-LegacyClient-Windows`; MariaDB (Chocolatey) + `Setup-PokeNation-Database.ps1` + `Start-PokeNation-Server.ps1 -CheckOnly` + packaged `PokeNationServer.exe` + `smoke_test.py`; informational client launch: as shipped (crashes on the runner's basic renderer, BUG-73), then with Mesa llvmpipe; screenshot and gdb backtrace in `logs-windows` |
+| `windows` | MSYS2 MINGW64 + `Build-PokeNation-Windows.ps1`; artifacts `PokeNation-Server-Windows`, `PokeNation-LegacyClient-Windows`; `tools/windows/Test-PokeNationCommon.ps1` under Windows PowerShell 5.1 and PowerShell 7; MariaDB (Chocolatey) + `Setup-PokeNation-Database.ps1` with MariaDB's client and root without a password (fresh, re-run, `-Reset`; asserts 97 tables and `accounts: 1,admin,player`, BUG-74) + `Start-PokeNation-Server.ps1 -CheckOnly` + packaged `PokeNationServer.exe` + `smoke_test.py`; informational client launch: as shipped (crashes on the runner's basic renderer, BUG-73), then with Mesa llvmpipe; screenshot and gdb backtrace in `logs-windows` |
 
 ---
 

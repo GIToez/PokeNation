@@ -57,9 +57,10 @@ Double-click **`server\Setup-PokeNation-Database.bat`** and type the MariaDB roo
 step 1. Expected output:
 
 ```
-[ OK ] MariaDB client: C:\Program Files\MariaDB 11.x\bin\mysql.exe
+[ OK ] MariaDB client: C:\Program Files\MariaDB 11.x\bin\mariadb.exe
 [ OK ] MariaDB is running on 127.0.0.1:3306
 [ OK ] logged in as 'root'
+       client message (not an error): WARNING: option --ssl-verify-server-cert is disabled, because of an insecure passwordless login.
 [ OK ] database 'psoul' and user 'psoul' ready
        importing database\mysql.sql ...
        importing database\psoul_extra_mysql.sql ...
@@ -68,6 +69,13 @@ step 1. Expected output:
 [ OK ] 97 tables; accounts: 1,admin,player
 [ OK ] config.lua created from config.example.lua
 ```
+
+The `client message` line appears only when root has no password and the MariaDB client is 11.4
+or newer. It is harmless.
+
+The script uses MariaDB's own client. It looks for `mariadb.exe` on PATH, then in
+`C:\Program Files\MariaDB*\bin` (`mariadb.exe`, then `mysql.exe`, newest version first). Only if
+there is none does it fall back to any `mysql.exe` on PATH or from a MySQL Server installation.
 
 Running it again is safe, because it skips what already exists. To start over with fresh characters,
 open PowerShell in the server folder and run
@@ -176,7 +184,9 @@ Every launcher prints `[FAIL]` with the reason and what to do. Common cases:
 
 | Message | What to do |
 |---|---|
-| `mysql.exe (MariaDB client) was not found` | Install MariaDB (step 1). If it is installed somewhere unusual, add its `bin` folder to PATH. |
+| `the MariaDB client (mariadb.exe / mysql.exe) was not found` | Install MariaDB (step 1). If it is installed somewhere unusual, add its `bin` folder to PATH. |
+| `WARNING: option --ssl-verify-server-cert is disabled, because of an insecure passwordless login.` followed by `ERROR 1146 (42S02): Table 'psoul.accounts' doesn't exist` | BUG-74, fixed in packages built from commit `43c68f4` or later (see `version.json`). Older packages read the warning as the query result and skipped the import. Download the current server package and run `Setup-PokeNation-Database.ps1 -Reset`. With the fixed scripts the warning only shows as `client message (not an error)`. |
+| `importing database\… failed` with an `ERROR nnnn` line | The import stopped at that SQL error. Run again with `-Reset`. If it repeats, report the message. |
 | `MariaDB is not running on 127.0.0.1:3306` | Start the "MariaDB" service: `Start-MariaDB.bat` as administrator, or the Windows "Services" app. |
 | `cannot log in to MariaDB as 'root'` | The root password is wrong. Use the one from the MariaDB installation. |
 | `config.lua is missing` | Run `Setup-PokeNation-Database.bat` first. |

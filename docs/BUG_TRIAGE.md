@@ -88,6 +88,7 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-71 | P4 (dev seed) | open, verified (Phase 2A) | Dev seed pre-fills the starting kit that Oak hands out again → duplicate kit | no |
 | BUG-72 | P3 | open, verified (Phase 2A) | Server never exits after SIGTERM / `/shutdown` (inherited TFS 0.3.6 `ServiceManager` flag) | no |
 | BUG-73 | P2 (low-end GPUs) | open, verified (Phase 2A, Windows CI) | Client crashes 2-3 s after start when the 1920x1080 animated background exceeds the GPU's maximum texture size (`AnimatedTexture` left half-initialised) | yes |
+| BUG-74 | P0 (Windows setup) | fixed (Phase 2A; found on a real PC, fix verified in Windows CI) | `Setup-PokeNation-Database.ps1` fails with `ERROR 1146 … 'psoul.accounts' doesn't exist`: the MariaDB 11.4+ client's passwordless-login warning on stderr was read as the query result, so the schema import was skipped | no (launchers only) |
 
 ---
 
@@ -302,11 +303,12 @@ them (no "OLD TASK SYSTEM" line in any server log of this phase).
 
 ---
 
-## Phase 2A additions (BUG-58 … BUG-73)
+## Phase 2A additions (BUG-58 … BUG-74)
 
 BUG-58…BUG-70 come from the fresh full-source audit (`FULL_SOURCE_AUDIT.md §17`, with file:line
 evidence there). BUG-58 and BUG-68 were re-checked by reading the cited lines. None was fixed:
-Phase 2A only restructures build and distribution.
+Phase 2A only restructures build and distribution. BUG-74 is in the Phase 2A Windows launchers
+themselves and was fixed.
 
 ### BUG-71 — Dev seed duplicates the starting kit — verified
 `psoul_dev_seed.sql` puts the main items (100 Poke Balls 12157, 100 Cookies 2687, 20 potions
@@ -347,3 +349,67 @@ old drivers are. Inherited from OTClient. Not fixed: the legacy client is frozen
 (`LEGACY_CLIENT_REFERENCE.md`). Fix (if the frozen client is ever patched): return early from
 `updateAnimation()` when `m_frames` is empty, or initialise `m_currentFrame` and skip animated
 textures that failed `setupSize()`.
+
+### BUG-74 — Windows database setup skips the schema import with a MariaDB 11.4+ client — verified, fixed
+**Found on a real Windows PC** (MariaDB installed as documented, root without a password).
+`Setup-PokeNation-Database.ps1` stopped with:
+
+```
+WARNING: option --ssl-verify-server-cert is disabled, because of an insecure passwordless login.
+ERROR 1146 (42S02): Table 'psoul.accounts' doesn't exist
+```
+
+Cause (line numbers as of commit `584f605`, before the fix): `Invoke-MySql` ran the client as
+`$output = & $MySql @cliArgs 2>&1` (`tools/package-files/windows/server/PokeNation-Common.ps1:78`),
+which merges stderr into the result, and `-Scalar` returned `$output | Select-Object -First 1`
+(`:82`). MariaDB 11.4+ clients print the warning above on stderr whenever the login has no
+password. So the "does `accounts` exist" check (`Setup-PokeNation-Database.ps1:99-100`) got the
+warning instead of `0`, treated the database as initialised, skipped the import, and the
+`SELECT … FROM accounts` at `:113` failed. A second, hidden defect: the import ran
+`--execute="source file"` (`:105`). After an SQL error inside `source`, the client keeps going and
+exits 0, so a broken import was never reported (reproduced locally with MariaDB 10.11).
+CI did not catch any of this. The Windows runner has MySQL 8.0 preinstalled on PATH, and
+`Find-MySqlClient` (`PokeNation-Common.ps1:19-30`) took the first `mysql.exe` on PATH, so CI used
+`C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe`, which does not print the warning.
+
+Fix (commit `43c68f4`; line numbers as of that commit) in `PokeNation-Common.ps1`:
+- `Invoke-MySql` (`:90`) starts the client with `System.Diagnostics.Process`, redirects stdout
+  and stderr, and reads both asynchronously (`:116-117`), so a full pipe cannot deadlock. It
+  returns only stdout rows. `-Scalar` returns the first stdout row. Messages on stderr are kept
+  in `$script:MySqlLastStderr`, and Setup shows them as `client message (not an error)`. A
+  non-zero exit code, or an `ERROR nnnn` line on stderr, throws with the stderr text (`:130`).
+  Arguments are quoted for the Windows command line (`ConvertTo-CommandLineArgument`, `:75`).
+  The password still goes only through `MYSQL_PWD`, which is removed when the password is empty.
+  The same code works in Windows PowerShell 5.1 and PowerShell 7. There is no `2>&1`, so 5.1
+  creates no `NativeCommandError`.
+- New `-InputFile` streams a `.sql` file to the client's stdin (`:120`). With stdin the client
+  stops at the first error and exits 1. Setup imports this way (`Setup-PokeNation-Database.ps1:110`).
+- `Find-MySqlClient` (`:20`) prefers MariaDB's own client: `mariadb.exe` on PATH, then
+  `Program Files\MariaDB*\bin\mariadb.exe`, then `…\mysql.exe` (newest version first). A
+  `mysql.exe` on PATH and MySQL Server folders remain the fallback.
+- Setup stops with a clear message if the table check returns something that is not a number
+  (`Setup-PokeNation-Database.ps1:102-103`). `Start-PokeNation-Server.ps1 -CheckOnly` checks the
+  account count the same way (`:51`).
+
+Verification:
+- `tools/windows/Test-PokeNationCommon.ps1` is a regression test with a fake client. It prints
+  the exact warning on stderr and `0` on stdout, fails with `ERROR 1146` and exit 1, and also
+  covers quoting, `MYSQL_PWD`, `-InputFile` and 2 MB on both pipes. The old code fails 9 of its
+  checks, with the warning returned as the scalar. The new code passes all 23 checks with
+  Windows PowerShell 5.1.26100 and PowerShell 7.6.6 in CI (run
+  [37526792085](https://github.com/GIToez/PokeNation/actions/runs/37526792085)), and with
+  PowerShell 7.4.6 on Linux.
+- Windows CI run 37526792085 used the real MariaDB client,
+  `C:\Program Files\MariaDB 13.0\bin\mariadb.exe` (13.0.2), with root and no password. The
+  warning appeared in every run, and each run printed `97 tables; accounts: 1,admin,player`:
+  - fresh database: imported;
+  - second run: `tables already exist - import skipped`;
+  - `-Reset`: dropped and imported again.
+
+  `Start-PokeNation-Server.ps1 -CheckOnly` reported 3 accounts, and the packaged-server smoke test
+  passed 12/12. The logs are `setup-fresh.log`, `setup-again.log`, `setup-reset.log` and
+  `checkonly.log` in the run's `logs-windows` artifact.
+- Locally (Linux, pwsh 7.4.6, MariaDB 10.11 client and server) the real setup script imported 97
+  tables with and without a wrapper that prints the warning. A deliberately broken seed now stops
+  with `ERROR 1146 … at line 100`, where the old code reported success.
+- Not yet re-run on the PC where the bug was found.
