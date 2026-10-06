@@ -58,7 +58,7 @@ class NetworkMessage;
 class ServicePort : boost::noncopyable, public boost::enable_shared_from_this<ServicePort>
 {
 	public:
-		ServicePort(boost::asio::io_service& io_service): m_io_service(io_service),
+		ServicePort(boost::asio::io_context& io_service): m_io_service(io_service),
 			m_acceptor(NULL), m_serverPort(0), m_pendingStart(false) {}
 		virtual ~ServicePort() {close();}
 
@@ -81,7 +81,7 @@ class ServicePort : boost::noncopyable, public boost::enable_shared_from_this<Se
 		typedef std::vector<Service_ptr> ServiceVec;
 		ServiceVec m_services;
 
-		boost::asio::io_service& m_io_service;
+		boost::asio::io_context& m_io_service;
 		boost::asio::ip::tcp::acceptor* m_acceptor;
 
 		uint16_t m_serverPort;
@@ -110,8 +110,8 @@ class ServiceManager : boost::noncopyable
 	protected:
 		void die() {m_io_service.stop();}
 
-		boost::asio::io_service m_io_service;
-		boost::asio::deadline_timer deathTimer;
+		boost::asio::io_context m_io_service;
+		boost::asio::steady_timer deathTimer;
 		bool running;
 
 		typedef std::map<uint16_t, ServicePort_ptr> AcceptorsMap;

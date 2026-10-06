@@ -63,7 +63,7 @@ void ServicePort::open(uint16_t port)
 	{
 		if(g_config.getBool(ConfigManager::BIND_IP_ONLY))
 			m_acceptor = new boost::asio::ip::tcp::acceptor(m_io_service, boost::asio::ip::tcp::endpoint(
-				boost::asio::ip::address(boost::asio::ip::address_v4::from_string(
+				boost::asio::ip::address(boost::asio::ip::make_address_v4(
 				g_config.getString(ConfigManager::IP))), m_serverPort));
 		else
 			m_acceptor = new boost::asio::ip::tcp::acceptor(m_io_service, boost::asio::ip::tcp::endpoint(
@@ -140,7 +140,7 @@ void ServicePort::handle(boost::asio::ip::tcp::socket* socket, const boost::syst
 
 		uint32_t remoteIp = 0;
 		if(!error)
-			remoteIp = htonl(ip.address().to_v4().to_ulong());
+			remoteIp = htonl(ip.address().to_v4().to_uint());
 
 		Connection_ptr connection;
 		if(remoteIp && ConnectionManager::getInstance()->acceptConnection(remoteIp) &&
@@ -235,7 +235,7 @@ void ServiceManager::stop()
 	{
 		try
 		{
-			m_io_service.post(boost::bind(&ServicePort::close, it->second));
+			boost::asio::post(m_io_service, boost::bind(&ServicePort::close, it->second));
 		}
 		catch(boost::system::system_error& e)
 		{
@@ -246,7 +246,7 @@ void ServiceManager::stop()
 	m_acceptors.clear();
 	OutputMessagePool::getInstance()->stop();
 
-	deathTimer.expires_from_now(boost::posix_time::seconds(3));
+	deathTimer.expires_after(std::chrono::seconds(3));
 	deathTimer.async_wait(boost::bind(&ServiceManager::die, this));
 }
 

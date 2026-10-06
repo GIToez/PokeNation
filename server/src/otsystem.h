@@ -28,6 +28,7 @@
 #include <list>
 #include <map>
 #include <limits>
+#include <chrono>
 
 #include <boost/utility.hpp>
 #include <boost/asio.hpp>

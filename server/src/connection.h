@@ -66,7 +66,7 @@ class ConnectionManager
 		}
 
 		Connection_ptr createConnection(boost::asio::ip::tcp::socket* socket,
-			boost::asio::io_service& io_service, ServicePort_ptr servicers);
+			boost::asio::io_context& io_service, ServicePort_ptr servicers);
 		void releaseConnection(Connection_ptr connection);
 
 		bool isDisabled(uint32_t clientIp, int32_t protocolId);
@@ -106,7 +106,7 @@ class Connection : public boost::enable_shared_from_this<Connection>, boost::non
 		static uint32_t connectionCount;
 #endif
 	private:
-		Connection(boost::asio::ip::tcp::socket* socket, boost::asio::io_service& io_service, ServicePort_ptr servicePort):
+		Connection(boost::asio::ip::tcp::socket* socket, boost::asio::io_context& io_service, ServicePort_ptr servicePort):
 			m_socket(socket), m_readTimer(io_service), m_writeTimer(io_service), m_service(io_service), m_servicePort(servicePort)
 		{
 			m_refCount = m_pendingWrite = m_pendingRead = 0;
@@ -168,9 +168,9 @@ class Connection : public boost::enable_shared_from_this<Connection>, boost::non
 		Protocol* m_protocol;
 
 		boost::asio::ip::tcp::socket* m_socket;
-		boost::asio::deadline_timer m_readTimer, m_writeTimer;
+		boost::asio::steady_timer m_readTimer, m_writeTimer;
 
-		boost::asio::io_service& m_service;
+		boost::asio::io_context& m_service;
 		ServicePort_ptr m_servicePort;
 		bool m_receivedFirst, m_writeError, m_readError;
 
