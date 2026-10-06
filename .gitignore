@@ -1,0 +1,81 @@
+# ---- Downloaded archives (never commit the original package into normal history) ----
+*.rar
+*.7z
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+Projeto*/
+
+# ---- Build output ----
+build/
+build-*/
+bin/
+obj/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+Makefile.generated
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.exe
+*.dll
+*.pdb
+*.idb
+*.ilk
+*.res
+*.gch
+*.pch
+server/theforgottenserver
+server/psoul-server
+
+# ---- IDE / tool caches ----
+.idea/
+.vscode/
+.vs/
+*.sdf
+*.opensdf
+*.suo
+*.user
+*.sln.docstates
+*.swp
+*~
+Thumbs.db
+desktop.ini
+.DS_Store
+__pycache__/
+*.pyc
+
+# ---- Server runtime output ----
+server/logs/
+*.log
+server/data/logs/
+server/settings.sav
+core
+core.*
+
+# ---- Local secrets / local-only configuration ----
+# Copy server/config.example.lua to server/config.lua and keep your real DB password there.
+server/config.lua
+*.local.lua
+.env
+
+# ---- Temporary / generated database files ----
+*.s3db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.sql.bak
+*.dump
+
+# ---- Keep tracked example files even though their patterns are ignored above ----
+!server/config.example.lua
+!**/.gitignore.upstream
+# The untouched reference copy is complete by definition (it contains its own old logs/config).
+!original/**
