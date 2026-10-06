@@ -1159,6 +1159,20 @@ def cmd_enter(args):
             p = Writer().u8(0x78).pos(container_pos(cid, idx)).u16(icid).u8(idx).pos(inv_pos(slot)).u8(cnt)
             conn.send_encrypted(bytes(p.buf))
             pump(args.wait)
+        elif kind == "drop":
+            # move item <sid> from an open container onto the player's own tile
+            sid = int(value)
+            found = find_in_containers(sid)
+            if not found:
+                print(f"!! item {sid} not found in open containers {list(world.containers)}")
+                ok = False
+                continue
+            cid, idx, icid, cnt = found
+            pos = world.creatures[world.player_id]["pos"]
+            print(f">> drop item {sid} from container {cid}[{idx}] onto {pos}")
+            p = Writer().u8(0x78).pos(container_pos(cid, idx)).u16(icid).u8(idx).pos(pos).u8(max(cnt, 1))
+            conn.send_encrypted(bytes(p.buf))
+            pump(args.wait)
         elif kind == "movetobag":
             slot = int(value)
             it = world.inventory.get(slot)
@@ -1316,6 +1330,8 @@ def main():
                     help="SID:NAME - use item SID on the nearest creature whose name starts with NAME")
     pe.add_argument("--use-on-slot", dest="actions", action="append", type=lambda s: "useonslot:" + s,
                     help="SID:SLOT - use item SID (from an open container) on the item in inventory SLOT")
+    pe.add_argument("--drop", dest="actions", action="append", type=lambda s: "drop:" + s,
+                    help="SID - move item SID from an open container onto the player's own tile")
     pe.add_argument("--move-to-slot", dest="actions", action="append", type=lambda s: "movetoslot:" + s)
     pe.add_argument("--move-to-bag", dest="actions", action="append", type=lambda s: "movetobag:" + s)
     pe.add_argument("--wait-dead", dest="actions", action="append", type=lambda s: "waitdead:" + s)
