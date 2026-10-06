@@ -105,7 +105,7 @@ premium) **+ custom `U8 pollAvailable`**. Verified with correct and wrong passwo
 | `0x32` extended opcode | `U8 opcode, string buffer` (OTClient style), both directions | `sendExtendedOpcode` / `parseExtendedOpcode` |
 | `0xF6`–`0xF9` market | 9.x-style market backported (enter/leave/detail/browse); detail attributes mostly stubbed with `U16 0` | `protocolgame.cpp:3600-3695`, `iomarket.cpp` |
 | `0xFA`/`0xFB` | poll window request / vote (C→S); poll window itself is `0xFF 0x18` | `polls.cpp`, `iopoll.cpp` |
-| `0xAB` | also used for the **TV channel list** (`CHANNEL_TV = 0xFFFD`) | `sendTVChannelsDialog` |
+| `0xAB` channel list | channel count is **`U16`** (stock: `U8`); also used for the **TV channel list** (`CHANNEL_TV = 0xFFFD`) | `sendChannelsDialog`, `protocolgame.cpp:2093`; `sendTVChannelsDialog` |
 | `0x1D` (C→S) | ping-back accepted; server replies with `0x1E` for both ping and ping-back | `protocolgame.cpp` |
 | `0xFF` + sub-opcode | **PSoul namespace** (below) | `protocolgame.cpp:3053-3370, 4776-4939` |
 
@@ -270,8 +270,10 @@ Globalevents: `serverstart`, `playersrecord`, `Gameplay Tutorial Rattata` (15 s)
 (3 h), `sudowoodoTree` (1 h), `globalMessages` (45 min), `anniversary` (1 h); `clean`, `save`,
 TeamSpeak message and `halloween` are commented out in the original XML.
 Creaturescripts cover login/logout/advance/think/kill/death/prepareDeath/gainexperience/target/
-combat/statschange/spawn/container/channel/trade/questinfo/tournament/customoutfit and the
-`ExtendedOpcode` event registered for OTClient players.
+combat/statschange/spawn/container/channel/trade/questinfo/tournament/customoutfit. The engine
+calls `registerCreatureEvent("ExtendedOpcode")` for OTClient players (`protocolgame.cpp:303`),
+but no `type="extendedopcode"` event is defined in `creaturescripts.xml`, so the registration
+silently fails (see §7).
 
 ---
 
@@ -317,3 +319,9 @@ are normal objects. The prebuilt `Poke Aimar.exe` and DLLs were not imported.
 | `players.online` is reset at startup by Lua, not by the engine | `start.lua` |
 | Pokémon level-up threshold uses `level` where the player formula uses `level-1` | `functions/player.lua:459` |
 | Status protocol (`0xFF` service) disabled in source; the client's server-list ping cannot work | `otserv.cpp:877` |
+| No Lua handler for client→server extended opcodes: `creaturescripts.xml` defines no `extendedopcode` event, so `registerCreatureEvent("ExtendedOpcode")` returns `false` and `Game::parsePlayerExtendedOpcode` only handles id `10` (dash walking) in C++. The client's `Locale` (id 1) opcode sent at login is therefore ignored; language comes from `accounts.lang_id` instead. | `protocolgame.cpp:303`, `game.cpp:7721-7729`, `creature.cpp:1734` |
+| Extended opcode `103` (shop "purchase failed") is only registered on the client; nothing in the server ever sends it | `client/modules/game_shop/shop.lua`; no `103` in `server/src` or `server/data` |
+| NPC `Soya.xml` references `script="loot.lua"`, which does not exist. Latent: Soya is not placed in either spawn file, so the NPC is never loaded. | `npc/Soya.xml:2`; no `loot.lua` under `npc/scripts/`; no `Soya` in `world/*-spawn.xml` |
+| Move configs `Meowth Super Rocket` and `Rocket Missile` exist in `config/moves/` but have no `spells.xml` entry or script and are not in any Pokémon moveset — dead configuration | `config/moves/meowth super rocket.lua`, `config/moves/rocket missile.lua` |
+| `PS_LIB_SKILLS_DIR` points at `lib/ps/skills/`, which does not exist; the constant is never used | `lib/999-ps.lua:6` |
+| Unused duplicate trees are shipped but not loaded: `config/_pokemon/` (432 files), `others/pokemon_backup/` (304), `others/moves_disabled/` (9), `systems/disabled/005-task.lua`. Kept untouched in Phase 1; candidates for removal later. | no loader references these paths |

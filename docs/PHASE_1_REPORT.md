@@ -139,7 +139,16 @@ unverified:
 * Rendering-side features (sounds, particles, shaders, Pokémon window UI) — no client was run.
 * Inherited oddities kept as-is: Pokémon level-up threshold uses `level` where the player
   formula uses `level-1`; `balls.lua` duplicate `yereblu` entry and `EFFECT_SILVERBALL_US`
-  typo; three XML script references point to missing files but are already commented out.
+  typo; three XML script references point to missing files but are already commented out;
+  `npc/Soya.xml` points to a missing `loot.lua` (latent — Soya is in neither spawn file);
+  move configs `Meowth Super Rocket`/`Rocket Missile` have no spell or user; unused
+  duplicate trees `config/_pokemon/`, `others/pokemon_backup/`, `others/moves_disabled/`,
+  `systems/disabled/` and the dangling `PS_LIB_SKILLS_DIR` constant (full list in
+  `SOURCE_AUDIT.md §7`).
+* Client→server extended opcodes other than `10` (dash walking, handled in C++) reach no
+  handler: `creaturescripts.xml` defines no `extendedopcode` event, so the engine's
+  `registerCreatureEvent("ExtendedOpcode")` silently fails and the client's `Locale` opcode is
+  ignored (language comes from `accounts.lang_id`).
 
 ## 8. Client protocol
 
@@ -148,7 +157,8 @@ Adler-32 checksum; OTServ RSA + XTEA; `0x1F` challenge; OS ids `0x0A-0x0C` mark 
 unlock every PSoul extension. Differences from stock 8.54: login language byte, character-list
 extras + poll byte, `U16` light hour on self-login, `U16` magic-effect id, four extra creature
 bytes (icon, impassable, isSummon, canAttack), extended opcode `0x32`, backported market
-`0xF4-0xF9`, poll `0xFA/0xFB`, TV channel list, and the `0xFF` PSoul family. Status protocol
+`0xF4-0xF9`, poll `0xFA/0xFB`, `U16` channel count in `0xAB` (also reused for the TV channel
+list), and the `0xFF` PSoul family. Status protocol
 and admin protocol are disabled in the shipped source.
 
 ## 9. Custom opcodes
@@ -157,7 +167,9 @@ and admin protocol are disabled in the shipped source.
 cooldown `0x09`, Pokédex `0x0A-0x0C, 0x11`, TM window `0x0D`, status icons `0x0E-0x10`,
 creature jump/effect `0x12/0x13`, doll case `0x14/0x15`, slot machine `0x16`, tip `0x17`,
 poll window `0x18`, level-up `0x19`, loot list `0x1A`. Extended opcode (`0x32`) ids `0-10`
-plus the client shop's ad-hoc `103`. Exact payloads: `SOURCE_AUDIT.md §2.5`.
+plus the client shop's ad-hoc `103`, which no server code sends. Server→client extended
+opcodes are sent from Lua; client→server ones only have a C++ handler for id `10` (see §7).
+Exact payloads: `SOURCE_AUDIT.md §2.5`.
 
 ## 10. Redemption migration notes
 
@@ -210,7 +222,9 @@ largest file 3 MB) are normal objects. Upstream `.gitignore` files that would ha
 6. **Translation polish**: Portuguese developer comments; awkward original English strings
    that are also `pt_br.loc` keys (must be changed on both sides).
 7. **Inherited code defects**: level-up formula inconsistency, `balls.lua` duplicate key/typo,
-   missing `/tvbanlist` script, `eliteFour` unescaped nickname — all low impact, listed for the
-   next phase.
+   missing `/tvbanlist` script, `eliteFour` unescaped nickname, missing `ExtendedOpcode`
+   creature event (client `Locale` opcode ignored), `Soya.xml` → missing `loot.lua`, dead move
+   configs and unused duplicate data trees — all low impact, listed for the next phase
+   (`SOURCE_AUDIT.md §7`).
 8. **Build hygiene**: enable `-Werror`-clean build or at least triage the `-Wall` warnings;
    decide whether `__ENABLE_SERVER_DIAGNOSTIC__` and `__ROOT_PERMISSION__` stay on.
