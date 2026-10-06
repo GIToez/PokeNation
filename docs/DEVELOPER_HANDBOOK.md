@@ -562,7 +562,8 @@ because it plays Trainer's new-player path. Exit status 0 means every check pass
 a check failed. Exit status 2 means the battle went the other way: wild levels and damage are
 random, and Charmander fainted first (in 6 local runs Charmander won 5 times; once it fainted
 with the Magikarp at 4% health). The defeat and catch checks are then printed as `[SKIP]`; reset and run again to
-cover them. CI turns exit 2 into a warning.
+cover them. CI does exactly that once (fresh database, server restart) and only warns if the
+second attempt also ends with exit 2.
 
 ### 9.3 Scripted checks with the protocol probe
 
