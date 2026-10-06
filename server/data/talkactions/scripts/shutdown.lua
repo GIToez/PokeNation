@@ -35,14 +35,11 @@ function prepareShutdown(minutes)
 	end
 
 	if(minutes == 1) then
-		doBroadcastMessage("O servidor vai cair em " .. minutes .. " minuto para atualização, por favor faça logout agora! Voltaremos em 10 minutos. Mais informações em: http://forum.psoul.net/announcements/")
-		doBroadcastMessage("Server is going down in " .. minutes .. " minute to update, please log out now! We will back in 10 minutes. More information on: http://forum.psoul.net/announcements/")
+		doBroadcastMessage("The server is going down in " .. minutes .. " minute for an update. Please log out now! We will be back in 10 minutes. More information at: http://forum.psoul.net/announcements/")
 	elseif(minutes <= 3) then
-		doBroadcastMessage("O servidor vai cair em " .. minutes .. " minutos para atualização, por favor faça logout! Voltaremos em 10 minutos. Mais informações em: http://forum.psoul.net/announcements/")
-		doBroadcastMessage("Server is going down in " .. minutes .. " minutes to update, please log out. We will back in 10 minutes. More information on: http://forum.psoul.net/announcements/")
+		doBroadcastMessage("The server is going down in " .. minutes .. " minutes for an update. Please log out! We will be back in 10 minutes. More information at: http://forum.psoul.net/announcements/")
 	else
-		doBroadcastMessage("O servidor vai cair em " .. minutes .. " minutos para atualização. Voltaremos em 10 minutos. Mais informações em: http://forum.psoul.net/announcements/")
-		doBroadcastMessage("Server is going down in " .. minutes .. " minutes to update. We will back in 10 minutes. More information on: http://forum.psoul.net/announcements/")
+		doBroadcastMessage("The server is going down in " .. minutes .. " minutes for an update. We will be back in 10 minutes. More information at: http://forum.psoul.net/announcements/")
 	end
 
 	shutdownEvent = addEvent(prepareShutdown, 60000, minutes - 1)
