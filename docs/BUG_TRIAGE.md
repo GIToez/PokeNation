@@ -1,4 +1,4 @@
-# Bug triage (Phase 2)
+# Bug triage (Phase 2, extended in Phase 2A)
 
 Every defect found while building, running and testing the PSoul baseline, prioritised. Entries
 marked **verified** were reproduced on the local server/client (see `docs/PHASE_2_TEST_MATRIX.md`
@@ -72,6 +72,21 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-55 | P4 | open | Wiki Chat greeting omits the existing Spanish tree | no |
 | BUG-56 | P2 (security) | open | Hard-coded AES asset key/IV in client source | yes |
 | BUG-57 | P4 | open | Client console `CAST ERROR … TPoint<int>` noise, `tmchoose.lua` connect/disconnect leak | yes (UI rewrite) |
+| BUG-58 | P4 | open (inferred, Phase 2A) | `checkCorpseOwner ` read with a trailing space → config key ignored | no |
+| BUG-59 | P3 (latent) | open (inferred, Phase 2A) | Client doll-case count `U16` read into `uint8_t` → desync ≥256, infinite loop at 255 | yes |
+| BUG-60 | P4 (latent) | open (inferred, Phase 2A) | Same `uint8_t` truncation for the level-up move list | yes |
+| BUG-61 | P4 | open (inferred, Phase 2A) | Server-driven move bar open/close fires events no module listens to | yes |
+| BUG-62 | P4 (latent) | open (inferred, Phase 2A) | Account Manager charlist entry lacks OTClient extras (only if `accountManager = true`) | yes |
+| BUG-63 | P4 (latent) | open (inferred, Phase 2A) | `AdvancedSave` vs `AdvanceSave` event name | no |
+| BUG-64 | P4 | open (inferred, Phase 2A) | `onLogout_EliteFour` registered but not defined | no |
+| BUG-65 | P4 | open (inferred, Phase 2A) | `rateMonsterExperienceMultiplier` read but unused | no |
+| BUG-66 | P4 | open (inferred, Phase 2A) | `blessingsOnlyPremium` vs `blessingOnlyPremium` | no |
+| BUG-67 | P4 | open (inferred, Phase 2A) | Client `0xFF` dispatcher has no `default` case | yes |
+| BUG-68 | P3 (security) | open (inferred, Phase 2A) | Game-login challenge bytes skipped, never compared | yes |
+| BUG-69 | P4 | open (inferred, Phase 2A) | `game_environment` module (ambient sound/shaders) never loaded | yes (client) |
+| BUG-70 | P4 (ops) | open (Phase 2A) | Test-server NPCs (`npc/scripts/testserver_*.lua`) ship in the datapack | no |
+| BUG-71 | P4 (dev seed) | open, verified (Phase 2A) | Dev seed pre-fills the starting kit that Oak hands out again → duplicate kit | no |
+| BUG-72 | P3 | open, verified (Phase 2A) | Server never exits after SIGTERM / `/shutdown` (inherited TFS 0.3.6 `ServiceManager` flag) | no |
 
 ---
 
@@ -282,3 +297,34 @@ the empty `LANG_ES_ES` (HARMLESS, P4), A5 `game_shop` latent bugs (fold into #3)
 The four historical trees are **kept** as required (`config/_pokemon/`, `others/pokemon_backup/`,
 `others/moves_disabled/`, `systems/disabled/`); Phase 2 re-verified that the loader never touches
 them (no "OLD TASK SYSTEM" line in any server log of this phase).
+
+
+---
+
+## Phase 2A additions (BUG-58 … BUG-72)
+
+BUG-58…BUG-70 come from the fresh full-source audit (`FULL_SOURCE_AUDIT.md §17`, with file:line
+evidence there). BUG-58 and BUG-68 were re-checked by reading the cited lines. None was fixed:
+Phase 2A only restructures build and distribution.
+
+### BUG-71 — Dev seed duplicates the starting kit — verified
+`psoul_dev_seed.sql` puts the main items (100 Poke Balls 12157, 100 Cookies 2687, 20 potions
+12244, rope 2120, old fishing rod 12292) into Trainer's pokebag. Professor Oak then calls
+`doPlayerAddMainItems` when handing out the starter (`npc/scripts/quest_professorOak.lua:111`,
+`lib/ps/functions/player.lua:717-723`), so the kit is added a second time and lands in the next
+container with free space (seen in the badge case, sid 103). Only the development seed is
+affected; real characters created by the original website had an empty bag. The +4 levels on
+the first login of a level-1 character outside the beginner island are intended
+(`creaturescripts/scripts/login.lua:48-59`). Fix: remove the kit from Trainer's seed rows, or
+keep it only for GM Admin and Tester, who never meet Oak.
+
+### BUG-72 — Server process does not exit after shutdown — verified
+After SIGTERM (or `/shutdown`), the server kicks and saves everyone and prints
+`Preparing to shutdown the server- done.`, but the process stays alive in `epoll_wait` with one
+thread. `ServiceManager::run()` (`server/src/server.cpp:213-226`) sets `running = true` only
+*after* `m_io_service.run()` returns, so `ServiceManager::stop()` (`:228-233`) sees
+`running == false` and returns without closing the acceptors or stopping the io_service.
+`Game::shutdown()` calls `exit(1)` only in non-console Windows builds (`game.cpp:6685-6688`).
+Inherited from TFS 0.3.6. Workaround: kill the process after the "- done." line; the data is
+already saved. Ctrl+C (SIGINT) is not handled and ends the process at once without the shutdown
+save. Fix (Phase 3): set `running = true` before `m_io_service.run()`.
