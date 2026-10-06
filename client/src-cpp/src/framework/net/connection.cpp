@@ -272,7 +272,7 @@ void Connection::onRecv(const boost::system::error_code& error, size_t recvSize)
     if(m_connected) {
         if(!error) {
             if(m_recvCallback) {
-                const char* header = boost::asio::buffer_cast<const char*>(m_inputStream.data());
+                const char* header = static_cast<const char*>(m_inputStream.data().data());
                 m_recvCallback((uint8*)header, recvSize);
             }
         } else
