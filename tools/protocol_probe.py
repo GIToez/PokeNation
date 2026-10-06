@@ -1131,10 +1131,14 @@ def cmd_enter(args):
         elif kind == "useontile":
             # use item <sid> (container or inventory slot) on a map tile: "SID:self" = the player's own
             # tile (order icon -> Ride/Fly/Surf...), "SID:X,Y" = another tile on the current floor.
-            # The server ignores the sprite id for map targets and picks the top item itself
-            # (Game::internalGetThing, STACKPOS_USEITEM), so stackpos 0 / sprite 0 is enough.
+            # Without a stackpos the server resolves the *source* with STACKPOS_USEITEM but the
+            # *target* with the exact stackpos (Actions::executeUse -> internalGetThing), i.e. 0 =
+            # ground.  Append ":STACK" (e.g. "14048:self:3") to aim at an item lying on the tile;
+            # --drop prints the stackpos the dropped item got.
             sid, _, target = value.partition(":")
             sid = int(sid)
+            target, _, to_stack = target.partition(":")
+            to_stack = int(to_stack) if to_stack else 0
             found = find_in_containers(sid)
             if found:
                 cid, idx, icid, cnt = found
@@ -1157,9 +1161,9 @@ def cmd_enter(args):
             else:
                 x, y = (int(v) for v in target.split(","))
                 to_pos = (x, y, me[2])
-            print(f">> use item {sid} on tile {to_pos}")
+            print(f">> use item {sid} on tile {to_pos} stackpos {to_stack}")
             conn.send_encrypted(bytes(Writer().u8(0x83).pos(from_pos).u16(icid).u8(from_stack)
-                                      .pos(to_pos).u16(0).u8(0).buf))
+                                      .pos(to_pos).u16(0).u8(to_stack).buf))
             pump(args.wait)
         elif kind == "useonslot":
             # use item <sid> from an open container on the item equipped in inventory <slot>
@@ -1379,8 +1383,9 @@ def main():
     pe.add_argument("--use-corpse", dest="actions", action="append_const", const="usecorpse:",
                     help="open the corpse of the last --wait-dead target (autoloot path)")
     pe.add_argument("--use-on-tile", dest="actions", action="append", type=lambda s: "useontile:" + s,
-                    help="SID:self or SID:X,Y - use item SID on the player's own tile or on another tile "
-                         "(order icon 7730 on your own tile = Ride/Fly/Dive)")
+                    help="SID:self[:STACK] or SID:X,Y[:STACK] - use item SID on the player's own tile or on "
+                         "another tile (order icon 7730 on your own tile = Ride/Fly/Dive); STACK targets "
+                         "the item at that stackpos instead of the ground (e.g. incubator on a dropped egg)")
     pe.add_argument("--drop", dest="actions", action="append", type=lambda s: "drop:" + s,
                     help="SID - move item SID from an open container onto the player's own tile")
     pe.add_argument("--move-to-slot", dest="actions", action="append", type=lambda s: "movetoslot:" + s)
