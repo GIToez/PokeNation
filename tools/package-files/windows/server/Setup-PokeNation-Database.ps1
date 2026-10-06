@@ -3,7 +3,7 @@
   One-time setup of the PokeNation DEVELOPMENT database on Windows (MariaDB).
 
 .DESCRIPTION
-  1. finds mysql.exe and checks that MariaDB is running
+  1. finds the MariaDB client (mariadb.exe/mysql.exe; MariaDB's own is preferred) and checks that MariaDB is running
   2. creates database "psoul" and user "psoul" (password "psoul-dev" by default)
   3. imports database\mysql.sql, database\psoul_extra_mysql.sql, database\psoul_dev_seed.sql
      (skipped when the tables already exist, unless -Reset)
@@ -41,7 +41,7 @@ foreach ($f in 'database\mysql.sql', 'database\psoul_extra_mysql.sql', 'database
 
 $mysql = Find-MySqlClient
 if (-not $mysql) {
-    Stop-WithProblem 'mysql.exe (MariaDB client) was not found' @(
+    Stop-WithProblem 'the MariaDB client (mariadb.exe / mysql.exe) was not found' @(
         'Install MariaDB from https://mariadb.org/download/ (keep "Install as service" enabled),',
         'or add its "bin" folder (e.g. C:\Program Files\MariaDB 11.4\bin) to PATH, then run this again.')
 }
@@ -76,6 +76,7 @@ try { Admin 'SELECT 1' | Out-Null } catch {
     Stop-WithProblem "cannot log in to MariaDB as '$RootUser'" @($_.Exception.Message, 'Check the root password you chose during the MariaDB installation.')
 }
 Write-Ok "logged in as '$RootUser'"
+if ($script:MySqlLastStderr) { Write-Hint "client message (not an error): $($script:MySqlLastStderr -replace '\s*\r?\n\s*', ' | ')" }
 
 if ($Reset) {
     Write-Warn "-Reset: dropping database '$DbName' (all characters and progress are lost)"
@@ -96,21 +97,27 @@ FLUSH PRIVILEGES;
 try { Admin $create | Out-Null } catch { Stop-WithProblem 'creating the database/user failed' @($_.Exception.Message) }
 Write-Ok "database '$DbName' and user '$DbUser' ready"
 
-$haveAccounts = App "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='$DbName' AND table_name='accounts'" -Scalar
+try { $haveAccounts = App "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='$DbName' AND table_name='accounts'" -Scalar }
+catch { Stop-WithProblem "cannot read database '$DbName' as '$DbUser'" @($_.Exception.Message) }
+if ($haveAccounts -notmatch '^\d+$') {
+    Stop-WithProblem "unexpected answer from mysql while checking for the 'accounts' table: '$haveAccounts'" @('Run again with -Reset to start from an empty database.')
+}
 if ($haveAccounts -eq '0') {
     foreach ($file in 'mysql.sql', 'psoul_extra_mysql.sql', 'psoul_dev_seed.sql') {
-        $path = (Resolve-Path (Join-Path 'database' $file)).Path -replace '\\', '/'
+        $path = (Resolve-Path (Join-Path 'database' $file)).Path
         Write-Host "       importing database\$file ..."
         # mysql.sql creates triggers, which needs the administrative account.
-        try { Invoke-MySql -MySql $mysql -HostName $DbHost -Port $DbPort -User $RootUser -Password $RootPassword -Database $DbName -Sql "source $path" | Out-Null }
+        try { Invoke-MySql -MySql $mysql -HostName $DbHost -Port $DbPort -User $RootUser -Password $RootPassword -Database $DbName -InputFile $path | Out-Null }
         catch { Stop-WithProblem "importing database\$file failed" @($_.Exception.Message, 'Run again with -Reset to start from an empty database.') }
     }
     Write-Ok 'schema and development accounts imported'
 } else {
     Write-Ok 'tables already exist - import skipped (use -Reset to start over)'
 }
-$tables = App "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='$DbName'" -Scalar
-$accounts = App 'SELECT GROUP_CONCAT(name ORDER BY id) FROM accounts' -Scalar
+try {
+    $tables = App "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='$DbName'" -Scalar
+    $accounts = App 'SELECT GROUP_CONCAT(name ORDER BY id) FROM accounts' -Scalar
+} catch { Stop-WithProblem "the database '$DbName' is incomplete" @($_.Exception.Message, 'Run again with -Reset to start from an empty database.') }
 Write-Ok "$tables tables; accounts: $accounts"
 
 if (-not (Test-Path 'config.lua')) {

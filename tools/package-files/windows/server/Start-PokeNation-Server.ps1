@@ -48,12 +48,13 @@ $mysql = Find-MySqlClient
 if ($mysql) {
     try {
         $count = Invoke-MySql -MySql $mysql -HostName $dbHost -Port $dbPort -User $dbUser -Password $dbPass -Database $dbName -Sql 'SELECT COUNT(*) FROM accounts' -Scalar
+        if ($count -notmatch '^\d+$') { throw "unexpected answer from mysql: '$count'" }
         Write-Ok "database '$dbName' is initialised ($count accounts)"
     } catch {
         Stop-WithProblem "database '$dbName' is missing or cannot be read as '$dbUser'" @($_.Exception.Message, 'Run Setup-PokeNation-Database.bat (add -Reset in PowerShell to start over).')
     }
 } else {
-    Write-Warn 'mysql.exe not found - skipping the database content check'
+    Write-Warn 'MariaDB client (mariadb.exe / mysql.exe) not found - skipping the database content check'
 }
 
 foreach ($port in $loginPort, $gamePort) {
