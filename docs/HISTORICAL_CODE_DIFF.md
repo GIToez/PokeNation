@@ -246,3 +246,16 @@ exists only in the old copies.
 | `systems/disabled/005-task.lua` | Archive to `/original`; remove later | Fully superseded by Ranger Club and `DEFEAT_POKEMON` quests; broken storage table; nothing calls it. Decide whether to retire or re-wire `PLAYER_STATISTIC_IDS.COMPLETE_TASK`/`ACHIEVEMENT_IDS.TASKS`. |
 
 Nothing was deleted or moved as part of this analysis.
+
+## Phase 2 verification note
+
+The four trees are still present and untouched at the end of Phase 2 (`git status` clean,
+`ls server/data/lib/ps/config/_pokemon server/data/lib/ps/others/pokemon_backup
+server/data/lib/ps/others/moves_disabled server/data/lib/ps/systems/disabled`). Runtime
+confirmation that they are not loaded: the canary `print("IF YOU SEEING THIS, THE OLD TASK SYSTEM
+IS BEEING LOADED")` in `systems/disabled/005-task.lua:1` never appeared in any Phase 2 server log
+(six start-ups), and every Pokémon used in the tests (Charmander, Eevee → Flareon, Ponyta,
+Pidgeot, Dragonite, Bulbasaur, Squirtle) behaved according to the active `config/pokemon/*.lua`
+definitions (TM lists, evolutions, abilities). The Phase 1 classification is kept as HISTORICAL
+BACKUP in `docs/BUG_TRIAGE.md` (items 11 and 12); the brief's instruction not to delete them is
+honoured.

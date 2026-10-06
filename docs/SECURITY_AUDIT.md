@@ -55,6 +55,7 @@ files exist in the archive.
 | Login/game port defaults `7564`, protocol version `312` | `modules/client_entergame/entergame.lua`, `modules/gamelib/protocollogin.lua` | Expected. |
 | No auto-updater, no file downloads, no telemetry, no remote Lua loading | searched `g_http`, `HttpRequest`, `downloadFile`, `autoupdate`, `updater` | none present (OTClient 0.6 has no HTTP stack). |
 | Extended-opcode id `103` registered by `game_shop/shop.lua` outside the documented id table | `modules/game_shop/shop.lua` | Functional oddity, not a security issue. |
+| **Hard-coded AES key and IV for the "encrypted assets" layer** (added in Phase 2) | `src-cpp/src/framework/util/crypt.cpp:516-517` (`Crypt::__aesDecrypt`), compiled only with `-DENCRYPTED_ASSETS=ON`; see `LOCAL_CLIENT_TESTING.md §4` | The key/IV literals are in the public source, so the asset encryption is obfuscation only. Our builds do not enable `ENCRYPTED_ASSETS` and ship plain data files. Do not reuse the key for anything; drop the layer or move to a build-time secret if asset protection is ever wanted. The literal values are intentionally not reproduced in the docs. Tracked as BUG-56 in `BUG_TRIAGE.md`. |
 
 ## 4. Credentials and secrets
 

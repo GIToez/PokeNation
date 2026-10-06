@@ -129,6 +129,7 @@ Edit `config.lua`:
 | `encryptionType` | `"sha256"` | must match how account passwords were stored |
 | `mapName` | `"map"` | loads `data/world/map.otbm` + `map-spawn.xml` + `map-house.xml` |
 | `worldId` | `1` | all seed rows use world 1 |
+| `worldType` | `"pvp"` | **changed from the archive's `"no-pvp"` in Phase 2.** Under `no-pvp` the engine refuses every attack on a creature that has a master before it reaches the NPC-trainer exception (`src/combat.cpp:313` vs `322-326`), so NPC/gym battles cannot be won. Player-vs-player stays blocked by `combat.cpp:272-284` (duels/arena only), so `pvp` is behaviour-neutral for players. See `BUG_TRIAGE.md` BUG-01. |
 
 `config.example.lua` is the original `config.lua` with the MOTD/login message translated and
 the database credentials left at the original placeholders (`root` / empty password /
@@ -189,6 +190,20 @@ python3 tools/protocol_probe.py enter --account admin --password admin --charact
   --say "/m Rattata" --attack "Rattata [" --wait-dead "Rattata [:60" --catch 12157 \
   --wait-text "(Gotcha|ball broke):15"
 ```
+
+Further actions added in Phase 2 (run `python3 tools/protocol_probe.py enter --help` for the
+full list): `--approach NAME` walks next to an NPC and faces it, `--npc TEXT` talks in the NPC
+channel, `--use-item SID` uses an item from an open container, `--use-on SID:NAME` uses it on a
+creature, `--use-on-slot SID:SLOT` on an equipped item (TMs, held items, vitamins on the ball in
+slot 8), `--use-on-tile SID:self[:STACK]` on your own tile (order icon 7730 = Ride/Fly/Dive; an
+explicit stackpos targets an item lying on the tile, e.g. an incubator on a dropped egg),
+`--drop SID` drops an item from a container, `--use-corpse` opens the corpse of the last
+`--wait-dead` target, `--raw HEX` sends an arbitrary packet (e.g. `98 c1 01` opens channel 449,
+Wiki Chat). Use `python3 -u` so the transcript streams. Note that logging in with the probe on
+an account whose character is open in the GUI client kicks that session
+(`replaceKickOnLogin = true`); use the `admin` account for the probe and `player` for the GUI.
+GM characters have infinite mana, which PSoul uses as Pokémon energy, so **GM Pokémon cannot use
+moves** – run move tests as `Trainer`/`Tester` (BUG-05).
 
 `tools/check_syntax.sh` runs `luac5.1 -p` and `xmllint --noout` over `server/data`.
 

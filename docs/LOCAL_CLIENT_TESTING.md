@@ -111,7 +111,9 @@ download it.
 | `framework/stdext/shared_object.h:75-79` | converting constructor excluded for `U == T` | GCC ≥ 7 refuses `std::is_convertible` on the incomplete element type; the original check never disabled the overload anyway |
 | `framework/ui/uilayout.h:34`, `uilayout.cpp` | constructor moved out of line | same incomplete-type problem for `UIWidget` |
 | `framework/util/crypt.cpp:317-390, 439-545` | OpenSSL 1.1 accessor API (`RSA_set0_key`, `RSA_get0_*`, `EVP_CIPHER_CTX_new/free`) | `RSA`/`EVP_CIPHER_CTX` are opaque since OpenSSL 1.1; behaviour unchanged |
-| `framework/net/connection.h:36-38` | timeouts as `static const int` | `boost::posix_time::seconds()` only accepts integral types in Boost ≥ 1.6x |
+| `framework/net/connection.{h,cpp}`, `framework/net/server.cpp`, `framework/stdext/net.cpp` | `io_service` → `io_context`, `deadline_timer` → `steady_timer` (`expires_after`), `resolver::iterator` → `results_type`, `address_v4::from_string/to_ulong` → `make_address_v4/to_uint` | the deprecated Asio API was removed in Boost ≥ 1.87 (MSYS2); the replacements exist since Boost 1.66, so Ubuntu 24.04 (1.83) builds the same code. Verified by logging in with the rebuilt client |
+| `framework/util/point.h:80` | `getLength()` → `length()` | the method never existed; GCC 15 now rejects it inside the template body |
+| `CMakeLists.txt:2` | `cmake_minimum_required(VERSION 3.5)` | CMake 4 refuses projects declaring compatibility with < 3.5 |
 | `framework/platform/unixcrashhandler.cpp:33` | `#include <csignal>` | `siginfo_t`/`SIGSEGV` not pulled in transitively any more |
 | `framework/graphics/apngloader.cpp:168` | `unpack(z_stream&, …)` by reference | zlib ≥ 1.2.9 rejects a by-value `z_stream` copy; every PNG decoded to zeros (noise textures) |
 | `framework/core/resourcemanager.cpp:193-204`, `CMakeLists.txt:24-30` | AES asset decryption behind `ENCRYPTED_ASSETS` (default OFF) | see §4 |
@@ -164,6 +166,11 @@ minimap, NPC chat.
   sets `ALSOFT_DRIVERS=null` automatically when no `/dev/snd`, PulseAudio or PipeWire is found.
 * No X display: run under `xvfb-run -a -s "-screen 0 1280x800x24"`; the CI smoke test does this.
   Mesa's `llvmpipe` software renderer is enough (OpenGL 4.5 compatibility profile was reported).
+* Driving the client with `xdotool`: mouse clicks arrive, but keystrokes are dropped until the
+  window has X input focus. Use `W=$(xdotool search --name '^PSoul$' | head -1); xdotool
+  windowfocus --sync $W; xdotool key --window $W a b c Tab Return` (per-key `key`, not `type`).
+  Account/password fields: click the account field, type, `Tab`, type, `Return`; `Return` again
+  on the MOTD and on the character list.
 
 ### 5.2 Known client-side log noise (not fixed, harmless)
 
