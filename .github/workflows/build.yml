@@ -36,7 +36,7 @@ jobs:
     name: Validate Lua/XML and references
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           lfs: false
       - name: Install tools
@@ -68,14 +68,14 @@ jobs:
           --health-cmd "healthcheck.sh --connect --innodb_initialized"
           --health-interval 10s --health-timeout 5s --health-retries 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           lfs: false
 
       # Git LFS bandwidth is metered; cache the two big assets (map.otbm, data.spr) between runs.
       - name: Compute LFS asset id
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: .git/lfs
           key: lfs-${{ hashFiles('.lfs-assets-id') }}
@@ -151,21 +151,21 @@ jobs:
       - name: Collect logs
         if: always()
         run: mkdir -p /tmp/ci-logs && cp /tmp/*.log /tmp/ci-logs/ 2>/dev/null || true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: logs-linux
           path: /tmp/ci-logs
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: PokeNation-Server-Linux
           path: |
             dist/PokeNation-Server-Linux-Dev.tar.gz
             dist/PokeNation-Server-Linux-Dev.tar.gz.sha256
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: PokeNation-LegacyClient-Linux
           path: |
@@ -179,14 +179,14 @@ jobs:
     needs: validate
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           lfs: false
 
       - name: Compute LFS asset id
         shell: bash
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: .git/lfs
           key: lfs-${{ hashFiles('.lfs-assets-id') }}
@@ -228,14 +228,14 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           Get-ChildItem dist\windows\server\*.exe, dist\windows\client\*.exe, dist\*.zip, dist\*.sha256 | Format-Table Name, Length
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: PokeNation-Server-Windows
           path: |
             dist/PokeNation-Server-Windows-Dev.zip
             dist/PokeNation-Server-Windows-Dev.zip.sha256
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: PokeNation-LegacyClient-Windows
           path: |
@@ -388,7 +388,7 @@ jobs:
           $d = if (Test-Path "$env:RUNNER_TEMP\client-result.txt") { (Get-Content "$env:RUNNER_TEMP\client-result.txt") -join '; ' } else { 'not run' }
           "### Windows runtime`n- Server smoke test: see step log`n- Legacy client launch on the hosted runner: $c ($d)" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: logs-windows
