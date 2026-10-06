@@ -1,0 +1,19 @@
+MOVES["Thunder"] = {
+    description = "Thunder deals damage and has a 30% chance of paralyzing the target.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11810,
+    iconId = 13436,
+    dType = DAMAGE_TYPE_ELECTRIC,
+    functionName = "Thunder",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 120,
+    requiredLevel = 55,
+    damage = 110,
+    damageType = ELEMENT_ELECTRIC,
+    effect = EFFECT_ELECTRIC_SPARK_TWO,
+    projectile = PROJECTILE_THUNDER,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 27,
+    cooldownStorage = 15119
+}

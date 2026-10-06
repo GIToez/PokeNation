@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Reese" script="quest_mastery.lua" walkinterval="1400" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="919" head="55" body="35" legs="25" feet="55" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Get them will be as though as hold water in your hands buddy."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

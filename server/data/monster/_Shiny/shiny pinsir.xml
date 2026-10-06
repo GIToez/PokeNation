@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Pinsir" nameDescription="a Shiny Pinsir" nickname="Pinsir" race="blood" experience="12" speed="285" manacost="0" minLevel="45" maxLevel="55">
+	<health now="65" max="65" rate="1.1"/>
+	<look type="826" head="0" body="0" legs="0" feet="0" corpse="14232"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1176" skill="24" attack="125"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="100"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="PINSIR!"/>
+	</voices>
+	
+<loot><item id="12084" countmax="1" chance="8928"/><item id="14592" countmax="1" chance="3125"/><item id="14618" countmax="1" chance="3906"/><item id="14584" countmax="1" chance="78125"/><item id="12241" countmax="1" chance="100"/><item id="17935" countmax="1" chance="100"/><item id="17352" countmax="1" chance="10"/><item id="18913" countmax="1" chance="10"/><item id="23528" countmax="1" chance="20"/></loot></monster>

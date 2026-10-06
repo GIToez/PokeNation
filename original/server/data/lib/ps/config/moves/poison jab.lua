@@ -1,0 +1,19 @@
+MOVES["Poison Jab"] = {
+    description = "Poison Jab inflicts damage and has a 30% chance of poisoning the target.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12063,
+    iconId = 0,
+    dType = DAMAGE_TYPE_POISON,
+    functionName = "PoisonJab",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 80,
+    requiredLevel = 25,
+    damage = 80,
+    damageType = ELEMENT_POISON,
+    effect = EFFECT_POISON_JAB,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 12,
+    cooldownStorage = 15158
+}

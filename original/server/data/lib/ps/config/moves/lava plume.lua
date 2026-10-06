@@ -1,0 +1,19 @@
+MOVES["Lava Plume"] = {
+    description = "Lava Plume deals damage ans has 30% of chance to burn the target.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 12763,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FIRE,
+    functionName = "LavaPlume",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 95,
+    requiredLevel = 55,
+    damage = 80,
+    damageType = ELEMENT_FIRE,
+    effect = EFFECT_BURNING,
+    areaEffect = EFFECT_FIRE,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 18,
+    cooldownStorage = 15240
+}

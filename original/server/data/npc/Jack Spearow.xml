@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Jack Spearow" script="quest_halloween_jack_spearow.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1720"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello, welcome to my beautiful ship, The Shadow, it is beautiful is not it?"/>
+	</parameters>
+</npc>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Chief Skarmory" script="quest_chiefSkarmory.lua" walkinterval="5000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1053" head="0" body="0" legs="0" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hey |PLAYERNAME|, it is hot? This desert is getting worse."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Santa Claus" script="event_christmas.lua" walkinterval="1000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="890" head="0" body="0" legs="0" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello my dear, I'm in a hurry now and I can not talk to you. I must {save} the christmas! I can also exchange Christmas Tokens for {christmas gifts}."/>
+	</parameters>
+</npc>

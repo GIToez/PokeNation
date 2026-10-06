@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Taylor" script="npcbattle_taylor.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="638" head="55" body="44" legs="30" feet="30" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Stop meddling in team rocket's affair or else!"/>
+		<parameter key="idletime" value="20" />
+	</parameters>
+</npc>

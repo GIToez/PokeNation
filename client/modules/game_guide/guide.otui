@@ -1,0 +1,44 @@
+TutorialImage < Panel
+  id: image
+  anchors.bottom: parent.bottom
+  anchors.right: parent.right
+  visible: false
+  image-auto-resize: true
+  margin-right: 1
+  margin-bottom: 1
+  border-color: #476150
+  border-width: 1
+
+Panel
+  id: playtutorial
+  size: 450 205
+  anchors.bottom: parent.bottom
+  anchors.left: parent.left
+  visible: false
+
+  Panel
+    id: character
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    size: 137 142
+    image-source: /images/guide/character
+    $on:
+      image-source: /images/guide/character
+
+  Panel
+    id: balloon
+    size: 334 156
+    image-source: /images/guide/balloon
+    anchors.top: parent.top
+    anchors.right: parent.right
+
+  Panel
+    id: text
+    size: 284 156
+    anchors.top: parent.top
+    anchors.right: parent.right
+    text-wrap: true
+    color: #135476
+    text-align: topleft
+    margin-top: 15
+    margin-right: 25

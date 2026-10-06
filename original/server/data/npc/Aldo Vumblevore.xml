@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Aldo Vumblevore" script="quest_default.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1722" head="60" body="20" legs="80" feet="80" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|! Now that I've done my part saving the world, I dedicate myself to my hobby, to make clothes! You can even {buy} one from me if you need to."/>
+		
+		<parameter key="module_shop" value="1"/>
+		<parameter key="shop_buyable" value="
+		phantomaniac clothes kit, 28165, 5000;
+		halloween #5 clothes kit, 19091, 10000
+		"/>
+	</parameters>
+</npc>

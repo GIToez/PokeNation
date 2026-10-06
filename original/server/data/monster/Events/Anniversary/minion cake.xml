@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Minion Cake" nameDescription="a Minion Cake" race="blood" experience="0" speed="0" manacost="0" minLevel="1" maxLevel="1" sex="2">
+	<health now="10" max="10"/>
+	<look type="1372" corpse="24708"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="custom_CakeSlow" interval="5000" chance="80" />
+		<attack name="custom_CakePush" interval="8000" chance="80" />
+		<attack name="custom_CakeSendBack" interval="10000" chance="80" />
+	</attacks>
+	<defenses armor="99999999999999999" defense="99999999999999999"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+	</voices>
+	<loot>
+	</loot>
+	<script>
+        <event name="anniversary_onDeath"/>                	    
+	</script>
+</monster>

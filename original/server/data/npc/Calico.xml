@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Calico" script="quest_halloween_calico.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1719"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi, I saw you met my brother's crazy, but what brings you here? I'm very busy solving some problems while I think about what brought us back. At the moment I'm writing a letter to {Nagumo}, do you know her?"/>
+	</parameters>
+</npc>

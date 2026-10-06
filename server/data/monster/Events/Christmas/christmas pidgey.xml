@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Christmas Pidgey" nameDescription="a Pidgey" race="blood" experience="7" speed="256" manacost="0" minLevel="5" maxLevel="15">
+	<health now="40" max="40"/>
+	<look type="1427" head="0" body="0" legs="0" feet="0" corpse="25285"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1785" skill="24" attack="45"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="40"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="PIDGEY!"/>
+	</voices>
+	
+<loot><item id="12142" countmax="1" chance="22222"/><item id="14484" countmax="1" chance="40000"/><item id="2674" countmax="3" chance="5000"/><item id="17834" countmax="1" chance="100"/></loot></monster>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Indiana Graeme" script="default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="503" head="90" body="10" legs="40" feet="0" corpse="2212"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|. want to sell Stones? Just say {trade}."/>
+		<parameter key="shop_sellable" value="
+		Fire Stone, 18083;
+		Leaf Stone, 18086;
+		Moon Stone, 18084;
+		Sun Stone, 18085;
+		Thunderstone, 18087;
+		Water Stone, 18088;
+		Up-Grade, 18089;
+		Dragon Scale, 18090;
+		King's Rock, 18091;
+		Metal Coat, 18092;
+		Soothe Bell, 18093;
+		Kick Machine, 18095;
+		Punch Machine, 18094;
+		Spin Machine, 18096;
+		Deepseascale, 28892;
+		Deepseatooth, 28893;
+		Prism Scale, 28914
+		"/>
+	</parameters>
+</npc>

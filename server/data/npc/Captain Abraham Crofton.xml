@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<npc name="Captain Abraham Crofton" script="default.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="563" head="0" body="0" legs="0" feet="0"/>
+	<parameters>
+        <parameter key="module_travel" value="1"/>
+		<parameter key="message_greet" value="The city has a lot of things. Enjoy everything and travel a lot. Trovitopolis! Where you want to go? If you don't know where to flow, say {travel}."/>
+        <parameter key="travel_destinations" value="kumquat,3466,1764,6,250,false,-1,3;mandarin north,2968,2297,6,100,false,-1,4;moro,4259,2929,6,70,false,-1,5;ascorbia,4431,1783,6,160,false,-1,5;mikan,2679,2499,6,100,false,-1,6;"/>
+    </parameters>
+</npc>

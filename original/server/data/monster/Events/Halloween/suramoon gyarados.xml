@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Suramoon Gyarados" nameDescription="a Gyarados" race="blood" experience="0" speed="281" manacost="0" minLevel="100" maxLevel="100">
+	<health now="1000" max="1000"/>
+	<look type="829" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1234" skill="24" attack="125"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="79"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="GYARADOS!!"/>
+	</voices>
+	
+<loot></loot></monster>

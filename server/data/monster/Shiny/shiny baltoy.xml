@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Baltoy" nickname="Baltoy" nameDescription="a Shiny Baltoy" race="blood" experience="5" speed="255" manacost="0" minLevel="20" maxLevel="30" sex="2">
+	<health now="40" max="40"/>
+	<look type="1902" corpse="29524"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="40"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="55"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="BALTOY!"/>
+	</voices>
+	
+<loot><item id="12120" countmax="1" chance="7619"/><item id="14477" countmax="1" chance="2285"/><item id="14492" countmax="1" chance="2285"/><item id="14505" countmax="1" chance="4081"/><item id="12119" countmax="1" chance="9523"/><item id="14519" countmax="1" chance="1632"/><item id="17799" countmax="1" chance="1632"/><item id="13807" countmax="1" chance="1"/><item id="12233" countmax="1" chance="1"/><item id="29067" countmax="1" chance="100"/><item id="18923" countmax="1" chance="1"/></loot></monster>

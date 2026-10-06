@@ -1,0 +1,19 @@
+MOVES["Fury Swipes"] = {
+    description = "Fury Swipes inflicts damage, hitting 2-5 times per use.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11719,
+    iconId = 13345,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "FurySwipes",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 45,
+    requiredLevel = 25,
+    damage = 18,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_PURPLE_SCRATCH,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 9,
+    cooldownStorage = 15027
+}

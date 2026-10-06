@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Jumpluff" nameDescription="a Jumpluff" shiny="Shiny Jumpluff" race="blood" experience="15" speed="310" manacost="0" minLevel="85" maxLevel="95">
+	<health now="75" max="75"/>
+	<look type="990" head="0" body="0" legs="0" feet="0" corpse="17578"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="0909" skill="24" attack="55"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="70"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="JUMPLUUFF!"/>
+	</voices>
+	
+<loot><item id="12091" countmax="1" chance="37037"/><item id="12102" countmax="10" chance="95238"/><item id="13304" countmax="1" chance="24691"/><item id="13309" countmax="1" chance="24691"/><item id="14466" countmax="3" chance="66666"/><item id="14467" countmax="1" chance="26666"/><item id="14487" countmax="3" chance="66666"/><item id="14510" countmax="1" chance="66666"/><item id="17802" countmax="1" chance="33333"/><item id="12231" countmax="1" chance="50"/><item id="18081" countmax="1" chance="50"/><item id="14464" countmax="5" chance="5000"/><item id="17989" countmax="1" chance="100"/><item id="17356" countmax="1" chance="10"/><item id="18920" countmax="1" chance="10"/><item id="23520" countmax="1" chance="10"/><item id="23526" countmax="1" chance="10"/></loot></monster>

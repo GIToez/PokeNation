@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<npc name="Shelley" script="tutorial_quests.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="1201" head="77" body="114" legs="77" feet="114"/>
+	<parameters>
+        <parameter key="message_greet" value="I'm here to teach you the basics about the {POKEDEX} and skill movements (HM). [You can {skip} this tutorial whenever you want.]"/>
+    </parameters>
+</npc>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Mack" script="default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="503" head="200" body="0" legs="60" feet="160" corpse="2212"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|. What I can do for you?"/>
+		<parameter key="shop_buyable" value="
+		inox stove kit, 13263, 900;
+		black stove kit, 13264, 600;
+		white stove kit, 13265, 300
+		"/>
+	</parameters>
+</npc>

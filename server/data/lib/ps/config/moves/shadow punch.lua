@@ -1,0 +1,22 @@
+MOVES["Shadow Punch"] = {
+    description = "Shadow Punch inflicts damage and is unaffected by modifications to the Accuracy stat and Evasion stat.",
+    makeContact = true,
+    makePunch = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11757,
+    iconId = 13383,
+    dType = DAMAGE_TYPE_GHOST,
+    functionName = "ShadowPunch",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 60,
+    requiredLevel = 30,
+    damage = 60,
+    damageType = ELEMENT_GHOST,
+    effect = EFFECT_BIG_SHADOW_PUNCH,
+    projectile = PROJECTILE_SHADOW_PUNCH,
+    maxDistance = 1,
+    cooldownTime = 9,
+    cooldownStorage = 15065,
+    ignoreEvasion = true,
+    ignoreAccuracy = true
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Hector Angel" script="event_halloween_faction_reward.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1706" head="114" body="0" legs="115" feet="115" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|! I am here to give you your {reward} for choosing your faction in the Alliance of the 4 Seas."/>
+	</parameters>
+</npc>

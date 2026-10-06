@@ -1,0 +1,9 @@
+Module
+  name: game_tutorial
+  description: View game tutorials
+  author: PSoul
+  website: www.psoul.net
+  sandboxed: true
+  scripts: [ tutorial ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

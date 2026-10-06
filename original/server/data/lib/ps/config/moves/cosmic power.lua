@@ -1,0 +1,17 @@
+MOVES["Cosmic Power"] = {
+    description = "Cosmic Power boosts the Defense and Special Defense of the user by one stage each.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 27613,
+    iconId = 0,
+    dType = DAMAGE_TYPE_PSYCHIC,
+    type = SKILLS_TYPES.STATS,
+    requiredEnergy = 100,
+    damage = 0,
+    damageType = ELEMENT_PSYCHIC,
+    effect = EFFECT_BIG_PURPLE_PROTECTION,
+    projectile = nil,
+    maxDistance = 0,
+    cooldownTime = 60,
+    cooldownStorage = 15417,
+    makeContact = false,
+}

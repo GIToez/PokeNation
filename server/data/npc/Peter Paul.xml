@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Peter Paul" script="quest_halloween_peter_paul.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1723"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello adventurer, you look like someone who likes the {sea}, am I correct?"/>
+	</parameters>
+</npc>

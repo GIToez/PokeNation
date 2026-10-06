@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Pidgey" nameDescription="a pidgey" nickname="The Bird" race="blood" experience="10" speed="190" manacost="0" minLevel="25" maxLevel="25">
+	<health now="240" max="240"/>
+	<look type="681" head="0" body="0" legs="0" feet="0" corpse="13836"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1785" skill="24" attack="45"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="40"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="PIDGEY!"/>
+	</voices>
+	<loot>
+		<item id="12142" countmax="2" chance="15000"/> <!-- feather -->
+	</loot>
+</monster>

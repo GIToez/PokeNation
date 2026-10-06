@@ -1,0 +1,19 @@
+MOVES["Iron Tail"] = {
+    description = "Iron Tail inflicts damage and has a 10% chance of lowering the target's Defense stat by one stage.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11729,
+    iconId = 13355,
+    dType = DAMAGE_TYPE_STEEL,
+    functionName = "IronTail",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 100,
+    requiredLevel = 45,
+    damage = 100,
+    damageType = ELEMENT_STEEL,
+    effect = EFFECT_BLOW_THREE,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 15,
+    cooldownStorage = 15037
+}

@@ -1,0 +1,19 @@
+MOVES["Hydro Pump"] = {
+    description = "Hydro Pump inflicts damage and has no secondary effect.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11789,
+    iconId = 13415,
+    dType = DAMAGE_TYPE_WATER,
+    functionName = "HydroPump",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 120,
+    requiredLevel = 50,
+    damage = 110,
+    damageType = ELEMENT_WATER,
+    effect = EFFECT_WATER_EMERGE,
+    areaEffect = EFFECT_WATER_EXPLODE,
+    areaName = "area3x3",
+    area = area3x3,
+    cooldownTime = 27,
+    cooldownStorage = 15098
+}

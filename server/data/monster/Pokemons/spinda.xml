@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Spinda" nameDescription="a Spinda" race="blood" experience="10" speed="260" manacost="0" minLevel="40" maxLevel="50">
+	<health now="60" max="60"/>
+	<look type="1506" corpse="28810"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1666" skill="24" attack="60"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="60"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SPINDA!"/>
+	</voices>
+	
+<loot><item id="12115" countmax="1" chance="77777"/><item id="14466" countmax="3" chance="70000"/><item id="14469" countmax="6" chance="87500"/><item id="17786" countmax="1" chance="46666"/><item id="17793" countmax="3" chance="70000"/><item id="12232" countmax="1" chance="25"/><item id="2687" countmax="5" chance="5000"/><item id="2674" countmax="5" chance="5000"/><item id="29051" countmax="1" chance="100"/><item id="17346" countmax="1" chance="5"/><item id="23527" countmax="1" chance="10"/></loot></monster>

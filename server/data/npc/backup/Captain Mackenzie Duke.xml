@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<npc name="Captain Mackenzie Duke" script="default.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="563" head="0" body="0" legs="0" feet="0"/>
+	<parameters>
+        <parameter key="module_travel" value="1"/>
+		<parameter key="message_greet" value="Duke is my name |PLAYERNAME|. Remember this name! I'll take you safely across the seas. What is your destination? If you don't know where to flow, say {travel}."/>
+        <parameter key="travel_destinations" value="trovitopolis,1075,3230,6,100,true,7047,6;pummelo,729,1741,6,70,true,7047,2;kumquat,1116,1764,6,100,true,7047,3;moro,1909,2929,6,150,true,7047,5;sunburst,689,2642,6,50,false,7047,4;"/>
+    </parameters>
+</npc>

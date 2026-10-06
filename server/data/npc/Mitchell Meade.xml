@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Mitchell Meade" script="held_remove.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="1201" head="35" body="22" legs="67" feet="35" corpse="0"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|. I can {remove} your Pokemon helds!"/>
+		<parameter key="shop_sellable" value="
+		held black belt, 23513;
+		held black glasses, 23514;
+		held charcoal, 23515;
+		held dragon fang, 23516;
+		held hard stone, 23517;
+		held magnet, 23518;
+		held metal coat, 23519;
+		held miracle seed, 23520;
+		held mystic water, 23521;
+		held never melt ice, 23522;
+		held pink bow, 23523;
+		held poison barb, 23524;
+		held sharp beak, 23526;
+		held silk scarf, 23527;
+		held silver powder, 23528;
+		held soft sand, 23529;
+		held spell tag, 23530;
+		held twisted spoon, 23531
+		"/>
+	</parameters>
+</npc>

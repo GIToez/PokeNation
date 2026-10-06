@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Gerry" script="quest_mastery.lua" walkinterval="1200" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="917" head="55" body="35" legs="25" feet="55" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="An insect like you know how to walk on fire without getting burnt?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

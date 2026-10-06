@@ -1,0 +1,140 @@
+MarketButton < ShopButton
+  text-offset: 50 -20
+  size: 76 76
+MarketButtonSale < ShopButtonSale
+  text-offset: 50 -20
+MarketPrize < ShopPrize
+  margin-left: 50
+
+Panel
+  VerticalScrollBar
+    id: scrollBar
+    step: 50
+    pixels-scroll: true
+    anchors.top: parent.top
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+
+  ScrollablePanel
+    vertical-scrollbar: scrollBar
+    anchors.fill: parent
+    margin-right: 15
+
+    MarketButton
+      !tooltip: tr('Coelho da Pascoa M e F! (15 Diamantes)')
+      @onClick: modules.game_shop.o1()
+      icon: /images/game/shop/noutfits/coelho
+      anchors.top: parent.top
+      margin-top: 0
+      MarketPrize
+        text: 15
+
+    MarketButton
+      !tooltip: tr('Anjos Divinos F e M! (30 Diamantes)')
+      @onClick: modules.game_shop.o2()
+      icon: /images/game/shop/noutfits/anjo
+      MarketPrize
+        text: 30
+
+    MarketButton
+      !tooltip: tr('Torcedores F e M! (10 Diamantes)')
+      @onClick: modules.game_shop.o3()
+      icon: /images/game/shop/noutfits/torcedor
+      MarketPrize
+        text: 10
+
+    MarketButton
+      !tooltip: tr('Presentes de Natal F e M! (10 Diamantes)')
+      @onClick: modules.game_shop.o4()
+      icon: /images/game/shop/noutfits/presente_natal
+      icon-offset: 6 0
+      MarketPrize
+        text: 10
+
+    MarketButton
+      !tooltip: tr('Pikachu parceiro M e F! (30 Diamantes)')
+      @onClick: modules.game_shop.o5()
+      icon: /images/game/shop/noutfits/parceiro
+      icon-offset: 6 0
+      MarketPrize
+        text: 30
+
+    MarketButton
+      !tooltip: tr('Arcanine M e F! (20 Diamantes)')
+      @onClick: modules.game_shop.o6()
+      icon: /images/game/shop/noutfits/arcanine
+      icon-offset: 6 0
+      MarketPrize
+        text: 20
+
+    MarketButton
+      !tooltip: tr('Charizard M e F! (25 Diamantes)')
+      @onClick: modules.game_shop.o7()
+      icon: /images/game/shop/noutfits/zard
+      icon-offset: 6 0
+      MarketPrize
+        text: 25
+
+    MarketButton
+      !tooltip: tr('Homem Aranha Unissex!(25 Diamantes)')
+      @onClick: modules.game_shop.o8()
+      icon: /images/game/shop/noutfits/aranha
+      icon-offset: 6 0
+      MarketPrize
+        text: 25
+
+    MarketButton
+      !tooltip: tr('Dead Pool Unissex!(15 Diamantes)')
+      @onClick: modules.game_shop.o9()
+      icon: /images/game/shop/noutfits/dead
+      icon-offset: 6 0
+      MarketPrize
+        text: 15
+
+    MarketButton
+      !tooltip: tr('Slowpoke Unissex!(25 Diamantes)')
+      @onClick: modules.game_shop.o10()
+      icon: /images/game/shop/noutfits/slowpoke
+      icon-offset: 6 0
+      MarketPrize
+        text: 25
+
+    MarketButton
+      !tooltip: tr('Pikachu Unissex!(25 Diamantes)')
+      @onClick: modules.game_shop.o11()
+      icon: /images/game/shop/noutfits/pikachu
+      icon-offset: 6 0
+      MarketPrize
+        text: 25
+
+    MarketButton
+      !tooltip: tr('Grandpa Unissex! (20 Diamantes)')
+      @onClick: modules.game_shop.o12()
+      icon: /images/game/shop/noutfits/grandpa
+      icon-offset: 6 0
+      MarketPrize
+        text: 20
+
+    MarketButton
+      !tooltip: tr('Iruka Unissex! (40 Diamantes)')
+      @onClick: modules.game_shop.o13()
+      icon: /images/game/shop/noutfits/iruka
+      icon-offset: 6 0
+      MarketPrize
+        text: 40
+
+    MarketButton
+      !tooltip: tr('Kakashi Unissex! (30 Diamantes)')
+      @onClick: modules.game_shop.o14()
+      icon: /images/game/shop/noutfits/kakashi
+      icon-offset: 6 0
+      MarketPrize
+        text: 30
+
+    MarketButton
+      !tooltip: tr('Yamato Unissex! (30 Diamantes)')
+      @onClick: modules.game_shop.o15()
+      icon: /images/game/shop/noutfits/yamato
+      icon-offset: 6 0
+      MarketPrize
+        text: 30

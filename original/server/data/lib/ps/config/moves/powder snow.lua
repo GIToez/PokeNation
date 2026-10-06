@@ -1,0 +1,19 @@
+MOVES["Powder Snow"] = {
+    description = "Powder Snow inflicts damage and has a 10% chance of freezing the target.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11799,
+    iconId = 13425,
+    dType = DAMAGE_TYPE_ICE,
+    functionName = "PowderSnow",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 50,
+    requiredLevel = 5,
+    damage = 40,
+    damageType = ELEMENT_ICE,
+    effect = EFFECT_ICE,
+    areaEffect = EFFECT_ICY_GUST,
+    areaName = "area3x3",
+    area = area3x3,
+    cooldownTime = 9,
+    cooldownStorage = 15108
+}

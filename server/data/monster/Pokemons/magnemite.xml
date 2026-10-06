@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Magnemite" nameDescription="a Magnemite" shiny="Shiny Magnemite" race="blood" experience="7" speed="245" manacost="0" minLevel="15" maxLevel="25" sex="2">
+	<health now="25" max="25"/>
+	<look type="432" head="0" body="0" legs="0" feet="0" corpse="11469"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<!-- <attack name="melee" interval="2222" skill="24" attack="35"/> -->
+		<attack name="physical" interval="2222" chance="34" range="7" min="-10" max="-25">
+			<attribute key="shootEffect" value="throwingstar"/>
+		</attack>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="70"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="MAGNEE!!"/>
+		<voice sentence="MAGNEMITE!"/>
+		<voice sentence="BZBZBZBZZ!"/>
+	</voices>
+	
+<loot><item id="12118" countmax="1" chance="11111"/><item id="12103" countmax="3" chance="100000"/><item id="13308" countmax="1" chance="7692"/><item id="14498" countmax="1" chance="6666"/><item id="17892" countmax="1" chance="100"/><item id="12237" countmax="1" chance="1"/><item id="17814" countmax="1" chance="1"/><item id="17378" countmax="1" chance="1"/><item id="17359" countmax="1" chance="10"/></loot></monster>

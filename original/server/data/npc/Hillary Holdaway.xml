@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Hillary Holdaway" script="npcbattle_fi_hillaryholdaway.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="613" head="90" body="145" legs="164" feet="120" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

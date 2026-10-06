@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<npc name="Captain Stanley Brent" script="default.lua" floorchange="0" walkinterval="0">
+    <health now="150" max="150"/>
+    <look type="563" head="0" body="0" legs="0" feet="0"/>
+    <parameters>
+        <parameter key="module_travel" value="1"/>
+        <parameter key="message_greet" value="Hello matey, what you looking at my quarters? If you don't know where to flow, say {travel}."/>
+        <parameter key="travel_destinations" value="slateport,752,1738,6,250"/>
+    </parameters>
+</npc>

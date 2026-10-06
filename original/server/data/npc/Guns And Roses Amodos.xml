@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Guns And Roses Amodos" script="quest_halloween_guns_and_roses_guns_exit.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1714"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello, I can take you to the {shore} or to {Roses}."/>
+	</parameters>
+</npc>

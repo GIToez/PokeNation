@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Rocket Heidi Eartha" script="npcbattle_rocketHeidiEartha.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="534" head="67" body="33" legs="12" feet="77"/>
+	<parameters>
+		<parameter key="message_greet" value="Sorry, but I will hurt you much."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

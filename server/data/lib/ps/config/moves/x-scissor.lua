@@ -1,0 +1,19 @@
+MOVES["X-Scissor"] = {
+    description = "X-Scissor deals damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12136,
+    iconId = 0,
+    dType = DAMAGE_TYPE_BUG,
+    functionName = "XScissor",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 90,
+    requiredLevel = 45,
+    damage = 80,
+    damageType = ELEMENT_BUG,
+    effect = EFFECT_CUT_TWO,
+    areaName = "area3x3",
+    area = area3x3,
+    cooldownTime = 18,
+    cooldownStorage = 15230
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Seel" nameDescription="a Seel" shiny="Shiny Seel" race="blood" experience="10" speed="245" manacost="0" minLevel="20" maxLevel="30">
+	<health now="65" max="65"/>
+	<look type="437" head="0" body="0" legs="0" feet="0" corpse="11474"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2222" skill="24" attack="45"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="55"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SEEL!"/>
+	</voices>
+	
+<loot><item id="12143" countmax="1" chance="8888"/><item id="14485" countmax="1" chance="13333"/><item id="14496" countmax="1" chance="10666"/><item id="12257" countmax="1" chance="100"/><item id="12230" countmax="1" chance="2"/><item id="18913" countmax="1" chance="1"/><item id="18917" countmax="1" chance="1"/></loot></monster>

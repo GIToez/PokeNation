@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Crobat" nameDescription="a Crobat" shiny="Shiny Crobat" race="blood" experience="15" speed="330" manacost="0" minLevel="85" maxLevel="95">
+	<health now="85" max="85"/>
+	<look type="970" head="0" body="0" legs="0" feet="0" corpse="17558"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="0769" skill="24" attack="90"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="80"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="CROBBATT!"/>
+	</voices>
+	
+<loot><item id="12104" countmax="18" chance="100000"/><item id="12124" countmax="1" chance="80000"/><item id="12117" countmax="3" chance="66666"/><item id="14477" countmax="1" chance="24000"/><item id="14511" countmax="3" chance="60000"/><item id="18081" countmax="1" chance="50"/><item id="12235" countmax="1" chance="50"/><item id="17969" countmax="1" chance="100"/><item id="18093" countmax="1" chance="20"/><item id="17372" countmax="1" chance="10"/><item id="23524" countmax="1" chance="10"/><item id="23526" countmax="1" chance="10"/></loot></monster>

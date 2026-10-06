@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="King Panlong" nameDescription="a King Panlong" race="blood" experience="15" speed="281" manacost="0" minLevel="100" maxLevel="100">
+	<health now="5760" max="5760"/>
+	<look type="1159" head="0" body="0" legs="0" feet="0" corpse="18127"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag boss="1"/>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1234" skill="24" attack="125"/>
+		<attack name="Moves" interval="500" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="79"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="GYARADOS!!"/>
+	</voices>
+	<loot>
+		<item id="12100" countmax="10" chance="95238"/> <!-- water gem -->
+		<item id="12086" countmax="1" chance="6666"/> <!-- gyarados tail -->
+		<item id="12112" countmax="1" chance="41666"/> <!-- water pendant -->
+		<item id="14477" countmax="1" chance="13333"/> <!-- cutting fang -->
+		<item id="14515" countmax="1" chance="26666"/> <!-- pot of water -->
+		<item id="14479" countmax="1" chance="19047"/> <!-- elemental spike -->
+		<item id="14630" countmax="1" chance="16666"/> <!-- long silk -->
+		<item id="12230" countmax="3" chance="100000"/> <!-- splash plate -->
+		<item id="18081" countmax="3" chance="100000"/> <!-- sky plate -->
+		<item id="17938" countmax="1" chance="10000"/> <!-- gyarados doll -->
+		<item id="18124" countmax="1" chance="100000"/> <!-- King Panlong artifacts -->
+	</loot>
+	<script>
+        <event name="bossReward"/>	    
+	</script>
+</monster>

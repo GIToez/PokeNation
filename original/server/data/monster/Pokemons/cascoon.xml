@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Cascoon" nameDescription="a Cascoon" race="blood" experience="10" speed="215" manacost="0" minLevel="20" maxLevel="30">
+	<health now="50" max="50"/>
+	<look type="1447" corpse="28751"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="6666" skill="24" attack="35"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="55"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="CASCOON!"/>
+	</voices>
+	
+<loot><item id="12113" countmax="1" chance="28571"/><item id="13302" countmax="1" chance="20000"/><item id="17786" countmax="1" chance="26666"/><item id="28872" countmax="1" chance="13333"/><item id="28878" countmax="1" chance="10000"/><item id="28992" countmax="1" chance="100"/><item id="12241" countmax="1" chance="25"/></loot></monster>

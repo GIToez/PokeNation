@@ -1,0 +1,19 @@
+MOVES["Seismic Toss"] = {
+    description = "Seismic Toss deals damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11756,
+    iconId = 13382,
+    dType = DAMAGE_TYPE_FIGHTING,
+    functionName = "SeismicToss",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 80,
+    requiredLevel = 25,
+    damage = 80,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_BLOW,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 6,
+    cooldownTime = 12,
+    cooldownStorage = 15064
+}

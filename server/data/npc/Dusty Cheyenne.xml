@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Dusty Cheyenne" script="quest_deliverNewspaper.lua" walkinterval="500" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1189" head="50" body="160" legs="30" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Did you come to explore too?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Vileplume" nameDescription="a Shiny Vileplume" nickname="Vileplume" race="blood" experience="15" speed="250" manacost="0" minLevel="50" maxLevel="60">
+	<health now="75" max="75" rate="1.1"/>
+	<look type="710" head="0" body="0" legs="0" feet="0" corpse="13865"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="24" attack="80"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="85"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="VILEE!"/>
+		<voice sentence="VILEPLUME!"/>
+	</voices>
+	
+<loot><item id="14525" countmax="1" chance="16666"/><item id="14531" countmax="4" chance="100000"/><item id="13304" countmax="1" chance="44444"/><item id="13309" countmax="1" chance="44444"/><item id="14582" countmax="1" chance="12000"/><item id="2680" countmax="3" chance="5000"/><item id="14627" countmax="1" chance="16666"/><item id="12231" countmax="1" chance="50"/><item id="12235" countmax="1" chance="50"/><item id="17859" countmax="1" chance="100"/><item id="18086" countmax="1" chance="20"/><item id="17357" countmax="1" chance="10"/><item id="18920" countmax="1" chance="10"/><item id="23520" countmax="1" chance="10"/><item id="23524" countmax="1" chance="10"/></loot></monster>

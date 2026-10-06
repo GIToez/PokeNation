@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Sneasel" nameDescription="a Shiny Sneasel" race="blood" experience="10" speed="315" manacost="0" minLevel="30" maxLevel="40">
+	<health now="55" max="55"/>
+	<look type="1651" head="0" body="0" legs="0" feet="0" corpse="27469"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="0869" skill="24" attack="95"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="55"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SNEAASEELLL!"/>
+	</voices>
+	
+<loot><item id="14554" countmax="1" chance="2083"/><item id="14526" countmax="1" chance="7440"/><item id="14592" countmax="1" chance="1041"/><item id="14598" countmax="1" chance="1041"/><item id="14600" countmax="1" chance="2604"/><item id="14601" countmax="1" chance="2083"/><item id="14604" countmax="1" chance="1041"/><item id="14611" countmax="1" chance="2083"/><item id="14512" countmax="1" chance="6944"/><item id="14518" countmax="1" chance="20833"/><item id="17803" countmax="1" chance="3472"/><item id="17804" countmax="1" chance="2083"/><item id="12236" countmax="1" chance="25"/><item id="12242" countmax="1" chance="25"/><item id="18014" countmax="1" chance="100"/><item id="18917" countmax="1" chance="5"/></loot></monster>

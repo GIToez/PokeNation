@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Togepi" nameDescription="a Shiny Togepi" race="blood" experience="7" speed="220" manacost="0" minLevel="20" maxLevel="30">
+	<health now="35" max="35"/>
+	<look type="1629" head="0" body="0" legs="0" feet="0" corpse="27447"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="5000" skill="24" attack="20"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="65"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="TOGEEPPII!"/>
+		<voice sentence="PPIII!"/>
+	</voices>
+	
+<loot><item id="12115" countmax="1" chance="29629"/><item id="17792" countmax="1" chance="3333"/><item id="17805" countmax="1" chance="5333"/><item id="2687" countmax="5" chance="5000"/><item id="2674" countmax="5" chance="5000"/><item id="17975" countmax="1" chance="100"/><item id="17368" countmax="1" chance="1"/></loot></monster>

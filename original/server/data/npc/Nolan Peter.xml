@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Nolan Peter" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="632" head="34" body="78" legs="160" feet="1" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="The day is not good? The sun is a wonderful thing!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

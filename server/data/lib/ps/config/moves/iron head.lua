@@ -1,0 +1,19 @@
+MOVES["Iron Head"] = {
+    description = "Iron Head inflicts damage and has a 30% chance of causing the target to flinch.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 16314,
+    iconId = 0,
+    dType = DAMAGE_TYPE_STEEL,
+    functionName = "IronHead",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 80,
+    requiredLevel = 15,
+    damage = 80,
+    damageType = ELEMENT_STEEL,
+    effect = EFFECT_SCRATCH_FOUR,
+    projectile = PROJECTILE_GRAVEL_TWO,
+    maxDistance = 6,
+    cooldownTime = 12,
+    cooldownStorage = 15275
+}

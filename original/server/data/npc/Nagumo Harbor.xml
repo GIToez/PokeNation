@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Nagumo Harbor" script="quest_halloween_nagumo.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1717"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello, Are you the young adventurer who is helping us?"/>
+	</parameters>
+</npc>

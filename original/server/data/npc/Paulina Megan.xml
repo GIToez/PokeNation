@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Paulina Megan" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1184" head="100" body="26" legs="60" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I would like an ice cream..."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

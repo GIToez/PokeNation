@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Clefable" nameDescription="a Shiny Clefable" nickname="Clefable" race="blood" experience="15" speed="260" manacost="0" minLevel="35" maxLevel="45">
+	<health now="95" max="95" rate="1.1"/>
+	<look type="701" head="0" body="0" legs="0" feet="0" corpse="13856"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1666" skill="24" attack="70"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="73"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="CLEFABLE!!"/>
+	</voices>
+	
+<loot><item id="14588" countmax="1" chance="13257"/><item id="14517" countmax="1" chance="19444"/><item id="14589" countmax="1" chance="3645"/><item id="2682" countmax="1" chance="5000"/><item id="14516" countmax="1" chance="6250"/><item id="23946" countmax="1" chance="100"/><item id="17851" countmax="1" chance="100"/><item id="18084" countmax="1" chance="20"/><item id="17368" countmax="1" chance="10"/><item id="23523" countmax="1" chance="20"/></loot></monster>

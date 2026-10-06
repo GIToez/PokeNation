@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lilia Captain" script="npcbattle_fi_liliacaptain.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="623" head="75" body="44" legs="150" feet="150" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

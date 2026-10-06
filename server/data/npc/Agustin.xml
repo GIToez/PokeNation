@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Agustin" script="quest_agustin.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="153" head="10" body="50" legs="50" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello!"/>
+	</parameters>
+</npc>

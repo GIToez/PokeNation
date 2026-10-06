@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Sabrina Dana" script="default.lua" walkinterval="0" floorchange="0" walkable="0">
+    <health now="150" max="150"/>
+    <look type="1302" head="21" body="33" legs="65" feet="44" corpse="2212"/>
+    <parameters>
+        <parameter key="module_shop" value="1"/>
+        <parameter key="message_greet" value="Hello |PLAYERNAME|, how about an ice cream?"/>
+        <parameter key="shop_buyable" value="
+		ice cream cone, 7372, 10;
+		ice cream cone, 7373, 10;
+		ice cream cone, 7374, 10;
+		ice cream cone, 7375, 10;
+		ice cream cone, 7376, 10;
+		ice cream cone, 7377, 10"/>
+    </parameters>
+</npc>

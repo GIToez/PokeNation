@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Luken" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1199" head="25" body="52" legs="58" feet="85"/>
+	<parameters>
+		<parameter key="message_greet" value="Yes?."/>
+	</parameters>
+</npc>

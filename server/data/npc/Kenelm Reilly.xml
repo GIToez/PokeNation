@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kenelm Reilly" script="quest_default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="1181" head="19" legs="114" feet="115"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|! All right? Uepa! I am a world-renowned scientist for my {research}! Yes! Yes!"/>
+	</parameters>
+</npc>

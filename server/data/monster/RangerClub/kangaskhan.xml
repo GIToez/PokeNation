@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="RC Kangaskhan" nameDescription="a Shiny Kangaskhan" nickname="Kangaskhan" race="blood" experience="15" speed="290" manacost="0" sex="0" minLevel="95" maxLevel="95">
+	<health now="1890" max="1890" rate="1.1"/>
+	<look type="814" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag boss="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1111" skill="24" attack="95"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="80"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="KANGASKHAN!"/>
+	</voices>
+	<loot>
+	</loot>
+	<script>
+        <event name="rangerClubBoss"/>	    
+	</script>
+</monster>

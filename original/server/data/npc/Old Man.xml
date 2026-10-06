@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Old Man" script="daycareMale.lua" walkinterval="4000" floorchange="0">
+	<health now="1500" max="1500"/>
+	<look type="153" head="0" body="37" legs="69" feet="50"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello! You already know our {daycare}? We handle all types of {Pokemon}. If you have a Pokemon here you can see his {status}, otherwise you can {leave} a Pokemon here."/>
+	</parameters>
+</npc>

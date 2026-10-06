@@ -1,0 +1,43 @@
+diff --git a/luascript.cpp b/luascript.cpp
+index beec582..b78e392 100644
+--- a/luascript.cpp
++++ b/luascript.cpp
+@@ -723,7 +723,8 @@ bool LuaScriptInterface::loadDirectory(const std::string& dir, Npc* npc/* = NULL
+ 	StringVec files;
+ 	for(boost::filesystem::directory_iterator it(dir), end; it != end; ++it)
+ 	{
+-		std::string s = it->leaf();
++	    std::string s = it->path().filename().string();
++		//std::string s = it->leaf();
+ 		if(!boost::filesystem::is_directory(it->status()) && (s.size() > 4 ? s.substr(s.size() - 4) : "") == ".lua")
+ 			files.push_back(s);
+ 	}
+diff --git a/player.cpp b/player.cpp
+index 3eeb227..4e9bffd 100644
+--- a/player.cpp
++++ b/player.cpp
+@@ -1629,8 +1629,8 @@ bool Player::canShopItem(uint16_t itemId, uint8_t subType, ShopEvent_t event)
+ void Player::onWalk(Direction& dir)
+ {
+ 	Creature::onWalk(dir);
+-	setNextActionTask(NULL);
+-	setNextAction(OTSYS_TIME() + getStepDuration(dir));
++	//setNextActionTask(NULL);
++	//setNextAction(OTSYS_TIME() + getStepDuration(dir));
+ }
+ 
+ void Player::onCreatureMove(const Creature* creature, const Tile* newTile, const Position& newPos,
+diff --git a/scriptmanager.cpp b/scriptmanager.cpp
+index f135eae..10a85bc 100644
+--- a/scriptmanager.cpp
++++ b/scriptmanager.cpp
+@@ -119,7 +119,8 @@ bool ScriptingManager::loadMods()
+ 	bool enabled = false;
+ 	for(boost::filesystem::directory_iterator it(modsPath), end; it != end; ++it)
+ 	{
+-		std::string s = it->leaf();
++		//std::string s = it->leaf();
++		std::string s = it->path().filename().string();
+ 		if(boost::filesystem::is_directory(it->status()) && (s.size() > 4 ? s.substr(s.size() - 4) : "") != ".xml")
+ 			continue;
+ 

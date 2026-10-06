@@ -1,0 +1,20 @@
+MOVES["Flame Wheel"] = {
+    description = "Flame Wheel will thaw out the user if it is frozen, and then inflict damage on the target. Flame Wheel also has a 10% chance of burning the target.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11786,
+    iconId = 13412,
+    dType = DAMAGE_TYPE_FIRE,
+    functionName = "FlameWheel",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 70,
+    requiredLevel = 30,
+    damage = 60,
+    damageType = ELEMENT_FIRE,
+    effect = EFFECT_NOTHING,
+    areaEffect = EFFECT_FIRE,
+    areaName = "area3x3",
+    area = area3x3,
+    cooldownTime = 14,
+    cooldownStorage = 15095
+}

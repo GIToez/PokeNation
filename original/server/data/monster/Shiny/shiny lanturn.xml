@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Lanturn" nameDescription="a Shiny Lanturn" race="blood" experience="12" speed="267" manacost="0" minLevel="40" maxLevel="50">
+	<health now="125" max="125"/>
+	<look type="1625" head="0" body="0" legs="0" feet="0" corpse="27443"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1492" skill="24" attack="58"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="58"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="LANTTUURN!"/>
+	</voices>
+	
+<loot><item id="14529" countmax="4" chance="72916"/><item id="14545" countmax="1" chance="12152"/><item id="14515" countmax="1" chance="35000"/><item id="14539" countmax="1" chance="13671"/><item id="12230" countmax="1" chance="50"/><item id="12237" countmax="1" chance="50"/><item id="17971" countmax="1" chance="100"/><item id="17347" countmax="1" chance="10"/><item id="17348" countmax="1" chance="10"/><item id="17378" countmax="1" chance="5"/><item id="23518" countmax="1" chance="10"/><item id="23521" countmax="1" chance="10"/></loot></monster>

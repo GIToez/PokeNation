@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Kakuna" nameDescription="a Kakuna" shiny="Shiny Kakuna" race="blood" experience="10" speed="235" manacost="0" minLevel="10" maxLevel="20">
+	<health now="45" max="45"/>
+	<look type="365" head="0" body="0" legs="0" feet="0" corpse="11402"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2857" skill="24" attack="25"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="KAKUNA!"/>
+	</voices>
+	
+<loot><item id="12113" countmax="1" chance="28571"/><item id="14503" countmax="1" chance="10000"/><item id="2674" countmax="3" chance="5000"/><item id="12241" countmax="1" chance="50"/><item id="17832" countmax="1" chance="100"/></loot></monster>

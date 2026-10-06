@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Noemi Retherford" script="npcbattle_noemiretherford.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="633" head="80" body="50" legs="50" feet="15" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Even if you pass me by, you never will win Brock!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

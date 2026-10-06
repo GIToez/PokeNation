@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lenore Cada" script="npcbattle_fi_lenorecada.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="631" head="27" body="48" legs="57" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

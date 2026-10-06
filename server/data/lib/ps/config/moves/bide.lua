@@ -1,0 +1,20 @@
+MOVES["Bide"] = {
+    description = "The user of Bide 'stores energy' for 2 turns. At the end of the second turn the Pokemon 'unleashes energy', dealing twice the HP damage it received. ",
+    makeContact = true,
+    wildBlock = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 15737,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Bide",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 200,
+    requiredLevel = 15,
+    damage = 0,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BLOW,
+    projectile = PROJECTILE_ENERGY,
+    maxDistance = 6,
+    cooldownTime = 30,
+    cooldownStorage = 15252
+}

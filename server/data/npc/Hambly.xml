@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Hambly" script="npcbattle_hambly.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="635" head="15" body="60" legs="60" feet="70" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I know why Blaine became a trainer!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

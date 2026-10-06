@@ -1,0 +1,22 @@
+HeadlessWindow
+  focusable: false
+  image-color: #ffffffee
+  size: 50 66
+
+  MultilineTextEdit
+    id: aaaText
+    height: 64
+    anchors.fill: parent
+    anchors.right: aaaTextScroll.left
+    vertical-scrollbar: aaaTextScroll
+    text-wrap: true
+    editable: false
+    cursor-visible: false
+
+  VerticalScrollBar
+    id: aaaTextScroll
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    step: 32
+    pixels-scroll: true

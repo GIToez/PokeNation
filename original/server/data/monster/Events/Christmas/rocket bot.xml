@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Rocket Bot" nameDescription="a Rocket Bot" race="blood" experience="17" speed="290" manacost="0" minLevel="50" maxLevel="50" sex="2">
+	<health now="90" max="90"/>
+	<look type="1225" head="0" body="0" legs="0" feet="0" corpse="18751"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="custom_RocketMissile" interval="2000" chance="80" />
+		<attack name="custom_RocketSnowball" interval="2000" chance="80" />
+	</attacks>
+	<defenses armor="10" defense="90"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+	</voices>
+	<loot>
+	</loot>
+	<script>
+        <event name="christmas_onDeath"/>                	    
+	</script>
+</monster>

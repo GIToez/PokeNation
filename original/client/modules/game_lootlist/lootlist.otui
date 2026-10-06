@@ -1,0 +1,33 @@
+CountLabel < UILabel
+  font: verdana-11px-antialised
+  color: #ffffff
+  size: 28 28
+  text-auto-resize: true
+
+LootItem < Item
+  size: 48 48
+  virtual: true
+  border-width: 0
+  padding: 0
+  margin: 1 0 0 1
+  image-source: ~
+  $hover:
+    border-color: white
+    border-width: 1
+
+  ProgressRect
+    id: progressRect
+    margin: -1
+    percent: 100
+    background-color: #000000bb
+
+HeadlessWindow
+  id: lootList
+  focusable: false
+  draggable: false
+  image-color: #ffffffee
+  size: 42 64
+  margin-bottom: 42
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  anchors.bottom: gameMapPanel.bottom
+  image-source: ~

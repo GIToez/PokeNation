@@ -1,0 +1,19 @@
+MOVES["Pound"] = {
+    description = "Pound inflicts damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11747,
+    iconId = 13373,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Pound",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 40,
+    requiredLevel = 17,
+    damage = 40,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_MULTIPLE_BLOW_TWO,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 6,
+    cooldownStorage = 15055
+}

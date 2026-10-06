@@ -1,0 +1,20 @@
+MOVES["Take Down"] = {
+    description = "Take Down deals damage and has no secondary effect.",
+    makeContact = true,
+    makeRecoil = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11771,
+    iconId = 13397,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "TakeDown",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 90,
+    requiredLevel = 35,
+    damage = 90,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BLOW,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 14,
+    cooldownStorage = 15079
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Possessed Joy" script="quest_possessed_joy.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1399"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|, we were waiting you. You brought the {invitation}?"/>
+	</parameters>
+</npc>

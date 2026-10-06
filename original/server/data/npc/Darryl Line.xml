@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Darryl Line" script="npcbattle_fi_darrylline.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="634" head="95" body="60" legs="64" feet="34" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

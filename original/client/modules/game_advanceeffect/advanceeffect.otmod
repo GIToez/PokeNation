@@ -1,0 +1,9 @@
+Module
+  name: game_advanceeffect
+  description: Advance Effect
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ advanceeffect ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

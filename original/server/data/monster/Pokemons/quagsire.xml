@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Quagsire" nameDescription="a Quagsire" race="blood" experience="12" speed="235" manacost="0" minLevel="40" maxLevel="50">
+	<health now="95" max="95"/>
+	<look type="996" head="0" body="0" legs="0" feet="0" corpse="17584"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2857" skill="24" attack="85"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="85"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="QUAGSIIRREE!"/>
+	</voices>
+	
+<loot><item id="12100" countmax="10" chance="100000"/><item id="12112" countmax="1" chance="43750"/><item id="12119" countmax="1" chance="58333"/><item id="14519" countmax="1" chance="10000"/><item id="17799" countmax="1" chance="10000"/><item id="12230" countmax="1" chance="25"/><item id="13807" countmax="1" chance="25"/><item id="17995" countmax="1" chance="100"/><item id="17348" countmax="1" chance="10"/><item id="18919" countmax="1" chance="10"/><item id="23521" countmax="1" chance="10"/><item id="23529" countmax="1" chance="10"/></loot></monster>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Tereza Mendes" script="quest_terezaMendes.lua" walkinterval="3000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="631" head="50" body="50" legs="100" feet="100" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|, do you need help?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

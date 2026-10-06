@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Neil Plath" script="npcbattle_neilplath.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="614" head="45" body="95" legs="100" feet="45" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="You seem static, is fear?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

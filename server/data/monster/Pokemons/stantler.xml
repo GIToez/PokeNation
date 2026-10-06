@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Stantler" nameDescription="a Stantler" race="blood" experience="12" speed="285" manacost="0" minLevel="40" maxLevel="50">
+	<health now="73" max="73"/>
+	<look type="1060" head="0" body="0" legs="0" feet="0" corpse="17623"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1176" skill="24" attack="95"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="62"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="STANNTLLERRR!"/>
+	</voices>
+	
+<loot><item id="14469" countmax="4" chance="97222"/><item id="14468" countmax="3" chance="58333"/><item id="14466" countmax="3" chance="58333"/><item id="17787" countmax="1" chance="11666"/><item id="17793" countmax="3" chance="58333"/><item id="17806" countmax="1" chance="23333"/><item id="12232" countmax="1" chance="50"/><item id="18033" countmax="1" chance="100"/><item id="18913" countmax="1" chance="10"/><item id="23527" countmax="1" chance="10"/></loot></monster>

@@ -1,0 +1,19 @@
+MOVES["Wrap"] = {
+    description = "Wrap deals damage and lower the Speed of the target by two stages.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 13114,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Wrap",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 45,
+    requiredLevel = 15,
+    damage = 35,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_ROOT_EMERGE,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 2,
+    cooldownTime = 13,
+    cooldownStorage = 15250
+}

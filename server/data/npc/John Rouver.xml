@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="John Rouver" script="quest_default.lua" walkinterval="2000" floorchange="0" walkable="0">
+	<health now="100" max="100"/>
+	<look type="614" head="175" body="100" legs="90" feet="10" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|, can I help you?"/>
+	</parameters>
+</npc>

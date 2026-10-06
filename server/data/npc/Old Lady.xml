@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Old Lady" script="daycareFemale.lua" walkinterval="4000" floorchange="0">
+	<health now="1500" max="1500"/>
+	<look type="157" head="190" body="50" legs="39" feet="50"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="message_greet" value="Heelloooo! You already know our {daycare}? We handle all kinds of {Pokemon}. If you have a Pokemon here you can see its {status}, otherwise you can {leave} a Pokemon here. And if you need to buy incubators, just say {trade}. Also you can {deposit} and {remove} plates."/>
+		<parameter key="module_shop" value="1"/>
+		<parameter key="shop_buyable" value="
+		empty pokemon egg incubator, 14048, 100
+		"/>
+	</parameters>
+</npc>

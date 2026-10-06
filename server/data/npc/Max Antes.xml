@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Max Antes" script="npcbattle_maxantes.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="630" head="20" body="30" legs="50" feet="50" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="We come where you least expect it!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

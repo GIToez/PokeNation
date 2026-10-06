@@ -1,0 +1,158 @@
+ShopButton < UIButton
+  id: shopButton
+  text-align: left
+  text-offset: 55 -20
+  font: sans-bold-16px-italic
+  color: white
+  icon-align: left
+  icon-offset: 5 0
+  height: 48
+  background-color: #000000AA
+  border-width: 5
+  border-color: black
+  anchors.top: prev.bottom
+  anchors.right: parent.right
+  anchors.left: parent.left
+  margin-top: 3
+  @onClick: onClickInItem(tonumber(self:getChildById('shopPrize'):getText()), self)
+
+  $hover:
+    background-color: #666666AA
+    border-color: #666666
+
+  $pressed:
+    background-color: #333333AA
+    border-color: #333333
+
+  $disabled:
+    background-color: #330000AA
+    border-color: #330000
+    color: red
+
+ShopButtonSale < ShopButton
+  id: shopButtonSale
+  image-source: /images/game/shop/sale
+  image-rect: 370 3 45 42
+
+ShopPrize < UIWidget
+  id: shopPrize
+  text-align: left
+  text-offset: 23 4
+  font: verdana-11px-italic
+  image-source: /images/game/shop/prize
+  image-rect: 0 0 19 18
+  color: #BAE5A5
+  anchors.left: parent.left
+  anchors.right: parent.right
+  anchors.bottom: parent.bottom
+  margin-left: 55
+  margin-bottom: 5
+  phantom: true
+
+ClanWindow < MainWindow
+  size: 163 93
+  @onEscape: self:destroy()
+
+  Label
+    text: Rank:
+    width: 38
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 2
+
+  SpinBox
+    id: spinBox
+    step: 1
+    width: 50
+    anchors.top: parent.top
+    anchors.left: prev.right
+    minimum: 1
+    maximum: 5
+    @onValueChange: |
+      if self:getValue() == 1 then
+        prize = 10
+      elseif self:getValue() == 2 then
+        prize = 18
+      elseif self:getValue() == 3 then
+        prize = 26
+      elseif self:getValue() == 4 then
+        prize = 34
+      elseif self:getValue() == 5 then
+        prize = 40
+      end
+      self:getParent():getChildById('prize'):setText(prize)
+
+  UIWidget
+    id: prize
+    text-align: left
+    text-offset: 23 4
+    font: verdana-11px-rounded
+    image-source: /images/game/shop/prize
+    image-rect: 0 0 19 18
+    color: #9BD3F0
+    anchors.verticalCenter: spinBox.verticalCenter
+    anchors.left: spinBox.right
+    anchors.right: parent.right
+    margin-left: 3
+
+  Button
+    id: okButton
+    text: Ok
+    width: 64
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+
+  Button
+    !text: tr('Cancel')
+    width: 64
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    @onClick: self:getParent():destroy()
+
+MainWindow
+  id: shopWindow
+  size: 620 336
+  image-source: /images/game/shop/window
+  @onEscape: hide()
+  
+  UIButton
+    id: closeButton
+    anchors.top: parent.top
+    anchors.right: parent.right
+    size: 23 22
+    image-source: /images/game/shop/button
+    image-clip: 0 0 23 22
+    @onClick: hide()
+
+    $hover:
+      image-clip: 0 22 23 22
+
+    $pressed:
+      image-clip: 0 44 23 22
+
+  ShopTabBarVertical
+    
+    id: shopTabBar
+    size: 150 250
+    anchors.top: parent.top
+    anchors.left: parent.left
+
+  Panel
+    id: shopTabContent
+    size: 350 265
+    anchors.top: shopTabBar.top
+    anchors.left: shopTabBar.right
+    margin-top: -12
+    margin-left: 45
+
+  UIWidget
+    id: emeralds
+    text-align: left
+    text-offset: 35 0
+    font: sans-bold-16px-rounded
+    image-source: /images/topbuttons/emerald_shop
+    image-rect: 0 0 36 32
+    anchors.left: prev.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    phantom: true

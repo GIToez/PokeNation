@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kemp Drummond" script="eggmove_remover.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="1201" head="50" body="50" legs="30" feet="200" corpse="0"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="message_greet" value="Hello |PLAYERNAME|. Here you can {remove}, {change}, {recover} or {fix} your Pokemon Egg move! Also you can {generate} an Egg Move to an old Pokemon egg!"/>
+	</parameters>
+</npc>

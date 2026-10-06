@@ -1,0 +1,19 @@
+MOVES["Horn Drill"] = {
+    description = "Horn Drill deals damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11725,
+    iconId = 13351,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "HornDrill",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 110,
+    requiredLevel = 50,
+    damage = 110,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_MULTIPLE_BLOW,
+    projectile = PROJECTILE_HORN,
+    maxDistance = 1,
+    cooldownTime = 17,
+    cooldownStorage = 15033
+}

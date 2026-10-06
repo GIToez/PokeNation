@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Nidoqueen" nameDescription="a Shiny Nidoqueen" nickname="Nidoqueen" race="blood" experience="15" speed="276" manacost="0" sex="0" minLevel="65" maxLevel="75">
+	<health now="90" max="90" rate="1.1"/>
+	<look type="696" head="0" body="0" legs="0" feet="0" corpse="13851"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1315" skill="24" attack="82"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="87"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="NIDOQUEENN!"/>
+	</voices>
+	
+<loot><item id="14526" countmax="1" chance="53571"/><item id="14533" countmax="6" chance="93750"/><item id="14592" countmax="1" chance="7500"/><item id="14511" countmax="3" chance="75000"/><item id="2687" countmax="5" chance="3000"/><item id="8841" countmax="5" chance="3000"/><item id="12235" countmax="1" chance="50"/><item id="13807" countmax="1" chance="50"/><item id="17846" countmax="1" chance="100"/><item id="18084" countmax="1" chance="20"/><item id="23524" countmax="1" chance="10"/><item id="23529" countmax="1" chance="10"/></loot></monster>

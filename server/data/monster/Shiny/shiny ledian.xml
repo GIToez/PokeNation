@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Ledian" nameDescription="a Shiny Ledian" race="blood" experience="10" speed="285" manacost="0" minLevel="30" maxLevel="40">
+	<health now="55" max="55"/>
+	<look type="1621" head="0" body="0" legs="0" feet="0" corpse="27439"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1176" skill="24" attack="35"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="LEDDIIANN!"/>
+	</voices>
+	
+<loot><item id="12089" countmax="1" chance="22727"/><item id="14540" countmax="1" chance="8928"/><item id="14551" countmax="1" chance="4166"/><item id="14618" countmax="1" chance="3125"/><item id="17786" countmax="1" chance="33333"/><item id="12241" countmax="1" chance="25"/><item id="18081" countmax="1" chance="25"/><item id="17966" countmax="1" chance="100"/><item id="17372" countmax="1" chance="5"/><item id="17346" countmax="1" chance="10"/><item id="23526" countmax="1" chance="10"/><item id="23528" countmax="1" chance="10"/></loot></monster>

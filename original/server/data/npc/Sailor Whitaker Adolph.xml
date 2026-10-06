@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Sailor Whitaker Adolph" script="npcbattle_sailorWhitakerAdolph.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="512"/>
+	<parameters>
+		<parameter key="message_greet" value="You are the new recruit? Go talk to the Captain!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

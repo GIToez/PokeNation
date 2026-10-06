@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Sneasel" nameDescription="a Sneasel" race="blood" experience="0" speed="315" manacost="0" minLevel="30" maxLevel="40">
+	<health now="55" max="55"/>
+	<look type="1041" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="0869" skill="24" attack="95"/>
+		<attack name="Moves" interval="500" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="55"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SNEAASEELLL!"/>
+	</voices>
+	<loot>
+		<item id="12129" countmax="1" chance="6666"/> <!-- ball of wool -->
+		<item id="12096" countmax="1" chance="23809"/> <!-- razor fang -->
+		<item id="14477" countmax="1" chance="3333"/> <!-- cutting fang -->
+		<item id="14483" countmax="1" chance="3333"/> <!-- exquisite silk -->
+		<item id="14485" countmax="1" chance="8333"/> <!-- flawless ice crystal -->
+		<item id="14486" countmax="1" chance="6666"/> <!-- frost charm -->
+		<item id="14489" countmax="1" chance="3333"/> <!-- frozen tear -->
+		<item id="14496" countmax="1" chance="6666"/> <!-- icicle -->
+		<item id="14512" countmax="1" chance="5555"/> <!-- night orb -->
+		<item id="14518" countmax="1" chance="16666"/> <!-- black orb -->
+		<item id="17803" countmax="1" chance="2777"/> <!-- dark claws -->
+		<item id="17804" countmax="1" chance="1666"/> <!-- dark crystal -->
+		<item id="12236" countmax="1" chance="25"/> <!-- icicle plate -->
+		<item id="12242" countmax="1" chance="25"/> <!-- dread plate -->
+		<item id="18014" countmax="1" chance="100"/> <!-- sneasel doll -->
+	</loot>
+</monster>

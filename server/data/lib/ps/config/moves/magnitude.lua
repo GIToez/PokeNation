@@ -1,0 +1,23 @@
+MOVES["Magnitude"] = {
+    description = "Magnitude does not have a set base power. Instead the base power of this move varies on a magnitude scale between four and ten.",
+    makeJump = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11794,
+    iconId = 13420,
+    dType = DAMAGE_TYPE_GROUND,
+    functionName = "Magnitude",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 95,
+    requiredLevel = 30,
+    damage = 85,
+    damageType = ELEMENT_GROUND,
+    effect = EFFECT_BLOW,
+    areaEffect = EFFECT_FAILING_ROCKS,
+    projectile = nil,
+    maxDistance = 6,
+    areaName = "area3x3",
+    area = area3x3,
+    cooldownTime = 18,
+    cooldownStorage = 15103,
+    damageText = "??"
+}

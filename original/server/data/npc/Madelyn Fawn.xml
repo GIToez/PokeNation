@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Madelyn Fawn" script="npcbattle_madelynFawn.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="613" head="50" body="90" legs="90" feet="50" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|! I'm Madelyn Fawn, let's {battle}?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

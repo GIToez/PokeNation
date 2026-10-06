@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Ninetales" nameDescription="a Shiny Ninetales" nickname="Ninetales" race="blood" experience="15" speed="300" manacost="0" minLevel="65" maxLevel="75">
+	<health now="73" max="73" rate="1.1"/>
+	<look type="703" head="0" body="0" legs="0" feet="0" corpse="13858"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1000" skill="24" attack="76"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="75"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="NINETALES!"/>
+	</voices>
+	
+<loot><item id="14530" countmax="3" chance="87500"/><item id="14523" countmax="1" chance="38888"/><item id="14513" countmax="1" chance="70000"/><item id="13303" countmax="1" chance="18421"/><item id="14586" countmax="1" chance="875"/><item id="2675" countmax="3" chance="5000"/><item id="12229" countmax="1" chance="100"/><item id="17853" countmax="1" chance="100"/><item id="18083" countmax="1" chance="20"/><item id="17371" countmax="1" chance="10"/><item id="23515" countmax="1" chance="20"/></loot></monster>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Irene Jaylyn" script="quest_deliverNewspaper.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="627" head="44" body="60" legs="60" feet="100" addons="2"/>
+	<parameters>
+		<parameter key="message_greet" value="Have you seen the new Pokemon?! They are really cool!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

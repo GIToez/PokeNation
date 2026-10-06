@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Jeanie Santangelo" script="npcbattle_jeaniesantangelo.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="617" head="12" body="36" legs="45" feet="97" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Do not disturb my meditation!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

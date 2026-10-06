@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Roxy" script="npcbattle_roxy.lua" walkinterval="700" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="194" head="71" body="114" legs="0" feet="71" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Poison is like this fear that is spreading in your soul in this exact moment. But don't curse me."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

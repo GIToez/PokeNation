@@ -1,0 +1,94 @@
+TmChooseWindow < MiniWindow
+  !text: tr('TM')
+  size: 600 90
+
+  UIItem
+    id: iconItem
+    virtual: true
+    size: 16 16
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 4
+    margin-left: 4
+
+  MiniWindowContents
+    GameLabel
+      id: description
+      !text: tr('Select the move that will be replaced by the Technical Machine:')
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      text-auto-resize: true
+      text-align: center
+      margin: 5 0 0 0
+
+    Panel
+      id: moves
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: description.bottom
+      anchors.bottom: parent.bottom
+      margin: 5
+      layout:
+        type: grid
+        cell-size: 36 36
+        flow: true
+        cell-spacing: 1
+
+
+
+TmConfirmWindow < MiniWindow
+  !text: tr('TM')
+  size: 150 120
+
+  UIItem
+    id: iconItem
+    virtual: true
+    size: 16 16
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 4
+    margin-left: 4
+
+  MiniWindowContents
+    GameLabel
+      id: description
+      !text: tr('Are you sure?')
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      text-auto-resize: true
+      text-align: center
+      margin: 5 0 0 0
+
+    Panel
+      id: moves
+      height: 45
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: description.bottom
+      margin: 5 5 5 5
+      padding-left: 10
+      layout:
+        type: grid
+        cell-size: 36 36
+        flow: true
+        cell-spacing: 1
+
+    Button
+      id: ok
+      width: 70
+      margin-left: 2
+      !text: tr('Ok')
+      anchors.top: moves.bottom
+      anchors.left: parent.left
+      @onClick: onConfirm()
+
+    Button
+      id: cancel
+      width: 70
+      margin-left: 2
+      !text: tr('Cancel')
+      anchors.top: moves.bottom
+      anchors.left: ok.right
+      @onClick: onCancel()

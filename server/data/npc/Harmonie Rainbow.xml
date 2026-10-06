@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Harmonie Rainbow" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="621" head="99" body="150" legs="150" feet="20" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Have you seen some bushes in the forest? They can be cut with a special move called CUT!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

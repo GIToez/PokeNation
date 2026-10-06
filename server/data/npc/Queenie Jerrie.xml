@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Queenie Jerrie" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="611" head="24" body="95" legs="67" feet="95" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I love books about Pokemon!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

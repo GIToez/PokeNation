@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spells>
+	<!-- Others -->
+		<instant name="Evolve" words="*o1" enabled="0" script="../../lib/ps/events/spells/Evolve.lua"/>
+		<instant name="Moves" words="*mvs" enabled="0" script="../../lib/ps/events/spells/Moves.lua" />
+		<instant name="Berries" words="*brs" enabled="0" script="../../lib/ps/events/spells/Berries.lua" />
+		
+	<!-- ############################
+				SPELLS SCRIPTS
+	     ############################ -->
+	<!-- Target -->
+		<instant name="script_Absorb" words="*st1" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Absorb.lua" />
+		<instant name="script_Acid" words="*st2" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Acid.lua" />
+		<instant name="script_Ancient Power" words="*st3" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Ancient Power.lua"/>
+		<instant name="script_Bite" words="*st4" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Bite.lua" />
+		<instant name="script_Bone Club" words="*st6" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Bone Club.lua" />
+		<instant name="script_Bonemerang" words="*st7" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Bonemerang.lua" />
+		<instant name="script_Bone Rush" words="*st8" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Bone Rush.lua" />
+		<instant name="script_Brick Break" words="*st9" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Brick Break.lua" />
+		<instant name="script_Bubble" words="*st10" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Bubble.lua" />
+		<instant name="script_Bug Bite" words="*st11" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Bug Bite.lua" />
+		<instant name="script_Crabhammer" words="*st12" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Crabhammer.lua" />
+		<instant name="script_Cross Chop" words="*st13" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Cross Chop.lua" />
+		<instant name="script_Crunch" words="*st14" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Crunch.lua" />
+		<instant name="script_Dizzy Punch" words="*st15" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Dizzy Punch.lua" />
+		<instant name="script_Double-Edge" words="*st16" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Double-Edge.lua" />
+		<instant name="script_Double Kick" words="*st17" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Double Kick.lua" />
+		<instant name="script_Double Slap" words="*st18" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Double Slap.lua" />
+		<instant name="script_Dream Eater" words="*st19" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Dream Eater.lua" />
+		<instant name="script_Drill Peck" words="*st20" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Drill Peck.lua" />
+		<instant name="script_Dynamic Punch" words="*st21" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Dynamic Punch.lua" />
+		<instant name="script_Egg Bomb" words="*st22" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Egg Bomb.lua" />
+		<instant name="script_Ember" words="*st23" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Ember.lua" />
+		<instant name="script_Fire Punch" words="*st24" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Fire Punch.lua" />
+		<instant name="script_Fissure" words="*st26" enabled="0" casterTargetOrDirection="1" blockwalls="1" direction="1" script="../../lib/ps/events/spells/scripts/Fissure.lua" />
+		<instant name="script_Fury Attack" words="*st27" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Fury Attack.lua" />
+		<instant name="script_Fury Swipes" words="*st28" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Fury Swipes.lua" />
+		<instant name="script_Giga Drain" words="*st29" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Giga Drain.lua" />
+		<instant name="script_Glare" words="*st30" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Glare.lua" />
+		<instant name="script_Guillotine" words="*st31" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Guillotine.lua" />
+		<instant name="script_Headbutt" words="*st32" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Headbutt.lua" />
+		<instant name="script_Horn Drill" words="*st33" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Horn Drill.lua" />
+		<instant name="script_Hyper Fang" words="*st34" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Hyper Fang.lua" />
+		<instant name="script_Hypnosis" words="*st35" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Hypnosis.lua" />
+		<instant name="script_Ice Punch" words="*st36" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Ice Punch.lua" />
+		<instant name="script_Iron Tail" words="*st37" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Iron Tail.lua" />
+		<instant name="script_Jump Kick" words="*st38" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Jump Kick.lua" />
+		<instant name="script_Leech Life" words="*st40" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Leech Life.lua" />
+		<instant name="script_Leech Seed" words="*st41" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Leech Seed.lua" />
+		<instant name="script_Lick" words="*st42" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Lick.lua" />
+		<instant name="script_Lovely Kiss" words="*st43" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Lovely Kiss.lua" />
+		<instant name="script_Low Kick" words="*st44" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Low Kick.lua" />
+		<instant name="script_Mega Drain" words="*st45" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Mega Drain.lua" />
+		<instant name="script_Megahorn" words="*st46" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Megahorn.lua" />
+		<instant name="script_Mega Kick" words="*st47" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Mega Kick.lua" />
+		<instant name="script_Mega Punch" words="*st48" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Mega Punch.lua" />
+		<instant name="script_Mud Shot" words="*st49" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Mud Shot.lua" />
+		<instant name="script_Night Shade" words="*st50" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Night Shade.lua" />
+		<instant name="script_Poison Fang" words="*st52" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Poison Fang.lua" />
+		<instant name="script_Poison Sting" words="*st53" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Poison Sting.lua" />
+		<instant name="script_Pound" words="*st54" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Pound.lua" />
+		<instant name="script_Quick Attack" words="*st55" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Quick Attack.lua" />
+		<instant name="script_Razor Leaf" words="*st56" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Razor Leaf.lua" />
+		<instant name="script_Rock Blast" words="*st57" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Rock Blast.lua" />
+		<instant name="script_Rock Throw" words="*st58" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Rock Throw.lua" />
+		<instant name="script_Scary Face" words="*st59" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Scary Face.lua" />
+		<instant name="script_Scratch" words="*st60" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Scratch.lua" />
+		<instant name="script_Seismic Toss" words="*st61" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Seismic Toss.lua" />
+		<instant name="script_Shadow Punch" words="*st62" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Shadow Punch.lua" />
+		<instant name="script_Slam" words="*st63" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Slam.lua" />
+		<instant name="script_Slash" words="*st64" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Slash.lua" />
+		<instant name="script_Sludge" words="*st65" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Sludge.lua" />
+		<instant name="script_Sludge Bomb" words="*st66" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Sludge Bomb.lua" />
+		<instant name="script_Sonic Boom" words="*st69" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Sonic Boom.lua" />
+		<instant name="script_Splash" words="*st70" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Splash.lua" />
+		<instant name="script_String Shot" words="*st72" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/String Shot.lua" />
+		<instant name="script_Supersonic" words="*st73" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Supersonic.lua" />
+		<instant name="script_Swift" words="*st74" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Swift.lua" />
+		<instant name="script_Take Down" words="*st75" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Take Down.lua" />
+		<instant name="script_Thunderbolt" words="*st76" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Thunderbolt.lua" />
+		<instant name="script_Thunder Punch" words="*st77" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Thunder Punch.lua" />
+		<instant name="script_Thunder Shock" words="*st78" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Thunder Shock.lua" />
+		<instant name="script_Tri Attack" words="*st79" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Tri Attack.lua" />
+		<instant name="script_Will-O-Wisp" words="*st80" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Will-O-Wisp.lua" />
+		<instant name="script_Spike Cannon" words="*st81" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Spike Cannon.lua" />
+		<instant name="script_Reversal" words="*st82" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Reversal.lua" />
+		<instant name="script_Horn Attack" words="*st83" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Horn Attack.lua" />
+		<instant name="script_Mist Ball" words="*st84" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Mist Ball.lua" />
+		<instant name="script_Worry Seed" words="*st85" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Worry Seed.lua" />
+		<instant name="script_Metal Claw" words="*st86" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Metal Claw.lua" />
+		<instant name="script_Smoke Screen" words="*st87" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Smoke Screen.lua" />
+		<instant name="script_Fire Fang" words="*st88" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Fire Fang.lua" />
+		<instant name="script_Skull Bash" words="*st89" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Skull Bash.lua" />
+		<instant name="script_Aqua Tail" words="*st90" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Aqua Tail.lua" />
+		<instant name="script_Water Pulse" words="*st91" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Water Pulse.lua" />
+		<instant name="script_Captivate" words="*st93" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Captivate.lua" />
+		<instant name="script_Endeavor" words="*st94" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Endeavor.lua" />
+		<instant name="script_Poison Jab" words="*st95" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Poison Jab.lua" />
+		<instant name="script_Toxic Spikes" words="*st96" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Toxic Spikes.lua" />
+		<instant name="script_Pursuit" words="*st97" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Pursuit.lua" />
+		<instant name="script_Rage" words="*st98" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Rage.lua" />
+		<instant name="script_Twineedle" words="*st99" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Twineedle.lua" />
+		<instant name="script_Feather Dance" words="*st100" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Feather Dance.lua" />
+		<instant name="script_Aerial Ace" words="*st101" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Aerial Ace.lua" />
+		<instant name="script_Drill Run" words="*st102" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Drill Run.lua" />
+		<instant name="script_Gunk Shot" words="*st104" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Gunk Shot.lua" />
+		<instant name="script_Electro Ball" words="*st105" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Electro Ball.lua" />
+		<instant name="script_Sand Tomb" words="*st106" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Sand Tomb.lua" />
+		<instant name="script_Crush Claw" words="*st107" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Crush Claw.lua" />
+		<instant name="script_Superpower" words="*st108" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Superpower.lua" />
+		<instant name="script_Wake-Up Slap" words="*st109" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Wake-Up Slap.lua" />
+		<instant name="script_Night Slash" words="*st111" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Night Slash.lua" />
+		<instant name="script_Disable" words="*st112" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Disable.lua" />
+		<instant name="script_Close Combat" words="*st113" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Close Combat.lua" />
+		<instant name="script_Ally Switch" words="*st114" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Ally Switch.lua" />
+		<instant name="script_Future Sight" words="*st115" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Future Sight.lua" />
+		<instant name="script_Submission" words="*st116" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Submission.lua" />
+		<instant name="script_Vital Throw" words="*st117" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Vital Throw.lua" />
+		<instant name="script_Revenge" words="*st118" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Revenge.lua" />
+		<instant name="script_Leaf Blade" words="*st119" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Leaf Blade.lua" />
+		<instant name="script_Wring Out" words="*st120" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Wring Out.lua" />
+		<instant name="script_Stealth Rock" words="*st121" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Stealth Rock.lua" />
+		<instant name="script_Magnet Bomb" words="*st122" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Magnet Bomb.lua" />
+		<instant name="script_Mirror Shot" words="*st123" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Mirror Shot.lua" />
+		<instant name="script_Razor Shell" words="*st124" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Razor Shell.lua" />
+		<instant name="script_Spite" words="*st125" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Spite.lua" />
+		<instant name="script_Curse" words="*st126" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Curse.lua" />
+		<instant name="script_Sucker Punch" words="*st127" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Sucker Punch.lua" />
+		<instant name="script_Shadow Ball" words="*st128" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Shadow Ball.lua" />
+		<instant name="script_Hex" words="*st129" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Hex.lua" />
+		<instant name="script_Nightmare" words="*st130" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Nightmare.lua" />
+		<instant name="script_Thrash" words="*st131" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Thrash.lua" />
+		<instant name="script_Rolling Kick" words="*st132" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Rolling Kick.lua" />
+		<instant name="script_Hi Jump Kick" words="*st133" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Hi Jump Kick.lua" />
+		<instant name="script_Power Whip" words="*st134" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Power Whip.lua" />
+		<instant name="script_Clear Smog" words="*st135" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Clear Smog.lua" />
+		<instant name="script_Double Hit" words="*st136" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Double Hit.lua" />
+		<instant name="script_Outrage" words="*st137" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Outrage.lua" />
+		<instant name="script_Peck" words="*st138" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Peck.lua" />
+		<instant name="script_Magical Leaf" words="*st139" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Magical Leaf.lua" />
+		<instant name="script_Ice Fang" words="*st140" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Ice Fang.lua" />
+		<instant name="script_Thunder Fang" words="*st141" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Thunder Fang.lua" />
+		<instant name="script_Mimic" words="*st142" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Mimic.lua" />
+		<instant name="script_Transform" words="*st143" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Transform.lua" />
+		<instant name="script_Dragon Tail" words="*st144" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Dragon Tail.lua" />
+		<instant name="script_Tackle" words="*st145" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Tackle.lua" />
+		<instant name="script_Agility" words="*ss1" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Agility.lua" />
+		<instant name="script_Flame Burst" words="*sa42" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Flame Burst.lua" />
+		<instant name="script_Acid Spray" words="*sa47" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Acid Spray.lua" />
+		<instant name="script_Petal Dance" words="*sa40" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Petal Dance.lua" />
+		<instant name="script_Pin Missile" words="*st51" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Pin Missile.lua" />
+		<instant name="script_Double Team" words="*st146" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Double Team.lua" />
+		<instant name="script_Mirror Move" words="*st147" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Mirror Move.lua" />
+		<instant name="script_Focus Punch" words="*st148" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Focus Punch.lua" />
+		<instant name="script_Comet Punch" words="*st149" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Comet Punch.lua" />
+		<instant name="script_Ice Shard" words="*st150" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Ice Shard.lua" />
+		<instant name="script_Mud-Slap" words="*st151" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Mud-Slap.lua" />
+		<instant name="script_Wrap" words="*st152" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Wrap.lua" />
+		<instant name="script_Zen Headbutt" words="*st153" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Zen Headbutt.lua" />
+		<instant name="script_Razor Wind" words="*st154" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Razor Wind.lua" />
+		<instant name="script_Toxic" words="*st155" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Toxic.lua" />
+		<instant name="script_Bide" words="*st156" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Bide.lua" />
+		<instant name="script_Sky Attack" words="*st157" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Sky Attack.lua" />
+		<instant name="script_Dragon Rage" words="*st158" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Dragon Rage.lua" />
+		<instant name="script_Acrobatics" words="*st159" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Acrobatics.lua" />
+		<instant name="script_Bounce" words="*st160" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Bounce.lua" />
+		<instant name="script_Bullet Seed" words="*st161" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Bullet Seed.lua" />
+		<instant name="script_Charm" words="*st162" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Charm.lua" />
+		<instant name="script_Dragon Pulse" words="*st163" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Dragon Pulse.lua" />
+		<instant name="script_Electroweb" words="*st164" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Electroweb.lua" />
+		<instant name="script_Flame Charge" words="*st165" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Flame Charge.lua" />
+		<instant name="script_Grass Whistle" words="*st166" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Grass Whistle.lua" />
+		<instant name="script_Hammer Arm" words="*st167" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Hammer Arm.lua" />
+		<instant name="script_Iron Head" words="*st168" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Iron Head.lua" />
+		<instant name="script_Present" words="*st169" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Present.lua" />
+		<instant name="script_Psycho Shift" words="*st170" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Psycho Shift.lua" />
+		<instant name="script_Rock Tomb" words="*st171" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Rock Tomb.lua" />
+		<instant name="script_Shadow Sneak" words="*st172" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Shadow Sneak.lua" />
+		<instant name="script_Shock Wave" words="*st173" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Shock Wave.lua" />
+		<instant name="script_Sketch" words="*st174" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Sketch.lua" />
+		<instant name="script_Spark" words="*st175" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Spark.lua" />
+		<instant name="script_Spider Web" words="*st176" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Spider Web.lua" />
+		<instant name="script_Stone Edge" words="*st177" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Stone Edge.lua" />
+		<instant name="script_Sweet Kiss" words="*st178" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Sweet Kiss.lua" />
+		<instant name="script_Tickle" words="*st179" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Tickle.lua" />
+		<instant name="script_Wood Hammer" words="*st180" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Wood Hammer.lua" />
+		<instant name="script_Yawn" words="*st181" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Yawn.lua" />
+		<instant name="script_Fury Cutter" words="*st182" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Fury Cutter.lua" />
+		<instant name="script_Screech" words="*st183" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Screech.lua" />
+		<instant name="script_Frenzy Plant" words="*st184" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Frenzy Plant.lua" />
+		<instant name="script_Drain Punch" words="*st185" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Drain Punch.lua" />
+		<instant name="script_Faint Attack" words="*st186" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Faint Attack.lua" />
+		<instant name="script_Punishment" words="*st187" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Punishment.lua" />
+		<instant name="script_Conversion2" words="*st188" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Conversion2.lua" />
+		<instant name="script_Extreme Speed" words="*st190" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Extreme Speed.lua" />
+		<instant name="script_Spit Up" words="*st191" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Spit Up.lua" />
+		<instant name="script_Gust" words="*st192" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Gust.lua" />
+		<instant name="script_Icy Wind" words="*st193" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Icy Wind.lua" />
+		<instant name="script_Energy Ball" words="*st194" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Energy Ball.lua" />
+		<instant name="script_Avalanche" words="*st195" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Avalanche.lua"/>
+		
+		<instant name="script_Assurance" words="*st196" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Assurance.lua"/>
+		<instant name="script_Super Fang" words="*st197" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Super Fang.lua"/>
+		<instant name="script_Wild Charge" words="*st198" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Wild Charge.lua"/>
+		<instant name="script_Moonblast" words="*st199" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Moonblast.lua"/>
+		<instant name="script_Petal Blizzard" words="*st200" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Petal Blizzard.lua"/>
+		<instant name="script_Play Rough" words="*st201" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Play Rough.lua"/>
+		<instant name="script_U-turn" words="*st202" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/U-turn.lua"/>
+		<instant name="script_Shadow Claw" words="*st203" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Shadow Claw.lua"/>
+		<instant name="script_Circle Throw" words="*st204" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Circle Throw.lua"/>
+		<instant name="script_Miracle Eye" words="*st205" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Miracle Eye.lua"/>
+		<instant name="script_Heavy Slam" words="*st206" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Heavy Slam.lua"/>
+		<instant name="script_Belch" words="*st207" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Belch.lua"/>
+		<instant name="script_Icicle Spear" words="*st208" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Icicle Spear.lua"/>
+		<instant name="script_Smack Down" words="*st209" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Smack Down.lua"/>
+		<instant name="script_Foresight" words="*st210" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Foresight.lua"/>
+		<instant name="script_Sky Uppercut" words="*st211" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Sky Uppercut.lua"/>
+		<instant name="script_Low Sweep" words="*st212" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Low Sweep.lua"/>
+		<instant name="script_Knock Off" words="*st213" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Knock Off.lua"/>
+		<instant name="script_Chip Away" words="*st214" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Chip Away.lua"/>
+		<instant name="script_Facade" words="*st215" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Facade.lua"/>
+		<instant name="script_Grass Knot" words="*st216" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Grass Knot.lua"/>
+		<instant name="script_Draining Kiss" words="*st217" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Draining Kiss.lua"/>
+		<instant name="script_Heart Stamp" words="*st218" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Heart Stamp.lua"/>
+		<instant name="script_Foul Play" words="*st219" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Foul Play.lua"/>
+		<instant name="script_Aqua Jet" words="*st220" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Aqua Jet.lua"/>
+		<instant name="script_Sky Drop" words="*st221" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Sky Drop.lua"/>
+		<instant name="script_Aura Sphere" words="*st222" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Aura Sphere.lua"/>
+		<instant name="script_Mach Punch" words="*st223" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Mach Punch.lua"/>
+		<instant name="script_Covet" words="*st224" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Covet.lua"/>
+		<instant name="script_Encore" words="*st225" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Encore.lua"/>
+		<instant name="script_Arm Thrust" words="*st226" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Arm Thrust.lua"/>
+		<instant name="script_Incinerate" words="*st227" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Incinerate.lua"/>
+		<instant name="script_Octazooka" words="*st228" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Octazooka.lua"/>
+		<instant name="script_Focus Blast" words="*st229" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Focus Blast.lua"/>
+		<instant name="script_Seed Bomb" words="*st230" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Seed Bomb.lua"/>
+		<instant name="script_Psyshock" words="*st231" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Psyshock.lua"/>
+		<instant name="script_Last Resort" words="*st232" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Last Resort.lua"/>
+		<instant name="script_Brave Bird" words="*st233" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Brave Bird.lua"/>
+		<instant name="script_Astonish" words="*st234" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Astonish.lua"/>
+		<instant name="script_Struggle Bug" words="*st235" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Struggle Bug.lua"/>
+		<instant name="script_Gastro Acid" words="*st236" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Gastro Acid.lua"/>
+		<instant name="script_Hidden Power" words="*st237" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Hidden Power.lua"/>
+		<instant name="script_Pluck" words="*st238" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Pluck.lua"/>
+
+		<instant name="script_Dragon Claw" words="*st239" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Dragon Claw.lua"/>
+		<instant name="script_Force Palm" words="*st240" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Force Palm.lua"/>
+		<instant name="script_Waterfall" words="*st241" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Waterfall.lua"/>
+		<instant name="script_Brutal Swing" words="*st242" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Brutal Swing.lua"/>
+		<instant name="script_Nuzzle" words="*st243" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Nuzzle.lua"/>
+		<instant name="script_Volt Switch" words="*st244" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Volt Switch.lua"/>
+		<instant name="script_Sleep Talk" words="*st245" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Sleep Talk.lua"/>
+		<instant name="script_Fake Out" words="*st246" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Fake Out.lua"/>
+		<instant name="script_Fly" words="*st247" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Fly.lua"/>
+		<instant name="script_Ice Ball" words="*st248" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Ice Ball.lua"/>
+		<instant name="script_Dig" words="*st249" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Dig.lua"/>
+		<instant name="script_Dive" words="*st250" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Dive.lua"/>
+		<instant name="script_Flail" words="*st251" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Flail.lua"/>
+		<instant name="script_Head Smash" words="*st252" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Head Smash.lua"/>
+		<instant name="script_Smelling Salts" words="*st253" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Smelling Salts.lua"/>
+		<instant name="script_Precipice Blade" words="*st254" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Precipice Blade.lua"/>
+		<instant name="script_Power-Up Punch" words="*st255" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Power-Up Punch.lua"/>
+		<instant name="script_Thief" words="*st256" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Thief.lua"/>
+		<instant name="script_Psycho Boost" words="*st257" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Psycho Boost.lua"/>
+		<instant name="script_Clamp" words="*st258" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Clamp.lua"/>
+		<instant name="script_Poison Tail" words="*st259" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Poison Tail.lua"/>
+		<instant name="script_Needle Arm" words="*st260" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Needle Arm.lua"/>
+		<instant name="script_Flatter" words="*st261" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Flatter.lua"/>
+		<instant name="script_Phantom Force" words="*st262" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Phantom Force.lua"/>
+		<instant name="script_Metal Burst" words="*st263" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Metal Burst.lua"/>
+		<instant name="script_Vice Grip" words="*st265" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Vice Grip.lua"/>
+		<instant name="script_Fake Tears" words="*st266" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Fake Tears.lua"/>
+		<instant name="script_Memento" words="*st267" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Memento.lua"/>
+		<instant name="script_Weather Ball" words="*st269" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Weather Ball.lua"/>
+		<instant name="script_Final Gambit" words="*st270" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Final Gambit.lua"/>
+		<instant name="script_Simple Beam" words="*st271" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Simple Beam.lua"/>
+		<instant name="script_Rock Climb" words="*st272" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Rock Climb.lua"/>
+		<instant name="script_Psychic Fangs" words="*st273" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Psychic Fangs.lua"/>
+		<instant name="script_Eerie Impulse" words="*st274" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Eerie Impulse.lua"/>
+		<instant name="script_Fell Stinger" words="*st275" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Fell Stinger.lua"/>
+		<instant name="script_Me First" words="*st276" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Me First.lua"/>
+		<instant name="script_Feint" words="*st277" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Feint.lua"/>
+		<instant name="script_Role Play" words="*st278" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Role Play.lua"/>
+		<instant name="script_Lunge" words="*st279" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Lunge.lua"/>
+		<instant name="script_Copycat" words="*ss63" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/scripts/Copycat.lua"/>
+	<!-- Area -->
+		<instant name="script_Blizzard" words="*sa2" enabled="0" script="../../lib/ps/events/spells/scripts/Blizzard.lua" />
+		<instant name="script_Confusion" words="*sa4" enabled="0" script="../../lib/ps/events/spells/scripts/Confusion.lua" />
+		<instant name="script_Earthquake" words="*sa5" enabled="0" script="../../lib/ps/events/spells/scripts/Earthquake.lua" />
+		<instant name="script_Explosion" words="*sa6" enabled="0" script="../../lib/ps/events/spells/scripts/Explosion.lua" />
+		<instant name="script_Flame Wheel" words="*sa9" enabled="0" script="../../lib/ps/events/spells/scripts/Flame Wheel.lua" />
+		<instant name="script_Hydro Pump" words="*sa11" enabled="0" script="../../lib/ps/events/spells/scripts/Hydro Pump.lua" />
+		<instant name="script_Poison Gas" words="*sa18" enabled="0" script="../../lib/ps/events/spells/scripts/Poison Gas.lua" />
+		<instant name="script_Poison Powder" words="*sa19" enabled="0" script="../../lib/ps/events/spells/scripts/Poison Powder.lua" />
+		<instant name="script_Psychic" words="*sa22" enabled="0" script="../../lib/ps/events/spells/scripts/Psychic.lua" />
+		<instant name="script_Selfdestruct" words="*sa23" enabled="0" script="../../lib/ps/events/spells/scripts/Selfdestruct.lua" />
+		<instant name="script_Sing" words="*sa25" enabled="0" script="../../lib/ps/events/spells/scripts/Sing.lua" />
+		<instant name="script_Sleep Powder" words="*sa26" enabled="0" script="../../lib/ps/events/spells/scripts/Sleep Powder.lua" />
+		<instant name="script_Stun Spore" words="*sa29" enabled="0" script="../../lib/ps/events/spells/scripts/Stun Spore.lua" />
+		<instant name="script_Thunder" words="*sa30" enabled="0" script="../../lib/ps/events/spells/scripts/Thunder.lua" />
+		<instant name="script_Hurricane" words="*sa34" enabled="0" script="../../lib/ps/events/spells/scripts/Hurricane.lua" />
+		<instant name="script_Inferno" words="*sa41" enabled="0" script="../../lib/ps/events/spells/scripts/Inferno.lua" />
+		<instant name="script_Discharge" words="*sa48" enabled="0" script="../../lib/ps/events/spells/scripts/Discharge.lua" />
+		<instant name="script_Earth Power" words="*sa49" enabled="0" script="../../lib/ps/events/spells/scripts/Earth Power.lua" />
+		<instant name="script_Flare Blitz" words="*sa54" enabled="0" script="../../lib/ps/events/spells/scripts/Flare Blitz.lua" />
+		<instant name="script_Psycho Cut" words="*sa55" enabled="0" script="../../lib/ps/events/spells/scripts/Psycho Cut.lua" />
+		<instant name="script_Leaf Storm" words="*sa56" enabled="0" script="../../lib/ps/events/spells/scripts/Leaf Storm.lua" />
+		<instant name="script_Sludge Wave" words="*sa58" enabled="0" script="../../lib/ps/events/spells/scripts/Sludge Wave.lua" />
+		<instant name="script_Constrict" words="*sa59" enabled="0" script="../../lib/ps/events/spells/scripts/Constrict.lua" />
+		<instant name="script_Dark Pulse" words="*sa61" enabled="0" script="../../lib/ps/events/spells/scripts/Dark Pulse.lua" />
+		<instant name="script_X-Scissor" words="*sa65" enabled="0" script="../../lib/ps/events/spells/scripts/X-Scissor.lua" />
+		<instant name="script_Muddy Water" words="*sa66" enabled="0" script="../../lib/ps/events/spells/scripts/Muddy Water.lua" />
+		<instant name="script_Metronome" words="*sa70" enabled="0" script="../../lib/ps/events/spells/scripts/Metronome.lua" />
+		<instant name="script_Lava Plume" words="*sa71" enabled="0" script="../../lib/ps/events/spells/scripts/Lava Plume.lua" />
+		<instant name="script_Rock Slide" words="*sa72" enabled="0" script="../../lib/ps/events/spells/scripts/Rock Slide.lua" />
+		<instant name="script_Rollout" words="*ss10" enabled="0" script="../../lib/ps/events/spells/scripts/Rollout.lua" />
+		<instant name="script_Cross Poison" words="*st110" enabled="0" script="../../lib/ps/events/spells/scripts/Cross Poison.lua" />
+		<instant name="script_Bug Buzz" words="*sa45" enabled="0" script="../../lib/ps/events/spells/scripts/Bug Buzz.lua" />
+		<instant name="script_Magnitude" words="*sa16" enabled="0" script="../../lib/ps/events/spells/scripts/Magnitude.lua" />
+		<instant name="script_Stomp" words="*sa28" enabled="0" script="../../lib/ps/events/spells/scripts/Stomp.lua" />
+		<instant name="script_Giga Impact" words="*sa68" enabled="0" script="../../lib/ps/events/spells/scripts/Giga Impact.lua" />
+		<instant name="script_Body Slam" words="*st5" enabled="0" script="../../lib/ps/events/spells/scripts/Body Slam.lua" />
+		<instant name="script_Smog" words="*st67" enabled="0" script="../../lib/ps/events/spells/scripts/Smog.lua" />
+		<instant name="script_Snore" words="*st68" enabled="0" script="../../lib/ps/events/spells/scripts/Snore.lua" />
+		<instant name="script_Spore" words="*st71" enabled="0" script="../../lib/ps/events/spells/scripts/Spore.lua" />
+		<instant name="script_Rage Powder" words="*st92" enabled="0" script="../../lib/ps/events/spells/scripts/Rage Powder.lua" />
+		<instant name="script_Leaf Tornado" words="*sa57" enabled="0" script="../../lib/ps/events/spells/scripts/Leaf Tornado.lua" />
+		<instant name="script_Rapid Spin" words="*sa74" enabled="0" script="../../lib/ps/events/spells/scripts/Rapid Spin.lua" />
+		<instant name="script_Psywave" words="*sa75" enabled="0" script="../../lib/ps/events/spells/scripts/Psywave.lua" />
+		<instant name="script_Eruption" words="*sa76" enabled="0" script="../../lib/ps/events/spells/scripts/Eruption.lua" />
+		<instant name="script_Ominous Wind" words="*sa77" enabled="0" script="../../lib/ps/events/spells/scripts/Ominous Wind.lua" />
+		<instant name="script_Stored Power" words="*sa78" enabled="0" script="../../lib/ps/events/spells/scripts/Stored Power.lua" />
+		<instant name="script_Triple Kick" words="*sa79" enabled="0" script="../../lib/ps/events/spells/scripts/Triple Kick.lua" />
+		<instant name="script_Gyro Ball" words="*sa83" enabled="0" script="../../lib/ps/events/spells/scripts/Gyro Ball.lua" />
+		<instant name="script_Metal Sound" words="*sa81" enabled="0" script="../../lib/ps/events/spells/scripts/Metal Sound.lua" />
+		
+		<instant name="script_Secret Power" words="*sa84" enabled="0" script="../../lib/ps/events/spells/scripts/Secret Power.lua" />
+		<instant name="script_Psystrike" words="*sa85" enabled="0" script="../../lib/ps/events/spells/scripts/Psystrike.lua" />
+		<instant name="script_Synchronoise" words="*sa86" enabled="0" script="../../lib/ps/events/spells/scripts/Synchronoise.lua" />
+		<instant name="script_Bulldoze" words="*sa87" enabled="0" script="../../lib/ps/events/spells/scripts/Bulldoze.lua" />
+		<instant name="script_Sandstorm" words="*ss52" enabled="0" script="../../lib/ps/events/spells/scripts/Sandstorm.lua"/>
+
+		<instant name="script_Whirlpool" words="*ss55" enabled="0" script="../../lib/ps/events/spells/scripts/Whirlpool.lua"/>
+		<instant name="script_Hail" words="*ss56" enabled="0" script="../../lib/ps/events/spells/scripts/Hail.lua"/>
+		<instant name="script_Heal Block" words="*st268" enabled="0" script="../../lib/ps/events/spells/scripts/Heal Block.lua"/>
+		<instant name="script_Nature Power" words="**st280" enabled="0" script="../../lib/ps/events/spells/scripts/Nature Power.lua"/>
+		<instant name="script_Venom Drench" words="*st281" enabled="0" script="../../lib/ps/events/spells/scripts/Venom Drench.lua"/>
+		<instant name="script_Spikes" words="*st283" enabled="0" script="../../lib/ps/events/spells/scripts/Spikes.lua"/>
+		<!-- Area/Friendly -->
+			<instant name="script_Healing Wish" words="*sa50" enabled="0" aggressive="0" script="../../lib/ps/events/spells/scripts/Healing Wish.lua" />
+			<instant name="script_Tailwind" words="*sa44" enabled="0" aggressive="0" script="../../lib/ps/events/spells/scripts/Tailwind.lua" />
+			<instant name="script_Heal Pulse" words="*sa39" enabled="0" aggressive="0" script="../../lib/ps/events/spells/scripts/Heal Pulse.lua" />
+			<instant name="script_Aromatherapy" words="*sa52" enabled="0" aggressive="0" script="../../lib/ps/events/spells/scripts/Aromatherapy.lua" />
+			<instant name="script_Softboiled" words="*ss8" enabled="0" aggressive="0" script="../../lib/ps/events/spells/scripts/Softboiled.lua" />
+			
+			<instant name="script_Heal Bell" words="*ss53" enabled="0" aggressive="0" script="../../lib/ps/events/spells/scripts/Heal Bell.lua" />
+			<instant name="script_Mist" words="*ss62" enabled="0" aggressive="0" script="../../lib/ps/events/spells/scripts/Mist.lua" />
+			<instant name="script_Quick Guard" words="*ss70" enabled="0" aggressive="0" script="../../lib/ps/events/spells/scripts/Quick Guard.lua" />
+			<instant name="script_Grassy Terrain" words="*ss71" enabled="0" aggressive="0" script="../../lib/ps/events/spells/scripts/Grassy Terrain.lua" />
+			<instant name="script_Misty Terrain" words="*ss73" enabled="0" aggressive="0" script="../../lib/ps/events/spells/scripts/Misty Terrain.lua" />
+			<instant name="script_Wide Guard" words="*ss74" enabled="0" aggressive="0" script="../../lib/ps/events/spells/scripts/Wide Guard.lua" />
+	<!-- Direction -->
+		<instant name="script_Aurora Beam" words="*sa1" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Aurora Beam.lua" />
+		<instant name="script_Bubblebeam" words="*sa3" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Bubblebeam.lua" />
+		<instant name="script_Fire Blast" words="*sa7" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Fire Blast.lua" />
+		<instant name="script_Flamethrower" words="*sa8" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Flamethrower.lua" />
+		<instant name="script_Hyper Beam" words="*sa12" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Hyper Beam.lua" />
+		<instant name="script_Ice Beam" words="*sa14" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Ice Beam.lua" />
+		<instant name="script_Psybeam" words="*sa21" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Psybeam.lua" />
+		<instant name="script_Solar Beam" words="*sa27" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Solar Beam.lua" />
+		<instant name="script_Thunder Wave" words="*sa31" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Thunder Wave.lua" />
+		<instant name="script_Vine Whip" words="*sa32" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Vine Whip.lua" />
+		<instant name="script_Water Gun" words="*sa33" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Water Gun.lua" />
+		<instant name="script_Wing Attack" words="*sa35" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Wing Attack.lua" />
+		<instant name="script_Confuse Ray" words="*sa36" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Confuse Ray.lua" />
+		<instant name="script_Hydro Cannon" words="*sa37" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Hydro Cannon.lua" />
+		<instant name="script_Air Slash" words="*sa38" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Air Slash.lua" />
+		<instant name="script_Flash Cannon" words="*sa43" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Flash Cannon.lua" />
+		<instant name="script_Twister" words="*sa46" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Twister.lua" />
+		<instant name="script_Air Cutter" words="*sa51" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Air Cutter.lua" />
+		<instant name="script_Power Gem" words="*sa53" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Power Gem.lua" />
+		<instant name="script_Zap Cannon" words="*sa60" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Zap Cannon.lua" />
+		<instant name="script_Brine" words="*sa62" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Brine.lua" />
+		<instant name="script_Charge Beam" words="*sa63" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Charge Beam.lua" />
+		<instant name="script_Bullet Punch" words="*sa64" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Bullet Punch.lua" />
+		<instant name="script_Signal Beam" words="*sa67" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Signal Beam.lua" />
+		<instant name="script_Sand-Attack" words="*sa69" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Sand-Attack.lua" />
+		<instant name="script_Venoshock" words="*sa73" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Venoshock.lua" />
+		<instant name="script_Meteor Mash" words="*sa17" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Meteor Mash.lua" />
+		<instant name="script_Silver Wind" words="*sa24" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Silver Wind.lua" />
+		<instant name="script_Mud Bomb" words="*st103" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Mud Bomb.lua" />
+		<instant name="script_Hyper Voice" words="*sa13" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Hyper Voice.lua" />
+		<instant name="script_Karate Chop" words="*st39" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Karate Chop.lua" />
+		<instant name="script_Powder Snow" words="*sa20" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Powder Snow.lua" />
+		<instant name="script_Fire Spin" words="*st25" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Fire Spin.lua" />
+		<instant name="script_Extrasensory" words="*sa80" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Extrasensory.lua" />
+		<instant name="script_Steel Wing" words="*sa82" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Steel Wing.lua" />
+		
+		<instant name="script_Growl" words="*sa89" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Growl.lua" />
+		<instant name="script_Disarming Voice" words="*sa90" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Disarming Voice.lua" />
+		<instant name="script_Overheat" words="*sa91" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Overheat.lua" />
+		<instant name="script_Dragon Breath" words="*sa92" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Dragon Breath.lua" />
+		<instant name="script_Blaze Kick" words="*sa93" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Blaze Kick.lua" />
+		<instant name="script_Scald" words="*sa94" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Scald.lua" />
+		<instant name="script_Freeze-Dry" words="*sa95" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Freeze-Dry.lua" />
+		<instant name="script_Dragon Rush" words="*sa96" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Dragon Rush.lua" />
+		<instant name="script_Fairy Wind" words="*sa97" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Fairy Wind.lua" />
+		<instant name="script_Sacred Fire" words="*sa98" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Sacred Fire.lua" />
+		<instant name="script_Aeroblast" words="*sa99" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Aeroblast.lua" />
+		<instant name="script_Heat Wave" words="*sa100" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Heat Wave.lua" />
+		<instant name="script_Dazzling Gleam" words="*sa101" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Dazzling Gleam.lua" />
+		<instant name="script_Uproar" words="*sa102" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Uproar.lua" />
+		<instant name="script_Frost Breath" words="*sa103" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Frost Breath.lua" />
+		<instant name="script_Icicle Crash" words="*sa104" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Icicle Crash.lua" />
+		<instant name="script_Roar" words="*sa88" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Roar.lua" />
+
+		<instant name="script_Doom Desire" words="*sa105" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Doom Desire.lua" />
+		<instant name="script_Echoed Voice" words="*sa106" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Echoed Voice.lua" />
+		<instant name="script_Boomburst" words="*sa107" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Boomburst.lua" />
+		<instant name="script_Origin Pulse" words="*sa108" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Origin Pulse.lua" />
+		<instant name="script_Luster Purge" words="*sa109" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Luster Purge.lua" />
+		<instant name="script_Surf" words="*sa110" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Surf.lua" />
+		<instant name="script_Sheer Cold" words="*st264" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Sheer Cold.lua"/>
+		<instant name="script_Defog" words="*st282" enabled="0" direction="1" script="../../lib/ps/events/spells/scripts/Defog.lua"/>
+	<!-- Stats(Self) -->
+		<instant name="script_Defense Curl" words="*ss2" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Defense Curl.lua" />
+		<instant name="script_Harden" words="*ss3" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Harden.lua" />
+		<instant name="script_Moonlight" words="*ss4" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Moonlight.lua" />
+		<instant name="script_Protect" words="*ss5" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Protect.lua" />
+		<instant name="script_Recover" words="*ss6" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Recover.lua" />
+		<instant name="script_Rest" words="*ss7" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Rest.lua" />
+		<instant name="script_Calm Mind" words="*ss9" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Calm Mind.lua" />
+		<instant name="script_Synthesis" words="*ss11" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Synthesis.lua" />
+		<instant name="script_Rain Dance" words="*ss12" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Rain Dance.lua" />
+		<instant name="script_Quiver Dance" words="*ss13" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Quiver Dance.lua" />
+		<instant name="script_Focus Energy" words="*ss14" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Focus Energy.lua" />
+		<instant name="script_Coil" words="*ss15" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Coil.lua" />
+		<instant name="script_Amnesia" words="*ss16" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Amnesia.lua" />
+		<instant name="script_Reflect" words="*ss17" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Reflect.lua" />
+		<instant name="script_Payback" words="*ss18" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Payback.lua" />
+		<instant name="script_Meditate" words="*ss19" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Meditate.lua" />
+		<instant name="script_Mirror Coat" words="*ss20" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Mirror Coat.lua" />
+		<instant name="script_Safeguard" words="*ss21" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Safeguard.lua" />
+		<instant name="script_Barrier" words="*ss22" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Barrier.lua" />
+		<instant name="script_Swords Dance" words="*ss23" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Swords Dance.lua" />
+		<instant name="script_Acid Armor" words="*ss24" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Acid Armor.lua" />
+		<instant name="script_Magic Coat" words="*ss25" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Magic Coat.lua" />
+		<instant name="script_Dragon Dance" words="*ss26" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Dragon Dance.lua" />
+		<instant name="script_Refresh" words="*ss27" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Refresh.lua" />
+		<instant name="script_Counter" words="*ss28" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Counter.lua" />
+		<instant name="script_Substitute" words="*ss29" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Substitute.lua" />
+		<instant name="script_Aqua Ring" words="*ss30" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Aqua Ring.lua" />
+		<instant name="script_Charge" words="*ss31" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Charge.lua" />
+		<instant name="script_Cotton Guard" words="*ss32" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Cotton Guard.lua" />
+		<instant name="script_Haze" words="*ss33" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Haze.lua" />
+		<instant name="script_Milk Drink" words="*ss34" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Milk Drink.lua" />
+		<instant name="script_Nasty Plot" words="*ss35" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Nasty Plot.lua" />
+		<instant name="script_Wish" words="*ss36" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Wish.lua" />
+		<instant name="script_Roost" words="*ss37" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Roost.lua" />
+		<instant name="script_Stockpile" words="*ss38" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Stockpile.lua" />
+		<instant name="script_Swallow" words="*ss39" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Swallow.lua" />
+
+		<instant name="script_Mind Reader" words="*ss40" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Mind Reader.lua" />
+		<instant name="script_Bulk Up" words="*ss41" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Bulk Up.lua" />
+		<instant name="script_Magnet Rise" words="*ss42" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Magnet Rise.lua" />
+		<instant name="script_Sunny Day" words="*ss43" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Sunny Day.lua" />
+		<instant name="script_Shell Smash" words="*ss44" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Shell Smash.lua" />
+		<instant name="script_Light Screen" words="*ss45" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Light Screen.lua" />
+		<instant name="script_Water Sport" words="*ss46" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Water Sport.lua" />
+		<instant name="script_Ingrain" words="*ss47" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Ingrain.lua" />
+		<instant name="script_Flower Shield" words="*ss48" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Flower Shield.lua" />
+		<instant name="script_Mud Sport" words="*ss49" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Mud Sport.lua" />
+		<instant name="script_Destiny Bond" words="*ss50" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Destiny Bond.lua"/>
+		<instant name="script_Reflect Type" words="*ss51" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Reflect Type.lua"/>
+		<instant name="script_Endure" words="*ss54" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Endure.lua"/>
+
+		<instant name="script_Hone Claws" words="*ss64" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Hone Claws.lua"/>
+		<instant name="script_Iron Defense" words="*ss65" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Iron Defense.lua"/>
+		<instant name="script_Camouflage" words="*ss66" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Camouflage.lua"/>
+		<instant name="script_Detect" words="*ss67" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Detect.lua"/>
+		<instant name="script_Cosmic Power" words="*ss68" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Cosmic Power.lua"/>
+		<instant name="script_Spiky Shield" words="*ss69" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Spiky Shield.lua"/>
+		<instant name="script_Grudge" words="*ss72" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/scripts/Grudge.lua"/>
+
+	<!-- Custom Spells (Event/Quest Spells) -->
+		<instant name="custom_Confusion" words="*sc1" enabled="0" script="../../lib/ps/events/spells/custom/Confusion.lua" />
+		<instant name="custom_Sleep" words="*sc2" enabled="0" script="../../lib/ps/events/spells/custom/Sleep.lua" />
+		<instant name="custom_Haste" words="*sc3" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/custom/Haste.lua" />
+		<instant name="custom_Invisible" words="*sc4" enabled="0" aggressive="0" selftarget="1" script="../../lib/ps/events/spells/custom/Invisible.lua" />
+		<instant name="custom_Hypnosis" words="*sc5" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/custom/Hypnosis.lua" />
+		<instant name="custom_FrozenArticunoBlizzard" words="*sc6" enabled="0" script="../../lib/ps/events/spells/custom/FrozenArticunoBlizzard.lua" />
+		<instant name="custom_RocketMissile" words="*sc7" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/custom/RocketMissile.lua" />
+		<instant name="custom_RocketSnowball" words="*sc8" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/custom/RocketSnowball.lua" />
+		<instant name="custom_MeowthSuperRocket" words="*sc9" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/custom/MeowthSuperRocket.lua" />
+		<instant name="custom_StantlerJump" words="*sc10" enabled="0" script="../../lib/ps/events/spells/custom/StantlerJump.lua" />
+		<instant name="custom_CakeSlow" words="*sc11" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/custom/CakeSlow.lua" />
+		<instant name="custom_CakePush" words="*sc12" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/custom/CakePush.lua" />
+		<instant name="custom_CakeSendBack" words="*sc13" enabled="0" casterTargetOrDirection="1" blockwalls="1" script="../../lib/ps/events/spells/custom/CakeSendBack.lua" />
+		<instant name="custom_BigCakeSendBack" words="*sc14" enabled="0" script="../../lib/ps/events/spells/custom/BigCakeSendBack.lua" />
+		<instant name="custom_BigCakeTransformation" words="*sc15" enabled="0" script="../../lib/ps/events/spells/custom/BigCakeTransformation.lua" />
+		<instant name="custom_BigCakeCrazyWalk" words="*sc16" enabled="0" script="../../lib/ps/events/spells/custom/BigCakeCrazyWalk.lua" />
+		<instant name="custom_BigCakeSugarRain" words="*sc17" enabled="0" script="../../lib/ps/events/spells/custom/BigCakeSugarRain.lua" />
+		<instant name="custom_UnsettledDittoTransformation" words="*sc18" enabled="0" script="../../lib/ps/events/spells/custom/UnsettledDittoTransformation.lua" />
+		<instant name="custom_Maskmar_Explosion_Before_Die" words="*sc19" enabled="0" script="../../lib/ps/events/spells/custom/MaskmarExplosionBeforeDie.lua" />
+		<instant name="custom_Maskmar_Regeneration" words="*sc20" enabled="0" script="../../lib/ps/events/spells/custom/MaskmarRegeneration.lua" />
+		<instant name="custom_Darkeon_Double_Team" words="*sc21" enabled="0" script="../../lib/ps/events/spells/custom/DarkeonDoubleTeam.lua" />
+</spells>

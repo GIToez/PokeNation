@@ -1,0 +1,78 @@
+ClansButton < UIButton
+  size: 83 250
+  
+  color: alpha
+  icon-color: #888888
+  border-width: 5
+  border-color: black
+  anchors.top: parent.top
+  anchors.left: parent.left
+  @onClick: clanWindow(doCorrectString(self:getText()))
+
+  $!first:
+    anchors.left: prev.right
+    margin-left: 4
+
+  $hover:
+    icon-color: #ffffff
+
+  $pressed:
+    icon-color: #cccccc
+
+Panel
+  HorizontalScrollBar
+    id: scrollBar
+    step: 86
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+
+  ScrollablePanel
+    horizontal-scrollbar: scrollBar
+    anchors.fill: parent
+    margin-bottom: 15
+
+    ClansButton
+      text: gardestrike
+      icon: /images/game/shop/clans/gardestrike
+      @onClick: modules.game_shop.clan1()     
+
+    ClansButton
+      text: malefic
+      icon: /images/game/shop/clans/malefic
+      @onClick: modules.game_shop.clan2()          
+
+    ClansButton
+      text: naturia
+      icon: /images/game/shop/clans/naturia
+      @onClick: modules.game_shop.clan3()        
+
+    ClansButton
+      text: orebound
+      icon: /images/game/shop/clans/orebound
+      @onClick: modules.game_shop.clan4()         
+
+    ClansButton
+      text: psycraft
+      icon: /images/game/shop/clans/psycraft
+      @onClick: modules.game_shop.clan5()          
+
+    ClansButton
+      text: raibolt
+      icon: /images/game/shop/clans/raibolt
+      @onClick:  modules.game_shop.clan6()         
+
+    ClansButton
+      text: seavell
+      icon: /images/game/shop/clans/seavell
+      @onClick:  modules.game_shop.clan7()     
+
+    ClansButton
+      text: volcanic
+      icon: /images/game/shop/clans/volcanic
+      @onClick:  modules.game_shop.clan8()    
+
+    ClansButton
+      text: wingeon
+      icon: /images/game/shop/clans/wingeon
+      @onClick:  modules.game_shop.clan8()     

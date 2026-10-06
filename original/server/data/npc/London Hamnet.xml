@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="London Hamnet" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1303" head="65" body="15" legs="45" feet="18"/>
+	<parameters>
+		<parameter key="message_greet" value="Ohh... Hello!"/>
+	</parameters>
+</npc>

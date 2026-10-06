@@ -1,0 +1,38 @@
+WelcomeWindow < HeadlessWindow
+  focusable: false
+  draggable: false
+  image-color: #ffffffee
+  image-source: /images/ui/welcome
+  size: 400 400
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  anchors.top: gameMapPanel.top
+  margin-left: 4
+  margin-top: 150
+  phantom: true
+
+HeadlessWindow
+  id: tipWindow
+  focusable: false
+  draggable: false
+  image-color: #ffffffee
+  //image-source: ~
+  size: 310 273
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  anchors.top: gameMapPanel.top
+  margin-left: 4
+  margin-top: 150
+  phantom: true
+
+  UIWidget
+    id: image
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: parent.top
+
+  Button
+    id: okButton
+    width: 96
+    !text: tr('Ok')
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    margin-bottom: 5
+    @onClick: modules.game_tips.onOkClick()

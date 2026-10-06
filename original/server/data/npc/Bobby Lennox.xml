@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Bobby Lennox" script="npcbattle_bobbyLennox.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1205" head="55" body="55" legs="44" feet="44"/>
+	<parameters>
+		<parameter key="message_greet" value="!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

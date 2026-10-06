@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Golduck" nameDescription="a Golduck" nickname="Dungeon Golduck" race="blood" experience="0" speed="285" manacost="0" minLevel="55" maxLevel="65">
+	<health now="80" max="80"/>
+	<look type="406" head="0" body="0" legs="0" feet="0" corpse="11443"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1176" skill="24" attack="82"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="78"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="GOLDUCKK!"/>
+	</voices>
+	<loot>
+	</loot>
+</monster>

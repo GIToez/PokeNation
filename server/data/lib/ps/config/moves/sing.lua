@@ -1,0 +1,20 @@
+MOVES["Sing"] = {
+    description = "Sing puts the target to sleep.",
+    makeSound = true,
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 11804,
+    iconId = 13430,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Sing",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 100,
+    requiredLevel = 30,
+    damage = 0,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_NOTHING,
+    areaEffect = EFFECT_PURPLE_SOUND,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 120,
+    cooldownStorage = 15113
+}

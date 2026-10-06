@@ -1,0 +1,19 @@
+MOVES["Megahorn"] = {
+    description = "Megahorn deals damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11738,
+    iconId = 13364,
+    dType = DAMAGE_TYPE_BUG,
+    functionName = "Megahorn",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 120,
+    requiredLevel = 60,
+    damage = 120,
+    damageType = ELEMENT_BUG,
+    effect = EFFECT_EARTH_EXPLOSION,
+    projectile = PROJECTILE_HORN,
+    maxDistance = 1,
+    cooldownTime = 18,
+    cooldownStorage = 15046
+}

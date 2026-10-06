@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Nidorina" nameDescription="a Shiny Nidorina" nickname="Nidorina" race="blood" experience="10" speed="256" manacost="0" sex="0" minLevel="25" maxLevel="35">
+	<health now="70" max="70" rate="1.1"/>
+	<look type="695" head="0" body="0" legs="0" feet="0" corpse="13850"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1785" skill="24" attack="62"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+	</attacks>
+	<defenses armor="10" defense="67"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="NIDORINA!"/>
+	</voices>
+	
+<loot><item id="14526" countmax="1" chance="22321"/><item id="14533" countmax="3" chance="78125"/><item id="14592" countmax="1" chance="3125"/><item id="14511" countmax="1" chance="62500"/><item id="2687" countmax="5" chance="3000"/><item id="8841" countmax="5" chance="3000"/><item id="12235" countmax="1" chance="50"/><item id="17845" countmax="1" chance="100"/></loot></monster>

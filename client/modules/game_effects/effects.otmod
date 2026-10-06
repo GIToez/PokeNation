@@ -1,0 +1,9 @@
+Module
+  name: game_effects
+  description: Effects
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ effects ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

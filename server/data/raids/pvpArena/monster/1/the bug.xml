@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="default" message="[Pvp Arena #1]: The Bug raid will begin in 10 minutes!"/>
+	<areaspawn delay="600000" centerx="769" centery="1602" centerz="7" radius="30">
+		<monster name="PvP Caterpie" minamount="100" maxamount="100"/>
+	</areaspawn>
+	<singlespawn delay="605000" name="The Bug" ref="yes" x="770" y="1614" z="7"/>
+</raid>

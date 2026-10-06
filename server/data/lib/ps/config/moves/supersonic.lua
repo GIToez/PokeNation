@@ -1,0 +1,19 @@
+MOVES["Supersonic"] = {
+    description = "Supersonic causes the target to become confused.",
+    makeSound = true,
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 11769,
+    iconId = 13395,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Supersonic",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 20,
+    requiredLevel = 12,
+    damage = 0,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BLOW,
+    projectile = PROJECTILE_SOUND,
+    maxDistance = 6,
+    cooldownTime = 14,
+    cooldownStorage = 15077
+}

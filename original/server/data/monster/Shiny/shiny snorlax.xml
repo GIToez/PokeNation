@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Snorlax" nameDescription="a Shiny Snorlax" nickname="Snorlax" race="blood" experience="17" speed="230" manacost="0" minLevel="85" maxLevel="95">
+	<health now="160" max="160" rate="1.1"/>
+	<look type="842" head="0" body="0" legs="0" feet="0" corpse="14248"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="3333" skill="24" attack="110"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="65"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SNORLAX!"/>
+	</voices>
+	
+<loot><item id="14584" countmax="4" chance="83333"/><item id="14583" countmax="1" chance="100000"/><item id="14581" countmax="1" chance="100000"/><item id="2687" countmax="3" chance="2000"/><item id="5097" countmax="1" chance="2000"/><item id="8841" countmax="3" chance="2000"/><item id="14464" countmax="3" chance="2000"/><item id="12232" countmax="1" chance="100"/><item id="17948" countmax="1" chance="100"/><item id="18913" countmax="1" chance="10"/><item id="18916" countmax="1" chance="10"/><item id="18926" countmax="1" chance="10"/><item id="23527" countmax="1" chance="20"/></loot></monster>

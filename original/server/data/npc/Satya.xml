@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Satya" script="quest_mastery.lua" walkinterval="3000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="914" head="55" body="35" legs="25" feet="55" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="I hope you have trained a lot, because today you will have to show for what you came."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

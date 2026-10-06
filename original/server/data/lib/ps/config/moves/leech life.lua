@@ -1,0 +1,19 @@
+MOVES["Leech Life"] = {
+    description = "Leech Life inflicts damage, and up to 50% of the damage dealt to the target is restored to the user as HP.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11732,
+    iconId = 13358,
+    dType = DAMAGE_TYPE_BUG,
+    functionName = "LeechLife",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 35,
+    requiredLevel = 10,
+    damage = 20,
+    damageType = ELEMENT_BUG,
+    effect = EFFECT_YELLOW_CIRCLE_THREE,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 7,
+    cooldownStorage = 15040
+}

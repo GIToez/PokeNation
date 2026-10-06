@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Scyther" nameDescription="a Shiny Scyther" nickname="Scyther" race="blood" experience="15" speed="305" manacost="0" minLevel="50" maxLevel="60">
+	<health now="70" max="70" rate="1.1"/>
+	<look type="822" head="0" body="0" legs="0" feet="0" corpse="14228"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="0952" skill="24" attack="110"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="80"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SCYTHER!!"/>
+	</voices>
+	
+<loot><item id="14536" countmax="1" chance="3750"/><item id="14584" countmax="3" chance="93750"/><item id="14583" countmax="1" chance="75000"/><item id="14581" countmax="1" chance="75000"/><item id="12241" countmax="1" chance="50"/><item id="18081" countmax="1" chance="50"/><item id="17931" countmax="1" chance="100"/></loot></monster>

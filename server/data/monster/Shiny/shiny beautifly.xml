@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Beautifly" nickname="Beautifly" nameDescription="a Shiny Beautifly" race="blood" experience="12" speed="265" manacost="0" minLevel="30" maxLevel="40">
+	<health now="60" max="60"/>
+	<look type="1826" corpse="29448"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1538" skill="24" attack="70"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="BEAUTIFLY!"/>
+	</voices>
+	
+<loot><item id="12113" countmax="1" chance="35714"/><item id="12126" countmax="1" chance="16666"/><item id="14466" countmax="1" chance="100000"/><item id="14503" countmax="1" chance="12500"/><item id="17786" countmax="1" chance="33333"/><item id="17793" countmax="1" chance="100000"/><item id="28878" countmax="1" chance="12500"/><item id="12241" countmax="1" chance="25"/><item id="18081" countmax="1" chance="25"/><item id="2674" countmax="5" chance="5000"/><item id="28991" countmax="1" chance="100"/><item id="23526" countmax="1" chance="10"/><item id="23528" countmax="1" chance="10"/><item id="17355" countmax="1" chance="5"/><item id="17356" countmax="1" chance="5"/><item id="18920" countmax="1" chance="5"/></loot></monster>

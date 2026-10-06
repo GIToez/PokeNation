@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Xyler" script="quest_mastery.lua" walkinterval="2200" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="919" head="55" body="35" legs="25" feet="55" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Today we will have to wet ourselves comrade!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

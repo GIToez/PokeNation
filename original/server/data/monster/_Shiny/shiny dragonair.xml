@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Dragonair" nameDescription="a Shiny Dragonair" nickname="Dragonair" race="blood" experience="10" speed="270" manacost="0" minLevel="70" maxLevel="80">
+	<health now="61" max="61" rate="1.1"/>
+	<look type="847" head="0" body="0" legs="0" feet="0" corpse="14253"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1428" skill="24" attack="84"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+	</attacks>
+	<defenses armor="10" defense="65"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="DRAGONAIRR!"/>
+	</voices>
+	
+<loot><item id="14529" countmax="6" chance="78125"/><item id="14592" countmax="1" chance="6250"/><item id="12240" countmax="1" chance="50"/><item id="17950" countmax="1" chance="100"/><item id="17358" countmax="1" chance="5"/><item id="17378" countmax="1" chance="5"/></loot></monster>

@@ -1,0 +1,17 @@
+MOVES["Final Gambit"] = {
+    description = "The user risks everything to attack its target. The user faints but does damage equal to its HP.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 27654,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FIGHTING,
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 100,
+    damage = 0,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_BIG_SHIELD,
+    projectile = nil,
+    maxDistance = 3,
+    cooldownTime = 60,
+    cooldownStorage = 15456,
+    makeContact = false,
+}

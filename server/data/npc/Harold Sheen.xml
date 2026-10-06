@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Harold Sheen" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1201" head="50" body="72" legs="142" feet="27" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello trainer, how you are? I have work to do..."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

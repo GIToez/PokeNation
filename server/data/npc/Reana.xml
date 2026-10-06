@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Reana" script="npcbattle_reana.lua" walkinterval="3500" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="194" head="40" body="114" legs="0" feet="40" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I'll bury you underground lots of rocks and earth. HAHAHAHA!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

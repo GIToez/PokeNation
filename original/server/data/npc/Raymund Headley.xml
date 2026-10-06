@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Raymund Headley" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="614" head="26" body="50" legs="55" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="FLY is the best way to travel around."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<npc name="Fergus" script="quest_fergus.lua" floorchange="0" walkinterval="0">
+	<health now="100" max="100"/>
+	<look type="1175"/>
+	<parameters>
+		<parameter key="message_greet" value="I'm bored! I want to fight!"/>
+		<parameter key="idletime" value="20" />
+	</parameters>
+</npc>

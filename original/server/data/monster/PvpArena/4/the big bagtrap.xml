@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Weepinbell" nameDescription="a weepinbell" nickname="The Poisonous Plant" race="blood" experience="40" speed="300" manacost="0" minLevel="100" maxLevel="100">
+	<health now="865" max="865"/>
+	<look type="748" head="0" body="0" legs="0" feet="0" corpse="14075"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="90"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="WEEPINBELL!"/>
+	</voices>
+	<loot>
+		<item id="12102" countmax="10" chance="100000"/> <!-- seeds -->
+	</loot>
+</monster>

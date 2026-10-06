@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Greyson Tranter" script="npcbattle_greysonTranter.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="612" head="50" body="20" legs="70" feet="70" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|! I'm Greyson Tranter, let's {battle}?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

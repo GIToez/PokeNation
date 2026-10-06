@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="default" message="[Pvp Arena #5]: The Thousand Arms raid will begin in 10 minutes!"/>
+	<areaspawn delay="600000" centerx="923" centery="1739" centerz="7" radius="30">
+		<monster name="PvP Tentacruel" minamount="100" maxamount="100"/>
+	</areaspawn>
+	<singlespawn delay="605000" name="The Thousand Arms" ref="yes" x="925" y="1750" z="7"/>
+</raid>

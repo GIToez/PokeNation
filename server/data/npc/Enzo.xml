@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Enzo" script="npcbattle_enzo.lua" walkinterval="3000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="194" head="63" body="114" legs="0" feet="63" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="This school is a message from the mother nature to all of you, are you capable of decrypting it?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

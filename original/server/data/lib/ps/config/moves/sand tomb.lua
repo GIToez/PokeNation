@@ -1,0 +1,19 @@
+MOVES["Sand Tomb"] = {
+    description = "Sand Tomb inflicts damage, hiting the target 5 times per use and lower the Speed of the target by two stages.",
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12078,
+    iconId = 0,
+    dType = DAMAGE_TYPE_GROUND,
+    functionName = "SandTomb",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 45,
+    requiredLevel = 15,
+    damage = 35 / 5,
+    damageType = ELEMENT_GROUND,
+    effect = EFFECT_SAND_EXPLOSION,
+    areaEffect = EFFECT_SAND_EXPLOSION,
+    projectile = PROJECTILE_EARTH,
+    maxDistance = 6,
+    cooldownTime = 15,
+    cooldownStorage = 15174
+}

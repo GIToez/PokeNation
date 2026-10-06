@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Muk" nameDescription="a Shiny Muk" nickname="Muk" race="blood" experience="12" speed="250" manacost="0" minLevel="35" maxLevel="45">
+	<health now="105" max="105" rate="1.1"/>
+	<look type="767" head="0" body="0" legs="0" feet="0" corpse="14094"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="24" attack="105"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="75"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="MUK!"/>
+	</voices>
+	
+<loot><item id="14533" countmax="4" chance="97222"/><item id="14569" countmax="1" chance="19444"/><item id="14511" countmax="3" chance="58333"/><item id="12235" countmax="1" chance="100"/><item id="17899" countmax="1" chance="100"/><item id="18923" countmax="1" chance="10"/><item id="18925" countmax="1" chance="10"/><item id="23524" countmax="1" chance="20"/></loot></monster>

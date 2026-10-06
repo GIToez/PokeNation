@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Ampharos" nameDescription="a Shiny Ampharos" nickname="Ampharos" race="blood" experience="15" speed="255" manacost="0" minLevel="85" maxLevel="95">
+	<health now="90" max="90" rate="1.1"/>
+	<look type="1270" head="0" body="0" legs="0" feet="0" corpse="18978"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="75"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="75"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="AMPHAROSS!"/>
+	</voices>
+	
+<loot><item id="14545" countmax="1" chance="13888"/><item id="14581" countmax="1" chance="50000"/><item id="14583" countmax="1" chance="50000"/><item id="14584" countmax="3" chance="62500"/><item id="17793" countmax="3" chance="100000"/><item id="17813" countmax="1" chance="33333"/><item id="12237" countmax="1" chance="100"/><item id="2677" countmax="5" chance="5000"/><item id="17981" countmax="1" chance="100"/><item id="17378" countmax="1" chance="10"/><item id="18921" countmax="1" chance="10"/><item id="18927" countmax="1" chance="10"/><item id="23518" countmax="1" chance="20"/></loot></monster>

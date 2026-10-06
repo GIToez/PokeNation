@@ -1,0 +1,19 @@
+MOVES["Flame Charge"] = {
+    description = "Flame Charge inflicts damage and raises the user's Speed by one level.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 16310,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FIRE,
+    functionName = "FlameCharge",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 50,
+    requiredLevel = 15,
+    damage = 50,
+    damageType = ELEMENT_FIRE,
+    effect = EFFECT_FIRE_BALL,
+    projectile = PROJECTILE_FIRE,
+    maxDistance = 6,
+    cooldownTime = 8,
+    cooldownStorage = 15271
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Serena Martinek" script="npcbattle_serenamartinek.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="631" head="100" body="36" legs="95" feet="45" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="This is no place for kids!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

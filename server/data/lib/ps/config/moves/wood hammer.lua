@@ -1,0 +1,20 @@
+MOVES["Wood Hammer"] = {
+    description = "Wood Hammer inflicts damage and has no secondary effect.",
+    makeContact = true,
+    makeRecoil = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 16335,
+    iconId = 0,
+    dType = DAMAGE_TYPE_GRASS,
+    functionName = "WoodHammer",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 120,
+    requiredLevel = 15,
+    damage = 120,
+    damageType = ELEMENT_GRASS,
+    effect = EFFECT_BIG_ROCK_EMERGE,
+    projectile = PROJECTILE_GRAVEL_TWO,
+    maxDistance = 1,
+    cooldownTime = 27,
+    cooldownStorage = 15295
+}

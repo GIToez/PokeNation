@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<houses>
+  <house name="Viridian House #1" houseid="1" entryx="439" entryy="615" entryz="7" rent="0" townid="1" size="61"/>
+  <house name="Viridian House #2" houseid="2" entryx="451" entryy="614" entryz="7" rent="0" townid="1" size="39"/>
+  <house name="Viridian House #3" houseid="3" entryx="466" entryy="621" entryz="7" rent="0" townid="1" size="73"/>
+  <house name="Viridian House #4" houseid="4" entryx="458" entryy="611" entryz="7" rent="0" townid="1" size="27"/>
+  <house name="Viridian House #5" houseid="5" entryx="466" entryy="611" entryz="7" rent="0" townid="1" size="59"/>
+  <house name="Viridian House #6" houseid="6" entryx="475" entryy="621" entryz="7" rent="0" townid="1" size="23"/>
+  <house name="Viridian House #7" houseid="7" entryx="478" entryy="611" entryz="7" rent="0" townid="1" size="52"/>
+  <house name="Viridian House #8" houseid="8" entryx="478" entryy="600" entryz="7" rent="0" townid="1" size="95"/>
+  <house name="Viridian House #9" houseid="9" entryx="483" entryy="591" entryz="7" rent="0" townid="1" size="83"/>
+  <house name="Viridian House #10" houseid="10" entryx="494" entryy="575" entryz="7" rent="0" townid="1" size="41"/>
+  <house name="Viridian House #11" houseid="11" entryx="480" entryy="577" entryz="7" rent="0" townid="1" size="23"/>
+  <house name="Viridian House #12" houseid="12" entryx="468" entryy="578" entryz="7" rent="0" townid="1" size="57"/>
+  <house name="Viridian House #13" houseid="13" entryx="456" entryy="577" entryz="7" rent="0" townid="1" size="58"/>
+  <house name="Viridian House #14" houseid="14" entryx="456" entryy="568" entryz="7" rent="0" townid="1" size="57"/>
+  <house name="Viridian House #15" houseid="15" entryx="467" entryy="575" entryz="7" rent="0" townid="1" size="41"/>
+  <house name="Viridian House #16" houseid="16" entryx="479" entryy="574" entryz="7" rent="0" townid="1" size="118"/>
+  <house name="Pewter House #1" houseid="17" entryx="514" entryy="283" entryz="7" rent="0" townid="2" size="38"/>
+  <house name="Pewter House #2" houseid="18" entryx="526" entryy="293" entryz="7" rent="0" townid="2" size="183"/>
+  <house name="Pewter House #3" houseid="19" entryx="542" entryy="277" entryz="7" rent="0" townid="2" size="122"/>
+  <house name="Pewter House #4" houseid="20" entryx="542" entryy="270" entryz="7" rent="0" townid="2" size="46"/>
+  <house name="Pewter House #5" houseid="21" entryx="541" entryy="261" entryz="7" rent="0" townid="2" size="143"/>
+  <house name="Pewter House #6" houseid="22" entryx="526" entryy="259" entryz="7" rent="0" townid="2" size="42"/>
+  <house name="Pewter House #7" houseid="23" entryx="514" entryy="260" entryz="7" rent="0" townid="2" size="70"/>
+  <house name="Pewter House #8" houseid="24" entryx="505" entryy="244" entryz="7" rent="0" townid="2" size="61"/>
+  <house name="Pewter House #9" houseid="25" entryx="487" entryy="278" entryz="7" rent="0" townid="2" size="28"/>
+  <house name="Pewter House #10" houseid="26" entryx="487" entryy="286" entryz="7" rent="0" townid="2" size="28"/>
+  <house name="Pewter House #11" houseid="27" entryx="487" entryy="285" entryz="6" rent="0" townid="2" size="22"/>
+  <house name="Pewter House #12" houseid="28" entryx="488" entryy="281" entryz="6" rent="0" townid="2" size="13"/>
+  <house name="Pewter Hosue #13" houseid="29" entryx="482" entryy="281" entryz="6" rent="0" townid="2" size="13"/>
+  <house name="Cerulean House #1" houseid="30" entryx="989" entryy="219" entryz="7" rent="0" townid="3" size="52"/>
+  <house name="Cerulean House #2" houseid="31" entryx="995" entryy="208" entryz="7" rent="0" townid="3" size="47"/>
+  <house name="Cerulean House #3" houseid="32" entryx="999" entryy="203" entryz="7" rent="0" townid="3" size="71"/>
+  <house name="Cerulean House #4" houseid="33" entryx="1011" entryy="200" entryz="7" rent="0" townid="3" size="41"/>
+  <house name="Cerulean House #5" houseid="34" entryx="1028" entryy="200" entryz="7" rent="0" townid="3" size="44"/>
+  <house name="Cerulean House #6" houseid="35" entryx="1038" entryy="200" entryz="7" rent="0" townid="3" size="75"/>
+  <house name="Cerulean House #7" houseid="36" entryx="989" entryy="239" entryz="7" rent="0" townid="3" size="63"/>
+  <house name="Cerulean House #8" houseid="37" entryx="996" entryy="246" entryz="7" rent="0" townid="3" size="44"/>
+  <house name="Cerulean House #9" houseid="38" entryx="1000" entryy="254" entryz="7" rent="0" townid="3" size="63"/>
+  <house name="Cerulean House #10" houseid="39" entryx="1004" entryy="249" entryz="7" rent="0" townid="3" size="79"/>
+  <house name="Cerulean House #11" houseid="40" entryx="1021" entryy="244" entryz="7" rent="0" townid="3" size="98"/>
+  <house name="Cerulean House #12" houseid="41" entryx="1037" entryy="244" entryz="7" rent="0" townid="3" size="54"/>
+  <house name="Cerulean House #13" houseid="42" entryx="1015" entryy="235" entryz="7" rent="0" townid="3" size="86"/>
+  <house name="Cerulean House #14" houseid="43" entryx="1009" entryy="221" entryz="7" rent="0" townid="3" size="30"/>
+  <house name="Cerulean House #15" houseid="44" entryx="992" entryy="225" entryz="7" rent="0" townid="3" size="34"/>
+  <house name="Saffron House #1" houseid="45" entryx="1000" entryy="389" entryz="6" rent="0" townid="4" size="77"/>
+  <house name="Saffron House #2" houseid="46" entryx="1013" entryy="373" entryz="6" rent="0" townid="4" size="77"/>
+  <house name="Saffron House #3" houseid="47" entryx="1022" entryy="373" entryz="6" rent="0" townid="4" size="33"/>
+  <house name="Saffron House #4" houseid="48" entryx="1010" entryy="392" entryz="6" rent="0" townid="4" size="27"/>
+  <house name="Saffron House #5" houseid="49" entryx="1021" entryy="392" entryz="6" rent="0" townid="4" size="23"/>
+  <house name="Saffron House #6" houseid="50" entryx="996" entryy="405" entryz="6" rent="0" townid="4" size="18"/>
+  <house name="Saffron House #7" houseid="51" entryx="1001" entryy="405" entryz="6" rent="0" townid="4" size="18"/>
+  <house name="Saffron House #8" houseid="52" entryx="995" entryy="406" entryz="6" rent="0" townid="4" size="22"/>
+  <house name="Saffron House #9" houseid="53" entryx="1001" entryy="406" entryz="6" rent="0" townid="4" size="22"/>
+  <house name="Saffron House #10" houseid="54" entryx="1001" entryy="405" entryz="5" rent="0" townid="4" size="36"/>
+  <house name="Saffron House #11" houseid="55" entryx="996" entryy="406" entryz="5" rent="0" townid="4" size="14"/>
+  <house name="Saffron House #12" houseid="56" entryx="1001" entryy="406" entryz="5" rent="0" townid="4" size="14"/>
+  <house name="Saffron House #13" houseid="57" entryx="1004" entryy="401" entryz="4" rent="0" townid="4" size="58"/>
+  <house name="Saffron House #14" houseid="58" entryx="1004" entryy="410" entryz="4" rent="0" townid="4" size="28"/>
+  <house name="Saffron House #15" houseid="59" entryx="1021" entryy="397" entryz="6" rent="0" townid="4" size="95"/>
+  <house name="Saffron House #16" houseid="60" entryx="1022" entryy="412" entryz="6" rent="0" townid="4" size="85"/>
+  <house name="Saffron House #17" houseid="61" entryx="1000" entryy="425" entryz="6" rent="0" townid="4" size="130"/>
+  <house name="Saffron House #18" houseid="62" entryx="1018" entryy="417" entryz="6" rent="0" townid="4" size="43"/>
+  <house name="Saffron House #19" houseid="63" entryx="1028" entryy="417" entryz="6" rent="0" townid="4" size="40"/>
+  <house name="Saffron House #20" houseid="64" entryx="1044" entryy="409" entryz="6" rent="0" townid="4" size="146"/>
+  <house name="Saffron House #21" houseid="65" entryx="1004" entryy="443" entryz="6" rent="0" townid="4" size="55"/>
+  <house name="Saffron House #22" houseid="66" entryx="1011" entryy="443" entryz="6" rent="0" townid="4" size="55"/>
+  <house name="Saffron House #23" houseid="67" entryx="1040" entryy="442" entryz="6" rent="0" townid="4" size="90"/>
+  <house name="Saffron House #24" houseid="68" entryx="1056" entryy="442" entryz="6" rent="0" townid="4" size="90"/>
+  <house name="Saffron House #25" houseid="69" entryx="1056" entryy="449" entryz="6" rent="0" townid="4" size="67"/>
+  <house name="Celadon House #1" houseid="70" entryx="913" entryy="387" entryz="7" rent="0" townid="5" size="59"/>
+  <house name="Celadon House #2" houseid="71" entryx="901" entryy="386" entryz="7" rent="0" townid="5" size="81"/>
+  <house name="Celadon House #3" houseid="72" entryx="889" entryy="387" entryz="7" rent="0" townid="5" size="85"/>
+  <house name="Celadon House #4" houseid="73" entryx="876" entryy="387" entryz="7" rent="0" townid="5" size="95"/>
+  <house name="Celadon House #5" houseid="74" entryx="842" entryy="395" entryz="7" rent="0" townid="5" size="118"/>
+  <house name="Celadon House #6" houseid="75" entryx="848" entryy="418" entryz="7" rent="0" townid="5" size="52"/>
+  <house name="Celadon House #7" houseid="76" entryx="858" entryy="420" entryz="7" rent="0" townid="5" size="140"/>
+  <house name="Celadon House #8" houseid="77" entryx="837" entryy="414" entryz="7" rent="0" townid="5" size="43"/>
+  <house name="Celadon House #9" houseid="78" entryx="840" entryy="420" entryz="7" rent="0" townid="5" size="138"/>
+  <house name="Celadon House #10" houseid="79" entryx="879" entryy="428" entryz="7" rent="0" townid="5" size="44"/>
+  <house name="Celadon House #11" houseid="80" entryx="882" entryy="438" entryz="7" rent="0" townid="5" size="58"/>
+  <house name="Celadon Hosue #12" houseid="81" entryx="889" entryy="441" entryz="7" rent="0" townid="5" size="77"/>
+  <house name="Celadon House #13" houseid="82" entryx="903" entryy="442" entryz="7" rent="0" townid="5" size="44"/>
+  <house name="Celadon House #14" houseid="83" entryx="916" entryy="440" entryz="7" rent="0" townid="5" size="76"/>
+  <house name="Celadon House #15" houseid="84" entryx="903" entryy="437" entryz="7" rent="0" townid="5" size="44"/>
+  <house name="Celadon House #16" houseid="85" entryx="883" entryy="424" entryz="7" rent="0" townid="5" size="86"/>
+  <house name="Celadon House #17" houseid="86" entryx="900" entryy="415" entryz="7" rent="0" townid="5" size="68"/>
+  <house name="Celadon House #18" houseid="87" entryx="913" entryy="397" entryz="7" rent="0" townid="5" size="80"/>
+  <house name="Celadon House #19" houseid="88" entryx="895" entryy="390" entryz="7" rent="0" townid="5" size="49"/>
+  <house name="Lavender House #1" houseid="89" entryx="1172" entryy="504" entryz="7" rent="0" townid="7" size="102"/>
+  <house name="Lavender House #2" houseid="90" entryx="1190" entryy="508" entryz="7" rent="0" townid="7" size="101"/>
+  <house name="Lavender House #3" houseid="91" entryx="1176" entryy="494" entryz="7" rent="0" townid="7" size="28"/>
+  <house name="Lavender House #4" houseid="92" entryx="1176" entryy="487" entryz="7" rent="0" townid="7" size="22"/>
+  <house name="Lavender House #5" houseid="93" entryx="1177" entryy="492" entryz="6" rent="0" townid="7" size="16"/>
+  <house name="Vermilion House #1" houseid="94" entryx="1012" entryy="571" entryz="7" rent="0" townid="6" size="94"/>
+  <house name="Vermilion House #2" houseid="95" entryx="986" entryy="574" entryz="7" rent="0" townid="6" size="110"/>
+  <house name="Vermilion House #3" houseid="96" entryx="1035" entryy="573" entryz="7" rent="0" townid="6" size="78"/>
+  <house name="Vermilion House #4" houseid="97" entryx="1040" entryy="582" entryz="7" rent="0" townid="6" size="86"/>
+  <house name="Vermilion House #5" houseid="98" entryx="1040" entryy="594" entryz="7" rent="0" townid="6" size="64"/>
+  <house name="Vermilion House #6" houseid="99" entryx="1043" entryy="606" entryz="7" rent="0" townid="6" size="55"/>
+  <house name="Vermilion House #7" houseid="100" entryx="1042" entryy="618" entryz="7" rent="0" townid="6" size="86"/>
+  <house name="Vermilion House #8" houseid="101" entryx="1066" entryy="625" entryz="7" rent="0" townid="6" size="50"/>
+  <house name="Vermilion House #9" houseid="102" entryx="1038" entryy="633" entryz="7" rent="0" townid="6" size="63"/>
+  <house name="Vermilion House #10" houseid="103" entryx="1033" entryy="644" entryz="7" rent="0" townid="6" size="48"/>
+  <house name="Vermilion House #11" houseid="104" entryx="1037" entryy="658" entryz="7" rent="0" townid="6" size="42"/>
+  <house name="Vermilion House #12" houseid="107" entryx="1034" entryy="669" entryz="7" rent="0" townid="6" size="81"/>
+  <house name="Vermilion House #13" houseid="108" entryx="1030" entryy="658" entryz="7" rent="0" townid="6" size="86"/>
+  <house name="Vermilion House #14" houseid="109" entryx="1032" entryy="630" entryz="7" rent="0" townid="6" size="49"/>
+  <house name="Vermilion House #15" houseid="110" entryx="1002" entryy="637" entryz="7" rent="0" townid="6" size="105"/>
+  <house name="Vermilion House #16" houseid="112" entryx="997" entryy="622" entryz="7" rent="0" townid="6" size="85"/>
+  <house name="Vermilion House #17" houseid="113" entryx="1010" entryy="597" entryz="7" rent="0" townid="6" size="97"/>
+  <house name="Vermilion House #18" houseid="114" entryx="1037" entryy="596" entryz="7" rent="0" townid="6" size="106"/>
+  <house name="Vermilion House #19" houseid="115" entryx="1016" entryy="586" entryz="7" rent="0" townid="6" size="42"/>
+  <house name="Fuchsia House #1" houseid="116" entryx="938" entryy="753" entryz="7" rent="0" townid="8" size="50"/>
+  <house name="Fuchsia House #2" houseid="117" entryx="917" entryy="752" entryz="7" rent="0" townid="8" size="88"/>
+  <house name="Fuchsia House #3" houseid="118" entryx="907" entryy="736" entryz="7" rent="0" townid="8" size="109"/>
+  <house name="Fuchsia House #4" houseid="119" entryx="897" entryy="749" entryz="7" rent="0" townid="8" size="66"/>
+  <house name="Fuchsia House #5" houseid="120" entryx="860" entryy="757" entryz="7" rent="0" townid="8" size="73"/>
+  <house name="Fuchsia House #6" houseid="121" entryx="850" entryy="775" entryz="7" rent="0" townid="8" size="64"/>
+  <house name="Fuchsia House #7" houseid="122" entryx="842" entryy="792" entryz="7" rent="0" townid="8" size="84"/>
+  <house name="Fuchsia House #8" houseid="123" entryx="850" entryy="799" entryz="7" rent="0" townid="8" size="77"/>
+  <house name="Fuchsia House #9" houseid="124" entryx="864" entryy="807" entryz="7" rent="0" townid="8" size="90"/>
+  <house name="Fuchsia House #10" houseid="126" entryx="890" entryy="780" entryz="6" rent="0" townid="8" size="70"/>
+  <house name="Fuchsia House #11" houseid="127" entryx="900" entryy="779" entryz="6" rent="0" townid="8" size="44"/>
+  <house name="Fuchsia House #12" houseid="128" entryx="896" entryy="790" entryz="6" rent="0" townid="8" size="79"/>
+  <house name="Fuchsia House #13" houseid="129" entryx="938" entryy="794" entryz="7" rent="0" townid="8" size="34"/>
+  <house name="Fuchsia House #14" houseid="130" entryx="945" entryy="799" entryz="7" rent="0" townid="8" size="82"/>
+  <house name="Fuchsia House #15" houseid="131" entryx="953" entryy="788" entryz="7" rent="0" townid="8" size="45"/>
+  <house name="Fuchsia House #16" houseid="132" entryx="943" entryy="783" entryz="7" rent="0" townid="8" size="97"/>
+  <house name="Fuchsia House #17" houseid="133" entryx="951" entryy="773" entryz="7" rent="0" townid="8" size="103"/>
+  <house name="Fuchsia House #18" houseid="134" entryx="940" entryy="769" entryz="7" rent="0" townid="8" size="45"/>
+  <house name="Cinnabar House #1" houseid="135" entryx="379" entryy="917" entryz="7" rent="0" townid="9" size="106"/>
+  <house name="Cinnabar House #2" houseid="136" entryx="377" entryy="902" entryz="7" rent="0" townid="9" size="49"/>
+  <house name="Cinnabar House #3" houseid="137" entryx="390" entryy="895" entryz="7" rent="0" townid="9" size="84"/>
+  <house name="Cinnabar House #4" houseid="138" entryx="410" entryy="885" entryz="7" rent="0" townid="9" size="50"/>
+  <house name="Cinnabar House #5" houseid="139" entryx="430" entryy="896" entryz="7" rent="0" townid="9" size="44"/>
+  <house name="Cinnabar House #6" houseid="140" entryx="425" entryy="919" entryz="7" rent="0" townid="9" size="45"/>
+  <house name="Cinnabar House #7" houseid="141" entryx="436" entryy="918" entryz="7" rent="0" townid="9" size="81"/>
+  <house name="Cinnabar House #8" houseid="142" entryx="438" entryy="905" entryz="7" rent="0" townid="9" size="67"/>
+  <house name="Cinnabar House #9" houseid="143" entryx="441" entryy="893" entryz="7" rent="0" townid="9" size="69"/>
+  <house name="Cinnabar House #10" houseid="144" entryx="417" entryy="879" entryz="7" rent="0" townid="9" size="95"/>
+  <house name="Cinnabar House #11" houseid="145" entryx="407" entryy="872" entryz="7" rent="0" townid="9" size="44"/>
+  <house name="Cinnabar House #12" houseid="146" entryx="427" entryy="864" entryz="7" rent="0" townid="9" size="44"/>
+  <house name="Cinnabar House #13" houseid="147" entryx="421" entryy="859" entryz="7" rent="0" townid="9" size="115"/>
+  <house name="Viridian Farm #1" houseid="148" entryx="434" entryy="576" entryz="7" rent="0" townid="1" size="6"/>
+  <house name="Viridian Farm #2" houseid="149" entryx="434" entryy="579" entryz="7" rent="0" townid="1" size="6"/>
+  <house name="Viridian Farm #3" houseid="150" entryx="434" entryy="582" entryz="7" rent="0" townid="1" size="6"/>
+  <house name="Viridian Farm #4" houseid="151" entryx="434" entryy="585" entryz="7" rent="0" townid="1" size="6"/>
+  <house name="Viridian Farm #5" houseid="152" entryx="436" entryy="576" entryz="7" rent="0" townid="1" size="6"/>
+  <house name="Viridian Farm #6" houseid="153" entryx="436" entryy="579" entryz="7" rent="0" townid="1" size="6"/>
+  <house name="Viridian Farm #7" houseid="154" entryx="436" entryy="582" entryz="7" rent="0" townid="1" size="6"/>
+  <house name="Viridian Farm #8" houseid="155" entryx="436" entryy="585" entryz="7" rent="0" townid="1" size="6"/>
+  <house name="Pewter Farm #1" houseid="156" entryx="474" entryy="250" entryz="7" rent="0" townid="2" size="6"/>
+  <house name="Pewter Farm #2" houseid="157" entryx="478" entryy="255" entryz="7" rent="0" townid="2" size="6"/>
+  <house name="Pewter Farm #3" houseid="158" entryx="481" entryy="248" entryz="7" rent="0" townid="2" size="6"/>
+  <house name="Pewter Farm #4" houseid="159" entryx="491" entryy="241" entryz="7" rent="0" townid="2" size="6"/>
+  <house name="Pewter Farm #5" houseid="160" entryx="485" entryy="235" entryz="7" rent="0" townid="2" size="6"/>
+  <house name="Celadon Farm #1" houseid="161" entryx="918" entryy="433" entryz="7" rent="0" townid="5" size="6"/>
+  <house name="Celadon Farm #2" houseid="162" entryx="922" entryy="433" entryz="7" rent="0" townid="5" size="6"/>
+  <house name="Celadon Farm #3" houseid="163" entryx="924" entryy="434" entryz="7" rent="0" townid="5" size="6"/>
+  <house name="Celadon Farm #4" houseid="164" entryx="926" entryy="432" entryz="7" rent="0" townid="5" size="6"/>
+  <house name="Celadon Farm #5" houseid="165" entryx="926" entryy="434" entryz="7" rent="0" townid="5" size="6"/>
+  <house name="Vermilion Farm #1" houseid="166" entryx="978" entryy="628" entryz="7" rent="0" townid="6" size="6"/>
+  <house name="Vermilion Farm #2" houseid="167" entryx="978" entryy="624" entryz="7" rent="0" townid="6" size="6"/>
+  <house name="Vermilion Farm #3" houseid="168" entryx="979" entryy="623" entryz="7" rent="0" townid="6" size="6"/>
+  <house name="Vermilion Farm #4" houseid="169" entryx="983" entryy="623" entryz="7" rent="0" townid="6" size="6"/>
+  <house name="Vermilion Farm #5" houseid="170" entryx="980" entryy="627" entryz="7" rent="0" townid="6" size="6"/>
+  <house name="Vermilion Farm #6" houseid="171" entryx="980" entryy="630" entryz="7" rent="0" townid="6" size="6"/>
+  <house name="Fuchsia Farm #1" houseid="172" entryx="890" entryy="733" entryz="7" rent="0" townid="8" size="6"/>
+  <house name="Fuchsia Farm #2" houseid="173" entryx="888" entryy="727" entryz="7" rent="0" townid="8" size="6"/>
+  <house name="Fuchsia Farm #3" houseid="174" entryx="890" entryy="729" entryz="7" rent="0" townid="8" size="6"/>
+  <house name="Fuchsia Farm #4" houseid="175" entryx="890" entryy="725" entryz="7" rent="0" townid="8" size="6"/>
+  <house name="Fuchsia Farm #5" houseid="176" entryx="894" entryy="724" entryz="7" rent="0" townid="8" size="6"/>
+  <house name="Fuchsia Farm #6" houseid="177" entryx="898" entryy="725" entryz="7" rent="0" townid="8" size="6"/>
+  <house name="Hamlin House #01" houseid="178" entryx="849" entryy="1148" entryz="7" rent="0" townid="11" size="33"/>
+  <house name="Hamlin House #02" houseid="179" entryx="861" entryy="1145" entryz="7" rent="0" townid="11" size="33"/>
+  <house name="Hamlin House #03" houseid="180" entryx="878" entryy="1147" entryz="7" rent="0" townid="11" size="61"/>
+  <house name="Hamlin House #04" houseid="181" entryx="875" entryy="1157" entryz="7" rent="0" townid="11" size="63"/>
+  <house name="Hamlin House #05" houseid="182" entryx="863" entryy="1164" entryz="7" rent="0" townid="11" size="55"/>
+  <house name="Hamlin House #06" houseid="183" entryx="854" entryy="1163" entryz="7" rent="0" townid="11" size="36"/>
+  <house name="Hamlin House #07" houseid="184" entryx="814" entryy="1186" entryz="7" rent="0" townid="11" size="37"/>
+  <house name="Hamlin House #08" houseid="185" entryx="822" entryy="1189" entryz="7" rent="0" townid="11" size="47"/>
+  <house name="Hamlin House #09" houseid="186" entryx="825" entryy="1185" entryz="7" rent="0" townid="11" size="51"/>
+  <house name="Hamlin House #10" houseid="187" entryx="924" entryy="1178" entryz="7" rent="0" townid="11" size="65"/>
+  <house name="Hamlin House #11" houseid="188" entryx="933" entryy="1190" entryz="7" rent="0" townid="11" size="27"/>
+  <house name="Hamlin House #12" houseid="189" entryx="940" entryy="1192" entryz="7" rent="0" townid="11" size="33"/>
+  <house name="Hamlin House #13" houseid="190" entryx="930" entryy="1197" entryz="7" rent="0" townid="11" size="53"/>
+  <house name="Hamlin House #14" houseid="191" entryx="934" entryy="1198" entryz="7" rent="0" townid="11" size="25"/>
+  <house name="Hamlin House #15" houseid="192" entryx="946" entryy="1195" entryz="7" rent="0" townid="11" size="55"/>
+  <house name="Kumquat House #01" houseid="193" entryx="944" entryy="1381" entryz="7" rent="0" townid="12" size="120"/>
+  <house name="Kumquat House #02" houseid="194" entryx="962" entryy="1383" entryz="7" rent="0" townid="12" size="123"/>
+  <house name="Kumquat House #03" houseid="195" entryx="929" entryy="1364" entryz="7" rent="0" townid="12" size="103"/>
+  <house name="Kumquat House #04" houseid="196" entryx="947" entryy="1359" entryz="7" rent="0" townid="12" size="108"/>
+  <house name="Kumquat House #05" houseid="197" entryx="962" entryy="1361" entryz="7" rent="0" townid="12" size="96"/>
+  <house name="Kumquat House #06" houseid="198" entryx="968" entryy="1358" entryz="7" rent="0" townid="12" size="60"/>
+  <house name="Kumquat House #07" houseid="199" entryx="957" entryy="1350" entryz="7" rent="0" townid="12" size="105"/>
+  <house name="Kumquat House #08" houseid="200" entryx="944" entryy="1353" entryz="7" rent="0" townid="12" size="51"/>
+  <house name="Kumquat House #09" houseid="201" entryx="916" entryy="1358" entryz="7" rent="0" townid="12" size="63"/>
+  <house name="Kumquat House #10" houseid="202" entryx="887" entryy="1371" entryz="7" rent="0" townid="12" size="107"/>
+  <house name="Kumquat House #11" houseid="203" entryx="905" entryy="1384" entryz="7" rent="0" townid="12" size="121"/>
+  <house name="Kumquat House #12" houseid="204" entryx="873" entryy="1378" entryz="7" rent="0" townid="12" size="129"/>
+  <house name="Kumquat House #13" houseid="205" entryx="854" entryy="1387" entryz="7" rent="0" townid="12" size="131"/>
+  <house name="Kumquat House #14" houseid="206" entryx="855" entryy="1392" entryz="7" rent="0" townid="12" size="94"/>
+  <house name="Kumquat House #15" houseid="207" entryx="850" entryy="1414" entryz="7" rent="0" townid="12" size="122"/>
+  <house name="Shamouti House #01" houseid="208" entryx="923" entryy="1614" entryz="7" rent="0" townid="14" size="39"/>
+  <house name="Shamouti House #02" houseid="209" entryx="916" entryy="1612" entryz="7" rent="0" townid="14" size="53"/>
+  <house name="Shamouti House #03" houseid="210" entryx="924" entryy="1620" entryz="7" rent="0" townid="14" size="88"/>
+  <house name="Shamouti House #04" houseid="211" entryx="943" entryy="1614" entryz="7" rent="0" townid="14" size="102"/>
+  <house name="Shamouti House #05" houseid="212" entryx="952" entryy="1611" entryz="7" rent="0" townid="14" size="72"/>
+  <house name="Shamouti House #06" houseid="213" entryx="911" entryy="1591" entryz="7" rent="0" townid="14" size="40"/>
+  <house name="Shamouti House #07" houseid="214" entryx="913" entryy="1590" entryz="7" rent="0" townid="14" size="79"/>
+  <house name="Shamouti House #08" houseid="215" entryx="927" entryy="1580" entryz="7" rent="0" townid="14" size="73"/>
+  <house name="Shamouti House #09" houseid="216" entryx="931" entryy="1587" entryz="7" rent="0" townid="14" size="87"/>
+  <house name="Shamouti House #10" houseid="217" entryx="942" entryy="1579" entryz="7" rent="0" townid="14" size="69"/>
+  <house name="Tarroco House #01" houseid="218" entryx="640" entryy="1177" entryz="5" rent="0" townid="28" size="69"/>
+  <house name="Tarroco House #02" houseid="219" entryx="650" entryy="1181" entryz="5" rent="0" townid="28" size="78"/>
+  <house name="Tarroco House #03" houseid="220" entryx="652" entryy="1156" entryz="5" rent="0" townid="28" size="99"/>
+  <house name="Pummelo House #01" houseid="222" entryx="458" entryy="1404" entryz="7" rent="0" townid="13" size="104"/>
+  <house name="Pummelo House #02" houseid="223" entryx="456" entryy="1395" entryz="7" rent="0" townid="13" size="70"/>
+  <house name="Pummelo House #04" houseid="225" entryx="470" entryy="1382" entryz="7" rent="0" townid="13" size="87"/>
+  <house name="Pummelo House #05" houseid="226" entryx="479" entryy="1384" entryz="7" rent="0" townid="13" size="88"/>
+  <house name="Pummelo House #06" houseid="227" entryx="494" entryy="1377" entryz="7" rent="0" townid="13" size="71"/>
+  <house name="Pummelo House #07" houseid="228" entryx="478" entryy="1371" entryz="7" rent="0" townid="13" size="59"/>
+  <house name="Pummelo House #03" houseid="229" entryx="446" entryy="1386" entryz="7" rent="0" townid="13" size="38"/>
+  <house name="Pummelo House #08" houseid="230" entryx="467" entryy="1378" entryz="7" rent="0" townid="13" size="75"/>
+  <house name="Pummelo House #09" houseid="231" entryx="468" entryy="1360" entryz="7" rent="0" townid="13" size="69"/>
+  <house name="Pummelo House #10" houseid="232" entryx="493" entryy="1359" entryz="7" rent="0" townid="13" size="69"/>
+  <house name="Pummelo House #11" houseid="233" entryx="496" entryy="1361" entryz="7" rent="0" townid="13" size="79"/>
+  <house name="Pummelo House #12" houseid="234" entryx="453" entryy="1368" entryz="7" rent="0" townid="13" size="69"/>
+  <house name="Pummelo House #13" houseid="235" entryx="456" entryy="1368" entryz="7" rent="0" townid="13" size="27"/>
+  <house name="Pummelo House #14" houseid="237" entryx="438" entryy="1363" entryz="7" rent="0" townid="13" size="87"/>
+  <house name="Pummelo House #15" houseid="238" entryx="449" entryy="1356" entryz="7" rent="0" townid="13" size="108"/>
+  <house name="Mandarin North Room #01" houseid="239" entryx="348" entryy="1949" entryz="7" rent="0" townid="26" size="32"/>
+  <house name="Mandarin North Room #02" houseid="240" entryx="340" entryy="1947" entryz="7" rent="0" townid="26" size="39"/>
+  <house name="Mandarin North Room #03" houseid="241" entryx="342" entryy="1947" entryz="6" rent="0" townid="26" size="20"/>
+  <house name="Mandarin North Room #04" houseid="242" entryx="345" entryy="1952" entryz="6" rent="0" townid="26" size="21"/>
+  <house name="Mandarin North Room #05" houseid="243" entryx="338" entryy="1950" entryz="5" rent="0" townid="26" size="28"/>
+  <house name="Mandarin North Room #06" houseid="244" entryx="344" entryy="1953" entryz="5" rent="0" townid="26" size="51"/>
+  <house name="Mandarin North House #01" houseid="245" entryx="335" entryy="1941" entryz="7" rent="0" townid="26" size="75"/>
+  <house name="Mandarin North House #02" houseid="246" entryx="342" entryy="1937" entryz="7" rent="0" townid="26" size="48"/>
+  <house name="Mandarin North House #03" houseid="247" entryx="334" entryy="1930" entryz="7" rent="0" townid="26" size="69"/>
+  <house name="Mandarin North House #04" houseid="248" entryx="358" entryy="1922" entryz="7" rent="0" townid="26" size="58"/>
+  <house name="Mandarin North House #05" houseid="249" entryx="376" entryy="1922" entryz="7" rent="0" townid="26" size="58"/>
+  <house name="Mandarin North House #06" houseid="250" entryx="358" entryy="1912" entryz="7" rent="0" townid="26" size="80"/>
+  <house name="Mandarin North House #07" houseid="251" entryx="380" entryy="1917" entryz="7" rent="0" townid="26" size="36"/>
+  <house name="Mandarin North House #08" houseid="252" entryx="386" entryy="1905" entryz="7" rent="0" townid="26" size="82"/>
+  <house name="Mandarin North House #09" houseid="253" entryx="348" entryy="1900" entryz="7" rent="0" townid="26" size="31"/>
+  <house name="Mikan Room #01" houseid="254" entryx="142" entryy="2132" entryz="7" rent="0" townid="25" size="16"/>
+  <house name="Mikan Room #02" houseid="255" entryx="142" entryy="2129" entryz="7" rent="0" townid="25" size="16"/>
+  <house name="Mikan Room #03" houseid="256" entryx="125" entryy="2135" entryz="7" rent="0" townid="25" size="33"/>
+  <house name="Mikan House #01" houseid="257" entryx="142" entryy="2144" entryz="7" rent="0" townid="25" size="60"/>
+  <house name="Mikan House #02" houseid="258" entryx="98" entryy="2140" entryz="7" rent="0" townid="25" size="85"/>
+  <house name="Mikan House #03" houseid="259" entryx="79" entryy="2138" entryz="7" rent="0" townid="25" size="63"/>
+  <house name="Mikan House #04" houseid="260" entryx="76" entryy="2145" entryz="7" rent="0" townid="25" size="76"/>
+  <house name="Mikan House #05" houseid="261" entryx="93" entryy="2151" entryz="7" rent="0" townid="25" size="27"/>
+  <house name="Mikan House #06" houseid="262" entryx="110" entryy="2156" entryz="7" rent="0" townid="25" size="56"/>
+  <house name="Mikan House #07" houseid="263" entryx="111" entryy="2161" entryz="7" rent="0" townid="25" size="94"/>
+  <house name="Mikan House #08" houseid="264" entryx="117" entryy="2156" entryz="7" rent="0" townid="25" size="53"/>
+  <house name="Sunburst House #01" houseid="265" entryx="437" entryy="2247" entryz="6" rent="0" townid="24" size="30"/>
+  <house name="Sunburst House #02" houseid="266" entryx="415" entryy="2239" entryz="6" rent="0" townid="24" size="33"/>
+  <house name="Sunburst House #03" houseid="267" entryx="421" entryy="2239" entryz="5" rent="0" townid="24" size="18"/>
+  <house name="Sunburst House #04" houseid="268" entryx="413" entryy="2236" entryz="6" rent="0" townid="24" size="41"/>
+  <house name="Sunburst House #05" houseid="269" entryx="397" entryy="2260" entryz="6" rent="0" townid="24" size="38"/>
+  <house name="Tangelo House #01" houseid="270" entryx="145" entryy="2516" entryz="6" rent="0" townid="23" size="42"/>
+  <house name="Tangelo House #02" houseid="271" entryx="155" entryy="2520" entryz="6" rent="0" townid="23" size="67"/>
+  <house name="Tangelo House #03" houseid="272" entryx="164" entryy="2520" entryz="6" rent="0" townid="23" size="49"/>
+  <house name="Tangelo House #04" houseid="273" entryx="167" entryy="2519" entryz="6" rent="0" townid="23" size="54"/>
+  <house name="Tangelo House #05" houseid="274" entryx="171" entryy="2511" entryz="6" rent="0" townid="23" size="26"/>
+  <house name="Tangelo House #06" houseid="275" entryx="135" entryy="2507" entryz="6" rent="0" townid="23" size="39"/>
+  <house name="Tangelo House #07" houseid="276" entryx="139" entryy="2497" entryz="6" rent="0" townid="23" size="69"/>
+  <house name="Butwal House #01" houseid="278" entryx="1556" entryy="1438" entryz="7" rent="0" townid="15" size="91"/>
+  <house name="Butwal House #02" houseid="279" entryx="1557" entryy="1447" entryz="7" rent="0" townid="15" size="77"/>
+  <house name="Butwal House #03" houseid="280" entryx="1554" entryy="1458" entryz="7" rent="0" townid="15" size="90"/>
+  <house name="Butwal House #04" houseid="281" entryx="1546" entryy="1454" entryz="7" rent="0" townid="15" size="63"/>
+  <house name="Ascorbia House #01" houseid="282" entryx="1845" entryy="1404" entryz="7" rent="0" townid="16" size="63"/>
+  <house name="Ascorbia House #02" houseid="283" entryx="1827" entryy="1425" entryz="7" rent="0" townid="16" size="77"/>
+  <house name="Ascorbia House #03" houseid="284" entryx="1840" entryy="1409" entryz="7" rent="0" townid="16" size="64"/>
+  <house name="Ascorbia House #04" houseid="285" entryx="1832" entryy="1420" entryz="7" rent="0" townid="16" size="79"/>
+  <house name="Ascorbia House #05" houseid="286" entryx="1853" entryy="1423" entryz="7" rent="0" townid="16" size="87"/>
+  <house name="Ascorbia House #06" houseid="287" entryx="1828" entryy="1431" entryz="7" rent="0" townid="16" size="86"/>
+  <house name="Ascorbia House #07" houseid="288" entryx="1859" entryy="1419" entryz="7" rent="0" townid="16" size="48"/>
+  <house name="Ascorbia House #08" houseid="289" entryx="1853" entryy="1406" entryz="7" rent="0" townid="16" size="74"/>
+  <house name="Ascorbia House #09" houseid="290" entryx="1851" entryy="1380" entryz="6" rent="0" townid="16" size="66"/>
+  <house name="Ascorbia House #10" houseid="291" entryx="1869" entryy="1385" entryz="6" rent="0" townid="16" size="43"/>
+  <house name="Ascorbia House #11" houseid="292" entryx="1868" entryy="1379" entryz="6" rent="0" townid="16" size="75"/>
+  <house name="Ascorbia House #12" houseid="293" entryx="1885" entryy="1384" entryz="6" rent="0" townid="16" size="79"/>
+  <house name="Seven Grapefruit House #01" houseid="294" entryx="1695" entryy="2205" entryz="7" rent="0" townid="18" size="49"/>
+  <house name="Seven Grapefruit House #02" houseid="295" entryx="1699" entryy="2215" entryz="7" rent="0" townid="18" size="55"/>
+  <house name="Seven Grapefruit House #03" houseid="296" entryx="1698" entryy="2205" entryz="7" rent="0" townid="18" size="53"/>
+  <house name="Seven Grapefruit House #04" houseid="297" entryx="1699" entryy="2193" entryz="7" rent="0" townid="18" size="31"/>
+  <house name="Seven Grapefruit House #05" houseid="298" entryx="1711" entryy="2186" entryz="7" rent="0" townid="18" size="64"/>
+  <house name="Seven Grapefruit House #06" houseid="299" entryx="1761" entryy="2374" entryz="7" rent="0" townid="18" size="36"/>
+  <house name="Seven Grapefruit House #07" houseid="300" entryx="1769" entryy="2384" entryz="7" rent="0" townid="18" size="99"/>
+  <house name="Seven Grapefruit House #08" houseid="301" entryx="1778" entryy="2393" entryz="7" rent="0" townid="18" size="40"/>
+  <house name="Seven Grapefruit House #09" houseid="302" entryx="1788" entryy="2385" entryz="7" rent="0" townid="18" size="69"/>
+  <house name="Seven Grapefruit House #10" houseid="303" entryx="1789" entryy="2373" entryz="7" rent="0" townid="18" size="39"/>
+  <house name="Moro House #01" houseid="304" entryx="1552" entryy="2643" entryz="7" rent="0" townid="19" size="32"/>
+  <house name="Moro House #02" houseid="305" entryx="1550" entryy="2650" entryz="7" rent="0" townid="19" size="30"/>
+  <house name="Moro House #03" houseid="306" entryx="1552" entryy="2657" entryz="7" rent="0" townid="19" size="10"/>
+  <house name="Moro House #04" houseid="307" entryx="1552" entryy="2657" entryz="6" rent="0" townid="19" size="10"/>
+  <house name="Moro House #05" houseid="308" entryx="1552" entryy="2657" entryz="5" rent="0" townid="19" size="10"/>
+  <house name="Moro House #06" houseid="309" entryx="1574" entryy="2657" entryz="7" rent="0" townid="19" size="43"/>
+  <house name="Moro House #07" houseid="310" entryx="1576" entryy="2652" entryz="7" rent="0" townid="19" size="73"/>
+  <house name="Moro House #08" houseid="311" entryx="1579" entryy="2634" entryz="7" rent="0" townid="19" size="52"/>
+  <house name="Moro House #09" houseid="312" entryx="1585" entryy="2634" entryz="7" rent="0" townid="19" size="48"/>
+  <house name="Moro House #10" houseid="313" entryx="1584" entryy="2626" entryz="7" rent="0" townid="19" size="61"/>
+  <house name="Moro House #11" houseid="314" entryx="1577" entryy="2624" entryz="7" rent="0" townid="19" size="63"/>
+  <house name="Moro House #12" houseid="315" entryx="1582" entryy="2616" entryz="7" rent="0" townid="19" size="62"/>
+  <house name="Moro House #13" houseid="316" entryx="1603" entryy="2606" entryz="7" rent="0" townid="19" size="37"/>
+  <house name="Murcott House #01" houseid="318" entryx="1615" entryy="2838" entryz="7" rent="0" townid="20" size="56"/>
+  <house name="Murcott House #02" houseid="319" entryx="1626" entryy="2844" entryz="7" rent="0" townid="20" size="38"/>
+  <house name="Murcott House #03" houseid="320" entryx="1620" entryy="2863" entryz="7" rent="0" townid="20" size="55"/>
+  <house name="Murcott House #04" houseid="321" entryx="1600" entryy="2870" entryz="7" rent="0" townid="20" size="109"/>
+  <house name="Murcott House #05" houseid="322" entryx="1593" entryy="2851" entryz="7" rent="0" townid="20" size="69"/>
+  <house name="Murcott House #06" houseid="323" entryx="1588" entryy="2848" entryz="7" rent="0" townid="20" size="81"/>
+  <house name="Murcott House #07" houseid="324" entryx="1584" entryy="2849" entryz="7" rent="0" townid="20" size="91"/>
+  <house name="Murcott House #08" houseid="325" entryx="1593" entryy="2880" entryz="7" rent="0" townid="20" size="76"/>
+  <house name="Murcott House #09" houseid="326" entryx="1583" entryy="2881" entryz="7" rent="0" townid="20" size="45"/>
+  <house name="Murcott House #10" houseid="327" entryx="1600" entryy="2883" entryz="7" rent="0" townid="20" size="73"/>
+  <house name="Murcott Room #01" houseid="328" entryx="1563" entryy="2862" entryz="7" rent="0" townid="20" size="18"/>
+  <house name="Murcott Room #02" houseid="329" entryx="1563" entryy="2858" entryz="7" rent="0" townid="20" size="18"/>
+  <house name="Murcott Room #03" houseid="330" entryx="1563" entryy="2854" entryz="7" rent="0" townid="20" size="18"/>
+  <house name="Murcott Room #04" houseid="331" entryx="1562" entryy="2854" entryz="6" rent="0" townid="20" size="14"/>
+  <house name="Murcott Room #05" houseid="332" entryx="1562" entryy="2858" entryz="6" rent="0" townid="20" size="14"/>
+  <house name="Murcott Room #06" houseid="333" entryx="1563" entryy="2862" entryz="6" rent="0" townid="20" size="18"/>
+  <house name="Trovitopolis House #01" houseid="334" entryx="863" entryy="2906" entryz="6" rent="0" townid="29" size="43"/>
+  <house name="Trovitopolis House #02" houseid="335" entryx="860" entryy="2906" entryz="5" rent="0" townid="29" size="36"/>
+  <house name="Trovitopolis House #03" houseid="336" entryx="858" entryy="2920" entryz="6" rent="0" townid="29" size="91"/>
+  <house name="Trovitopolis House #04" houseid="337" entryx="866" entryy="2921" entryz="6" rent="0" townid="29" size="90"/>
+  <house name="Trovitopolis House #05" houseid="338" entryx="880" entryy="2923" entryz="6" rent="0" townid="29" size="107"/>
+  <house name="Trovitopolis House #06" houseid="339" entryx="905" entryy="2922" entryz="6" rent="0" townid="29" size="76"/>
+  <house name="Trovitopolis House #07" houseid="340" entryx="901" entryy="2910" entryz="6" rent="0" townid="29" size="51"/>
+  <house name="Trovitopolis House #08" houseid="341" entryx="914" entryy="2918" entryz="6" rent="0" townid="29" size="40"/>
+  <house name="Trovitopolis Room #01" houseid="342" entryx="876" entryy="2893" entryz="6" rent="0" townid="29" size="18"/>
+  <house name="Trovitopolis Room #02" houseid="343" entryx="872" entryy="2893" entryz="6" rent="0" townid="29" size="18"/>
+  <house name="Trovitopolis Room #03" houseid="344" entryx="868" entryy="2893" entryz="6" rent="0" townid="29" size="18"/>
+  <house name="Trovitopolis Room #04" houseid="345" entryx="878" entryy="2931" entryz="6" rent="0" townid="29" size="26"/>
+  <house name="Trovitopolis Room #05" houseid="346" entryx="879" entryy="2931" entryz="6" rent="0" townid="29" size="18"/>
+  <house name="Trovitopolis Room #06" houseid="347" entryx="878" entryy="2931" entryz="5" rent="0" townid="29" size="26"/>
+  <house name="Trovitopolis Room #07" houseid="348" entryx="880" entryy="2931" entryz="5" rent="0" townid="29" size="26"/>
+  <house name="Trovitopolis Room #08" houseid="349" entryx="905" entryy="2907" entryz="5" rent="0" townid="29" size="26"/>
+  <house name="Trovitopolis Room #09" houseid="350" entryx="906" entryy="2906" entryz="5" rent="0" townid="29" size="10"/>
+  <house name="Mandarin South House #01" houseid="351" entryx="992" entryy="2851" entryz="7" rent="0" townid="31" size="65"/>
+  <house name="Mandarin South House #02" houseid="352" entryx="1003" entryy="2852" entryz="7" rent="0" townid="31" size="42"/>
+  <house name="Mandarin South House #03" houseid="353" entryx="988" entryy="2843" entryz="7" rent="0" townid="31" size="27"/>
+  <house name="Mandarin South House #04" houseid="354" entryx="1009" entryy="2839" entryz="7" rent="0" townid="31" size="63"/>
+  <house name="Mandarin South House #05" houseid="355" entryx="1019" entryy="2840" entryz="7" rent="0" townid="31" size="40"/>
+  <house name="Mandarin South House #06" houseid="356" entryx="1030" entryy="2839" entryz="7" rent="0" townid="31" size="32"/>
+  <house name="Mandarin South House #07" houseid="357" entryx="1034" entryy="2839" entryz="6" rent="0" townid="31" size="32"/>
+  <house name="Mandarin South House #001" houseid="358" entryx="1008" entryy="2999" entryz="7" rent="0" townid="30" size="50"/>
+  <house name="Mandarin South House #002" houseid="359" entryx="999" entryy="3002" entryz="7" rent="0" townid="30" size="75"/>
+  <house name="Mandarin South House #003" houseid="360" entryx="1001" entryy="3007" entryz="7" rent="0" townid="30" size="82"/>
+  <house name="Mandarin South House #004" houseid="361" entryx="991" entryy="2991" entryz="7" rent="0" townid="30" size="76"/>
+  <house name="Mandarin South House #005" houseid="362" entryx="1011" entryy="2989" entryz="7" rent="0" townid="30" size="96"/>
+  <house name="Mandarin South House #006" houseid="363" entryx="1024" entryy="2991" entryz="7" rent="0" townid="30" size="90"/>
+  <house name="Mandarin South House #007" houseid="364" entryx="985" entryy="2975" entryz="6" rent="0" townid="30" size="44"/>
+  <house name="Saffron Guild House" houseid="365" entryx="1089" entryy="466" entryz="5" rent="0" guildhall="1" townid="4" size="257"/>
+  <house name="Vermilion Guild House" houseid="366" entryx="1084" entryy="564" entryz="6" rent="0" guildhall="1" townid="6" size="420"/>
+  <house name="Cerulean Guild House" houseid="367" entryx="1095" entryy="176" entryz="6" rent="0" guildhall="1" townid="3" size="483"/>
+  <house name="Fuchsia Guild House" houseid="368" entryx="867" entryy="733" entryz="6" rent="0" guildhall="1" townid="8" size="379"/>
+  <house name="Cinnabar Guild House" houseid="369" entryx="415" entryy="850" entryz="9" rent="0" guildhall="1" townid="9" size="323"/>
+  <house name="Celadon Guild House" houseid="370" entryx="844" entryy="388" entryz="9" rent="0" guildhall="1" townid="5" size="286"/>
+  <house name="Pewter Guild House" houseid="371" entryx="504" entryy="224" entryz="8" rent="0" guildhall="1" townid="2" size="443"/>
+  <house name="Viridian Guild House" houseid="372" entryx="514" entryy="572" entryz="6" rent="0" guildhall="1" townid="1" size="285"/>
+  <house name="Mandarin South #001" houseid="373" entryx="1039" entryy="2893" entryz="7" rent="0" townid="33" size="32"/>
+  <house name="Mandarin South #002" houseid="374" entryx="1060" entryy="2893" entryz="7" rent="0" townid="33" size="45"/>
+  <house name="Mandarin South #003" houseid="375" entryx="1048" entryy="2900" entryz="7" rent="0" townid="33" size="56"/>
+  <house name="Mandarin South #004" houseid="376" entryx="1052" entryy="2906" entryz="7" rent="0" townid="33" size="39"/>
+</houses>

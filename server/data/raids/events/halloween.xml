@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="warning" message="Trick-or-treat!"/>
+	<!-- Viridian -->
+		<areaspawn ref="yes" centerx="944" centery="605" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="977" centery="584" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="934" centery="908" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="928" centery="555" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="961" centery="559" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="975" centery="550" centerz="7" radius="4">
+			<monster name="Halloween Boss Gengar" amount="1"/>
+		</areaspawn>
+	<!-- Cerulean -->
+		<areaspawn ref="yes" centerx="1524" centery="278" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1543" centery="258" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1581" centery="268" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1563" centery="279" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1571" centery="293" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1580" centery="315" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1560" centery="323" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1552" centery="341" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1509" centery="319" centerz="7" radius="4">
+			<monster name="Halloween Boss Gengar" amount="1"/>
+		</areaspawn>
+	<!-- Celadon -->
+		<areaspawn ref="yes" centerx="1311" centery="420" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1293" centery="458" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1318" centery="448" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1332" centery="482" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1357" centery="469" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1329" centery="445" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1357" centery="448" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1364" centery="442" centerz="7" radius="4">
+			<monster name="Halloween Boss Gengar" amount="1"/>
+		</areaspawn>
+	<!-- Cinnabar -->
+		<areaspawn ref="yes" centerx="1023" centery="1060" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="991" centery="1030" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1007" centery="1026" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1029" centery="1037" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1042" centery="1013" centerz="7" radius="4">
+			<monster name="Halloween Boss Gengar" amount="1"/>
+		</areaspawn>
+	<!-- Fuchsia -->
+		<areaspawn ref="yes" centerx="1476" centery="817" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1472" centery="852" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1501" centery="872" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1521" centery="881" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1519" centery="848" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1507" centery="821" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1549" centery="853" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1570" centery="814" centerz="7" radius="4">
+			<monster name="Halloween Boss Gengar" amount="1"/>
+		</areaspawn>
+	<!-- Lavender -->
+		<areaspawn ref="yes" centerx="1798" centery="548" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1808" centery="569" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1825" centery="584" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1853" centery="559" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1819" centery="552" centerz="7" radius="4">
+			<monster name="Halloween Boss Gengar" amount="1"/>
+		</areaspawn>
+	<!-- Pewter -->
+		<areaspawn ref="yes" centerx="947" centery="332" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="948" centery="310" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="917" centery="289" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="936" centery="266" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="915" centery="257" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="967" centery="287" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="966" centery="317" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="987" centery="287" centerz="7" radius="4">
+			<monster name="Halloween Boss Gengar" amount="1"/>
+		</areaspawn>
+	<!-- Saffron -->
+		<areaspawn ref="yes" centerx="1576" centery="445" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1569" centery="469" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1551" centery="487" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1611" centery="475" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1587" centery="498" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1582" centery="517" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1648" centery="476" centerz="7" radius="4">
+			<monster name="Halloween Boss Gengar" amount="1"/>
+		</areaspawn>
+	<!-- Vermilion -->
+		<areaspawn ref="yes" centerx="1586" centery="599" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1567" centery="605" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1566" centery="645" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1602" centery="639" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1594" centery="661" centerz="7" radius="4">
+			<monster name="Halloween Gastly" amount="2"/>
+			<monster name="Halloween Haunter" amount="2"/>
+			<monster name="Halloween Gengar" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1643" centery="647" centerz="7" radius="4">
+			<monster name="Halloween Boss Gengar" amount="1"/>
+		</areaspawn>
+</raid>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Drowzee" nameDescription="a Shiny Drowzee" nickname="Drowzee" race="blood" experience="10" speed="242" manacost="0" minLevel="25" maxLevel="35">
+	<health now="60" max="60" rate="1.1"/>
+	<look type="774" head="0" body="0" legs="0" feet="0" corpse="14101"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2380" skill="24" attack="48"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+	</attacks>
+	<defenses armor="10" defense="45"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="DROWW!"/>
+		<voice sentence="DROWZEE!"/>
+	</voices>
+	
+<loot><item id="14533" countmax="4" chance="69444"/><item id="14511" countmax="1" chance="83333"/><item id="14569" countmax="1" chance="13888"/><item id="14464" countmax="3" chance="3000"/><item id="17906" countmax="1" chance="100"/><item id="12233" countmax="1" chance="2"/><item id="18913" countmax="1" chance="5"/></loot></monster>

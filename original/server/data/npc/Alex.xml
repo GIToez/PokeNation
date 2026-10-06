@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Alex" script="quest_default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="620" head="190" body="50" legs="39" feet="50" corpse="2212"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hey |PLAYERNAME|, how are you? My name is Alex, I'm a former citzen from Fuchsia and you can buy diving equipment from me. I am also doing {research} on wetsuits."/>
+		<parameter key="shop_buyable" value="
+		oxygen mask, 13299, 2000
+		"/>
+	</parameters>
+</npc>

@@ -1,0 +1,19 @@
+MOVES["Outrage"] = {
+    description = "User attacks for 2-3 turns and then becomes confused.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12131,
+    iconId = 0,
+    dType = DAMAGE_TYPE_DRAGON,
+    functionName = "Outrage",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 115,
+    requiredLevel = 50,
+    damage = 40,
+    damageType = ELEMENT_DRAGON,
+    effect = EFFECT_FIRE_PUNCH,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 12,
+    cooldownStorage = 15225
+}

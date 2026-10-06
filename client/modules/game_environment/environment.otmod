@@ -1,0 +1,9 @@
+Module
+  name: game_environment
+  description: Environment
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ environment ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

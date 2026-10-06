@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Erik Torrain" script="npcbattle_eriktorrain.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="615" head="13" body="24" legs="62" feet="96" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Strength isn't the key for Pokemon! It's strategy! I'll show you how strategy can beat brute strength!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

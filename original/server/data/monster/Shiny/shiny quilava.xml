@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Quilava" nameDescription="a Shiny Quilava" nickname="Quilava" race="blood" experience="12" speed="280" manacost="0" minLevel="40" maxLevel="50">
+	<health now="58" max="58" rate="1.1"/>
+	<look type="1261" head="0" body="0" legs="0" feet="0" corpse="18971"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1250" skill="24" attack="64"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="58"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="QUILAAVVAAA!"/>
+	</voices>
+	
+	<script>
+        <event name="onPokemonCombat"/>	    
+	</script>
+<loot><item id="14523" countmax="1" chance="27777"/><item id="14530" countmax="3" chance="62500"/><item id="13303" countmax="1" chance="13157"/><item id="14586" countmax="1" chance="625"/><item id="14513" countmax="1" chance="50000"/><item id="17797" countmax="1" chance="6250"/><item id="17800" countmax="1" chance="50000"/><item id="12229" countmax="1" chance="50"/><item id="14464" countmax="5" chance="5000"/><item id="17956" countmax="1" chance="100"/><item id="17372" countmax="1" chance="5"/><item id="17346" countmax="1" chance="5"/><item id="18926" countmax="1" chance="5"/></loot></monster>

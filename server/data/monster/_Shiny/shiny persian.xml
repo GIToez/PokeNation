@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Persian" nameDescription="a Shiny Persian" nickname="Persian" race="blood" experience="12" speed="315" manacost="0" minLevel="25" maxLevel="35">
+	<health now="65" max="65" rate="1.1"/>
+	<look type="731" head="0" body="0" legs="0" feet="0" corpse="14058"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="0869" skill="24" attack="70"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="60"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="PERSIANN!"/>
+	</voices>
+	
+<loot><item id="14526" countmax="1" chance="12755"/><item id="14554" countmax="1" chance="3571"/><item id="14588" countmax="1" chance="4058"/><item id="14589" countmax="1" chance="1116"/><item id="14622" countmax="1" chance="5952"/><item id="14598" countmax="1" chance="1785"/><item id="14553" countmax="1" chance="2976"/><item id="14464" countmax="3" chance="3000"/><item id="12232" countmax="1" chance="100"/><item id="17867" countmax="1" chance="100"/><item id="18921" countmax="1" chance="5"/><item id="23527" countmax="1" chance="10"/></loot></monster>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Christmas Rattata" nameDescription="a Rattata" race="blood" experience="5" speed="272" manacost="0" minLevel="1" maxLevel="10">
+	<health now="30" max="30"/>
+	<look type="1407" head="0" body="0" legs="0" feet="0" corpse="25286"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1388" skill="24" attack="56"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="35"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="RATTATA!"/>
+	</voices>
+	
+<loot><item id="12115" countmax="1" chance="22222"/><item id="14497" countmax="1" chance="20000"/><item id="2687" countmax="5" chance="3000"/><item id="2696" countmax="5" chance="3000"/><item id="17836" countmax="1" chance="100"/></loot></monster>

@@ -1,0 +1,19 @@
+MOVES["Double Kick"] = {
+    description = "Double Kick inflicts damage, hitting the target 2 times per use.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11708,
+    iconId = 13334,
+    dType = DAMAGE_TYPE_FIGHTING,
+    functionName = "DoubleKick",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 30,
+    requiredLevel = 18,
+    damage = 30,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_KICK,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 9,
+    cooldownStorage = 15016
+}

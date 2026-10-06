@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Jerri Custard" script="npcbattle_fi_jerricustard.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="617" head="94" body="48" legs="28" feet="73" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="warning" message="X-Mas!"/>
+	<!-- Viridian -->
+		<itemspawn ref="yes" id="18747" x="473" y="598" z="7" />
+		<itemspawn ref="yes" id="18747" x="469" y="616" z="7" />
+		<itemspawn ref="yes" id="18747" x="450" y="598" z="7" />
+		<itemspawn ref="yes" id="18747" x="487" y="574" z="7" />
+		<itemspawn ref="yes" id="18747" x="445" y="621" z="7" />
+		<areaspawn ref="yes" centerx="459" centery="573" centerz="7" radius="4">
+			<monster name="Team Rocket" amount="1"/>
+		</areaspawn>
+	<!-- Cerulean -->
+		<itemspawn ref="yes" id="18747" x="1015" y="219" z="7" />
+		<itemspawn ref="yes" id="18747" x="1016" y="187" z="7" />
+		<itemspawn ref="yes" id="18747" x="988" y="223" z="7" />
+		<itemspawn ref="yes" id="18747" x="1008" y="237" z="7" />
+		<itemspawn ref="yes" id="18747" x="1042" y="239" z="7" />
+		<areaspawn ref="yes" centerx="1049" centery="245" centerz="7" radius="4">
+			<monster name="Team Rocket" amount="1"/>
+		</areaspawn>
+	<!-- Celadon -->
+		<itemspawn ref="yes" id="18747" x="921" y="388" z="7" />
+		<itemspawn ref="yes" id="18747" x="883" y="389" z="7" />
+		<itemspawn ref="yes" id="18747" x="862" y="394" z="7" />
+		<itemspawn ref="yes" id="18747" x="879" y="420" z="7" />
+		<itemspawn ref="yes" id="18747" x="916" y="436" z="7" />
+		<areaspawn ref="yes" centerx="880" centery="416" centerz="7" radius="4">
+			<monster name="Team Rocket" amount="1"/>
+		</areaspawn>
+	<!-- Cinnabar -->
+		<itemspawn ref="yes" id="18747" x="406" y="916" z="7" />
+		<itemspawn ref="yes" id="18747" x="432" y="903" z="7" />
+		<itemspawn ref="yes" id="18747" x="414" y="886" z="7" />
+		<itemspawn ref="yes" id="18747" x="400" y="884" z="7" />
+		<itemspawn ref="yes" id="18747" x="386" y="909" z="7" />
+		<areaspawn ref="yes" centerx="435" centery="893" centerz="7" radius="4">
+			<monster name="Team Rocket" amount="1"/>
+		</areaspawn>
+	<!-- Fuchsia -->
+		<itemspawn ref="yes" id="18747" x="916" y="782" z="6" />
+		<itemspawn ref="yes" id="18747" x="877" y="784" z="6" />
+		<itemspawn ref="yes" id="18747" x="864" y="785" z="7" />
+		<itemspawn ref="yes" id="18747" x="873" y="758" z="7" />
+		<itemspawn ref="yes" id="18747" x="904" y="751" z="7" />
+		<areaspawn ref="yes" centerx="945" centery="759" centerz="7" radius="4">
+			<monster name="Team Rocket" amount="1"/>
+		</areaspawn>
+	<!-- Lavender -->
+		<itemspawn ref="yes" id="18747" x="1191" y="500" z="7" />
+		<itemspawn ref="yes" id="18747" x="1176" y="500" z="7" />
+		<itemspawn ref="yes" id="18747" x="1201" y="518" z="7" />
+		<itemspawn ref="yes" id="18747" x="1197" y="538" z="7" />
+		<itemspawn ref="yes" id="18747" x="1215" y="489" z="7" />
+	<!-- Pewter -->
+		<itemspawn ref="yes" id="18747" x="503" y="296" z="7" />
+		<itemspawn ref="yes" id="18747" x="506" y="271" z="7" />
+		<itemspawn ref="yes" id="18747" x="525" y="273" z="7" />
+		<itemspawn ref="yes" id="18747" x="536" y="273" z="7" />
+		<itemspawn ref="yes" id="18747" x="497" y="244" z="7" />
+		<areaspawn ref="yes" centerx="541" centery="266" centerz="7" radius="4">
+			<monster name="Team Rocket" amount="1"/>
+		</areaspawn>
+	<!-- Saffron -->
+		<itemspawn ref="yes" id="18747" x="1036" y="448" z="6" />
+		<itemspawn ref="yes" id="18747" x="1062" y="433" z="6" />
+		<itemspawn ref="yes" id="18747" x="1068" y="410" z="6" />
+		<itemspawn ref="yes" id="18747" x="1039" y="392" z="6" />
+		<itemspawn ref="yes" id="18747" x="986" y="389" z="6" />
+		<areaspawn ref="yes" centerx="1043" centery="375" centerz="6" radius="4">
+			<monster name="Team Rocket" amount="1"/>
+		</areaspawn>
+	<!-- Vermilion -->
+		<itemspawn ref="yes" id="18747" x="1008" y="575" z="7" />
+		<itemspawn ref="yes" id="18747" x="1036" y="587" z="7" />
+		<itemspawn ref="yes" id="18747" x="1031" y="626" z="7" />
+		<itemspawn ref="yes" id="18747" x="1029" y="652" z="7" />
+		<itemspawn ref="yes" id="18747" x="1004" y="623" z="7" />
+		<areaspawn ref="yes" centerx="1023" centery="562" centerz="7" radius="4">
+			<monster name="Team Rocket" amount="1"/>
+		</areaspawn>
+</raid>

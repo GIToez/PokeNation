@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Oak's Assistant Brenny" script="tutorial_quests.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1181" head="65" body="11" legs="25" feet="70" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello trainer. You are ready to leave the Tutorial Island? ({YES} or {NO})"/>
+	</parameters>
+	<voices>
+		<voice text="Just speak out 'hi' next to me!" interval2="10" margin="15000"/>
+	</voices>
+</npc>

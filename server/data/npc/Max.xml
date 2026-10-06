@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Max" script="npcbattle_max.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="638" head="40" body="60" legs="60" feet="80" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|."/>
+		<parameter key="idletime" value="20" />
+	</parameters>
+</npc>

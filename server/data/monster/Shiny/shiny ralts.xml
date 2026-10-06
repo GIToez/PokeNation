@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Ralts" nickname="Ralts" nameDescription="a Shiny Ralts" race="blood" experience="5" speed="240" manacost="0" minLevel="20" maxLevel="30">
+	<health now="28" max="28"/>
+	<look type="1839" corpse="29461"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2500" skill="24" attack="25"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="25"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="RALTS!"/>
+	</voices>
+	
+<loot><item id="12135" countmax="1" chance="20000"/><item id="12136" countmax="1" chance="8000"/><item id="12233" countmax="1" chance="1"/><item id="23946" countmax="1" chance="1"/><item id="14464" countmax="5" chance="5000"/><item id="29004" countmax="1" chance="100"/><item id="17372" countmax="1" chance="1"/><item id="17363" countmax="1" chance="1"/><item id="17375" countmax="1" chance="1"/></loot></monster>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Gengar" nameDescription="a Halloween Gengar" nickname="Halloween Gengar" race="blood" experience="100" speed="310" manacost="0" minLevel="1" maxLevel="1">
+	<health now="30000" max="30000"/>
+	<look type="445" head="0" body="0" legs="0" feet="0" corpse="11482"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<!-- <flag canwalkeverywhere="1"/> Prevent hiding inside walls-->
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="30"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="custom_Confusion" interval="6000" chance="30" />
+		<attack name="custom_Sleep" interval="6000" chance="30" />
+		<attack name="custom_Haste" interval="6000" chance="30" />
+		<attack name="custom_Invisible" interval="6000" chance="30" />
+		<attack name="custom_Hypnosis" interval="6000" chance="30" />
+	</attacks>
+	<defenses armor="10" defense="9999"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="Buuu!"/>
+		<voice sentence="Muhahah!"/>
+		<voice sentence="Eieiei!"/>
+		<voice sentence="Ahhhh!"/>
+	</voices>
+	<loot>
+	</loot>
+	<script>
+        <event name="halloween_onDeath"/>                	    
+	</script>
+</monster>

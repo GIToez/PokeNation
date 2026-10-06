@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="warning" message="Trick-or-treat!"/>
+	<itemspawn ref="yes" id="18724" x="3292" y="538" z="7" />
+	<itemspawn ref="yes" id="18724" x="3311" y="547" z="7" />
+	<itemspawn ref="yes" id="18724" x="3314" y="557" z="7" />
+	<itemspawn ref="yes" id="18724" x="3303" y="580" z="7" />
+	<itemspawn ref="yes" id="18724" x="3321" y="578" z="7" />
+	<itemspawn ref="yes" id="18724" x="3307" y="595" z="7" />
+	<itemspawn ref="yes" id="18724" x="3295" y="607" z="7" />
+	<itemspawn ref="yes" id="18724" x="3272" y="577" z="7" />
+	<itemspawn ref="yes" id="18724" x="3251" y="572" z="7" />
+	<itemspawn ref="yes" id="18724" x="3272" y="546" z="7" />
+	<itemspawn ref="yes" id="18724" x="3294" y="262" z="7" />
+	<itemspawn ref="yes" id="18724" x="3308" y="271" z="7" />
+	<itemspawn ref="yes" id="18724" x="3318" y="286" z="7" />
+	<itemspawn ref="yes" id="18724" x="3341" y="285" z="7" />
+	<itemspawn ref="yes" id="18724" x="3332" y="307" z="7" />
+	<itemspawn ref="yes" id="18724" x="3311" y="314" z="7" />
+	<itemspawn ref="yes" id="18724" x="3302" y="303" z="7" />
+	<itemspawn ref="yes" id="18724" x="3293" y="325" z="7" />
+	<itemspawn ref="yes" id="18724" x="3281" y="303" z="7" />
+	<itemspawn ref="yes" id="18724" x="3265" y="288" z="7" />
+	<itemspawn ref="yes" id="18724" x="3871" y="262" z="7" />
+	<itemspawn ref="yes" id="18724" x="3887" y="257" z="7" />
+	<itemspawn ref="yes" id="18724" x="3914" y="272" z="7" />
+	<itemspawn ref="yes" id="18724" x="3925" y="292" z="7" />
+	<itemspawn ref="yes" id="18724" x="3904" y="293" z="7" />
+	<itemspawn ref="yes" id="18724" x="3891" y="318" z="7" />
+	<itemspawn ref="yes" id="18724" x="3892" y="350" z="7" />
+	<itemspawn ref="yes" id="18724" x="3873" y="338" z="7" />
+	<itemspawn ref="yes" id="18724" x="3877" y="321" z="7" />
+	<itemspawn ref="yes" id="18724" x="3849" y="317" z="7" />
+	<itemspawn ref="yes" id="18724" x="3916" y="453" z="7" />
+	<itemspawn ref="yes" id="18724" x="3960" y="455" z="7" />
+	<itemspawn ref="yes" id="18724" x="3973" y="469" z="7" />
+	<itemspawn ref="yes" id="18724" x="3989" y="478" z="7" />
+	<itemspawn ref="yes" id="18724" x="3982" y="500" z="7" />
+	<itemspawn ref="yes" id="18724" x="3957" y="487" z="7" />
+	<itemspawn ref="yes" id="18724" x="3934" y="503" z="7" />
+	<itemspawn ref="yes" id="18724" x="3929" y="514" z="7" />
+	<itemspawn ref="yes" id="18724" x="3912" y="481" z="7" />
+	<itemspawn ref="yes" id="18724" x="3891" y="493" z="7" />
+	<itemspawn ref="yes" id="18724" x="3691" y="415" z="7" />
+	<itemspawn ref="yes" id="18724" x="3693" y="443" z="7" />
+	<itemspawn ref="yes" id="18724" x="3708" y="419" z="7" />
+	<itemspawn ref="yes" id="18724" x="3737" y="434" z="7" />
+	<itemspawn ref="yes" id="18724" x="3720" y="447" z="7" />
+	<itemspawn ref="yes" id="18724" x="3710" y="450" z="7" />
+	<itemspawn ref="yes" id="18724" x="3715" y="463" z="7" />
+	<itemspawn ref="yes" id="18724" x="3696" y="471" z="7" />
+	<itemspawn ref="yes" id="18724" x="3663" y="452" z="7" />
+	<itemspawn ref="yes" id="18724" x="3639" y="440" z="7" />
+	<itemspawn ref="yes" id="18724" x="4172" y="550" z="7" />
+	<itemspawn ref="yes" id="18724" x="4199" y="545" z="7" />
+	<itemspawn ref="yes" id="18724" x="4210" y="541" z="7" />
+	<itemspawn ref="yes" id="18724" x="4208" y="569" z="7" />
+	<itemspawn ref="yes" id="18724" x="4202" y="580" z="7" />
+	<itemspawn ref="yes" id="18724" x="4174" y="579" z="7" />
+	<itemspawn ref="yes" id="18724" x="4157" y="573" z="7" />
+	<itemspawn ref="yes" id="18724" x="4157" y="557" z="7" />
+	<itemspawn ref="yes" id="18724" x="4164" y="548" z="7" />
+	<itemspawn ref="yes" id="18724" x="4173" y="562" z="7" />
+	<itemspawn ref="yes" id="18724" x="3911" y="600" z="7" />
+	<itemspawn ref="yes" id="18724" x="3918" y="615" z="7" />
+	<itemspawn ref="yes" id="18724" x="3947" y="607" z="7" />
+	<itemspawn ref="yes" id="18724" x="3969" y="611" z="7" />
+	<itemspawn ref="yes" id="18724" x="3974" y="621" z="7" />
+	<itemspawn ref="yes" id="18724" x="3947" y="621" z="7" />
+	<itemspawn ref="yes" id="18724" x="3950" y="642" z="7" />
+	<itemspawn ref="yes" id="18724" x="3976" y="645" z="7" />
+	<itemspawn ref="yes" id="18724" x="3995" y="640" z="7" />
+	<itemspawn ref="yes" id="18724" x="3938" y="660" z="7" />
+	<itemspawn ref="yes" id="18724" x="3863" y="819" z="7" />
+	<itemspawn ref="yes" id="18724" x="3889" y="817" z="7" />
+	<itemspawn ref="yes" id="18724" x="3899" y="832" z="7" />
+	<itemspawn ref="yes" id="18724" x="3899" y="848" z="7" />
+	<itemspawn ref="yes" id="18724" x="3881" y="855" z="7" />
+	<itemspawn ref="yes" id="18724" x="3847" y="855" z="7" />
+	<itemspawn ref="yes" id="18724" x="3831" y="844" z="7" />
+	<itemspawn ref="yes" id="18724" x="3841" y="812" z="7" />
+	<itemspawn ref="yes" id="18724" x="3856" y="818" z="7" />
+	<itemspawn ref="yes" id="18724" x="3863" y="827" z="7" />
+	<itemspawn ref="yes" id="18724" x="3367" y="1015" z="7" />
+	<itemspawn ref="yes" id="18724" x="3393" y="1023" z="7" />
+	<itemspawn ref="yes" id="18724" x="3375" y="1032" z="7" />
+	<itemspawn ref="yes" id="18724" x="3355" y="1037" z="7" />
+	<itemspawn ref="yes" id="18724" x="3344" y="1023" z="7" />
+	<itemspawn ref="yes" id="18724" x="3338" y="1031" z="7" />
+	<itemspawn ref="yes" id="18724" x="3344" y="1012" z="7" />
+	<itemspawn ref="yes" id="18724" x="3350" y="1046" z="7" />
+	<itemspawn ref="yes" id="18724" x="3363" y="1057" z="7" />
+	<itemspawn ref="yes" id="18724" x="3375" y="1055" z="7" />
+</raid>
+<!--
+	local locations = {
+    Viridian
+{x = 942, y = 538, z = 7},
+{x = 961, y = 547, z = 7},
+{x = 964, y = 557, z = 7},
+{x = 953, y = 580, z = 7},
+{x = 971, y = 578, z = 7},
+{x = 957, y = 595, z = 7},
+{x = 945, y = 607, z = 7},
+{x = 922, y = 577, z = 7},
+{x = 901, y = 572, z = 7},
+{x = 922, y = 546, z = 7},
+
+Pewter
+{x = 944, y = 262, z = 7},
+{x = 958, y = 271, z = 7},
+{x = 968, y = 286, z = 7},
+{x = 991, y = 285, z = 7},
+{x = 982, y = 307, z = 7},
+{x = 961, y = 314, z = 7},
+{x = 952, y = 303, z = 7},
+{x = 943, y = 325, z = 7},
+{x = 931, y = 303, z = 7},
+{x = 915, y = 288, z = 7},
+
+Cerulean
+{x = 1521, y = 262, z = 7},
+{x = 1537, y = 257, z = 7},
+{x = 1564, y = 272, z = 7},
+{x = 1575, y = 292, z = 7},
+{x = 1554, y = 293, z = 7},
+{x = 1541, y = 318, z = 7},
+{x = 1542, y = 350, z = 7},
+{x = 1523, y = 338, z = 7},
+{x = 1527, y = 321, z = 7},
+{x = 1499, y = 317, z = 7},
+
+Saffron
+{x = 1566, y = 453, z = 7},
+{x = 1610, y = 455, z = 7},
+{x = 1623, y = 469, z = 7},
+{x = 1639, y = 478, z = 7},
+{x = 1632, y = 500, z = 7},
+{x = 1607, y = 487, z = 7},
+{x = 1584, y = 503, z = 7},
+{x = 1579, y = 514, z = 7},
+{x = 1562, y = 481, z = 7},
+{x = 1541, y = 493, z = 7},
+
+Celadon
+{x = 1341, y = 415, z = 7},
+{x = 1343, y = 443, z = 7},
+{x = 1358, y = 419, z = 7},
+{x = 1387, y = 434, z = 7},
+{x = 1370, y = 447, z = 7},
+{x = 1360, y = 450, z = 7},
+{x = 1365, y = 463, z = 7},
+{x = 1346, y = 471, z = 7},
+{x = 1313, y = 452, z = 7},
+{x = 1289, y = 440, z = 7},
+
+Lavender
+{x = 1822, y = 550, z = 7},
+{x = 1849, y = 545, z = 7},
+{x = 1860, y = 541, z = 7},
+{x = 1858, y = 569, z = 7},
+{x = 1852, y = 580, z = 7},
+{x = 1824, y = 579, z = 7},
+{x = 1807, y = 573, z = 7},
+{x = 1807, y = 557, z = 7},
+{x = 1814, y = 548, z = 7},
+{x = 1823, y = 562, z = 7},
+
+Vermilion
+{x = 1561, y = 600, z = 7},
+{x = 1568, y = 615, z = 7},
+{x = 1597, y = 607, z = 7},
+{x = 1619, y = 611, z = 7},
+{x = 1624, y = 621, z = 7},
+{x = 1597, y = 621, z = 7},
+{x = 1600, y = 642, z = 7},
+{x = 1626, y = 645, z = 7},
+{x = 1645, y = 640, z = 7},
+{x = 1588, y = 660, z = 7},
+
+Fuchsia
+{x = 1513, y = 819, z = 7},
+{x = 1539, y = 817, z = 7},
+{x = 1549, y = 832, z = 7},
+{x = 1549, y = 848, z = 7},
+{x = 1531, y = 855, z = 7},
+{x = 1497, y = 855, z = 7},
+{x = 1481, y = 844, z = 7},
+{x = 1491, y = 812, z = 7},
+{x = 1506, y = 818, z = 7},
+{x = 1513, y = 827, z = 7},
+
+Cinnabar
+{x = 1017, y = 1015, z = 7},
+{x = 1043, y = 1023, z = 7},
+{x = 1025, y = 1032, z = 7},
+{x = 1005, y = 1037, z = 7},
+{x = 994, y = 1023, z = 7},
+{x = 988, y = 1031, z = 7},
+{x = 994, y = 1012, z = 7},
+{x = 1000, y = 1046, z = 7},
+{x = 1013, y = 1057, z = 7},
+{x = 1025, y = 1055, z = 7}
+
+}
+
+for k,v in pairs(locations) do
+    print(string.format("<itemspawn ref=\"yes\" id=\"18724\" x=\"%s\" y=\"%s\" z=\"%s\" />", v.x, v.y, v.z))
+    end
+	-->

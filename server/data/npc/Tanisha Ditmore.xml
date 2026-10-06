@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Tanisha Ditmore" script="npcbattle_tanishaditmore.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="625" head="100" body="50" legs="50" feet="75" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Heh! You must be running out of steam by now!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

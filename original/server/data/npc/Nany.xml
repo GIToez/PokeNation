@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Nany" script="npcbattle_nany.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="637" head="7" body="34" legs="26" feet="26" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hey Kid!"/>
+		<parameter key="idletime" value="20" />
+	</parameters>
+</npc>

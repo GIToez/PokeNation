@@ -1,0 +1,19 @@
+MOVES["Horn Attack"] = {
+    description = "Horn Attack deals damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11724,
+    iconId = 13350,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "HornAttack",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 70,
+    requiredLevel = 30,
+    damage = 65,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_CUT,
+    projectile = PROJECTILE_HORN,
+    maxDistance = 1,
+    cooldownTime = 10,
+    cooldownStorage = 15032
+}

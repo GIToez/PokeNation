@@ -1,0 +1,23 @@
+MOVES["Heal Pulse"] = {
+    description = "Heal Pulse recover party members HP.",
+    makeHeal = true,
+    wildBlock = true,
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 12035,
+    iconId = 13818,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "MassHeal",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 150,
+    requiredLevel = 50,
+    damage = 120,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_GREEN_BUFF,
+    projectile = nil,
+    areaEffect = EFFECT_LOVE_HEARTS,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 90,
+    cooldownStorage = 15126,
+    damageText = "MHp"
+}

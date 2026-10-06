@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<npc name="Todd Clancy" script="bank.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="622" head="80" body="90" legs="50" feet="10"/>
+	<parameters>
+		<parameter key="message_greet" value="Do not bother me... I'm counting. Now talk! Your options are: {balance}, {deposit}, {deposit all}, {withdraw}, {withdraw all} and {transfer}."/>
+	</parameters>
+</npc>

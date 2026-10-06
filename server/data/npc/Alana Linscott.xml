@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Alana Linscott" script="npcbattle_alanalinscott.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="633" head="15" body="20" legs="15" feet="30" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="The flames are beautiful, have you looked at them for a moment?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

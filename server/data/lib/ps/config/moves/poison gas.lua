@@ -1,0 +1,19 @@
+MOVES["Poison Gas"] = {
+    description = "Poison Gas poisons the target. It will fail if the target is Poison or Steel-type.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 11797,
+    iconId = 13423,
+    dType = DAMAGE_TYPE_POISON,
+    functionName = "PoisonGas",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 30,
+    requiredLevel = 15,
+    damage = 0,
+    damageType = ELEMENT_POISON,
+    effect = EFFECT_POISON_GAS_THREE,
+    areaEffect = EFFECT_POISON_GAS,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 7,
+    cooldownStorage = 15106
+}

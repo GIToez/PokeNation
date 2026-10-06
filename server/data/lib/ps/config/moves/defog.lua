@@ -1,0 +1,17 @@
+MOVES["Defog"] = {
+    description = "A strong wind blows away the target's barriers such as Reflect or Light Screen.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 27656,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FLYING,
+    type = SKILLS_TYPES.STATS,
+    requiredEnergy = 60,
+    damage = 0,
+    damageType = ELEMENT_FLYING,
+    effect = EFEFCT_WATER_TORNADO,
+    projectile = nil,
+    maxDistance = 0,
+    cooldownTime = 30,
+    cooldownStorage = 15454,
+    makeContact = false,
+}

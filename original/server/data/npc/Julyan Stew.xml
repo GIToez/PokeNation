@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Julyan Stew" script="npcbattle_julyanStew.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1205" head="56" body="14" legs="10" feet="55"/>
+	<parameters>
+		<parameter key="message_greet" value="!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

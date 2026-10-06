@@ -1,0 +1,21 @@
+MOVES["Aerial Ace"] = {
+    description = "Aerial Ace deals damage and ignores changes to the Accuracy and Evasion stats.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12070,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FLYING,
+    functionName = "AerialAce",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 60,
+    requiredLevel = 35,
+    damage = 60,
+    damageType = ELEMENT_FLYING,
+    effect = EFFECT_CUT,
+    projectile = PROJECTILE_NEEDLE,
+    maxDistance = 7,
+    cooldownTime = 14,
+    cooldownStorage = 15166,
+    ignoreEvasion = true,
+    ignoreAccuracy = true
+}

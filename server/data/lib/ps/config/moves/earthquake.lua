@@ -1,0 +1,20 @@
+MOVES["Earthquake"] = {
+    description = "Earthquake deals damage.",
+    makeJump = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11783,
+    iconId = 13409,
+    dType = DAMAGE_TYPE_GROUND,
+    functionName = "Earthquake",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 110,
+    requiredLevel = 45,
+    damage = 50,
+    damageType = ELEMENT_GROUND,
+    effect = EFFECT_SPARK,
+    areaEffect = EFFECT_EARTH_EXPLOSION,
+    areaName = "area3x3",
+    area = area3x3,
+    cooldownTime = 23,
+    cooldownStorage = 15092
+}

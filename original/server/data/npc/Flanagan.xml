@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<npc name="Flanagan" script="tutorial_quests.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="1321" head="79" body="115" legs="114"/>
+	<parameters>
+        <parameter key="message_greet" value="Hello future trainer. I'm here to teach you how to use a Pokemon and its Poke Ball. Are you {READY}? [You can {skip} this tutorial whenever you want.]"/>
+    </parameters>
+</npc>

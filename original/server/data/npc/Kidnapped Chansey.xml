@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<npc name="Kidnapped Chansey" floorchange="0" walkinterval="0">
+	<health now="1500" max="1500"/>
+	<look type="639" head="0" body="0" legs="0" feet="0"/>
+
+    <interaction range="3" idletime="60">
+
+    <interact keywords="hi" focus="1">
+      <keywords>hello</keywords>
+
+      <response text="Chansey, Chansey!">
+        <action name="idle" value="1"/>
+      </response>
+    </interact>
+
+    <interact keywords="bye" focus="0">
+      <keywords>farewell</keywords>
+
+      <response text="Chansey!"/>
+    </interact>
+  </interaction>
+
+</npc>

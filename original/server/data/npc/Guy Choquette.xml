@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Guy Choquette" script="npcbattle_guychoquette.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="632" head="15" body="30" legs="30" feet="20" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Blaine said he is waiting for you even watch the flames..."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

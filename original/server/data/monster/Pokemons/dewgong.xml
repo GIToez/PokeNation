@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Dewgong" nameDescription="a Dewgong" shiny="Shiny Dewgong" race="blood" experience="12" speed="270" manacost="0" minLevel="65" maxLevel="75">
+	<health now="90" max="90"/>
+	<look type="438" head="0" body="0" legs="0" feet="0" corpse="11475"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1428" skill="24" attack="70"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="80"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="DEWGONG!"/>
+	</voices>
+	
+<loot><item id="12143" countmax="1" chance="23333"/><item id="14485" countmax="1" chance="35000"/><item id="14496" countmax="1" chance="28000"/><item id="14495" countmax="1" chance="11666"/><item id="14489" countmax="1" chance="14000"/><item id="12236" countmax="1" chance="25"/><item id="12230" countmax="1" chance="25"/><item id="17897" countmax="1" chance="100"/><item id="17349" countmax="1" chance="10"/><item id="18913" countmax="1" chance="10"/><item id="18917" countmax="1" chance="10"/><item id="23521" countmax="1" chance="10"/><item id="23522" countmax="1" chance="10"/></loot></monster>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Guy Smail" script="npcbattle_fi_guysmail.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="628" head="78" body="26" legs="10" feet="26" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

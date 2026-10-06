@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Rapidash" nameDescription="a Shiny Rapidash" nickname="Rapidash" race="blood" experience="15" speed="305" manacost="0" minLevel="55" maxLevel="65">
+	<health now="65" max="65" rate="1.1"/>
+	<look type="756" head="0" body="0" legs="0" feet="0" corpse="14083"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="0952" skill="24" attack="100"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="70"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="RAPIDASHH!"/>
+	</voices>
+	
+<loot><item id="14530" countmax="3" chance="87500"/><item id="14523" countmax="1" chance="38888"/><item id="14513" countmax="1" chance="70000"/><item id="13303" countmax="1" chance="18421"/><item id="13307" countmax="1" chance="17500"/><item id="14628" countmax="1" chance="4166"/><item id="12229" countmax="1" chance="100"/><item id="17890" countmax="1" chance="100"/><item id="17371" countmax="1" chance="10"/><item id="23515" countmax="1" chance="20"/></loot></monster>

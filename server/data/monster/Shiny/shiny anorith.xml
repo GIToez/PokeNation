@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Anorith" nickname="Anorith" nameDescription="an Anorith" race="blood" experience="5" speed="275" manacost="0" minLevel="20" maxLevel="30">
+	<health now="45" max="45"/>
+	<look type="1906" corpse="29528"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1333" skill="24" attack="95"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="ANORITH!"/>
+	</voices>
+	
+<loot><item id="12119" countmax="1" chance="7407"/><item id="12138" countmax="1" chance="3555"/><item id="14492" countmax="1" chance="1777"/><item id="14505" countmax="1" chance="3174"/><item id="14512" countmax="1" chance="2962"/><item id="14519" countmax="1" chance="1269"/><item id="12113" countmax="1" chance="6349"/><item id="14503" countmax="1" chance="2222"/><item id="28888" countmax="1" chance="2222"/><item id="12234" countmax="1" chance="1"/><item id="12241" countmax="1" chance="1"/><item id="29071" countmax="1" chance="100"/><item id="17348" countmax="1" chance="1"/><item id="18918" countmax="1" chance="1"/><item id="18930" countmax="1" chance="1"/></loot></monster>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lars Hill" script="npcbattle_larshill.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="616" head="8" body="35" legs="150" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hey, what you want?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

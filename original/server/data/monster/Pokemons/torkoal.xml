@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Torkoal" nameDescription="a Torkoal" race="blood" experience="10" speed="220" manacost="0" minLevel="40" maxLevel="50">
+	<health now="70" max="70"/>
+	<look type="1503" corpse="28807"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="5000" skill="24" attack="85"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="140"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="TORKOAL!"/>
+	</voices>
+	
+<loot><item id="12087" countmax="1" chance="17676"/><item id="12101" countmax="6" chance="79545"/><item id="13303" countmax="1" chance="8373"/><item id="13307" countmax="1" chance="7954"/><item id="14471" countmax="1" chance="1590"/><item id="14482" countmax="1" chance="3181"/><item id="14513" countmax="1" chance="31818"/><item id="14514" countmax="1" chance="6363"/><item id="17797" countmax="1" chance="3977"/><item id="17800" countmax="1" chance="31818"/><item id="17809" countmax="1" chance="3181"/><item id="12229" countmax="1" chance="50"/><item id="13305" countmax="5" chance="5000"/><item id="29048" countmax="1" chance="100"/><item id="23515" countmax="1" chance="10"/><item id="18914" countmax="1" chance="5"/><item id="18918" countmax="1" chance="5"/></loot></monster>

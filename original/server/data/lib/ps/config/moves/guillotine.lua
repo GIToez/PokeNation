@@ -1,0 +1,19 @@
+MOVES["Guillotine"] = {
+    description = "Guillotine deals damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11722,
+    iconId = 13348,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Guillotine",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 110,
+    requiredLevel = 35,
+    damage = 110,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BIG_CROSS_UP,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 17,
+    cooldownStorage = 15030
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Electrike" nickname="Electrike" nameDescription="an Electrike" race="blood" experience="5" speed="265" manacost="0" minLevel="20" maxLevel="30">
+	<health now="40" max="40"/>
+	<look type="1868" corpse="29490"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1538" skill="24" attack="45"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="40"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="ELECTRIKE!"/>
+	</voices>
+	
+<loot><item id="12118" countmax="1" chance="7407"/><item id="13308" countmax="1" chance="5128"/><item id="14490" countmax="1" chance="26666"/><item id="14498" countmax="1" chance="4444"/><item id="28877" countmax="1" chance="1666"/><item id="28891" countmax="1" chance="1481"/><item id="12237" countmax="1" chance="2"/><item id="29033" countmax="1" chance="100"/><item id="17378" countmax="1" chance="1"/></loot></monster>

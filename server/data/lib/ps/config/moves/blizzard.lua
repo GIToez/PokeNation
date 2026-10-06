@@ -1,0 +1,20 @@
+MOVES["Blizzard"] = {
+    description = "Blizzard deals damage and has a 10% chance of freezing the opponent.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11779,
+    iconId = 13405,
+    dType = DAMAGE_TYPE_ICE,
+    functionName = "Blizzard",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 120,
+    requiredLevel = 50,
+    damage = 110,
+    damageType = ELEMENT_ICE,
+    effect = EFFECT_ICEBERG,
+    projectile = nil,
+    areaEffect = EFFECT_ICY_GUST,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 27,
+    cooldownStorage = 15088
+}

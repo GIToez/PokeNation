@@ -1,0 +1,19 @@
+MOVES["Gust"] = {
+    description = "Gust deals damage and has no secondary effect.",
+    makeJump = true,
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11788,
+    iconId = 13414,
+    dType = DAMAGE_TYPE_FLYING,
+    functionName = "Gust",
+    type = SKILLS_TYPES.TARGET,
+    maxDistance = 5,
+    requiredEnergy = 40,
+    requiredLevel = 5,
+    damage = 40,
+    damageType = ELEMENT_FLYING,
+    effect = EFFECT_WIND,
+    areaEffect = EFFECT_WIND,
+    cooldownTime = 9,
+    cooldownStorage = 15097
+}

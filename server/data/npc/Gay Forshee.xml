@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Gay Forshee" script="npcbattle_fi_gayforshee.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="629" head="25" body="48" legs="34" feet="100" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

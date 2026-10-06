@@ -1,0 +1,17 @@
+MOVES["Psycho Boost"] = {
+    description = "Psycho Boost inflicts damage and lowers the user's Special Attack stat by two stages.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 27612,
+    iconId = 0,
+    dType = DAMAGE_TYPE_PSYCHIC,
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 140,
+    damage = 140,
+    damageType = ELEMENT_PSYCHIC,
+    effect = EFFECT_BIG_YELLOW_SPARKS,
+    projectile = PROJECTILE_ENERGY,
+    maxDistance = 6,
+    cooldownTime = 24,
+    cooldownStorage = 15418,
+    makeContact = false,
+}

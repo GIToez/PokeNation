@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Zazi" script="quest_default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="628" head="190" body="50" legs="39" feet="50" corpse="2212"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello, I am Zazy, an old fisherman of this continent. I work with {fishing rods} from infancy."/>
+	</parameters>
+</npc>

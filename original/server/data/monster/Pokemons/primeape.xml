@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Primeape" nameDescription="a Primeape" shiny="Shiny Primeape" race="blood" experience="15" speed="295" manacost="0" minLevel="45" maxLevel="55">
+	<health now="65" max="65"/>
+	<look type="408" head="0" body="0" legs="0" feet="0" corpse="11445"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1052" skill="24" attack="105"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="60"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="PRIMEAPEE!"/>
+	</voices>
+	
+<loot><item id="12123" countmax="1" chance="72916"/><item id="14465" countmax="1" chance="10937"/><item id="14466" countmax="3" chance="87500"/><item id="14468" countmax="3" chance="87500"/><item id="2687" countmax="3" chance="3000"/><item id="14464" countmax="3" chance="3000"/><item id="12243" countmax="1" chance="100"/><item id="17870" countmax="1" chance="100"/><item id="17355" countmax="1" chance="10"/><item id="23513" countmax="1" chance="20"/></loot></monster>

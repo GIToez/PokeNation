@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<npc name="Shayne Pete" script="bank.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="622" head="22" body="34" legs="66" feet="100"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi |PLAYERNAME|. I'm Shayne Pete, a banker. Your options are: {balance}, {deposit}, {deposit all}, {withdraw}, {withdraw all} and {transfer}."/>
+	</parameters>
+</npc>

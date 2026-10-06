@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Gary's Assistant" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1321" head="79" body="114" feet="79"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|! I help Gary in his private affairs!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

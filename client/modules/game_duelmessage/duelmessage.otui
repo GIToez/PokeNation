@@ -1,0 +1,5 @@
+UIWidget
+  id: duelMessage
+  focusable: false
+  phantom: true
+  anchors.centerIn: gameMapPanel

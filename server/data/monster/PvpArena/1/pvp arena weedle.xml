@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Weedle" nameDescription="a weedle" nick="PvP Weedle" race="blood" experience="0" speed="220" manacost="0" minLevel="1" maxLevel="10">
+	<health now="44" max="44"/>
+	<look type="364" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="24" attack="35"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="30"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="WEEDLEE!"/>
+		<voice sentence="WEE! WEE!"/>
+	</voices>
+	<loot>
+	</loot>
+</monster>

@@ -1,0 +1,17 @@
+AddonsButton < ShopButton
+AddonsButtonSale < ShopButtonSale
+AddonsPrize < ShopPrize
+
+Panel
+  VerticalScrollBar
+    id: scrollBar
+    step: 50
+    pixels-scroll: true
+    anchors.top: parent.top
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+
+  ScrollablePanel
+    vertical-scrollbar: scrollBar
+    anchors.fill: parent
+    margin-right: 15

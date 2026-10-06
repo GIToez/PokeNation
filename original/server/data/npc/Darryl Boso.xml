@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Darryl Boso" script="npcbattle_fi_darrylboso.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="632" head="90" body="55" legs="66" feet="33" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

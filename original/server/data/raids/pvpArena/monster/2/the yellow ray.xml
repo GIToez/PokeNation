@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="default" message="[Pvp Arena #2]: The Yellow Ray raid will begin in 10 minutes!"/>
+	<areaspawn delay="600000" centerx="931" centery="1605" centerz="7" radius="30">
+		<monster name="PvP Pikachu" minamount="100" maxamount="100"/>
+	</areaspawn>
+	<singlespawn delay="605000" name="The Yellow Ray" ref="yes" x="933" y="1616" z="7"/>
+</raid>

@@ -1,0 +1,19 @@
+MOVES["Absorb"] = {
+    description = "Absorb deals damage and the user will recover 50% of the HP drained.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11692,
+    iconId = 13318,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Absorb",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 35,
+    requiredLevel = 8,
+    damage = 20,
+    damageType = ELEMENT_GRASS,
+    effect = EFFECT_BLOW,
+    projectile = PROJECTILE_RED_SHOT,
+    backProjectile = PROJECTILE_RED_SHOT,
+    maxDistance = 6,
+    cooldownTime = 5,
+    cooldownStorage = 15000
+}

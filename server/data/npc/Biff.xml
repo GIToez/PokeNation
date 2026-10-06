@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<npc name="Biff" script="tutorial_quests.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="1314" head="114" body="94" feet="95"/>
+	<parameters>
+        <parameter key="message_greet" value="Hello, welcome to the PSoul Pokemon world! Here will be guided within your first game steps. Some dialogs will contain blue words, you just need to repeat them to {CONTINUE} the dialogue. [You can {skip} this tutorial whenever you want.]"/>
+    </parameters>
+	<voices>
+		<voice text="Just speak out 'hi' next to me!" interval2="10" margin="15000"/>
+	</voices>
+</npc>

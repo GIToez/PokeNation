@@ -1,0 +1,9 @@
+Module
+  name: game_badgecase
+  description: Badge Case
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ badgecase ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

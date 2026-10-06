@@ -1,0 +1,20 @@
+MOVES["Mega Kick"] = {
+    description = "Mega Kick deals damage and has no secondary effect.",
+    makeJump = true,
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11739,
+    iconId = 13365,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "MegaKick",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 120,
+    requiredLevel = 50,
+    damage = 120,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_KICK,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 18,
+    cooldownStorage = 15047
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Christmas Meowth" nameDescription="a Meowth" race="blood" experience="7" speed="290" manacost="0" minLevel="12" maxLevel="22">
+	<health now="40" max="40"/>
+	<look type="1421" head="0" body="0" legs="0" feet="0" corpse="25292"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1111" skill="24" attack="45"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="35"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="MEOWTHH!"/>
+		<voice sentence="MEOO!"/>
+	</voices>
+	
+<loot><item id="12096" countmax="1" chance="9523"/><item id="12129" countmax="1" chance="2666"/><item id="12121" countmax="1" chance="3030"/><item id="14474" countmax="1" chance="833"/><item id="14507" countmax="1" chance="4444"/><item id="12128" countmax="1" chance="2222"/><item id="14464" countmax="3" chance="3000"/><item id="17866" countmax="1" chance="100"/><item id="18921" countmax="1" chance="5"/></loot></monster>

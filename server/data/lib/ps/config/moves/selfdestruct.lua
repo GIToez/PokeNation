@@ -1,0 +1,22 @@
+MOVES["Selfdestruct"] = {
+    description = "Resembling a weaker version of Explosion, Selfdestruct inflicts damage, and causes the user to faint. ",
+    mimicable = false,
+    makeSelfdestruct = true,
+    wildBlock = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11802,
+    iconId = 13428,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Selfdestruct",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 80,
+    requiredLevel = 35,
+    damage = 200,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_NOTHING,
+    areaEffect = EFFECT_EXPLOSION,
+    areaName = "area3x3",
+    area = area3x3,
+    cooldownTime = 120,
+    cooldownStorage = 15111
+}

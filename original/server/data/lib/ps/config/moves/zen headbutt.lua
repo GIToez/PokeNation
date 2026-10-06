@@ -1,0 +1,19 @@
+MOVES["Zen Headbutt"] = {
+    description = "Zen Headbutt deals damage and has a 20% chance of causing the target to flinch.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 13115,
+    iconId = 0,
+    dType = DAMAGE_TYPE_PSYCHIC,
+    functionName = "ZenHeadbutt",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 80,
+    requiredLevel = 15,
+    damage = 80,
+    damageType = ELEMENT_PSYCHIC,
+    effect = EFFECT_BLOW,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 15,
+    cooldownStorage = 15251
+}

@@ -1,0 +1,20 @@
+MOVES["Razor Wind"] = {
+    description = "The user of Razor Wind will 'whip up a whirlwind' on the first turn. On the second turn, Razor Wind deals damage and has an increased critical hit ratio.",
+    criticalChance = 20,
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 15740,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "RazorWind",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 80,
+    requiredLevel = 15,
+    damage = 80,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_WIND,
+    projectile = PROJECTILE_GRAVEL,
+    areaEffect = EFFECT_WIND,
+    maxDistance = 6,
+    cooldownTime = 15,
+    cooldownStorage = 15253
+}

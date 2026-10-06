@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Cody Strackbein" script="npcbattle_codystrackbein.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="626" head="22" body="35" legs="22" feet="10" addons="1"/>
+	<parameters>
+		<parameter key="message_greet" value="Burn it with all our might! "/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

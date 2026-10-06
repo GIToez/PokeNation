@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raids>
+	<!-- EVENTS -->
+		<!-- ANNIVERSARY -->
+			<raid name="Anniversary" enabled="no" file="events/anniversary.xml" interval2="2" margin="30" reftype="block" ref="yes" />
+		<!-- HALLOWEEN
+			<raid name="Halloween Suramoon" file="events/halloweenSuramoon.xml" interval2="35" margin="35" reftype="block" ref="yes" />
+		
+			<raid name="Halloween" file="events/halloween.xml" interval2="30" margin="30" reftype="block" ref="yes" />
+			<raid name="Halloween Caldron" file="events/halloweenPot.xml" interval2="25" margin="25" reftype="block" ref="yes" />
+	     -->
+		
+		<!-- CHRISTMAS -->
+		<!-- <raid name="christmasGrinchInvasion" file="events/christmasGrinchInvasion.xml" interval2="35" margin="35" reftype="block" ref="yes" /> -->
+		<!--	<raid name="christmasStolenPresent" file="events/christmasStolenPresent.xml" interval2="2" margin="30" reftype="block" ref="yes" />
+			<raid name="christmasRocketBots" file="events/christmasRocketBots.xml" interval2="2" margin="30" reftype="block" ref="yes" />
+			<raid name="christmasRunawayStantler" file="events/christmasRunawayStantler.xml" interval2="2" margin="30" reftype="block" ref="yes" />
+		-->
+		
+		
+	<!--
+		executed on average once every 2 minutes
+
+		<raid name="Example" file="example.xml" interval2="2" margin="0" reftype="single" ref="no"/>
+			won't be executed again till Cave Rat gets killed
+
+		<raid name="Example2" file="example.xml" interval2="2" margin="0" reftype="block" ref="no"/>
+			will stay as 'running' until Cave Rat gets killed
+	-->
+</raids>

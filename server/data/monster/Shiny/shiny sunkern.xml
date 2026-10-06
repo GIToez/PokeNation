@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Sunkern" nameDescription="a Shiny Sunkern" nickname="Sunkern" race="blood" experience="5" speed="230" manacost="0" minLevel="1" maxLevel="10">
+	<health now="30" max="30" rate="1.1"/>
+	<look type="1276" head="0" body="0" legs="0" feet="0" corpse="18984"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="3333" skill="24" attack="30"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="30"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SUNNKKERRNN!"/>
+	</voices>
+	
+<loot><item id="14525" countmax="1" chance="1111"/><item id="14531" countmax="1" chance="20000"/><item id="14602" countmax="1" chance="4000"/><item id="14510" countmax="1" chance="8000"/><item id="17802" countmax="1" chance="4000"/><item id="17991" countmax="1" chance="100"/></loot></monster>

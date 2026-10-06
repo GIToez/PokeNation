@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Grinch" script="quest_grinch.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1403"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi, little person ... BUT HOW dare you get in my HOLY CAVE ... BUT insolence, BUT AUDACITY ... BUT PEOPLE WILL REPENT ... unbridled bitterly ... NOW GET READY FOR TERROOOOR. .. I smell {fear} ..."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

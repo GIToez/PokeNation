@@ -1,0 +1,19 @@
+MOVES["Double Hit"] = {
+    description = "Double Hit hits twice in one turn.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12130,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "DoubleHit",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 65,
+    requiredLevel = 30,
+    damage = 35,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BLOW,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 11,
+    cooldownStorage = 15224
+}

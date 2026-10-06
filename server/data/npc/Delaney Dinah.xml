@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Delaney Dinah" script="quest_deliverNewspaper.lua" walkinterval="1000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1198" head="30" body="50" legs="50" feet="20" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="You can wake up and have coffee in the morning? I prefer milk."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

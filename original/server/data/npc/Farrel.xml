@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Farrel" script="quest_mastery.lua" walkinterval="4000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="909" head="27" body="25" legs="35" feet="27" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Everything is light in a bird, but the amount is huge... and dragons are extremely hard to be found, dude."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

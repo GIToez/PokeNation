@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<npc name="Captain Lennie Leyton" script="default.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="563" head="0" body="0" legs="0" feet="0"/>
+	<parameters>
+        <parameter key="module_travel" value="1"/>
+		<parameter key="message_greet" value="Ascorbia is not beautiful? Want to travel? Pay! If you don't know where to flow, say {travel}."/>
+        <parameter key="travel_destinations" value="kumquat,1116,1764,6,80,true,7047,3;moro,1909,2929,6,120,true,7047,5;trovitopolis,1075,3230,6,160,true,7047,6;tangelo,371,2860,6,350,false,7047,5;pummelo,729,1741,6,200,true,7047,2;"/>
+    </parameters>
+</npc>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vocations>
+	<vocation id="0" name="Trainer" description="a Pokemon Trainer" needpremium="0" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="0" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="1" name="Trainer" description="a Pokemon Trainer" needpremium="0" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="1" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="7" name="Trainer" description="a Pokemon Trainer" needpremium="0" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="1" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+
+	<vocation id="10" name="Blaze Starter" description="a Blaze Starter" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="10" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="11" name="Blaze Ember" description="a Blaze Ember" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="11" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="12" name="Blaze Burst" description="a Blaze Burst" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="12" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="13" name="Blaze Flare" description="a Blaze Flare" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="13" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="14" name="Blaze Storm" description="a Blaze Storm" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="14" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="15" name="Blaze Inferno" description="a Blaze Inferno" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="15" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	
+	<vocation id="20" name="Hurricane Starter" description="a Hurricane Starter" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="20" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="21" name="Hurricane Wind" description="a Hurricane Wind" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="21" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="22" name="Hurricane Gale" description="a Hurricane Gale" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="22" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="23" name="Hurricane Ace" description="a Hurricane Ace" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="23" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="24" name="Hurricane Twister" description="a Hurricane Twister" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="24" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="25" name="Hurricane Tornado" description="a Hurricane Tornado" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="25" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	
+	<vocation id="30" name="Voltagic Starter" description="a Voltagic Starter" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="30" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="31" name="Voltagic Spark" description="a Voltagic Spark" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="31" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="32" name="Voltagic Charge" description="a Voltagic Charge" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="32" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="33" name="Voltagic Strike" description="a Voltagic Strike" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="33" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="34" name="Voltagic Bolt" description="a Voltagic Bolt" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="34" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="35" name="Voltagic Rise" description="a Voltagic Rise" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="35" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	
+	<vocation id="40" name="Spectrum Starter" description="a Spectrum Starter" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="40" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="41" name="Spectrum Viper" description="a Spectrum Viper" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="41" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="42" name="Spectrum Gas" description="a Spectrum Gas" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="42" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="43" name="Spectrum Assassin" description="a Spectrum Assassin" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="43" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="44" name="Spectrum Venom" description="a Spectrum Venom" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="44" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="45" name="Spectrum Virus" description="a Spectrum Virus" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="45" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	
+	<vocation id="50" name="Vital Starter" description="a Vital Starter" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="50" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="51" name="Vital Pacific" description="a Vital Pacific" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="51" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="52" name="Vital Adept" description="a Vital Adept" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="52" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="53" name="Vital Combat" description="a Vital Combat" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="53" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="54" name="Vital Smasher" description="a Vital Smasher" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="54" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="55" name="Vital Rage" description="a Vital Rage" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="55" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	
+	<vocation id="60" name="Gaia Starter" description="a Gaia Starter" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="60" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="61" name="Gaia Forest" description="a Gaia Forest" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="61" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="62" name="Gaia Jungle" description="a Gaia Jungle" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="62" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="63" name="Gaia Catcher" description="a Gaia Catcher" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="63" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="64" name="Gaia ExoArmor" description="a Gaia ExoArmor" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="64" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="65" name="Gaia Natural" description="a Gaia Natural" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="65" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	
+	<vocation id="70" name="Avalanche Starter" description="an Avalanche Starter" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="70" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="71" name="Avalanche Coldheart" description="an Avalanche Coldheart" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="71" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="72" name="Avalanche Reef" description="an Avalanche Reef" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="72" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="73" name="Avalanche Oceanborn" description="an Avalanche Oceanborn" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="73" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="74" name="Avalanche Crustacea" description="an Avalanche Crustacea" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="74" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="75" name="Avalanche Leaviathan" description="an Avalanche Leaviathan" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="75" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	
+	<vocation id="80" name="Heremit Starter" description="a Heremit Starter" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="80" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="81" name="Heremit Miner" description="a Heremit Miner" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="81" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="82" name="Heremit Guard" description="a Heremit Guard" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="82" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="83" name="Heremit Tomb" description="a Heremit Tomb" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="83" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="84" name="Heremit Earthquake" description="a Heremit Earthquake" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="84" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="85" name="Heremit Edge" description="a Heremit Edge" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="85" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	
+	<vocation id="90" name="Zen Starter" description="a Zen Starter" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="90" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="91" name="Zen Amnesia" description="a Zen Amnesia" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="91" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="92" name="Zen Telepatic" description="a Zen Telepatic" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="92" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="93" name="Zen Kinesis" description="a Zen Kinesis" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="93" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="94" name="Zen Intellect" description="a Zen Intellect" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="94" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+	<vocation id="95" name="Zen Lunar" description="a Zen Lunar" needpremium="1" gaincap="0" gainhp="10" gainmana="0" gainhpticks="5" gainhpamount="15" gainmanaticks="1" gainmanaamount="1" manamultiplier="1.0" attackspeed="2000" basespeed="330" soulmax="999" gainsoulticks="0" fromvoc="95" attackable="yes">
+		<formula meleeDamage="0" distDamage="0" wandDamage="0" magDamage="0" magHealingDamage="0" defense="10" magDefense="0" armor="10"/>
+		<skill fist="1.0" club="1.0" sword="1.0" axe="1.0" distance="1.1" shielding="1.0" fishing="1.1" experience="1.0"/>
+	</vocation>
+</vocations>

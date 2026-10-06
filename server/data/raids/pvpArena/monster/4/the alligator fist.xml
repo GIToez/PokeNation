@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="default" message="[Pvp Arena #4]: The Alligator Fist raid will begin in 10 minutes!"/>
+	<areaspawn delay="600000" centerx="760" centery="1732" centerz="7" radius="30">
+		<monster name="PvP Machoke" minamount="100" maxamount="100"/>
+	</areaspawn>
+	<singlespawn delay="605000" name="The Alligator Fist" ref="yes" x="761" y="1742" z="7"/>
+</raid>

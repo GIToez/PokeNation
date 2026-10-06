@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Porygon" nameDescription="a Porygon" shiny="Shiny Porygon" race="blood" experience="17" speed="240" manacost="0" minLevel="40" maxLevel="50" sex="2">
+	<health now="65" max="65"/>
+	<look type="488" head="0" body="0" legs="0" feet="0" corpse="11525"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2500" skill="24" attack="60"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="70"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="PORYGON!"/>
+	</voices>
+	
+<loot><item id="17944" countmax="1" chance="100"/><item id="12232" countmax="1" chance="100"/><item id="17382" countmax="1" chance="5"/><item id="18915" countmax="1" chance="5"/><item id="17363" countmax="1" chance="10"/></loot></monster>

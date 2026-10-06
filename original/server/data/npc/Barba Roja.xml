@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Barba Roja" script="quest_halloween_barba_roja.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1713"/>
+	<parameters>
+		<parameter key="message_greet" value="Err, hi, you have much courage to come here to take my time, if you want some violent service, know that I'm out of the branch, something {strange} happened and I'm not willing to do any of these services at the moment but continue to disturb me, That I will show him how violent I am still."/>
+	</parameters>
+</npc>

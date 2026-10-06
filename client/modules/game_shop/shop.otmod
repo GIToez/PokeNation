@@ -1,0 +1,9 @@
+Module
+  name: game_shop
+  description: Create the Emerald Shop
+  author: Noninhouh
+  website: none
+  sandboxed: true
+  scripts: [ shop ]
+  @onLoad: init()
+  @onUnload: terminate()

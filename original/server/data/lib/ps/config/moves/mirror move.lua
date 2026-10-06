@@ -1,0 +1,19 @@
+MOVES["Mirror Move"] = {
+    description = "Mirror Move copies the target's last move. If there isn't a last move, copy random.",
+    mimicable = false,
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 13111,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FLYING,
+    functionName = "MirrorMove",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 130,
+    requiredLevel = 30,
+    damage = 0,
+    damageType = ELEMENT_FLYING,
+    effect = EFFECT_NOTHING,
+    projectile = PROJECTILE_ENERGY,
+    maxDistance = 1,
+    cooldownTime = 25,
+    cooldownStorage = 15244
+}

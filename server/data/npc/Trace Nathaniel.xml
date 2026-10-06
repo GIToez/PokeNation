@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Trace Nathaniel" script="default_requirement.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="503" head="150" body="0" legs="160" feet="0" corpse="2212"/>
+	<parameters>
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hi |PLAYERNAME|, are you looking for freezers or TVs?"/>
+		<parameter key="shop_buyable" value="
+		small television kit, 13266, 800;
+		big television kit, 13267, 1800;
+		led television kit, 13268, 3000;
+		notebook kit, 13269, 1000;
+		high computer kit, 13270, 900;
+		medium computer kit, 13271, 600;
+		low computer kit, 13272, 300
+		"/>
+	</parameters>
+</npc>

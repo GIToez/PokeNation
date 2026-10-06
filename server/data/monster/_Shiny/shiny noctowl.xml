@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Noctowl" nameDescription="a Shiny Noctowl" race="blood" experience="12" speed="270" manacost="0" minLevel="40" maxLevel="50">
+	<health now="100" max="100"/>
+	<look type="1619" head="0" body="0" legs="0" feet="0" corpse="27437"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1428" skill="24" attack="50"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="NOCTOOWWLLL!"/>
+	</voices>
+	
+<loot><item id="12142" countmax="1" chance="48611"/><item id="14468" countmax="1" chance="87500"/><item id="14469" countmax="4" chance="72916"/><item id="14472" countmax="1" chance="8750"/><item id="14478" countmax="1" chance="21875"/><item id="14484" countmax="1" chance="87500"/><item id="14502" countmax="1" chance="2916"/><item id="17786" countmax="1" chance="29166"/><item id="12232" countmax="1" chance="25"/><item id="18081" countmax="1" chance="25"/><item id="17964" countmax="1" chance="100"/><item id="17375" countmax="1" chance="10"/><item id="17376" countmax="1" chance="10"/><item id="18913" countmax="1" chance="10"/><item id="23526" countmax="1" chance="10"/><item id="23527" countmax="1" chance="10"/></loot></monster>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Rocket Jefferson Roddy" script="npcbattle_rocketJeffersonRoddy.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="533" head="18" body="114" legs="114" feet="70"/>
+	<parameters>
+		<parameter key="message_greet" value="You're in the wrong place."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

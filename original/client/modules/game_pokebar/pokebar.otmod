@@ -1,0 +1,9 @@
+Module
+  name: game_pokebar
+  description: Poke Bar
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ pokebar ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

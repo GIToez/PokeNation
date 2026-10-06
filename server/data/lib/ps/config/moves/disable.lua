@@ -1,0 +1,19 @@
+MOVES["Disable"] = {
+    description = "Disable causes the previous move the target used to be disabled for 100 seconds. If the target has not used any move, then will be random.",
+    wildBlock = true,
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 12089,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Disable",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 100,
+    requiredLevel = 35,
+    damage = 0,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BLUE_BUFF_TWO,
+    projectile = PROJECTILE_SOUND,
+    maxDistance = 6,
+    cooldownTime = 120,
+    cooldownStorage = 15185
+}

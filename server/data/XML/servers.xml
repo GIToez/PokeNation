@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<servers>
+	<server id="1" name="Yellow" versionMin="300" versionMax="300" address="192.99.251.233" port="7172"/>
+	<!-- <server id="2" name="Red" versionMin="287" versionMax="287" address="192.254.73.118" port="7567"/> -->
+</servers>

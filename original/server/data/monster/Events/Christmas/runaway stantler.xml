@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Stantler" nameDescription="a Stantler" nickname="Runaway Stantler" race="blood" experience="12" speed="255" manacost="0" minLevel="40" maxLevel="50">
+	<health now="73" max="73"/>
+	<look type="1060" head="0" body="0" legs="0" feet="0" corpse="17623"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="5"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="custom_StantlerJump" inverval="10000" chance="40" />
+	</attacks>
+	<defenses armor="10" defense="62"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="STANNTLLERRR!"/>
+	</voices>
+	<loot>
+	</loot>
+	<script>
+        <event name="christmas_onDeath"/>                	    
+	</script>
+</monster>

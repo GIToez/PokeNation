@@ -1,0 +1,19 @@
+MOVES["Silver Wind"] = {
+    description = "Silver Wind deals damage and has a 10% chance of raising the user's Attack, Defense, Special Attack, Special Defense and Speed by one stage each.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11803,
+    iconId = 13429,
+    dType = DAMAGE_TYPE_BUG,
+    functionName = "SilverWind",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 70,
+    requiredLevel = 25,
+    damage = 60,
+    damageType = ELEMENT_BUG,
+    effect = EFFECT_SCRATCH,
+    areaEffect = EFFECT_WIND,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 14,
+    cooldownStorage = 15112
+}

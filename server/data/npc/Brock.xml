@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Brock" script="npcbattle_brock.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="543" head="0" body="0" legs="0" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I'm BROCK! I'm Pewter's gym leader! I believe in rock hard defense and determination! That's why my Pokemon are all the rock-type! Do you still want to challenge me? Fine then! Show me your best!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

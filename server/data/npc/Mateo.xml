@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Mateo" script="quest_mateo.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="503" head="100" body="90" legs="20" feet="30" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hey! How are you?"/>
+	</parameters>
+</npc>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Ashley Dorian" script="npcbattle_ashleyDorian.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1205" head="64" body="2" legs="54" feet="33"/>
+	<parameters>
+		<parameter key="message_greet" value="!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Jewell Jodene" script="npcbattle_jewellJodene.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="637" head="50" body="100" legs="30" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="We have many plans for this egg."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

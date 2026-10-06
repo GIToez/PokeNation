@@ -1,0 +1,160 @@
+PokemonAdvanceWindow < HeadlessWindow
+  focusable: false
+  draggable: false
+  image-color: #ffffffee
+  image-source: ~
+  size: 300 300
+  anchors.top: gameMapPanel.top
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  //background-color: #898989bb
+  //border-color: #272727cc
+  //border-width: 1
+  margin-left: 4
+  margin-top: 250
+  phantom: true
+  opacity: 0.8
+
+  UIWidget
+    id: bg
+    image-source: /images/staticPortraits/0
+    anchors.top: parent.top
+    anchors.left: parent.left
+    opacity: 0.9
+    phantom: true
+    focusable: false
+
+  UIWidget
+    id: pokemonIcon
+    anchors.top: parent.top
+    anchors.left: parent.left
+    phantom: true
+    focusable: false
+
+  UILabel
+    id: advanceMessage2
+    font: sans-bold-16px
+    text-align: center
+    color: #ffd303
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 10
+    !text: tr('Level Up!')
+    text-horizontal-auto-resize: true
+
+  FlatPanel
+    id: panel
+    image-source: ~
+    width: 180
+    anchors.top: advanceMessage2.bottom
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-top: 10
+    //margin-bottom: 4
+    //margin-left: 12
+    //padding: 2
+    layout:
+      type: verticalBox
+      num-columns: 1
+
+AdvanceWindow < HeadlessWindow
+  focusable: false
+  draggable: false
+  image-color: #ffffffee
+  image-source: ~
+  size: 300 300
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  anchors.top: gameMapPanel.top
+  //background-color: #898989bb
+  //border-color: #272727cc
+  //border-width: 1
+  margin-left: 4
+  margin-top: 150
+  phantom: true
+  opacity: 0.9
+
+  UILabel
+    id: advanceMessage2
+    font: sans-bold-16px
+    text-align: center
+    color: #ffd303
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 10
+    !text: tr('Skill Advance')
+    text-horizontal-auto-resize: true
+
+  FlatPanel
+    id: panel
+    image-source: ~
+    anchors.top: advanceMessage2.bottom
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 10
+    //margin-bottom: 4
+    //margin-left: 12
+    //padding: 2
+    layout:
+      type: verticalBox
+      num-columns: 1
+
+AdvanceSection < Panel
+  background-color: #22283399
+  border-width: 1
+  border-color: #111111
+  image-source: ~
+  margin-top: 5
+  margin-left: 5
+  height: 32
+
+HeadlessWindow
+  id: advanceWindow
+  focusable: false
+  draggable: false
+  image-color: #ffffffee
+  image-source: ~
+  size: 300 300
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  anchors.top: gameMapPanel.top
+  //background-color: #898989bb
+  //border-color: #272727cc
+  //border-width: 1
+  margin-left: 4
+  margin-top: 150
+  phantom: true
+  opacity: 0.9
+
+  UILabel
+    id: advanceMessage1
+    //font: sans-bold-16px_cp1252
+    text-align: center
+    color: #ffffff
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    !text: tr('You\'ve Reached')
+
+  UILabel
+    id: advanceMessage2
+    font: sans-bold-16px
+    text-align: center
+    color: #ffd303
+    anchors.top: advanceMessage1.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 10
+    !text: tr('Level 0')
+    text-horizontal-auto-resize: true
+
+  FlatPanel
+    id: panel
+    image-source: ~
+    anchors.top: advanceMessage2.bottom
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 10
+    //margin-bottom: 4
+    //margin-left: 12
+    //padding: 2
+    layout:
+      type: verticalBox
+      num-columns: 1

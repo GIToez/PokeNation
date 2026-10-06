@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Misty" script="npcbattle_misty.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="542" head="0" body="0" legs="0" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi, you're a new face! Trainers who want to turn pro have to have a policy about Pokemon! What is your approach when you catch Pokemon? My policy is an all-out offensive with water-type Pokemon!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

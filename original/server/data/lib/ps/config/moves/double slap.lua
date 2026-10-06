@@ -1,0 +1,19 @@
+MOVES["Double Slap"] = {
+    description = "Double Slap inflicts damage and hits between 2-5 times per use.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11709,
+    iconId = 13335,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "DoubleSlap",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 30,
+    requiredLevel = 8,
+    damage = 15,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_SCRATCH_TWO,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 5,
+    cooldownStorage = 15017
+}

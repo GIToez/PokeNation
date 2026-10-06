@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kevin" script="npcbattle_kevin.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="618" head="30" body="47" legs="10" feet="190" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|! How strong are you?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

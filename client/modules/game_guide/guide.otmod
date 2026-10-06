@@ -1,0 +1,10 @@
+Module
+  name: game_guide
+  description: Game Guide
+  author: PSoul
+  sandboxed: true
+  scripts: [guide]
+  autoload-priority: 1001
+  autoload: true
+  @onLoad: onInit()
+  @onUnload: onTerminate()

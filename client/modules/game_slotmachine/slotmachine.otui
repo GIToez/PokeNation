@@ -1,0 +1,117 @@
+SlotMachineItem < Item
+  size: 32 74
+  virtual: true
+  border-width: 0
+  margin: 0
+  phantom: true
+  image-source: /images/ui/dollCaseItem
+
+SlotMachineWindow < MiniWindow
+  //!text: tr('Slot Machine')
+  size: 600 600
+  image-source: /images/slotMachine/slotmachinebg
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 3
+    minimum: 48
+    maximum: 600
+    margin-left: 3
+    margin-right: 3
+    background: #ffffff88
+
+  UIItem
+    id: icon
+    virtual: true
+    size: 16 16
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 4
+    margin-left: 4
+
+  UIWidget
+    id: animationLeft
+    size: 64 64
+    image-source: /images/slotMachine/animationstay
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-bottom: 20
+    margin-left: 17
+
+  UIWidget
+    id: animationRight
+    size: 64 64
+    image-source: /images/slotMachine/animationstay
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-bottom: 20
+    margin-right: 17
+
+  UIWidget
+    id: lightsLeft
+    size: 56 177
+    image-source: /images/slotMachine/lights
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 175
+    margin-left: 17
+
+  UIWidget
+    id: lightsLeft
+    size: 56 177
+    image-source: /images/slotMachine/lights
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 175
+    margin-right: 17
+
+  MiniWindowContents
+    ScrollableFlatPanel
+      id: wheelLeft
+      image-source: ~
+      height: 224
+      width: 121
+      //opacity: 0.6
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 118
+      margin-bottom: 4
+      margin-left: 80
+      layout:
+        type: verticalBox
+        num-columns: 1
+
+  MiniWindowContents
+    ScrollableFlatPanel
+      id: wheelMid
+      image-source: ~
+      height: 224
+      width: 121
+      //opacity: 0.6
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 118
+      margin-bottom: 4
+      margin-left: 243
+      layout:
+        type: verticalBox
+        num-columns: 1
+
+  MiniWindowContents
+    ScrollableFlatPanel
+      id: wheelRight
+      image-source: ~
+      height: 224
+      width: 121
+      //opacity: 0.6
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 118
+      margin-bottom: 4
+      margin-left: 404
+      layout:
+        type: verticalBox
+        num-columns: 1

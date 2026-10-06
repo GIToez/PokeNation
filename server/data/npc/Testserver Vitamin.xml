@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Testserver Vitamin" script="testserver_vitamin.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="1201" head="21" body="67" legs="22" feet="12" corpse="0"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|. I can give you Pokemon Vitamins! I have the {list} here."/>
+	</parameters>
+</npc>

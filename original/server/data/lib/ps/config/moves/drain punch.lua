@@ -1,0 +1,21 @@
+MOVES["Drain Punch"] = {
+    description = "Drain Punch deals damage and the user will recover 50% of the HP drained.",
+    makePunch = true,
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 16671,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FIGHTING,
+    functionName = "DrainPunch",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 75,
+    requiredLevel = 15,
+    damage = 75,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_PUNCH,
+    projectile = PROJECTILE_GRAVEL,
+    backProjectile = PROJECTILE_GREEN_SHOT,
+    maxDistance = 1,
+    cooldownTime = 12,
+    cooldownStorage = 15301
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Raticate" nameDescription="a Shiny Raticate" nickname="Raticate" race="blood" experience="12" speed="297" manacost="0" minLevel="20" maxLevel="30">
+	<health now="55" max="55" rate="1.1"/>
+	<look type="685" head="0" body="0" legs="0" feet="0" corpse="13840"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1030" skill="24" attack="61"/> <!-- It's 81 but it's strong alot :< -->
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="60"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="RATICATE!"/>
+	</voices>
+	
+<loot><item id="14542" countmax="1" chance="23148"/><item id="14612" countmax="1" chance="20833"/><item id="14619" countmax="1" chance="5952"/><item id="2687" countmax="5" chance="3000"/><item id="2696" countmax="5" chance="3000"/><item id="12232" countmax="1" chance="50"/><item id="17837" countmax="1" chance="100"/><item id="17346" countmax="1" chance="5"/><item id="23527" countmax="1" chance="20"/></loot></monster>

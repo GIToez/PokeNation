@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Metagross" nickname="Metagross" nameDescription="a Shiny Metagross" race="blood" experience="15" speed="270" manacost="0" minLevel="85" maxLevel="95" sex="2">
+	<health now="80" max="80"/>
+	<look type="1935" corpse="29557"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1428" skill="24" attack="135"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="100"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="METAGROSS!"/>
+	</voices>
+	
+<loot><item id="12138" countmax="1" chance="18461"/><item id="12140" countmax="1" chance="30769"/><item id="13308" countmax="1" chance="17751"/><item id="14493" countmax="1" chance="13186"/><item id="14500" countmax="1" chance="23076"/><item id="14519" countmax="1" chance="6593"/><item id="17799" countmax="1" chance="6593"/><item id="12135" countmax="1" chance="23076"/><item id="12136" countmax="1" chance="9230"/><item id="28877" countmax="1" chance="5769"/><item id="12148" countmax="1" chance="11538"/><item id="28889" countmax="1" chance="46153"/><item id="28890" countmax="1" chance="4615"/><item id="12233" countmax="1" chance="50"/><item id="17814" countmax="1" chance="50"/><item id="29100" countmax="1" chance="100"/><item id="23519" countmax="1" chance="10"/><item id="23531" countmax="1" chance="10"/><item id="17363" countmax="1" chance="10"/></loot></monster>

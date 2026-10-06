@@ -1,0 +1,19 @@
+MOVES["Acid Spray"] = {
+    description = "Acid Spray inflicts damage and lowers the target's Special Defense by two stages.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 12072,
+    iconId = 0,
+    dType = DAMAGE_TYPE_POISON,
+    functionName = "AcidSpray",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 55,
+    requiredLevel = 20,
+    damage = 40,
+    damageType = ELEMENT_POISON,
+    effect = EFFECT_POISON_GAS_THREE,
+    areaEffect = EFFECT_POISON_GAS_TWO,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 9,
+    cooldownStorage = 15168
+}

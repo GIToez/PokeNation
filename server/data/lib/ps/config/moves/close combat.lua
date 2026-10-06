@@ -1,0 +1,19 @@
+MOVES["Close Combat"] = {
+    description = "Close Combat deals damage but lowers the user's Defense and Special Defense by one stage each after attacking.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12091,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FIGHTING,
+    functionName = "CloseCombat",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 120,
+    requiredLevel = 45,
+    damage = 120,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_MULTIPLE_BLOW,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 18,
+    cooldownStorage = 15187
+}

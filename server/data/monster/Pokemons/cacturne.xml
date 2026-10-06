@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Cacturne" nameDescription="a Cacturne" race="blood" experience="10" speed="255" manacost="0" minLevel="40" maxLevel="50">
+	<health now="70" max="70"/>
+	<look type="1511" corpse="28815"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="115"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="60"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="CACTURNE!"/>
+	</voices>
+	
+<loot><item id="12091" countmax="1" chance="11437"/><item id="12102" countmax="4" chance="68627"/><item id="13304" countmax="1" chance="7625"/><item id="13309" countmax="1" chance="7625"/><item id="14466" countmax="1" chance="41176"/><item id="14467" countmax="1" chance="8235"/><item id="14487" countmax="1" chance="41176"/><item id="14510" countmax="1" chance="20588"/><item id="17802" countmax="1" chance="10294"/><item id="28875" countmax="1" chance="6862"/><item id="14512" countmax="1" chance="6862"/><item id="14518" countmax="1" chance="20588"/><item id="28871" countmax="1" chance="2058"/><item id="28876" countmax="1" chance="4117"/><item id="28880" countmax="1" chance="1029"/><item id="28886" countmax="1" chance="8235"/><item id="28887" countmax="1" chance="10294"/><item id="12231" countmax="1" chance="50"/><item id="12242" countmax="1" chance="50"/><item id="14464" countmax="5" chance="5000"/><item id="29056" countmax="1" chance="100"/><item id="23520" countmax="1" chance="20"/><item id="23514" countmax="1" chance="20"/></loot></monster>

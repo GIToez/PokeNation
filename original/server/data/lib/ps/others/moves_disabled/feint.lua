@@ -1,0 +1,17 @@
+MOVES["Feint"] = {
+    description = "This attack hits a target using a move such as Protect or Detect. This also lifts the effects of those moves.",
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 27664,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 30,
+    damage = 30,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_BIG_SHIELD,
+    projectile = nil,
+    maxDistance = 3,
+    cooldownTime = 5,
+    cooldownStorage = 15441,
+    makeContact = false,
+}

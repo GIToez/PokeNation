@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Clinton Elton" script="npcbattle_clintonelton.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="626" head="26" body="49" legs="49" feet="15" addons="1"/>
+	<parameters>
+		<parameter key="message_greet" value="Our strength is underestimated, but are the fool who do this."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

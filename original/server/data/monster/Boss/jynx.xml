@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Sweet Lover" nameDescription="a Sweet Lover" race="blood" experience="15" speed="295" manacost="0" sex="0" minLevel="100" maxLevel="100">
+	<health now="5760" max="5760"/>
+	<look type="1161" head="0" body="0" legs="0" feet="0" corpse="18127"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag boss="1"/>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1052" skill="24" attack="50"/>
+		<attack name="Moves" interval="500" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="35"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="JYNX!!"/>
+	</voices>
+	<loot>
+		<item id="12109" countmax="1" chance="10909"/> <!-- jynx clothes -->
+		<item id="14485" countmax="1" chance="27272"/> <!-- flawless ice crystal -->
+		<item id="14486" countmax="1" chance="21818"/> <!-- frost charm -->
+		<item id="14488" countmax="1" chance="1818"/> <!-- frozen heart -->
+		<item id="14489" countmax="1" chance="10909"/> <!-- frozen tear -->
+		<item id="14494" countmax="1" chance="27272"/> <!-- ice crystal -->
+		<item id="14496" countmax="1" chance="21818"/> <!-- icicle -->
+		<item id="14506" countmax="1" chance="19480"/> <!-- shard -->
+		<item id="7372" countmax="1" chance="2000"/> <!-- ice cream cone (crispy chocolate chips) -->
+		<item id="7377" countmax="1" chance="2000"/> <!-- ice cream cone (blue-barian) -->
+		<item id="7375" countmax="1" chance="2000"/> <!-- ice cream cone (chilly cherry) -->
+		<item id="12236" countmax="3" chance="100000"/> <!-- icicle plate -->
+		<item id="12233" countmax="3" chance="100000"/> <!-- mind plate -->
+		<item id="17932" countmax="1" chance="10000"/> <!-- jynx doll -->
+		<item id="18121" countmax="1" chance="100000"/> <!-- Sweet Lover artifacts -->
+	</loot>
+	<script>
+        <event name="bossReward"/>	    
+	</script>
+</monster>

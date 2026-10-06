@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Jewel Annice" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="627" head="50" body="20" legs="120" feet="100" addons="2"/>
+	<parameters>
+		<parameter key="message_greet" value="Pokemon around the world await you young trainer!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

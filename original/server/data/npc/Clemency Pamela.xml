@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Clemency Pamela" script="quest_hiddenAndSeek.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1200" head="68" body="21" legs="35" feet="150" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Poke Balls are not amazing?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

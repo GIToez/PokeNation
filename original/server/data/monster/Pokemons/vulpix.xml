@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Vulpix" nameDescription="a Vulpix" shiny="Shiny Vulpix" race="blood" experience="7" speed="265" manacost="0" minLevel="20" maxLevel="30">
+	<health now="38" max="38"/>
+	<look type="388" head="0" body="0" legs="0" feet="0" corpse="11425"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1538" skill="24" attack="41"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="40"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="VULPIX!"/>
+	</voices>
+	
+<loot><item id="12101" countmax="4" chance="88888"/><item id="12087" countmax="1" chance="14814"/><item id="14513" countmax="1" chance="26666"/><item id="2675" countmax="3" chance="5000"/><item id="17852" countmax="1" chance="100"/><item id="12229" countmax="1" chance="2"/></loot></monster>

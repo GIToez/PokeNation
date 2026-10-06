@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Shuckle" nameDescription="a Shiny Shuckle" race="blood" experience="15" speed="205" manacost="0" minLevel="85" maxLevel="95">
+	<health now="20" max="20"/>
+	<look type="1649" head="0" body="0" legs="0" feet="0" corpse="27467"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="20000" skill="24" attack="10"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="230"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SHUCKLLLEEE!"/>
+	</voices>
+	
+<loot><item id="14540" countmax="1" chance="17857"/><item id="12119" countmax="1" chance="83333"/><item id="14607" countmax="1" chance="5000"/><item id="14618" countmax="1" chance="6250"/><item id="14620" countmax="1" chance="8928"/><item id="17796" countmax="1" chance="33333"/><item id="12241" countmax="1" chance="50"/><item id="12234" countmax="1" chance="50"/><item id="18012" countmax="1" chance="100"/><item id="17381" countmax="1" chance="10"/><item id="18923" countmax="1" chance="10"/><item id="23517" countmax="1" chance="10"/><item id="23528" countmax="1" chance="10"/></loot></monster>

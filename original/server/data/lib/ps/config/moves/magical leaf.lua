@@ -1,0 +1,20 @@
+MOVES["Magical Leaf"] = {
+    description = "Magical Leaf deals damage and ignores changes to the Accuracy and Evasion stats.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 12134,
+    iconId = 0,
+    dType = DAMAGE_TYPE_GRASS,
+    functionName = "MagicalLeaf",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 60,
+    requiredLevel = 20,
+    damage = 60,
+    damageType = ELEMENT_GRASS,
+    effect = EFFECT_MULTIPLE_BLOW_TWO,
+    projectile = nil,
+    maxDistance = 8,
+    cooldownTime = 9,
+    cooldownStorage = 15227,
+    ignoreEvasion = true,
+    ignoreAccuracy = true
+}

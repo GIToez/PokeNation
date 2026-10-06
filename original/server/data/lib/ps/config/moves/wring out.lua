@@ -1,0 +1,20 @@
+MOVES["Wring Out"] = {
+    description = "The power of Wring Out varies between 1 and 120 depending on how much HP the opponent has. The more HP the opponent has, the more damage this move will do.\nIts damage is calculated by the following formula: Base Power = 120 x (Opponent's Current HP/Opponent's Maximum HP)",
+    makeContact = true,
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 12105,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "WringOut",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 90,
+    requiredLevel = 45,
+    damage = 120,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_DARK_PULSE,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 18,
+    cooldownStorage = 15200,
+    damageText = "??"
+}

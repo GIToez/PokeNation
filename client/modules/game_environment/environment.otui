@@ -1,0 +1,21 @@
+HeadlessWindow
+  id: environment
+  focusable: false
+  draggable: false
+  phantom: true
+  opacity: 0.9
+  image-color: #ffffffee
+  size: 270 32
+  image-source: /images/ui/message_label
+  anchors.centerIn: gameMapPanel
+  margin-top: -200
+
+  Label
+    id: message
+    font: sans-bold-16px
+    color: #FFFFFF
+    text-align: center
+    background-color: alpha
+    anchors.centerIn: parent
+    text-offset: 2 0
+    text-auto-resize: true

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Fernando Schoening" script="npcbattle_fi_fernandoschoening.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="618" head="56" body="100" legs="100" feet="20" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

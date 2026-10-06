@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<npc name="Ash's Pikachu" floorchange="0" walkinterval="500">
+	<health now="100" max="100"/>
+	<look type="376" head="0" body="0" legs="0" feet="0"/>
+
+    <interaction range="3" idletime="60">
+
+    <interact keywords="hi" focus="1">
+      <keywords>hello</keywords>
+
+      <response text="Pikachu!">
+        <action name="idle" value="1"/>
+      </response>
+    </interact>
+
+    <interact keywords="bye" focus="0">
+      <keywords>farewell</keywords>
+
+      <response text="Pikachu!"/>
+    </interact>
+  </interaction>
+
+</npc>

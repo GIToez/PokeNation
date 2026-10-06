@@ -1,0 +1,19 @@
+MOVES["Endeavor"] = {
+    description = "Endeavor deals damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12061,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Endeavor",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 90,
+    requiredLevel = 30,
+    damage = 100,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_MULTIPLE_BLOW,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 15,
+    cooldownStorage = 15157
+}

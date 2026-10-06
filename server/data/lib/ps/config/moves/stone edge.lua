@@ -1,0 +1,19 @@
+MOVES["Stone Edge"] = {
+    description = "Stone Edge deals damage and has an increased critical hit ratio.",
+    criticalChance = 20,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 16329,
+    iconId = 0,
+    dType = DAMAGE_TYPE_ROCK,
+    functionName = "StoneEdge",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 100,
+    requiredLevel = 15,
+    damage = 100,
+    damageType = ELEMENT_ROCK,
+    effect = EFFECT_FAILING_ROCKS,
+    projectile = PROJECTILE_ROCK,
+    maxDistance = 6,
+    cooldownTime = 15,
+    cooldownStorage = 15288
+}

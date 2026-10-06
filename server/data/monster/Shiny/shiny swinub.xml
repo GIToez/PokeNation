@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Swinub" nameDescription="a Shiny Swinub" race="blood" experience="7" speed="250" manacost="0" minLevel="20" maxLevel="30">
+	<health now="50" max="50"/>
+	<look type="1656" head="0" body="0" legs="0" feet="0" corpse="27474"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="24" attack="50"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="40"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SWINNNUUBB!"/>
+	</voices>
+	
+<loot><item id="12119" countmax="1" chance="7407"/><item id="14568" countmax="1" chance="740"/><item id="14600" countmax="1" chance="1111"/><item id="14601" countmax="1" chance="888"/><item id="14604" countmax="1" chance="444"/><item id="14609" countmax="1" chance="1111"/><item id="14611" countmax="1" chance="888"/><item id="14546" countmax="1" chance="634"/><item id="17799" countmax="1" chance="1269"/><item id="18019" countmax="1" chance="100"/><item id="12236" countmax="1" chance="1"/><item id="13807" countmax="1" chance="1"/><item id="18917" countmax="1" chance="5"/><item id="18923" countmax="1" chance="5"/></loot></monster>

@@ -1,0 +1,17 @@
+MOVES["Lunge"] = {
+    description = "The user makes a lunge at the target, attacking with full force. This also lowers the target's Attack stat.",
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 27650,
+    iconId = 0,
+    dType = DAMAGE_TYPE_BUG,
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 80,
+    damage = 80,
+    damageType = ELEMENT_BUG,
+    effect = EFFECT_BIG_GREEN_LEAVES,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 12,
+    cooldownStorage = 15438,
+    makeContact = true,
+}

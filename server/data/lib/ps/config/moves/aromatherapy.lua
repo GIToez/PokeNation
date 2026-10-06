@@ -1,0 +1,19 @@
+MOVES["Aromatherapy"] = {
+    description = "Aromatherapy cures the user and friend's of sleep, poison, paralysis, freeze and burn.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 12085,
+    iconId = 0,
+    dType = DAMAGE_TYPE_GRASS,
+    functionName = "Aromatherapy",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 120,
+    requiredLevel = 60,
+    damage = 0,
+    damageType = ELEMENT_GRASS,
+    projectile = nil,
+    areaEffect = EFFECT_YELLOW_FALLS,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 60,
+    cooldownStorage = 15181
+}

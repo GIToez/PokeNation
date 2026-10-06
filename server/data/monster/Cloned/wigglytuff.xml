@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Cloned Wigglytuff" nameDescription="a Wigglytuff" shiny="Shiny Wigglytuff" race="blood" experience="12" speed="245" manacost="0" minLevel="100" maxLevel="100">
+	<health now="140" max="140"/>
+	<look type="391" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2222" skill="24" attack="70"/>
+		<attack name="Moves" interval="500"/>	
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="45"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="WIGGLYTUFF!"/>
+	</voices>
+	
+<loot><item id="12099" countmax="1" chance="53030"/><item id="12121" countmax="1" chance="53030"/><item id="14474" countmax="1" chance="14583"/><item id="2674" countmax="5" chance="5000"/><item id="12232" countmax="1" chance="50"/><item id="23946" countmax="1" chance="50"/><item id="14516" countmax="1" chance="6250"/><item id="17854" countmax="1" chance="100"/><item id="18084" countmax="1" chance="20"/><item id="18926" countmax="1" chance="10"/><item id="23523" countmax="1" chance="10"/><item id="23527" countmax="1" chance="10"/></loot></monster>

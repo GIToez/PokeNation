@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Javier Gatchell" script="npcbattle_fi_javiergatchell.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="636" head="22" body="40" legs="40" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

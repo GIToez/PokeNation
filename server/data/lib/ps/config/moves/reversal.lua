@@ -1,0 +1,20 @@
+MOVES["Reversal"] = {
+    description = "Reversal deals more damage the lower the target HP.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11751,
+    iconId = 13377,
+    dType = DAMAGE_TYPE_FIGHTING,
+    functionName = "Reversal",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 90,
+    requiredLevel = 35,
+    damage = 90,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_SCRATCH_FOUR,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 14,
+    cooldownStorage = 15059,
+    damageText = "??"
+}

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Rattata" nameDescription="a rattata" nickname="The Iron Tooth" race="blood" experience="10" speed="150" manacost="0" minLevel="25" maxLevel="25">
+	<health now="230" max="230"/>
+	<look type="684" head="0" body="0" legs="0" feet="0" corpse="13839"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1388" skill="24" attack="56"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="35"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="RATTATA!"/>
+	</voices>
+	<loot>
+		<item id="12115" countmax="1" chance="10000"/> <!-- apple bite -->
+	</loot>
+</monster>

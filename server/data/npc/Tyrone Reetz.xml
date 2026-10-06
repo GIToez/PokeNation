@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Tyrone Reetz" script="npcbattle_tyronereetz.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="632" head="100" body="30" legs="20" feet="100" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Do not be surprised by anything, and wait for everything in here."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

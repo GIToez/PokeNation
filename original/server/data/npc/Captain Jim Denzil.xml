@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<npc name="Captain Jim Denzil" script="default.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="563" head="0" body="0" legs="0" feet="0"/>
+	<parameters>
+        <parameter key="module_travel" value="1"/>
+		<parameter key="message_greet" value="Hello buddy! Since I came to this island I can not leave. You will already?! Tangelo is wonderful. If you don't know where to flow, say {travel}."/>
+        <parameter key="travel_destinations" value="vermilion,3858,641,5,350,false;mandarin north,2968,2297,6,70,false,-1,4;mikan,2679,2499,6,50,false;moro,4259,2929,6,200,false,-1,5;ascorbia,4431,1783,6,350,false,-1,5;"/>
+    </parameters>
+</npc>

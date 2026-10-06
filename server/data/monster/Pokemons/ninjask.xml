@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Ninjask" nameDescription="a Ninjask" race="blood" experience="10" speed="360" manacost="0" minLevel="40" maxLevel="50">
+	<health now="61" max="61"/>
+	<look type="1470" corpse="28774"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="625" skill="24" attack="90"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="45"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="NINJASK!"/>
+	</voices>
+	
+<loot><item id="12113" countmax="1" chance="41666"/><item id="12126" countmax="1" chance="19444"/><item id="14466" countmax="3" chance="58333"/><item id="14503" countmax="1" chance="14583"/><item id="17786" countmax="1" chance="38888"/><item id="17793" countmax="3" chance="58333"/><item id="12241" countmax="1" chance="25"/><item id="18081" countmax="1" chance="25"/><item id="2674" countmax="5" chance="5000"/><item id="29015" countmax="1" chance="100"/><item id="23526" countmax="1" chance="10"/><item id="23528" countmax="1" chance="10"/><item id="18930" countmax="1" chance="10"/></loot></monster>

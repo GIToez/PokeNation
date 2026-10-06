@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Loudred" nameDescription="a Loudred" race="blood" experience="10" speed="248" manacost="0" minLevel="40" maxLevel="50">
+	<health now="84" max="84"/>
+	<look type="1473" corpse="28777"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2083" skill="24" attack="71"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="43"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="LOUDRED!"/>
+	</voices>
+	
+<loot><item id="12115" countmax="1" chance="55555"/><item id="14466" countmax="1" chance="100000"/><item id="14469" countmax="4" chance="83333"/><item id="17786" countmax="1" chance="33333"/><item id="17793" countmax="1" chance="100000"/><item id="28876" countmax="1" chance="10000"/><item id="28888" countmax="1" chance="12500"/><item id="12232" countmax="1" chance="50"/><item id="2687" countmax="5" chance="5000"/><item id="2674" countmax="5" chance="5000"/><item id="29018" countmax="1" chance="100"/></loot></monster>

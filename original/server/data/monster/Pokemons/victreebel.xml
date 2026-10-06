@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Victreebel" nameDescription="a Victreebel" shiny="Shiny Victreebel" race="blood" experience="15" speed="270" manacost="0" minLevel="50" maxLevel="60">
+	<health now="80" max="80"/>
+	<look type="422" head="0" body="0" legs="0" feet="0" corpse="11459"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1428" skill="24" attack="105"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="65"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="VICTREEBEL!"/>
+	</voices>
+	
+<loot><item id="12102" countmax="18" chance="100000"/><item id="12091" countmax="1" chance="66666"/><item id="13304" countmax="1" chance="44444"/><item id="13309" countmax="1" chance="44444"/><item id="14487" countmax="4" chance="80000"/><item id="14627" countmax="1" chance="16666"/><item id="12231" countmax="1" chance="50"/><item id="12235" countmax="1" chance="50"/><item id="17883" countmax="1" chance="100"/><item id="18086" countmax="1" chance="20"/><item id="18920" countmax="1" chance="10"/><item id="23520" countmax="1" chance="10"/><item id="23524" countmax="1" chance="10"/></loot></monster>

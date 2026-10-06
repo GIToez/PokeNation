@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Oliver Terrel" script="quest_oliverTerrel.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1195" head="26" body="50" legs="55" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello! {Finally}! Good to see you."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

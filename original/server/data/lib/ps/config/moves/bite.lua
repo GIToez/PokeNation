@@ -1,0 +1,19 @@
+MOVES["Bite"] = {
+    description = "Bite deals damage and has a 30% chance of causing the target to flinch.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11695,
+    iconId = 13321,
+    dType = DAMAGE_TYPE_DARK,
+    functionName = "Bite",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 60,
+    requiredLevel = 13,
+    damage = 60,
+    damageType = ELEMENT_DARK,
+    effect = EFFECT_BITE,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 9,
+    cooldownStorage = 15003
+}

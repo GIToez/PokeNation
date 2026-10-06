@@ -1,0 +1,17 @@
+MOVES["Detect"] = {
+    description = "Enables the user to evade all attacks. Its chance of failing rises if it is used in succession.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 27588,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FIGHTING,
+    type = SKILLS_TYPES.STATS,
+    requiredEnergy = 100,
+    damage = 0,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_BIG_SHIELD,
+    projectile = nil,
+    maxDistance = 0,
+    cooldownTime = 60,
+    cooldownStorage = 15416,
+    makeContact = false,
+}

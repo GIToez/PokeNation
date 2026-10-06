@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Chris Chrissie" script="shop_mastery.lua" walkinterval="1000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="918" head="50" body="60" legs="70" feet="80" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Welcome to the Avalanche Mastery! Here you can exchange your avalanche tokens into rewards. Type {options} to see."/>
+	</parameters>
+</npc>

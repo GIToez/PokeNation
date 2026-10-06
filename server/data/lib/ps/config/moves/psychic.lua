@@ -1,0 +1,19 @@
+MOVES["Psychic"] = {
+    description = "Psychic deals damage and has a 10% chance of lowering the target's Special Defense by one stage.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11801,
+    iconId = 13427,
+    dType = DAMAGE_TYPE_PSYCHIC,
+    functionName = "Psychic",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 100,
+    requiredLevel = 45,
+    damage = 90,
+    damageType = ELEMENT_PSYCHIC,
+    effect = EFFECT_CONFUSE_STARS,
+    areaEffect = EFFECT_GREEN_CIRCLE,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 21,
+    cooldownStorage = 15110
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Shuppet" nickname="Shuppet" nameDescription="a Shiny Shuppet" race="blood" experience="5" speed="245" manacost="0" minLevel="20" maxLevel="30">
+	<health now="44" max="44"/>
+	<look type="1912" corpse="29534"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag canwalkeverywhere="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2222" skill="24" attack="75"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="35"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SHUPPET!"/>
+	</voices>
+	
+<loot><item id="12136" countmax="1" chance="2666"/><item id="12146" countmax="1" chance="2962"/><item id="14476" countmax="1" chance="3333"/><item id="14480" countmax="1" chance="8888"/><item id="14481" countmax="1" chance="2666"/><item id="14499" countmax="1" chance="1904"/><item id="18082" countmax="1" chance="2"/><item id="29077" countmax="1" chance="100"/><item id="18914" countmax="1" chance="1"/><item id="18922" countmax="1" chance="1"/></loot></monster>

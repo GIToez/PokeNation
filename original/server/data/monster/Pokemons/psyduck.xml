@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Psyduck" nameDescription="a Psyduck" shiny="Shiny Psyduck" race="blood" experience="12" speed="255" manacost="0" minLevel="12" maxLevel="22">
+	<health now="50" max="50"/>
+	<look type="405" head="0" body="0" legs="0" feet="0" corpse="11442"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="52"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="48"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="PSYDUCK!"/>
+		<voice sentence="PSYY!!"/>
+	</voices>
+	
+<loot><item id="12100" countmax="4" chance="88888"/><item id="12112" countmax="1" chance="16666"/><item id="12131" countmax="1" chance="8888"/><item id="2674" countmax="5" chance="5000"/><item id="12263" countmax="1" chance="100"/><item id="12230" countmax="1" chance="2"/><item id="17348" countmax="1" chance="1"/></loot></monster>

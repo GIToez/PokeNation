@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Beedrill" nameDescription="a Shiny Beedrill" nickname="Beedrill" race="blood" experience="12" speed="275" manacost="0" minLevel="25" maxLevel="35">
+	<health now="65" max="65" rate="1.1"/>
+	<look type="680" head="0" body="0" legs="0" feet="0" corpse="13835"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1333" skill="24" attack="80"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="40"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="BEE!"/>
+		<voice sentence="BEEDRILL!"/>
+	</voices>
+	
+<loot><item id="14540" countmax="1" chance="31250"/><item id="14618" countmax="1" chance="10937"/><item id="2674" countmax="3" chance="3000"/><item id="2675" countmax="3" chance="3000"/><item id="14625" countmax="1" chance="8333"/><item id="12241" countmax="1" chance="50"/><item id="12235" countmax="1" chance="50"/><item id="17833" countmax="1" chance="100"/><item id="17355" countmax="1" chance="10"/><item id="23524" countmax="1" chance="10"/><item id="23528" countmax="1" chance="10"/></loot></monster>

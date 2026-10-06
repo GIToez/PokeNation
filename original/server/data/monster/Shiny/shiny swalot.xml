@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Swalot" nickname="Swalot" nameDescription="a Shiny Swalot" race="blood" experience="10" speed="255" manacost="0" minLevel="40" maxLevel="50">
+	<health now="100" max="100"/>
+	<look type="1876" corpse="29498"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="73"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="83"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SWALOT!"/>
+	</voices>
+	
+<loot><item id="12104" countmax="10" chance="100000"/><item id="14511" countmax="1" chance="70000"/><item id="12144" countmax="1" chance="46666"/><item id="14505" countmax="1" chance="25000"/><item id="28878" countmax="1" chance="17500"/><item id="12235" countmax="1" chance="50"/><item id="29041" countmax="1" chance="100"/><item id="23524" countmax="1" chance="20"/><item id="18925" countmax="1" chance="10"/></loot></monster>

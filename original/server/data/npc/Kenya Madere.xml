@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kenya Madere" script="npcbattle_kenyamadere.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="532" head="2" body="22" legs="44" feet="97" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I love flowers and everything in nature, but  I'm going to beat you."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

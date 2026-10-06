@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<movements>
+	<!-- PS -->
+		<!-- Balls -->
+			<movevent type="Equip" itemid="12158-12160;12162-12164;12166-12168;12170-12172;12174-12176;12178-12180;12182-12184;12186-12189;13492-13496;14389-14412;14443-14448;14451-14456;18129-18131;18629-18631;18725-18733;18852-18866;18886-18894;18899-18907;18933-18941;19027-19028;19030-19032;19034-19036;19038-19040;19042-19044;19046-19048;19050-19052;19054-19056;19058-19060;19063;19074-19082;24554-24562;24566-24567;24569;24592-24603;24608-24625;24677-24697;25161-25178;25276-25278;25318-25347;25358-25393;27631-27729;27775-27777;27779-27781;27783-27785;27787-27789;27791-27793;27795-27797;27799-27801;27803-27805;27807-27809;27995-27997;27999-28001;28003-28005;28007-28009;28011-28013;28015-28017;28019-28021;28023-28025;28027-28029;28031-28033;28035-28037;28090-28128;28170-28172;28174-28176;28178-28180;28182-28184;28186-28188;28190-28192;28194-28196;28198-28200;28202-28204;28206-28208;28210-28212;28214-28216;28218-28220;28222-28224;28226-28228;28230-28232;28234-28236;28238-28240;28242-28244;28246-28248;28250-28252;28254-28256;28258-28260;29873-29875;29877-29879;29881-29883;29887-29889;29891-29893;29895-29897;29899-29901;29903-29905;29907-29909" slot="feet" event="script" value="../../lib/ps/events/movements/ball.lua"/>
+			<movevent type="DeEquip" itemid="12158-12160;12162-12164;12166-12168;12170-12172;12174-12176;12178-12180;12182-12184;12186-12189;13492-13496;14389-14412;14443-14448;14451-14456;18129-18131;18629-18631;18725-18733;18852-18866;18886-18894;18899-18907;18933-18941;19027-19028;19030-19032;19034-19036;19038-19040;19042-19044;19046-19048;19050-19052;19054-19056;19058-19060;19063;19074-19082;24554-24562;24566-24567;24569;24592-24603;24608-24625;24677-24697;25161-25178;25276-25278;25318-25347;25358-25393;27631-27729;27775-27777;27779-27781;27783-27785;27787-27789;27791-27793;27795-27797;27799-27801;27803-27805;27807-27809;27995-27997;27999-28001;28003-28005;28007-28009;28011-28013;28015-28017;28019-28021;28023-28025;28027-28029;28031-28033;28035-28037;28090-28128;28170-28172;28174-28176;28178-28180;28182-28184;28186-28188;28190-28192;28194-28196;28198-28200;28202-28204;28206-28208;28210-28212;28214-28216;28218-28220;28222-28224;28226-28228;28230-28232;28234-28236;28238-28240;28242-28244;28246-28248;28250-28252;28254-28256;28258-28260;29873-29875;29877-29879;29881-29883;29887-29889;29891-29893;29895-29897;29899-29901;29903-29905;29907-29909" slot="feet" event="script" value="../../lib/ps/events/movements/ball.lua"/>
+		<!-- Others -->
+		<movement type="stepIn" itemid="27982-27994" event="script" value="../../lib/ps/events/movements/events/halloween/cursedBedsheet.lua" />
+		<movevent type="StepOut" itemid="10736-10739" event="script" value="../../lib/ps/events/movements/dryGrassEffect.lua"/>
+		<movevent type="StepOut" itemid="6216-6219" event="script" value="../../lib/ps/events/movements/grassEffect.lua"/>
+		<movevent type="StepOut" itemid="4608-4666;4820-4825" event="script" value="../../lib/ps/events/movements/swimEffect.lua"/>
+		<movevent type="StepOut" itemid="5405-5410;5427-5438" event="script" value="../../lib/ps/events/movements/underwaterBubblesEffect.lua"/>
+		<movement type="stepIn" itemid="24713" event="script" value="../../lib/ps/events/movements/anniversaryEventMagicFlame.lua"/>
+		<movement type="stepOut" itemid="24713" event="script" value="../../lib/ps/events/movements/anniversaryEventMagicFlame.lua"/>
+		<movement type="stepIn" itemid="460" event="script" value="../../lib/ps/events/movements/fly.lua"/>
+		<movement type="stepOut" itemid="460" event="script" value="../../lib/ps/events/movements/fly.lua"/>
+		<movement type="addItem" tileitem="1" itemid="460" event="script" value="../../lib/ps/events/movements/fly.lua"/>
+		<movement type="stepIn" itemid="8632;14803" event="script" value="../../lib/ps/events/movements/underwaterEnter.lua"/>
+		<movement type="stepOut" itemid="13291;14804" event="script" value="../../lib/ps/events/movements/underwaterLeave.lua" />
+		<movement type="stepIn" itemid="11907" event="script" value="../../lib/ps/events/movements/trade.lua" />
+		<movement type="stepIn" itemid="11906" event="script" value="../../lib/ps/events/movements/pvpArena.lua" />
+		<movement type="stepIn" itemid="11905" event="script" value="../../lib/ps/events/movements/pvpArena.lua" />
+		<movevent type="stepIn" itemid="14797" event="script" value="../../lib/ps/events/movements/safariTrap.lua"/>
+		<!-- <movement type="stepOut" itemid="14803" event="script" value="../../lib/ps/events/movements/underwaterEnterSecure.lua"/> -->
+		<!-- <movement type="stepOut" itemid="14804" event="script" value="../../lib/ps/events/movements/underwaterLeaveSecure.lua"/> -->
+		<movement type="stepIn" itemid="351-354;4526-4541;231" event="script" value="../../lib/ps/events/movements/traces.lua"/>
+		<movevent type="StepIn" itemid="18635" event="script" value="../../lib/ps/events/movements/babyDungeonEnergyField.lua"/>
+		<movevent type="StepIn" itemid="18637" event="script" value="../../lib/ps/events/movements/oliverDungeonFireField.lua"/>
+		<movevent type="StepIn" itemid="18643" event="script" value="../../lib/ps/events/movements/courtsTedTeleport.lua"/>
+		<movevent type="StepIn" itemid="18647" event="script" value="../../lib/ps/events/movements/goldenIslandProphecy.lua"/>
+		<movevent type="StepIn" itemid="18740" event="script" value="../../lib/ps/events/movements/moltresDungeon.lua"/>
+		<movevent type="AddItem" tileitem="1" itemid="3196" event="script" value="../../lib/ps/events/movements/zapdosDungeon.lua"/>
+		<movevent type="StepIn" itemid="23563" event="script" value="../../lib/ps/events/movements/activationTile.lua"/>
+		<movevent type="StepOut" itemid="23563" event="script" value="../../lib/ps/events/movements/activationTile.lua"/>
+		<movevent type="StepIn" itemid="28166-28168" event="script" value="../../lib/ps/events/movements/events/halloween/coreTeleport.lua"/>
+		<!-- Gyms -->
+		<movement type="stepIn" itemid="14805-14806" event="script" value="../../lib/ps/events/movements/gyms/saffron.lua" />
+		<movement type="stepIn" itemid="14814" event="script" value="../../lib/ps/events/movements/gyms/fuchsiaTiles.lua" />
+		<movement type="stepIn" itemid="14808" event="script" value="../../lib/ps/events/movements/gyms/fuchsiaTeleport.lua" />
+		<movement type="stepIn" itemid="14813" event="script" value="../../lib/ps/events/movements/gyms/vermilionTeleport.lua" />
+		<movement type="stepIn" itemid="14807" event="script" value="../../lib/ps/events/movements/gyms/saffronTeleport.lua" />
+		<movement type="stepIn" itemid="18132" event="script" value="../../lib/ps/events/movements/battleTowerTeleport.lua" />
+		
+		<movevent type="StepOut" itemid="5111" event="script" value="closingdoor.lua"/>
+	<!-- PS end -->
+	
+	<!-- Decaying tiles -->
+	<movevent type="StepIn" itemid="293" event="script" value="decay.lua"/>
+	<movevent type="StepIn" itemid="461" event="script" value="decay.lua"/>
+
+	<!-- 
+	Swimming
+	<movevent type="StepIn" itemid="4828-4831" event="script" value="swimming.lua"/>
+	<movevent type="StepIn" itemid="7943-7954" event="script" value="swimming.lua"/>
+	-->
+
+	<!--
+	Underwater drown
+	<movevent type="StepIn" fromid="5405" toid="5410" event="script" value="drown.lua"/>
+	<movevent type="StepOut" fromid="5405" toid="5410" event="script" value="drown.lua"/>
+	-->
+
+	<!-- (Depot & Level) tiles -->
+	<movevent type="StepIn" itemid="416" event="script" value="tiles.lua"/>
+	<movevent type="StepOut" itemid="417" event="script" value="tiles.lua"/>
+	<movevent type="StepIn" itemid="426" event="script" value="tiles.lua"/>
+	<movevent type="StepOut" itemid="425" event="script" value="tiles.lua"/>
+	<movevent type="StepIn" itemid="446-447" event="script" value="tiles.lua"/>
+	<movevent type="StepOut" itemid="446-447" event="script" value="tiles.lua"/>
+	<movevent type="StepIn" itemid="3216" event="script" value="tiles.lua"/>
+	<movevent type="StepOut" itemid="3217" event="script" value="tiles.lua"/>
+	<movevent type="StepIn" itemid="3202" event="script" value="tiles.lua"/>
+	<movevent type="StepOut" itemid="3215" event="script" value="tiles.lua"/>
+	<movevent type="StepIn" itemid="11059" event="script" value="tiles.lua"/>
+	<movevent type="StepOut" itemid="11060" event="script" value="tiles.lua"/>
+	<!-- <movevent type="StepIn" itemid="8714" event="script" value="tiles.lua"/> -->
+
+	<!-- Traps -->
+	<movevent type="StepIn" itemid="1510" event="script" value="trap.lua"/>
+	<movevent type="StepOut" itemid="1511" event="script" value="trap.lua"/>
+	<movevent type="StepIn" itemid="1512" event="script" value="trap.lua"/>
+	<movevent type="StepOut" itemid="1513" event="script" value="trap.lua"/>
+	<movevent type="StepIn" itemid="2579" event="script" value="trap.lua"/>
+	<movevent type="RemoveItem" itemid="2579" event="script" value="trap.lua"/>
+
+	<!-- Citizen teleport -->
+	<!-- <movevent type="StepIn" itemid="1387" event="script" value="citizen.lua"/> -->
+
+	<!-- (Level & quest) doors -->
+	<movevent type="StepOut" itemid="1228" event="script" value="closingdoor.lua"/>
+	<!-- Walkback when walking on quest chest -->
+	<movevent type="StepIn" itemid="1738" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1740" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" fromid="1746" toid="1749" event="script" value="walkback.lua"/>
+
+	<movevent type="StepOut" itemid="5120" event="script" value="closingdoor.lua"/> <!-- 'normal' door that will work with this action -->
+	<movevent type="StepOut" itemid="1230" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="1246" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="1248" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="1260" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="1262" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="3541" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="3550" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5104" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5113" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5122" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5131" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5293" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5295" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="1224" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="1226" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="1242" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="1244" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="1256" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="1258" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="3543" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="3552" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5106" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5115" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5124" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5133" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5289" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5291" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5746" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="5749" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6203" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6205" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6207" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6209" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6260" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6262" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6264" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6266" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6897" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6899" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6906" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="6908" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="7039" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="7041" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="7048" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="7050" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="8552" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="8554" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="8556" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="8558" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="9176" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="9178" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="9180" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="9182" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="9278" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="9280" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="9282" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="9284" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10279" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10281" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10283" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10285" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10474" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10476" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10483" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10485" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10780" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10782" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10789" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="10791" event="script" value="closingdoor.lua"/>
+	<movevent type="StepOut" itemid="21290;21299;9274;9276" event="script" value="closingdoor.lua"/>
+	
+	<movevent type="StepIn" itemid="1228" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1230" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1246" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1248" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1260" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1262" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="3541" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="3550" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5104" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5113" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5122" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5131" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5293" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5295" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1224" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1226" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1242" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1244" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1256" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="1258" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="3543" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="3552" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5106" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5115" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5124" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5133" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5289" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5291" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5746" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="5749" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6203" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6205" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6207" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6209" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6260" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6262" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6264" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6266" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6897" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6899" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6906" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="6908" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="7039" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="7041" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="7048" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="7050" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="8552" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="8554" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="8556" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="8558" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="9176" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="9178" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="9180" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="9182" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="9278" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="9280" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="9282" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="9284" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10279" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10281" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10283" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10285" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10474" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10476" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10483" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10485" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10780" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10782" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10789" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="10791" event="script" value="walkback.lua"/>
+	<movevent type="StepIn" itemid="21290;21299;9274;9276" event="script" value="walkback.lua"/>
+
+	<!-- Snow footprint tiles -->
+	<movevent type="StepIn" itemid="670" event="script" value="snow.lua"/>
+	<movevent type="StepIn" itemid="6594" event="script" value="snow.lua"/>
+
+	<!-- Create bread movements -->
+	<movevent type="AddItem" tileitem="1" itemid="1786" event="script" value="dough.lua"/>
+	<movevent type="AddItem" tileitem="1" itemid="1788" event="script" value="dough.lua"/>
+	<movevent type="AddItem" tileitem="1" itemid="1790" event="script" value="dough.lua"/>
+	<movevent type="AddItem" tileitem="1" itemid="1792" event="script" value="dough.lua"/>
+
+	<!-- Campfires -->
+	<movevent type="StepIn" itemid="1423" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1423" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1424" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1424" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1425" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1425" event="function" value="onAddField"/>
+
+	<!-- Fields -->
+	<!--
+	<movevent type="StepIn" itemid="1487" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1487" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1488" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1488" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1489" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1489" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1490" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1490" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1491" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1491" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1492" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1492" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1493" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1493" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1494" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1494" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1495" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1495" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1496" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1496" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1497" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1497" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1498" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1498" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1499" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1499" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1500" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1500" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1501" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1501" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1502" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1502" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1503" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1503" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1504" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1504" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1505" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1505" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1506" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1506" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1507" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1507" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="1508" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="1508" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="7359" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="7359" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="7360" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="7360" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="7465-7473" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="7465-7473" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="11095" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="11095" event="function" value="onAddField"/>
+	<movevent type="StepIn" itemid="11096" event="function" value="onStepInField"/>
+	<movevent type="AddItem" itemid="11096" event="function" value="onAddField"/>
+	-->
+
+	<!-- Other -->
+	<movevent type="Equip" itemid="9956" slot="pickupable" event="function" value="onEquipItem"/>
+	<movevent type="Equip" itemid="18754;18875" slot="ring" event="function" value="onEquipItem"/>
+	<movevent type="DeEquip" itemid="9956" slot="pickupable" event="function" value="onDeEquipItem"/>
+	<movevent type="DeEquip" itemid="18754;18875" slot="ring" event="function" value="onDeEquipItem"/>
+</movements>

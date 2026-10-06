@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Weezing" nameDescription="a Shiny Weezing" nickname="Weezing" race="blood" experience="12" speed="260" manacost="0" minLevel="30" maxLevel="40">
+	<health now="65" max="65" rate="1.1"/>
+	<look type="809" head="0" body="0" legs="0" feet="0" corpse="14215"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1666" skill="24" attack="90"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="120"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="WEEZING!"/>
+	</voices>
+	
+<loot><item id="14533" countmax="4" chance="72916"/><item id="14511" countmax="1" chance="87500"/><item id="14569" countmax="1" chance="14583"/><item id="14620" countmax="1" chance="7812"/><item id="12235" countmax="1" chance="100"/><item id="17919" countmax="1" chance="100"/><item id="18925" countmax="1" chance="10"/><item id="23524" countmax="1" chance="20"/></loot></monster>

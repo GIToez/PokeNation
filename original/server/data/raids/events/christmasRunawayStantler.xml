@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="warning" message="X-Mas!"/>
+	<!-- Viridian -->
+		<areaspawn ref="yes" centerx="448" centery="602" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="472" centery="599" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="488" centery="573" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="455" centery="559" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="441" centery="629" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+	<!-- Cerulean -->
+		<areaspawn ref="yes" centerx="1019" centery="223" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="996" centery="217" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1034" centery="204" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1018" centery="187" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1054" centery="246" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+	<!-- Celadon -->
+		<areaspawn ref="yes" centerx="920" centery="395" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="943" centery="394" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="916" centery="415" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="881" centery="416" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="869" centery="394" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+	<!-- Cinnabar -->
+		<areaspawn ref="yes" centerx="402" centery="923" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="435" centery="893" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="409" centery="877" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="382" centery="912" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+	<!-- Fuchsia -->
+		<areaspawn ref="yes" centerx="899" centery="808" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="907" centery="815" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="944" centery="760" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="907" centery="753" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="868" centery="793" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+	<!-- Lavender -->
+		<areaspawn ref="yes" centerx="1207" centery="497" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1198" centery="467" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1159" centery="499" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+	<!-- Pewter -->
+		<areaspawn ref="yes" centerx="506" centery="298" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="508" centery="269" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="559" centery="269" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="480" centery="252" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+	<!-- Saffron -->
+		<areaspawn ref="yes" centerx="1038" centery="448" centerz="6" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1065" centery="435" centerz="6" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1064" centery="399" centerz="6" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1031" centery="397" centerz="6" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1044" centery="375" centerz="6" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+	<!-- Vermilion -->
+		<areaspawn ref="yes" centerx="1010" centery="579" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1024" centery="560" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1011" centery="623" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1073" centery="629" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="1034" centery="583" centerz="7" radius="4">
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="2"/>
+			<monster name="Runaway Stantler" amount="1"/>
+		</areaspawn>
+</raid>

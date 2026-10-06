@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<npc name="Captain Hamilton Justice" script="default.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="563" head="0" body="0" legs="0" feet="0"/>
+	<parameters>
+        <parameter key="module_travel" value="1"/>
+		<parameter key="message_greet" value="Justice of honored. Justice to the brave. Justice is my motto, my pride sailor. Where are you going? If you don't know where to flow, say {travel}."/>
+        <parameter key="travel_destinations" value="ascorbia,4431,1783,6,80,false,-1,5;pummelo,3079,1741,6,50,false,-1,2;mandarin north,2968,2297,6,100,false,-1,4;trovitopolis,3425,3230,6,250,false,-1,6;"/>
+    </parameters>
+</npc>

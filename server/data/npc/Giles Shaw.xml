@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Giles Shaw" script="quest_deliverNewspaper.lua" walkinterval="6000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="634" head="50" body="10" legs="10" feet="150" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I came here with some friends to battle! They went around... I think I'm lost."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

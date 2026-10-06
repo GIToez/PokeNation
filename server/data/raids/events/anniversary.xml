@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="warning" message="Cake Minions"/>
+		<areaspawn ref="yes" centerx="5289" centery="300" centerz="7" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="5321" centery="295" centerz="7" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="5328" centery="322" centerz="7" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="5286" centery="321" centerz="7" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="5307" centery="321" centerz="6" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="5317" centery="312" centerz="6" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="5307" centery="303" centerz="6" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="5297" centery="311" centerz="6" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="5275" centery="312" centerz="5" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="5307" centery="280" centerz="5" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="5338" centery="312" centerz="5" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<areaspawn ref="yes" centerx="5307" centery="344" centerz="5" radius="5">
+			<monster name="Minion Cake" amount="1"/>
+			<monster name="Minion Chocolate Cake" amount="1"/>
+			<monster name="Minion Cream Cake" amount="1"/>
+			<monster name="Minion Decorated Cake" amount="1"/>
+			<monster name="Minion Party Cake" amount="1"/>
+		</areaspawn>
+		<script file="anniversary.lua"/>
+</raid>

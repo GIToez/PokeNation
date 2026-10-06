@@ -1,0 +1,19 @@
+MOVES["Peck"] = {
+    description = "Peck inflicts damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12132,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FLYING,
+    functionName = "Peck",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 35,
+    requiredLevel = 10,
+    damage = 35,
+    damageType = ELEMENT_FLYING,
+    effect = EFFECT_SCRATCH_TWO,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 6,
+    cooldownStorage = 15226
+}

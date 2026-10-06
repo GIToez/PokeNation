@@ -1,0 +1,19 @@
+MOVES["Hammer Arm"] = {
+    description = "Hammer Arm does damage, then lowers the user's Speed by one level.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 16312,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FIGHTING,
+    functionName = "HammerArm",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 100,
+    requiredLevel = 15,
+    damage = 100,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_BIG_SHADOW_PUNCH,
+    projectile = PROJECTILE_SHADOW_PUNCH,
+    maxDistance = 1,
+    cooldownTime = 15,
+    cooldownStorage = 15273
+}

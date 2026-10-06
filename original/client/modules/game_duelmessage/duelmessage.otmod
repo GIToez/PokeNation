@@ -1,0 +1,9 @@
+Module
+  name: game_duelmessage
+  description: Duel Message
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ duelmessage ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

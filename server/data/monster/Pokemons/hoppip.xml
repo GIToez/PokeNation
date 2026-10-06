@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Hoppip" nameDescription="a Hoppip" shiny="Shiny Hoppip" race="blood" experience="7" speed="250" manacost="0" minLevel="20" maxLevel="30">
+	<health now="35" max="35"/>
+	<look type="988" head="0" body="0" legs="0" feet="0" corpse="17576"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="24" attack="35"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="40"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="HOPPIIPP!"/>
+		<voice sentence="PIIIIPP!"/>
+	</voices>
+	
+<loot><item id="12091" countmax="1" chance="8888"/><item id="12102" countmax="3" chance="80000"/><item id="14487" countmax="1" chance="32000"/><item id="14510" countmax="1" chance="16000"/><item id="17802" countmax="1" chance="8000"/><item id="14464" countmax="5" chance="5000"/><item id="17987" countmax="1" chance="100"/><item id="12231" countmax="1" chance="1"/><item id="18081" countmax="1" chance="1"/><item id="17356" countmax="1" chance="1"/></loot></monster>

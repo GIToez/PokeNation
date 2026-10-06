@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Thorburn Tylor" script="quest_hiddenAndSeek.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1209" head="150" body="100" legs="50" feet="50" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I'm a big fan of Professor Oak, I love technology!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

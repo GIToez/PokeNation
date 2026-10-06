@@ -1,0 +1,20 @@
+MOVES["Stealth Rock"] = {
+    description = "Stealth Rock deals damage and lower the Speed of the target by two stages.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 12106,
+    iconId = 0,
+    dType = DAMAGE_TYPE_ROCK,
+    functionName = "StealthRock",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 120,
+    requiredLevel = 55,
+    damage = 100,
+    damageType = ELEMENT_ROCK,
+    effect = EFFECT_BIG_ROCK_EXPLOSION,
+    projectile = PROJECTILE_ROCK,
+    maxDistance = 6,
+    area = bigArea,
+    areaName = "bigArea",
+    cooldownTime = 25,
+    cooldownStorage = 15201
+}

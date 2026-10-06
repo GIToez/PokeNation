@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Mad Big Cake" nameDescription="a Mad Big Cake" race="blood" experience="0" speed="0" manacost="0" minLevel="100" maxLevel="100" sex="2">
+	<health now="500" max="500"/>
+	<look type="1371" corpse="24705"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="custom_BigCakeSendBack" interval="10000" chance="80" />
+		<attack name="custom_BigCakeTransformation" interval="5000" chance="80" />
+		<attack name="custom_BigCakeCrazyWalk" interval="8000" chance="80" />
+		<attack name="custom_BigCakeSugarRain" interval="4000" chance="80" />
+	</attacks>
+	<defenses armor="10" defense="9999"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+	</voices>
+	<loot>
+	</loot>
+	<script>
+        <event name="anniversary_onDeath"/>                	    
+	</script>
+</monster>

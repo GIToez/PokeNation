@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Great Saul" nameDescription="a Great Saul" race="blood" experience="15" speed="265" manacost="0" minLevel="100" maxLevel="100">
+	<health now="5760" max="5760"/>
+	<look type="1169" head="0" body="0" legs="0" feet="0" corpse="18127"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag boss="1"/>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1538" skill="24" attack="100"/>
+		<attack name="Moves" interval="500" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="110"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SANDSLASH!"/>
+	</voices>
+	<loot>
+		<item id="12155" countmax="1" chance="64814"/> <!-- thorn -->
+		<item id="14477" countmax="1" chance="11666"/> <!-- cutting fang -->
+		<item id="14519" countmax="1" chance="8333"/> <!-- rare sandbag -->
+		<item id="14492" countmax="1" chance="11666"/> <!-- heavy stone -->
+		<item id="2687" countmax="5" chance="3000"/> <!-- cookie -->
+		<item id="2675" countmax="5" chance="3000"/> <!-- orange -->
+		<item id="13807" countmax="5" chance="100000"/> <!-- earth plate -->
+		<item id="17843" countmax="1" chance="10000"/> <!-- sandslash doll -->
+		<item id="18108" countmax="1" chance="100000"/> <!-- Great Saul artifacts -->
+	</loot>
+	<script>
+        <event name="bossReward"/>	    
+	</script>
+</monster>

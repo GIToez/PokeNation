@@ -1,0 +1,20 @@
+MOVES["Dynamic Punch"] = {
+    description = "Dynamic Punch inflicts damage and confuses the target.",
+    makeContact = true,
+    makePunch = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11712,
+    iconId = 13338,
+    dType = DAMAGE_TYPE_FIGHTING,
+    functionName = "DynamicPunch",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 100,
+    requiredLevel = 35,
+    damage = 100,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_BIG_PUNCH_RIGHT,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 15,
+    cooldownStorage = 15020
+}

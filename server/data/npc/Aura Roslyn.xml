@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Aura Roslyn" script="default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1198" head="35" body="74" legs="69" feet="20" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="A Pokemon can not attack if he is sleeping. Use any method to wake him or wait."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

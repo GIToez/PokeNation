@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<npc name="Corey" script="quest_corey.lua" floorchange="0" walkinterval="0">
+	<health now="100" max="100"/>
+	<look type="1208" head="122" body="94" legs="77"/>
+	<parameters>
+		<parameter key="message_greet" value="I will definitely defeat Mewtwo!"/>
+		<parameter key="idletime" value="20" />
+	</parameters>
+</npc>

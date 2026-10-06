@@ -1,0 +1,20 @@
+MOVES["Psycho Cut"] = {
+    description = "Psycho Cut deals damage and has an increased critical hit ratio.",
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12094,
+    iconId = 0,
+    dType = DAMAGE_TYPE_PSYCHIC,
+    functionName = "PsychoCut",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 80,
+    requiredLevel = 35,
+    damage = 7,
+    damageType = ELEMENT_PSYCHIC,
+    effect = EFFECT_CUT_TWO,
+    projectile = nil,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 16,
+    cooldownStorage = 15192,
+    criticalChance = 20
+}

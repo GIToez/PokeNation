@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Keith Wiggs" script="default.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="620" head="100" body="100" legs="100" feet="100" addons="0"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="message_greet" value="Hey |PLAYERNAME|, shhhh! I'm very busy now, talk to me after... unless you want to buy something."/>
+		<parameter key="module_shop" value="1"/>
+		<parameter key="shop_buyable" value="
+		net, 14815, 50
+		"/>
+	</parameters>
+</npc>

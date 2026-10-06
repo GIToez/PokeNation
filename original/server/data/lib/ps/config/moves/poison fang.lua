@@ -1,0 +1,19 @@
+MOVES["Poison Fang"] = {
+    description = "Poison Fang inflicts damage and has a 30% chance of badly poisoning the target.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11745,
+    iconId = 13371,
+    dType = DAMAGE_TYPE_POISON,
+    functionName = "PoisonFang",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 55,
+    requiredLevel = 10,
+    damage = 50,
+    damageType = ELEMENT_POISON,
+    effect = EFFECT_BIG_BITE_TWO,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 8,
+    cooldownStorage = 15053
+}
