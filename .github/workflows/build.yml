@@ -1,18 +1,21 @@
-# Builds the PSoul/PokeAimar server and client from the source in this repository and
-# publishes self-contained development packages as workflow artifacts.
+# Validates the Lua/XML content, builds the PSoul/PokeNation server and the frozen legacy client
+# from the source in this repository, runs runtime smoke tests and uploads development packages
+# as workflow artifacts (never as a public Release):
 #
-#   PokeNation-server-windows-x64.zip   PokeNationServer.exe + data/ + schemas + start scripts
-#   PokeNation-client-windows-x64.zip   PokeNationClient.exe + DLLs + data/ + modules/
-#   PokeNation-server-linux-x64.tar.gz  psoul-server + data/ + schemas + start scripts
-#   PokeNation-client-linux-x64.tar.gz  psoulclient + data/ + modules/
+#   PokeNation-Server-Windows        PokeNation-Server-Windows-Dev.zip        (+ .sha256)
+#   PokeNation-LegacyClient-Windows  PokeNation-LegacyClient-Windows-Dev.zip  (+ .sha256)
+#   PokeNation-Server-Linux          PokeNation-Server-Linux-Dev.tar.gz       (+ .sha256)
+#   PokeNation-LegacyClient-Linux    PokeNation-LegacyClient-Linux-Dev.tar.gz (+ .sha256)
 #
-# Nothing from the original archive's precompiled binaries is used; every executable is
-# compiled here. See docs/BUILDING.md ("For non-developers") for how to download and run them.
+# Nothing from the original archive's precompiled binaries is used; every executable is compiled
+# here by tools/build_*.sh and packaged by tools/package.sh. See docs/BUILDING.md.
 name: Build development packages
 
 on:
   push:
     branches: ["**"]
+    paths-ignore: ["docs/**", "original/**", "**/*.md"]
+  pull_request:
     paths-ignore: ["docs/**", "original/**", "**/*.md"]
   workflow_dispatch:
 
@@ -20,17 +23,38 @@ concurrency:
   group: build-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 env:
   ARTIFACT_RETENTION_DAYS: 14
+  BUILD_TYPE: development
 
 jobs:
   # --------------------------------------------------------------------------------------------
-  linux:
-    name: Linux x64 (GCC)
+  validate:
+    name: Validate Lua/XML and references
     runs-on: ubuntu-24.04
-    # The schemas use MariaDB syntax (ALTER TABLE ... ADD COLUMN IF NOT EXISTS) and
-    # MariaDB is the documented local database, so the smoke test runs against MariaDB
-    # instead of the runner's preinstalled MySQL 8.
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Install tools
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends lua5.1 libxml2-utils
+      - name: Lua/XML syntax check
+        run: tools/check_syntax.sh
+      - name: Broken reference check (fails only on new REAL ERRORs, see docs/BROKEN_REFERENCES.md)
+        run: python3 tools/check_references.py --strict
+      - name: Shell script syntax
+        run: for f in tools/*.sh tools/package-files/linux/*/*.sh; do bash -n "$f" || exit 1; done
+
+  # --------------------------------------------------------------------------------------------
+  linux:
+    name: Linux x64 build, smoke test, package
+    needs: validate
+    runs-on: ubuntu-24.04
+    # The schemas use MariaDB syntax (ALTER TABLE ... ADD COLUMN IF NOT EXISTS) and MariaDB is the
+    # documented database, so the smoke test uses MariaDB instead of the runner's MySQL 8.
     services:
       mariadb:
         image: mariadb:11
@@ -62,67 +86,83 @@ jobs:
         run: |
           sudo apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-            build-essential cmake pkg-config lua5.1 libxml2-utils \
+            build-essential cmake pkg-config mariadb-client \
             libboost-system-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev libboost-chrono-dev \
             liblua5.1-0-dev libxml2-dev libgmp-dev libmysqlclient-dev libsqlite3-dev libssl-dev \
             libphysfs-dev libopenal-dev libglew-dev libvorbis-dev libogg-dev zlib1g-dev \
             libgl1-mesa-dev libglu1-mesa-dev libx11-dev xvfb mesa-utils
 
-      - name: Lua/XML syntax check
-        run: tools/check_syntax.sh
-
       - name: Build server
-        run: tools/build_server.sh
+        run: tools/build_server_linux.sh
+      - name: Build legacy client
+        run: tools/build_legacy_client_linux.sh
 
-      - name: Build client
-        run: tools/build_client.sh
+      - name: Package
+        run: tools/package.sh all
 
-      - name: Smoke test server (MySQL + login port)
+      - name: Initialise database from the seed (as the packaged setup would)
         run: |
-          # Database and user are created by the MariaDB service container; the schemas are
-          # imported as root because mysql.sql creates triggers.
-          mysql_admin() { mysql -h127.0.0.1 -uroot -proot "$@"; }
-          mysql_admin psoul < server/src/schemas/mysql.sql
-          mysql_admin psoul < server/src/schemas/psoul_extra_mysql.sql
-          mysql_admin psoul < server/src/schemas/psoul_dev_seed.sql
+          D=dist/linux/server
+          for f in mysql.sql psoul_extra_mysql.sql psoul_dev_seed.sql; do
+            mysql -h127.0.0.1 -uroot -proot psoul < "$D/database/$f"
+          done
           sed -E -e 's/^(\s*sqlHost\s*=\s*)"[^"]*"/\1"127.0.0.1"/' -e 's/^(\s*sqlUser\s*=\s*)"[^"]*"/\1"psoul"/' \
                  -e 's/^(\s*sqlPass\s*=\s*)"[^"]*"/\1"ci-password"/' \
-                 -e 's/^(\s*sqlDatabase\s*=\s*)"[^"]*"/\1"psoul"/' server/config.example.lua > server/config.lua
-          (cd server && timeout 180 ./psoul-server > /tmp/server.log 2>&1 &)
-          for i in $(seq 1 170); do grep -q "server Online" /tmp/server.log && break; sleep 1; done
-          grep -q "server Online" /tmp/server.log || { tail -50 /tmp/server.log; exit 1; }
+                 -e 's/^(\s*sqlDatabase\s*=\s*)"[^"]*"/\1"psoul"/' "$D/config.example.lua" > "$D/config.lua"
+
+      - name: Smoke test packaged server (startup, logins, starter, summon, battle, catch, logout)
+        run: |
+          cd dist/linux/server
+          (timeout 900 ./psoul-server > /tmp/server.log 2>&1 &)
+          for i in $(seq 1 170); do grep -q "^>> Cristal server Online" /tmp/server.log && break; sleep 1; done
+          grep -q "^>> Cristal server Online" /tmp/server.log || { tail -80 /tmp/server.log; exit 1; }
+          cd "$GITHUB_WORKSPACE"
           python3 tools/protocol_probe.py login --account admin --password admin | tee /tmp/probe.log
           grep -q "GM Admin" /tmp/probe.log
-          pkill -x psoul-server || true
+          python3 tools/smoke_test.py
+          pkill -TERM -x psoul-server || true
+          sleep 5
+          echo "---- warnings/errors printed during startup ----"
+          grep -nE "Warning|Error|error" /tmp/server.log || true
 
-      - name: Smoke test client (starts under Xvfb, loads modules)
+      - name: Smoke test packaged legacy client (Xvfb, loads modules)
         run: |
-          cd client
-          ALSOFT_DRIVERS=null timeout 40 xvfb-run -a -s "-screen 0 1280x800x24" ../build/client/psoulclient > /tmp/client.log 2>&1 || true
+          cd dist/linux/client
+          rm -f ~/psoul.log
+          ALSOFT_DRIVERS=null timeout 40 xvfb-run -a -s "-screen 0 1280x800x24" ./psoulclient > /tmp/client.log 2>&1 || true
           grep -q "Loaded module 'game_interface'" /tmp/client.log || { cat /tmp/client.log; exit 1; }
           ! grep -q "Application crashed" /tmp/client.log
 
-      - name: Package
-        run: tools/package_builds.sh linux
+      - name: Collect logs
+        if: always()
+        run: mkdir -p /tmp/ci-logs && cp /tmp/*.log /tmp/ci-logs/ 2>/dev/null || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-linux
+          path: /tmp/ci-logs
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
       - uses: actions/upload-artifact@v4
         with:
-          name: PokeNation-server-linux-x64
-          path: dist/PokeNation-server-linux-x64.tar.gz
+          name: PokeNation-Server-Linux
+          path: |
+            dist/PokeNation-Server-Linux-Dev.tar.gz
+            dist/PokeNation-Server-Linux-Dev.tar.gz.sha256
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - uses: actions/upload-artifact@v4
         with:
-          name: PokeNation-client-linux-x64
-          path: dist/PokeNation-client-linux-x64.tar.gz
+          name: PokeNation-LegacyClient-Linux
+          path: |
+            dist/PokeNation-LegacyClient-Linux-Dev.tar.gz
+            dist/PokeNation-LegacyClient-Linux-Dev.tar.gz.sha256
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
   # --------------------------------------------------------------------------------------------
   windows:
-    name: Windows x64 (MSYS2 MinGW-w64)
+    name: Windows x64 build (MSYS2 MinGW-w64), smoke test, package
+    needs: validate
     runs-on: windows-latest
-    defaults:
-      run:
-        shell: msys2 {0}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -139,7 +179,9 @@ jobs:
         shell: bash
         run: git lfs pull
 
+      # Same package list as tools/windows/Build-PokeNation-Windows.ps1 -InstallDependencies.
       - uses: msys2/setup-msys2@v2
+        id: msys2
         with:
           msystem: MINGW64
           update: true
@@ -163,27 +205,103 @@ jobs:
             mingw-w64-x86_64-libvorbis
             mingw-w64-x86_64-libogg
 
-      - name: Build server
+      - name: Build and package with Build-PokeNation-Windows.ps1
+        shell: powershell
         run: |
-          cmake -S server -B build/server -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DROOT_PERMISSION=OFF
-          cmake --build build/server
-
-      - name: Build client
-        run: |
-          cmake -S client/src-cpp -B build/client -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-            -DUSE_STATIC_LIBS=ON -DLUAJIT=OFF -DENCRYPTED_ASSETS=OFF -Wno-dev
-          cmake --build build/client
-
-      - name: Package
-        run: tools/package_builds.sh windows
+          git config --global --add safe.directory '*'
+          & tools\windows\Build-PokeNation-Windows.ps1 -MsysRoot '${{ steps.msys2.outputs.msys2-location }}'
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Get-ChildItem dist\windows\server\*.exe, dist\windows\client\*.exe, dist\*.zip, dist\*.sha256 | Format-Table Name, Length
 
       - uses: actions/upload-artifact@v4
         with:
-          name: PokeNation-server-windows-x64
-          path: dist/PokeNation-server-windows-x64.zip
+          name: PokeNation-Server-Windows
+          path: |
+            dist/PokeNation-Server-Windows-Dev.zip
+            dist/PokeNation-Server-Windows-Dev.zip.sha256
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - uses: actions/upload-artifact@v4
         with:
-          name: PokeNation-client-windows-x64
-          path: dist/PokeNation-client-windows-x64.zip
+          name: PokeNation-LegacyClient-Windows
+          path: |
+            dist/PokeNation-LegacyClient-Windows-Dev.zip
+            dist/PokeNation-LegacyClient-Windows-Dev.zip.sha256
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+      # ---- Windows runtime smoke test of the packaged files, using the packaged launchers ----
+      - name: Install MariaDB
+        shell: powershell
+        run: |
+          choco install mariadb -y --no-progress
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Get-Service -Name 'MariaDB*', 'MySQL*' -ErrorAction SilentlyContinue | Format-Table Name, Status
+
+      - name: Setup-PokeNation-Database.ps1 (fresh database from the seed)
+        shell: powershell
+        working-directory: dist/windows/server
+        run: |
+          .\Setup-PokeNation-Database.ps1 -NonInteractive -RootPassword ''
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Start-PokeNation-Server.ps1 -CheckOnly
+        shell: powershell
+        working-directory: dist/windows/server
+        run: |
+          .\Start-PokeNation-Server.ps1 -CheckOnly
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Smoke test PokeNationServer.exe (startup, logins, starter, summon, battle, catch, logout)
+        shell: powershell
+        run: |
+          $dir = (Resolve-Path dist\windows\server).Path
+          $p = Start-Process -FilePath "$dir\PokeNationServer.exe" -WorkingDirectory $dir -PassThru -NoNewWindow `
+                 -RedirectStandardOutput "$env:RUNNER_TEMP\server.log" -RedirectStandardError "$env:RUNNER_TEMP\server-stderr.log"
+          $online = $false
+          for ($i = 0; $i -lt 240; $i++) {
+            Start-Sleep -Seconds 1
+            if ($p.HasExited) { break }
+            if (Select-String -Path "$env:RUNNER_TEMP\server.log" -Pattern '^>> Cristal server Online' -Quiet) { $online = $true; break }
+          }
+          if (-not $online) { Get-Content "$env:RUNNER_TEMP\server.log" -Tail 80; Get-Content "$env:RUNNER_TEMP\server-stderr.log"; exit 1 }
+          Write-Host "server online after $i s"
+          python tools\protocol_probe.py login --account admin --password admin | Tee-Object -FilePath "$env:RUNNER_TEMP\probe.log"
+          if (-not (Select-String -Path "$env:RUNNER_TEMP\probe.log" -Pattern 'GM Admin' -Quiet)) { exit 1 }
+          python tools\smoke_test.py | Tee-Object -FilePath "$env:RUNNER_TEMP\smoke.log"
+          $code = $LASTEXITCODE
+          Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+          Write-Host "---- warnings/errors printed during startup ----"
+          Select-String -Path "$env:RUNNER_TEMP\server.log" -Pattern 'Warning|Error|error' | ForEach-Object { $_.Line }
+          exit $code
+
+      # Informational: hosted runners have no GPU, and the client needs OpenGL 2. A failure here is
+      # reported in the job summary but does not fail the build (see docs/WINDOWS_LOCAL_TESTING.md).
+      - name: Launch PokeNationLegacyClient.exe (informational)
+        id: client
+        continue-on-error: true
+        shell: powershell
+        run: |
+          $dir = (Resolve-Path dist\windows\client).Path
+          $log = Join-Path $env:USERPROFILE 'psoul.log'
+          Remove-Item $log -ErrorAction SilentlyContinue
+          $p = Start-Process -FilePath "$dir\PokeNationLegacyClient.exe" -WorkingDirectory $dir -PassThru
+          Start-Sleep -Seconds 30
+          $alive = -not $p.HasExited
+          if ($alive) { Stop-Process -Id $p.Id -Force }
+          Copy-Item $log "$env:RUNNER_TEMP\client-psoul.log" -ErrorAction SilentlyContinue
+          if (Test-Path $log) { Get-Content $log -Tail 60 } else { Write-Host "no $log written" }
+          Write-Host "client still running after 30 s: $alive"
+          if (-not (Test-Path $log) -or -not (Select-String -Path $log -Pattern "Loaded module 'game_interface'" -Quiet)) { exit 1 }
+
+      - name: Job summary
+        if: always()
+        shell: powershell
+        run: |
+          $c = '${{ steps.client.outcome }}'
+          "### Windows runtime`n- Server smoke test: see step log`n- Legacy client launch on the hosted runner: $c" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-windows
+          path: ${{ runner.temp }}/*.log
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
