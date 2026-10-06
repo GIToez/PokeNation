@@ -1128,6 +1128,39 @@ def cmd_enter(args):
             print(f">> use item {sid} on creature {best[2]['name']!r} id={best[1]}")
             conn.send_encrypted(bytes(Writer().u8(0x84).pos(from_pos).u16(icid).u8(from_stack).u32(best[1]).buf))
             pump(args.wait)
+        elif kind == "useontile":
+            # use item <sid> (container or inventory slot) on a map tile: "SID:self" = the player's own
+            # tile (order icon -> Ride/Fly/Surf...), "SID:X,Y" = another tile on the current floor.
+            # The server ignores the sprite id for map targets and picks the top item itself
+            # (Game::internalGetThing, STACKPOS_USEITEM), so stackpos 0 / sprite 0 is enough.
+            sid, _, target = value.partition(":")
+            sid = int(sid)
+            found = find_in_containers(sid)
+            if found:
+                cid, idx, icid, cnt = found
+                from_pos, from_stack = container_pos(cid, idx), idx
+            else:
+                slot = next((s for s, (c, _) in world.inventory.items() if items.server_id(c) == sid), None)
+                if slot is None:
+                    print(f"!! item {sid} not found in containers or inventory")
+                    ok = False
+                    continue
+                icid = world.inventory[slot][0]
+                from_pos, from_stack = inv_pos(slot), 0
+            me = world.creatures[world.player_id]["pos"] or world.creatures[world.player_id].get("last_pos")
+            if not me:
+                print("!! player position unknown")
+                ok = False
+                continue
+            if target == "self":
+                to_pos = me
+            else:
+                x, y = (int(v) for v in target.split(","))
+                to_pos = (x, y, me[2])
+            print(f">> use item {sid} on tile {to_pos}")
+            conn.send_encrypted(bytes(Writer().u8(0x83).pos(from_pos).u16(icid).u8(from_stack)
+                                      .pos(to_pos).u16(0).u8(0).buf))
+            pump(args.wait)
         elif kind == "useonslot":
             # use item <sid> from an open container on the item equipped in inventory <slot>
             # (e.g. a TM / vitamin / held item on the ball in slot 8)
@@ -1245,6 +1278,19 @@ def cmd_enter(args):
             p = Writer().u8(0x83).pos(container_pos(cid, idx)).u16(icid).u8(idx).pos(pos).u16(corpse_cid).u8(stackpos)
             conn.send_encrypted(bytes(p.buf))
             pump(args.wait)
+        elif kind == "usecorpse":
+            # use (open) the corpse left by the last --wait-dead target; with /autoloot on this is
+            # the loot-collection path (actions.cpp, "Loot collected.")
+            corpse_pos = getattr(world, "corpse_pos", None)
+            candidates = [t for t in world.tile_items if corpse_pos is None or t[0] == corpse_pos]
+            if not candidates:
+                print(f"!! no item seen on the tile where the creature died ({corpse_pos})")
+                ok = False
+                continue
+            pos, stackpos, corpse_cid = max(candidates, key=lambda t: t[1])
+            print(f">> use corpse {items.server_id(corpse_cid)} at {pos} stackpos={stackpos}")
+            conn.send_encrypted(bytes(Writer().u8(0x82).pos(pos).u16(corpse_cid).u8(stackpos).u8(0).buf))
+            pump(args.wait)
         elif kind == "waittext":
             pattern, _, secs = value.rpartition(":")
             rx = re.compile(pattern, re.I)
@@ -1330,6 +1376,11 @@ def main():
                     help="SID:NAME - use item SID on the nearest creature whose name starts with NAME")
     pe.add_argument("--use-on-slot", dest="actions", action="append", type=lambda s: "useonslot:" + s,
                     help="SID:SLOT - use item SID (from an open container) on the item in inventory SLOT")
+    pe.add_argument("--use-corpse", dest="actions", action="append_const", const="usecorpse:",
+                    help="open the corpse of the last --wait-dead target (autoloot path)")
+    pe.add_argument("--use-on-tile", dest="actions", action="append", type=lambda s: "useontile:" + s,
+                    help="SID:self or SID:X,Y - use item SID on the player's own tile or on another tile "
+                         "(order icon 7730 on your own tile = Ride/Fly/Dive)")
     pe.add_argument("--drop", dest="actions", action="append", type=lambda s: "drop:" + s,
                     help="SID - move item SID from an open container onto the player's own tile")
     pe.add_argument("--move-to-slot", dest="actions", action="append", type=lambda s: "movetoslot:" + s)
