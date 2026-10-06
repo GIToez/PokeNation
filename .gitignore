@@ -79,3 +79,6 @@ server/config.lua
 !**/.gitignore.upstream
 # The untouched reference copy is complete by definition (it contains its own old logs/config).
 !original/**
+
+# ---- Runtime-generated NPC files (data/lib/ps/systems/027-citizens.lua rewrites them on every startup) ----
+server/data/npc/tmpCitizen_*.xml
