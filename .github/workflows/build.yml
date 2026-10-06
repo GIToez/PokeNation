@@ -355,6 +355,8 @@ jobs:
             return [bool]($modules -ge 48 -and $code -eq 'still running')
           }
           $ok = Test-Client (Resolve-Path dist\windows\client).Path 'as-shipped'
+          # Without GALLIUM_DRIVER, Mesa picks its d3d12 driver on the runner, which exits in SwapBuffers.
+          $env:GALLIUM_DRIVER = 'llvmpipe'
           if (-not $ok -and (Test-Path dist-mesa\client\opengl32.dll)) { $ok = Test-Client (Resolve-Path dist-mesa\client).Path 'mesa' }
           if (-not $ok) { exit 1 }
 
@@ -367,7 +369,8 @@ jobs:
           pacman -S --needed --noconfirm mingw-w64-x86_64-gdb > /dev/null
           T=$(cygpath "$RUNNER_TEMP")
           for v in as-shipped mesa; do
-            src=dist/windows/client; [ "$v" = mesa ] && src=dist-mesa/client
+            src=dist/windows/client; unset GALLIUM_DRIVER
+            [ "$v" = mesa ] && { src=dist-mesa/client; export GALLIUM_DRIVER=llvmpipe; }
             [ -d "$src" ] || continue
             rm -rf "dist-gdb-$v" && cp -r "$src" "dist-gdb-$v"
             cp build/windows-*/client/psoulclient.exe "dist-gdb-$v/PokeNationLegacyClient.exe"
