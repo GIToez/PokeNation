@@ -11,15 +11,15 @@ function onCreatureSay(cid, type, msg) npcHandler:onCreatureSay(cid, type, msg) 
 function onThink() npcHandler:onThink() end
 
 --[[
-1x Fragment: 1x Seal Box Comum
+1x Fragment: 1x Common Seal Box
 5x Fragment: 1x Vitamin Box
 5x Fragment: 1x Mastery Ball Box
 10x Fragment: 5x Rare Lollipop
-10x Fragment: 1x TM Box Nível 20
-10x Fragment: 1x Paint TIcket Box Raro
+10x Fragment: 1x TM Box Level 20
+10x Fragment: 1x Rare Paint Ticket Box
 15x Fragment: 3x Rare Candy
-20x Fragment: 1x TM Box Nível 40
-25x Fragment: 1x TM Box Nível 60
+20x Fragment: 1x TM Box Level 40
+25x Fragment: 1x TM Box Level 60
  ]]
 
 local OPTIONS = {

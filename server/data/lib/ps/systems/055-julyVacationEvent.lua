@@ -26,7 +26,7 @@ local STAMINA_REWARDS = {
 local CHESTS_REWARDS = {
     [COMMON_CHEST_ITEMID] = {
         random = {
-            { itemId = 27764, count = 1, unique = false, chance = 3000 }, -- TM Box Nível 20 3%
+            { itemId = 27764, count = 1, unique = false, chance = 3000 }, -- TM Box Level 20 3%
             { itemId = 29125, count = 1, unique = false }, -- Seal Box Comum
             { itemId = 12248, count = 15, unique = false }, -- 15 Revives
             { itemId = 18945, count = 1, unique = false }, -- Doll Box Comum
@@ -39,7 +39,7 @@ local CHESTS_REWARDS = {
     },
     [RARE_CHEST_ITEMID] = {
         random = {
-            { itemId = 27767, count = 1, unique = false, chance = 3000 }, -- TM Box Nível 40
+            { itemId = 27767, count = 1, unique = false, chance = 3000 }, -- TM Box Level 40
             { itemId = 29129, count = 1, unique = false }, -- Mastery Ball Box
             { itemId = 29127, count = 1, unique = false }, -- Paint Ticket Box Raro
             { itemId = 23949, count = 1, unique = false }, -- Vitamin Box
@@ -52,7 +52,7 @@ local CHESTS_REWARDS = {
     },
     [LEGENDARY_CHEST_ITEMID] = {
         random = {
-            { itemId = 27768, count = 1, unique = false, chance = 3000 }, -- TM Box Nível 60
+            { itemId = 27768, count = 1, unique = false, chance = 3000 }, -- TM Box Level 60
             { itemId = 29126, count = 1, unique = false }, -- Seal Box Raro
             { itemId = 29124, count = 1, unique = false }, -- Doll Box Raro
             { itemId = 29133, count = 1, unique = false }, -- Paint Ticket Box Legendário

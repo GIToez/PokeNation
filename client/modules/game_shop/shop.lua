@@ -66,13 +66,13 @@ end
 function onClickInItem(cost, self)
   if g_game.getLocalPlayer():getItemsCount(3028) >= cost then
   else
-    displayInfoBox(tr('Emerald Shop'), tr('Você não tem emerald.'))
+    displayInfoBox(tr('Emerald Shop'), tr('You do not have enough emeralds.'))
   end
 end
 
 function onBuyFailed(protocol, buffer)
   if toboolean(buffer) then
-    displayInfoBox(tr('Emerald Shop'), tr('Você comprou seu item com sucesso.'))
+    displayInfoBox(tr('Emerald Shop'), tr('You bought your item successfully.'))
     playerEmeralds:setText(g_game.getLocalPlayer():getItemsCount(3028))
   else
     displayInfoBox('Emerald Shop', buffer)

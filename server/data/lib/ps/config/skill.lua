@@ -256,7 +256,7 @@ end
         out[#out + 1] = '["' .. move.description .. '"] = "'
         out[#out + 1] = __L(cid, move.description)
         out[#out + 1] = '",\n'
-        -- EXAMPLE ["Avalanche deals damage and has no secondary effect."] = "Avalanche infringe dano e não tem nenhum efeito secundário.",
+        -- EXAMPLE (pt_br.loc entry): Avalanche deals damage and has no secondary effect.@Avalanche causa dano e não tem nenhum efeito secundário.
     end
 
     print(table.concat(out))

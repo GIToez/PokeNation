@@ -32,11 +32,11 @@ function onUse(cid, item, fromPosition, itemEx, toPosition)
 --    end, 4000)
   
   --[[
-  O jogador usa a Master Ball no Mewtwo e ela falha, e o Mewtwo reaparece (usando aquela animação) como MOB e diz: Como você ousa?
+  The player uses the Master Ball on Mewtwo and it fails; Mewtwo reappears (with that animation) as a monster and says: "How dare you?"
 
-  Vencendo a luta contra o Mewtwo ele falará: Você venceu desta vez... Mas eu irei retornar.
+  After winning the fight against Mewtwo it says: "You won this time... But I will return."
 
-  E desaparece.
+  And disappears.
       ]]
 
 

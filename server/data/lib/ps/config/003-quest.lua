@@ -7854,7 +7854,7 @@ QUESTS_CONFIG = {
             rewardItems = { { type = REWARD_TYPE.ITEM, id = 14461, count = 100, unique = true }, { type = REWARD_TYPE.ITEM, id = 14461, count = 100, unique = true }, { type = REWARD_TYPE.ADDON, female = { looktype = 1737, addons = 0 }, male = { looktype = 1738, addons = 0 } } },
             rewardExp = 0,
             requiredLevel = 0,
-            canStart = function(cid) return getCreatureStorage(cid, 8685) == QUEST_STATUS.FINISHED end -- todo O jogador deve ter iniciado a quest onde Calico manda o jogador entregar um diamante a Javy Dones.
+            canStart = function(cid) return getCreatureStorage(cid, 8685) == QUEST_STATUS.FINISHED end -- TODO: the player must have started the quest in which Calico sends them to deliver a diamond to Javy Dones.
         },
     },
     ["Jack Spearow"] = {

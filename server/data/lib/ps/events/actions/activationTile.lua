@@ -407,7 +407,7 @@ ACTIONS[225] = function(cid, item, fromPosition, itemEx, toPosition)
     if (getCreatureStorage(cid, storage) ~= QUEST_STATUS.FINISHED) then
         doPlayerSafeAddItem(cid, 27426, 1, true, true)
         doCreatureSetStorage(cid, storage, QUEST_STATUS.FINISHED)
-    elseif (getPlayerDefeatedNPC(cid, 9703)) then -- Pode ser que o jogador tenha pego a master ball mas ainda não vencido o Giovanni aqui.
+    elseif (getPlayerDefeatedNPC(cid, 9703)) then -- The player may have taken the Master Ball but not yet defeated Giovanni here.
         return false
     end
 
