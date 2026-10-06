@@ -33,9 +33,10 @@ class Connection : public LuaObject
     typedef std::function<void(const boost::system::error_code&)> ErrorCallback;
     typedef std::function<void(uint8*, uint16)> RecvCallback;
 
+    // plain integers: boost::posix_time::seconds() only accepts integral types since Boost 1.6x
+    static const int READ_TIMEOUT = 30;
+    static const int WRITE_TIMEOUT = 30;
     enum {
-        READ_TIMEOUT = 30,
-        WRITE_TIMEOUT = 30,
         SEND_BUFFER_SIZE = 65536,
         RECV_BUFFER_SIZE = 65536
     };

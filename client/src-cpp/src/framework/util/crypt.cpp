@@ -314,36 +314,78 @@ std::string Crypt::sha512Encode(const std::string& decoded_string, bool upperCas
 }
 
 
+// OpenSSL >= 1.1 made RSA/EVP_CIPHER_CTX opaque; the original code poked the struct members directly.
+// These helpers keep the original behaviour using the accessor API. A fresh RSA object is rebuilt
+// whenever a component changes, which also discards OpenSSL's internal Montgomery cache
+// (the original cleared _method_mod_* by hand).
+static BIGNUM* dupBN(const BIGNUM* bn) { return bn ? BN_dup(bn) : nullptr; }
+
+static std::string bnToString(const BIGNUM* bn)
+{
+    if(!bn)
+        return "0";
+    char* str = BN_bn2dec(bn);
+    std::string result = str;
+    OPENSSL_free(str);
+    return result;
+}
+
 void Crypt::rsaGenerateKey(int bits, int e)
 {
-    RSA *rsa = RSA_generate_key(bits, e, nullptr, nullptr);
+    RSA *rsa = RSA_new();
+    BIGNUM *bne = BN_new();
+    BN_set_word(bne, e);
+    RSA_generate_key_ex(rsa, bits, bne, nullptr);
+    BN_free(bne);
+
+    const BIGNUM *n = nullptr, *pe = nullptr, *d = nullptr, *p = nullptr, *q = nullptr;
+    RSA_get0_key(rsa, &n, &pe, &d);
+    RSA_get0_factors(rsa, &p, &q);
     g_logger.info(stdext::format("%d bits (%d bytes) RSA key generated", bits, bits / 8));
-    g_logger.info(std::string("p = ") + BN_bn2dec(m_rsa->p));
-    g_logger.info(std::string("q = ") + BN_bn2dec(m_rsa->q));
-    g_logger.info(std::string("d = ") + BN_bn2dec(m_rsa->d));
-    g_logger.info(std::string("n = ") + BN_bn2dec(m_rsa->n));
-    g_logger.info(std::string("e = ") + BN_bn2dec(m_rsa->e));
+    g_logger.info(std::string("p = ") + bnToString(p));
+    g_logger.info(std::string("q = ") + bnToString(q));
+    g_logger.info(std::string("d = ") + bnToString(d));
+    g_logger.info(std::string("n = ") + bnToString(n));
+    g_logger.info(std::string("e = ") + bnToString(pe));
     RSA_free(rsa);
 }
 
 void Crypt::rsaSetPublicKey(const std::string& n, const std::string& e)
 {
-    BN_dec2bn(&m_rsa->n, n.c_str());
-    BN_dec2bn(&m_rsa->e, e.c_str());
+    const BIGNUM *oldD = nullptr, *oldP = nullptr, *oldQ = nullptr;
+    RSA_get0_key(m_rsa, nullptr, nullptr, &oldD);
+    RSA_get0_factors(m_rsa, &oldP, &oldQ);
 
-    // clear rsa cache
-    if(m_rsa->_method_mod_n) { BN_MONT_CTX_free(m_rsa->_method_mod_n); m_rsa->_method_mod_n = NULL; }
+    BIGNUM *bn = nullptr, *be = nullptr;
+    BN_dec2bn(&bn, n.c_str());
+    BN_dec2bn(&be, e.c_str());
+    BIGNUM *bd = dupBN(oldD), *bp = dupBN(oldP), *bq = dupBN(oldQ);
+
+    RSA *rsa = RSA_new();
+    RSA_set0_key(rsa, bn, be, bd);
+    if(bp && bq)
+        RSA_set0_factors(rsa, bp, bq);
+    RSA_free(m_rsa);
+    m_rsa = rsa;
 }
 
 void Crypt::rsaSetPrivateKey(const std::string& p, const std::string& q, const std::string& d)
 {
-    BN_dec2bn(&m_rsa->p, p.c_str());
-    BN_dec2bn(&m_rsa->q, q.c_str());
-    BN_dec2bn(&m_rsa->d, d.c_str());
+    const BIGNUM *oldN = nullptr, *oldE = nullptr;
+    RSA_get0_key(m_rsa, &oldN, &oldE, nullptr);
 
-    // clear rsa cache
-    if(m_rsa->_method_mod_p) { BN_MONT_CTX_free(m_rsa->_method_mod_p); m_rsa->_method_mod_p = NULL; }
-    if(m_rsa->_method_mod_q) { BN_MONT_CTX_free(m_rsa->_method_mod_q); m_rsa->_method_mod_q = NULL; }
+    BIGNUM *bp = nullptr, *bq = nullptr, *bd = nullptr;
+    BN_dec2bn(&bp, p.c_str());
+    BN_dec2bn(&bq, q.c_str());
+    BN_dec2bn(&bd, d.c_str());
+    BIGNUM *bn = oldN ? BN_dup(oldN) : BN_new();
+    BIGNUM *be = oldE ? BN_dup(oldE) : BN_new();
+
+    RSA *rsa = RSA_new();
+    RSA_set0_key(rsa, bn, be, bd);
+    RSA_set0_factors(rsa, bp, bq);
+    RSA_free(m_rsa);
+    m_rsa = rsa;
 }
 
 bool Crypt::rsaCheckKey()
@@ -353,11 +395,19 @@ bool Crypt::rsaCheckKey()
         BN_CTX *ctx = BN_CTX_new();
         BN_CTX_start(ctx);
 
-        BIGNUM *r1 = BN_CTX_get(ctx), *r2 = BN_CTX_get(ctx);
-        BN_mod(m_rsa->dmp1, m_rsa->d, r1, ctx);
-        BN_mod(m_rsa->dmq1, m_rsa->d, r2, ctx);
+        const BIGNUM *d = nullptr, *p = nullptr, *q = nullptr;
+        RSA_get0_key(m_rsa, nullptr, nullptr, &d);
+        RSA_get0_factors(m_rsa, &p, &q);
 
-        BN_mod_inverse(m_rsa->iqmp, m_rsa->q, m_rsa->p, ctx);
+        BIGNUM *r1 = BN_CTX_get(ctx), *r2 = BN_CTX_get(ctx);
+        BIGNUM *dmp1 = BN_new(), *dmq1 = BN_new(), *iqmp = BN_new();
+        BN_mod(dmp1, d, r1, ctx);
+        BN_mod(dmq1, d, r2, ctx);
+        BN_mod_inverse(iqmp, q, p, ctx);
+        RSA_set0_crt_params(m_rsa, dmp1, dmq1, iqmp);
+
+        BN_CTX_end(ctx);
+        BN_CTX_free(ctx);
         return true;
     }
     else {
@@ -387,8 +437,7 @@ int Crypt::rsaGetSize()
 }
 
 int Crypt::__aesEncrypt(const unsigned char *msg, size_t msgLen, unsigned char **encMsg) {
-    EVP_CIPHER_CTX *aesEncryptCtx = (EVP_CIPHER_CTX*)malloc(sizeof(EVP_CIPHER_CTX));
-    EVP_CIPHER_CTX_init(aesEncryptCtx);
+    EVP_CIPHER_CTX *aesEncryptCtx = EVP_CIPHER_CTX_new();
     EVP_CIPHER_CTX_set_padding(aesEncryptCtx, 0);
 
     unsigned char *aesKey = (unsigned char*)malloc(AES_KEYLEN/8);
@@ -431,8 +480,7 @@ int Crypt::__aesEncrypt(const unsigned char *msg, size_t msgLen, unsigned char *
         return FAILURE;
     }
 
-    EVP_CIPHER_CTX_cleanup(aesEncryptCtx);
-    free(aesEncryptCtx);
+    EVP_CIPHER_CTX_free(aesEncryptCtx);
 
     free(aesKey);
     free(aesIV);
@@ -441,8 +489,7 @@ int Crypt::__aesEncrypt(const unsigned char *msg, size_t msgLen, unsigned char *
 }
 
 int Crypt::__aesDecrypt(unsigned char *encMsg, size_t encMsgLen, char **decMsg) {
-    EVP_CIPHER_CTX *aesDecryptCtx = (EVP_CIPHER_CTX*)malloc(sizeof(EVP_CIPHER_CTX));
-    EVP_CIPHER_CTX_init(aesDecryptCtx);
+    EVP_CIPHER_CTX *aesDecryptCtx = EVP_CIPHER_CTX_new();
     EVP_CIPHER_CTX_set_padding(aesDecryptCtx, 0);
 
     unsigned char *aesKey;
@@ -491,7 +538,7 @@ int Crypt::__aesDecrypt(unsigned char *encMsg, size_t encMsgLen, char **decMsg) 
 
     (*decMsg)[decLen] = '\0';
 
-    EVP_CIPHER_CTX_cleanup(aesDecryptCtx);
+    EVP_CIPHER_CTX_free(aesDecryptCtx);
 
     return decLen;
 }

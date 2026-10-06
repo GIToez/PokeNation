@@ -25,6 +25,11 @@
 
 #include <framework/core/eventdispatcher.h>
 
+UILayout::UILayout(UIWidgetPtr parentWidget) : m_parentWidget(parentWidget)
+{
+    m_updateDisabled = 0;
+}
+
 void UILayout::update()
 {
     //logTraceCounter();

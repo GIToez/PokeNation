@@ -30,6 +30,7 @@
 #define __USE_GNU
 #endif
 
+#include <csignal>
 #include <execinfo.h>
 #include <ucontext.h>
 

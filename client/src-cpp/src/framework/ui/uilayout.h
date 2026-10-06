@@ -31,7 +31,9 @@
 class UILayout : public LuaObject
 {
 public:
-    UILayout(UIWidgetPtr parentWidget) : m_parentWidget(parentWidget) { m_updateDisabled = 0; }
+    // defined in uilayout.cpp: UIWidget must be complete when the shared_object_ptr
+    // converting constructor is considered (GCC >= 7 rejects is_convertible on incomplete types)
+    UILayout(UIWidgetPtr parentWidget);
 
     void update();
     void updateLater();

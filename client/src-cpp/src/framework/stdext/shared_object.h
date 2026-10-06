@@ -72,8 +72,11 @@ public:
             this->add_ref();
     }
     shared_object_ptr(shared_object_ptr const& rhs): px(rhs.px) { if(px != nullptr) add_ref(); }
-    template<class U>
-    shared_object_ptr(shared_object_ptr<U> const& rhs, typename std::is_convertible<U,T>::type* = nullptr) : px(rhs.get()) { if(px != nullptr) add_ref(); }
+    // U == T is served by the copy constructor; excluding it here avoids instantiating type traits
+    // on T while it is still incomplete (hard error on GCC >= 7). The original is_convertible test
+    // never disabled this overload anyway (::type always exists), so semantics are unchanged.
+    template<class U, typename std::enable_if<!std::is_same<U, T>::value, int>::type = 0>
+    shared_object_ptr(shared_object_ptr<U> const& rhs) : px(rhs.get()) { if(px != nullptr) add_ref(); }
     ~shared_object_ptr() { if(px != nullptr) dec_ref(); }
 
     void reset() { shared_object_ptr().swap(*this); }
