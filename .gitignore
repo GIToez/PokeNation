@@ -84,4 +84,4 @@ server/config.lua
 server/data/npc/tmpCitizen_*.xml
 
 # ---- Packaged development builds (tools/package_builds.sh) ----
-dist/
+/dist/
