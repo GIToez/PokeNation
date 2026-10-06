@@ -86,6 +86,7 @@ status icons, monster speech bubbles, loot list. No protocol desync was seen.
 | `game_shop` module not loaded (opcode 103 never sent) | DISABLED |
 | `client_serverlist` / `data/servers.xml` not used by the login flow | UNUSED |
 | No sound device → OpenAL aborts unless `ALSOFT_DRIVERS=null` (Linux launcher sets it) | environment |
+| Crash 2-3 s after start when the GPU's maximum texture size is below 1920 (GPU-less VMs, Windows "GDI Generic" OpenGL 1.1): the animated 1920x1080 background is rejected and `AnimatedTexture::updateAnimation()` reads an empty vector. Workaround: Mesa `opengl32.dll` with `GALLIUM_DRIVER=llvmpipe` | BUG-73 |
 
 ## 8. Why the client stays unchanged in Phase 3
 

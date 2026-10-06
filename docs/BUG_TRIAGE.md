@@ -87,6 +87,7 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-70 | P4 (ops) | open (Phase 2A) | Test-server NPCs (`npc/scripts/testserver_*.lua`) ship in the datapack | no |
 | BUG-71 | P4 (dev seed) | open, verified (Phase 2A) | Dev seed pre-fills the starting kit that Oak hands out again → duplicate kit | no |
 | BUG-72 | P3 | open, verified (Phase 2A) | Server never exits after SIGTERM / `/shutdown` (inherited TFS 0.3.6 `ServiceManager` flag) | no |
+| BUG-73 | P2 (low-end GPUs) | open, verified (Phase 2A, Windows CI) | Client crashes 2-3 s after start when the 1920x1080 animated background exceeds the GPU's maximum texture size (`AnimatedTexture` left half-initialised) | yes |
 
 ---
 
@@ -301,7 +302,7 @@ them (no "OLD TASK SYSTEM" line in any server log of this phase).
 
 ---
 
-## Phase 2A additions (BUG-58 … BUG-72)
+## Phase 2A additions (BUG-58 … BUG-73)
 
 BUG-58…BUG-70 come from the fresh full-source audit (`FULL_SOURCE_AUDIT.md §17`, with file:line
 evidence there). BUG-58 and BUG-68 were re-checked by reading the cited lines. None was fixed:
@@ -328,3 +329,21 @@ thread. `ServiceManager::run()` (`server/src/server.cpp:213-226`) sets `running 
 Inherited from TFS 0.3.6. Workaround: kill the process after the "- done." line; the data is
 already saved. Ctrl+C (SIGINT) is not handled and ends the process at once without the shutdown
 save. Fix (Phase 3): set `running = true` before `m_io_service.run()`.
+
+### BUG-73 — Client crash when a texture exceeds the GPU's maximum size — verified (Windows CI)
+On the GitHub Windows runner (no GPU, Windows "GDI Generic" OpenGL 1.1, maximum texture size
+1024x1024) the packaged client loads all 48 modules, logs
+`ERROR: loading texture with size 1920x1080 failed, the maximum size allowed by the graphics card is 1024x1024`
+and exits 2-3 s later with `0xC0000374` (heap corruption). Under gdb the unstripped build stops
+with SIGSEGV in `AnimatedTexture::updateAnimation()` (`client/src-cpp/src/framework/graphics/animatedtexture.cpp:75`),
+called from `TextureManager::poll()` (`texturemanager.cpp:61`). Cause: the constructor
+(`animatedtexture.cpp:28-42`) returns early when `setupSize()` fails (`texture.cpp:173-179`),
+leaving `m_framesDelay` empty and `m_currentFrame` uninitialised; `updateAnimation()` then
+indexes the empty vector. The texture is `client/data/images/background.png`, an animated PNG
+(APNG, 1920x1080) shown by `client_background` (`modules/client_background/background.otui:3`).
+GPUs with real OpenGL 2 drivers report a maximum texture size of 4096 or more (current GPUs
+16384), so normal PCs are not expected to hit this; GPU-less virtual machines, remote sessions without GPU acceleration and very
+old drivers are. Inherited from OTClient. Not fixed: the legacy client is frozen
+(`LEGACY_CLIENT_REFERENCE.md`). Fix (if the frozen client is ever patched): return early from
+`updateAnimation()` when `m_frames` is empty, or initialise `m_currentFrame` and skip animated
+textures that failed `setupSize()`.

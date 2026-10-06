@@ -74,5 +74,16 @@ startup modules in `data/lib/ps/systems/`. `Loading Citizens` rewrites
 ## 8. Windows
 
 The Windows CI job starts the packaged `PokeNationServer.exe` against a fresh MariaDB database and
-prints every `Warning|Error` line at the end of the smoke-test step. See the
-"Windows runtime evidence" section of [PHASE_2A_REPORT.md](PHASE_2A_REPORT.md) for the result.
+prints every `Warning|Error` line at the end of the smoke-test step. The lines are the same
+as on Linux: the BUG-20 tournament and NPC-interface lines, nothing Windows-specific.
+
+The client's Windows start-up log matches the Linux one (48 modules, ending with
+`Loaded module 'game_guide'`), with two additions:
+
+- `ERROR: unable to open audio device` appears on machines without a sound device; the client
+  continues.
+- `ERROR: loading texture with size 1920x1080 failed, the maximum size allowed by the graphics card is 1024x1024`
+  means the renderer is too limited for the animated background. The client crashes a few seconds
+  later (BUG-73).
+
+See the "Windows runtime evidence" section of [PHASE_2A_REPORT.md](PHASE_2A_REPORT.md).

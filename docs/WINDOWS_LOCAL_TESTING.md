@@ -183,10 +183,21 @@ Every launcher prints `[FAIL]` with the reason and what to do. Common cases:
 | `database 'psoul' is missing or cannot be read` | Run `Setup-PokeNation-Database.bat` (or `-Reset`). |
 | `port 7564 is already in use by …` | A server is already running. Close that window first. |
 | `no server is listening on 127.0.0.1:7564` (client) | Start the server first and wait for `>> Cristal server Online!`. |
-| `the client closed immediately` | Usually a graphics driver without OpenGL 2.0 (old GPU, remote desktop, virtual machine). Update the graphics driver. The script prints the end of `%USERPROFILE%\psoul.log`. |
+| `the client closed immediately` | Usually a graphics driver without OpenGL 2.0 (old GPU, remote desktop, virtual machine). Update the graphics driver. The script prints the end of `%USERPROFILE%\psoul.log`. If that log contains `loading texture with size 1920x1080 failed`, Windows is using its basic software renderer and the client crashes on it (BUG-73). Install the real GPU driver, or see "Without a GPU" below. |
 | `this folder is not a PokeNation server/client package` | Extract the whole zip, and start the scripts from inside `server\` or `client\`. |
 | `data\world\map.otbm is missing or incomplete` | The download is broken; download the package again. |
 | Login screen says the account or password is wrong | Use exactly `player` / `player` or `admin` / `admin` (lower case). |
+
+**Without a GPU** (virtual machine, Remote Desktop without GPU acceleration). This is how CI
+runs the client on a GPU-less Windows runner. It is meant for testing only, and it is slow.
+
+1. Get Mesa's software `opengl32.dll` from a source you trust. CI takes it from the MSYS2 package
+   `mingw-w64-x86_64-mesa`, together with `libgallium_wgl.dll` and the DLLs those two need.
+2. Copy the DLLs next to `PokeNationLegacyClient.exe`. Use a copy of the `client` folder; Mesa is
+   not part of the package.
+3. Start the client from a command prompt in that folder:
+   `set GALLIUM_DRIVER=llvmpipe` and then `PokeNationLegacyClient.exe`. Without that variable Mesa
+   may choose its d3d12 driver, which closed the client on the CI runner.
 
 Files written by the programs:
 
@@ -196,5 +207,11 @@ Files written by the programs:
 ## 8. What has been verified on Windows
 
 See [PHASE_2A_REPORT.md](PHASE_2A_REPORT.md), section "Windows runtime evidence". It describes
-exactly what the Windows CI runner proved (database setup, server start, logins, the gameplay
-smoke test) and what it could not prove: the graphical client on a runner without a GPU.
+exactly what the Windows CI runner proved, and what it did not:
+
+- **Proved:** database setup, the launcher checks, server start, logins and the gameplay smoke
+  test, on every build.
+- **Client:** it crashes on the runner's basic renderer (BUG-73), and it starts and shows the
+  language and login screen with Mesa llvmpipe.
+- **Not yet done on Windows:** the walking route to Oak and a graphical play session (section 6).
+  They need a person at a Windows PC.

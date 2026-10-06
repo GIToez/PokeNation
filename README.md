@@ -51,6 +51,15 @@ Large binary assets (`*.otbm`, `*.spr`, `*.psd`) are stored in **Git LFS**. Run
 
 Full guide with expected output and troubleshooting: **[docs/WINDOWS_LOCAL_TESTING.md](docs/WINDOWS_LOCAL_TESTING.md)**.
 
+Status on Windows:
+
+- The server package is tested in CI on every build: database setup, launcher checks, and the
+  gameplay smoke test.
+- The client needs a real graphics driver. Without one (for example a GPU-less VM) it crashes a
+  few seconds after start (BUG-73).
+- A full graphical play session on a Windows PC has not been recorded yet. See
+  [docs/PHASE_2A_REPORT.md](docs/PHASE_2A_REPORT.md) §6.
+
 Build it yourself on Windows: install [MSYS2](https://www.msys2.org/) and run
 `powershell -ExecutionPolicy Bypass -File tools\windows\Build-PokeNation-Windows.ps1 -InstallDependencies`.
 On Linux: `tools/build_server.sh && tools/build_client.sh && tools/package.sh all`. See
