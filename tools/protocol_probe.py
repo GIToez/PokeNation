@@ -426,6 +426,11 @@ class World:
         self.speech = []           # (name, text)
         self.events = []           # human readable trace
         self.stats = {}
+        self.pokeicons = {}        # fastcall number -> (client item id, text)
+        self.skills = None         # (icon, [move client ids]) of the Pokémon that is out
+        self.statuses = {}         # status icon client id -> cooldown
+        self.pokedex_known = None
+        self.channels = []
 
     # -- helpers -----------------------------------------------------------
     def log(self, s):
@@ -521,6 +526,7 @@ class World:
         if sub == 0x01:
             icon = r.u16()
             moves = [r.u16() for _ in range(r.u8())]
+            self.skills = (icon, moves)
             self.log(f"[PS] pokemon skills icon={icon} moves={moves}")
         elif sub == 0x02:
             self.log("[PS] skill container close")
@@ -530,13 +536,20 @@ class World:
             item = r.u16()
             fastcall = r.u16()
             color = r.u8()
-            self.log(f"[PS] pokemon window add icon item={item} fastcall={fastcall} color={color} text={r.string()!r}")
+            text = r.string()
+            self.pokeicons[fastcall] = (item, text)
+            self.log(f"[PS] pokemon window add icon item={item} fastcall={fastcall} color={color} text={text!r}")
         elif sub == 0x05:
-            self.log(f"[PS] pokemon window remove icon fastcall={r.u16()}")
+            fastcall = r.u16()
+            self.pokeicons.pop(fastcall, None)
+            self.log(f"[PS] pokemon window remove icon fastcall={fastcall}")
         elif sub == 0x06:
             fastcall = r.u16()
             color = r.u8()
-            self.log(f"[PS] pokemon window update icon fastcall={fastcall} color={color} text={r.string()!r}")
+            text = r.string()
+            if fastcall in self.pokeicons:
+                self.pokeicons[fastcall] = (self.pokeicons[fastcall][0], text)
+            self.log(f"[PS] pokemon window update icon fastcall={fastcall} color={color} text={text!r}")
         elif sub == 0x07:
             self.log("[PS] pokemon window open")
         elif sub == 0x08:
@@ -546,7 +559,8 @@ class World:
         elif sub == 0x0A:
             n = r.u16()
             status = [r.u8() for _ in range(n)]
-            self.log(f"[PS] pokedex status for {n} pokemon ({sum(1 for s in status if s)} known)")
+            self.pokedex_known = sum(1 for s in status if s)
+            self.log(f"[PS] pokedex status for {n} pokemon ({self.pokedex_known} known)")
         elif sub == 0x0B:
             self.log("[PS] pokedex open")
         elif sub == 0x0C:
@@ -563,10 +577,17 @@ class World:
             moves = [r.u16() for _ in range(r.u8())]
             self.log(f"[PS] TM window move={tm} replaceable={moves}")
         elif sub == 0x0E:
-            self.log(f"[PS] pokemon status add item={r.u16()} cooldown={r.u8()}")
+            item, cd = r.u16(), r.u8()
+            self.statuses[item] = cd
+            self.texts.append(f"[status icon add] item {item} cooldown {cd}")
+            self.log(f"[PS] pokemon status add item={item} cooldown={cd}")
         elif sub == 0x0F:
-            self.log(f"[PS] pokemon status remove item={r.u16()}")
+            item = r.u16()
+            self.statuses.pop(item, None)
+            self.texts.append(f"[status icon remove] item {item}")
+            self.log(f"[PS] pokemon status remove item={item}")
         elif sub == 0x10:
+            self.statuses.clear()
             self.log("[PS] pokemon status clear")
         elif sub == 0x12:
             self.log(f"[PS] creature jump id={r.u32()}")
@@ -793,14 +814,15 @@ class World:
                     exp = r.u32()
                     lvl = r.u16()
                     r.u8()
-                    r.u16()
-                    r.u16()
+                    mana = r.u16()
+                    manamax = r.u16()
                     r.u8()
                     r.u8()
-                    r.u8()
+                    soul = r.u8()
                     r.u16()
-                    self.stats = {"hp": hp, "hpmax": hpmax, "exp": exp, "level": lvl}
-                    self.log(f"player stats hp={hp}/{hpmax} exp={exp} level={lvl}")
+                    self.stats = {"hp": hp, "hpmax": hpmax, "exp": exp, "level": lvl,
+                                  "energy": mana, "energymax": manamax, "respect": soul}
+                    self.log(f"player stats hp={hp}/{hpmax} exp={exp} level={lvl} energy={mana}/{manamax} respect={soul}")
                 elif op == 0xA1:
                     r.skip(14)
                 elif op == 0xA2:
@@ -819,6 +841,21 @@ class World:
                     text = r.string()
                     self.speech.append((name, text))
                     self.log(f"{name!r} (lvl {level}) says type=0x{typ:02X}: {text!r}")
+                elif op == 0xAB:
+                    # PSoul: U16 channel count (stock 8.54 uses U8) - see docs/SOURCE_AUDIT.md
+                    n = r.u16()
+                    chans = [(r.u16(), r.string()) for _ in range(n)]
+                    self.channels = chans
+                    self.texts.append(f"[channel list] {chans}")
+                    self.log(f"channel list ({n}): {chans}")
+                elif op == 0xAC:
+                    cid_, name = r.u16(), r.string()
+                    self.texts.append(f"[channel open] {cid_} {name!r}")
+                    self.log(f"open channel {cid_} {name!r}")
+                elif op == 0xB2:
+                    self.log(f"private channel created {r.u16()} {r.string()!r}")
+                elif op == 0xB3:
+                    self.log(f"channel closed {r.u16()}")
                 elif op == 0xB4:
                     cls = r.u8()
                     text = r.string()
@@ -919,6 +956,29 @@ def cmd_enter(args):
                 best = (d, cid, c)
         return best
 
+    def walk_to(tx, ty):
+        # greedy walk towards x,y on the current floor (open terrain only); alternates axis when blocked
+        print(f">> walk to ({tx}, {ty}) from {world.player_pos}")
+        stuck = 0
+        while world.player_pos and (world.player_pos[0], world.player_pos[1]) != (tx, ty) and stuck < 6:
+            x, y, _ = world.player_pos
+            before = world.player_pos
+            steps = []
+            if tx != x:
+                steps.append("east" if tx > x else "west")
+            if ty != y:
+                steps.append("south" if ty > y else "north")
+            step = steps[stuck % len(steps)]
+            conn.send_encrypted(bytes([DIRECTION_OPCODES[step]]))
+            pump(0.8)
+            if world.player_pos == before:
+                stuck += 1
+                pump(0.7)
+            else:
+                stuck = 0
+        print(f"   now at {world.player_pos}" + ("" if stuck < 6 else " (gave up: blocked)"))
+        return stuck < 6
+
     print(f">> entering world as {args.character!r}")
     if not pump(args.settle):
         return 1
@@ -935,10 +995,68 @@ def cmd_enter(args):
             print(f">> say {value!r}")
             conn.send_encrypted(bytes(Writer().u8(0x96).u8(SPEAK_SAY).string(value).buf))
             pump(args.wait)
+        elif kind == "npc":
+            # talk through the NPC channel (SPEAK_PRIVATE_PN), as the client's NPC window does;
+            # focused NPCs ignore plain 'say' (npc/lib/npcsystem/npchandler.lua:433)
+            print(f">> npc-say {value!r}")
+            conn.send_encrypted(bytes(Writer().u8(0x96).u8(0x04).string(value).buf))
+            pump(args.wait)
         elif kind == "walk":
             print(f">> walk {value}")
             conn.send_encrypted(bytes([DIRECTION_OPCODES[value]]))
             pump(args.wait)
+        elif kind == "face":
+            # turn towards the nearest creature with that name (must be orthogonally adjacent)
+            best = nearest_creature(value)
+            if not best or not world.player_pos:
+                print(f"!! no creature named {value!r} in view")
+                ok = False
+                continue
+            dx = best[2]["pos"][0] - world.player_pos[0]
+            dy = best[2]["pos"][1] - world.player_pos[1]
+            turn = {(0, -1): 0x6F, (1, 0): 0x70, (0, 1): 0x71, (-1, 0): 0x72}.get((dx, dy))
+            if turn is None:
+                print(f"!! {best[2]['name']!r} is not adjacent (dx={dx}, dy={dy})")
+                ok = False
+                continue
+            print(f">> face {best[2]['name']!r}")
+            conn.send_encrypted(bytes([turn]))
+            pump(args.wait)
+        elif kind == "walkto":
+            tx, ty = (int(v) for v in value.split(","))
+            ok = walk_to(tx, ty) and ok
+        elif kind == "approach":
+            # walk next to the nearest creature with that name and turn towards it
+            best = nearest_creature(value)
+            if not best or not world.player_pos:
+                print(f"!! no creature named {value!r} in view")
+                ok = False
+                continue
+            cx, cy, _ = best[2]["pos"]
+            px, py, _ = world.player_pos
+            adj = min([(cx, cy + 1), (cx, cy - 1), (cx + 1, cy), (cx - 1, cy)],
+                      key=lambda t: abs(t[0] - px) + abs(t[1] - py))
+            if walk_to(*adj):
+                c = world.creatures[best[1]]
+                dx, dy = c["pos"][0] - world.player_pos[0], c["pos"][1] - world.player_pos[1]
+                turn = {(0, -1): 0x6F, (1, 0): 0x70, (0, 1): 0x71, (-1, 0): 0x72}.get((dx, dy))
+                if turn is not None:
+                    conn.send_encrypted(bytes([turn]))
+                    pump(args.wait)
+                else:
+                    print(f"!! {c['name']!r} moved away (dx={dx}, dy={dy})")
+                    ok = False
+            else:
+                ok = False
+        elif kind == "waitpos":
+            # wait until the player is at x,y (e.g. after a GM /send) - value "x,y:seconds"
+            coords, _, secs = value.rpartition(":")
+            tx, ty = (int(v) for v in coords.split(","))
+            deadline = time.time() + float(secs)
+            print(f">> wait up to {secs}s to be at ({tx}, {ty})")
+            while time.time() < deadline and (world.player_pos[0], world.player_pos[1]) != (tx, ty):
+                pump(0.5)
+            print(f"   {'arrived' if (world.player_pos[0], world.player_pos[1]) == (tx, ty) else 'TIMEOUT'} at {world.player_pos}")
         elif kind == "open":
             slot = int(value)
             it = world.inventory.get(slot)
@@ -958,6 +1076,57 @@ def cmd_enter(args):
                 continue
             print(f">> use inventory slot {slot} (server id {items.server_id(it[0])})")
             conn.send_encrypted(bytes(Writer().u8(0x82).pos(inv_pos(slot)).u16(it[0]).u8(0).u8(0).buf))
+            pump(args.wait)
+        elif kind == "raw":
+            data = bytes.fromhex(value)
+            print(f">> send raw packet {data.hex()}")
+            conn.send_encrypted(data)
+            pump(args.wait)
+        elif kind == "callpoke":
+            # emulate clicking a Pokémon bar icon: the client says "/cp <fastcall>"
+            want = int(value)
+            fc = next((f for f, (item, _) in sorted(world.pokeicons.items()) if item == want), None)
+            if fc is None:
+                print(f"!! no Pokémon bar icon with client item {want}; icons={world.pokeicons}")
+                ok = False
+                continue
+            print(f">> call Pokémon icon item={want} fastcall={fc} ('/cp {fc}')")
+            conn.send_encrypted(bytes(Writer().u8(0x96).u8(SPEAK_SAY).string(f"/cp {fc}").buf))
+            pump(args.wait)
+        elif kind == "useitem":
+            sid = int(value)
+            found = find_in_containers(sid)
+            if not found:
+                print(f"!! item {sid} not found in open containers {list(world.containers)}")
+                ok = False
+                continue
+            cid, idx, icid, cnt = found
+            print(f">> use item {sid} from container {cid}[{idx}]")
+            conn.send_encrypted(bytes(Writer().u8(0x82).pos(container_pos(cid, idx)).u16(icid).u8(idx).u8(0).buf))
+            pump(args.wait)
+        elif kind == "useon":
+            # use item <sid> (from an open container or inventory slot) on the nearest creature <name>
+            sid, _, target = value.partition(":")
+            sid = int(sid)
+            found = find_in_containers(sid)
+            if found:
+                cid, idx, icid, cnt = found
+                from_pos, from_stack = container_pos(cid, idx), idx
+            else:
+                slot = next((s for s, (c, _) in world.inventory.items() if items.server_id(c) == sid), None)
+                if slot is None:
+                    print(f"!! item {sid} not found in containers or inventory")
+                    ok = False
+                    continue
+                icid = world.inventory[slot][0]
+                from_pos, from_stack = inv_pos(slot), 0
+            best = nearest_creature(target)
+            if not best:
+                print(f"!! no creature named {target!r} in view")
+                ok = False
+                continue
+            print(f">> use item {sid} on creature {best[2]['name']!r} id={best[1]}")
+            conn.send_encrypted(bytes(Writer().u8(0x84).pos(from_pos).u16(icid).u8(from_stack).u32(best[1]).buf))
             pump(args.wait)
         elif kind == "movetoslot":
             sid, slot = (int(x) for x in value.split(":"))
@@ -988,9 +1157,14 @@ def cmd_enter(args):
             deadline = time.time() + float(secs)
             target = nearest_creature(prefix)
             if not target:
-                print(f"!! no creature {prefix!r} to wait for")
-                ok = False
-                continue
+                # already gone from view (killed before this action started)? use the last known creature
+                gone = [(cid_, c) for cid_, c in world.creatures.items()
+                        if c["name"].lower().startswith(prefix.lower()) and c["pos"] is None and c.get("last_pos")]
+                if not gone:
+                    print(f"!! no creature {prefix!r} to wait for")
+                    ok = False
+                    continue
+                target = (0, gone[-1][0], gone[-1][1])
             tid = target[1]
             print(f">> wait up to {secs}s for {target[2]['name']!r} id={tid} to die")
             while time.time() < deadline:
@@ -1067,6 +1241,8 @@ def cmd_enter(args):
     print("=== speech ===")
     for name, text in world.speech:
         print(f" - {name}: {text}")
+    print(f"=== Pokémon bar icons === {world.pokeicons}")
+    print(f"=== active Pokémon skills === {world.skills}  statuses={world.statuses}")
     print("=== text messages (0xB4) ===")
     for t in world.texts:
         print(" -", t)
@@ -1098,9 +1274,27 @@ def main():
     pe.add_argument("--character", required=True)
     pe.add_argument("--items-otb", default=DEFAULT_OTB)
     pe.add_argument("--say", dest="actions", action="append", default=[], type=lambda s: "say:" + s)
+    pe.add_argument("--npc", dest="actions", action="append", type=lambda s: "npc:" + s,
+                    help="say something in the NPC channel (needed once an NPC is focused)")
     pe.add_argument("--walk", dest="actions", action="append", type=lambda s: "walk:" + s)
+    pe.add_argument("--face", dest="actions", action="append", type=lambda s: "face:" + s,
+                    help="turn towards the adjacent creature whose name starts with NAME")
+    pe.add_argument("--approach", dest="actions", action="append", type=lambda s: "approach:" + s,
+                    help="walk next to the creature whose name starts with NAME and face it")
+    pe.add_argument("--walk-to", dest="actions", action="append", type=lambda s: "walkto:" + s,
+                    help="X,Y - greedy walk to that tile on the current floor")
+    pe.add_argument("--wait-pos", dest="actions", action="append", type=lambda s: "waitpos:" + s,
+                    help="X,Y:SECONDS - wait until the player stands on that tile")
     pe.add_argument("--open", dest="actions", action="append", type=lambda s: "open:" + s)
     pe.add_argument("--use-slot", dest="actions", action="append", type=lambda s: "useslot:" + s)
+    pe.add_argument("--raw", dest="actions", action="append", type=lambda s: "raw:" + s,
+                    help="send a raw client packet given as hex (e.g. 97 = request channel list)")
+    pe.add_argument("--call-poke", dest="actions", action="append", type=lambda s: "callpoke:" + s,
+                    help="click the Pokémon bar icon whose client item id is given (sends '/cp N')")
+    pe.add_argument("--use-item", dest="actions", action="append", type=lambda s: "useitem:" + s,
+                    help="use an item (server id) found in an open container")
+    pe.add_argument("--use-on", dest="actions", action="append", type=lambda s: "useon:" + s,
+                    help="SID:NAME - use item SID on the nearest creature whose name starts with NAME")
     pe.add_argument("--move-to-slot", dest="actions", action="append", type=lambda s: "movetoslot:" + s)
     pe.add_argument("--move-to-bag", dest="actions", action="append", type=lambda s: "movetobag:" + s)
     pe.add_argument("--wait-dead", dest="actions", action="append", type=lambda s: "waitdead:" + s)
