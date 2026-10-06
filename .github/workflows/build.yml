@@ -14,7 +14,6 @@ on:
   push:
     branches: ["**"]
     paths-ignore: ["docs/**", "original/**", "**/*.md"]
-  pull_request:
   workflow_dispatch:
 
 concurrency:
@@ -69,9 +68,12 @@ jobs:
           export PSOUL_DB_PASS=ci-password
           mysql_admin() { mysql -uroot -proot "$@"; }
           mysql_admin -e "CREATE DATABASE psoul CHARACTER SET utf8mb4; CREATE USER 'psoul'@'localhost' IDENTIFIED BY 'ci-password'; GRANT ALL ON psoul.* TO 'psoul'@'localhost'; FLUSH PRIVILEGES;"
-          mysql -upsoul -pci-password psoul < server/src/schemas/mysql.sql
-          mysql -upsoul -pci-password psoul < server/src/schemas/psoul_extra_mysql.sql
-          mysql -upsoul -pci-password psoul < server/src/schemas/psoul_dev_seed.sql
+          # mysql.sql creates triggers; MySQL 8 with binary logging only lets SUPER users do that
+          # (ERROR 1419), so the schemas are imported as root, not as the runtime user.
+          mysql_admin -e "SET GLOBAL log_bin_trust_function_creators = 1;"
+          mysql_admin psoul < server/src/schemas/mysql.sql
+          mysql_admin psoul < server/src/schemas/psoul_extra_mysql.sql
+          mysql_admin psoul < server/src/schemas/psoul_dev_seed.sql
           sed -E -e 's/^(\s*sqlUser\s*=\s*)"[^"]*"/\1"psoul"/' -e 's/^(\s*sqlPass\s*=\s*)"[^"]*"/\1"ci-password"/' \
                  -e 's/^(\s*sqlDatabase\s*=\s*)"[^"]*"/\1"psoul"/' server/config.example.lua > server/config.lua
           (cd server && timeout 180 ./psoul-server > /tmp/server.log 2>&1 &)
