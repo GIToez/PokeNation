@@ -539,7 +539,7 @@ column shows the directory.
 | WEBSITE-DEPENDENT | `client/modules/client_entergame/entergame.otui:79` | `http://pokenordic.com/accounts/lostAccount` | hard-coded external URL (not verifiable offline) |  |
 | WEBSITE-DEPENDENT | `client/modules/client_entergame/newcharacterlist.otui:223` | `http://www.psoul.net/players/createCharacter` | hard-coded external URL (not verifiable offline) |  |
 | WEBSITE-DEPENDENT | `client/modules/client_entergame/newcharacterlist.otui:232` | `http://www.psoul.net/accounts/donate` | hard-coded external URL (not verifiable offline) |  |
-| WEBSITE-DEPENDENT | `server/config.lua:316` | `http://www.psoul.net/` | hard-coded external URL (not verifiable offline) |  |
+| WEBSITE-DEPENDENT | `server/config.example.lua:321` | `http://www.psoul.net/` | hard-coded external URL (not verifiable offline) |  |
 | WEBSITE-DEPENDENT | `server/data/lib/ps/events/creaturescripts/onJoinChannel.lua:85` | `http://www.pokenordic.com/blogCategories/1-tutorials` | hard-coded external URL (not verifiable offline) |  |
 | WEBSITE-DEPENDENT | `server/data/lib/ps/events/globalevents/globalMessages.lua:9` | `http://www.PokeNordic.com/blogCategories/1-tutorials` | hard-coded external URL (not verifiable offline) |  |
 | WEBSITE-DEPENDENT | `server/data/lib/ps/events/globalevents/globalMessages.lua:15` | `http://www.PokeNordic.com` | hard-coded external URL (not verifiable offline) |  |

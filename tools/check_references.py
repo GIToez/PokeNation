@@ -736,6 +736,11 @@ def build_db(rep):
         names = [x.decode("latin-1") for x in re.findall(rb"[\w\- .]+\.xml", head)]
         db.spawn_file = next((x for x in names if "spawn" in x), None)
         db.house_file = next((x for x in names if "house" in x), None)
+    if db.spawn_file is None:
+        # map.otbm is a Git LFS pointer when LFS was not pulled (e.g. the CI validate job);
+        # these are the names its header carries (checked at commit 3d9cf7f).
+        db.spawn_file, db.house_file = "map-spawn.xml", "map-house.xml"
+        rep.facts["map.otbm header"] = "not readable (LFS pointer?), assumed map-spawn.xml / map-house.xml"
     rep.facts["map.otbm spawn file"] = db.spawn_file
     rep.facts["map.otbm house file"] = db.house_file
 
@@ -1419,7 +1424,7 @@ def check_sql(rep, db):
             continue
         scan(p, lf.text, lf.comments.contains, lf.line, True)
     url_re = re.compile(r"https?://[^\s\"'<>)\]]+|www\.[a-z0-9\-]+\.[a-z]{2,}[^\s\"'<>)\]]*", re.I)
-    url_files = [os.path.join(SERVER, "config.lua")] + [p for p in server_lua_files() if not is_historical(rel(p))] \
+    url_files = [os.path.join(SERVER, "config.example.lua")] + [p for p in server_lua_files() if not is_historical(rel(p))] \
         + list(iter_files(CLIENT_MODULES, (".lua", ".otui", ".otmod"))) + [os.path.join(CLIENT, "init.lua")]
     for p in url_files:
         lf = lua_file(p)
