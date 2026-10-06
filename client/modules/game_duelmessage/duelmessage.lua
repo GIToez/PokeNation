@@ -41,7 +41,7 @@ function onSkillChange(localPlayer, id, level, percent)
 end
 
 function onInit()
-    window = g_ui.loadUI('duelMessage', modules.game_interface.getRootPanel())
+    window = g_ui.loadUI('duelmessage', modules.game_interface.getRootPanel())
     window:hide()
 
     connect(g_game, {

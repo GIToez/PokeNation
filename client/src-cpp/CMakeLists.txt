@@ -20,6 +20,13 @@ endif()
 
 option(USE_PCH "Use precompiled header (speed up compile)" OFF)
 
+# The original release build read AES-encrypted data/module files. The repository holds the
+# plain development assets, so the decrypt layer is off unless explicitly requested.
+option(ENCRYPTED_ASSETS "Expect AES-encrypted lua/png/otui/dat assets (original release packaging)" OFF)
+if(ENCRYPTED_ASSETS)
+    add_definitions(-DENCRYPTED_ASSETS)
+endif()
+
 set(executable_SOURCES
     src/main.cpp
 )

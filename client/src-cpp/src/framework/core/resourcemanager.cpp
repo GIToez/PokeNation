@@ -190,12 +190,17 @@ std::string ResourceManager::readFileContents(const std::string& fileName)
     PHYSFS_read(file, (void*)&buffer[0], 1, fileSize);
     PHYSFS_close(file);
 
+#ifdef ENCRYPTED_ASSETS
+    // Release packaging of the original client AES-encrypted these asset types with the key
+    // embedded in Crypt::__aesDecrypt. The assets in this repository are the unencrypted
+    // development copies, so this is only compiled in when -DENCRYPTED_ASSETS=ON.
     if (isFileType(fileName, "lua") || isFileType(fileName, "png") || isFileType(fileName, "otmod") ||
         isFileType(fileName, "otfont") || isFileType(fileName, "otps") || isFileType(fileName, "otui") ||
         isFileType(fileName, "ogg") || isFileType(fileName, "frag") || isFileType(fileName, "spr") ||
         isFileType(fileName, "dat")) {
         return g_crypt.aesDecrypt(buffer);
     }
+#endif
 
     return buffer;
 }

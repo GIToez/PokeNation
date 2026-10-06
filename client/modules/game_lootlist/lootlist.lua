@@ -93,7 +93,7 @@ function onInit()
         onLootList = onLootList
     })
 
-    lootList = g_ui.loadUI('lootList', modules.game_interface.getRootPanel())
+    lootList = g_ui.loadUI('lootlist', modules.game_interface.getRootPanel())
 
     defaultWidth = lootList:getWidth()
     defaultHeight = lootList:getHeight()

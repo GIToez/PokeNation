@@ -165,7 +165,9 @@ void read_paeth_row(unsigned char * row, unsigned char * prev_row, unsigned int 
     }
 }
 
-void unpack(z_stream zstream, unsigned char * dst, unsigned int dst_size, unsigned char * src, unsigned int src_size, unsigned int h, unsigned int rowbytes, unsigned char bpp)
+// z_stream must be passed by reference: zlib >= 1.2.9 checks that state->strm points at the
+// stream being used, so a by-value copy makes inflate() fail with Z_STREAM_ERROR (blank images).
+void unpack(z_stream& zstream, unsigned char * dst, unsigned int dst_size, unsigned char * src, unsigned int src_size, unsigned int h, unsigned int rowbytes, unsigned char bpp)
 {
     unsigned int    j;
     unsigned char * row = dst;
