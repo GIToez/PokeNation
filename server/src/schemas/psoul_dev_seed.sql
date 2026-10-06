@@ -52,12 +52,16 @@ ON DUPLICATE KEY UPDATE `name` = `name`;
 -- slots are remapped in data/lib/ps/others/constants.lua:1366-1375:
 --   1 = order icon (13206 "order icon off"), 5 = badge case (12280),
 --   6 = pokedex (12281, required by doPokedexStatusSend on login),
+--    2 = evolve icon (13204, PLAYER_SLOT_EVOLVE = CONST_SLOT_NECKLACE): the client's
+--        right-click "Evolve" on your Pokémon sends useInventoryItem(11595 = 13204), so the
+--        item must exist somewhere in the inventory (gameinterface.lua:586, evolve.lua)
 --   10 = pokebag (12282) containing the items from doPlayerAddMainItems()
 --   (data/lib/ps/functions/player.lua:717).
 -- pid = slot id for equipped items, or the sid of the parent container.
 DELETE FROM `player_items` WHERE `player_id` IN (2, 3, 4);
 INSERT INTO `player_items` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `attributes`) VALUES
 	(2,   1, 101, 13206,   1, ''),
+	(2,   2, 110, 13204,   1, ''),
 	(2,   5, 102, 12280,   1, ''),
 	(2,   6, 103, 12281,   1, ''),
 	(2,  10, 104, 12282,   1, ''),
@@ -67,6 +71,7 @@ INSERT INTO `player_items` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `att
 	(2, 104, 108,  2120,   1, ''),
 	(2, 104, 109, 12292,   1, ''),
 	(3,   1, 101, 13206,   1, ''),
+	(3,   2, 110, 13204,   1, ''),
 	(3,   5, 102, 12280,   1, ''),
 	(3,   6, 103, 12281,   1, ''),
 	(3,  10, 104, 12282,   1, ''),
@@ -76,6 +81,7 @@ INSERT INTO `player_items` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `att
 	(3, 104, 108,  2120,   1, ''),
 	(3, 104, 109, 12292,   1, ''),
 	(4,   1, 101, 13206,   1, ''),
+	(4,   2, 110, 13204,   1, ''),
 	(4,   5, 102, 12280,   1, ''),
 	(4,   6, 103, 12281,   1, ''),
 	(4,  10, 104, 12282,   1, ''),
