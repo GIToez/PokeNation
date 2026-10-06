@@ -33,7 +33,6 @@ class Connection : public LuaObject
     typedef std::function<void(const boost::system::error_code&)> ErrorCallback;
     typedef std::function<void(uint8*, uint16)> RecvCallback;
 
-    // plain integers: boost::posix_time::seconds() only accepts integral types since Boost 1.6x
     static const int READ_TIMEOUT = 30;
     static const int WRITE_TIMEOUT = 30;
     enum {
@@ -67,9 +66,9 @@ public:
     ConnectionPtr asConnection() { return static_self_cast<Connection>(); }
 
 protected:
-    void internal_connect(asio::ip::basic_resolver<asio::ip::tcp>::iterator endpointIterator);
+    void internal_connect(asio::ip::tcp::resolver::results_type::iterator endpointIterator);
     void internal_write();
-    void onResolve(const boost::system::error_code& error, asio::ip::tcp::resolver::iterator endpointIterator);
+    void onResolve(const boost::system::error_code& error, asio::ip::tcp::resolver::results_type endpoints);
     void onConnect(const boost::system::error_code& error);
     void onCanWrite(const boost::system::error_code& error);
     void onWrite(const boost::system::error_code& error, size_t writeSize, std::shared_ptr<asio::streambuf> outputStream);
@@ -81,9 +80,9 @@ protected:
     ErrorCallback m_errorCallback;
     RecvCallback m_recvCallback;
 
-    asio::deadline_timer m_readTimer;
-    asio::deadline_timer m_writeTimer;
-    asio::deadline_timer m_delayedWriteTimer;
+    asio::steady_timer m_readTimer;
+    asio::steady_timer m_writeTimer;
+    asio::steady_timer m_delayedWriteTimer;
     asio::ip::tcp::resolver m_resolver;
     asio::ip::tcp::socket m_socket;
 
