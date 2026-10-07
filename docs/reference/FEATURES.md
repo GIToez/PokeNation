@@ -44,7 +44,7 @@ Other catalogs: [COMMANDS](COMMANDS.md) · [POKEMON](POKEMON.md) · [MOVES](MOVE
 
 | Feature | Status | Evidence | Main source | How reached | Bugs | Audit |
 |---|---|---|---|---|---|---|
-| Moves (m1–m16) | VERIFIED WORKING (players), PARTIAL (GM) | P2-06 | `sys/003-skill.lua`, `ev/spells/scripts` (459) | move bar / `m1` | BUG-05 | §5 |
+| Moves (m1–m16) | VERIFIED WORKING (players and GM; `tools/energy_test.py`) | P2-06 | `sys/003-skill.lua`, `ev/spells/scripts` (459) | move bar / `m1` | BUG-05 | §5 |
 | Damage model | PARTIAL | matrix §2.2 | `sys/004-skillDamage.lua` | battles | BUG-33 | §5 |
 | Cooldowns | VERIFIED WORKING | P2-06 | `sys/007-cooldown.lua` | moves | BUG-34 | §5 |
 | TMs | VERIFIED WORKING, CLIENT DEPENDENT | P2-16 | `sys/018-technicalMachine.lua`, `cl/game_tmchoose` | use TM | BUG-21, BUG-57 | §5 |
@@ -141,6 +141,7 @@ Other catalogs: [COMMANDS](COMMANDS.md) · [POKEMON](POKEMON.md) · [MOVES](MOVE
 | Christmas | DISABLED | `onKill.lua:10` | `sys/051-christmasEvent.lua`, `npc/event_santaClaus.lua` | — | — | §6.5 |
 | July Vacation | DISABLED | `onStaminaChange.lua:2` | `sys/055-julyVacationEvent.lua` | — | — | §6.5 |
 | Birthday / respect boxes | IMPLEMENTED / UNVERIFIED | — | `ev/actions/events/{birthdayBox,respectBox}.lua` | item | — | §5 |
+| Server EXP event (`/doubleexp`, `/expevent`) | VERIFIED WORKING | `tools/exp_event_test.py`, [below](#server-exp-event) | `sys/056-expEvent.lua`, `Player::rateExperience`, `doPlayerPokemonAddExperience` | GM command / config | — | — |
 
 ## Not player-facing / historical
 
@@ -154,19 +155,54 @@ Other catalogs: [COMMANDS](COMMANDS.md) · [POKEMON](POKEMON.md) · [MOVES](MOVE
 | Server save / clean globalevents | DISABLED | `globalevents.xml:17-22` | `globalevents/scripts/{save,clean}.lua` | §6.4 |
 | Stock TFS commands (`/uptime`, `!frags`, …) | DISABLED | commented | `talkactions/scripts/*` | §6.2 |
 
+## Server EXP event
+
+A server-wide multiplier on kill EXP for trainers **and** their Pokémon (double/triple EXP
+weekends and so on). Developer details (code paths, Lua API, Phase 3 client hook):
+[`../DEVELOPER_HANDBOOK.md`](../DEVELOPER_HANDBOOK.md) §12.1.
+
+| Item | Value |
+|---|---|
+| Configuration | `serverExpEventMultiplier = 1.0` in `server/config.lua` (`config.example.lua`): the multiplier used when no timed event runs. 1.0 = normal, 2.0 = permanent double EXP. Needs a restart. `stages.xml` is never edited. |
+| Start (GM) | `/doubleexp 2h` (2x), `/doubleexp 30m`, `/doubleexp 1d`, `/doubleexp 1h30m`, `/doubleexp 3x 2h`, `/doubleexp 2.5x 1d`. Duration 1 minute to 30 days (`d`/`h`/`m`, combinable); multiplier above 1 and at most 10, default 2. Starting while an event runs replaces it. |
+| Stop / status (GM) | `/doubleexp off` (also `stop`), `/doubleexp status`, `/doubleexp` alone prints usage and status. |
+| Who may use `/doubleexp` | `access="4"` in `talkactions.xml`: **Community Manager (group 5) and God (group 6)**. Gamemasters (group 4, access 3), tutors and players cannot; for them the words are ordinary chat. Every use is logged (`log="yes"`). |
+| Player status | `/expevent` or `/events`: "Experience Event: 2x" / "Time remaining: 1h 32m", or "There is no Experience Event active.". Shown automatically at login while an event is active. |
+| Broadcasts (all online players, red warning text, translatable with `__L`) | "Double Experience Event is now active for 2 hours!", "3x Experience Event is now active for 2 hours!", "The Double Experience Event has ended." (or "The 3x …"), "The Experience Event has been disabled." (manual stop). |
+| Persistence | Multiplier and end time are kept in global storages 6200/6201 and written to `global_storage` immediately. Logout/login keeps nothing per player. After a restart, or even a crash, an event that has not ended resumes with its remaining time; one that ended while the server was down is cleared and not restarted. |
+| What is multiplied | Monster-kill EXP: the trainer share (after stage, XP Boost and stamina) and the Pokémon share (after level scaling, ×1.25 and XP Boost). |
+| What is **not** multiplied | Fixed rewards from `doPlayerAddExperience` (quests, NPC and Rocket battles, Pokédex, Ranger Club, catching), rare candy / lollipop, held-item EXP (it sees the raw amount). |
+
+**Stacking order** (the event is always last and applied once):
+
+- Trainer: raw share → × (stage + XP Boost 0.15) → × stamina → **× event**.
+- Pokémon: raw share → held-item hook (raw) → × level stage → × 1.25 → + XP Boost 15 % → **× event**.
+- Party shared EXP: every member's share goes through the same chain, so each member gets the
+  multiplier once (code path read, not exercised by the test).
+
+Example, Magikarp level 1 (raw 10), level-7 trainer, Charmander below level 11, XP Boost active:
+1x gives the trainer 81 and Charmander 603 EXP; 2x gives 162 and 1206; 3x gives 243 and 1809.
+
+**Verified** on the local server: `tools/exp_event_test.py` (24 checks: 1x, 2x, 3x, 2x with the
+XP Boost potion, `off`, a player trying `/doubleexp`, a `1m` event that ends by itself, all
+broadcasts and `/expevent` replies), plus manual restarts: an active 3x/30m event survived a
+`kill -9` ("Experience Event restored: 3x, 29m remaining.", players saw it at login), a 1m event
+that ended during a 75-second shutdown was cleared ("expired while the server was offline"), and
+`serverExpEventMultiplier = 1.5` showed as a permanent 1.5x that `/doubleexp off` falls back to.
+
 ## Status counts (rows above)
 
 | Status | Rows |
 |---|---|
-| VERIFIED WORKING | 26 |
+| VERIFIED WORKING | 27 |
 | IMPLEMENTED / UNVERIFIED | 50 |
-| PARTIAL | 15 |
+| PARTIAL | 14 |
 | BROKEN | 0 |
 | DISABLED | 11 |
 | WEBSITE DEPENDENT | 6 |
 | CLIENT DEPENDENT | 15 |
 | HISTORICAL | 4 |
 
-104 rows. Rows carrying more than one status are counted once per status. No row is BROKEN:
+105 rows. Rows carrying more than one status are counted once per status. No row is BROKEN:
 the suspected show-stoppers (BUG-16 badges, BUG-17 PvP arena, BUG-45 dungeons) are inferred
 from reading and not yet reproduced.

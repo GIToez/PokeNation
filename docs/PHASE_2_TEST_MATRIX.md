@@ -86,7 +86,7 @@ level-100 Pidgeot by SQL for the NPC-battle test only).
 - Expected: "X, Tackle!" speech, energy drop, cooldown packet `0xFF 0x09`, PZ refusal.
 - Actual: Trainer: "Charmander, Tackle!", "Charmander, Scratch!", energy 150/150 → 0/0 while fighting (regenerates), cooldown packets seen; inside PZ: "Your Pokemon can't use moves while you're in the protection zone." GM Admin: every move → "Sorry, your Pokemon has insufficient energy (12)." / "(30)" because GM energy is reported `0/0` (infinite mana flag). Wild Pokémon moves work (`Rattata: QUICK ATTACK`, `Tentacool: POISON STING`, `BUBBLEBEAM`, `Caterpie: BUG BITE`).
 - Source: `lib/ps/systems/003-skill.lua:70-95`, `lib/ps/events/talkactions/skill.lua`, `server/src/player.cpp` (`hasFlag(PlayerFlag_HasInfiniteMana)` → mana shown as 0), `server/data/XML/groups.xml`.
-- Errors: none. Suspected cause: PSoul reuses mana as energy but never special-cases the infinite-mana flag. Priority: P3 (BUG-05; dev/GM only).
+- Errors: none. Suspected cause: PSoul reuses mana as energy but never special-cases the infinite-mana flag. Priority: P3 (BUG-05; dev/GM only). Fixed later: see `docs/BUG_TRIAGE.md` BUG-05.
 
 **P2-07 · Pokémon Center heal (Nurse Joy) — PASS**
 - Exact test: Trainer with a fainted (`FNT`) Charmander at Pewter PC: `--say hi` next to Nurse Joy.

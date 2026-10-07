@@ -194,7 +194,7 @@ Startup log: no `[Error - LuaScriptInterface::loadFile] … skill.lua:77` (missi
 
 ## 13. Test steps
 
-Use **Tester** for the move (GM Pokémon cannot use moves, BUG-05).
+Use **Tester** to check the energy cost (GM Pokémon never spend energy, BUG-05 fixed).
 
 1. Tester: Shift + click the Tackle icon. Expect
    "Move: Tackle, Power: 20, Energy: 12, Cooldown: 1s, Type: Normal, Category: Physical, Range: 1 sqm." followed by the description.

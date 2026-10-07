@@ -251,6 +251,11 @@
 	experienceStages = true
 	rateExperience = 1.0
 	rateExperienceFromPlayers = 0
+
+	-- Server-wide EXP event multiplier, applied once after every other trainer and Pokemon
+	-- EXP modifier (stages, Pokemon level scaling, XP Boost, ...). 1.0 = normal, 2.0 = double.
+	-- This is the default when no /doubleexp event is running; a timed /doubleexp event overrides it.
+	serverExpEventMultiplier = 1.0
 	rateSkill = 1.0
 	rateMagic = 1.0
 	rateLoot = 1.0

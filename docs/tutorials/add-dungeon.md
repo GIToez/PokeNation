@@ -330,7 +330,7 @@ the first time the dungeon is picked, with an `[Error - Npc interface]` trace
 
 ## 14. Test steps
 
-GM Pokémon cannot use moves (BUG-05). Use Tester with a Pokémon of a Hurricane type
+Use Tester (or GM Admin, BUG-05 is fixed) with a Pokémon of a Hurricane type
 (Flying or Dragon, `014-mastery.lua:138`).
 
 1. **Monster names**, as GM Admin: `/m Dungeon Dragonair`, then each boss form. Each must

@@ -2415,6 +2415,12 @@ void LuaScriptInterface::registerFunctions()
 	//getExperienceStage(level)
 	lua_register(m_luaState, "getExperienceStage", LuaScriptInterface::luaGetExperienceStage);
 
+	//getServerExpEventMultiplier()
+	lua_register(m_luaState, "getServerExpEventMultiplier", LuaScriptInterface::luaGetServerExpEventMultiplier);
+
+	//setServerExpEventMultiplier([multiplier])
+	lua_register(m_luaState, "setServerExpEventMultiplier", LuaScriptInterface::luaSetServerExpEventMultiplier);
+
 	//getDataDir()
 	lua_register(m_luaState, "getDataDir", LuaScriptInterface::luaGetDataDir);
 
@@ -11469,6 +11475,31 @@ int32_t LuaScriptInterface::luaGetExperienceStage(lua_State* L)
 		divider = popFloatNumber(L);
 
 	lua_pushnumber(L, g_game.getExperienceStage(popNumber(L), divider));
+	return 1;
+}
+
+int32_t LuaScriptInterface::luaGetServerExpEventMultiplier(lua_State* L)
+{
+	//getServerExpEventMultiplier()
+	lua_pushnumber(L, g_game.getExpEventMultiplier());
+	return 1;
+}
+
+int32_t LuaScriptInterface::luaSetServerExpEventMultiplier(lua_State* L)
+{
+	//setServerExpEventMultiplier([multiplier])
+	//without a multiplier, falls back to the serverExpEventMultiplier config value
+	if(lua_gettop(L) < 1 || lua_isnil(L, -1))
+	{
+		if(lua_gettop(L) > 0)
+			lua_pop(L, 1);
+
+		g_game.resetExpEventMultiplier();
+		lua_pushboolean(L, true);
+		return 1;
+	}
+
+	lua_pushboolean(L, g_game.setExpEventMultiplier(popFloatNumber(L)));
 	return 1;
 }
 

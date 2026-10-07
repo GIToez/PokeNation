@@ -129,6 +129,7 @@ bool ConfigManager::load()
 	m_confString[MOTD] = getGlobalString("motd");
 	m_confNumber[ALLOW_CLONES] = getGlobalNumber("allowClones", 0);
 	m_confDouble[RATE_EXPERIENCE] = getGlobalDouble("rateExperience", 1);
+	m_confDouble[SERVER_EXP_EVENT_MULTIPLIER] = getGlobalDouble("serverExpEventMultiplier", 1);
 	m_confDouble[RATE_SKILL] = getGlobalDouble("rateSkill", 1);
 	m_confDouble[RATE_MAGIC] = getGlobalDouble("rateMagic", 1);
 	m_confDouble[RATE_LOOT] = getGlobalDouble("rateLoot", 1);

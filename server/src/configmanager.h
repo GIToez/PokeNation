@@ -194,6 +194,7 @@ class ConfigManager
 			FORMULA_LEVEL,
 			FORMULA_MAGIC,
 			RATE_CATCH,
+			SERVER_EXP_EVENT_MULTIPLIER,
 			LAST_DOUBLE_CONFIG /* this must be the last one */
 		};
 

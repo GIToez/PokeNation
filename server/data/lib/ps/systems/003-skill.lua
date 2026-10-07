@@ -73,7 +73,7 @@ function doPokemonUseSkill(pokemon, skillName)
     end
 
     if (_isPokemonOfPlayer) then
-        if (getPokemonEnergy(pokemon) < getPokemonSkillRequiredEnergy(skillName)) then
+        if (not hasPokemonEnoughEnergy(pokemon, getPokemonSkillRequiredEnergy(skillName))) then
             doPlayerSendCancel(pokemonMaster, string.format(__L(pokemonMaster, "Sorry, your Pokemon has insufficient energy (%s)."), getPokemonSkillRequiredEnergy(skillName)))
             return false
 

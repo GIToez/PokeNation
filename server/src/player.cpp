@@ -4004,6 +4004,8 @@ bool Player::rateExperience(double& gainExp, bool fromMonster)
 	else if(isPremium() || !g_config.getNumber(ConfigManager::STAMINA_BONUS_PREMIUM))
 		gainExp *= g_config.getDouble(ConfigManager::RATE_STAMINA_ABOVE);
 
+	// server-wide EXP event, applied once on top of every other trainer modifier
+	gainExp *= g_game.getExpEventMultiplier();
 	return true;
 }
 
