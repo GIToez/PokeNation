@@ -116,7 +116,8 @@ def main() -> int:
         nonlocal seen, result
         if not log_path.exists():
             return
-        lines = log_path.read_text(errors="replace").splitlines()
+        # The last line may still be half written; only complete lines are consumed.
+        lines = log_path.read_text(errors="replace").split("\n")[:-1]
         for line in lines[seen:]:
             if MARK not in line:
                 continue
