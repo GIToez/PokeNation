@@ -53,14 +53,26 @@ Upstream builds with CMake presets and vcpkg in manifest mode (`CMakePresets.jso
 | Platform | Result | Notes |
 |---|---|---|
 | Linux x64 | **builds and starts** (2026-10-07, local, Ubuntu 24.04, GCC 14.2, CMake 3.28, Ninja) | `tools/build_pokenation_client.sh`; 34 vcpkg ports built from source (release-only triplet `x64-linux-release`). The stock binary started under Xvfb + Mesa llvmpipe and logged `OTClient - Redemption 4.x rev 0.000 (desenv)` and `Startup done :]` |
-| Windows x64 | see §5 (CI) | |
-| Android arm64 | see §5 (CI) | |
+| Windows x64 | CI only (`.github/workflows/pokenation-client.yml`); result recorded below once the first run finishes | no Windows machine available locally |
+| Android arm64 | CI only (same workflow) | no Android SDK locally |
 
 ## 4. How PokeNation builds it
 
 | Platform | Command | Output |
 |---|---|---|
 | Linux | `tools/build_pokenation_client.sh` (`BUILD_TYPE=development\|release\|debug`) | `build/client-pokenation/linux-<type>/bin/` |
+| Windows | `tools\windows\Build-PokeNationClient-Windows.ps1 [-BuildType ...] [-Clean]` (Visual Studio 2022/2026 C++ workload; imports VsDevCmd itself) | `build\client-pokenation\windows-<type>\bin\` |
+| Android | `tools/build_pokenation_android.sh` (JDK 17, SDK 36, NDK 29.0.13599879, `VCPKG_ROOT`) | `build/client-pokenation/android/PokeNation-Android.apk` |
+| Package (Linux/Windows) | `tools/package_pokenation_client.py linux\|windows` | `dist/<platform>/client-pokenation/`, `dist/PokeNation-Client-Linux.tar.gz` / `dist/PokeNation-Client-Windows-x64.zip` + `.sha256` |
+
+Runtime data (`data/`, `mods/`, `modules/`, `init.lua`, `otclientrc.lua`, `cacert.pem`,
+`config.ini`) is collected by `tools/pack_pokenation_data.py`, for both the desktop packages and
+the APK's `assets/data.zip`. The legacy client's `dist/<platform>/client` and
+`PokeNation-LegacyClient-*` archives are never written by these tools.
+
+CI (`.github/workflows/pokenation-client.yml`) runs only when the new client or its tools change
+and is independent of `build.yml`, so a new-client failure cannot remove the server or legacy
+client artifacts. vcpkg binaries are cached between runs as files archives.
 
 `VCPKG_ROOT` defaults to `~/.cache/pokenation/vcpkg` (cloned at the baseline above on first use).
 Built vcpkg packages are cached in `~/.cache/pokenation/vcpkg-archives` (or wherever
