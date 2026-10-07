@@ -24,6 +24,7 @@ local counters = { pokemonBarAdd = 0, pokemonMoves = 0, pokedexStatus = 0, creat
 local finished = false
 local startPos
 local hasPoll = false
+local syntheticLevelUp = false
 local pollContinue
 
 local function log(fmt, ...)
@@ -446,6 +447,7 @@ local function pokemonStep(nextStep)
     local caught = false
     local sawCooldown = false
     local catchTries = 0
+    local venusaurIcons = {}
 
     local function slotByName(name)
         for _, slot in ipairs(bar.getSlots()) do
@@ -584,8 +586,11 @@ local function pokemonStep(nextStep)
             check('/cp summon marks the slot in use (0xFF 0x06)', summoned and bar.getInUse() == summoned.fastcall and own == 1,
                 string.format('inUse=%s ownSummons=%d', tostring(bar.getInUse()), own))
             check('move bar filled (0xFF 0x01)', #moves > 0 and movesModule.getWidget():isVisible(), #moves .. ' moves')
+            local effects = modules.game_effects
+            check('summon fade-in colour effect (0xFF 0x13)', effects.getReceived(effects.getEffectIds().RED_FADE_IN) > 0)
             for i, move in ipairs(moves) do
                 log('move %d icon=%d %s key=%s', i, move.iconId, move.name, tostring(move.key))
+                venusaurIcons[i] = move.iconId
             end
             for _, name in ipairs({ 'game_hotkeys', 'game_actionbar' }) do
                 local module = g_modules.getModule(name)
@@ -645,6 +650,8 @@ local function pokemonStep(nextStep)
                     function()
                         check('ball-slot use returns the Pokemon and dims the move bar', bar.getInUse() == nil and not movesModule.isActive(),
                             'inUse=' .. tostring(bar.getInUse()))
+                        local effects = modules.game_effects
+                        check('return fade-out colour effect (0xFF 0x13)', effects.getReceived(effects.getEffectIds().RED_COPY_FADE_OUT) > 0)
                         shot('16-returned')
                         PokeNation.say('/i ' .. TM_SERVER_ID)
                         return 2000
@@ -725,7 +732,24 @@ local function pokemonStep(nextStep)
                                 scheduleEvent(function()
                                     check('caught Pokemon returned', bar.getInUse() == nil)
                                     shot('22-returned')
-                                    nextStep()
+                                    -- UI only (no packet): the 0xFF 0x19 handler fed with more moves than the popup
+                                    -- lists, to check the BUG-59/60 layout. Venusaur's move icons stand in for new moves.
+                                    syntheticLevelUp = true
+                                    signalcall(g_game.onPokemonLevelUp, 3, 100, venusaurIcons)
+                                    scheduleEvent(function()
+                                        syntheticLevelUp = false
+                                        local popup = modules.game_advanceeffect.getPopup('pokemon')
+                                        local rect = popup and popup:getRect()
+                                        local map = modules.game_interface.getMapPanel():getRect()
+                                        local grid = popup and popup:getChildById('moves')
+                                        local icons = grid and grid:getChildCount() or 0
+                                        check('level-up popup shows all ' .. #venusaurIcons .. ' new moves inside the map (UI only)',
+                                            icons == #venusaurIcons and rect.y + rect.height <= map.y + map.height,
+                                            rect and string.format('%d icons, %dx%d at %d,%d, map bottom %d', icons, rect.width,
+                                                rect.height, rect.x, rect.y, map.y + map.height) or 'no popup')
+                                        shot('23-levelup-many-moves')
+                                        nextStep()
+                                    end, 1500)
                                 end, 3000)
                             end, 1200)
                         end, LEVEL_UP_TARGET, 60000)
@@ -836,6 +860,9 @@ local handlers = {
     onPollWindow = onPollWindow,
     onPokemonLevelUp = function(number, level, moves)
         log('pokemon level-up #%d level %d, %d moves', number, level, #moves)
+        if syntheticLevelUp then
+            return
+        end
         scheduleEvent(function()
             local popup = modules.game_advanceeffect.getPopup('pokemon')
             local rect = popup and popup:getRect()

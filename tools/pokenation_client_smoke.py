@@ -105,20 +105,27 @@ def main() -> int:
     result = None
     seen = 0
     deadline = time.time() + args.timeout
+    def read_new_lines():
+        nonlocal seen, result
+        if not log_path.exists():
+            return
+        lines = log_path.read_text(errors="replace").splitlines()
+        for line in lines[seen:]:
+            if MARK not in line:
+                continue
+            text = line.split(MARK, 1)[1]
+            print(text)
+            if text.startswith("RESULT "):
+                result = text
+        seen = len(lines)
+
     try:
         while time.time() < deadline and result is None:
             time.sleep(0.3)
-            if log_path.exists():
-                lines = log_path.read_text(errors="replace").splitlines()
-                for line in lines[seen:]:
-                    if MARK not in line:
-                        continue
-                    text = line.split(MARK, 1)[1]
-                    print(text)
-                    if text.startswith("RESULT "):
-                        result = text
-                seen = len(lines)
-            if client.poll() is not None and result is None:
+            exited = client.poll() is not None
+            # Read after the exit check: the mod logs RESULT and quits right away.
+            read_new_lines()
+            if exited and result is None:
                 print(f"client exited with code {client.returncode} before a result", file=sys.stderr)
                 break
         if result is None:
