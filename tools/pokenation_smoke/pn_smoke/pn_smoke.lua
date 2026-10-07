@@ -5,6 +5,7 @@
 --   PN_SMOKE_ACCOUNT, PN_SMOKE_PASSWORD, PN_SMOKE_CHARACTER, PN_SMOKE_LOCALE (en|pt|es),
 --   PN_SMOKE_MARKET=1 (market round trip; GM character, seeded depot and balance)
 --   PN_SMOKE_SHOP=1 (PokeNation Shop round trip; accounts.soulcoins seeded to 20)
+--   PN_SMOKE_POKEMON=1 (Pokemon UI round trip; GM character with a team, Rattata ball_counter seeded)
 
 PNSmoke = {}
 
@@ -14,7 +15,8 @@ local cfg = {
     character = os.getenv('PN_SMOKE_CHARACTER') or 'Tester',
     locale = os.getenv('PN_SMOKE_LOCALE'),
     market = os.getenv('PN_SMOKE_MARKET') == '1',
-    shop = os.getenv('PN_SMOKE_SHOP') == '1'
+    shop = os.getenv('PN_SMOKE_SHOP') == '1',
+    pokemon = os.getenv('PN_SMOKE_POKEMON') == '1'
 }
 
 local checks = {}
@@ -55,6 +57,11 @@ end
 
 -- Reads the GL framebuffer of the next frame into the user write dir; the runner collects it.
 local function shot(name)
+    -- The server MOTD box can pop up late and would cover every later screenshot.
+    local motd = g_ui.getRootWidget():recursiveGetChildById('motdWindow')
+    if motd and name ~= '03-world' then
+        motd:destroy()
+    end
     g_app.doScreenshot('/pn-smoke-' .. name .. '.png')
     log('SHOT %s', name)
 end
@@ -281,6 +288,242 @@ local function shopStep(nextStep)
     scheduleEvent(function() run(1) end, 2500)
 end
 
+-- Pokemon UI round trip on a character with a team (GM Admin): team bar, summon, move bar,
+-- move details, combat against a GM-spawned wild Pokemon, catch, Pokemon details, Pokedex, return.
+-- Catching needs ball_counter tries for Rattata (#19); the runner seeds them with PN_SMOKE_POKEMON=1.
+local EMPTY_POKEBALL_CLIENT_ID = 11118 -- server item 12157 (empty poke ball)
+local WILD_POKEMON = 'Rattata'
+local recentTexts = {}
+
+local function sequence(steps, done)
+    local function run(i)
+        if i > #steps then
+            return done()
+        end
+        local delay = steps[i]() or 2500
+        scheduleEvent(function() run(i + 1) end, delay)
+    end
+    run(1)
+end
+
+local function findWild()
+    for _, creature in ipairs(g_map.getSpectators(g_game.getLocalPlayer():getPosition(), false)) do
+        if creature:getName():find('^' .. WILD_POKEMON) and not creature:isLocalPlayerSummon() and not creature:isPlayer() then
+            return creature
+        end
+    end
+end
+
+local function textSeen(pattern)
+    for _, text in ipairs(recentTexts) do
+        if text:find(pattern) then
+            return true
+        end
+    end
+    return false
+end
+
+local function pokemonStep(nextStep)
+    if not cfg.pokemon then
+        return nextStep()
+    end
+    local bar, movesModule = modules.game_pokebar, modules.game_pokemoves
+    if not bar or not movesModule then
+        check('Pokemon UI modules loaded', false)
+        return nextStep()
+    end
+    local summoned, wild, wildPos, teamBefore, switchedTo
+    local caught = false
+    local sawCooldown = false
+    local catchTries = 0
+
+    local function healthySlot()
+        for _, slot in ipairs(bar.getSlots()) do
+            if not slot.fainted then
+                return slot
+            end
+        end
+    end
+
+    local function fight(done)
+        local deadline = g_clock.millis() + 20000
+        local index = 0
+        local function hit()
+            local creature = findWild()
+            if not creature or creature:isDead() or creature:getHealthPercent() <= 0 then
+                return scheduleEvent(done, 1500)
+            end
+            wildPos = creature:getPosition()
+            if g_clock.millis() > deadline then
+                return done()
+            end
+            if g_game.getAttackingCreature() ~= creature then
+                g_game.attack(creature)
+            end
+            local moves = movesModule.getMoves()
+            index = index % math.max(1, #moves) + 1
+            movesModule.useMove(index)
+            scheduleEvent(function()
+                local move = movesModule.getMoves()[index]
+                if move and move.cooldown > 0 then
+                    sawCooldown = true
+                end
+            end, 600)
+            scheduleEvent(hit, 1200)
+        end
+        hit()
+    end
+
+    local function catchLoop(done)
+        if caught or catchTries >= 6 then
+            return done()
+        end
+        catchTries = catchTries + 1
+        recentTexts = {}
+        PokeNation.say('/m ' .. WILD_POKEMON)
+        scheduleEvent(function()
+            wild = findWild()
+            if not wild then
+                local names = {}
+                for _, creature in ipairs(g_map.getSpectators(g_game.getLocalPlayer():getPosition(), false)) do
+                    names[#names + 1] = creature:getName()
+                end
+                log('catch try %d: no wild %s among %s', catchTries, WILD_POKEMON, table.concat(names, ', '))
+                return catchLoop(done)
+            end
+            wildPos = wild:getPosition()
+            fight(function()
+                local tile = wildPos and g_map.getTile(wildPos)
+                local corpse = tile and tile:getTopUseThing()
+                log('catch try %d: corpse=%s at %d,%d,%d', catchTries, corpse and tostring(corpse:getId()) or 'none',
+                    wildPos.x, wildPos.y, wildPos.z)
+                if catchTries == 1 then
+                    shot('12-combat')
+                end
+                if corpse then
+                    g_game.useInventoryItemWith(EMPTY_POKEBALL_CLIENT_ID, corpse)
+                end
+                scheduleEvent(function()
+                    caught = textSeen('Gotcha!')
+                    if catchTries == 1 or caught then
+                        shot(caught and '13-catch' or '13-catch-miss')
+                    end
+                    catchLoop(done)
+                end, 7000)
+            end)
+        end, 2000)
+    end
+
+    sequence({
+        function()
+            local console = modules.game_console
+            if console and console.channelsWindow then
+                console.channelsWindow:destroy()
+                console.channelsWindow = nil
+            end
+            local slots = bar.getSlots()
+            teamBefore = #slots
+            for _, slot in ipairs(slots) do
+                log('team slot fastcall=%d %s text=%s fainted=%s', slot.fastcall, slot.name, tostring(slot.text), tostring(slot.fainted))
+            end
+            check('team bar shows the team (0xFF 0x04)', #slots > 0 and bar.getWidget():isVisible(), #slots .. ' slots')
+            local values = modules.game_pokenation_hud and modules.game_pokenation_hud.getValues()
+            if values then
+                log('hud: health=%s energy=%s levels=%s respect=%s balls=%s', values.health, values.energy, values.levels, values.respect, values.balls)
+            end
+            shot('10-teambar')
+            summoned = healthySlot()
+            if not summoned then
+                check('summon', false, 'no healthy Pokemon')
+                return 500
+            end
+            bar.summon(summoned.fastcall)
+            return 3500
+        end,
+        function()
+            local moves = movesModule.getMoves()
+            local own = 0
+            for _, creature in ipairs(g_map.getSpectators(g_game.getLocalPlayer():getPosition(), false)) do
+                if creature:isLocalPlayerSummon() then
+                    own = own + 1
+                end
+            end
+            check('/cp summon marks the slot in use (0xFF 0x06)', summoned and bar.getInUse() == summoned.fastcall and own == 1,
+                string.format('inUse=%s ownSummons=%d', tostring(bar.getInUse()), own))
+            check('move bar filled (0xFF 0x01)', #moves > 0 and movesModule.getWidget():isVisible(), #moves .. ' moves')
+            for i, move in ipairs(moves) do
+                log('move %d icon=%d %s key=%s', i, move.iconId, move.name, tostring(move.key))
+            end
+            movesModule.requestDetails(1)
+            shot('11-summoned')
+        end,
+        function()
+            local move = movesModule.getMoves()[1]
+            check('/sd move details parsed into the tooltip', move ~= nil and move.info ~= nil,
+                move and move.info and move.info.summary:gsub('\n', '; ') or 'no answer')
+            bar.requestDetails(summoned.fastcall)
+        end,
+        function()
+            local details = modules.game_pokemondetails and modules.game_pokemondetails.getLast()
+            check('/pd Pokemon details window', details ~= nil and details.species ~= nil,
+                details and string.format('%s lv %s', tostring(details.species), tostring(details.level)) or 'no answer')
+            shot('14-details')
+            local window = modules.game_pokemondetails and modules.game_pokemondetails.getWindow()
+            if window then
+                window:hide()
+            end
+            return 1000
+        end,
+        function()
+            catchLoop(function()
+                local slots = bar.getSlots()
+                check('combat: used move shows its cooldown (0xFF 0x09)', sawCooldown)
+                check('catch: wild Pokemon caught and added to the team bar', caught and #slots == teamBefore + 1,
+                    string.format('%d tries, team %d -> %d', catchTries, teamBefore, #slots))
+                sequence({
+                    function()
+                        local entry = g_ui.getRootWidget():recursiveGetChildById('dex19')
+                        modules.game_pokedex.show()
+                        if entry and entry.onClick then
+                            entry.onClick(entry)
+                        else
+                            PokeNation.say('/dv 19')
+                        end
+                        return 3000
+                    end,
+                    function()
+                        local s = modules.game_pokedex.getState()
+                        check('/dv Pokedex entry shown (0xFF 0x11)', s.visible and s.selected == 19 and s.name == WILD_POKEMON,
+                            string.format('%s, %d entries, %d seen, %d caught, %d moves', s.name, s.entries, s.seen, s.caught, s.moves))
+                        shot('15-pokedex')
+                        modules.game_pokedex.hide()
+                        local newSlot = bar.getSlots()[teamBefore + 1]
+                        switchedTo = newSlot and newSlot.fastcall
+                        if switchedTo then
+                            bar.toggle(switchedTo)
+                        end
+                        return 4000
+                    end,
+                    function()
+                        check('/cp switch to the caught Pokemon', switchedTo ~= nil and bar.getInUse() == switchedTo and #movesModule.getMoves() > 0,
+                            string.format('inUse=%s, %d moves', tostring(bar.getInUse()), #movesModule.getMoves()))
+                        shot('16-switched')
+                        bar.toggle(bar.getInUse())
+                        return 3000
+                    end,
+                    function()
+                        check('ball-slot use returns the Pokemon and dims the move bar', bar.getInUse() == nil and not movesModule.isActive(),
+                            'inUse=' .. tostring(bar.getInUse()))
+                        shot('17-returned')
+                        return 1000
+                    end
+                }, nextStep)
+            end)
+            return 1
+        end
+    }, function() end)
+end
+
 local function afterWorld()
     local player = g_game.getLocalPlayer()
     startPos = player:getPosition()
@@ -321,7 +564,7 @@ local function afterWorld()
             if pos.x ~= before.x or pos.y ~= before.y then
                 check('walk accepted by server', true, 'direction ' .. directions[i])
                 shot('04-after-walk')
-                scheduleEvent(function() pollStep(function() marketStep(function() shopStep(PNSmoke.logout) end) end) end, 2500)
+                scheduleEvent(function() pollStep(function() marketStep(function() shopStep(function() pokemonStep(PNSmoke.logout) end) end) end) end, 2500)
             else
                 tryWalk(i + 1)
             end
@@ -379,7 +622,10 @@ local handlers = {
         end
     end,
     onTextMessage = function(mode, text)
-        if market.stage then
+        if cfg.pokemon then
+            recentTexts[#recentTexts + 1] = text
+            log('text message %d: %s', mode, tostring(text):gsub('\n', ' | '))
+        elseif market.stage then
             log('text message %d: %s', mode, tostring(text))
         end
     end,
@@ -428,7 +674,7 @@ function PNSmoke.init()
         if not finished then
             fail('timeout')
         end
-    end, 180000)
+    end, cfg.pokemon and 300000 or 180000)
 end
 
 function PNSmoke.terminate()

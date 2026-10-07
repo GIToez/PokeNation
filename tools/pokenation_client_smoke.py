@@ -62,6 +62,7 @@ def main() -> int:
     parser.add_argument("--timeout", type=int, default=200)
     parser.add_argument("--market", action="store_true", help="also run the market round trip (GM character)")
     parser.add_argument("--shop", action="store_true", help="also run the PokeNation Shop round trip (seeded soulcoins)")
+    parser.add_argument("--pokemon", action="store_true", help="also run the Pokemon UI round trip (GM character with a team)")
     args = parser.parse_args()
 
     binary = Path(args.client).resolve()
@@ -90,6 +91,9 @@ def main() -> int:
         env["PN_SMOKE_MARKET"] = "1"
     if args.shop:
         env["PN_SMOKE_SHOP"] = "1"
+    if args.pokemon:
+        env["PN_SMOKE_POKEMON"] = "1"
+        args.timeout = max(args.timeout, 330)
 
     xvfb = subprocess.Popen(["Xvfb", args.display, "-screen", "0", "1280x800x24", "-nolisten", "tcp"],
                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
