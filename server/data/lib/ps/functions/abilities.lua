@@ -890,7 +890,7 @@ function doAbilitieTransform(cid, pokemon, target, targetName, afterDismount)
                 reqEnergy = math.ceil(getPokemonMaxEnergy(pokemon) * 0.3)
             end
 
-            if (getPokemonEnergy(pokemon) < reqEnergy) then
+            if (not hasPokemonEnoughEnergy(pokemon, reqEnergy)) then
                 doPlayerSendCancel(cid, string.format(__L(cid, "Your Pokemon need at least %s energy to transform into this Pokemon."), reqEnergy))
                 return
             end

@@ -34,7 +34,7 @@ in the firewall. Do not forward these ports to the internet.
 
 | Account | Password | Character | Group | Notes |
 |---|---|---|---|---|
-| `admin` | `admin` | **GM Admin** | 6 (God) | `/goto`, `/m`, `/i`, `/send`, `/reload` … see [reference/COMMANDS.md](reference/COMMANDS.md). GMs cannot use Pokémon moves (BUG-05) |
+| `admin` | `admin` | **GM Admin** | 6 (God) | `/goto`, `/m`, `/i`, `/send`, `/reload` … see [reference/COMMANDS.md](reference/COMMANDS.md). GM Pokémon use moves without spending energy (BUG-05, fixed) |
 | `admin` | `admin` | **Tester** | 1 | normal player on the GM account, spawns in Pewter (3307,300,7) |
 | `player` | `player` | **Trainer** | 1 | brand-new player in the Tutorial town (temple 5000,806,6). Professor Oak (5020,788,7) gives the starter |
 | `1` | `1` | none | n/a | inherited TFS account-manager account from `mysql.sql`; unused because `accountManager = false` |

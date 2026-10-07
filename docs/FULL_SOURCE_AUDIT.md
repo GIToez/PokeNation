@@ -174,7 +174,7 @@ Status reflects reachability + Phase 2 tests. "Reach" = how a player gets there.
 |---|---|---|---|---|
 | `001-npcBattle.lua` | NPC trainer battles, gyms, badges | ACTIVE, PARTIAL (P2-29 loss path) | talk `battle` to trainer NPCs (199 `npcbattle_*` scripts) | BUG-01, BUG-16 |
 | `002-quest.lua` | quest framework | VERIFIED WORKING (P2-26) | quest NPCs (73 `quest_*`), loads `config/003-quest.lua` | BUG-53 |
-| `003-skill.lua` | move execution (`m1..m16`, `s1..s16`) | VERIFIED WORKING (P2-06) | GM energy FAIL | BUG-05 |
+| `003-skill.lua` | move execution (`m1..m16`, `s1..s16`) | VERIFIED WORKING (P2-06) | GM energy FAIL at audit time, fixed later | BUG-05 (fixed) |
 | `004-skillDamage.lua` | damage model | ACTIVE, PARTIAL (matrix §2.2) | | BUG-33 |
 | `006-fastcall.lua` | Pokémon bar fast call | VERIFIED WORKING (P2-04) | CLIENT-DEPENDENT (`0xFF 0x04-0x08`) | |
 | `007-cooldown.lua` | move cooldowns | VERIFIED WORKING (P2-06) | day-of-year clock | BUG-34 |

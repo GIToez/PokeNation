@@ -1336,7 +1336,7 @@ COMMAND_BUGS = {
     "/cupom": ("BUG-54: coupon types other than 0 consume the code without reward", True),
     "/i": ("BUG-12: created items land in the slot-3 backpack hidden by the client", False),
     "/lang": ("Phase-1 A3: overwritten by the login language at every login (harmless)", False),
-    "m1": ("BUG-05: GM groups (infinite mana) cannot use moves; works for players", False),
+    "m1": ("BUG-05 (fixed): GM groups (infinite mana) use moves without spending energy; tools/energy_test.py", False),
     "/n": ("BUG-38 note: `/n Soya` loads an NPC whose script `loot.lua` is missing", False),
     "/tvbanlist": ("Phase-1 report: script `tv/banlist.lua` missing (entry commented)", True),
 }

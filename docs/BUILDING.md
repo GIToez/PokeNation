@@ -209,8 +209,9 @@ explicit stackpos targets an item lying on the tile, e.g. an incubator on a drop
 Wiki Chat). Use `python3 -u` so the transcript streams. Note that logging in with the probe on
 an account whose character is open in the GUI client kicks that session
 (`replaceKickOnLogin = true`); use the `admin` account for the probe and `player` for the GUI.
-GM characters have infinite mana, which PSoul uses as Pokémon energy, so **GM Pokémon cannot use
-moves** – run move tests as `Trainer`/`Tester` (BUG-05).
+GM characters have infinite mana, which PSoul uses as Pokémon energy, so GM Pokémon use moves
+without spending energy (BUG-05, fixed; regression test `tools/energy_test.py`). Run energy-cost
+tests as `Trainer`/`Tester`.
 
 `tools/check_syntax.sh` runs `luac5.1 -p` and `xmllint --noout` over `server/data`.
 

@@ -44,7 +44,7 @@ Other catalogs: [COMMANDS](COMMANDS.md) · [POKEMON](POKEMON.md) · [MOVES](MOVE
 
 | Feature | Status | Evidence | Main source | How reached | Bugs | Audit |
 |---|---|---|---|---|---|---|
-| Moves (m1–m16) | VERIFIED WORKING (players), PARTIAL (GM) | P2-06 | `sys/003-skill.lua`, `ev/spells/scripts` (459) | move bar / `m1` | BUG-05 | §5 |
+| Moves (m1–m16) | VERIFIED WORKING (players and GM; `tools/energy_test.py`) | P2-06 | `sys/003-skill.lua`, `ev/spells/scripts` (459) | move bar / `m1` | BUG-05 | §5 |
 | Damage model | PARTIAL | matrix §2.2 | `sys/004-skillDamage.lua` | battles | BUG-33 | §5 |
 | Cooldowns | VERIFIED WORKING | P2-06 | `sys/007-cooldown.lua` | moves | BUG-34 | §5 |
 | TMs | VERIFIED WORKING, CLIENT DEPENDENT | P2-16 | `sys/018-technicalMachine.lua`, `cl/game_tmchoose` | use TM | BUG-21, BUG-57 | §5 |

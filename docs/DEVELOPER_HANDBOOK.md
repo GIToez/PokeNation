@@ -582,8 +582,8 @@ python3 -u tools/protocol_probe.py enter --account admin --password admin --char
 
 | Character (account / password) | Use for |
 |--------------------------------|---------|
-| **GM Admin** (`admin`/`admin`, group 6) | GM commands (`/i`, `/m`, `/mypokemon`, `/goto`, `/reload`). **Its Pokémon cannot use moves**: groups 4–6 have `PlayerFlag_HasInfiniteMana` (bit 10, `server/src/const.h:496`; flags in `data/XML/groups.xml:6-8`) and PSoul uses mana as Pokémon energy (BUG-05). |
-| **Tester** (`admin`/`admin`, group 1) | Moves, battles, anything a normal player does. |
+| **GM Admin** (`admin`/`admin`, group 6) | GM commands (`/i`, `/m`, `/mypokemon`, `/goto`, `/reload`). Its Pokémon can use moves without spending energy: groups 4–6 have `PlayerFlag_HasInfiniteMana` (bit 10, `server/src/const.h:496`; flags in `data/XML/groups.xml:6-8`), PSoul uses mana as Pokémon energy, and `hasPokemonEnoughEnergy` (`data/lib/ps/functions/pokemon.lua`) treats that flag as always enough (BUG-05, fixed). Cooldowns still apply. Use a normal character to test energy costs. |
+| **Tester** (`admin`/`admin`, group 1) | Moves, battles, energy costs, anything a normal player does. |
 | **Trainer** (`player`/`player`, group 1) | New-player path (Professor Oak starter) and the GUI client. |
 
 `replaceKickOnLogin = true` (`config.example.lua:110`): logging in on an account that is

@@ -210,7 +210,7 @@ There must be no new `[Spawn::addMonster]` or `[Warning - Spawns::loadFromXml]` 
 
 1. As GM Admin, `/goto 4170,610,4`. Three monsters stand around the centre: two Rattata and a
    level-25 Raticate (look at it to see the level).
-2. As Tester (GM Pokémon cannot attack, BUG-05), defeat one Rattata. After about 60 s a new one
+2. As Tester (or GM Admin, BUG-05 is fixed), defeat one Rattata. After about 60 s a new one
    appears at the same place. TFS 0.3.6 respawns even while players stand next to it
    (the player check `findPlayer` is commented out, `spawn.cpp:291-304`, `423-429`).
 3. Defeat the Raticate. It comes back after about 300 s.

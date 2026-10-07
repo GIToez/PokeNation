@@ -438,9 +438,8 @@ Start the server (`tools/start_server.sh`) and check:
 
 ## 13. Test steps
 
-Use **GM Admin** for GM commands and **Tester** or **Trainer** for anything that uses moves
-(GM Pokémon always get "Sorry, your Pokemon has insufficient energy", BUG-05,
-`docs/BUILDING.md` §8.3). Items created with `/i` land in the hidden slot-3 backpack (BUG-12).
+Use **GM Admin** for GM commands. GM Pokémon can use moves without spending energy (BUG-05,
+fixed); use **Tester** or **Trainer** to check energy costs (`docs/BUILDING.md` §8.3). Items created with `/i` land in the hidden slot-3 backpack (BUG-12).
 
 1. **Summon:** `/mypokemon <Name>,20`. An unknown name gives "Invalid Pokemon name."
    (`talkactions/scripts/pokemon.lua:8-10`; the name check is exact-case). Expect
