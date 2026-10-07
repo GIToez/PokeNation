@@ -582,7 +582,7 @@ python3 -u tools/protocol_probe.py enter --account admin --password admin --char
 
 | Character (account / password) | Use for |
 |--------------------------------|---------|
-| **GM Admin** (`admin`/`admin`, group 6) | GM commands (`/i`, `/m`, `/mypokemon`, `/goto`, `/reload`). Its Pokémon can use moves without spending energy: groups 4–6 have `PlayerFlag_HasInfiniteMana` (bit 10, `server/src/const.h:496`; flags in `data/XML/groups.xml:6-8`), PSoul uses mana as Pokémon energy, and `hasPokemonEnoughEnergy` (`data/lib/ps/functions/pokemon.lua`) treats that flag as always enough (BUG-05, fixed). Cooldowns still apply. Use a normal character to test energy costs. |
+| **GM Admin** (`admin`/`admin`, group 6) | GM commands (`/i`, `/m`, `/mypokemon`, `/goto`, `/reload`, `/doubleexp`). Its Pokémon can use moves without spending energy: groups 4–6 have `PlayerFlag_HasInfiniteMana` (bit 10, `server/src/const.h:496`; flags in `data/XML/groups.xml:6-8`), PSoul uses mana as Pokémon energy, and `hasPokemonEnoughEnergy` (`data/lib/ps/functions/pokemon.lua`) treats that flag as always enough (BUG-05, fixed). Cooldowns still apply. Use a normal character to test energy costs. |
 | **Tester** (`admin`/`admin`, group 1) | Moves, battles, energy costs, anything a normal player does. |
 | **Trainer** (`player`/`player`, group 1) | New-player path (Professor Oak starter) and the GUI client. |
 
@@ -671,6 +671,7 @@ Declared tables:
 | Range | Use | Declared in |
 |-------|-----|-------------|
 | 4962–5000, 5001–5152, 6000–6021, 6100–6105, 6150–6156 | **global** storages (events, Elite Four, highscore boards, mastery dungeons, bosses) | `lib/ps/config/globalStorages.lua:1-52` (ranges in the comments) |
+| 6200–6201 | **global**: server EXP event (`EXP_EVENT_MULTIPLIER` = multiplier × 100, `EXP_EVENT_EXPIRES_AT` = `os.time()` of the end; 0 = none) | `lib/ps/config/globalStorages.lua`, used by `systems/056-expEvent.lua` (§12.1) |
 | 7001–7078 | player flags (`playersStorages`) | `config/playersStorages.lua` (`base = 7000`) |
 | 7501–7521 | summon creature storages (`pokemonsStorages`) | `config/pokemonsStorages.lua` (`base = 7500`) |
 | 8001–8754 (+ a few up to 9681) | quests | `config/003-quest.lua` (`storage =`, `counterStorage =`), NPC `setRequiredStorage(…)` |
@@ -758,7 +759,11 @@ rg -n "\"$N\"|name=\"$N\"|\[\"$N\"\]" server/data \
 | move or add an NPC / wild spawn | `data/world/map-spawn.xml` (RME) | restart |
 | change a quest | `lib/ps/config/003-quest.lua`, quest NPC script | restart |
 | change rates, MOTD, ports, world type | `server/config.lua` (and `config.example.lua` if the default should change) | restart |
-| change group permissions (e.g. GM energy) | `data/XML/groups.xml` | restart (`/reload groups` does nothing) |
+| change group permissions | `data/XML/groups.xml` | restart (`/reload groups` does nothing) |
+| change how GM groups spend Pokémon energy | `hasPokemonEnoughEnergy` in `lib/ps/functions/pokemon.lua`; displayed value in `ProtocolGame::AddPlayerStats` | restart (C++: rebuild) |
+| run a double/triple EXP event | `/doubleexp 2h`, `/doubleexp 3x 2h`, `/doubleexp off` in game (access 4+); permanent default `serverExpEventMultiplier` in `server/config.lua` | none / restart (§12.1) |
+| change trainer kill EXP | stages in `data/XML/stages.xml`; formula `Player::rateExperience` (`server/src/player.cpp`) | restart / rebuild (§12.1) |
+| change Pokémon kill EXP | `doPlayerPokemonAddExperience` in `lib/ps/functions/player.lua` | restart (§12.1) |
 | add/translate a server message | text in Lua wrapped in `__L(cid, "…")`, Portuguese in `server/pt_br.loc` | restart; `docs/TRANSLATION.md` |
 | change the client's target server | `client/modules/client_entergame/entergame.lua:191-192` | restart client |
 | change a client window | `client/modules/game_<name>/*.lua` / `.otui` | restart client (no rebuild) |
@@ -766,6 +771,60 @@ rg -n "\"$N\"|name=\"$N\"|\[\"$N\"\]" server/data \
 | add a packet | `server/src/protocolgame.cpp` + `luascript.cpp` + `client/src-cpp/src/client/protocol*` | rebuild both (§6.1) |
 | add a database table | new `CREATE TABLE IF NOT EXISTS` block in `server/src/schemas/psoul_extra_mysql.sql` citing the code that uses it | apply to your DB (`mysql … < file` or `setup_database.sh --reset`) |
 | change engine behaviour | `server/src/*.cpp` | `tools/build_server.sh`, restart |
+
+### 12.1 Experience pipeline and the server EXP event
+
+A wild Pokémon killed by a player's Pokémon gives *raw* EXP
+`experience × (1 + level × experienceRate)` (`Monster::getLostExperience`, `monster.h`), split by
+damage share between every attacker (`Creature::getDamageRatio`; the trainer's own melee hits
+count as a separate share). Each share then goes through
+`Player::onGainExperience` (`server/src/player.cpp`):
+
+1. **Party:** with shared experience on, `Party::shareExperience` hands every member a share and
+   each member continues at step 2 with it.
+2. **Pokémon** (Lua creature event `onGainExperience` → `doPlayerPokemonAddExperience`,
+   `lib/ps/functions/player.lua`), receiving the raw share as an integer:
+   held item hook (`PokemonHeldItem.onGainExperience`, sees the raw amount) → Pokémon level stage
+   (×42 … ×1.5) → ×1.25 → `+ floor(e × getPlayerExtraExpRate)` (XP Boost) → **× event multiplier**.
+   Rare candy / lollipop call it with `multiplier = false` and skip the whole block, event included.
+   Returning `false` (e.g. Safari) also stops the trainer gain.
+3. **Trainer** (`Player::gainExperience` → `rateExperience`): `× (stage + extraExpRate)` (stage
+   from `data/XML/stages.xml`, XP Boost adds +0.15 to the stage) → stamina (×1.5 above
+   `staminaRatingLimitTop`, ×0.5 below `…Bottom`, 0 when empty) → **× event multiplier** →
+   truncated to an integer.
+
+The event multiplier is applied exactly once per final gain, after every existing modifier, so
+nothing else changes: stages, the Pokémon scaling and XP Boost keep their values and order. Fixed
+rewards given with `doPlayerAddExperience` (quests, NPC/Rocket battles, Pokédex, Ranger Club,
+catches) do not pass through `rateExperience` and are **not** multiplied. To include one, multiply
+its amount by `getServerExpEventMultiplier()` at the call site.
+
+**State.** The active multiplier lives in C++ (`Game::getExpEventMultiplier`, `game.cpp`), so all
+Lua states see the same value. Lua API: `getServerExpEventMultiplier()`;
+`setServerExpEventMultiplier(x)` (`false` unless 0 < x ≤ 100); `setServerExpEventMultiplier()` (no
+argument) falls back to `serverExpEventMultiplier` from `config.lua` (default 1.0; invalid values
+read as 1.0). `systems/056-expEvent.lua` (`ExpEvent`) adds the timed layer used by `/doubleexp`:
+
+- `ExpEvent.start(multiplier, seconds)` (1 < multiplier ≤ 10, 1 minute ≤ seconds ≤ 30 days),
+  `ExpEvent.stop()`, `ExpEvent.getActive()` → `multiplier, expiresAt`, `ExpEvent.getRemaining()`,
+  `ExpEvent.getStatusText(cid)`, `ExpEvent.parseCommand("3x 2h")`.
+- Persistence: global storages 6200/6201 (§11.1), written to memory *and* straight to
+  `global_storage` with `REPLACE INTO`, so a crash does not lose the event. `ExpEvent.onStartup`
+  (a `start.lua` STARTUP entry) restores an event that has not ended and clears an expired one.
+- Expiry: an `addEvent` timer (re-armed at most every hour; a timer whose stored end time no longer
+  matches does nothing) plus the `expEventCheck` globalevent every 30 s, which also covers timers
+  dropped by `/reload`.
+- `ExpEvent.onLogin` (from `login.lua`) shows the status to players logging in while it is active.
+
+**A future event** (e.g. a weekend event): call `ExpEvent.start(2, 48 * 3600)` from a
+`globalevents.xml` entry with `time="18:00"` and a day check, or run `/doubleexp 2d` by hand.
+Everything else (broadcasts, persistence, expiry) is handled.
+
+**Client (Phase 3).** The legacy client gets the status as text only (broadcast, login message,
+`/expevent`). The OTClient Redemption build should show a timer (e.g. `DOUBLE EXP 01:32:17`): send
+`ExpEvent.getActive()` (multiplier and `expiresAt`, or none) in an extended opcode `0x32` message
+from `ExpEvent.onLogin`, `ExpEvent.start`, `ExpEvent.stop` and the end of `finish`, and count down
+client-side. No protocol change is made for the legacy client.
 
 ---
 
