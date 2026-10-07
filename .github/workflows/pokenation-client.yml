@@ -187,14 +187,20 @@ jobs:
         with:
           java-version: "17"
           distribution: temurin
-      - uses: android-actions/setup-android@v3
+      # The runner image ships the Android SDK and cmdline-tools (android-actions/setup-android@v3
+      # fails there: it still installs the removed "tools" package).
       - name: Install host and SDK packages
         run: |
           sudo apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
             build-essential g++-multilib gcc-multilib ninja-build pkg-config zip unzip
-          sdkmanager --install "platform-tools" "platforms;android-36" "build-tools;36.0.0" "cmake;3.22.1" "ndk;${NDK_VERSION}"
-          echo "ANDROID_NDK_HOME=${ANDROID_HOME:-$ANDROID_SDK_ROOT}/ndk/${NDK_VERSION}" >> "$GITHUB_ENV"
+          sdk="${ANDROID_HOME:-$ANDROID_SDK_ROOT}"
+          sdkmanager="$(ls -d "$sdk"/cmdline-tools/*/bin | sort -V | tail -n1)/sdkmanager"
+          yes | "$sdkmanager" --licenses > /dev/null || true
+          "$sdkmanager" --install "platform-tools" "platforms;android-36" "build-tools;36.0.0" "cmake;3.22.1" "ndk;${NDK_VERSION}"
+          echo "ANDROID_HOME=$sdk" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$sdk" >> "$GITHUB_ENV"
+          echo "ANDROID_NDK_HOME=$sdk/ndk/${NDK_VERSION}" >> "$GITHUB_ENV"
       - name: vcpkg baseline and bootstrap
         id: vcpkg
         run: |
@@ -223,7 +229,7 @@ jobs:
           mkdir -p dist
           cp build/client-pokenation/android/PokeNation-Android.apk dist/
           (cd dist && sha256sum PokeNation-Android.apk > PokeNation-Android.apk.sha256 && cat PokeNation-Android.apk.sha256)
-          "${ANDROID_HOME:-$ANDROID_SDK_ROOT}/build-tools/36.0.0/aapt2" dump badging dist/PokeNation-Android.apk | head -5 || true
+          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump badging dist/PokeNation-Android.apk | head -5 || true
       - uses: actions/upload-artifact@v7
         with:
           name: PokeNation-Android
