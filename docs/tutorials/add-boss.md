@@ -381,8 +381,9 @@ You should see no `[Warning - Monsters::loadMonster]` or
 
 ## 14. Test steps
 
-GM Pokémon cannot use moves (BUG-05). Use **GM Admin** to spawn and **Tester**
-(`admin`/`admin`) or **Trainer** (`player`/`player`) with a strong Pokémon to fight.
+Use **GM Admin** to spawn. Any character with a strong Pokémon can fight; GM Pokémon never spend
+energy (BUG-05, fixed), so use **Tester** (`admin`/`admin`) or **Trainer** (`player`/`player`) for
+a fight that should feel like a normal player's.
 
 1. As GM Admin, go next to Tester and say `/m Rock Titan`. The boss appears with a skull
    icon. If the name is wrong, you get `Sorry, not possible.` (`creature.lua:17-19`).

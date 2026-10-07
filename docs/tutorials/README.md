@@ -78,7 +78,7 @@ Unless a tutorial says otherwise, paths are relative to `server/`, except paths 
 | `docs/PHASE_2_TEST_MATRIX.md` | The tested GM/player flows whose exact messages the tutorials quote (P2-xx) |
 | `docs/BUG_TRIAGE.md` | The BUG-xx numbers referenced in the tutorials |
 
-GM test characters: **GM Admin** creates things (`/i`, `/m`, `/mypokemon`), but its Pokémon
-cannot use moves (BUG-05). Use **Tester** (`admin`/`admin`) or **Trainer** (`player`/`player`)
-for combat. Items created with `/i` land in a hidden backpack (BUG-12); use
+GM test characters: **GM Admin** creates things (`/i`, `/m`, `/mypokemon`). Its Pokémon can use
+moves but never spend energy (infinite-mana GM groups, BUG-05 fixed). Use **Tester**
+(`admin`/`admin`) or **Trainer** (`player`/`player`) whenever energy costs matter. Items created with `/i` land in a hidden backpack (BUG-12); use
 `/i <id>,<count>,true` to drop them on your tile instead.

@@ -147,6 +147,7 @@ function onLogin(cid)
         doExtraLootRateCheck(cid)
         doExtraCatchRateCheck(cid)
         doExtraEggRateCheck(cid)
+        ExpEvent.onLogin(cid)
         doAddCondition(cid, (doMasteryAdvantageCheck(cid, MASTERY_ADVANTAGES.PASSIVE_ENERGY_REGENERATION) and
                 voltagicEnergyRegenCondition or (getPlayerLevel(cid) > 30 and energyRegenCondition or
                 lowLevelEnergyRegenCondition)))

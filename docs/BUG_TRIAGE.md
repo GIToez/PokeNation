@@ -19,7 +19,7 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-02 | P0 | fixed | Server and client do not compile with current Boost / libxml2 / CMake | yes |
 | BUG-03 | P0 | fixed | Client crash (Lua stack) on monster yell StaticText | yes |
 | BUG-04 | P3 | open | Autoloot OFF is never persisted | no |
-| BUG-05 | P3 | open | GM groups (infinite mana) cannot use Pokémon moves | no |
+| BUG-05 | P3 | fixed | GM groups (infinite mana) cannot use Pokémon moves | no |
 | BUG-06 | P3 | open | `onLogout.lua` Lua errors when a player disconnects mid NPC battle | no |
 | BUG-07 | P4 | open | Fractional experience in messages ("1153.125 experience points") | no |
 | BUG-08 | P2 | **fixed (Phase 3)** | Unvalidated login language byte can null-dereference `Localization::t` | done |
@@ -203,6 +203,24 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
   `data/XML/groups.xml`) zeroes the reported mana. Fix: special-case the flag in
   `003-skill.lua:70-80` (treat infinite mana as enough energy) or remove the flag from the dev GM
   group. Workaround used in Phase 2: test with group-1 characters.
+- **Fixed** (branch `cursor/gm-energy-exp-event-c0d2`). `Player::changeMana` ignores every
+  change while the flag is set, so a GM's mana — and with it the energy — stays at its login value.
+  The flag is kept; instead:
+  - `hasPlayerInfinitePokemonEnergy(player)` and `hasPokemonEnoughEnergy(pokemon, amount)` in
+    `data/lib/ps/functions/pokemon.lua` treat an owner with `PLAYERFLAG_HASINFINITEMANA` as always
+    having enough energy. They are used by the move check (`systems/003-skill.lua`) and the
+    Transform energy check (`functions/abilities.lua`). Cooldown, level, sleep, target, range and
+    every other check run unchanged; the energy deduction is still called and is a no-op for GMs.
+  - `ProtocolGame::AddPlayerStats` reports energy as max/max for infinite-mana players, so the
+    client shows e.g. `1100/1100` while a Pokémon is out instead of `0/0`.
+  - Normal players are unaffected: their energy check, consumption and regeneration are unchanged.
+- Verified (local server, protocol probe): GM Admin's Venusaur 100 used 11 different moves (m1–m11)
+  against a wild Chansey with no energy error, stats showed `1100/1100`; the second Sleep Powder
+  was refused with "Sorry, your Pokemon is exhaust (98s)." (also after a relog: a Solar Beam used in
+  the previous session was refused with 58 s left). Trainer (group 7) spent energy normally
+  (160 → 148 after Tackle, 130 after Scratch), regenerated 25 per tick back to 160, and with energy
+  forced to 5 got "Sorry, your Pokemon has insufficient energy (12)." Regression test:
+  `tools/energy_test.py` (8 checks).
 
 ### BUG-06 — `onLogout.lua` errors when a battling player disconnects — verified
 - Console: `(internalGetPlayerInfo) Player not found when requesting player info #18`,

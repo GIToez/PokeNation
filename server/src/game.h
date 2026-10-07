@@ -630,6 +630,10 @@ class Game
 		bool loadExperienceStages();
 		double getExperienceStage(uint32_t level, double divider = 1.);
 
+		double getExpEventMultiplier() const;
+		bool setExpEventMultiplier(double multiplier);
+		void resetExpEventMultiplier() {expEventMultiplier = -1.;}
+
 		inline StageList::const_iterator getFirstStage() const {return stages.begin();}
 		inline StageList::const_iterator getLastStage() const {return stages.end();}
 		size_t getStagesCount() const {return stages.size();}
@@ -727,6 +731,8 @@ class Game
 
 		StageList stages;
 		uint32_t lastStageLevel;
+		// < 0 means no event override: use the serverExpEventMultiplier config value
+		double expEventMultiplier;
 
 		Highscore highscoreStorage[9];
 		time_t lastHighscoreCheck;

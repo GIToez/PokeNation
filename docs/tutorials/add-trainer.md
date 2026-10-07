@@ -231,8 +231,8 @@ After such an error `npcBattle` is `nil`, and the first `battle` prints an
 ## 13. Test steps
 
 The Phase 2 test (P2-29, `docs/PHASE_2_TEST_MATRIX.md`) used **Tester** with a level-100
-Pidgeot added by SQL. GM Pokémon cannot use moves (BUG-05), so use Tester or Trainer for a
-real fight. Use GM Admin for the commands.
+Pidgeot added by SQL. GM Pokémon never spend energy (BUG-05, fixed), so use Tester or Trainer for a
+realistic fight. Use GM Admin for the commands.
 
 1. As GM Admin: `/goto 3299,246,10` (Chandra) or the position of your trainer.
 2. As Tester, summon a Pokémon, stand next to the NPC **outside** a protection zone, and

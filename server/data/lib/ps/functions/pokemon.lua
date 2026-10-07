@@ -44,6 +44,16 @@ function doPokemonAddEnergy(cid, amount)
 	doCreatureAddMana(getCreatureMaster(cid), amount, false)
 end
 
+-- Pokemon energy is the trainer's mana. Player::changeMana ignores every change for groups with
+-- PlayerFlag_HasInfiniteMana (GM groups 4-6), so their mana, and with it the energy, stays at 0.
+function hasPlayerInfinitePokemonEnergy(player)
+	return isPlayer(player) and getPlayerFlagValue(player, PLAYERFLAG_HASINFINITEMANA)
+end
+
+function hasPokemonEnoughEnergy(cid, amount)
+	return hasPlayerInfinitePokemonEnergy(getCreatureMaster(cid)) or getPokemonEnergy(cid) >= amount
+end
+
 function getPokemonPoisonDamage(cid)
 	return getCreatureStorage(cid, POKEMON_STORAGES.POISON_DAMAGE) or 0
 end

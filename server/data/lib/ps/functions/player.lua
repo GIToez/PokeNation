@@ -452,6 +452,8 @@ function doPlayerPokemonAddExperience(player, pokemon, expAmount, multiplier, re
 
                 expAmount = expAmount * 1.25
                 expAmount = expAmount + math.floor(expAmount * getPlayerExtraExpRate(player))
+                -- server-wide EXP event, applied once on top of every other Pokemon modifier
+                expAmount = expAmount * getServerExpEventMultiplier()
             end
 
             local oldExperience = getBallPokemonExp(ball.uid)
