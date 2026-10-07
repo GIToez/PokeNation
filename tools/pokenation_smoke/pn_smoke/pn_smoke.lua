@@ -98,20 +98,33 @@ local function onCharacterListCreated(characters, account)
     end, 2500)
 end
 
--- Only when the character list announced a poll: 0xFA request -> 0xFF 0x18 window -> 0xFB vote.
+-- Only when the character list announced a poll: 0xFA request -> 0xFF 0x18 window -> 0xFB vote,
+-- answered through the game_poll window. With seed_smoke.sql the account has a choice poll and a
+-- text poll open, so the second request must bring the text poll and the third none.
+local POLL_TEXT_ANSWER = 'pn-smoke text vote'
+local pollRound = 0
+
+local function requestPoll(nextStep, expectWindow)
+    pollContinue = nextStep
+    g_game.requestPollWindow()
+    scheduleEvent(function()
+        if pollContinue == nextStep then
+            pollContinue = nil
+            if expectWindow then
+                check('0xFA poll request answered by 0xFF 0x18', false, 'no poll window within 4 s')
+            else
+                check('no further poll after answering every open poll', true, pollRound .. ' poll(s) answered')
+            end
+            nextStep()
+        end
+    end, 4000)
+end
+
 local function pollStep(nextStep)
     if not hasPoll then
         return nextStep()
     end
-    pollContinue = nextStep
-    g_game.requestPollWindow()
-    scheduleEvent(function()
-        if pollContinue then
-            check('0xFA poll request answered by 0xFF 0x18', false, 'no poll window within 4 s')
-            pollContinue = nil
-            nextStep()
-        end
-    end, 4000)
+    requestPoll(nextStep, true)
 end
 
 local function onPollWindow(question, options)
@@ -120,22 +133,49 @@ local function onPollWindow(question, options)
     end
     local nextStep = pollContinue
     pollContinue = nil
+    pollRound = pollRound + 1
     check('0xFA poll request answered by 0xFF 0x18', type(question) == 'string' and question ~= '', question)
-    if type(options) == 'table' then
-        local firstId
-        for id, text in pairs(options) do
-            log('poll option %d: %s', id, text)
-            if not firstId or id < firstId then
-                firstId = id
+    scheduleEvent(function()
+        local poll = modules.game_poll
+        local state = poll.getState()
+        local shown = poll.getWindow():getChildById('question'):getText()
+        check('poll window shows the question', state.visible and shown == question, shown)
+        local textMode = type(options) ~= 'table'
+        local chosenId
+        if textMode then
+            poll.setText(POLL_TEXT_ANSWER)
+        else
+            local ids = {}
+            for id, text in pairs(options) do
+                ids[#ids + 1] = id
+                log('poll option %d: %s', id, text)
             end
+            table.sort(ids)
+            check('poll window lists every option', state.options == #ids and #ids > 0, state.options .. ' options')
+            poll.vote()
+            check('vote without a choice is refused', poll.getState().visible)
+            poll.selectOptionById(ids[1])
+            chosenId = ids[1]
         end
-        log('POLL VOTE option %s', tostring(firstId))
-        check('0xFB poll vote sent', firstId ~= nil and g_game.doPollVote(firstId))
-    else
-        log('POLL VOTE text')
-        check('0xFB poll text vote sent', g_game.doPollVoteText('pn-smoke text vote'))
-    end
-    scheduleEvent(nextStep, 1500)
+        -- Screenshots capture the last drawn frame, so let the selection / typed answer render first.
+        scheduleEvent(function()
+            shot(textMode and '09-poll-text' or '09-poll-choice')
+            poll.vote()
+            state = poll.getState()
+            if textMode then
+                check('poll text answer sent from the window (0xFB)', not state.visible and state.lastVote
+                    and state.lastVote.text == POLL_TEXT_ANSWER)
+            else
+                check('poll choice sent from the window (0xFB)', not state.visible and state.lastVote
+                    and state.lastVote.option == chosenId, 'option ' .. tostring(chosenId))
+            end
+            if pollRound < 3 then
+                scheduleEvent(function() requestPoll(nextStep, false) end, 1500)
+            else
+                scheduleEvent(nextStep, 1500)
+            end
+        end, 400)
+    end, 500)
 end
 
 -- Market round trip. Expects the seed from PHASE_3_TEST_MATRIX.md C-14: balance 12345 and
@@ -457,11 +497,6 @@ local function pokemonStep(nextStep)
             return 4000
         end,
         function()
-            local console = modules.game_console
-            if console and console.channelsWindow then
-                console.channelsWindow:destroy()
-                console.channelsWindow = nil
-            end
             local slots = bar.getSlots()
             teamBefore = #slots
             for _, slot in ipairs(slots) do
@@ -709,6 +744,14 @@ local handlers = {
     end,
     onChannelList = function(channels)
         check('0xAB channel list (U16 count)', #channels > 0, #channels .. ' channels')
+        -- game_console opens its channel chooser for the same packet; it would cover later screenshots.
+        scheduleEvent(function()
+            local console = modules.game_console
+            if console and console.channelsWindow then
+                console.channelsWindow:destroy()
+                console.channelsWindow = nil
+            end
+        end, 200)
     end,
     onPokemonBarAdd = function() counters.pokemonBarAdd = counters.pokemonBarAdd + 1 end,
     onPokemonMoves = function() counters.pokemonMoves = counters.pokemonMoves + 1 end,

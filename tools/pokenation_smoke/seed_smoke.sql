@@ -22,3 +22,17 @@ INSERT INTO `player_items` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `att
 	(2, 104, 109, 12292,   1, '');
 UPDATE `players` SET `posx` = 3307, `posy` = 307, `posz` = 7 WHERE `id` = 2;
 REPLACE INTO `ball_counter` (`player_id`, `pokemon_id`, `poke`) VALUES (2, 19, 10);
+
+-- Poll UI: one open multiple-choice poll and one open free-text poll, no votes yet. The server
+-- reloads polls every 10 s and offers the lowest open id the account has not answered, so one
+-- smoke run answers 901 and then 902. Option ids travel as U8 and must stay below 256.
+DELETE FROM `poll_votes` WHERE `poll_id` IN (901, 902);
+DELETE FROM `poll_texts` WHERE `poll_id` IN (901, 902);
+DELETE FROM `poll_options` WHERE `poll_id` IN (901, 902);
+REPLACE INTO `polls` (`id`, `name`, `question`, `deadline`, `text_mode`) VALUES
+	(901, 'pn-smoke-choice', 'Which region should PokeNation open next?', NOW() + INTERVAL 7 DAY, 0),
+	(902, 'pn-smoke-text', 'What should we improve first?', NOW() + INTERVAL 7 DAY, 1);
+INSERT INTO `poll_options` (`id`, `poll_id`, `name`) VALUES
+	(201, 901, 'Johto'),
+	(202, 901, 'Hoenn'),
+	(203, 901, 'Sinnoh');
