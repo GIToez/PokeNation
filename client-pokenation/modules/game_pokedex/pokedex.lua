@@ -164,18 +164,19 @@ local function fillEffectiveness(effectiveness)
     local lists = effectiveness:explode(';')
     for index, sectionName in ipairs(EFFECT_SECTIONS) do
         local section = g_ui.createWidget('DexEffectSection', content)
-        addCell(section, 80, tr(sectionName))
-        local box = g_ui.createWidget('DexTypeBox', section)
+        section:getChildById('header'):setText(tr(sectionName))
+        local box = section:getChildById('types')
         local list = lists[index]
+        local count = 0
         if list and list ~= '' then
             for _, typeId in ipairs(list:split(',')) do
                 local icon = g_ui.createWidget('UIWidget', box)
                 icon:setImageSource(PokeNation.image('types/square/' .. typeId))
                 icon:setTooltip(getTypeNameById(typeId))
+                count = count + 1
             end
-        else
-            box:setHeight(24)
         end
+        section:setHeight(6 + math.max(1, math.ceil(count / 6)) * 23)
     end
 end
 

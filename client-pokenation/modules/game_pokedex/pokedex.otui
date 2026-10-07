@@ -25,22 +25,30 @@ DexMoveRow < UIWidget
     type: horizontalBox
 
 DexEffectSection < UIWidget
+  height: 26
   margin-top: 4
   background-color: #22283399
   border: 1 #a4a4a4
-  layout:
-    type: horizontalBox
-    fit-children: true
 
-DexTypeBox < UIWidget
-  width: 330
-  padding: 2
-  layout:
-    type: grid
-    cell-size: 49 20
-    cell-spacing: 3
-    flow: true
-    fit-children: true
+  DexCell
+    id: header
+    width: 80
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+
+  UIWidget
+    id: types
+    anchors.top: parent.top
+    anchors.left: header.right
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    padding: 2
+    layout:
+      type: grid
+      cell-size: 49 20
+      cell-spacing: 3
+      flow: true
 
 DexTabText < Panel
   MultilineTextEdit
@@ -72,7 +80,6 @@ DexTabList < Panel
     vertical-scrollbar: listScroll
     layout:
       type: verticalBox
-      fit-children: true
 
   VerticalScrollBar
     id: listScroll
@@ -113,9 +120,10 @@ PokedexWindow < MainWindow
 
   VerticalScrollBar
     id: ownDexScrollBar
-    anchors.top: ownDexContainer.top
-    anchors.bottom: ownDexContainer.bottom
+    anchors.top: parent.top
+    anchors.bottom: closeButton.top
     anchors.right: parent.right
+    margin-bottom: 6
     step: 36
     pixels-scroll: true
 

@@ -3,9 +3,7 @@ Module
   description: PokeNation shared data and helpers for the Pokemon UI modules (species, moves, types, statuses)
   author: PokeNation (data tables from the legacy PSoul client gamelib)
   website: https://github.com/GIToez/PokeNation
-  autoload: true
-  autoload-priority: 90
-  dependencies: [ gamelib ]
+  dependencies: [ corelib, gamelib ]
 
   @onLoad: |
     dofile 'const'

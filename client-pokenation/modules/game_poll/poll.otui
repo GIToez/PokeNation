@@ -40,13 +40,14 @@ PollWindow < MainWindow
     vertical-scrollbar: optionsScroll
     layout:
       type: verticalBox
-      fit-children: true
 
   VerticalScrollBar
     id: optionsScroll
-    anchors.top: options.top
-    anchors.bottom: options.bottom
+    anchors.top: question.bottom
+    anchors.bottom: voteButton.top
     anchors.right: parent.right
+    margin-top: 8
+    margin-bottom: 8
     step: 24
     pixels-scroll: true
 
