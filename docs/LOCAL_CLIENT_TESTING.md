@@ -118,6 +118,7 @@ download it.
 | `CMakeLists.txt:2` | `cmake_minimum_required(VERSION 3.5)` | CMake 4 refuses projects declaring compatibility with < 3.5 |
 | `framework/platform/unixcrashhandler.cpp:33` | `#include <csignal>` | `siginfo_t`/`SIGSEGV` not pulled in transitively any more |
 | `framework/graphics/apngloader.cpp:168` | `unpack(z_stream&, …)` by reference | zlib ≥ 1.2.9 rejects a by-value `z_stream` copy; every PNG decoded to zeros (noise textures) |
+| `client/creature.cpp:440` (`Creature::updateJump`) | next jump step scheduled with `std::max<int>(0, …)` | after the apex the computed delay is negative and trips `assert(delay >= 0)` in development builds (BUG-75). A delay of 0 runs at the next poll, which is what the original Release build did with the negative delay, so the animation is unchanged |
 | `framework/core/resourcemanager.cpp:193-204`, `CMakeLists.txt:24-30` | AES asset decryption behind `ENCRYPTED_ASSETS` (default OFF) | see §4 |
 | `modules/game_duelmessage/duelmessage.lua:44`, `modules/game_lootlist/lootlist.lua:96`, `data/images/topbuttons/emerald_shop.PNG → .png` | case-correct file names | Windows is case-insensitive, PhysFS on Linux is not. A scan of every `loadUI/displayUI/importStyle/dofile` and `/images/...` reference found only these three mismatches |
 

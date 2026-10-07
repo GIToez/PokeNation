@@ -89,6 +89,7 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-72 | P3 | open, verified (Phase 2A) | Server never exits after SIGTERM / `/shutdown` (inherited TFS 0.3.6 `ServiceManager` flag) | no |
 | BUG-73 | P2 (low-end GPUs) | open, verified (Phase 2A, Windows CI) | Client crashes 2-3 s after start when the 1920x1080 animated background exceeds the GPU's maximum texture size (`AnimatedTexture` left half-initialised) | yes |
 | BUG-74 | P0 (Windows setup) | fixed (Phase 2A; found on a real PC, fix verified in Windows CI) | `Setup-PokeNation-Database.ps1` fails with `ERROR 1146 … 'psoul.accounts' doesn't exist`: the MariaDB 11.4+ client's passwordless-login warning on stderr was read as the query result, so the schema import was skipped | no (launchers only) |
+| BUG-75 | P0 (Windows development client) | fixed (Phase 2A; found on a real PC, verified locally on Linux) | `Assertion failed! … eventdispatcher.cpp Line: 85 Expression: delay >= 0` when a Pokémon uses a move that makes the target jump (Headbutt, e.g. Bulbasaur's second move): `Creature::updateJump()` schedules its next step in the past | yes |
 
 ---
 
@@ -303,12 +304,13 @@ them (no "OLD TASK SYSTEM" line in any server log of this phase).
 
 ---
 
-## Phase 2A additions (BUG-58 … BUG-74)
+## Phase 2A additions (BUG-58 … BUG-75)
 
 BUG-58…BUG-70 come from the fresh full-source audit (`FULL_SOURCE_AUDIT.md §17`, with file:line
 evidence there). BUG-58 and BUG-68 were re-checked by reading the cited lines. None was fixed:
 Phase 2A only restructures build and distribution. BUG-74 is in the Phase 2A Windows launchers
-themselves and was fixed.
+themselves and was fixed. BUG-75 stopped the Windows development client during play on a real PC
+and was fixed like BUG-03 (a crash fix that keeps the original behaviour).
 
 ### BUG-71 — Dev seed duplicates the starting kit — verified
 `psoul_dev_seed.sql` puts the main items (100 Poke Balls 12157, 100 Cookies 2687, 20 potions
@@ -413,3 +415,51 @@ Verification:
   tables with and without a wrapper that prints the warning. A deliberately broken seed now stops
   with `ERROR 1146 … at line 100`, where the old code reported success.
 - Not yet re-run on the PC where the bug was found.
+
+### BUG-75 — Client assertion `delay >= 0` when a move makes the target jump — verified, fixed
+**Found on a real Windows PC** with the packaged development client, after the BUG-74 fix: in
+battle, using one of Bulbasaur's moves opened a "Microsoft Visual C++ Runtime Library" dialog:
+
+```
+Assertion failed!
+File: D:/a/PokeNation/PokeNation/client/src-cpp/src/framework/core/eventdispatcher.cpp
+Line: 85
+Expression: delay >= 0
+```
+
+Path: Headbutt (Bulbasaur's level-5 move, `server/data/lib/ps/config/_pokemon/bulbasaur.lua:16`)
+has `makeJump = true` (`server/data/lib/ps/config/moves/headbutt.lua:3`). The damage code calls
+`doSendCreatureJump` (`server/data/lib/ps/systems/004-skillDamage.lua:418`), the client's
+`ProtocolGame::parseCreatureJump` (`client/src-cpp/src/client/protocolgameparse.cpp:1947`) calls
+`creature->jump(20, 450)`, and `Creature::updateJump()` (`client/src-cpp/src/client/creature.cpp:403`)
+schedules its own next step. Any other move with `makeJump` does the same.
+
+Cause, in code inherited unchanged from the original source: `updateJump()` predicts the time of
+the next pixel change with `std::sqrt(std::max<int>(b*b + 4*a*(…), 0.0))` (`creature.cpp:425`).
+`std::max<int>` converts the discriminant (about 0.03 for a 20 px / 450 ms jump) to `0`, so
+`nextT` is always the apex, 225 ms. After the apex, `nextT - ticksElapsed()` is negative and
+`EventDispatcher::scheduleEvent` asserts `delay >= 0` (`framework/core/eventdispatcher.cpp:85`).
+The original `Poke Aimar.exe` was a Release build: the assert was compiled out, and an event with
+a negative delay simply runs at the next `poll()` (`scheduledevent.cpp:27`, `m_ticks = millis() + delay`).
+The packaged `development` client is built as RelWithDebInfo without `NDEBUG`
+(`framework/CMakeLists.txt:245-250`), so the assert is active. Linux aborts (exit 134); Windows
+shows the Abort/Retry/Ignore dialog. CI did not catch it: the smoke test drives the server with
+`tools/protocol_probe.py`, and the client checks only start the client.
+
+Fix (`creature.cpp:440`): the delay is clamped with `std::max<int>(0, nextT - ticksElapsed())`.
+A delay of 0 also runs at the next poll, so the jump looks exactly as in the original release
+client. The jump arithmetic was deliberately left as it is: "fixing" `std::max<int>` would change
+the animation the original players saw. The assert stays active for every other caller.
+
+Verification (Linux, packaged development client under Xvfb, a temporary `init.lua` addition that
+calls `Creature.create():jump(20, 450)`):
+- before the fix: `Assertion 'delay >= 0' failed` and exit 134 about 225 ms after the jump;
+- after the fix: two jumps one after the other, no assertion, exit 0.
+
+Workaround for packages built before the fix (see `version.json`): press **Ignore** in the dialog;
+the game continues normally. Not yet re-tested on the PC where it was found.
+
+Related latent risk, not seen in practice and not changed: `Missile::setPath`
+(`client/src-cpp/src/client/missile.cpp:68-82`) schedules `150 * sqrt(length)`, and
+`TPoint::length()` (`framework/util/point.h:76`) squares `int` coordinates, which would overflow
+only for distances above 46340 tiles.

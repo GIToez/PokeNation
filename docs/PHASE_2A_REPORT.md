@@ -13,9 +13,9 @@ recorded in [PHASE_2A_BASELINE.md](PHASE_2A_BASELINE.md).
 | Packages | `PokeNation-Server-{Windows,Linux}-Dev`, `PokeNation-LegacyClient-{Windows,Linux}-Dev` + `.sha256`, `version.json` |
 | Linux runtime | **Verified locally and in CI.** The packaged, stripped server passes the 12-step gameplay smoke test on a fresh DB; the packaged client logs in and renders the world |
 | Windows build | **Verified in CI** (GitHub `windows-latest`, Windows Server 2025, MSYS2 MINGW64, GCC 16.2.0). `Build-PokeNation-Windows.ps1` builds both programs and writes both zips with `.sha256` |
-| Windows runtime | **Server verified in CI** on every build: the packaged launchers set up MariaDB, `PokeNationServer.exe` starts and passes the gameplay smoke test. **Client: crashes as shipped on the GPU-less runner** (BUG-73, texture larger than the 1024x1024 software-OpenGL limit). With Mesa's software OpenGL (llvmpipe) next to it, the same client runs and shows its first screen. Not yet tried on a Windows PC with a real GPU |
+| Windows runtime | **Server verified in CI** on every build: the packaged launchers set up MariaDB, `PokeNationServer.exe` starts and passes the gameplay smoke test. **Client: crashes as shipped on the GPU-less runner** (BUG-73, texture larger than the 1024x1024 software-OpenGL limit). With Mesa's software OpenGL (llvmpipe) next to it, the same client runs and shows its first screen. **On a real Windows PC with a GPU** (user report with screenshot) the client logged in and played: in game at Professor Oak, a quest running, a battle fought. Using Headbutt stopped it with an assertion dialog (BUG-75, fixed) |
 | Docs | README navigation page, baseline, audit, startup audit, client reference, Windows guide, dev info, handbook, 25 tutorials + checklists, reference catalogs, broken references |
-| New bugs | BUG-58…BUG-74 in [BUG_TRIAGE.md](BUG_TRIAGE.md). BUG-58…BUG-73 not fixed (out of scope); BUG-74 (Windows database setup, found on a real PC) fixed |
+| New bugs | BUG-58…BUG-75 in [BUG_TRIAGE.md](BUG_TRIAGE.md). BUG-58…BUG-73 not fixed (out of scope); BUG-74 (Windows database setup) and BUG-75 (client assertion on jump moves), both found on a real PC, fixed |
 
 ## 2. Requirement checklist
 
@@ -204,13 +204,19 @@ exit code, takes a screenshot at 15 s and keeps its `psoul.log`.
   window and the background.
 
 So the Windows client build itself starts, loads its data and renders. The crash is specific to
-renderers with a maximum texture size below 1920. A graphical login and play session on
-Windows has **not** been performed. On Linux the same client source logged in and played
-(Phase 2, and §3 above).
+renderers with a maximum texture size below 1920. CI performs no graphical login on Windows.
+On a real Windows PC with a GPU, a user logged in and played (screenshot: in game at Professor
+Oak, quest "defeat 5 Rattata" running). There, Bulbasaur's Headbutt opened
+`Assertion failed! … eventdispatcher.cpp Line: 85 Expression: delay >= 0`. This is **BUG-75**,
+inherited code that only development builds report, because their asserts are active. It is fixed
+in `Creature::updateJump()`. The fix was verified on Linux: the old client aborts on
+`creature:jump(20, 450)`, the fixed one does not. It has not yet been re-tested on that PC. On Linux the same client source
+logged in and played (Phase 2, and §3 above).
 
 ## 7. Not done / open
 
-- No engine, gameplay or client change, as the phase requires. BUG-20, BUG-71 and BUG-72 are the
+- No engine or gameplay change, as the phase requires. The only client source change beyond
+  build fixes is the BUG-75 crash fix, which keeps the original behaviour. BUG-20, BUG-71 and BUG-72 are the
   ones a tester notices first.
 - Packages are not code-signed, so SmartScreen warns on first start.
 - The graphical client on Windows needs a GPU driver with OpenGL 2 and a maximum texture size
@@ -218,9 +224,12 @@ Windows has **not** been performed. On Linux the same client source logged in an
   acceleration) crash with BUG-73. The workaround is Mesa's software `opengl32.dll` plus
   `GALLIUM_DRIVER=llvmpipe`, as in CI (`WINDOWS_LOCAL_TESTING.md` §7). Mesa is not shipped in
   the package.
-- A full graphical Windows session (log in, walk, fight) still has to be done by a person on a
-  Windows PC, following `WINDOWS_LOCAL_TESTING.md` §6.
+- A user has logged in, walked and fought on a Windows PC, which is how BUG-75 was found. The
+  complete `WINDOWS_LOCAL_TESTING.md` §6 checklist has not been reported back yet.
 - BUG-74 (setup failing with `ERROR 1146 … 'psoul.accounts' doesn't exist` on a real PC) is fixed
   and verified in CI with MariaDB's own client (13.0.2). The fix has not yet been re-run on the
   PC where it was found. The earlier "setup worked in CI" evidence used the runner's MySQL 8
-  client and did not cover this case.
+  client and did not cover this case. The user's screenshot of a running game suggests that setup
+  then worked there, but that was not confirmed separately.
+- BUG-75 (client assertion `delay >= 0` on Headbutt) is fixed and verified locally on Linux; the
+  rebuilt Windows client has not yet been re-tested on the PC where it was found.

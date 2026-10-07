@@ -194,6 +194,7 @@ Every launcher prints `[FAIL]` with the reason and what to do. Common cases:
 | `port 7564 is already in use by …` | A server is already running. Close that window first. |
 | `no server is listening on 127.0.0.1:7564` (client) | Start the server first and wait for `>> Cristal server Online!`. |
 | `the client closed immediately` | Usually a graphics driver without OpenGL 2.0 (old GPU, remote desktop, virtual machine). Update the graphics driver. The script prints the end of `%USERPROFILE%\psoul.log`. If that log contains `loading texture with size 1920x1080 failed`, Windows is using its basic software renderer and the client crashes on it (BUG-73). Install the real GPU driver, or see "Without a GPU" below. |
+| `Assertion failed!` … `eventdispatcher.cpp` `Line: 85` `Expression: delay >= 0` (in game, when a move such as Headbutt makes a Pokémon jump) | BUG-75, fixed in the client source; download a client package built after the fix (see `version.json`). With an older package, press **Ignore** and keep playing. |
 | `this folder is not a PokeNation server/client package` | Extract the whole zip, and start the scripts from inside `server\` or `client\`. |
 | `data\world\map.otbm is missing or incomplete` | The download is broken; download the package again. |
 | Login screen says the account or password is wrong | Use exactly `player` / `player` or `admin` / `admin` (lower case). |

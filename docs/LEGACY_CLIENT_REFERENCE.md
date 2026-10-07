@@ -87,6 +87,7 @@ status icons, monster speech bubbles, loot list. No protocol desync was seen.
 | `client_serverlist` / `data/servers.xml` not used by the login flow | UNUSED |
 | No sound device → OpenAL aborts unless `ALSOFT_DRIVERS=null` (Linux launcher sets it) | environment |
 | Crash 2-3 s after start when the GPU's maximum texture size is below 1920 (GPU-less VMs, Windows "GDI Generic" OpenGL 1.1): the animated 1920x1080 background is rejected and `AnimatedTexture::updateAnimation()` reads an empty vector. Workaround: Mesa `opengl32.dll` with `GALLIUM_DRIVER=llvmpipe` | BUG-73 |
+| `Assertion failed! … eventdispatcher.cpp Line: 85 Expression: delay >= 0` when a move makes the target jump (Headbutt). Only development builds have active asserts; the original Release exe never showed it. Fixed by clamping the delay in `Creature::updateJump()`; older packages: press Ignore | BUG-75 (fixed) |
 
 ## 8. Why the client stays unchanged in Phase 3
 
@@ -101,5 +102,5 @@ status icons, monster speech bubbles, loot list. No protocol desync was seen.
 4. **Licensing and provenance stay simple.** It remains the MIT OTClient fork as imported, plus
    documented build fixes.
 
-Allowed changes: build fixes for new compilers and libraries, and launcher and packaging files
-outside `client/`. Every such change must be listed in LOCAL_CLIENT_TESTING.md §3.3.
+Allowed changes: build fixes for new compilers and libraries, launcher and packaging files
+outside `client/`, and crash fixes that keep the original behaviour (BUG-03, BUG-75). Every such change must be listed in LOCAL_CLIENT_TESTING.md §3.3.
