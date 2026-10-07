@@ -4,7 +4,8 @@
 the server can be played and tested exactly as the original project shipped it, and so that a
 future client can be checked against the real behaviour. Its gameplay, UI and protocol code are
 **not changed** in Phase 2A or Phase 3. The only changes allowed are build fixes for current
-compilers and libraries, and those are listed in [LOCAL_CLIENT_TESTING.md §3.3](LOCAL_CLIENT_TESTING.md).
+compilers and libraries and crash fixes that keep the original behaviour (§8); all of them are
+listed in [LOCAL_CLIENT_TESTING.md §3.3](LOCAL_CLIENT_TESTING.md).
 
 ## 1. Identity
 
