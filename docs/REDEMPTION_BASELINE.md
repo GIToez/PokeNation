@@ -53,7 +53,7 @@ Upstream builds with CMake presets and vcpkg in manifest mode (`CMakePresets.jso
 | Platform | Result | Notes |
 |---|---|---|
 | Linux x64 | **builds and starts** (2026-10-07, local, Ubuntu 24.04, GCC 14.2, CMake 3.28, Ninja) | `tools/build_pokenation_client.sh`; 34 vcpkg ports built from source (release-only triplet `x64-linux-release`). The stock binary started under Xvfb + Mesa llvmpipe and logged `OTClient - Redemption 4.x rev 0.000 (desenv)` and `Startup done :]` |
-| Windows x64 | **builds** in CI (`.github/workflows/pokenation-client.yml`, run 37563373089, `PokeNation-Client-Windows-x64.zip` produced) | not run on Windows: no Windows machine available locally |
+| Windows x64 | **builds** in CI (`.github/workflows/pokenation-client.yml`, run 37563373089, `PokeNation-Client-Windows-x64.zip` produced; with the PokeNation changes and Stage A assets: run 37566367616) | not run on Windows: no Windows machine available locally |
 | Android arm64 | **builds** in CI (same run, `PokeNation-Android.apk` produced) | not installed on a device or emulator yet |
 
 ## 4. How PokeNation builds it
