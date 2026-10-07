@@ -3,6 +3,8 @@
 -- Differences: layout containers instead of hand-placed anchors, empty slots up to the team size,
 -- fainted / in-use states, a context menu and a details request.
 --
+-- Clicking another slot while a Pokemon is out switches (server returns the current one first).
+--
 -- Server data per slot: portrait item id, fastcall number, label colour and label text ("85%",
 -- "FNT", "USE"). Species comes from the client table (pokenation_lib/pokemon.lua). Level, nickname
 -- and absolute HP are not part of the bar packets; the details window (game_pokemondetails) shows
@@ -75,6 +77,25 @@ function summon(fastcall)
     return PokeNation.say('/cp ' .. fastcall)
 end
 
+-- "/cp N" on the summoned Pokemon makes the server return and re-call it; returning is a use of
+-- the ball in the ball slot (server PLAYER_SLOT_BALL = CONST_SLOT_FEET), as on the legacy inventory.
+function returnPokemon()
+    local player = g_game.getLocalPlayer()
+    local ball = player and player:getInventoryItem(InventorySlotFeet)
+    if not ball then
+        return false
+    end
+    g_game.use(ball)
+    return true
+end
+
+function toggle(fastcall)
+    if inUse == fastcall then
+        return returnPokemon()
+    end
+    return summon(fastcall)
+end
+
 function requestDetails(fastcall)
     local slot = findSlot(fastcall)
     if modules.game_pokemondetails and slot then
@@ -86,7 +107,7 @@ end
 local function showMenu(slot, mousePosition)
     local menu = g_ui.createWidget('PopupMenu')
     menu:setGameMenu(true)
-    menu:addOption(inUse == slot.fastcall and tr('Return') or tr('Summon'), function() summon(slot.fastcall) end)
+    menu:addOption(inUse == slot.fastcall and tr('Return') or tr('Summon'), function() toggle(slot.fastcall) end)
     menu:addOption(tr('Details'), function() requestDetails(slot.fastcall) end)
     menu:addSeparator()
     menu:addOption(tr('Switch orientation'), switchOrientation)
@@ -108,7 +129,7 @@ local function relayout()
             elseif g_keyboard.isShiftPressed() then
                 requestDetails(slot.fastcall)
             else
-                summon(slot.fastcall)
+                toggle(slot.fastcall)
             end
             return true
         end

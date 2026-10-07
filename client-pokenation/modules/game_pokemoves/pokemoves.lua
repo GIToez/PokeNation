@@ -118,6 +118,19 @@ function switchOrientation()
     applyOrientation()
 end
 
+-- The server sends no move list when the Pokemon is returned, so the bar keeps the moves of the ball
+-- in the ball slot (as the legacy client did) and is dimmed while nothing is summoned.
+local function refreshSummonedState()
+    if not window or not modules.game_pokebar then
+        return
+    end
+    window:setOpacity(modules.game_pokebar.getInUse() and 1 or 0.5)
+end
+
+local function onPokemonBarUpdate()
+    addEvent(refreshSummonedState)
+end
+
 local function clear()
     for _, move in pairs(moves) do
         stopCooldown(move)
@@ -167,6 +180,7 @@ local function onPokemonMoves(pokemonIconId, iconIds)
     if count > 0 then
         window:raise()
     end
+    addEvent(refreshSummonedState)
 end
 
 -- 0xFF 0x09: seconds == 0 resets the cooldown (server doBallResetAllCooldowns)
@@ -285,6 +299,10 @@ function getMoves()
     return list
 end
 
+function isActive()
+    return window:isVisible() and window:getOpacity() == 1
+end
+
 function getWidget()
     return window
 end
@@ -301,6 +319,7 @@ function init()
     connect(g_game, {
         onGameStart = onGameStart,
         onGameEnd = onGameEnd,
+        onPokemonBarUpdate = onPokemonBarUpdate,
         onPokemonMoves = onPokemonMoves,
         onPokemonMoveCooldown = onPokemonMoveCooldown,
         onMoveBarOpen = onMoveBarOpen,
@@ -314,6 +333,7 @@ function terminate()
     disconnect(g_game, {
         onGameStart = onGameStart,
         onGameEnd = onGameEnd,
+        onPokemonBarUpdate = onPokemonBarUpdate,
         onPokemonMoves = onPokemonMoves,
         onPokemonMoveCooldown = onPokemonMoveCooldown,
         onMoveBarOpen = onMoveBarOpen,
