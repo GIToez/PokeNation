@@ -1,0 +1,10 @@
+Module
+  name: game_pokemoves
+  description: PokeNation Pokemon move bar (port of the legacy PSoul game_pokemoves)
+  author: PokeNation (behaviour from the legacy PSoul client)
+  website: https://github.com/GIToez/PokeNation
+  sandboxed: true
+  dependencies: [ pokenation_lib, game_interface ]
+  scripts: [ pokemoves ]
+  @onLoad: init()
+  @onUnload: terminate()

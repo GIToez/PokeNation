@@ -1,0 +1,82 @@
+TmMoveButton < UIItem
+  size: 40 40
+  virtual: true
+  border-color: #ffffff
+  $hover:
+    border-width: 1
+
+TmChooseWindow < MainWindow
+  id: tmChooseWindow
+  !text: tr('Technical Machine')
+  width: 420
+  height: 190
+  @onEscape: modules.game_tmchoose.cancel()
+
+  Label
+    id: description
+    !text: tr('Select the move that will be replaced by the Technical Machine:')
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    text-align: center
+    text-wrap: true
+    text-auto-resize: true
+
+  UIWidget
+    id: moves
+    anchors.top: description.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+    height: 86
+    layout:
+      type: grid
+      cell-size: 40 40
+      cell-spacing: 3
+      flow: true
+
+  UIWidget
+    id: confirm
+    anchors.top: description.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 8
+    visible: false
+    layout:
+      type: horizontalBox
+      spacing: 8
+      fit-children: true
+
+    UIItem
+      id: newMove
+      size: 40 40
+      virtual: true
+
+    Label
+      id: arrow
+      text: '->'
+      font: sans-bold-16px
+      text-auto-resize: true
+      margin-top: 10
+
+    UIItem
+      id: oldMove
+      size: 40 40
+      virtual: true
+
+  Button
+    id: cancelButton
+    !text: tr('Cancel')
+    width: 70
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: modules.game_tmchoose.cancel()
+
+  Button
+    id: okButton
+    !text: tr('Ok')
+    width: 70
+    anchors.right: cancelButton.left
+    anchors.bottom: parent.bottom
+    margin-right: 6
+    visible: false
+    @onClick: modules.game_tmchoose.confirm()

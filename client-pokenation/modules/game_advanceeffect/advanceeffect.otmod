@@ -1,0 +1,10 @@
+Module
+  name: game_advanceeffect
+  description: PokeNation level-up popups (port of the legacy PSoul game_advanceeffect, packet 0xFF 0x19)
+  author: PokeNation (behaviour from the legacy PSoul client)
+  website: https://github.com/GIToez/PokeNation
+  sandboxed: true
+  dependencies: [ pokenation_lib, game_interface ]
+  scripts: [ advanceeffect ]
+  @onLoad: init()
+  @onUnload: terminate()

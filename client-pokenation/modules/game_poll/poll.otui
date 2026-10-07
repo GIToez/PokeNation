@@ -1,0 +1,86 @@
+PollIcon < UIButton
+  id: pollIcon
+  size: 53 119
+  image-source: /images/psoul/ui/pollicon
+  anchors.bottom: gameMapPanel.bottom
+  anchors.right: gameMapPanel.right
+  margin: 10
+
+PollOption < CheckBox
+  height: 20
+  text-wrap: true
+  text-auto-resize: true
+  margin-top: 2
+
+PollWindow < MainWindow
+  id: pollWindow
+  !text: tr('PokeNation Poll')
+  size: 520 380
+  @onEscape: modules.game_poll.cancel()
+
+  Label
+    id: question
+    font: sans-bold-16px
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    text-align: center
+    text-wrap: true
+    text-auto-resize: true
+
+  ScrollablePanel
+    id: options
+    anchors.top: question.bottom
+    anchors.left: parent.left
+    anchors.right: optionsScroll.left
+    anchors.bottom: voteButton.top
+    margin-top: 8
+    margin-bottom: 8
+    padding: 3
+    vertical-scrollbar: optionsScroll
+    layout:
+      type: verticalBox
+      fit-children: true
+
+  VerticalScrollBar
+    id: optionsScroll
+    anchors.top: options.top
+    anchors.bottom: options.bottom
+    anchors.right: parent.right
+    step: 24
+    pixels-scroll: true
+
+  MultilineTextEdit
+    id: text
+    anchors.top: options.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: options.bottom
+    text-wrap: true
+    max-length: 255
+    visible: false
+
+  Label
+    id: hint
+    anchors.left: parent.left
+    anchors.right: voteButton.left
+    anchors.verticalCenter: voteButton.verticalCenter
+    color: #d0a040
+    text-wrap: true
+
+  Button
+    id: voteButton
+    !text: tr('Vote')
+    width: 70
+    anchors.bottom: parent.bottom
+    anchors.right: cancelButton.left
+    margin-right: 6
+    @onClick: modules.game_poll.vote()
+
+  Button
+    id: cancelButton
+    !text: tr('Cancel')
+    width: 70
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    @onClick: modules.game_poll.cancel()

@@ -1,0 +1,62 @@
+MoveSlot < UIWidget
+  size: 40 40
+  margin: 1
+  focusable: false
+  border-width: 1
+  border-color: #00000099
+  background-color: #1b1f2acc
+  $hover:
+    border-color: #ffffff
+
+  UIItem
+    id: icon
+    size: 32 32
+    virtual: true
+    phantom: true
+    anchors.centerIn: parent
+
+  UIWidget
+    id: locked
+    anchors.fill: icon
+    phantom: true
+    background-color: #00000099
+    visible: false
+
+  ProgressRect
+    id: cooldown
+    anchors.fill: icon
+    phantom: true
+    background-color: #1637f290
+    percent: 100
+    visible: false
+
+  UILabel
+    id: cooldownText
+    anchors.centerIn: icon
+    font: verdana-11px-rounded
+    color: #ffffff
+    text-auto-resize: true
+    phantom: true
+
+  UILabel
+    id: hotkey
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 2
+    font: small-9px
+    color: #e8e8e8
+    text-auto-resize: true
+    phantom: true
+
+PokeMovesWindow < HeadlessWindow
+  id: pokemoves
+  focusable: false
+  draggable: true
+  padding: 3
+  image-color: #ffffffcc
+  layout:
+    type: horizontalBox
+    fit-children: true
+  anchors.bottom: gameMapPanel.bottom
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  margin-bottom: 80

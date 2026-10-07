@@ -1,0 +1,39 @@
+StatusSlot < UIWidget
+  size: 36 36
+  margin: 1
+  focusable: false
+
+  UIItem
+    id: icon
+    size: 32 32
+    virtual: true
+    phantom: true
+    anchors.centerIn: parent
+
+  ProgressRect
+    id: cooldown
+    anchors.fill: icon
+    phantom: true
+    background-color: #1637f290
+    percent: 100
+
+  UILabel
+    id: seconds
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    font: verdana-11px-rounded
+    color: #ffffff
+    text-auto-resize: true
+    phantom: true
+
+StatusBarPanel < UIWidget
+  id: pokestatusbar
+  focusable: false
+  phantom: true
+  layout:
+    type: horizontalBox
+    fit-children: true
+  anchors.top: gameMapPanel.top
+  anchors.right: gameMapPanel.right
+  margin-top: 4
+  margin-right: 4

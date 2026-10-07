@@ -58,6 +58,17 @@ Module
     - game_taskboard
     - game_wheel
     - game_proficiency
+    - game_pokenation_hud
+    - game_pokebar
+    - game_pokemoves
+    - game_statusbar
+    - game_pokemondetails
+    - game_pokedex
+    - game_tmchoose
+    - game_advanceeffect
+    - game_effects
+    - game_lootlist
+    - game_poll
 
   @onLoad: init()
   @onUnload: terminate()

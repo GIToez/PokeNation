@@ -1,0 +1,58 @@
+HudBar < ProgressBar
+  on: true
+  height: 14
+  anchors.left: parent.left
+  anchors.right: parent.right
+  margin-top: 2
+  phantom: false
+
+HudLabel < Label
+  font: verdana-11px-rounded
+  color: #ffffff
+  text-auto-resize: true
+
+PokeNationHud < UIWidget
+  id: pokenationHud
+  size: 170 92
+  padding: 4
+  background-color: #00000099
+  border: 1 #000000
+  phantom: true
+  focusable: false
+  anchors.top: gameMapPanel.top
+  anchors.left: gameMapPanel.left
+  margin-top: 4
+  margin-left: 4
+
+  HudBar
+    id: health
+    anchors.top: parent.top
+    background-color: #c02020
+
+  HudBar
+    id: energy
+    anchors.top: prev.bottom
+    background-color: #2f6cff
+
+  HudBar
+    id: pokemonExp
+    anchors.top: prev.bottom
+    height: 8
+    background-color: #a040e0
+
+  HudLabel
+    id: levels
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-top: 3
+
+  HudLabel
+    id: respect
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-top: 2
+
+  HudLabel
+    id: balls
+    anchors.top: prev.top
+    anchors.right: parent.right

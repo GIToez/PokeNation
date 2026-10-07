@@ -1,0 +1,26 @@
+LootEntry < UIItem
+  size: 40 40
+  virtual: true
+  margin-left: 2
+  background-color: #00000088
+
+  Label
+    id: count
+    color: #ffffff
+    font: verdana-11px-rounded
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    text-auto-resize: true
+    phantom: true
+
+LootListPanel < UIWidget
+  id: lootList
+  height: 40
+  phantom: true
+  focusable: false
+  anchors.bottom: gameMapPanel.bottom
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  margin-bottom: 160
+  layout:
+    type: horizontalBox
+    fit-children: true

@@ -1,0 +1,10 @@
+Module
+  name: game_poll
+  description: PokeNation server poll window (port of the legacy PSoul game_poll, packets 0xFF 0x18 / 0xFA / 0xFB)
+  author: PokeNation (behaviour from the legacy PSoul client)
+  website: https://github.com/GIToez/PokeNation
+  sandboxed: true
+  dependencies: [ pokenation_lib, game_interface ]
+  scripts: [ poll ]
+  @onLoad: init()
+  @onUnload: terminate()

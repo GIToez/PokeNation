@@ -1,0 +1,10 @@
+Module
+  name: game_effects
+  description: PokeNation creature colour effects (port of the legacy PSoul game_effects, packet 0xFF 0x13)
+  author: PokeNation (behaviour from the legacy PSoul client)
+  website: https://github.com/GIToez/PokeNation
+  sandboxed: true
+  dependencies: [ pokenation_lib, game_interface ]
+  scripts: [ effects ]
+  @onLoad: init()
+  @onUnload: terminate()
