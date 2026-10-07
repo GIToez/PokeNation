@@ -12,7 +12,7 @@
 | Login port | `7564` (`loginPort`) |
 | Game port | `8548` (`gamePort`) |
 | Protocol | Tibia 8.54 packet layout, client version **312** (server accepts exactly 312) |
-| World type | `pvp` (required for NPC trainer battles, BUG-01) |
+| World type | `no-pvp` (archive value; NPC battles and duels work since the BUG-01 fix) |
 | Server name | `Cristal` (`serverName`; the ready line is `>> Cristal server Online!`) |
 
 To test from another PC in your LAN, set `ip` in `config.lua` to the server PC's LAN address and

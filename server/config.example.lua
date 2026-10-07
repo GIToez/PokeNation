@@ -55,12 +55,9 @@
 	-- NOTE: showHealingDamageForMonsters inheritates from showHealingDamage.
 	-- loginProtectionPeriod is the famous Tibia anti-magebomb system.
 	-- deathLostPercent set to nil enables manual mode.
-	-- The archive shipped worldType = "no-pvp". With that value Combat::canDoCombat (src/combat.cpp:313)
-	-- refuses every attack on a creature that has a master unless both sides stand on PvP-zone tiles,
-	-- which happens BEFORE the "NPC opponent" exception, so trainer/gym battles can never be won
-	-- (verified in Phase 2: "You may not attack this creature."). Player-vs-player attacks are not
-	-- affected by this switch in PSoul (they are limited to duels/arenas in combat.cpp:272-284).
-	worldType = "pvp"
+	-- "no-pvp" is the archive's value. NPC trainer/gym battles, duels and arenas work in every world
+	-- type (src/combat.cpp canDoCombat, BUG-01); player-vs-player outside duels/arenas is refused.
+	worldType = "no-pvp"
 	protectionLevel = 1
 	pvpTileIgnoreLevelAndVocationProtection = true
 	pzLocked = 5 * 1000

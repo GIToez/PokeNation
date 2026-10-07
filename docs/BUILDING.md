@@ -134,7 +134,7 @@ Edit `config.lua`:
 | `encryptionType` | `"sha256"` | must match how account passwords were stored |
 | `mapName` | `"map"` | loads `data/world/map.otbm` + `map-spawn.xml` + `map-house.xml` |
 | `worldId` | `1` | all seed rows use world 1 |
-| `worldType` | `"pvp"` | **changed from the archive's `"no-pvp"` in Phase 2.** Under `no-pvp` the engine refuses every attack on a creature that has a master before it reaches the NPC-trainer exception (`src/combat.cpp:313` vs `322-326`), so NPC/gym battles cannot be won. Player-vs-player stays blocked by `combat.cpp:272-284` (duels/arena only), so `pvp` is behaviour-neutral for players. See `BUG_TRIAGE.md` BUG-01. |
+| `worldType` | `"no-pvp"` | The archive's value, restored in Phase 3. Phase 2 used `"pvp"` as a workaround because `no-pvp` blocked NPC/gym battles; `Combat::canDoCombat` now lets the consented fights (NPC battle opponent, duel, arenas) through in every world type and refuses other attacks on players and their Pokémon. See `BUG_TRIAGE.md` BUG-01. |
 
 `config.example.lua` is the original `config.lua` with the MOTD/login message translated and
 the database credentials left at the original placeholders (`root` / empty password /
