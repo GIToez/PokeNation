@@ -74,3 +74,4 @@ PokeNation.DexStatus = {
 
 -- Highest move slot the server accepts ("m1".."m16", server/data/talkactions/talkactions.xml).
 PokeNation.MAX_MOVES = 16
+PokeNation.MOVE_KEYS_SETTING = 'pokemoves-function-keys'

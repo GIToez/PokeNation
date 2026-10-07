@@ -12,6 +12,34 @@ function PokeNation.say(text)
     return true
 end
 
+-- Move bar keys: F1-F12 use m1-m12 and Shift+F1-F4 use m13-m16 (game_pokemoves).
+function PokeNation.moveKey(index)
+    if index <= 12 then
+        return 'F' .. index
+    elseif index <= PokeNation.MAX_MOVES then
+        return 'Shift+F' .. (index - 12)
+    end
+end
+
+function PokeNation.moveKeysEnabled()
+    return g_settings.getBoolean(PokeNation.MOVE_KEYS_SETTING, true)
+end
+
+-- game_hotkeys and game_actionbar refuse move bar keys so one key press never runs a move and another
+-- hotkey; their unbind-all calls would also drop the move bar's binding. Kept here, not in
+-- game_pokemoves, because both load before the move bar.
+function PokeNation.isMoveBarKey(keyCombo)
+    if not PokeNation.moveKeysEnabled() then
+        return false
+    end
+    for index = 1, PokeNation.MAX_MOVES do
+        if PokeNation.moveKey(index) == keyCombo then
+            return true
+        end
+    end
+    return false
+end
+
 function PokeNation.image(path)
     return PokeNation.IMAGES .. path
 end

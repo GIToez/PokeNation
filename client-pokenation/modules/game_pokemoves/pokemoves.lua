@@ -13,7 +13,6 @@
 local HORIZONTAL, VERTICAL = 0, 1
 local POSITION_SETTING = 'pokemoves-pos'
 local ORIENTATION_SETTING = 'pokemoves-orientation'
-local KEYS_SETTING = 'pokemoves-function-keys'
 local REFUSAL_WINDOW_MS = 2000
 
 local window
@@ -24,13 +23,7 @@ local lastUsed            -- { index, time } of the last move order, to match re
 local pendingDetails      -- iconId of the last "/sd" request
 local boundKeys = {}
 
-local function keyForIndex(index)
-    if index <= 12 then
-        return 'F' .. index
-    elseif index <= PokeNation.MAX_MOVES then
-        return 'Shift+F' .. (index - 12)
-    end
-end
+local keyForIndex = PokeNation.moveKey
 
 local function updateTooltip(move)
     local lines = { move.name ~= '' and move.name or tr('Move %d', move.index) }
@@ -244,7 +237,7 @@ local function onTextMessage(mode, text)
 end
 
 local function bindKeys()
-    if not g_settings.getBoolean(KEYS_SETTING, true) then
+    if not PokeNation.moveKeysEnabled() then
         return
     end
     local root = modules.game_interface.getRootPanel()

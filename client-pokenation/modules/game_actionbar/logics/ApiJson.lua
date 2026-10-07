@@ -436,6 +436,9 @@ local function isHotkeyConflicting(keyCombo)
     if not keyCombo or keyCombo == "" then
         return false
     end
+    if PokeNation.isMoveBarKey(keyCombo) then
+        return true
+    end
     if modules.game_hotkeys and modules.game_hotkeys.isHotkeyUsedByManager then
         if modules.game_hotkeys.isHotkeyUsedByManager(keyCombo) then
             return true
