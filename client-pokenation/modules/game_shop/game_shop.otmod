@@ -1,6 +1,6 @@
 Module
   name: game_shop
-  description: In-game shop
+  description: PokeNation Shop (Soul Coins, server-driven catalog on extended opcode 201)
   author: MatC, Nottinghster
   website: None
   sandboxed: true
