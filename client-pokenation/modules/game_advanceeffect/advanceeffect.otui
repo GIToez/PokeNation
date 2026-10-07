@@ -43,14 +43,43 @@ AdvanceSection < UIWidget
     anchors.right: parent.right
     margin-left: 34
 
-AdvancePopup < UIWidget
+AdvanceMovesTitle < Label
+  height: 14
+  margin-top: 4
+  color: #b6b6b6
+  text-align: center
+
+AdvanceMoveIcon < UIItem
+  size: 32 32
+  virtual: true
+
+AdvanceMoveGrid < UIWidget
+  id: moves
+  margin-top: 2
+  layout:
+    type: grid
+    cell-size: 32 32
+    cell-spacing: 3
+    flow: true
+    fit-children: true
+
+AdvanceStack < UIWidget
+  id: advanceStack
   width: 300
+  phantom: true
+  focusable: false
+  anchors.top: gameMapPanel.top
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  margin-top: 40
+  layout:
+    type: verticalBox
+    spacing: 6
+    fit-children: true
+
+AdvancePopup < UIWidget
   padding: 6
   background-color: #10141bcc
   border: 1 #272727
-  anchors.top: gameMapPanel.top
-  anchors.horizontalCenter: gameMapPanel.horizontalCenter
-  margin-top: 120
   layout:
     type: verticalBox
     fit-children: true

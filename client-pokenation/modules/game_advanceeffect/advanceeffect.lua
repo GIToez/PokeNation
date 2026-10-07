@@ -3,11 +3,13 @@
 --   * trainer skill change (catching, fishing, headbutting);
 --   * Pokemon level up, 0xFF 0x19: Pokemon number, new level, U16 count + U16 move icon ids.
 -- The C++ parser reads the move count as U16 (the legacy client truncated it to U8, BUG-60), and the
--- popup lists every move: sections stack in a fit-children layout instead of a fixed 300 px window.
+-- popup shows every move (BUG-59): up to MAX_MOVE_ROWS as named rows, more as one icon grid with the
+-- names in tooltips (16 moves = two rows). Popups stack in one fit-children container instead of
+-- fixed per-kind margins, so simultaneous level / skill / Pokemon popups never overlap.
 -- The legacy ADVANCES table repeated the keys 75 and 85, so Lua kept only the last entry; both
 -- features per level are listed here.
 
-local MAX_LISTED_MOVES = 8
+local MAX_MOVE_ROWS = 2
 local SHOW_MS, FADE_MS = 9000, 3000
 
 local ADVANCES = {
@@ -32,6 +34,7 @@ local SKILLS = {
     [PLAYER_SKILL_HEADBUTTING] = { 'headbutting', 'Headbutting' }
 }
 
+local stack
 local popups = {}       -- kind -> widget currently shown
 local lastLevel
 local lastSkill = {}
@@ -66,11 +69,10 @@ local function closePopup(kind)
     end
 end
 
-local function createPopup(kind, subtitle, headline, marginTop)
+local function createPopup(kind, subtitle, headline)
     closePopup(kind)
-    local popup = g_ui.createWidget('AdvancePopup', modules.game_interface.getRootPanel())
+    local popup = g_ui.createWidget('AdvancePopup', stack)
     popup:setId('advance_' .. kind)
-    popup:setMarginTop(marginTop)
     local header = popup:getChildById('header')
     header:getChildById('subtitle'):setText(subtitle)
     header:getChildById('headline'):setText(headline)
@@ -90,7 +92,7 @@ local function present(kind, popup)
 end
 
 local function showTrainerLevel(level)
-    local popup = createPopup('level', tr("You've Reached"), tr('Level %d', level), 120)
+    local popup = createPopup('level', tr("You've Reached"), tr('Level %d', level))
     for _, advance in ipairs(ADVANCES[level] or {}) do
         addSection(popup, tr('New Feature'), tr(advance[2]), { image = PokeNation.image('advances/' .. advance[1]) })
     end
@@ -102,23 +104,29 @@ local function showSkill(skillId, level)
     if not skill then
         return
     end
-    local popup = createPopup('skill', tr('Skill Advance'), tr(skill[2]), 150)
+    local popup = createPopup('skill', tr('Skill Advance'), tr(skill[2]))
     addSection(popup, tr(skill[2]), tostring(level), { image = PokeNation.image('advances/' .. skill[1]) })
     present('skill', popup)
 end
 
 local function onPokemonLevelUp(pokemonNumber, newLevel, newMoves)
     lastPokemonLevelUp = { number = pokemonNumber, level = newLevel, moves = #newMoves }
-    local popup = createPopup('pokemon', getPokemonNameByNumber(pokemonNumber), tr('Level %d', newLevel), 250)
+    local popup = createPopup('pokemon', getPokemonNameByNumber(pokemonNumber), tr('Level %d', newLevel))
     local portrait = popup:getChildById('header'):getChildById('portrait')
     portrait:setImageSource(PokeNation.image('staticPortraits/' .. pokemonNumber))
     portrait:show()
-    for index, moveItemId in ipairs(newMoves) do
-        if index > MAX_LISTED_MOVES then
-            addSection(popup, tr('New Moves'), tr('and %d more', #newMoves - MAX_LISTED_MOVES), {})
-            break
+    if #newMoves <= MAX_MOVE_ROWS then
+        for _, moveItemId in ipairs(newMoves) do
+            addSection(popup, tr('New Move'), getMoveNameByIconItemId(moveItemId), { itemId = moveItemId })
         end
-        addSection(popup, tr('New Move'), getMoveNameByIconItemId(moveItemId), { itemId = moveItemId })
+    else
+        g_ui.createWidget('AdvanceMovesTitle', popup):setText(tr('New Moves (%d)', #newMoves))
+        local grid = g_ui.createWidget('AdvanceMoveGrid', popup)
+        for _, moveItemId in ipairs(newMoves) do
+            local icon = g_ui.createWidget('AdvanceMoveIcon', grid)
+            icon:setItemId(moveItemId)
+            icon:setTooltip(getMoveNameByIconItemId(moveItemId))
+        end
     end
     present('pokemon', popup)
 end
@@ -155,6 +163,7 @@ end
 
 function init()
     g_ui.importStyle('advanceeffect')
+    stack = g_ui.createWidget('AdvanceStack', modules.game_interface.getRootPanel())
     connect(g_game, { onGameStart = reset, onGameEnd = reset, onPokemonLevelUp = onPokemonLevelUp })
     connect(LocalPlayer, { onLevelChange = onLevelChange, onSkillChange = onSkillChange })
 end
@@ -163,4 +172,6 @@ function terminate()
     disconnect(g_game, { onGameStart = reset, onGameEnd = reset, onPokemonLevelUp = onPokemonLevelUp })
     disconnect(LocalPlayer, { onLevelChange = onLevelChange, onSkillChange = onSkillChange })
     reset()
+    stack:destroy()
+    stack = nil
 end
