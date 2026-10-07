@@ -146,9 +146,9 @@ PokedexWindow < MainWindow
   Label
     id: pokeId
     !text: '#000'
-    anchors.top: prev.bottom
-    anchors.left: parent.left
-    margin-top: 14
+    anchors.verticalCenter: pokeName.verticalCenter
+    anchors.right: pokeName.left
+    margin-right: 8
     text-auto-resize: true
 
   UIWidget
@@ -175,7 +175,7 @@ PokedexWindow < MainWindow
   Label
     id: pokeName
     !text: tr('Unknown')
-    font: sans-bold-16px
+    font: terminus-14px-bold
     anchors.top: pokePicture.bottom
     anchors.horizontalCenter: pokePicture.horizontalCenter
     text-auto-resize: true
