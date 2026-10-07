@@ -29,7 +29,7 @@ Every spend is logged in `datalog_coin_uses (date, player_id, use, amount)` thro
 |---:|---|---|---:|---|
 | 1 | Premium account, 30 days | item 6500 | 10 | `npc/scripts/soulTrade.lua` |
 | 2 | Change sex | item 6500 | 3 | `soulTrade.lua` |
-| 3 | Change city | — | — | commented out in `soulTrade.lua` |
+| 3 | Change hometown | item 6500 | 5 | `soulTrade.lua`; the option is live but the constant `COIN_USE_IDS.CHANGE_CITY` is commented out, so the row is written with an empty `use` (`string.concat` skips the nil) |
 | 4 | Bless | item 6500 | 1 | `soulTrade.lua` |
 | 5 | Pokémon nickname | item 6500 | 1 | `soulTrade.lua` |
 | 6 | Stamina recover | item 6500 | 1 | `soulTrade.lua` |
@@ -38,7 +38,7 @@ Every spend is logged in `datalog_coin_uses (date, player_id, use, amount)` thro
 | 9 | Create guild rank | item 6500 | 1 | `soulTrade.lua` |
 | 10 | Vitamin reset | item 6500 | 1 | `npc/scripts/vitamin_reset.lua` |
 | 11 | Egg Move Capsule | item 6500 | 1 | `soulTrade.lua` |
-| 12 | Pokémon addon | item 6500 | — | `soulTrade.lua` |
+| 12 | Pokémon addon | item 6500 | 15 | `soulTrade.lua` `PokemonAddon.onPlayerBuy`; id defined but **never logged** (no `doDatalogCoinUse` call) |
 | 13 | PokeNation Shop purchase | account balance | product price × quantity | `lib/ps/systems/057-soulShop.lua` |
 
 Soul Trade NPCs: the NPC XML files that use `soulTrade.lua` (Ben, Cairo, Carlisle, Cree, Curtis,
