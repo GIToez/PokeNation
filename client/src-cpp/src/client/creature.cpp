@@ -431,10 +431,13 @@ void Creature::updateJump()
                 diff = -1;
         } while(nextT - m_jumpTimer.ticksElapsed() == 0 && i < 3);
 
+        // nextT can lie in the past during the descent; release builds of the
+        // original client ran such events on the next poll, so clamp to 0
+        // instead of tripping EventDispatcher's delay >= 0 assert.
         auto self = static_self_cast<Creature>();
         g_dispatcher.scheduleEvent([self] {
             self->updateJump();
-        }, nextT - m_jumpTimer.ticksElapsed());
+        }, std::max<int>(0, nextT - m_jumpTimer.ticksElapsed()));
     }
     else
         m_jumpOffset = PointF(0, 0);
