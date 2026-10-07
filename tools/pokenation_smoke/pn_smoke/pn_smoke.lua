@@ -4,6 +4,7 @@
 -- ends the run. Configuration comes from environment variables set by the runner:
 --   PN_SMOKE_ACCOUNT, PN_SMOKE_PASSWORD, PN_SMOKE_CHARACTER, PN_SMOKE_LOCALE (en|pt|es),
 --   PN_SMOKE_MARKET=1 (market round trip; GM character, seeded depot and balance)
+--   PN_SMOKE_SHOP=1 (PokeNation Shop round trip; accounts.soulcoins seeded to 20)
 
 PNSmoke = {}
 
@@ -12,7 +13,8 @@ local cfg = {
     password = os.getenv('PN_SMOKE_PASSWORD') or 'admin',
     character = os.getenv('PN_SMOKE_CHARACTER') or 'Tester',
     locale = os.getenv('PN_SMOKE_LOCALE'),
-    market = os.getenv('PN_SMOKE_MARKET') == '1'
+    market = os.getenv('PN_SMOKE_MARKET') == '1',
+    shop = os.getenv('PN_SMOKE_SHOP') == '1'
 }
 
 local checks = {}
@@ -217,6 +219,68 @@ local function onMarketBrowse(intOffers, names)
     end
 end
 
+-- PokeNation Shop round trip (extended opcode 201). Expects accounts.soulcoins = SHOP_BALANCE
+-- for the smoke account (the runner seeds it with PN_SMOKE_SHOP=1).
+local SHOP_BALANCE = 20
+local function shopStep(nextStep)
+    if not cfg.shop then
+        return nextStep()
+    end
+    local shop = modules.game_shop
+    if not shop then
+        check('PokeNation Shop module loaded', false)
+        return nextStep()
+    end
+    shop.show()
+    local steps = {
+        function()
+            local s = shop.getState()
+            log('shop: catalog=%s offers=%d balance=%d', tostring(s.catalogLoaded), s.offerCount, s.balance)
+            check('opcode 201 fetch answered by catalog + balance', s.catalogLoaded and s.offerCount >= 8 and s.balance == SHOP_BALANCE,
+                string.format('%d offers, balance %d', s.offerCount, s.balance))
+            shop.selectOfferById('stamina_recover')
+            shot('06-shop')
+        end,
+        function()
+            shop.purchase('stamina_recover', 1)
+        end,
+        function()
+            local s = shop.getState()
+            check('opcode 201 purchase charged by server', s.balance == SHOP_BALANCE - 1 and s.lastMessage and s.lastMessage.type == 'info',
+                string.format('balance %d, %s', s.balance, s.lastMessage and s.lastMessage.text or 'no message'))
+            shot('07-shop-purchase')
+            shop.purchase('stamina_recover', 999)
+        end,
+        function()
+            local s = shop.getState()
+            check('opcode 201 invalid quantity rejected', s.balance == SHOP_BALANCE - 1 and s.lastMessage and s.lastMessage.type == 'error',
+                s.lastMessage and s.lastMessage.text or 'no message')
+            shop.purchase('tibia_coins', 1)
+        end,
+        function()
+            local s = shop.getState()
+            check('opcode 201 unknown product rejected', s.balance == SHOP_BALANCE - 1 and s.lastMessage and s.lastMessage.type == 'error',
+                s.lastMessage and s.lastMessage.text or 'no message')
+            shop.requestHistory()
+        end,
+        function()
+            local s = shop.getState()
+            check('opcode 201 history lists the purchase', s.historyCount >= 1, s.historyCount .. ' entries')
+            shot('08-shop-history')
+            shop.closeMessage()
+            shop.hide()
+        end
+    }
+    local function run(i)
+        if i > #steps then
+            return scheduleEvent(nextStep, 1000)
+        end
+        steps[i]()
+        scheduleEvent(function() run(i + 1) end, 2500)
+    end
+    scheduleEvent(function() run(1) end, 2500)
+end
+
 local function afterWorld()
     local player = g_game.getLocalPlayer()
     startPos = player:getPosition()
@@ -257,7 +321,7 @@ local function afterWorld()
             if pos.x ~= before.x or pos.y ~= before.y then
                 check('walk accepted by server', true, 'direction ' .. directions[i])
                 shot('04-after-walk')
-                scheduleEvent(function() pollStep(function() marketStep(PNSmoke.logout) end) end, 2500)
+                scheduleEvent(function() pollStep(function() marketStep(function() shopStep(PNSmoke.logout) end) end) end, 2500)
             else
                 tryWalk(i + 1)
             end
@@ -364,7 +428,7 @@ function PNSmoke.init()
         if not finished then
             fail('timeout')
         end
-    end, 110000)
+    end, 180000)
 end
 
 function PNSmoke.terminate()

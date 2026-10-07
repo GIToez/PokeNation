@@ -59,8 +59,9 @@ def main() -> int:
     parser.add_argument("--character", default="Tester")
     parser.add_argument("--locale", default=None)
     parser.add_argument("--display", default=":97")
-    parser.add_argument("--timeout", type=int, default=130)
+    parser.add_argument("--timeout", type=int, default=200)
     parser.add_argument("--market", action="store_true", help="also run the market round trip (GM character)")
+    parser.add_argument("--shop", action="store_true", help="also run the PokeNation Shop round trip (seeded soulcoins)")
     args = parser.parse_args()
 
     binary = Path(args.client).resolve()
@@ -87,6 +88,8 @@ def main() -> int:
         env["PN_SMOKE_LOCALE"] = args.locale
     if args.market:
         env["PN_SMOKE_MARKET"] = "1"
+    if args.shop:
+        env["PN_SMOKE_SHOP"] = "1"
 
     xvfb = subprocess.Popen(["Xvfb", args.display, "-screen", "0", "1280x800x24", "-nolisten", "tcp"],
                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
