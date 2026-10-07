@@ -1,0 +1,15 @@
+Module
+  name: pokenation_lib
+  description: PokeNation shared data and helpers for the Pokemon UI modules (species, moves, types, statuses)
+  author: PokeNation (data tables from the legacy PSoul client gamelib)
+  website: https://github.com/GIToez/PokeNation
+  autoload: true
+  autoload-priority: 90
+  dependencies: [ gamelib ]
+
+  @onLoad: |
+    dofile 'const'
+    dofile 'util'
+    dofile 'types'
+    dofile 'pokemon'
+    dofile 'moves'
