@@ -345,6 +345,8 @@ end
 -- PokeNation Shop round trip (extended opcode 201). Expects accounts.soulcoins = SHOP_BALANCE
 -- for the smoke account (the runner seeds it with PN_SMOKE_SHOP=1).
 local SHOP_BALANCE = 20
+local SHOP_ADDON = 'addon_fossilized_kabutops'
+local SHOP_ADDON_PRICE = 15
 local function shopStep(nextStep)
     if not cfg.shop then
         return nextStep()
@@ -384,6 +386,21 @@ local function shopStep(nextStep)
             local s = shop.getState()
             check('opcode 201 unknown product rejected', s.balance == SHOP_BALANCE - 1 and s.lastMessage and s.lastMessage.type == 'error',
                 s.lastMessage and s.lastMessage.text or 'no message')
+            -- A forged request naming its own price: the server must charge the catalog price (15).
+            g_game.getProtocolGame():sendExtendedOpcode(ExtendedIds.PokeNationShop, json.encode({
+                action = 'purchase', data = { id = SHOP_ADDON, count = 1, price = 0 } }))
+        end,
+        function()
+            local s = shop.getState()
+            check('opcode 201 client-supplied price ignored', s.balance == SHOP_BALANCE - 1 - SHOP_ADDON_PRICE and
+                s.lastMessage and s.lastMessage.type == 'info', string.format('balance %d', s.balance))
+            shop.purchase(SHOP_ADDON, 1)
+        end,
+        function()
+            local s = shop.getState()
+            check('opcode 201 insufficient balance refused without a debit', s.balance == SHOP_BALANCE - 1 - SHOP_ADDON_PRICE and
+                s.lastMessage and s.lastMessage.type == 'error', string.format('balance %d, %s', s.balance,
+                    s.lastMessage and s.lastMessage.text or 'no message'))
             shop.requestHistory()
         end,
         function()
