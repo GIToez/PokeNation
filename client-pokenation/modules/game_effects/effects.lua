@@ -1,4 +1,4 @@
--- PokeNation creature colour effects, 0xFF 0x13 (creature id, effect id, U16 var). Port of the legacy
+-- PokeNation creature colour effects, 0xFF 0x13 (U32 creature id, U8 effect id, U32 var). Port of the legacy
 -- PSoul game_effects. The legacy client had a C++ Creature:setOutfitColor(color, fadeMs) that
 -- interpolated the outfit tint; Redemption has no equivalent, so the tint is drawn with the stock
 -- Thing:setMarked overlay and cleared after the same duration (no gradual fade). The ghost copies the
@@ -32,6 +32,7 @@ local TINTS = {
 }
 
 local pending = {}  -- creature id -> scheduled clear event
+local received = {} -- effect id -> count this session
 
 local function clearTint(creature)
     local id = creature:getId()
@@ -41,6 +42,7 @@ local function clearTint(creature)
 end
 
 local function onCreatureEffect(creature, effectId, var)
+    received[effectId] = (received[effectId] or 0) + 1
     local tint = TINTS[effectId]
     if not tint or not creature:getPosition() then
         return
@@ -63,6 +65,15 @@ local function reset()
         removeEvent(event)
     end
     pending = {}
+    received = {}
+end
+
+function getReceived(effectId)
+    return received[effectId] or 0
+end
+
+function getEffectIds()
+    return Effect
 end
 
 function init()
