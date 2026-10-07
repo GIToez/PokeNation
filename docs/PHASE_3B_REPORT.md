@@ -166,7 +166,7 @@ work, but the history stays empty.
 
 | Platform | Status |
 |---|---|
-| Linux x64 | RUNTIME VERIFIED: packaged client, all scenarios above, in CI (`gui-smoke`) and locally |
+| Linux x64 | RUNTIME VERIFIED: packaged client, all scenarios above, locally and in CI (`gui-smoke`, run 37601842327, identical counts) |
 | Windows x64 (MinGW, MSVC) | BUILD VERIFIED only; not run on Windows in this phase |
 | Legacy client (Linux) | RUNTIME VERIFIED manually against the same server: login, team bar, summon, wild battle (matrix §2, C-12) |
 

@@ -131,5 +131,5 @@ Xvfb)**. It builds the server, imports the schema into a MariaDB 11 service, sta
 and runs `tools/pokenation_gui_smoke_ci.sh` on the packaged Linux client from the `linux` job.
 It uploads the artifact `PokeNation-Phase3-Screenshots`: per scenario the PNG screenshots,
 `otclient.log`, `client-console.log` and `result.log`, plus `results.txt` and `server.log`.
-First green run: 37597248525 (commit be1fb14). The Windows and Android jobs build and package
+First green run: 37597248525 (commit be1fb14). Latest at the end of Phase 3B: 37601842327, every scenario with the same counts as the local run (shop 28/28 included); the `Build development packages` workflow, Windows MinGW database setup included, is green in run 37601842338. The Windows and Android jobs build and package
 only (BUILD VERIFIED).
