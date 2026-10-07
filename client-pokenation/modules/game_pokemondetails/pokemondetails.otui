@@ -27,7 +27,7 @@ PokemonDetailsWindow < MainWindow
 
   Label
     id: name
-    font: sans-bold-16px
+    font: terminus-14px-bold
     anchors.top: parent.top
     anchors.left: portrait.right
     anchors.right: parent.right

@@ -54,7 +54,7 @@ TmChooseWindow < MainWindow
     Label
       id: arrow
       text: '->'
-      font: sans-bold-16px
+      font: terminus-14px-bold
       text-auto-resize: true
       margin-top: 10
 

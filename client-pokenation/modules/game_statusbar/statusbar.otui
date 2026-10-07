@@ -30,6 +30,7 @@ StatusBarPanel < UIWidget
   id: pokestatusbar
   focusable: false
   phantom: true
+  height: 38
   layout:
     type: horizontalBox
     fit-children: true

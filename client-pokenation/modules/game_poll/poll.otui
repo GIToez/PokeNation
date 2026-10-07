@@ -20,7 +20,7 @@ PollWindow < MainWindow
 
   Label
     id: question
-    font: sans-bold-16px
+    font: terminus-14px-bold
     anchors.top: parent.top
     anchors.left: parent.left
     anchors.right: parent.right

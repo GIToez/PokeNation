@@ -1,5 +1,5 @@
 AdvanceSection < UIWidget
-  height: 36
+  height: 38
   margin-top: 4
   padding: 2
   background-color: #222833cc
@@ -25,6 +25,7 @@ AdvanceSection < UIWidget
 
   Label
     id: title
+    height: 14
     color: #b6b6b6
     text-align: center
     anchors.top: parent.top
@@ -34,7 +35,8 @@ AdvanceSection < UIWidget
 
   Label
     id: description
-    font: sans-bold-16px
+    height: 16
+    font: terminus-14px-bold
     text-align: center
     anchors.top: prev.bottom
     anchors.left: parent.left
@@ -74,7 +76,7 @@ AdvancePopup < UIWidget
 
     Label
       id: headline
-      font: sans-bold-16px
+      font: terminus-14px-bold
       color: #ffd303
       text-align: center
       anchors.top: prev.bottom
