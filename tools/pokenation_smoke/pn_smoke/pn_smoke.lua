@@ -56,14 +56,70 @@ local function fail(reason)
 end
 
 -- Reads the GL framebuffer of the next frame into the user write dir; the runner collects it.
+-- Every Lua callback bound to keyCombo in the global key scopes (root widget and game root panel), as
+-- "<module dir>:<handler table>". Widgets inside windows (lists, text edits) only see keys while
+-- focused, so they are not conflicts. corelib/keyboard.lua keeps one entry per combo per widget and
+-- turns it into a list on the second bind.
+local KEY_TABLES = { 'boundKeyDownCombos', 'boundAloneKeyDownCombos', 'boundKeyPressCombos' }
+local function keyBindings(keyCombo)
+    local owners = {}
+    local function add(fn, tableName)
+        local source = debug.getinfo(fn, 'S').source or '?'
+        owners[#owners + 1] = (source:match('^@/([%w_]+)/') or source) .. ':' .. tableName
+    end
+    for _, widget in ipairs({ g_ui.getRootWidget(), modules.game_interface.getRootPanel() }) do
+        for _, tableName in ipairs(KEY_TABLES) do
+            local bound = widget[tableName] and widget[tableName][keyCombo]
+            if type(bound) == 'function' then
+                add(bound, tableName)
+            elseif type(bound) == 'table' then
+                for _, fn in ipairs(bound) do
+                    add(fn, tableName)
+                end
+            end
+        end
+    end
+    return owners
+end
+
+local function checkKeysOwnedBy(label, combos, module)
+    local foreign = {}
+    local missing = {}
+    for _, combo in ipairs(combos) do
+        local owners = keyBindings(combo)
+        local own = false
+        for _, owner in ipairs(owners) do
+            if owner:find(module, 1, true) == 1 then
+                own = true
+            else
+                foreign[#foreign + 1] = combo .. '=' .. owner
+            end
+        end
+        if not own then
+            missing[#missing + 1] = combo
+        end
+    end
+    check(label, #foreign == 0 and #missing == 0,
+        (#foreign > 0 and ('also bound: ' .. table.concat(foreign, ', ')) or '') ..
+        (#missing > 0 and (' not bound: ' .. table.concat(missing, ', ')) or '') ..
+        ((#foreign == 0 and #missing == 0) and (#combos .. ' keys') or ''))
+end
+
+local MOVE_KEYS = { 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12',
+    'Shift+F1', 'Shift+F2', 'Shift+F3', 'Shift+F4' }
+local WALK_KEYS = { 'W', 'A', 'S', 'D', 'Up', 'Down', 'Left', 'Right' }
+
 local LOGIN_BOX_TITLES = { ['Message of the day'] = true, ['For Your Information'] = true }
 
--- The MOTD / login advice boxes are created by displayInfoBox with generated ids and would cover every later screenshot.
+-- The MOTD / login advice boxes are created by displayInfoBox with generated ids and would cover every
+-- later screenshot. They are hidden, not destroyed: client_entergame keeps its own motdWindow reference
+-- and destroys it on terminate.
 local function closeLoginBoxes()
     for _, child in ipairs(g_ui.getRootWidget():getChildren()) do
-        if child:getStyleName() == 'MessageBoxWindow' and child.title and LOGIN_BOX_TITLES[child.title:getText()] then
-            log('closing message box "%s"', child.title:getText())
-            child:destroy()
+        if child:getStyleName() == 'MessageBoxWindow' and child:isVisible() and child.title
+            and LOGIN_BOX_TITLES[child.title:getText()] then
+            log('hiding message box "%s"', child.title:getText())
+            child:hide()
         end
     end
 end
@@ -531,6 +587,15 @@ local function pokemonStep(nextStep)
             for i, move in ipairs(moves) do
                 log('move %d icon=%d %s key=%s', i, move.iconId, move.name, tostring(move.key))
             end
+            for _, name in ipairs({ 'game_hotkeys', 'game_actionbar' }) do
+                local module = g_modules.getModule(name)
+                check(name .. ' loaded next to the move bar', module ~= nil and module:isLoaded())
+            end
+            checkKeysOwnedBy('move keys F1-F12 / Shift+F1-F4 bound only to the move bar', MOVE_KEYS, 'game_pokemoves')
+            -- WASD walking is bound only while chat mode is off (game_console toggle).
+            modules.game_console.switchChat(false)
+            checkKeysOwnedBy('WASD and arrow keys bound only to walking', WALK_KEYS, 'game_walk')
+            modules.game_console.switchChat(true)
             movesModule.requestDetails(1)
             shot('11-summoned')
         end,
