@@ -27,7 +27,7 @@ in the firewall. Do not forward these ports to the internet.
 | Database | `psoul` |
 | User | `psoul` @ `localhost` and `127.0.0.1` |
 | Password | Windows package: `psoul-dev` (default of `Setup-PokeNation-Database.ps1`). Linux dev tree: generated or `psoul-dev`, stored **only** in the git-ignored `server/config.lua` |
-| Schema | `mysql.sql` → `psoul_extra_mysql.sql` → `psoul_dev_seed.sql` (97 tables) |
+| Schema | `mysql.sql` → `psoul_extra_mysql.sql` → `psoul_dev_seed.sql` (98 tables, `datalog_shop_purchases` included) |
 | Create / reset | Windows: `Setup-PokeNation-Database.bat` (`-Reset` to start over). Linux: `tools/init_dev_database.sh` (`--reset`) |
 
 ## Accounts and characters
