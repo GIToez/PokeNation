@@ -52,7 +52,7 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-35 | P3 | open (inferred) | Pokédex code indexes nil when no Pokédex is equipped | no |
 | BUG-36 | P2 | open (inferred) | Market window dead for players who never opened a depot | no |
 | BUG-37 | P2 | open (inferred) | Market purchase deletes items when the buyer's depot add fails | no |
-| BUG-38 | P4 | open | Dead code: `ExtendedOpcode` registration, `game_shop` module, `Soya.xml`, `PS_LIB_SKILLS_DIR`, `003-quest.lua.bak` | partly (Lua opcode dispatcher) |
+| BUG-38 | P4 | partly fixed (Phase 3B: the `ExtendedOpcode` creature event now exists and dispatches id 201) | Dead code: `ExtendedOpcode` registration, legacy `game_shop` module, `Soya.xml`, `PS_LIB_SKILLS_DIR`, `003-quest.lua.bak` | partly (Lua opcode dispatcher) |
 | BUG-39 | P4 | keep | Historical backup trees under `data/lib/ps` (not loaded) | no |
 | BUG-40 | P4 | n/a | Phase 1 items re-classified as HARMLESS (see §Classification) | no |
 | BUG-41 | P3 | open (inferred) | Surprise boxes never spawn east of x=2048 (`MAP_MAX_WIDTH`) | no |
@@ -73,8 +73,8 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-56 | P2 (security) | open | Hard-coded AES asset key/IV in client source | yes |
 | BUG-57 | P4 | open | Client console `CAST ERROR … TPoint<int>` noise, `tmchoose.lua` connect/disconnect leak | yes (UI rewrite) |
 | BUG-58 | P4 | open (inferred, Phase 2A) | `checkCorpseOwner ` read with a trailing space → config key ignored | no |
-| BUG-59 | P3 (latent) | open (inferred, Phase 2A) | Client doll-case count `U16` read into `uint8_t` → desync ≥256, infinite loop at 255 | yes |
-| BUG-60 | P4 (latent) | open (inferred, Phase 2A) | Same `uint8_t` truncation for the level-up move list | yes |
+| BUG-59 | P3 (latent) | open in the legacy client; not present in the PokeNation client (reads `U16`) | Client doll-case count `U16` read into `uint8_t` → desync ≥256, infinite loop at 255 | yes |
+| BUG-60 | P4 (latent) | open in the legacy client; fixed in the PokeNation client (`U16` count, every move shown, verified with 14 moves in Phase 3B) | Same `uint8_t` truncation for the level-up move list | yes |
 | BUG-61 | P4 | open (inferred, Phase 2A) | Server-driven move bar open/close fires events no module listens to | yes |
 | BUG-62 | P4 (latent) | open (inferred, Phase 2A) | Account Manager charlist entry lacks OTClient extras (only if `accountManager = true`) | yes |
 | BUG-63 | P4 (latent) | open (inferred, Phase 2A) | `AdvancedSave` vs `AdvanceSave` event name | no |
@@ -91,6 +91,9 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-74 | P0 (Windows setup) | fixed (Phase 2A; found on a real PC, fix verified in Windows CI) | `Setup-PokeNation-Database.ps1` fails with `ERROR 1146 … 'psoul.accounts' doesn't exist`: the MariaDB 11.4+ client's passwordless-login warning on stderr was read as the query result, so the schema import was skipped | no (launchers only) |
 | BUG-75 | P0 (Windows development client) | fixed (Phase 2A; found on a real PC, verified locally on Linux) | `Assertion failed! … eventdispatcher.cpp Line: 85 Expression: delay >= 0` when a Pokémon uses a move that makes the target jump (Headbutt, e.g. Bulbasaur's second move): `Creature::updateJump()` schedules its next step in the past | yes |
 | BUG-76 | P4 | open, verified (Phase 3) | Deleted or edited polls stay active until the server restarts (periodic reload only adds polls) | no |
+| BUG-77 | P3 | open, verified (Phase 3B) | TV viewer sees the recorder twice and logs `got a thing with invalid stackpos` on join and leave (`sendTVStart` keeps the owner as a known creature and swaps ids) | no |
+| BUG-78 | P3 | open, verified (Phase 3B) | Market window lists no items: the 8.54 `.dat` has no market attribute, so the client has no item catalog | no |
+| BUG-79 | P4 | open, verified (Phase 3B) | PokeNation client top status bar shows `9999999999/9999999999` in its right gauge for characters without a summoned Pokémon (the HUD shows Energy 0 / 0); cause not investigated | no |
 
 ---
 
@@ -528,3 +531,27 @@ test (`tools/smoke_test.py`, 16 checks).
   them) is unaffected; `tools/protocol_probe.py` now echoes them too.
 - Verified: correct echo → in game; `--bad-challenge` → disconnected with the warning; smoke test
   check "wrong login challenge is refused".
+
+---
+
+## Phase 3B additions (BUG-77 … BUG-79)
+
+Found while running the PokeNation client GUI smoke (`tools/pokenation_gui_smoke_ci.sh`) against
+the server. None blocks the migration; all three are left open.
+
+### BUG-77 — TV viewer sees the recorder twice — verified, open
+Two clients (`--tv record` as GM Admin, `--tv watch` as Trainer standing next to him). On join
+the server re-sends the map around the recorder (`sendTVStart`), but `removeKnownCreature` is
+commented out there and `getCreatureID` swaps the owner and viewer ids, so the viewer keeps its
+own copy of "GM Admin" and gets a second one; the client logs `got a thing with invalid stackpos`
+once on join and once on leave. Watching from far away was not tested. Layer: server.
+
+### BUG-78 — Market item list empty — verified, open
+`game_market` builds its item list from `.dat` market attributes (`ThingAttrMarket`), which only
+exist from 10.10; the 8.54 `.dat` (Stage A assets) has none, and the legacy client has the same
+limitation. The `0xF6`–`0xF9` packets work and the balance is shown. Fix: a server-sent catalog
+of tradeable items, or market data added in Stage B assets. Layer: assets / client.
+
+### BUG-79 — Top status bar gauge `9999999999` without a Pokémon — verified, open
+Seen with Tester and Trainer (no Pokémon summoned); GM Admin with Venusaur out shows 1100 / 1100.
+The PokeNation HUD shows the right values. Cosmetic; cause not investigated. Layer: client Lua/UI.
