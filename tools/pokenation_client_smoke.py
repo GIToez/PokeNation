@@ -11,7 +11,10 @@ output directory. Linux only (Xvfb).
 
 --market (GM character with access 5 and a seeded depot, see docs/PHASE_3_TEST_MATRIX.md C-14)
 places the market NPC with /n, opens the market and runs enter -> create buy offer -> browse own
-offers -> cancel -> leave.
+offers -> cancel -> leave. --shop and --pokemon add the PokeNation Shop and Pokemon UI round trips
+(seed tools/pokenation_smoke/seed_smoke.sql first). --tv needs two instances at once on different
+displays: --tv record --character "GM Admin" and --tv watch --account player --password player
+--character Trainer.
 
 Requires: the server running (tools/start_server.sh), Stage A assets staged
 (tools/stage_pokenation_assets.py), a built client (tools/build_pokenation_client.sh).
@@ -63,6 +66,8 @@ def main() -> int:
     parser.add_argument("--market", action="store_true", help="also run the market round trip (GM character)")
     parser.add_argument("--shop", action="store_true", help="also run the PokeNation Shop round trip (seeded soulcoins)")
     parser.add_argument("--pokemon", action="store_true", help="also run the Pokemon UI round trip (GM character with a team)")
+    parser.add_argument("--tv", choices=["record", "watch"],
+                        help="TV system: run one 'record' (GM) and one 'watch' (second account) instance at the same time")
     args = parser.parse_args()
 
     binary = Path(args.client).resolve()
@@ -94,6 +99,8 @@ def main() -> int:
     if args.pokemon:
         env["PN_SMOKE_POKEMON"] = "1"
         args.timeout = max(args.timeout, 330)
+    if args.tv:
+        env["PN_SMOKE_TV"] = args.tv
 
     xvfb = subprocess.Popen(["Xvfb", args.display, "-screen", "0", "1280x800x24", "-nolisten", "tcp"],
                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

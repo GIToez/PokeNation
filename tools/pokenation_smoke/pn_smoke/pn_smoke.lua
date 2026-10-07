@@ -6,6 +6,7 @@
 --   PN_SMOKE_MARKET=1 (market round trip; GM character, seeded depot and balance)
 --   PN_SMOKE_SHOP=1 (PokeNation Shop round trip; accounts.soulcoins seeded to 20)
 --   PN_SMOKE_POKEMON=1 (Pokemon UI round trip; GM character with a team, Rattata ball_counter seeded)
+--   PN_SMOKE_TV=record|watch (TV system, two clients at once: the GM records, a second account watches)
 
 PNSmoke = {}
 
@@ -16,7 +17,8 @@ local cfg = {
     locale = os.getenv('PN_SMOKE_LOCALE'),
     market = os.getenv('PN_SMOKE_MARKET') == '1',
     shop = os.getenv('PN_SMOKE_SHOP') == '1',
-    pokemon = os.getenv('PN_SMOKE_POKEMON') == '1'
+    pokemon = os.getenv('PN_SMOKE_POKEMON') == '1',
+    tv = os.getenv('PN_SMOKE_TV')
 }
 
 local checks = {}
@@ -762,6 +764,169 @@ local function pokemonStep(nextStep)
     }, function() end)
 end
 
+-- TV system with two clients (tools/pokenation_client_smoke.py --tv record / --tv watch, started together).
+-- Recorder (GM, premium): uses a TV camera (lib/ps/events/actions/tv/record.lua creates its channel), puts
+-- a small television on the tile in front of it, then polls /tvlist until the viewer shows up.
+-- Viewer (second account): waits for that television, stands south of it, uses it (watch.lua sends the TV
+-- channel list as 0xAB), joins the recorder's channel (0xAC -> server re-sends the recorder's map) and
+-- leaves again. The television appearing on the viewer's map is the only synchronisation needed.
+local TV_CAMERA_SERVER_ID, TV_CAMERA_CLIENT_ID = 14359, 12685 -- pickupable, used from the bag
+local TV_SERVER_ID, TV_CLIENT_ID = 11926, 10887 -- small television, watched from the south
+local tv = {}
+
+local function findTvNear(center)
+    for dx = -4, 4 do
+        for dy = -4, 4 do
+            local tile = g_map.getTile({ x = center.x + dx, y = center.y + dy, z = center.z })
+            if tile then
+                for _, item in ipairs(tile:getItems()) do
+                    if item:getId() == TV_CLIENT_ID then
+                        return item, tile:getPosition()
+                    end
+                end
+            end
+        end
+    end
+end
+
+local function tvRecord(nextStep)
+    local deadline = g_clock.millis() + 90000
+    sequence({
+        function()
+            recentTexts = {}
+            PokeNation.say('/i ' .. TV_CAMERA_SERVER_ID .. ',1')
+            return 2000
+        end,
+        function()
+            -- The bag is not open, so let the server find the camera by id (same as the potion / TM uses).
+            g_game.useInventoryItem(TV_CAMERA_CLIENT_ID)
+            return 2000
+        end,
+        function()
+            check('TV channel created (record.lua)', textSeen('Welcome to your TV channel'))
+            g_game.turn(East)
+            return 800
+        end,
+        function()
+            PokeNation.say('/i ' .. TV_SERVER_ID .. ',1,true,true')
+            return 2000
+        end,
+        function()
+            -- A television left by an earlier run on the same server makes /i report "Couldn't add item"; it works too.
+            local item, pos = findTvNear(g_game.getLocalPlayer():getPosition())
+            check('television placed for the viewer', item ~= nil, pos and string.format('%d,%d,%d', pos.x, pos.y, pos.z) or 'none')
+            shot('30-tv-recording')
+            local function poll()
+                if textSeen('Trainer') then
+                    check('/tvlist lists the viewer (server side)', true)
+                    shot('31-tv-viewer-joined')
+                    -- Stay online until the viewer has checked the re-sent map and left.
+                    return scheduleEvent(nextStep, 15000)
+                end
+                if g_clock.millis() > deadline then
+                    check('/tvlist lists the viewer (server side)', false, 'viewer never joined')
+                    return nextStep()
+                end
+                recentTexts = {}
+                PokeNation.say('/tvlist')
+                scheduleEvent(poll, 3000)
+            end
+            poll()
+            return 1
+        end
+    }, function() end)
+end
+
+local function tvWatch(nextStep)
+    local deadline = g_clock.millis() + 90000
+    local function waitForTv()
+        local player = g_game.getLocalPlayer()
+        local item, pos = findTvNear(player:getPosition())
+        if not item then
+            if g_clock.millis() > deadline then
+                check('recorder television visible', false, 'no television within 4 tiles')
+                return nextStep()
+            end
+            return scheduleEvent(waitForTv, 1000)
+        end
+        check('recorder television visible', true, string.format('%d,%d,%d', pos.x, pos.y, pos.z))
+        local south = { x = pos.x, y = pos.y + 1, z = pos.z }
+        player:autoWalk(south)
+        local function useTv(tries)
+            local here = g_game.getLocalPlayer():getPosition()
+            if (here.x ~= south.x or here.y ~= south.y) and tries > 0 then
+                return scheduleEvent(function() useTv(tries - 1) end, 1000)
+            end
+            check('viewer stands south of the television', here.x == south.x and here.y == south.y,
+                string.format('%d,%d', here.x, here.y))
+            tv.ownPos = here
+            tv.tvPos = pos
+            tv.use()
+        end
+        useTv(8)
+    end
+    tv.use = function()
+        tv.awaitingList = true
+        g_game.use(g_map.getTile(tv.tvPos):getTopUseThing())
+        scheduleEvent(function()
+            if tv.awaitingList then
+                tv.awaitingList = false
+                check('TV channel list (0xAB) after using the television', false, 'no channel list')
+                nextStep()
+            end
+        end, 5000)
+    end
+    tv.onList = function(channels)
+        tv.awaitingList = false
+        -- The list also carries the empty-list placeholder (CHANNEL_TV) and the client's NPCs / Loot tabs.
+        local skip = { [0] = true, [65520] = true, [65533] = true }
+        local chosen
+        for _, channel in ipairs(channels) do
+            log('tv channel %d: %s', channel[1], channel[2])
+            if not chosen and not skip[channel[1]] then
+                chosen = channel
+            end
+        end
+        if not chosen and g_clock.millis() < deadline then
+            -- A television from an earlier run can be found before the recorder has opened its channel.
+            return scheduleEvent(tv.use, 3000)
+        end
+        check('TV channel list (0xAB) after using the television', chosen ~= nil, chosen and chosen[2] or 'no channel')
+        if not chosen then
+            return nextStep()
+        end
+        g_game.joinChannel(chosen[1])
+        scheduleEvent(function()
+            local center = g_map.getCentralPosition()
+            local moved = center.x ~= tv.ownPos.x or center.y ~= tv.ownPos.y
+            local recorder
+            for _, creature in ipairs(g_map.getSpectators(center, false)) do
+                if creature:getName() == 'GM Admin' then
+                    recorder = creature
+                end
+            end
+            check('watching: map re-sent around the recorder (sendTVStart)', moved and recorder ~= nil,
+                string.format('center %d,%d,%d', center.x, center.y, center.z))
+            shot('32-tv-watching')
+            g_game.leaveChannel(chosen[1])
+            scheduleEvent(function()
+                shot('33-tv-left')
+                nextStep()
+            end, 3000)
+        end, 3000)
+    end
+    waitForTv()
+end
+
+local function tvStep(nextStep)
+    if cfg.tv == 'record' then
+        return tvRecord(nextStep)
+    elseif cfg.tv == 'watch' then
+        return tvWatch(nextStep)
+    end
+    nextStep()
+end
+
 local function afterWorld()
     local player = g_game.getLocalPlayer()
     startPos = player:getPosition()
@@ -799,7 +964,7 @@ local function afterWorld()
             if pos.x ~= before.x or pos.y ~= before.y then
                 check('walk accepted by server', true, 'direction ' .. directions[i])
                 shot('04-after-walk')
-                scheduleEvent(function() pollStep(function() marketStep(function() shopStep(function() pokemonStep(PNSmoke.logout) end) end) end) end, 2500)
+                scheduleEvent(function() pollStep(function() marketStep(function() shopStep(function() pokemonStep(function() tvStep(PNSmoke.logout) end) end) end) end) end, 2500)
             else
                 tryWalk(i + 1)
             end
@@ -832,7 +997,11 @@ local handlers = {
         check('login light hour read', minutes >= 0 and minutes < 24 * 60, tostring(minutes))
     end,
     onChannelList = function(channels)
-        check('0xAB channel list (U16 count)', #channels > 0, #channels .. ' channels')
+        if tv.awaitingList then
+            tv.onList(channels)
+        else
+            check('0xAB channel list (U16 count)', #channels > 0, #channels .. ' channels')
+        end
         -- game_console opens its channel chooser for the same packet; it would cover later screenshots.
         scheduleEvent(function()
             local console = modules.game_console
@@ -878,7 +1047,7 @@ local handlers = {
         end
     end,
     onTextMessage = function(mode, text)
-        if cfg.pokemon then
+        if cfg.pokemon or cfg.tv then
             recentTexts[#recentTexts + 1] = text
             log('text message %d: %s', mode, tostring(text):gsub('\n', ' | '))
         elseif market.stage then

@@ -36,3 +36,7 @@ INSERT INTO `poll_options` (`id`, `poll_id`, `name`) VALUES
 	(201, 901, 'Johto'),
 	(202, 901, 'Hoenn'),
 	(203, 901, 'Sinnoh');
+
+-- --tv watch: Trainer (account "player") starts next to the GM spawn so it sees the television the
+-- recorder places; the viewer walks south of it by itself.
+UPDATE `players` SET `posx` = 3309, `posy` = 309, `posz` = 7, `town_id` = 3 WHERE `id` = 4;
