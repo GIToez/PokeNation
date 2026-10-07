@@ -389,6 +389,7 @@
     <ClCompile Include="..\src\client\protocolcodes.cpp" />
     <ClCompile Include="..\src\client\protocolgame.cpp" />
     <ClCompile Include="..\src\client\protocolgameparse.cpp" />
+    <ClCompile Include="..\src\client\protocolgameparsepsoul.cpp" />
     <ClCompile Include="..\src\client\protocolgamesend.cpp" />
     <ClCompile Include="..\src\client\spritemanager.cpp" />
     <ClCompile Include="..\src\client\statictext.cpp" />

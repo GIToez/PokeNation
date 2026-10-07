@@ -39,7 +39,7 @@ function ProtocolLogin:sendLoginPacket()
     msg:addU8(ClientOpcodes.ClientEnterAccount)
     msg:addU16(g_game.getOs())
 
-    msg:addU16(g_game.getProtocolVersion())
+    msg:addU16(g_game.getWireProtocolVersion())
 
     if g_game.getFeature(GameClientVersion) then
         msg:addU32(g_game.getClientVersion())
@@ -238,6 +238,25 @@ function ProtocolLogin:parseCharacterList(msg)
             character.worldIp = iptostring(msg:getU32())
             character.worldPort = msg:getU16()
 
+            if g_game.getFeature(GamePSoulProtocol) then
+                -- server/src/protocollogin.cpp: U16 level, U8 vocation, outfit, U8 n x (U16 number, string)
+                character.level = msg:getU16()
+                character.vocation = msg:getU8()
+                character.outfit = {
+                    type = msg:getU16(),
+                    head = msg:getU8(),
+                    body = msg:getU8(),
+                    legs = msg:getU8(),
+                    feet = msg:getU8(),
+                    addons = msg:getU8()
+                }
+                character.pokemonTeam = {}
+                local pokemonCount = msg:getU8()
+                for j = 1, pokemonCount do
+                    character.pokemonTeam[j] = { number = msg:getU16(), description = msg:getString() }
+                end
+            end
+
             if g_game.getFeature(GamePreviewState) then
                 character.previewState = msg:getU8()
             end
@@ -259,6 +278,11 @@ function ProtocolLogin:parseCharacterList(msg)
         account.status = AccountStatus.Ok
         account.premDays = msg:getU16()
         account.subStatus = account.premDays > 0 and SubscriptionStatus.Premium or SubscriptionStatus.Free
+    end
+
+    if g_game.getFeature(GamePSoulProtocol) then
+        account.hasPoll = msg:getU8() > 0
+        signalcall(g_game.onPollAvailable, account.hasPoll)
     end
 
     signalcall(self.onCharacterList, self, characters, account)

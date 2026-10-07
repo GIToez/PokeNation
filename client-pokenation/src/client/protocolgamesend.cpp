@@ -53,7 +53,7 @@ void ProtocolGame::sendLoginPacket(const uint32_t challengeTimestamp, const uint
 
     msg->addU8(Proto::ClientPendingGame);
     msg->addU16(g_game.getOs());
-    msg->addU16(g_game.getProtocolVersion());
+    msg->addU16(g_game.getWireProtocolVersion());
 
     if (g_game.getFeature(Otc::GameClientVersion))
         msg->addU32(g_game.getClientVersion());

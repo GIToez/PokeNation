@@ -328,6 +328,10 @@ public:
 
     void setProtocolVersion(uint16_t version);
     int getProtocolVersion() { return m_protocolVersion; }
+    // Version number written into the login packets; 0 = getProtocolVersion(). PSoul servers
+    // expect 312 while the packet shapes are those of protocol 854.
+    void setWireProtocolVersion(const uint16_t version) { m_wireProtocolVersion = version; }
+    int getWireProtocolVersion() { return m_wireProtocolVersion ? m_wireProtocolVersion : m_protocolVersion; }
 
     bool isUsingProtobuf() {
 #ifdef FRAMEWORK_PROTOBUF
@@ -523,6 +527,7 @@ private:
     uint16_t m_serverBeat{ 50 };
     uint16_t m_pingDelay{ 1000 };
     uint16_t m_protocolVersion{ 0 };
+    uint16_t m_wireProtocolVersion{ 0 };
     uint16_t m_clientVersion{ 0 };
     uint32_t m_pingSent{ 0 };
     uint32_t m_pingReceived{ 0 };

@@ -70,6 +70,12 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
             msg->setReadPos(readPos);
             // restore read pos
 
+            if (opcode == Proto::GameServerPSoul && g_game.getFeature(Otc::GamePSoulProtocol)) {
+                parsePSoulMessage(msg);
+                prevOpcode = opcode;
+                continue;
+            }
+
             switch (opcode) {
                 case Proto::GameServerLoginOrPendingState:
                     if (g_game.getFeature(Otc::GameLoginPending)) {
@@ -765,11 +771,21 @@ void ProtocolGame::parseLogin(const InputMessagePtr& msg) const
         }
     }
 
+    // PSoul: U16 real-world light hour (minutes) after canReportBugs
+    int lightHour = -1;
+    if (g_game.getFeature(Otc::GamePSoulProtocol)) {
+        lightHour = msg->getU16();
+    }
+
     m_localPlayer->setId(playerId);
     g_game.setServerBeat(serverBeat);
     g_game.setCanReportBugs(canReportBugs);
 
     g_game.processLogin();
+
+    if (lightHour >= 0) {
+        g_lua.callGlobalField("g_game", "onLightHour", lightHour);
+    }
 }
 
 void ProtocolGame::parseBugReport(const InputMessagePtr& msg)
@@ -2918,7 +2934,7 @@ void ProtocolGame::parseTalk(const InputMessagePtr& msg)
 
 void ProtocolGame::parseChannelList(const InputMessagePtr& msg)
 {
-    const uint8_t channelListSize = msg->getU8();
+    const uint16_t channelListSize = g_game.getFeature(Otc::GamePSoulProtocol) ? msg->getU16() : msg->getU8();
     std::vector<std::tuple<uint16_t, std::string>> channelList;
 
     for (auto i = 0; i < channelListSize; ++i) {
@@ -3812,6 +3828,8 @@ void ProtocolGame::parseExtendedOpcode(const InputMessagePtr& msg)
 
     if (opcode == 0) {
         m_enableSendExtendedOpcode = true;
+        // The PSoul server sends this after the map description, i.e. after onGameStart.
+        g_lua.callGlobalField("g_game", "onExtendedOpcodeEnabled");
     } else if (opcode == 2) {
         parsePingBack(msg);
     } else {
@@ -4227,6 +4245,13 @@ CreaturePtr ProtocolGame::getCreature(const InputMessagePtr& msg, int type) cons
             unpass = static_cast<bool>(msg->getU8());
         }
 
+        bool localPlayerSummon = false;
+        bool attackable = true;
+        if (g_game.getFeature(Otc::GamePSoulProtocol)) {
+            localPlayerSummon = static_cast<bool>(msg->getU8());
+            attackable = static_cast<bool>(msg->getU8());
+        }
+
         if (g_game.getFeature(Otc::GameCreaturePaperdoll)) {
             uint8_t size = msg->getU8();
             for (uint8_t i = 0; i < size; ++i) {
@@ -4285,6 +4310,11 @@ CreaturePtr ProtocolGame::getCreature(const InputMessagePtr& msg, int type) cons
 
             if (icon > 0) {
                 creature->setIcon(icon);
+            }
+
+            if (g_game.getFeature(Otc::GamePSoulProtocol)) {
+                creature->setLocalPlayerSummon(localPlayerSummon);
+                creature->setAttackable(attackable);
             }
 
             if (creature == m_localPlayer && !m_localPlayer->isKnown()) {

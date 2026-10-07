@@ -250,7 +250,40 @@ namespace Proto
         GameServerStore = 251,
         GameServerStoreOffers = 252,
         GameServerStoreTransactionHistory = 253,
-        GameServerStoreCompletePurchase = 254
+        GameServerStoreCompletePurchase = 254,
+
+        // PSoul server family (GamePSoulProtocol): U8 sub-opcode, see protocolgameparsepsoul.cpp
+        GameServerPSoul = 255
+    };
+
+    enum GameServerPSoulOpcodes : uint8_t
+    {
+        GameServerPSoulMoveBarUpdate = 1,
+        GameServerPSoulMoveBarClose = 2,
+        GameServerPSoulMoveBarOpen = 3,
+        GameServerPSoulPokemonBarAdd = 4,
+        GameServerPSoulPokemonBarRemove = 5,
+        GameServerPSoulPokemonBarUpdate = 6,
+        GameServerPSoulPokemonBarOpen = 7,
+        GameServerPSoulPokemonBarClose = 8,
+        GameServerPSoulMoveCooldown = 9,
+        GameServerPSoulPokedexStatus = 10,
+        GameServerPSoulPokedexOpen = 11,
+        GameServerPSoulPokedexUpdate = 12,
+        GameServerPSoulTmChoose = 13,
+        GameServerPSoulStatusBarAdd = 14,
+        GameServerPSoulStatusBarRemove = 15,
+        GameServerPSoulStatusBarClear = 16,
+        GameServerPSoulPokedexInfo = 17,
+        GameServerPSoulCreatureJump = 18,
+        GameServerPSoulCreatureEffect = 19,
+        GameServerPSoulDollCaseStatus = 20,
+        GameServerPSoulDollCaseUpdate = 21,
+        GameServerPSoulSlotMachine = 22,
+        GameServerPSoulTip = 23,
+        GameServerPSoulPollWindow = 24,
+        GameServerPSoulPokemonLevelUp = 25,
+        GameServerPSoulLootList = 26
     };
 
     enum ClientOpcodes : uint8_t

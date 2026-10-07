@@ -291,6 +291,7 @@ controller:registerEvents(g_game, {
         if version >= 1525 then
             g_game.enableFeature(GameTacticsWithoutFightMode)
         end
-        
+
+        PokeNationProtocol.apply(version)
     end
 })

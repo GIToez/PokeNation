@@ -423,6 +423,7 @@ set(SOURCE_FILES
         client/protocolcodes.cpp
         client/protocolgame.cpp
         client/protocolgameparse.cpp
+        client/protocolgameparsepsoul.cpp
         client/protocolgamesend.cpp
         client/paperdoll.cpp
         client/paperdollmanager.cpp

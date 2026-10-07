@@ -1,0 +1,124 @@
+# Changes to OTClient Redemption in `client-pokenation/`
+
+`client-pokenation/` is OTClient Redemption 4.1 (baseline in
+[`REDEMPTION_BASELINE.md`](REDEMPTION_BASELINE.md)). This page lists **every** change made to the
+stock tree, why, and the legacy-client behaviour each one reproduces. Anything not listed here is
+stock Redemption. Packet layouts are in [`reference/OPCODES.md`](reference/OPCODES.md); the
+legacy client in `client/` is the behavioural reference and is not modified.
+
+Rule for new changes: PSoul-specific parsing is gated on the `GamePSoulProtocol` feature, so the
+tree still behaves like stock Redemption when the profile is off, and the change is added to this
+page in the same commit.
+
+---
+
+## 1. Protocol profile `psoul312`
+
+The PSoul engine speaks the Tibia 8.54 game protocol with PSoul extensions and requires the number
+**312** in both login packets (`server/src/resources.h`). Redemption rejects versions below 740 and
+derives message modes and features from the version, so the client runs as **8.54 internally**
+and writes 312 on the wire.
+
+| Item | Value | Where |
+|---|---|---|
+| Selection | explicit: `PokeNationConfig.protocolProfile = "psoul312"` in `init.lua`. No version detection | `client-pokenation/init.lua` |
+| Applied by | `PokeNationProtocol.apply(version)` at the end of `game_features` `onClientVersionChange` | `modules/gamelib/pokenation.lua`, `modules/game_features/features.lua` |
+| Internal versions | client version 854, protocol version 854 (things, message modes, 8.54 feature set) | `Servers_init` entry `protocol = 854` |
+| Wire version | `g_game.setWireProtocolVersion(312)`; written by the login-server packet (Lua) and the game login (C++) | `src/client/game.h`, `modules/gamelib/protocollogin.lua`, `src/client/protocolgamesend.cpp` |
+| OS id | `g_game.setCustomOs`: `0x14` Windows, `0x15` Linux, `0x16` Mac, `0x17` Android (`g_platform.isMobile()`) | `pokenation.lua` `osId()`; server `enums.h` |
+| RSA | OTServ key (`OTSERV_RSA`, same 309-digit modulus as the legacy client), forced by the profile | `pokenation.lua`, `modules/gamelib/const.lua` |
+| Wrong version | the profile is not applied and a warning is logged when the selected client version is not 854 | `pokenation.lua` |
+
+### 1.1 Features
+
+Stock `game_features` enables the 8.54 set (`GameLooktypeU16`, `GameMessageStatements`,
+`GameLoginPacketEncryption`, `GamePlayerAddons`, `GamePlayerStamina`, `GameNewFluids`,
+`GameMessageLevel`, `GamePlayerStateU16`, `GameNewOutfitProtocol`, `GameWritableDate`,
+`GameProtocolChecksum`, `GameAccountNames`, `GameDoubleFreeCapacity`, `GameChallengeOnLogin`,
+`GameMessageSizeCheck`, `GameTileAddThingWithStackpos`, `GameCreatureEmblems`, plus
+`GameSoul`, `GameLevelU16`, `GameAllowPreWalk`, `GameMapCache`). These match the legacy client's
+reads at 8.54 (legacy `game.cpp:1465-1506`, `protocolgame.cpp:59` first-message size check,
+`protocolgameparse.cpp:691` tile stack position). The profile changes:
+
+| Feature | Profile | Reason / legacy reference |
+|---|---|---|
+| `GamePSoulProtocol` (new, id 137) | on | gates every PSoul read below |
+| `GameMagicEffectU16` | on | server writes `U16` effect ids (`AddMagicEffect`); legacy forces it in `protocollogin.lua:29` |
+| `GameCreatureIcons` | on | server writes `U8 icon` for OTClient OS ids; legacy `protocollogin.lua:30` |
+| `GameSpritesU32` | on | legacy `data.otfi` `extended: true`; legacy `things.lua` forces it |
+| `GameSpritesAlphaChannel` | on | legacy `data.otfi` `transparency: true`; legacy `protocollogin.lua:31` |
+| `GamePlayerMarket` | on | backported 9.x market (§4); legacy `protocollogin.lua:32` |
+| `GameChargeableItems` | on | legacy enables it for 780–854 |
+| `GameBlueNpcNameColor`, `GameDiagonalAnimatedText` | on | legacy enables them always (display only) |
+| `GameFormatCreatureName` | **off** | legacy has it commented out; Pokémon names (`"Rattata [3]"`) stay as the server sends them |
+
+## 2. Login
+
+| Step | Change | Files |
+|---|---|---|
+| Login packet | `U16 os` (PokeNation id), `U16 312`; **no language byte** (the server reads it only for the legacy OS ids `0x0A..0x0C`, BUG-09) | `protocollogin.lua` |
+| Character list `0x64` | per character, under `GamePSoulProtocol`: `U16 level, U8 vocation, U16 looktype, 4×U8 colours, U8 addons, U8 n × (U16 number, string description)` into `character.level`, `.vocation`, `.outfit`, `.pokemonTeam` (the legacy field names) | `protocollogin.lua` `parseCharacterList` |
+| Poll flag | `U8` after the premium days into `account.hasPoll`, and `g_game.onPollAvailable(bool)` (legacy: `game_poll.doPreparePollIconShow`) | `protocollogin.lua` |
+| Game login challenge | stock Redemption echo (`U32 timestamp, U8 random`); the server validates it since BUG-68 | stock |
+| Self login `0x0A` | reads the PSoul `U16` light hour after `canReportBugs` and fires `g_game.onLightHour(minutes)` after `processLogin` (legacy `protocolgameparse.cpp:482-499`) | `src/client/protocolgameparse.cpp` `parseLogin` |
+
+## 3. Game packets
+
+| Packet | Change | Files |
+|---|---|---|
+| Creature (`0x61`/`0x62`) | after `unpass`: `U8 localPlayerSummon`, `U8 attackable`; stored on the creature, Lua `Creature:isLocalPlayerSummon()` / `isAttackable()` (legacy names) | `protocolgameparse.cpp` `getCreature`, `creature.h`, `luafunctions.cpp` |
+| `0xAB` channel list | `U16` count | `protocolgameparse.cpp` `parseChannelList` |
+| `0x83` magic effect | stock `GameMagicEffectU16` path (`U16`), enabled by the profile | stock |
+| `0x85`, `0x86`, `0xDD` | stock 8.54 paths match the server (`U8` missile, `U32 id + U8 colour` square, position + `U8` + string mark) | stock |
+| `0xFF` PSoul family | new dispatcher `ProtocolGame::parsePSoulMessage`, sub-opcodes 1–26, same payloads and the same `g_game` Lua events as the legacy client (table in OPCODES.md §5). Differences: the `U16` counts of `0x14` and `0x19` are read as `U16` (the legacy client truncates them to `uint8_t`, OPCODES.md §5); an unknown sub-opcode throws, so the parse error is logged with the packet dump instead of desynchronising silently | `src/client/protocolgameparsepsoul.cpp` (new), `protocolcodes.h`, `protocolgame.h`, `CMakeLists.txt`, `vc18/otclient.vcxproj` |
+| `0x12` jump / `0x13` creature effect | `creature->jump(20, 450)` / creature Lua `onEffect(effectId, var)` as in the legacy client | `protocolgameparsepsoul.cpp` |
+
+## 4. Extended opcodes
+
+| Id | Change | Files |
+|---|---|---|
+| 0 ACTIVATE | stock enables sending; additionally fires `g_game.onExtendedOpcodeEnabled()`. The PSoul server sends ACTIVATE after the map description, i.e. after `onGameStart`, so anything that sends `0x32` at game start must wait for this event | `protocolgameparse.cpp` `parseExtendedOpcode`; `ProtocolGame:isExtendedOpcodeEnabled()` binding in `protocolgame.h`, `luafunctions.cpp` |
+| 1 LOCALE | under the profile the payload is the numeric server language (`"0"` en, `"1"` pt, `"2"` es; any other locale sends `"0"`), sent on `onExtendedOpcodeEnabled` and on every locale change. Stock sends the locale name at `onGameStart` | `modules/client_locales/locales.lua`, `PokeNationProtocol.serverLanguageId` |
+
+Difference to the legacy client: the legacy locale files map `de`, `pl` and `sv` to id 2, which
+the server treats as Spanish. The new client sends English for them.
+
+Old flow (legacy, OS `0x0A..0x0C`): language byte in the login-server packet → `accounts.lang_id`.
+New flow (OS `0x14..0x17`): no byte at login; after game login the server sends ACTIVATE, the
+client answers `0x32` id 1 with `"0".."2"` → `player->setLanguage` + `accounts.lang_id`
+(`server/src/game.cpp` `parsePlayerExtendedOpcode`). Server validation is BUG-08.
+
+## 5. Assets (Stage A)
+
+The legacy `client/data/things/data.dat` and `data.spr` are used unchanged as
+`client-pokenation/data/things/854/Tibia.dat` / `Tibia.spr` (stock Redemption file names).
+`tools/stage_pokenation_assets.py` copies them (or hard-links with `--link`); the directory is
+git-ignored. CI pulls only the `data.spr` LFS object (cached) and stages before packaging.
+
+Not carried over yet: the legacy `things.otml` per-thing opacity table (creatures, effects,
+missiles, items at 0.7–0.9). Redemption has no equivalent loader; tracked as a UI parity item.
+
+## 6. Configuration (`init.lua`)
+
+| Item | Change |
+|---|---|
+| `Services.clientAssets.enabled` | `false`: never download CipSoft assets from GitHub `dudantas/tibia-client` |
+| `Servers_init` | single local entry `127.0.0.1:7564`, `protocol = 854`, no HTTP login, no authenticator (the login screen then shows a fixed server) |
+| `PokeNationConfig` | `protocolProfile = "psoul312"` |
+
+## 7. Verification
+
+`tools/pokenation_client_smoke.py` logs the built client into the local server under Xvfb through
+the normal login UI (mod `tools/pokenation_smoke/pn_smoke`, copied into a temporary run directory,
+never packaged). Results are in [`PHASE_3_TEST_MATRIX.md`](PHASE_3_TEST_MATRIX.md) §2 (rows C-xx).
+
+## 8. Known gaps (next steps)
+
+| Gap | Status |
+|---|---|
+| Market `0xF6`–`0xF9` payloads against Redemption's `parseMarketEnterOld` / detail / browse | not compared yet (migration order: markets last) |
+| Poll request/vote `0xFA` / `0xFB` client senders | not ported yet (legacy `protocolgamesend.cpp:853-874`) |
+| TV channel list and replay | not tested |
+| Pokémon UI modules (`game_pokebar`, `game_pokemoves`, `game_pokedex`, …) | not ported yet; the `g_game` events they listen to are already fired |
+| Stock Redemption modules that do not apply (e.g. `game_shop` sends extended opcode 201 at game start, logged as "extended opcodes are not enabled") | to be disabled for the profile |
+| Account Manager character entry without PSoul extras (server, OPCODES.md §2.2) | latent, `accountManager = false` |

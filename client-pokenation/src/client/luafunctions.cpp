@@ -354,6 +354,8 @@ void Client::registerLuaFunctions()
     g_lua.bindSingletonFunction("g_game", "getProtocolGame", &Game::getProtocolGame, &g_game);
     g_lua.bindSingletonFunction("g_game", "getProtocolVersion", &Game::getProtocolVersion, &g_game);
     g_lua.bindSingletonFunction("g_game", "setProtocolVersion", &Game::setProtocolVersion, &g_game);
+    g_lua.bindSingletonFunction("g_game", "getWireProtocolVersion", &Game::getWireProtocolVersion, &g_game);
+    g_lua.bindSingletonFunction("g_game", "setWireProtocolVersion", &Game::setWireProtocolVersion, &g_game);
     g_lua.bindSingletonFunction("g_game", "getClientVersion", &Game::getClientVersion, &g_game);
     g_lua.bindSingletonFunction("g_game", "setClientVersion", &Game::setClientVersion, &g_game);
     g_lua.bindSingletonFunction("g_game", "setCustomOs", &Game::setCustomOs, &g_game);
@@ -485,6 +487,7 @@ void Client::registerLuaFunctions()
     g_lua.registerClass<ProtocolGame, Protocol>();
     g_lua.bindClassStaticFunction<ProtocolGame>("create", [] { return std::make_shared<ProtocolGame>(); });
     g_lua.bindClassMemberFunction<ProtocolGame>("sendExtendedOpcode", &ProtocolGame::sendExtendedOpcode);
+    g_lua.bindClassMemberFunction<ProtocolGame>("isExtendedOpcodeEnabled", &ProtocolGame::isExtendedOpcodeEnabled);
 
     g_lua.registerClass<Container>();
     g_lua.bindClassMemberFunction<Container>("getItem", &Container::getItem);
@@ -633,6 +636,8 @@ void Client::registerLuaFunctions()
     g_lua.registerClass<Creature, Thing>();
     g_lua.bindClassStaticFunction<Creature>("create", [] { return std::make_shared<Creature>(); });
     g_lua.bindClassMemberFunction<Creature>("getId", &Creature::getId);
+    g_lua.bindClassMemberFunction<Creature>("isLocalPlayerSummon", &Creature::isLocalPlayerSummon);
+    g_lua.bindClassMemberFunction<Creature>("isAttackable", &Creature::isAttackable);
     g_lua.bindClassMemberFunction<Creature>("getMasterId", &Creature::getMasterId);
     g_lua.bindClassMemberFunction<Creature>("getName", &Creature::getName);
     g_lua.bindClassMemberFunction<Creature>("getHealthPercent", &Creature::getHealthPercent);

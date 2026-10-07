@@ -666,6 +666,8 @@ namespace Otc
         GameTaskboard = 134,
         GameProficiency = 135,
         GameTacticsWithoutFightMode = 136,
+        // PokeNation: PSoul protocol 312 extensions (docs/REDEMPTION_CHANGES.md)
+        GamePSoulProtocol = 137,
         LastGameFeature
     };
 

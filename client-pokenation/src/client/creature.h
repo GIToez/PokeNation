@@ -76,6 +76,10 @@ public:
     void setTypeTexture(const std::string& filename);
     void setIconTexture(const std::string& filename);
     void setPassable(const bool passable) { m_passable = passable; }
+    // PSoul creature extras (GamePSoulProtocol): the local player's own Pokemon, and whether the
+    // server lets the local player attack this creature.
+    void setLocalPlayerSummon(const bool localPlayerSummon) { m_localPlayerSummon = localPlayerSummon; }
+    void setAttackable(const bool attackable) { m_attackable = attackable; }
     void setMountShader(std::string_view name);
     void setStaticWalking(uint16_t v);
     void setIconsTexture(const std::string& filename, const Rect& clip, const uint16_t count);
@@ -144,6 +148,8 @@ public:
     ticks_t getWalkTicksElapsed() { return m_walkTimer.ticksElapsed(); }
 
     bool isPassable() const { return m_passable; }
+    bool isLocalPlayerSummon() const { return m_localPlayerSummon; }
+    bool isAttackable() const { return m_attackable; }
     bool isWalking() { return m_walking; }
 
     bool isRemoved() { return m_removed; }
@@ -357,6 +363,8 @@ private:
 
     bool m_shieldBlink{ false };
     bool m_passable{ false };
+    bool m_localPlayerSummon{ false };
+    bool m_attackable{ true };
     bool m_allowAppearWalk{ false };
     bool m_showTimedSquare{ false };
     bool m_showStaticSquare{ false };

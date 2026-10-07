@@ -7,11 +7,19 @@ local currentLocale
 
 function sendLocale(localeName)
     local protocolGame = g_game.getProtocolGame()
-    if protocolGame then
-        protocolGame:sendExtendedOpcode(ExtendedIds.Locale, localeName)
+    if not protocolGame then
+        return false
+    end
+    if g_game.getFeature(GamePSoulProtocol) then
+        -- The PSoul server takes a numeric language id ("0".."2") and only after ACTIVATE.
+        if not protocolGame:isExtendedOpcodeEnabled() then
+            return false
+        end
+        protocolGame:sendExtendedOpcode(ExtendedIds.Locale, tostring(PokeNationProtocol.serverLanguageId(localeName)))
         return true
     end
-    return false
+    protocolGame:sendExtendedOpcode(ExtendedIds.Locale, localeName)
+    return true
 end
 
 function createWindow()
@@ -58,6 +66,12 @@ function onGameStart()
     sendLocale(currentLocale.name)
 end
 
+function onExtendedOpcodeEnabled()
+    if g_game.getFeature(GamePSoulProtocol) then
+        sendLocale(currentLocale.name)
+    end
+end
+
 function onExtendedLocales(protocol, opcode, buffer)
     local locale = installedLocales[buffer]
     if locale and setLocale(locale.name) then
@@ -89,7 +103,8 @@ function init()
 
     ProtocolGame.registerExtendedOpcode(ExtendedIds.Locale, onExtendedLocales)
     connect(g_game, {
-        onGameStart = onGameStart
+        onGameStart = onGameStart,
+        onExtendedOpcodeEnabled = onExtendedOpcodeEnabled
     })
 end
 
@@ -108,7 +123,8 @@ function terminate()
         })
     end
     disconnect(g_game, {
-        onGameStart = onGameStart
+        onGameStart = onGameStart,
+        onExtendedOpcodeEnabled = onExtendedOpcodeEnabled
     })
 end
 
