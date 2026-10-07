@@ -377,6 +377,8 @@ private:
 
     // PSoul 0xFF family (protocolgameparsepsoul.cpp)
     void parsePSoulMessage(const InputMessagePtr& msg);
+    void parsePSoulMarketEnter(const InputMessagePtr& msg);
+    void parseMarketLeave(const InputMessagePtr& msg);
 
     // 12x
     void parseShowDescription(const InputMessagePtr& msg);

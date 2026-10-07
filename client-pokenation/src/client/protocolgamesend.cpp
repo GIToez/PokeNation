@@ -31,6 +31,7 @@
 
 #ifndef USE_PRECOMPILED_HEADERS
 #include <algorithm>
+#include <limits>
 #endif
 
 void ProtocolGame::onSend() {}
@@ -1454,7 +1455,12 @@ void ProtocolGame::sendMarketCreateOffer(const uint8_t type, const uint16_t item
         }
     }
     msg->addU16(amount);
-    msg->addU64(price);
+    if (g_game.getFeature(Otc::GamePSoulProtocol)) {
+        // server/src/protocolgame.cpp parseMarketCreateOffer reads a U32 price
+        msg->addU32(static_cast<uint32_t>(std::min<uint64_t>(price, std::numeric_limits<uint32_t>::max())));
+    } else {
+        msg->addU64(price);
+    }
     msg->addU8(anonymous);
     send(msg);
 }

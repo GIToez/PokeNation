@@ -7,7 +7,11 @@ challenge, light hour, ACTIVATE and LOCALE, creature extras, channel list, walki
 Screenshots (taken by the client itself; scrot only on timeout) and the client log land in the
 output directory. Linux only (Xvfb).
 
-  tools/pokenation_client_smoke.py [--client BIN] [--out DIR] [--account A --password P --character C] [--locale en|pt|es]
+  tools/pokenation_client_smoke.py [--client BIN] [--out DIR] [--account A --password P --character C] [--locale en|pt|es] [--market]
+
+--market (GM character with access 5 and a seeded depot, see docs/PHASE_3_TEST_MATRIX.md C-14)
+places the market NPC with /n, opens the market and runs enter -> create buy offer -> browse own
+offers -> cancel -> leave.
 
 Requires: the server running (tools/start_server.sh), Stage A assets staged
 (tools/stage_pokenation_assets.py), a built client (tools/build_pokenation_client.sh).
@@ -55,7 +59,8 @@ def main() -> int:
     parser.add_argument("--character", default="Tester")
     parser.add_argument("--locale", default=None)
     parser.add_argument("--display", default=":97")
-    parser.add_argument("--timeout", type=int, default=90)
+    parser.add_argument("--timeout", type=int, default=130)
+    parser.add_argument("--market", action="store_true", help="also run the market round trip (GM character)")
     args = parser.parse_args()
 
     binary = Path(args.client).resolve()
@@ -80,6 +85,8 @@ def main() -> int:
                PN_SMOKE_ACCOUNT=args.account, PN_SMOKE_PASSWORD=args.password, PN_SMOKE_CHARACTER=args.character)
     if args.locale:
         env["PN_SMOKE_LOCALE"] = args.locale
+    if args.market:
+        env["PN_SMOKE_MARKET"] = "1"
 
     xvfb = subprocess.Popen(["Xvfb", args.display, "-screen", "0", "1280x800x24", "-nolisten", "tcp"],
                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

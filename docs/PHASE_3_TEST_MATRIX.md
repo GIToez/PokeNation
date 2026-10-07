@@ -46,8 +46,8 @@ NPCs → market/social).
 |---|---|---|---|---|
 | Build (Linux) | PASS (Phase 2A CI) | PASS (stock Redemption 4.1, local and CI) | build | `tools/build_pokenation_client.sh` |
 | Starts (Linux, Xvfb) | PASS | PASS (stock: "Startup done :]") | client | packaged `PokeNation-Client-Linux.tar.gz` |
-| Build (Windows) | PASS (Phase 2A CI) | PASS (CI run 37563373089, build only; not run on Windows) | build | |
-| Build (Android) | n/a | PASS (CI run 37563373089, APK built; not installed on a device) | build | |
+| Build (Windows) | PASS (Phase 2A CI) | PASS (CI runs 37563373089 stock and 37566367616 with the psoul312 profile + Stage A assets, 124 MB zip; build only, not run on Windows) | build | |
+| Build (Android) | n/a | PASS (CI runs 37563373089 and 37566367616, 125 MB APK artifact with Stage A assets; not installed on a device) | build | |
 
 ### 2.1 PokeNation client against the server (Phase 3A, step by step)
 
@@ -71,9 +71,10 @@ round trip (two extra checks). Last run without a poll: `RESULT PASS 10/10`; wit
 | C-08 | `0xFF 0x0A` Pokédex status | PASS | 386 entries received; no Pokédex UI yet (p5) |
 | C-09 | Walk | PASS | south step `3307,301,7 → 3307,302,7` accepted (`04-after-walk.png`) |
 | C-10 | Logout | PASS | `onGameEnd` |
-| C-11 | Pokémon bar, moves, summon, battle, catch, NPC, market | NOT TESTED | Pokémon UI modules not ported yet |
+| C-11 | Pokémon bar, moves, summon, battle, catch, NPC dialogue windows | NOT TESTED | Pokémon UI modules not ported yet |
 | C-12 | Legacy GUI client against the Phase 3 server | NOT TESTED | planned for the Phase 3A comparison |
 | C-13 | Polls: charlist poll flag, `0xFA` request, `0xFF 0x18` window, `0xFB` vote | PASS (packets; no poll UI yet) | test polls inserted by SQL (`text_mode` 0 with 3 options, then `text_mode` 1). Option poll: `hasPoll=true`, window "PokeNation smoke poll: favourite starter?" with options 1–3, vote → `poll_votes (1, 2, 1)`. Text poll: vote → `poll_texts (2, 2, 'pn-smoke text vote')`. Test rows deleted and the server restarted afterwards (BUG-76); the next run showed `hasPoll=false`, 10/10 |
+| C-14 | Market packets: `0xF6` enter, C→S create offer, `0xF9` item browse, C→S browse own offers, C→S cancel | PASS (packets; market window not verified) | `--character "GM Admin" --market`, seed: `players.balance = 12345` for GM Admin, `player_depotitems` locker 2589 (depot 0) holding 5 red apples (server id 2674, client id 3585, has a ware id). Mod places Jaron Jewell with `/n` (no spawn on the map), `hi`, `market` in the NPC channel. Enter: balance 12345, 5 apples. Buy offer 1×3585 at 150: new balance 12175 (150 + minimum fee 20) and the offer listed by "GM Admin". Own offers (`0xFFFE`): the offer. Cancel: balance 12325, `market_history` row state 1. 14/14. Seed rows removed and server restarted afterwards. By source comparison, the stock `0xF6` parser (U32 balance + vocation byte at 854) and the U64 create price do not match the server; the stock client was not run against it |
 
 Known non-fatal log line: `Unable to send extended opcode 201` from the stock Redemption `game_shop`
 module (layer: client Lua/UI); it will be disabled with the other inapplicable stock modules.

@@ -634,11 +634,16 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
                     parsePlayerInventory(msg);
                     break;
                 case Proto::GameServerMarketEnter:
-                    if (g_game.getClientVersion() >= 1281) {
+                    if (g_game.getFeature(Otc::GamePSoulProtocol)) {
+                        parsePSoulMarketEnter(msg);
+                    } else if (g_game.getClientVersion() >= 1281) {
                         parseMarketEnter(msg);
                     } else {
                         parseMarketEnterOld(msg);
                     }
+                    break;
+                case Proto::GameServerMarketLeave:
+                    parseMarketLeave(msg);
                     break;
                 case Proto::GameServerMarketDetail:
                     parseMarketDetail(msg);

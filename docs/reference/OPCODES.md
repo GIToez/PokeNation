@@ -205,6 +205,8 @@ Client-side count truncation (new, see FULL_SOURCE_AUDIT §10):
 | C→S | `0xF7` cancel | `U32 timestamp, U16 counter` | `:867` | same | no |
 | C→S | `0xF8` accept | `U32 timestamp, U16 counter, U16 amount` | `:868` | same | no |
 
+PokeNation client: see §10 (two shape fixes and one missing handler versus stock Redemption).
+
 Client opcode enums: `protocolcodes.h:145-148` (S→C 246-249) and `:276-280` (C→S 244-248).
 Market config keys (`marketOfferDuration`, `premiumToCreateMarketOffer`, …) are read by
 `configmanager.cpp:301-304` but absent from `config.lua` (BUG-52).
@@ -311,6 +313,6 @@ stock Redemption are listed one by one in [`../REDEMPTION_CHANGES.md`](../REDEMP
 | `0xAB` channel list `U16` count | `parseChannelList` | same, under `GamePSoulProtocol` | yes (C-07) |
 | `0xFF` family | `protocolgameparse.cpp:62-183` | `protocolgameparsepsoul.cpp` (throws on unknown sub-id) | `0x0A` yes (C-08); others not yet |
 | Ext opcode 0 / 1 | §8 | §8 | yes (C-05) |
-| Market `0xF4-0xF9` | `marketprotocol.lua` | stock Redemption `marketprotocol.lua` | **not compared yet** |
+| Market `0xF4-0xF9` | `marketprotocol.lua` | `0xF6` enter: `parsePSoulMarketEnter` (`U64` balance, no vocation byte; stock reads `U32` + vocation at 854); `0xF7` leave: new `parseMarketLeave`; C→S create: `U32` price under the profile; the rest stock | yes: enter, create, browse item, browse own offers, cancel (C-14); `0xF7` S→C and accept not exercised |
 | Polls `0xFA/0xFB` + `0xFF 0x18` | `protocolgamesend.cpp:853-874` | `modules/gamelib/pokenation.lua` (`g_game.requestPollWindow/doPollVote/doPollVoteText`) | yes, option and text mode (C-13) |
 | TV, map marks `0xDD` | C++ | stock Redemption (shapes match at 854) | no |

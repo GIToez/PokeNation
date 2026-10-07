@@ -72,6 +72,10 @@ reads at 8.54 (legacy `game.cpp:1465-1506`, `protocolgame.cpp:59` first-message 
 | `0x85`, `0x86`, `0xDD` | stock 8.54 paths match the server (`U8` missile, `U32 id + U8 colour` square, position + `U8` + string mark) | stock |
 | `0xFF` PSoul family | new dispatcher `ProtocolGame::parsePSoulMessage`, sub-opcodes 1–26, same payloads and the same `g_game` Lua events as the legacy client (table in OPCODES.md §5). Differences: the `U16` counts of `0x14` and `0x19` are read as `U16` (the legacy client truncates them to `uint8_t`, OPCODES.md §5); an unknown sub-opcode throws, so the parse error is logged with the packet dump instead of desynchronising silently | `src/client/protocolgameparsepsoul.cpp` (new), `protocolcodes.h`, `protocolgame.h`, `CMakeLists.txt`, `vc18/otclient.vcxproj` |
 | `0x12` jump / `0x13` creature effect | `creature->jump(20, 450)` / creature Lua `onEffect(effectId, var)` as in the legacy client | `protocolgameparsepsoul.cpp` |
+| `0xF6` market enter | under the profile `parsePSoulMarketEnter`: `U64 balance, U8 offerCount, U16 n, n×(U16 itemId, U16 count)` as the server writes it (stock `parseMarketEnterOld` reads `U32 balance + U8 vocation` below version 981/950, which would desync); vocation passed to Lua is the local player's | `protocolgameparsepsoul.cpp`, `protocolgameparse.cpp` dispatch |
+| `0xF7` market leave | stock had no handler (marked unused); now an empty packet that fires `g_game.onMarketLeave`, for every version (Tibia 9.x semantics). The PSoul server sends it when a non-premium player creates an offer on a premium-only market | `protocolgameparsepsoul.cpp` `parseMarketLeave` |
+| C→S `0xF6` create offer | under the profile the price is written as `U32` (server `parseMarketCreateOffer`), clamped; stock writes `U64` | `protocolgamesend.cpp` `sendMarketCreateOffer` |
+| `0xF8` detail, `0xF9` browse, C→S `0xF4`/`0xF5`/`0xF7`/`0xF8` | stock paths at 854 already match the server (15 attribute strings, `U32` statistics, `U16` browse var, `U32` prices) | stock |
 | C→S `0xFA` poll request, `0xFB` poll vote (`U8 optionId` or `string text`) | written in Lua with `OutputMessage` + `ProtocolGame:send`, exposed as `g_game.requestPollWindow()`, `g_game.doPollVote(id)`, `g_game.doPollVoteText(text)` (the legacy C++ binding names, so the legacy `game_poll` module can be ported unchanged). Only sent while the profile is active; the option id is range-checked | `modules/gamelib/pokenation.lua` |
 
 ## 4. Extended opcodes
@@ -117,7 +121,7 @@ never packaged). Results are in [`PHASE_3_TEST_MATRIX.md`](PHASE_3_TEST_MATRIX.m
 
 | Gap | Status |
 |---|---|
-| Market `0xF6`–`0xF9` payloads against Redemption's `parseMarketEnterOld` / detail / browse | not compared yet (migration order: markets last) |
+| Market window (`game_market`, Redemption's modern UI) with 8.54 things | packets verified (C-14), the window itself was not seen opening in the smoke screenshot; UI parity with the legacy market comes with the UI port |
 | Poll window UI (`game_poll`) | packets done and verified (C-13); the UI module is ported with the Pokémon UI modules |
 | TV channel list and replay | not tested |
 | Pokémon UI modules (`game_pokebar`, `game_pokemoves`, `game_pokedex`, …) | not ported yet; the `g_game` events they listen to are already fired |

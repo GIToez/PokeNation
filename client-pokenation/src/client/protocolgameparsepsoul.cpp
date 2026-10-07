@@ -27,6 +27,7 @@
 
 #include "creature.h"
 #include "game.h"
+#include "localplayer.h"
 #include "map.h"
 #include "protocolcodes.h"
 #include "protocolgame.h"
@@ -210,4 +211,32 @@ void ProtocolGame::parsePSoulMessage(const InputMessagePtr& msg)
             // The sub-opcode decides the payload length; skipping it would desync the stream.
             throw stdext::exception("[ProtocolGame::parsePSoulMessage] unknown PSoul sub-opcode {}", subOpcode);
     }
+}
+
+// PSoul market (server/src/protocolgame.cpp sendMarketEnter): the 9.x backport writes a U64
+// balance and no vocation byte, unlike the 8.x/9.x layout parseMarketEnterOld reads below 981.
+void ProtocolGame::parsePSoulMarketEnter(const InputMessagePtr& msg)
+{
+    const uint64_t balance = msg->getU64();
+    const uint8_t offers = msg->getU8();
+    const uint16_t itemsSent = msg->getU16();
+
+    std::vector<std::vector<uint16_t>> depotItems;
+    depotItems.reserve(itemsSent);
+    for (uint32_t i = 0; i < itemsSent; ++i) {
+        const uint16_t itemId = msg->getU16();
+        const uint16_t count = msg->getU16();
+        depotItems.push_back({ itemId, count });
+    }
+
+    const auto& localPlayer = g_game.getLocalPlayer();
+    const int vocation = localPlayer ? localPlayer->getVocation() : -1;
+    g_lua.callGlobalField("g_game", "onMarketEnter", depotItems, offers, balance, vocation);
+}
+
+// Empty 9.x packet; the PSoul server sends it from Game::playerCreateMarketOffer when the market
+// is premium-only and the player is not.
+void ProtocolGame::parseMarketLeave(const InputMessagePtr&)
+{
+    g_lua.callGlobalField("g_game", "onMarketLeave");
 }
