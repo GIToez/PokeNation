@@ -3,7 +3,7 @@
 --   * trainer skill change (catching, fishing, headbutting);
 --   * Pokemon level up, 0xFF 0x19: Pokemon number, new level, U16 count + U16 move icon ids.
 -- The C++ parser reads the move count as U16 (the legacy client truncated it to U8, BUG-60), and the
--- popup shows every move (BUG-59): up to MAX_MOVE_ROWS as named rows, more as one icon grid with the
+-- popup shows every move: up to MAX_MOVE_ROWS as named rows, more as one icon grid with the
 -- names in tooltips (16 moves = two rows). Popups stack in one fit-children container instead of
 -- fixed per-kind margins, so simultaneous level / skill / Pokemon popups never overlap.
 -- The legacy ADVANCES table repeated the keys 75 and 85, so Lua kept only the last entry; both
