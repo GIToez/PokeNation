@@ -53,8 +53,8 @@ Upstream builds with CMake presets and vcpkg in manifest mode (`CMakePresets.jso
 | Platform | Result | Notes |
 |---|---|---|
 | Linux x64 | **builds and starts** (2026-10-07, local, Ubuntu 24.04, GCC 14.2, CMake 3.28, Ninja) | `tools/build_pokenation_client.sh`; 34 vcpkg ports built from source (release-only triplet `x64-linux-release`). The stock binary started under Xvfb + Mesa llvmpipe and logged `OTClient - Redemption 4.x rev 0.000 (desenv)` and `Startup done :]` |
-| Windows x64 | CI only (`.github/workflows/pokenation-client.yml`); result recorded below once the first run finishes | no Windows machine available locally |
-| Android arm64 | CI only (same workflow) | no Android SDK locally |
+| Windows x64 | **builds** in CI (`.github/workflows/pokenation-client.yml`, run 37563373089, `PokeNation-Client-Windows-x64.zip` produced) | not run on Windows: no Windows machine available locally |
+| Android arm64 | **builds** in CI (same run, `PokeNation-Android.apk` produced) | not installed on a device or emulator yet |
 
 ## 4. How PokeNation builds it
 
@@ -72,7 +72,10 @@ the APK's `assets/data.zip`. The legacy client's `dist/<platform>/client` and
 
 CI (`.github/workflows/pokenation-client.yml`) runs only when the new client or its tools change
 and is independent of `build.yml`, so a new-client failure cannot remove the server or legacy
-client artifacts. vcpkg binaries are cached between runs as files archives.
+client artifacts. vcpkg binaries are cached between runs as files archives. Each job also stages
+the Stage A assets (`git lfs pull --include client/data/things/data.spr`, cached on the LFS object
+id, then `tools/stage_pokenation_assets.py`) so the packages and the APK carry
+`data/things/854/Tibia.dat/.spr`.
 
 `VCPKG_ROOT` defaults to `~/.cache/pokenation/vcpkg` (cloned at the baseline above on first use).
 Built vcpkg packages are cached in `~/.cache/pokenation/vcpkg-archives` (or wherever
