@@ -661,6 +661,13 @@ function onMarketEnter(items, offerCount, balance, vocation)
         end
     end
 
+    -- Pre-10.x servers (PSoul included) only report the bank balance in the enter packet;
+    -- there is no resource-balance packet to fill it in later.
+    local player = g_game.getLocalPlayer()
+    if player and balance and balance >= 0 then
+        player:setResourceBalance(ResourceTypes.BANK_BALANCE, balance)
+    end
+
     show()
     marketWindow:focus()
     onResourcesBalanceChange(0, 0, 0)
