@@ -56,11 +56,21 @@ local function fail(reason)
 end
 
 -- Reads the GL framebuffer of the next frame into the user write dir; the runner collects it.
+local LOGIN_BOX_TITLES = { ['Message of the day'] = true, ['For Your Information'] = true }
+
+-- The MOTD / login advice boxes are created by displayInfoBox with generated ids and would cover every later screenshot.
+local function closeLoginBoxes()
+    for _, child in ipairs(g_ui.getRootWidget():getChildren()) do
+        if child:getStyleName() == 'MessageBoxWindow' and child.title and LOGIN_BOX_TITLES[child.title:getText()] then
+            log('closing message box "%s"', child.title:getText())
+            child:destroy()
+        end
+    end
+end
+
 local function shot(name)
-    -- The server MOTD box can pop up late and would cover every later screenshot.
-    local motd = g_ui.getRootWidget():recursiveGetChildById('motdWindow')
-    if motd and name ~= '03-world' then
-        motd:destroy()
+    if name ~= '03-world' then
+        closeLoginBoxes()
     end
     g_app.doScreenshot('/pn-smoke-' .. name .. '.png')
     log('SHOT %s', name)
@@ -293,6 +303,9 @@ end
 -- Catching needs ball_counter tries for Rattata (#19); the runner seeds them with PN_SMOKE_POKEMON=1.
 local EMPTY_POKEBALL_CLIENT_ID = 11118 -- server item 12157 (empty poke ball)
 local WILD_POKEMON = 'Rattata'
+local LEVEL_UP_TARGET = 'Magikarp' -- harmless; one kill levels the level-1 Rattata created by /mypokemon
+local POTION_CLIENT_ID = 11205 -- server item 12244 (Pokemon Health Potion)
+local TM_SERVER_ID, TM_CLIENT_ID = 29170, 27925 -- TM Facade: every Pokemon from level 40 can learn it
 local recentTexts = {}
 
 local function sequence(steps, done)
@@ -306,9 +319,10 @@ local function sequence(steps, done)
     run(1)
 end
 
-local function findWild()
+local function findWild(name)
+    name = name or WILD_POKEMON
     for _, creature in ipairs(g_map.getSpectators(g_game.getLocalPlayer():getPosition(), false)) do
-        if creature:getName():find('^' .. WILD_POKEMON) and not creature:isLocalPlayerSummon() and not creature:isPlayer() then
+        if creature:getName():find('^' .. name) and not creature:isLocalPlayerSummon() and not creature:isPlayer() then
             return creature
         end
     end
@@ -332,24 +346,44 @@ local function pokemonStep(nextStep)
         check('Pokemon UI modules loaded', false)
         return nextStep()
     end
-    local summoned, wild, wildPos, teamBefore, switchedTo
+    local summoned, wild, wildPos, teamBefore, switchedTo, levelSlot
     local caught = false
     local sawCooldown = false
     local catchTries = 0
 
-    local function healthySlot()
+    local function slotByName(name)
         for _, slot in ipairs(bar.getSlots()) do
-            if not slot.fainted then
+            if slot.name == name and not slot.fainted then
                 return slot
             end
         end
     end
 
-    local function fight(done)
-        local deadline = g_clock.millis() + 20000
+    -- Containers (corpses) near the last position of the wild Pokemon, closest first.
+    local function findCorpse()
+        if not wildPos then
+            return nil
+        end
+        for radius = 0, 2 do
+            for dx = -radius, radius do
+                for dy = -radius, radius do
+                    if math.max(math.abs(dx), math.abs(dy)) == radius then
+                        local tile = g_map.getTile({ x = wildPos.x + dx, y = wildPos.y + dy, z = wildPos.z })
+                        local thing = tile and tile:getTopUseThing()
+                        if thing and thing:isItem() and thing:isContainer() then
+                            return thing
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    local function fight(done, name, timeoutMs)
+        local deadline = g_clock.millis() + (timeoutMs or 25000)
         local index = 0
         local function hit()
-            local creature = findWild()
+            local creature = findWild(name)
             if not creature or creature:isDead() or creature:getHealthPercent() <= 0 then
                 return scheduleEvent(done, 1500)
             end
@@ -375,7 +409,8 @@ local function pokemonStep(nextStep)
     end
 
     local function catchLoop(done)
-        if caught or catchTries >= 6 then
+        -- Each ball is a 1-in-2 roll for the seeded Rattata, so 10 tries make a false failure ~0.1% likely.
+        if caught or catchTries >= 10 then
             return done()
         end
         catchTries = catchTries + 1
@@ -393,8 +428,7 @@ local function pokemonStep(nextStep)
             end
             wildPos = wild:getPosition()
             fight(function()
-                local tile = wildPos and g_map.getTile(wildPos)
-                local corpse = tile and tile:getTopUseThing()
+                local corpse = findCorpse()
                 log('catch try %d: corpse=%s at %d,%d,%d', catchTries, corpse and tostring(corpse:getId()) or 'none',
                     wildPos.x, wildPos.y, wildPos.z)
                 if catchTries == 1 then
@@ -416,6 +450,13 @@ local function pokemonStep(nextStep)
 
     sequence({
         function()
+            if not slotByName('Venusaur') then
+                PokeNation.say('/mypokemon Venusaur,100')
+            end
+            scheduleEvent(function() PokeNation.say('/mypokemon Rattata,1') end, 1500)
+            return 4000
+        end,
+        function()
             local console = modules.game_console
             if console and console.channelsWindow then
                 console.channelsWindow:destroy()
@@ -432,7 +473,8 @@ local function pokemonStep(nextStep)
                 log('hud: health=%s energy=%s levels=%s respect=%s balls=%s', values.health, values.energy, values.levels, values.respect, values.balls)
             end
             shot('10-teambar')
-            summoned = healthySlot()
+            summoned = slotByName('Venusaur')
+            levelSlot = slotByName('Rattata')
             if not summoned then
                 check('summon', false, 'no healthy Pokemon')
                 return 500
@@ -497,27 +539,99 @@ local function pokemonStep(nextStep)
                             string.format('%s, %d entries, %d seen, %d caught, %d moves', s.name, s.entries, s.seen, s.caught, s.moves))
                         shot('15-pokedex')
                         modules.game_pokedex.hide()
-                        local newSlot = bar.getSlots()[teamBefore + 1]
-                        switchedTo = newSlot and newSlot.fastcall
+                        bar.toggle(summoned.fastcall)
+                        return 3000
+                    end,
+                    function()
+                        check('ball-slot use returns the Pokemon and dims the move bar', bar.getInUse() == nil and not movesModule.isActive(),
+                            'inUse=' .. tostring(bar.getInUse()))
+                        shot('16-returned')
+                        PokeNation.say('/i ' .. TM_SERVER_ID)
+                        return 2000
+                    end,
+                    function()
+                        local ball = g_game.getLocalPlayer():getInventoryItem(InventorySlotFeet)
+                        if ball then
+                            g_game.useInventoryItemWith(TM_CLIENT_ID, ball)
+                        end
+                        return 3000
+                    end,
+                    function()
+                        local tm = modules.game_tmchoose
+                        local state = tm.getState()
+                        check('TM chooser opened (0xFF 0x0D)', state.visible and state.moves > 0 and state.tm ~= nil,
+                            string.format('%d moves, tm icon %s', state.moves, tostring(state.tm)))
+                        local first = tm.getWindow():getChildById('moves'):getChildren()[1]
+                        if first and first.onClick then
+                            first.onClick(first)
+                        end
+                        shot('17-tm-confirm')
+                        tm.cancel()
+                        tm.cancel()
+                        check('TM chooser cancel closes without /tc', not tm.getState().visible)
+                        switchedTo = levelSlot and levelSlot.fastcall
                         if switchedTo then
                             bar.toggle(switchedTo)
                         end
                         return 4000
                     end,
                     function()
-                        check('/cp switch to the caught Pokemon', switchedTo ~= nil and bar.getInUse() == switchedTo and #movesModule.getMoves() > 0,
+                        check('/cp summon the level 1 Pokemon', switchedTo ~= nil and bar.getInUse() == switchedTo and #movesModule.getMoves() > 0,
                             string.format('inUse=%s, %d moves', tostring(bar.getInUse()), #movesModule.getMoves()))
-                        shot('16-switched')
-                        bar.toggle(bar.getInUse())
-                        return 3000
+                        shot('18-caught-summoned')
+                        for _, creature in ipairs(g_map.getSpectators(g_game.getLocalPlayer():getPosition(), false)) do
+                            if creature:isLocalPlayerSummon() then
+                                g_game.useInventoryItemWith(POTION_CLIENT_ID, creature)
+                            end
+                        end
+                        return 2500
                     end,
                     function()
-                        check('ball-slot use returns the Pokemon and dims the move bar', bar.getInUse() == nil and not movesModule.isActive(),
-                            'inUse=' .. tostring(bar.getInUse()))
-                        shot('17-returned')
-                        return 1000
+                        local statuses = modules.game_statusbar.getStatuses()
+                        check('potion status icon with countdown (0xFF 0x0E)', #statuses > 0,
+                            #statuses > 0 and string.format('%s, %ds', tostring(statuses[1].name), statuses[1].remaining) or 'none')
+                        local statusPanel = modules.game_statusbar.getWidget()
+                        local rect = statusPanel:getRect()
+                        check('status icon drawn', statusPanel:isVisible() and rect.width > 0 and rect.height > 0,
+                            string.format('%dx%d at %d,%d', rect.width, rect.height, rect.x, rect.y))
+                        shot('19-statusbar')
+                        recentTexts = {}
+                        PokeNation.say('/autoloot')
+                        return 2000
+                    end,
+                    function()
+                        if textSeen('Auto Loot OFF') then
+                            PokeNation.say('/autoloot')
+                        end
+                        recentTexts = {}
+                        PokeNation.say('/m ' .. LEVEL_UP_TARGET)
+                        return 2000
+                    end,
+                    function()
+                        fight(function()
+                            local corpse = findCorpse()
+                            if corpse then
+                                g_game.use(corpse)
+                            end
+                            scheduleEvent(function()
+                                local loot = modules.game_lootlist.getState()
+                                check('autoloot list strip (0xFF 0x1A)', loot.received > 0, loot.received .. ' entries')
+                                local levelUp = modules.game_advanceeffect.getLastPokemonLevelUp()
+                                check('Pokemon level-up popup (0xFF 0x19)', levelUp ~= nil,
+                                    levelUp and string.format('#%s level %s, %s new moves', tostring(levelUp.number), tostring(levelUp.level), tostring(levelUp.moves)) or 'no level-up')
+                                shot('21-loot')
+                                PokeNation.say('/autoloot')
+                                bar.toggle(bar.getInUse())
+                                scheduleEvent(function()
+                                    check('caught Pokemon returned', bar.getInUse() == nil)
+                                    shot('22-returned')
+                                    nextStep()
+                                end, 3000)
+                            end, 1200)
+                        end, LEVEL_UP_TARGET, 60000)
+                        return 1
                     end
-                }, nextStep)
+                }, function() end)
             end)
             return 1
         end
@@ -541,10 +655,7 @@ local function afterWorld()
     log('spectators=%d ownSummons=%d', counters.creatures, counters.ownSummons)
     check('creature descriptions parsed', counters.creatures >= 1)
     shot('03-world')
-    local motd = g_ui.getRootWidget():recursiveGetChildById('motdWindow')
-    if motd then
-        motd:destroy()
-    end
+    closeLoginBoxes()
 
     g_game.requestChannels()
     g_game.requestQuestLog()
@@ -615,6 +726,16 @@ local handlers = {
         check('0xF1 quest line', true, string.format('quest %d, %d missions', questId, #missions))
     end,
     onPollWindow = onPollWindow,
+    onPokemonLevelUp = function(number, level, moves)
+        log('pokemon level-up #%d level %d, %d moves', number, level, #moves)
+        scheduleEvent(function()
+            local popup = modules.game_advanceeffect.getPopup('pokemon')
+            local rect = popup and popup:getRect()
+            check('Pokemon level-up popup drawn', popup ~= nil and popup:isVisible() and rect.height > 0 and rect.width > 0,
+                rect and string.format('%dx%d at %d,%d, opacity %.2f', rect.width, rect.height, rect.x, rect.y, popup:getOpacity()) or 'no popup')
+            shot('20-levelup')
+        end, 1200)
+    end,
     onMarketEnter = onMarketEnter,
     onTalk = function(name, level, mode, text)
         if market.stage then
