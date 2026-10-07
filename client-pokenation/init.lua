@@ -89,7 +89,9 @@ PokeNationConfig = {
         "game_prey", "game_imbuing", "game_imbuementtracker", "game_forge", "game_wheel", "game_cyclopedia",
         "game_highscore", "game_stash", "game_quickloot", "game_rewardwall", "game_blessing", "game_taskboard",
         "game_tutorial", "game_inspect", "game_proficiency", "game_analyser", "game_lootsplitter",
-        "game_paperdolls", "game_playermount", "game_unjustifiedpoints", "game_spelllist"
+        "game_paperdolls", "game_playermount", "game_unjustifiedpoints", "game_spelllist",
+        -- mods/: bundled OTClientV8 bot (automation, not allowed on PokeNation) and its button window
+        "game_bot", "game_buttons"
     },
     developerModules = { "client_debug_info", "client_terminal", "dev_otui", "game_htmlsample" }
 }
