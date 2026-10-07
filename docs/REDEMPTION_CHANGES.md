@@ -130,7 +130,7 @@ how to add or remove one is in [`reference/CLIENT_MODULES.md`](reference/CLIENT_
 | `ModuleManager::setModuleDisabled / isModuleDisabled / getDisabledModules` (Lua `g_modules.*`) | a disabled module must stay unloaded on every path (autoload, `ensureModuleLoaded`, `load-later`, dependency) without deleting or editing its `.otmod`; the set survives rediscovery | `src/framework/core/modulemanager.{h,cpp}`, `src/framework/luafunctions.cpp` |
 | `Module::load` returns early for a disabled module | single check point for all load paths | `src/framework/core/module.cpp` |
 | Lua `Module:isEnabled()` binding | lets tests and tools tell "disabled" from "failed to load" | `src/framework/luafunctions.cpp` |
-| `mainpanel.lua` `toggleStore` | nil-checks `modules.game_store` / `modules.game_shop` (the store is disabled); button text "PokeNation Shop" | `modules/game_mainpanel/mainpanel.lua` |
+| `mainpanel.lua` `toggleStore` | nil-checks `modules.game_store` / `modules.game_shop` (the store is disabled); tooltip "PokeNation Shop" (the word "Store" is part of the button image `images/options/store_large.png`, not yet replaced) | `modules/game_mainpanel/mainpanel.lua` |
 
 ## 7. Pokémon UI and repurposed stock modules
 
