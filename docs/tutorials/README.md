@@ -63,6 +63,7 @@ Unless a tutorial says otherwise, paths are relative to `server/`, except paths 
 |----------|----------------|
 | [add-command.md](add-command.md) | Add a chat command (talkaction), for players or GMs with an access level (model: `/autoloot`) |
 | [add-client-asset.md](add-client-asset.md) | Add a client image, sprite or item graphic, and the rule that the legacy client is a frozen reference |
+| [add-shop-product.md](add-shop-product.md) | Add a PokeNation Shop product (Soul Coins): one server catalog entry, grant types, price rules, testing |
 | [database-changes.md](database-changes.md) | Change the database safely: schema files, `ALTER TABLE` on existing databases, item/player data, backups |
 | [CHECKLISTS.md](CHECKLISTS.md) | All dependency checklists in one place, for reviewing a change before it is committed |
 
