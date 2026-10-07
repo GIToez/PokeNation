@@ -4,7 +4,9 @@
 Requires a database freshly initialised from the seed (tools/init_dev_database.sh --reset)
 because it plays the new-player path of the seeded character "Trainer":
 
-  1. login of every seeded account (admin, player) and rejection of a wrong password
+  1. login of every seeded account (admin, player) and rejection of a wrong password; the
+     login-protocol guards: out-of-range language byte (BUG-08), PokeNation client OS without a
+     language byte (BUG-09), wrong login challenge (BUG-68), ACTIVATE/LOCALE extended opcodes
   2. Trainer enters the game; GM Admin teleports him to Professor Oak
   3. Oak gives the Charmander starter
   4. GM Admin teleports Trainer outside the Pewter protection zone and spawns a wild Magikarp
@@ -75,6 +77,20 @@ def main():
     check("login player/player lists Trainer", "'Trainer'" in out, out[-300:])
     out = probe(a.host, "login", "--account", "admin", "--password", "not-the-password")
     check("wrong password is rejected", "Invalid password" in out, out[-300:])
+    out = probe(a.host, "login", "--account", "admin", "--password", "admin", "--lang", "99")
+    check("out-of-range language byte is ignored (BUG-08)", "'GM Admin'" in out, out[-300:])
+    out = probe(a.host, "--os", "0x14", "login", "--account", "admin", "--password", "admin")
+    check("PokeNation client OS logs in without a language byte (BUG-09)",
+          "'GM Admin'" in out and "level=100" in out, out[-300:])
+    out = probe(a.host, "enter", "--account", "admin", "--password", "admin", "--character", "GM Admin",
+                "--settle", "1.5", "--bad-challenge")
+    check("wrong login challenge is refused (BUG-68)", "<< in game:" not in out, out[-300:])
+    out = probe(a.host, "--os", "0x14", "enter", "--account", "admin", "--password", "admin",
+                "--character", "GM Admin", "--settle", "1.5", "-v",
+                "--ext", "1:9", "--ext", "1:xx", "--ext", "1:1", "--ext", "1:0", "--say", "/online")
+    check("PokeNation client gets ACTIVATE and survives malformed LOCALE opcodes",
+          "extended opcode 0: ''" in out and "<< in game:" in out and "connection closed" not in
+          out.split(">> logout")[0], out[-300:])
 
     trainer_args = [
         "enter", "--account", "player", "--password", "player", "--character", "Trainer",

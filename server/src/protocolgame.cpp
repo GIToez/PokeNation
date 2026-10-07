@@ -21,6 +21,7 @@
 #include <iostream>
 
 #include "protocolgame.h"
+#include "extendedopcodes.h"
 #include "textlogger.h"
 
 #include "waitlist.h"
@@ -301,6 +302,8 @@ bool ProtocolGame::login(const std::string& name, uint32_t id, const std::string
 		
 		if(player->isUsingOtclient()) {
             player->registerCreatureEvent("ExtendedOpcode");
+            // Redemption-based clients send 0x32 only after this; the legacy client ignores it.
+            sendExtendedOpcode(EXTENDED_OPCODE_ACTIVATE, "");
         }
 
 		player->lastIP = player->getIP();
@@ -442,10 +445,11 @@ void ProtocolGame::onConnect()
 		TRACK_MESSAGE(output);
 		enableChecksum();
 
+		m_challengeTimestamp = (uint32_t)random_range(0, 0xFFFF);
+		m_challengeRandom = (uint8_t)random_range(0, 0xFF);
 		output->AddByte(0x1F);
-		output->AddU16(random_range(0, 0xFFFF));
-		output->AddU16(0x00);
-		output->AddByte(random_range(0, 0xFF));
+		output->AddU32(m_challengeTimestamp);
+		output->AddByte(m_challengeRandom);
 
 		OutputMessagePool::getInstance()->send(output);
 	}
@@ -484,10 +488,20 @@ bool ProtocolGame::parseFirstPacket(NetworkMessage& msg)
 	bool gamemaster = msg.GetByte();
 	std::string name = msg.GetString(), character = msg.GetString(), password = msg.GetString();
 
-	msg.SkipBytes(6); //841- wtf?
+	// 8.41+ clients echo the 0x1F challenge (U32 timestamp, U8 random) inside the RSA block (BUG-68).
+	uint32_t challengeTimestamp = msg.GetU32();
+	uint8_t challengeRandom = msg.GetByte();
 	if(version < CLIENT_VERSION_MIN || version > CLIENT_VERSION_MAX)
 	{
 		disconnectClient(0x14, CLIENT_VERSION_STRING);
+		return false;
+	}
+
+	if(challengeTimestamp != m_challengeTimestamp || challengeRandom != m_challengeRandom)
+	{
+		std::cout << "[Warning - ProtocolGame::parseFirstPacket] login challenge mismatch from "
+			<< convertIPAddress(getConnection()->getIP()) << std::endl;
+		getConnection()->close();
 		return false;
 	}
 

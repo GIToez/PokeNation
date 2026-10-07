@@ -55,6 +55,8 @@ class ProtocolGame : public Protocol
 			tvChannel = NULL;
 			m_eventConnect = 0;
 			m_debugAssertSent = m_acceptPackets = false;
+			m_challengeTimestamp = 0;
+			m_challengeRandom = 0;
 #ifdef __LOG_PACKETS__
 			m_lastPackets.clear();
 #endif
@@ -413,6 +415,8 @@ class ProtocolGame : public Protocol
 
 		uint32_t m_eventConnect;
 		bool m_debugAssertSent, m_acceptPackets;
+		uint32_t m_challengeTimestamp;
+		uint8_t m_challengeRandom;
 #ifdef __LOG_PACKETS__
 		std::vector<std::string> m_lastPackets;
 #endif

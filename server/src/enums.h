@@ -18,6 +18,7 @@
 #ifndef __ENUMS__
 #define __ENUMS__
 
+#include <stdint.h>
 #include <string>
 #include <list>
 
@@ -61,7 +62,31 @@ enum OperatingSystem_t
 	CLIENTOS_OTCLIENT_WINDOWS = 0x0A,
     CLIENTOS_OTCLIENT_LINUX = 0x0B,
     CLIENTOS_OTCLIENT_MAC = 0x0C,
+	// PokeNation client (OTClient Redemption based, client-pokenation/). Same game packets as the
+	// legacy PSoul client, but its login packet has no language byte: the language arrives as
+	// extended opcode 1 (EXTENDED_OPCODE_LOCALE) after the game login. docs/reference/OPCODES.md §2.
+	CLIENTOS_POKENATION_WINDOWS = 0x14,
+	CLIENTOS_POKENATION_LINUX = 0x15,
+	CLIENTOS_POKENATION_MAC = 0x16,
+	CLIENTOS_POKENATION_ANDROID = 0x17,
 };
+
+// Legacy PSoul OTClient (client/): sends the language byte in the login packet.
+inline bool isLegacyOtclientOs(uint16_t os)
+{
+	return os >= CLIENTOS_OTCLIENT_WINDOWS && os <= CLIENTOS_OTCLIENT_MAC;
+}
+
+inline bool isPokeNationClientOs(uint16_t os)
+{
+	return os >= CLIENTOS_POKENATION_WINDOWS && os <= CLIENTOS_POKENATION_ANDROID;
+}
+
+// Any client that understands the PSoul extensions (creature extras, 0xFF family, 0x32).
+inline bool isOtclientOs(uint16_t os)
+{
+	return isLegacyOtclientOs(os) || isPokeNationClientOs(os);
+}
 
 enum Channels_t
 {

@@ -35,6 +35,8 @@
 #include "ioguild.h"
 #include "iodatalog.h"
 #include "iomarket.h"
+#include "extendedopcodes.h"
+#include "localization.h"
 
 #include "items.h"
 #include "container.h"
@@ -7718,11 +7720,40 @@ void Game::parsePlayerExtendedOpcode(uint32_t playerId, uint8_t opcode, const st
         return;
     }
     
-    if (opcode == 10) { // Dash Walking
-        player->setIsDashWalking(buffer == "1");
+    if (buffer.size() > EXTENDED_OPCODE_MAX_PAYLOAD) {
+        std::cout << "[Warning - Game::parsePlayerExtendedOpcode] " << player->getName() << ": opcode "
+            << (int)opcode << " payload of " << buffer.size() << " bytes rejected" << std::endl;
         return;
     }
-    
+
+    switch (opcode) {
+        case EXTENDED_OPCODE_DASH_WALKING:
+            if (buffer == "0" || buffer == "1")
+                player->setIsDashWalking(buffer == "1");
+            return;
+
+        case EXTENDED_OPCODE_LOCALE: {
+            // PokeNation client language (BUG-09). Malformed values keep the stored language (BUG-08).
+            if (buffer.size() != 1 || buffer[0] < '0' || buffer[0] > '0' + LANG_LAST)
+                return;
+
+            LocalizationLang_t lang = (LocalizationLang_t)(buffer[0] - '0');
+            if (lang != player->getLanguage()) {
+                player->setLanguage(lang);
+                IOLoginData::getInstance()->setAccountLanguage(player->getAccount(), lang);
+            }
+            return;
+        }
+
+        case EXTENDED_OPCODE_ACTIVATE:
+        case EXTENDED_OPCODE_GAMEPLAY_TUTORIAL_TEXT:
+        case EXTENDED_OPCODE_GAMEPLAY_TUTORIAL_IMAGE:
+            return; // server->client only
+
+        default:
+            break;
+    }
+
     CreatureEventList extendedOpcodeEvents = player->getCreatureEvents(CREATURE_EVENT_EXTENDED_OPCODE);
     for(CreatureEventList::iterator it = extendedOpcodeEvents.begin(); it != extendedOpcodeEvents.end(); ++it) {
         (*it)->executeExtendedOpcode(player, opcode, buffer);

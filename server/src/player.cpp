@@ -5501,7 +5501,7 @@ bool Player::getDisconnectAtExit() const
 
 bool Player::isUsingOtclient() const
 {
-    return operatingSystem >= CLIENTOS_OTCLIENT_WINDOWS;
+    return isOtclientOs(operatingSystem);
 }
 
 const std::string Player::getClientName() const 
@@ -5524,6 +5524,18 @@ const std::string Player::getClientName() const
         }
         case CLIENTOS_OTCLIENT_MAC : {
             return "New Mac";
+        }
+        case CLIENTOS_POKENATION_WINDOWS : {
+            return "PokeNation Windows";
+        }
+        case CLIENTOS_POKENATION_LINUX : {
+            return "PokeNation Linux";
+        }
+        case CLIENTOS_POKENATION_MAC : {
+            return "PokeNation Mac";
+        }
+        case CLIENTOS_POKENATION_ANDROID : {
+            return "PokeNation Android";
         }
     }
     return "Unknown";

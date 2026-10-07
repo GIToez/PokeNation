@@ -51,6 +51,7 @@ RSA_N = RSA_P * RSA_Q
 RSA_E = 65537
 
 CLIENTOS_OTCLIENT_WINDOWS = 0x0A
+CLIENTOS_OTCLIENT_MAC = 0x0C
 PROTOCOL_VERSION = 312
 
 SPEAK_SAY = 0x01
@@ -351,9 +352,10 @@ def cmd_login(args):
     key = new_xtea_key()
     w = Writer()
     w.u8(0x01)
-    w.u16(CLIENTOS_OTCLIENT_WINDOWS)
+    w.u16(args.os)
     w.u16(PROTOCOL_VERSION)
-    w.u8(args.lang)          # language byte, only read for OTClient OS and version >= 293
+    if CLIENTOS_OTCLIENT_WINDOWS <= args.os <= CLIENTOS_OTCLIENT_MAC:
+        w.u8(args.lang)      # language byte, only read for the legacy OTClient OS ids (BUG-09)
     w.raw(bytes(12))         # dat/spr/pic signatures (skipped by the server)
 
     def body(b):
@@ -898,10 +900,14 @@ def cmd_enter(args):
     if not challenge or challenge[0] != 0x1F:
         print(f"!! unexpected greeting {challenge.hex()}")
         return 1
+    # 0x1F, U32 timestamp, U8 random; echoed in the login packet (validated since BUG-68)
+    challenge_bytes = bytes(challenge[1:6])
+    if args.bad_challenge:
+        challenge_bytes = bytes(b ^ 0xFF for b in challenge_bytes)
     key = new_xtea_key()
     w = Writer()
     w.u8(0x0A)
-    w.u16(CLIENTOS_OTCLIENT_WINDOWS)
+    w.u16(args.os)
     w.u16(PROTOCOL_VERSION)
 
     def body(b):
@@ -911,7 +917,7 @@ def cmd_enter(args):
         b.string(args.account)
         b.string(args.character)
         b.string(args.password)
-        b.raw(bytes(6))  # bytes skipped by the server after the strings
+        b.raw(challenge_bytes)  # challenge echo, checked by protocolgame.cpp parseFirstPacket
 
     w.raw(rsa_block(body))
     conn.send_plain(bytes(w.buf))
@@ -1081,6 +1087,11 @@ def cmd_enter(args):
             data = bytes.fromhex(value)
             print(f">> send raw packet {data.hex()}")
             conn.send_encrypted(data)
+            pump(args.wait)
+        elif kind == "ext":
+            opcode, _, payload = value.partition(":")
+            print(f">> send extended opcode {int(opcode)} {payload!r}")
+            conn.send_encrypted(bytes(Writer().u8(0x32).u8(int(opcode)).string(payload).buf))
             pump(args.wait)
         elif kind == "callpoke":
             # emulate clicking a Pokémon bar icon: the client says "/cp <fastcall>"
@@ -1342,6 +1353,9 @@ def main():
     ap.add_argument("--login-port", type=int, default=7564)
     ap.add_argument("--game-port", type=int, default=8548)
     ap.add_argument("--status-port", type=int, default=7190)
+    ap.add_argument("--os", type=lambda s: int(s, 0), default=CLIENTOS_OTCLIENT_WINDOWS,
+                    help="client OS id: 10-12 legacy OTClient (sends the language byte), "
+                         "0x14-0x17 PokeNation client (no language byte)")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     sub.add_parser("status")
@@ -1372,6 +1386,10 @@ def main():
     pe.add_argument("--use-slot", dest="actions", action="append", type=lambda s: "useslot:" + s)
     pe.add_argument("--raw", dest="actions", action="append", type=lambda s: "raw:" + s,
                     help="send a raw client packet given as hex (e.g. 97 = request channel list)")
+    pe.add_argument("--ext", dest="actions", action="append", type=lambda s: "ext:" + s,
+                    help="OPCODE:PAYLOAD - send a client extended opcode (0x32), e.g. 1:1 = LOCALE pt-BR")
+    pe.add_argument("--bad-challenge", action="store_true",
+                    help="echo a wrong login challenge (the server must close the connection, BUG-68)")
     pe.add_argument("--call-poke", dest="actions", action="append", type=lambda s: "callpoke:" + s,
                     help="click the Pokémon bar icon whose client item id is given (sends '/cp N')")
     pe.add_argument("--use-item", dest="actions", action="append", type=lambda s: "useitem:" + s,

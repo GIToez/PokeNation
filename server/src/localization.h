@@ -299,6 +299,10 @@ class Localization
 		
 		//static std::string t(LocalizationLang_t lang, LocalizationString_t local);
 		static std::string t(LocalizationLang_t lang, std::string localString);
+		// Values outside LANG_EN_US..LANG_LAST (bad lang_id rows, malformed client input) become LANG_EN_US.
+		static LocalizationLang_t sanitize(int lang) {
+			return (lang >= LANG_EN_US && lang <= LANG_LAST) ? (LocalizationLang_t)lang : LANG_EN_US;
+		}
 
 	private:
 		Localization();

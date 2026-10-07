@@ -334,7 +334,7 @@ Localization::~Localization()
 
 std::string Localization::t(LocalizationLang_t lang, std::string localString)
 {
-    if (lang != LANG_EN_US) {
+    if (lang > LANG_EN_US && lang <= LANG_LAST) {
         try {
             if ((*languages[lang]).count(localString)) {
                 //return (*languages[lang])[PARSE_STRINGS_REVERSE[localString]];
