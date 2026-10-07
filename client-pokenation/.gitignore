@@ -1,0 +1,14 @@
+# Upstream's original ignore list is kept as .gitignore.upstream for reference.
+# Build output belongs in /build/client-pokenation (see docs/BUILDING.md); these catch in-tree builds.
+/build/
+/vcpkg_installed/
+/android/app/build/
+/android/.gradle/
+/android/app/.cxx/
+/android/app/libs/
+/android/app/src/main/assets/data.zip
+/android/local.properties
+/luajit-src/
+# Client-asset downloads at runtime (data/things/<version>/, data/sounds/<version>/)
+/data/things/*/
+/data/sounds/*/
