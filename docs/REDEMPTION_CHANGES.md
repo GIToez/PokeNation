@@ -84,6 +84,7 @@ reads at 8.54 (legacy `game.cpp:1465-1506`, `protocolgame.cpp:59` first-message 
 |---|---|---|
 | 0 ACTIVATE | stock enables sending; additionally fires `g_game.onExtendedOpcodeEnabled()`. The PSoul server sends ACTIVATE after the map description, i.e. after `onGameStart`, so anything that sends `0x32` at game start must wait for this event | `protocolgameparse.cpp` `parseExtendedOpcode`; `ProtocolGame:isExtendedOpcodeEnabled()` binding in `protocolgame.h`, `luafunctions.cpp` |
 | 1 LOCALE | under the profile the payload is the numeric server language (`"0"` en, `"1"` pt, `"2"` es; any other locale sends `"0"`), sent on `onExtendedOpcodeEnabled` and on every locale change. Stock sends the locale name at `onGameStart` | `modules/client_locales/locales.lua`, `PokeNationProtocol.serverLanguageId` |
+| 201 POKENATION_SHOP | `ExtendedIds.PokeNationShop = 201`. Stock `game_shop` sent its catalog request on `onGameStart`, before ACTIVATE ("extended opcodes are not enabled" in the log); it now sends `fetch` only when the window is opened. JSON layout in OPCODES.md §8.1 | `modules/gamelib/const.lua`, `modules/game_shop/` (§7) |
 
 Difference to the legacy client: the legacy locale files map `de`, `pl` and `sv` to id 2, which
 the server treats as Spanish. The new client sends English for them.
@@ -100,30 +101,83 @@ The legacy `client/data/things/data.dat` and `data.spr` are used unchanged as
 `tools/stage_pokenation_assets.py` copies them (or hard-links with `--link`); the directory is
 git-ignored. CI pulls only the `data.spr` LFS object (cached) and stages before packaging.
 
+The same script stages the legacy PSoul UI images and sounds (`client/data/images`,
+`client/data/sounds`) into `client-pokenation/data/images/psoul/` and `data/sounds/psoul/`
+(git-ignored, packaged). The Pokémon modules load them through `PokeNation.image(path)`, which
+prefixes `/images/psoul/`.
+
 Not carried over yet: the legacy `things.otml` per-thing opacity table (creatures, effects,
 missiles, items at 0.7–0.9). Redemption has no equivalent loader; tracked as a UI parity item.
 
-## 6. Configuration (`init.lua`)
+## 6. Configuration (`init.lua`) and module control
 
 | Item | Change |
 |---|---|
 | `Services.clientAssets.enabled` | `false`: never download CipSoft assets from GitHub `dudantas/tibia-client` |
 | `Servers_init` | single local entry `127.0.0.1:7564`, `protocol = 854`, no HTTP login, no authenticator (the login screen then shows a fixed server) |
-| `PokeNationConfig` | `protocolProfile = "psoul312"` |
+| `PokeNationConfig.protocolProfile` | `"psoul312"` |
+| `PokeNationConfig.buildProfile` | `"production"` unless the environment variable `POKENATION_PROFILE=development` is set |
+| `PokeNationConfig.disabledModules` | 24 Redemption modules the PSoul 8.54 server has no counterpart for (CipSoft store, prey, imbuing, forge, wheel, cyclopedia, …, the bundled bot). Off in every profile |
+| `PokeNationConfig.developerModules` | `client_debug_info`, `client_terminal`, `dev_otui`, `game_htmlsample`; off unless the build profile is `development` |
 
-## 7. Verification
+`init.lua` applies the two lists with `g_modules.setModuleDisabled(name, true)` right after
+`discoverModules()` and logs `PokeNation build profile 'production', 28 module(s) disabled`.
+The decision for every module is in [`REDEMPTION_MODULE_AUDIT.md`](REDEMPTION_MODULE_AUDIT.md);
+how to add or remove one is in [`reference/CLIENT_MODULES.md`](reference/CLIENT_MODULES.md) §2.
+
+| Framework change | Why | Files |
+|---|---|---|
+| `ModuleManager::setModuleDisabled / isModuleDisabled / getDisabledModules` (Lua `g_modules.*`) | a disabled module must stay unloaded on every path (autoload, `ensureModuleLoaded`, `load-later`, dependency) without deleting or editing its `.otmod`; the set survives rediscovery | `src/framework/core/modulemanager.{h,cpp}`, `src/framework/luafunctions.cpp` |
+| `Module::load` returns early for a disabled module | single check point for all load paths | `src/framework/core/module.cpp` |
+| Lua `Module:isEnabled()` binding | lets tests and tools tell "disabled" from "failed to load" | `src/framework/luafunctions.cpp` |
+| `mainpanel.lua` `toggleStore` | nil-checks `modules.game_store` / `modules.game_shop` (the store is disabled); button text "PokeNation Shop" | `modules/game_mainpanel/mainpanel.lua` |
+
+## 7. Pokémon UI and repurposed stock modules
+
+New modules (ported from the legacy client; reference: [`reference/CLIENT_MODULES.md`](reference/CLIENT_MODULES.md) §4):
+`pokenation_lib` (library band, priority 90), `game_pokenation_hud`, `game_pokebar`,
+`game_pokemoves`, `game_statusbar`, `game_pokemondetails`, `game_pokedex`, `game_tmchoose`,
+`game_advanceeffect`, `game_effects`, `game_lootlist`, `game_poll`. They are added to the
+`load-later` list of `modules/game_interface/interface.otmod`; that list entry is the only edit
+to the stock interface module. Layout uses anchors and reusable widgets (no absolute screen
+positions), so the windows follow the map panel on any resolution, Android included.
+
+Behaviour that is specific to the PokeNation port:
+
+| Module | Behaviour | Reason |
+|---|---|---|
+| `game_pokemoves` | move keys `F1`–`F12`, `Shift+F1`–`Shift+F4` only; no letter keys | Redemption binds WASD walking when chat is off; letters would fire both |
+| `game_statusbar` | one 38 px row of 36 px slots anchored to the top-right corner of the map panel | follows the map on any resolution instead of a fixed position |
+| `game_advanceeffect` | all level-up pop-ups in one vertical stack; more than two new moves shown as an icon grid; move count read as U16 | pop-ups no longer overlap, and a 14-move level-up fits (BUG-60) |
+| `game_pokebar` | fainted portraits at 35 % opacity; the summoned slot is highlighted, and clicking it returns the Pokémon by using the ball in the feet slot (server `PLAYER_SLOT_BALL`) | `/cp N` on the summoned slot makes the server return and re-call it |
+| Window modules (`game_pokedex`, `game_pokemondetails`, `game_tmchoose`, `game_poll`, `game_advanceeffect`) | titles and headings in `terminus-14px-bold` | one heading font across the Pokémon windows |
+
+Stock modules changed for PokeNation:
+
+| Module | Change | Files |
+|---|---|---|
+| `game_hotkeys` | `addKeyCombo` and the capture dialog refuse the 16 move-bar keys (`PokeNation.isMoveBarKey`); depends on `pokenation_lib` | `hotkeys_manager.lua`, `hotkeys_manager.otmod` |
+| `game_actionbar` | assignment dialogs and `isHotkeyConflicting` refuse the move-bar keys; depends on `pokenation_lib` | `logics/ActionHotkeys.lua`, `logics/ApiJson.lua`, `game_actionbar.otmod` |
+| `game_shop` | repurposed as the **PokeNation Shop** on extended opcode 201: catalog, prices and balance come from the server; the client sends only action, product id and quantity; Tibia products, gift / coin transfer and name-change windows and the bundled `serverSIDE/` scripts removed. Rules: [`reference/SOUL_COINS.md`](reference/SOUL_COINS.md) | `modules/game_shop/` |
+| `game_market` | `onMarketEnter` stores the `0xF6` balance with `setResourceBalance(BANK_BALANCE, …)` before showing the window; pre-10.x servers send no resource-balance packet, so the window showed 0 | `modules/game_market/t_market.lua` |
+
+## 8. Verification
 
 `tools/pokenation_client_smoke.py` logs the built client into the local server under Xvfb through
 the normal login UI (mod `tools/pokenation_smoke/pn_smoke`, copied into a temporary run directory,
-never packaged). Results are in [`PHASE_3_TEST_MATRIX.md`](PHASE_3_TEST_MATRIX.md) §2 (rows C-xx).
+never packaged). `tools/pokenation_gui_smoke_ci.sh` runs every scenario (default, shop, Pokémon,
+market, TV record + watch) from a fresh seed; CI job `gui-smoke` in
+`.github/workflows/pokenation-client.yml` runs it against a real server and uploads the
+screenshots and logs as `PokeNation-Phase3-Screenshots`. Results are in
+[`PHASE_3_TEST_MATRIX.md`](PHASE_3_TEST_MATRIX.md) (rows C-xx packets, U-xx UI).
 
-## 8. Known gaps (next steps)
+## 9. Known gaps (next steps)
 
 | Gap | Status |
 |---|---|
-| Market window (`game_market`, Redemption's modern UI) with 8.54 things | packets verified (C-14), the window itself was not seen opening in the smoke screenshot; UI parity with the legacy market comes with the UI port |
-| Poll window UI (`game_poll`) | packets done and verified (C-13); the UI module is ported with the Pokémon UI modules |
-| TV channel list and replay | not tested |
-| Pokémon UI modules (`game_pokebar`, `game_pokemoves`, `game_pokedex`, …) | not ported yet; the `g_game` events they listen to are already fired |
-| Stock Redemption modules that do not apply (e.g. `game_shop` sends extended opcode 201 at game start, logged as "extended opcodes are not enabled") | to be disabled for the profile |
+| Market item list | window opens and shows the `0xF6` balance (U-11); the item list is empty because 8.54 `.dat` files have no market attribute (BUG-78, the legacy client has the same limit). The Tibia-coin "Get" button is still shown |
+| TV viewer | works end to end (U-12); the viewer sees the recorder twice and logs "invalid stackpos" on join and leave (BUG-77, server `sendTVStart`) |
+| Status bar | the Redemption top status bar shows 9999999999 in its right gauge for a character without a Pokémon (BUG-79) |
+| Legacy modules not ported | `game_badgecase`, `game_dollcase` (`0xFF 0x14/0x15`), `game_slotmachine` (`0x16`), `game_tips` (`0x17`), `game_guide` (ext 8/9), `game_duelmessage`, `game_time`, `game_environment`, legacy `game_tutorial`. The C++ parser already fires the events for 0x14–0x17 |
+| `things.otml` opacity table | not loaded (§5) |
 | Account Manager character entry without PSoul extras (server, OPCODES.md §2.2) | latent, `accountManager = false` |
