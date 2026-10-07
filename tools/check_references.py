@@ -1747,6 +1747,26 @@ def cpp_enum(text, enum_name):
     return out
 
 
+def switch_handled_ext_opcodes(func_text):
+    """Ids handled by `case EXTENDED_OPCODE_X:` labels in Game::parsePlayerExtendedOpcode.
+
+    A label whose block (after fall-through) is only `return;` is a server->client id the
+    server drops on purpose, so it does not count as handled."""
+    names = cpp_enum(read_text(os.path.join(SERVER, "src", "extendedopcodes.h")), "ExtendedOpcode_t")
+    body = re.sub(r"//[^\n]*", "", func_text)
+    parts = re.split(r"case\s+(\w+)\s*:", body)
+    handled, pending = set(), []
+    for i in range(1, len(parts), 2):
+        pending.append(parts[i])
+        block = re.split(r"\bdefault\s*:", parts[i + 1])[0].strip().strip("{}").strip()
+        if not block:
+            continue
+        if block != "return;":
+            handled.update(names[n] for n in pending if n in names)
+        pending = []
+    return handled
+
+
 def check_protocol(rep, db, mods, loaded):
     srv = os.path.join(SERVER, "src", "protocolgame.cpp")
     stext = read_text(srv)
@@ -1884,6 +1904,8 @@ def check_protocol(rep, db, mods, loaded):
     gtext = read_text(os.path.join(SERVER, "src", "game.cpp"))
     gm = re.search(r"void Game::parsePlayerExtendedOpcode.*?\n\}", gtext, re.S)
     srv_handled = set(int(x) for x in re.findall(r"opcode\s*==\s*(\d+)", gm.group(0))) if gm else set()
+    if gm:
+        srv_handled |= switch_handled_ext_opcodes(gm.group(0))
     has_lua_ext = any((t.get("type") or "").lower() == "extendedopcode" and not t.commented
                       for t in scan_xml(os.path.join(DATA, "creaturescripts", "creaturescripts.xml"))[1])
     rep.facts["client->server extended opcodes handled by server"] = sorted(srv_handled) + (["lua"] if has_lua_ext else [])
