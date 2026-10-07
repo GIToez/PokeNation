@@ -56,8 +56,8 @@ the real client binary (built from this branch, `psoul312` profile, Stage A asse
 `tools/stage_pokenation_assets.py`) runs under Xvfb with the test-only mod
 `tools/pokenation_smoke/pn_smoke`, which drives the normal Enter Game and character list UI and
 logs `CHECK PASS/FAIL` lines. When the character list announces a poll it also runs the poll
-round trip (two extra checks). Last run without a poll: `RESULT PASS 10/10`; with a test poll:
-`RESULT PASS 12/12`, 2026-10-07.
+round trip (two extra checks), and `--market` adds the market round trip (C-14). Last default
+run: `RESULT PASS 12/12` (C-01…C-10 plus the quest checks of C-15), 2026-10-07.
 
 | Id | Test | Result | Evidence |
 |---|---|---|---|
@@ -75,6 +75,7 @@ round trip (two extra checks). Last run without a poll: `RESULT PASS 10/10`; wit
 | C-12 | Legacy GUI client against the Phase 3 server | NOT TESTED | planned for the Phase 3A comparison |
 | C-13 | Polls: charlist poll flag, `0xFA` request, `0xFF 0x18` window, `0xFB` vote | PASS (packets; no poll UI yet) | test polls inserted by SQL (`text_mode` 0 with 3 options, then `text_mode` 1). Option poll: `hasPoll=true`, window "PokeNation smoke poll: favourite starter?" with options 1–3, vote → `poll_votes (1, 2, 1)`. Text poll: vote → `poll_texts (2, 2, 'pn-smoke text vote')`. Test rows deleted and the server restarted afterwards (BUG-76); the next run showed `hasPoll=false`, 10/10 |
 | C-14 | Market packets: `0xF6` enter, C→S create offer, `0xF9` item browse, C→S browse own offers, C→S cancel | PASS (packets; market window not verified) | `--character "GM Admin" --market`, seed: `players.balance = 12345` for GM Admin, `player_depotitems` locker 2589 (depot 0) holding 5 red apples (server id 2674, client id 3585, has a ware id). Mod places Jaron Jewell with `/n` (no spawn on the map), `hi`, `market` in the NPC channel. Enter: balance 12345, 5 apples. Buy offer 1×3585 at 150: new balance 12175 (150 + minimum fee 20) and the offer listed by "GM Admin". Own offers (`0xFFFE`): the offer. Cancel: balance 12325, `market_history` row state 1. 14/14. Seed rows removed and server restarted afterwards. By source comparison, the stock `0xF6` parser (U32 balance + vocation byte at 854) and the U64 create price do not match the server; the stock client was not run against it |
+| C-15 | Quest log `0xF0` and quest line `0xF1` | PASS | Tester: 3 quests listed; quest 1 line received (0 missions, quest not started) |
 
 Known non-fatal log line: `Unable to send extended opcode 201` from the stock Redemption `game_shop`
 module (layer: client Lua/UI); it will be disabled with the other inapplicable stock modules.

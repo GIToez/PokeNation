@@ -315,4 +315,5 @@ stock Redemption are listed one by one in [`../REDEMPTION_CHANGES.md`](../REDEMP
 | Ext opcode 0 / 1 | §8 | §8 | yes (C-05) |
 | Market `0xF4-0xF9` | `marketprotocol.lua` | `0xF6` enter: `parsePSoulMarketEnter` (`U64` balance, no vocation byte; stock reads `U32` + vocation at 854); `0xF7` leave: new `parseMarketLeave`; C→S create: `U32` price under the profile; the rest stock | yes: enter, create, browse item, browse own offers, cancel (C-14); `0xF7` S→C and accept not exercised |
 | Polls `0xFA/0xFB` + `0xFF 0x18` | `protocolgamesend.cpp:853-874` | `modules/gamelib/pokenation.lua` (`g_game.requestPollWindow/doPollVote/doPollVoteText`) | yes, option and text mode (C-13) |
-| TV, map marks `0xDD` | C++ | stock Redemption (shapes match at 854) | no |
+| Quest log `0xF0`, quest line `0xF1` | stock | stock (no mission id below 1200, matches) | yes (C-15) |
+| TV channel list (`0xAB`), TV map re-send, map marks `0xDD` | C++ | stock Redemption (shapes match at 854 by source) | no |

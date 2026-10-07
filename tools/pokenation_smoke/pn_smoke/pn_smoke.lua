@@ -240,6 +240,7 @@ local function afterWorld()
     end
 
     g_game.requestChannels()
+    g_game.requestQuestLog()
 
     -- Try each direction until the server moves the player (the tile next to the spawn may be blocked).
     local directions = { South, East, North, West }
@@ -296,6 +297,15 @@ local handlers = {
     onPokedexStatus = function(status)
         counters.pokedexStatus = counters.pokedexStatus + 1
         log('pokedex status entries=%d', #status)
+    end,
+    onQuestLog = function(quests)
+        check('0xF0 quest log', true, #quests .. ' quests')
+        if #quests > 0 then
+            g_game.requestQuestLine(quests[1][1])
+        end
+    end,
+    onQuestLine = function(questId, missions)
+        check('0xF1 quest line', true, string.format('quest %d, %d missions', questId, #missions))
     end,
     onPollWindow = onPollWindow,
     onMarketEnter = onMarketEnter,
