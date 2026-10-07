@@ -624,6 +624,22 @@ CREATE TABLE IF NOT EXISTS `datalog_coin_uses`
 
 CREATE TABLE IF NOT EXISTS `datalog_token_bought` LIKE `datalog_coin_uses`;
 
+-- PokeNation Shop purchases (opcode 201) - 057-soulShop.lua logPurchase/sendHistory
+CREATE TABLE IF NOT EXISTS `datalog_shop_purchases`
+(
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`date` INT UNSIGNED NOT NULL,
+	`account_id` INT NOT NULL,
+	`player_id` INT NOT NULL,
+	`product_id` VARCHAR(64) NOT NULL,
+	`product_name` VARCHAR(255) NOT NULL DEFAULT '',
+	`quantity` INT NOT NULL DEFAULT 1,
+	`price` INT NOT NULL,
+	`balance_after` INT NOT NULL DEFAULT -1,
+	PRIMARY KEY (`id`),
+	KEY `account_id` (`account_id`)
+) ENGINE = InnoDB;
+
 -- (`seller`, `buyer`, `date`, `ball_id`, `attributes`, `value`) - 025-datalog.lua:26
 CREATE TABLE IF NOT EXISTS `datalog_pokemon_market`
 (

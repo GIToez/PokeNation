@@ -18,6 +18,8 @@
 	<event type="singleSpawn" name="onSingleSpawn" event="script" value="../../lib/ps/events/creaturescripts/onSingleSpawn.lua" />
 	<event type="traderequestaccept" name="onTradeRequestAccept" event="script" value="../../lib/ps/events/creaturescripts/onTradeRequestAccept.lua" />	
 	<event type="combat" name="onPokemonCombat" event="script" value="../../lib/ps/events/creaturescripts/onPokemonCombat.lua" />
+	<!-- Registered for Redemption-based clients in ProtocolGame::login -->
+	<event type="extendedopcode" name="ExtendedOpcode" event="script" value="../../lib/ps/events/creaturescripts/onExtendedOpcode.lua" />
 	<event type="statisticchange" name="onStatisticChange" event="script" value="../../lib/ps/events/creaturescripts/onStatisticChange.lua" />
 	<event type="questinfo" name="onQuestInfo" event="script" value="../../lib/ps/events/creaturescripts/onQuestInfo.lua" />
 	<event type="kicklogin" name="onKickLogin" event="script" value="../../lib/ps/events/creaturescripts/onKickLogin.lua" />
