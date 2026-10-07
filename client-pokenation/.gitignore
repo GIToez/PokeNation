@@ -12,3 +12,4 @@
 # Client-asset downloads at runtime (data/things/<version>/, data/sounds/<version>/)
 /data/things/*/
 /data/sounds/*/
+/otclient.log
