@@ -55,7 +55,9 @@ Run with `tools/pokenation_client_smoke.py --account admin --password admin --ch
 the real client binary (built from this branch, `psoul312` profile, Stage A assets from
 `tools/stage_pokenation_assets.py`) runs under Xvfb with the test-only mod
 `tools/pokenation_smoke/pn_smoke`, which drives the normal Enter Game and character list UI and
-logs `CHECK PASS/FAIL` lines. Last run: `RESULT PASS 10/10`, 2026-10-07.
+logs `CHECK PASS/FAIL` lines. When the character list announces a poll it also runs the poll
+round trip (two extra checks). Last run without a poll: `RESULT PASS 10/10`; with a test poll:
+`RESULT PASS 12/12`, 2026-10-07.
 
 | Id | Test | Result | Evidence |
 |---|---|---|---|
@@ -69,8 +71,9 @@ logs `CHECK PASS/FAIL` lines. Last run: `RESULT PASS 10/10`, 2026-10-07.
 | C-08 | `0xFF 0x0A` Pokédex status | PASS | 386 entries received; no Pokédex UI yet (p5) |
 | C-09 | Walk | PASS | south step `3307,301,7 → 3307,302,7` accepted (`04-after-walk.png`) |
 | C-10 | Logout | PASS | `onGameEnd` |
-| C-11 | Pokémon bar, moves, summon, battle, catch, NPC, market, polls | NOT TESTED | Pokémon UI modules not ported yet (p5); polls `0xFA/0xFB` not ported |
+| C-11 | Pokémon bar, moves, summon, battle, catch, NPC, market | NOT TESTED | Pokémon UI modules not ported yet |
 | C-12 | Legacy GUI client against the Phase 3 server | NOT TESTED | planned for the Phase 3A comparison |
+| C-13 | Polls: charlist poll flag, `0xFA` request, `0xFF 0x18` window, `0xFB` vote | PASS (packets; no poll UI yet) | test polls inserted by SQL (`text_mode` 0 with 3 options, then `text_mode` 1). Option poll: `hasPoll=true`, window "PokeNation smoke poll: favourite starter?" with options 1–3, vote → `poll_votes (1, 2, 1)`. Text poll: vote → `poll_texts (2, 2, 'pn-smoke text vote')`. Test rows deleted and the server restarted afterwards (BUG-76); the next run showed `hasPoll=false`, 10/10 |
 
 Known non-fatal log line: `Unable to send extended opcode 201` from the stock Redemption `game_shop`
 module (layer: client Lua/UI); it will be disabled with the other inapplicable stock modules.

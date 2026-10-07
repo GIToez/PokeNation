@@ -72,6 +72,7 @@ reads at 8.54 (legacy `game.cpp:1465-1506`, `protocolgame.cpp:59` first-message 
 | `0x85`, `0x86`, `0xDD` | stock 8.54 paths match the server (`U8` missile, `U32 id + U8 colour` square, position + `U8` + string mark) | stock |
 | `0xFF` PSoul family | new dispatcher `ProtocolGame::parsePSoulMessage`, sub-opcodes 1–26, same payloads and the same `g_game` Lua events as the legacy client (table in OPCODES.md §5). Differences: the `U16` counts of `0x14` and `0x19` are read as `U16` (the legacy client truncates them to `uint8_t`, OPCODES.md §5); an unknown sub-opcode throws, so the parse error is logged with the packet dump instead of desynchronising silently | `src/client/protocolgameparsepsoul.cpp` (new), `protocolcodes.h`, `protocolgame.h`, `CMakeLists.txt`, `vc18/otclient.vcxproj` |
 | `0x12` jump / `0x13` creature effect | `creature->jump(20, 450)` / creature Lua `onEffect(effectId, var)` as in the legacy client | `protocolgameparsepsoul.cpp` |
+| C→S `0xFA` poll request, `0xFB` poll vote (`U8 optionId` or `string text`) | written in Lua with `OutputMessage` + `ProtocolGame:send`, exposed as `g_game.requestPollWindow()`, `g_game.doPollVote(id)`, `g_game.doPollVoteText(text)` (the legacy C++ binding names, so the legacy `game_poll` module can be ported unchanged). Only sent while the profile is active; the option id is range-checked | `modules/gamelib/pokenation.lua` |
 
 ## 4. Extended opcodes
 
@@ -117,7 +118,7 @@ never packaged). Results are in [`PHASE_3_TEST_MATRIX.md`](PHASE_3_TEST_MATRIX.m
 | Gap | Status |
 |---|---|
 | Market `0xF6`–`0xF9` payloads against Redemption's `parseMarketEnterOld` / detail / browse | not compared yet (migration order: markets last) |
-| Poll request/vote `0xFA` / `0xFB` client senders | not ported yet (legacy `protocolgamesend.cpp:853-874`) |
+| Poll window UI (`game_poll`) | packets done and verified (C-13); the UI module is ported with the Pokémon UI modules |
 | TV channel list and replay | not tested |
 | Pokémon UI modules (`game_pokebar`, `game_pokemoves`, `game_pokedex`, …) | not ported yet; the `g_game` events they listen to are already fired |
 | Stock Redemption modules that do not apply (e.g. `game_shop` sends extended opcode 201 at game start, logged as "extended opcodes are not enabled") | to be disabled for the profile |

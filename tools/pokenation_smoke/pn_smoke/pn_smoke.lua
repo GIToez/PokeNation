@@ -17,6 +17,8 @@ local checks = {}
 local counters = { pokemonBarAdd = 0, pokemonMoves = 0, pokedexStatus = 0, creatures = 0, ownSummons = 0 }
 local finished = false
 local startPos
+local hasPoll = false
+local pollContinue
 
 local function log(fmt, ...)
     g_logger.info('[pn-smoke] ' .. string.format(fmt, ...))
@@ -65,6 +67,7 @@ local function onCharacterListCreated(characters, account)
     end
     check('charlist parsed with PSoul extras', found ~= nil and found.level ~= nil and found.outfit ~= nil and found.pokemonTeam ~= nil)
     check('charlist poll flag read', account.hasPoll ~= nil)
+    hasPoll = account.hasPoll == true
     if not found then
         return fail('character ' .. cfg.character .. ' not in list')
     end
@@ -72,6 +75,46 @@ local function onCharacterListCreated(characters, account)
     scheduleEvent(function()
         CharacterList.doLogin()
     end, 2500)
+end
+
+-- Only when the character list announced a poll: 0xFA request -> 0xFF 0x18 window -> 0xFB vote.
+local function pollStep(nextStep)
+    if not hasPoll then
+        return nextStep()
+    end
+    pollContinue = nextStep
+    g_game.requestPollWindow()
+    scheduleEvent(function()
+        if pollContinue then
+            check('0xFA poll request answered by 0xFF 0x18', false, 'no poll window within 4 s')
+            pollContinue = nil
+            nextStep()
+        end
+    end, 4000)
+end
+
+local function onPollWindow(question, options)
+    if not pollContinue then
+        return
+    end
+    local nextStep = pollContinue
+    pollContinue = nil
+    check('0xFA poll request answered by 0xFF 0x18', type(question) == 'string' and question ~= '', question)
+    if type(options) == 'table' then
+        local firstId
+        for id, text in pairs(options) do
+            log('poll option %d: %s', id, text)
+            if not firstId or id < firstId then
+                firstId = id
+            end
+        end
+        log('POLL VOTE option %s', tostring(firstId))
+        check('0xFB poll vote sent', firstId ~= nil and g_game.doPollVote(firstId))
+    else
+        log('POLL VOTE text')
+        check('0xFB poll text vote sent', g_game.doPollVoteText('pn-smoke text vote'))
+    end
+    scheduleEvent(nextStep, 1500)
 end
 
 local function afterWorld()
@@ -113,7 +156,7 @@ local function afterWorld()
             if pos.x ~= before.x or pos.y ~= before.y then
                 check('walk accepted by server', true, 'direction ' .. directions[i])
                 shot('04-after-walk')
-                scheduleEvent(PNSmoke.logout, 2500)
+                scheduleEvent(function() pollStep(PNSmoke.logout) end, 2500)
             else
                 tryWalk(i + 1)
             end
@@ -154,6 +197,7 @@ local handlers = {
         counters.pokedexStatus = counters.pokedexStatus + 1
         log('pokedex status entries=%d', #status)
     end,
+    onPollWindow = onPollWindow,
     onLoginError = function(msg)
         fail('login error: ' .. tostring(msg))
     end

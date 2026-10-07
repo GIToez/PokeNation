@@ -58,7 +58,7 @@ def main() -> int:
     parser.add_argument("--timeout", type=int, default=90)
     args = parser.parse_args()
 
-    binary = Path(args.client)
+    binary = Path(args.client).resolve()
     if not binary.is_file():
         print(f"client binary not found: {binary}", file=sys.stderr)
         return 2
@@ -66,7 +66,7 @@ def main() -> int:
         print("Stage A assets missing: run tools/stage_pokenation_assets.py", file=sys.stderr)
         return 2
 
-    out = Path(args.out)
+    out = Path(args.out).resolve()
     out.mkdir(parents=True, exist_ok=True)
     for old in out.glob("*.png"):
         old.unlink()

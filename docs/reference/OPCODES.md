@@ -221,7 +221,11 @@ Market config keys (`marketOfferDuration`, `premiumToCreateMarketOffer`, …) ar
 | C→S | `0xFB` | `U8 optionId` or `string text` | `:870`, `:1808-1823`; minimum level `minimumLevelToPollVote` (`configmanager.cpp:305`, absent from config → 25) | `protocolgamesend.cpp:862-874` | no |
 
 Poll content exists only in `polls` / `poll_options` / `poll_texts` rows that the (missing)
-website wrote; the server only inserts `poll_votes`.
+website wrote; the server only inserts `poll_votes` / `poll_texts`. The server reloads polls every
+10 s but never drops deleted or edited ones until restart (BUG-76).
+
+The PokeNation client sends `0xFA` / `0xFB` from Lua (§10); both modes were verified against the
+server with seeded test polls (`PHASE_3_TEST_MATRIX.md` C-13).
 
 ---
 
@@ -308,5 +312,5 @@ stock Redemption are listed one by one in [`../REDEMPTION_CHANGES.md`](../REDEMP
 | `0xFF` family | `protocolgameparse.cpp:62-183` | `protocolgameparsepsoul.cpp` (throws on unknown sub-id) | `0x0A` yes (C-08); others not yet |
 | Ext opcode 0 / 1 | §8 | §8 | yes (C-05) |
 | Market `0xF4-0xF9` | `marketprotocol.lua` | stock Redemption `marketprotocol.lua` | **not compared yet** |
-| Polls `0xFA/0xFB` | `protocolgamesend.cpp:853-874` | **not ported yet** | no |
+| Polls `0xFA/0xFB` + `0xFF 0x18` | `protocolgamesend.cpp:853-874` | `modules/gamelib/pokenation.lua` (`g_game.requestPollWindow/doPollVote/doPollVoteText`) | yes, option and text mode (C-13) |
 | TV, map marks `0xDD` | C++ | stock Redemption (shapes match at 854) | no |

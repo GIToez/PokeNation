@@ -72,6 +72,56 @@ function PokeNationProtocol.serverLanguageId(localeName)
     return PokeNationProtocol.ServerLanguageIds[localeName] or PokeNationProtocol.ServerLanguageIds.en
 end
 
+-- Client -> server packets of the PSoul protocol that stock Redemption does not have.
+-- Shapes: server/src/protocolgame.cpp parseRequestPollWindow / parsePollVote.
+PokeNationProtocol.ClientOpcodes = {
+    RequestPollWindow = 0xFA,
+    PollVote = 0xFB
+}
+
+local function sendPSoulPacket(opcode, write)
+    if not PokeNationProtocol.isActive() then
+        return false
+    end
+    local protocolGame = g_game.getProtocolGame()
+    if not protocolGame then
+        return false
+    end
+    local msg = OutputMessage.create()
+    msg:addU8(opcode)
+    if write then
+        write(msg)
+    end
+    protocolGame:send(msg)
+    return true
+end
+
+-- Same names as the legacy client's C++ bindings (client/src-cpp/src/client/luafunctions.cpp),
+-- so the legacy game_poll module runs unchanged.
+function g_game.requestPollWindow()
+    return sendPSoulPacket(PokeNationProtocol.ClientOpcodes.RequestPollWindow)
+end
+
+function g_game.doPollVote(optionId)
+    optionId = tonumber(optionId)
+    if not optionId or optionId < 0 or optionId > 255 then
+        g_logger.warning('[PokeNation] doPollVote: option id out of range: ' .. tostring(optionId))
+        return false
+    end
+    return sendPSoulPacket(PokeNationProtocol.ClientOpcodes.PollVote, function(msg)
+        msg:addU8(optionId)
+    end)
+end
+
+function g_game.doPollVoteText(text)
+    if type(text) ~= 'string' then
+        return false
+    end
+    return sendPSoulPacket(PokeNationProtocol.ClientOpcodes.PollVote, function(msg)
+        msg:addString(text)
+    end)
+end
+
 -- Called by game_features at the end of onClientVersionChange.
 function PokeNationProtocol.apply(version)
     if not PokeNationProtocol.isSelected() then

@@ -90,6 +90,7 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-73 | P2 (low-end GPUs) | open, verified (Phase 2A, Windows CI) | Client crashes 2-3 s after start when the 1920x1080 animated background exceeds the GPU's maximum texture size (`AnimatedTexture` left half-initialised) | yes |
 | BUG-74 | P0 (Windows setup) | fixed (Phase 2A; found on a real PC, fix verified in Windows CI) | `Setup-PokeNation-Database.ps1` fails with `ERROR 1146 … 'psoul.accounts' doesn't exist`: the MariaDB 11.4+ client's passwordless-login warning on stderr was read as the query result, so the schema import was skipped | no (launchers only) |
 | BUG-75 | P0 (Windows development client) | fixed (Phase 2A; found on a real PC, verified locally on Linux) | `Assertion failed! … eventdispatcher.cpp Line: 85 Expression: delay >= 0` when a Pokémon uses a move that makes the target jump (Headbutt, e.g. Bulbasaur's second move): `Creature::updateJump()` schedules its next step in the past | yes |
+| BUG-76 | P4 | open, verified (Phase 3) | Deleted or edited polls stay active until the server restarts (periodic reload only adds polls) | no |
 
 ---
 
@@ -480,6 +481,16 @@ Related latent risk, not seen in practice and not changed: `Missile::setPath`
 (`client/src-cpp/src/client/missile.cpp:68-82`) schedules `150 * sqrt(length)`, and
 `TPoint::length()` (`framework/util/point.h:76`) squares `int` coordinates, which would overflow
 only for distances above 46340 tiles.
+
+### BUG-76 — Deleted or edited polls stay active until the server restarts — verified, open
+`Polls::checkPolls` (`server/src/polls.cpp`) re-runs `IOPoll::loadPolls` every 10 s, but
+`Polls::registerPoll` ignores ids it already has and nothing removes polls whose rows are gone;
+only `Polls::load()` (startup) clears the map. Found while testing the poll packets with the
+PokeNation client: after deleting the test rows from `polls`, `poll_options` and `poll_votes`, the
+next login still announced the poll and accepted a vote for it (a new `poll_votes` row). Changing
+the question, deadline or options of an existing poll is likewise not picked up. Not
+migration-blocking (polls are managed by the future portal, which can trigger a reload); left
+unchanged in Phase 3. Workaround: restart the server after editing polls.
 
 ---
 
