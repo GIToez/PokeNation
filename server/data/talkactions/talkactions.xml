@@ -22,6 +22,7 @@
 		<talkaction words="/d1;/d2" event="script" value="../../lib/ps/events/talkactions/transformMemory.lua" description="Order your Pokemon to transform into the corresponding memory slot."/>
 		<talkaction words="/boss" event="script" value="../../lib/ps/events/talkactions/bossRewardCheck.lua" description="Show remaining time to be able to receive another World Boss reward." />		
 		<talkaction words="/lang" event="script" value="../../lib/ps/events/talkactions/setLanguage.lua" description="Set current game language." />		
+		<talkaction words="/expevent;/events" event="script" value="../../lib/ps/events/talkactions/expEventStatus.lua" description="Show the active server Experience Event." />
 		<!-- Skills -->
 		<talkaction words="s1;s2;s3;s4;s5;s6;s7;s8;s9;s10;s11;s12;s13;s14;s15;s16;m1;m2;m3;m4;m5;m6;m7;m8;m9;m10;m11;m12;m13;m14;m15;m16" case-sensitive="no" hidden="yes" event="script" value="../../lib/ps/events/talkactions/skill.lua" />
 		<!-- Abilities -->
@@ -78,6 +79,7 @@
 	<talkaction access="4" words="/x" event="script" value="animationeffect.lua" description="Show projectiles."/>
 	<talkaction access="4" words="/y" event="script" value="animatedtext.lua" description="Show animated texts."/>
 	<talkaction log="yes" words="/bc" access="4" event="script" value="broadcastclass.lua"/>
+	<talkaction log="yes" words="/doubleexp" access="4" event="script" value="doubleexp.lua" description="Start, stop or show the server Experience Event."/>
 	<talkaction log="yes" access="4" words="/mkick" event="script" value="masskick.lua"/>
 
 	<!-- Gamemasters -->

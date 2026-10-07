@@ -227,6 +227,11 @@ STARTUP[#STARTUP + 1] = {
 }
 
 STARTUP[#STARTUP + 1] = {
+    msg = "Loading Experience Event...",
+    action = ExpEvent.onStartup
+}
+
+STARTUP[#STARTUP + 1] = {
     msg = "Loading Citizens...",
     action = doStartCitizens
 }
