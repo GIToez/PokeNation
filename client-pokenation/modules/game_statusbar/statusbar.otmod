@@ -1,0 +1,10 @@
+Module
+  name: game_statusbar
+  description: PokeNation Pokemon status conditions (port of the legacy PSoul game_statusbar)
+  author: PokeNation (behaviour from the legacy PSoul client)
+  website: https://github.com/GIToez/PokeNation
+  sandboxed: true
+  dependencies: [ pokenation_lib, game_interface ]
+  scripts: [ statusbar ]
+  @onLoad: init()
+  @onUnload: terminate()

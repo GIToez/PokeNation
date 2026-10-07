@@ -49,4 +49,7 @@ GLOBAL_STORAGES = {
     --[[
     6150 - 6156 Frontier Island Highscores Text (last update 23/01/13)
     ]]
+    -- Server-wide EXP event (systems/056-expEvent.lua). Also written straight to `global_storage`.
+    EXP_EVENT_MULTIPLIER = 6200, -- multiplier * 100, 0 = no event
+    EXP_EVENT_EXPIRES_AT = 6201, -- os.time() when the event ends, 0 = no event
 }

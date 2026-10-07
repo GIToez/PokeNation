@@ -1,0 +1,45 @@
+PokeBarSlot < UIWidget
+  size: 48 66
+  margin: 2
+  focusable: false
+  image-source: /images/psoul/ui/pokebelt_item
+  image-color: #ffffffdd
+  $hover:
+    image-color: #ffffffff
+  $on:
+    image-source: /images/psoul/ui/pokebelt_item_use
+  $disabled:
+    image-color: #ffffff55
+
+  UIItem
+    id: portrait
+    size: 42 42
+    virtual: true
+    phantom: true
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 1
+
+  UILabel
+    id: health
+    font: verdana-11px-antialised
+    color: #00851B
+    text-align: center
+    phantom: true
+    anchors.top: portrait.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 4
+
+PokeBarWindow < HeadlessWindow
+  id: pokebar
+  focusable: false
+  draggable: true
+  padding: 3
+  image-color: #ffffffcc
+  layout:
+    type: horizontalBox
+    fit-children: true
+  anchors.bottom: gameMapPanel.bottom
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  margin-bottom: 4

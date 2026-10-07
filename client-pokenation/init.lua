@@ -75,8 +75,25 @@ if ENABLE_SERVERS then
 end
 
 -- PokeNation protocol profile, applied by modules/gamelib/pokenation.lua.
+-- buildProfile "production" keeps developer tools unloaded; "development" (or the environment variable
+-- POKENATION_PROFILE=development) loads them. disabledModules lists Redemption modules that the PSoul
+-- 8.54 server does not support; they stay on disk and are skipped by every load path
+-- (g_modules.setModuleDisabled). Classification: docs/REDEMPTION_MODULE_AUDIT.md.
 PokeNationConfig = {
-    protocolProfile = "psoul312"
+    protocolProfile = "psoul312",
+    buildProfile = os.getenv("POKENATION_PROFILE") or "production",
+    disabledModules = {
+        -- CipSoft store: its opcodes 0xFA / 0xFB are PSoul's poll request / vote
+        "game_store",
+        -- Tibia 10.x-15.x systems without a PSoul server side
+        "game_prey", "game_imbuing", "game_imbuementtracker", "game_forge", "game_wheel", "game_cyclopedia",
+        "game_highscore", "game_stash", "game_quickloot", "game_rewardwall", "game_blessing", "game_taskboard",
+        "game_tutorial", "game_inspect", "game_proficiency", "game_analyser", "game_lootsplitter",
+        "game_paperdolls", "game_playermount", "game_unjustifiedpoints", "game_spelllist",
+        -- mods/: bundled OTClientV8 bot (automation, not allowed on PokeNation) and its button window
+        "game_bot", "game_buttons"
+    },
+    developerModules = { "client_debug_info", "client_terminal", "dev_otui", "game_htmlsample" }
 }
 
 g_app.setName("OTClient - Redemption");
@@ -130,6 +147,17 @@ g_resources.searchAndAddPackages('/', '.otpkg', true)
 g_configs.loadSettings('/config.otml')
 
 g_modules.discoverModules()
+
+for _, name in ipairs(PokeNationConfig.disabledModules) do
+    g_modules.setModuleDisabled(name, true)
+end
+if PokeNationConfig.buildProfile ~= "development" then
+    for _, name in ipairs(PokeNationConfig.developerModules) do
+        g_modules.setModuleDisabled(name, true)
+    end
+end
+g_logger.info(("PokeNation build profile '%s', %d module(s) disabled"):format(PokeNationConfig.buildProfile,
+    #g_modules.getDisabledModules()))
 
 -- libraries modules 0-99
 g_modules.autoLoadModules(99)

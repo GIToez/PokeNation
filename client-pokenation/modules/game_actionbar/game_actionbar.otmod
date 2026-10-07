@@ -4,6 +4,7 @@ Module
   author: game_actionbar
   website: game_actionbar
   sandboxed: true
+  dependencies: [ pokenation_lib ]
   @onLoad: ActionBarController:init()
   @onUnload: ActionBarController:terminate()
   scripts: [ game_actionbar, logics/ActionBarLayout, logics/ActionButtonLogic, logics/ActionAssignmentWindows, logics/MultiActionLogic, logics/ActionHotkeys, logics/ActionBarOptions , logics/const]

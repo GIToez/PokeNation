@@ -1,0 +1,10 @@
+Module
+  name: game_pokenation_hud
+  description: PokeNation trainer / Pokemon vitals (trainer HP, Pokemon energy, levels, Respect, Balls)
+  author: PokeNation
+  website: https://github.com/GIToez/PokeNation
+  sandboxed: true
+  dependencies: [ pokenation_lib, game_interface ]
+  scripts: [ pokenation_hud ]
+  @onLoad: init()
+  @onUnload: terminate()

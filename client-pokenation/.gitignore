@@ -13,3 +13,7 @@
 /data/things/*/
 /data/sounds/*/
 /otclient.log
+
+# Legacy PSoul UI images and sounds staged by tools/stage_pokenation_assets.py
+/data/images/psoul/
+/data/sounds/psoul/

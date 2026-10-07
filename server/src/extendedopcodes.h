@@ -24,6 +24,9 @@ enum ExtendedOpcode_t : uint8_t
 
 	// 11..99: reserved for future PokeNation systems; add them here and in OPCODES.md first.
 	EXTENDED_OPCODE_LAST_RESERVED = 99,
+
+	// 100..255: handled in Lua by the "ExtendedOpcode" creature event (onExtendedOpcode.lua).
+	EXTENDED_OPCODE_POKENATION_SHOP = 201,       // both directions, JSON: PokeNation Shop (057-soulShop.lua)
 };
 
 // Largest client->server payload any handler accepts. NetworkMessage already bounds the read;

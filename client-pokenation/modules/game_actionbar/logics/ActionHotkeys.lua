@@ -76,6 +76,11 @@ local function manageKeyPress(window, keyCode, keyboardModifiers, keyText)
         window.warning:setText("This hotkey is already in use and cannot be overwritten.")
         window.buttonOk:setEnabled(false)
     end
+    if PokeNation.isMoveBarKey(keyCombo) then
+        window.warning:setVisible(true)
+        window.warning:setText("This hotkey is used by the Pokemon move bar.")
+        window.buttonOk:setEnabled(false)
+    end
     return true
 end
 
@@ -248,6 +253,11 @@ function assignHotkey(button)
         if table.contains(blockedKeys, keyCombo) then
             warning:setVisible(true)
             warning:setText("This hotkey is already in use and cannot be overwritten.")
+            buttonOk:setEnabled(false)
+        end
+        if PokeNation.isMoveBarKey(keyCombo) then
+            warning:setVisible(true)
+            warning:setText("This hotkey is used by the Pokemon move bar.")
             buttonOk:setEnabled(false)
         end
         return true

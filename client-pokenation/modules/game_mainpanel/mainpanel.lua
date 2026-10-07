@@ -171,7 +171,7 @@ optionsController = Controller:new()
 optionsController:setUI('mainoptionspanel', modules.game_interface.getMainRightPanel())
 
 function optionsController:onInit()
-    createButton_large('Store shop', tr('Store shop'), '/images/options/store_large', toggleStore,
+    createButton_large('Store shop', tr('PokeNation Shop'), '/images/options/store_large', toggleStore,
     false, 8)
 
     if not optionPanel then
@@ -181,9 +181,9 @@ function optionsController:onInit()
 end
 
 function toggleStore()
-    if  g_game.getFeature(GameIngameStore) then
+    if g_game.getFeature(GameIngameStore) and modules.game_store then
         modules.game_store.toggle() -- cipsoft packets
-    else
+    elseif modules.game_shop then
         modules.game_shop.toggle() -- custom
     end
 end

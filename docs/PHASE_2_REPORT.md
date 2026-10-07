@@ -111,7 +111,7 @@ Development-only configuration differences from the archive, both documented in
 | System | Finding | Severity | Ref |
 |---|---|---|---|
 | NPC trainer battles under the shipped `worldType = "no-pvp"` | Every player attack is refused ("You may not attack this creature.") while the NPC's Pokémon hits back; the player cannot log out. Cause: `Combat::canDoCombat` (`server/src/combat.cpp:313`) rejects attacks on mastered creatures before the NPC-opponent exception (`:322-326`). **Fixed for development** by `worldType = "pvp"`; PvP between players stays blocked by `combat.cpp:272-284`. | P1 | BUG-01, P2-29 |
-| Pokémon moves as a GM character | Groups 4–6 have infinite mana, which PSoul uses as energy → energy 0/0 → "Sorry, your Pokemon has insufficient energy". Test as a group-1 character. | P3 | BUG-05, P2-06 |
+| Pokémon moves as a GM character | Groups 4–6 have infinite mana, which PSoul uses as energy → energy 0/0 → "Sorry, your Pokemon has insufficient energy". Test as a group-1 character. (Fixed later, see BUG-05.) | P3 | BUG-05, P2-06 |
 | Autoloot OFF persistence | OFF never saved; every login prints "Auto Loot OFF!" and the C++ default is `autoLoot = true` (`player.cpp:69`, `login.lua:183-185`). | P3 | BUG-04, P2-24 |
 | `onLogout.lua` errors | Four Lua errors when a client disconnects during an NPC battle. | P3 | BUG-06 |
 | Builds on current toolchains (Phase 2 start) | Server/client did not compile with modern Boost, libxml2, CMake 4 — fixed. | P0 | BUG-02 |

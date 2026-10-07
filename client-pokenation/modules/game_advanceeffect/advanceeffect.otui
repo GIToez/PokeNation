@@ -1,0 +1,114 @@
+AdvanceSection < UIWidget
+  height: 38
+  margin-top: 4
+  padding: 2
+  background-color: #222833cc
+  border: 1 #111111
+
+  UIItem
+    id: item
+    size: 32 32
+    virtual: true
+    phantom: true
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    visible: false
+
+  UIWidget
+    id: image
+    size: 32 32
+    phantom: true
+    image-smooth: true
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    visible: false
+
+  Label
+    id: title
+    height: 14
+    color: #b6b6b6
+    text-align: center
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-left: 34
+
+  Label
+    id: description
+    height: 16
+    font: terminus-14px-bold
+    text-align: center
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-left: 34
+
+AdvanceMovesTitle < Label
+  height: 14
+  margin-top: 4
+  color: #b6b6b6
+  text-align: center
+
+AdvanceMoveIcon < UIItem
+  size: 32 32
+  virtual: true
+
+AdvanceMoveGrid < UIWidget
+  id: moves
+  margin-top: 2
+  layout:
+    type: grid
+    cell-size: 32 32
+    cell-spacing: 3
+    flow: true
+    fit-children: true
+
+AdvanceStack < UIWidget
+  id: advanceStack
+  width: 300
+  phantom: true
+  focusable: false
+  anchors.top: gameMapPanel.top
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  margin-top: 40
+  layout:
+    type: verticalBox
+    spacing: 6
+    fit-children: true
+
+AdvancePopup < UIWidget
+  padding: 6
+  background-color: #10141bcc
+  border: 1 #272727
+  layout:
+    type: verticalBox
+    fit-children: true
+
+  UIWidget
+    id: header
+    height: 60
+    UIWidget
+      id: portrait
+      size: 56 56
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      image-smooth: true
+      visible: false
+
+    Label
+      id: subtitle
+      color: #ffffff
+      text-align: center
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+
+    Label
+      id: headline
+      font: terminus-14px-bold
+      color: #ffd303
+      text-align: center
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 8

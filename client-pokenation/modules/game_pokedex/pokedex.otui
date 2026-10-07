@@ -1,0 +1,209 @@
+DexEntry < UIItem
+  size: 34 34
+  virtual: true
+  border-color: #ffffff
+
+DexStatusItem < UIItem
+  size: 32 32
+  virtual: true
+  phantom: true
+  anchors.fill: parent
+
+DexCell < UIWidget
+  height: 30
+  text-align: center
+  font: verdana-11px-rounded
+  color: #e0e0e0
+  image-smooth: true
+
+DexMoveRow < UIWidget
+  height: 32
+  margin-top: 3
+  background-color: #22283399
+  border: 1 #111111
+  layout:
+    type: horizontalBox
+
+DexEffectSection < UIWidget
+  height: 26
+  margin-top: 4
+  background-color: #22283399
+  border: 1 #a4a4a4
+
+  DexCell
+    id: header
+    width: 80
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+
+  UIWidget
+    id: types
+    anchors.top: parent.top
+    anchors.left: header.right
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    padding: 2
+    layout:
+      type: grid
+      cell-size: 49 20
+      cell-spacing: 3
+      flow: true
+
+DexTabText < Panel
+  MultilineTextEdit
+    id: text
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    anchors.right: textScroll.left
+    vertical-scrollbar: textScroll
+    text-wrap: true
+    editable: false
+    cursor-visible: false
+
+  VerticalScrollBar
+    id: textScroll
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    step: 32
+    pixels-scroll: true
+
+DexTabList < Panel
+  ScrollablePanel
+    id: content
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    anchors.right: listScroll.left
+    vertical-scrollbar: listScroll
+    layout:
+      type: verticalBox
+
+  VerticalScrollBar
+    id: listScroll
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    step: 32
+    pixels-scroll: true
+
+PokedexWindow < MainWindow
+  id: pokedexWindow
+  !text: tr('Pokedex')
+  size: 760 440
+  @onEscape: modules.game_pokedex.hide()
+
+  UIItem
+    id: dexItem
+    virtual: true
+    size: 16 16
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: -24
+
+  ScrollablePanel
+    id: ownDexContainer
+    width: 200
+    anchors.top: parent.top
+    anchors.bottom: closeButton.top
+    anchors.right: ownDexScrollBar.left
+    margin-bottom: 6
+    padding: 2
+    vertical-scrollbar: ownDexScrollBar
+    layout:
+      type: grid
+      cell-size: 36 36
+      cell-spacing: 1
+      flow: true
+
+  VerticalScrollBar
+    id: ownDexScrollBar
+    anchors.top: parent.top
+    anchors.bottom: closeButton.top
+    anchors.right: parent.right
+    margin-bottom: 6
+    step: 36
+    pixels-scroll: true
+
+  UIWidget
+    id: pokeType1
+    size: 32 32
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 16
+    image-smooth: true
+
+  UIWidget
+    id: pokeType2
+    size: 32 32
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-top: 4
+    image-smooth: true
+
+  Label
+    id: pokeId
+    !text: '#000'
+    anchors.verticalCenter: pokeName.verticalCenter
+    anchors.right: pokeName.left
+    margin-right: 8
+    text-auto-resize: true
+
+  UIWidget
+    id: pokePicture
+    size: 100 100
+    anchors.top: parent.top
+    anchors.left: pokeType1.right
+    margin-left: 10
+    image-smooth: true
+
+  UIWidget
+    id: family
+    size: 140 100
+    anchors.top: parent.top
+    anchors.left: pokePicture.right
+    margin-left: 30
+    margin-top: 10
+    layout:
+      type: grid
+      cell-size: 32 32
+      cell-spacing: 2
+      flow: true
+
+  Label
+    id: pokeName
+    !text: tr('Unknown')
+    font: terminus-14px-bold
+    anchors.top: pokePicture.bottom
+    anchors.horizontalCenter: pokePicture.horizontalCenter
+    text-auto-resize: true
+
+  TabBarVertical
+    id: optionsTabBar
+    width: 60
+    anchors.top: pokeName.bottom
+    anchors.left: parent.left
+    anchors.bottom: closeButton.top
+    margin-top: 8
+    margin-bottom: 6
+
+  Panel
+    id: optionsTabContent
+    anchors.top: pokeName.bottom
+    anchors.left: optionsTabBar.right
+    anchors.right: ownDexContainer.left
+    anchors.bottom: closeButton.top
+    margin-top: 8
+    margin-left: 4
+    margin-right: 8
+    margin-bottom: 6
+
+  Button
+    id: closeButton
+    !text: tr('Close')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: modules.game_pokedex.hide()

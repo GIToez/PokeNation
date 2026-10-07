@@ -1,0 +1,10 @@
+Module
+  name: game_pokebar
+  description: PokeNation Pokemon team bar (port of the legacy PSoul game_pokebar)
+  author: PokeNation (behaviour from the legacy PSoul client)
+  website: https://github.com/GIToez/PokeNation
+  sandboxed: true
+  dependencies: [ pokenation_lib, game_interface ]
+  scripts: [ pokebar ]
+  @onLoad: init()
+  @onUnload: terminate()

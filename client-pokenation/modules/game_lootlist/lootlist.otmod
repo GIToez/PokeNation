@@ -1,0 +1,10 @@
+Module
+  name: game_lootlist
+  description: PokeNation loot notification strip (port of the legacy PSoul game_lootlist, packet 0xFF 0x1A)
+  author: PokeNation (behaviour from the legacy PSoul client)
+  website: https://github.com/GIToez/PokeNation
+  sandboxed: true
+  dependencies: [ pokenation_lib, game_interface ]
+  scripts: [ lootlist ]
+  @onLoad: init()
+  @onUnload: terminate()

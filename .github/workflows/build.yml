@@ -279,7 +279,7 @@ jobs:
             $text = $out -join "`n"
             $client = if ($text -match '\[ OK \] MariaDB client: (.+)') { $Matches[1].Trim() } else { '(none)' }
             if ($client -notmatch '\\MariaDB[^\\]*\\bin\\(mariadb|mysql)\.exe$') { Write-Host "::error::setup ($Tag) did not use the MariaDB client: $client"; exit 1 }
-            if ($text -notmatch '(?m)^\[ OK \] 97 tables; accounts: 1,admin,player\s*$') { Write-Host "::error::setup ($Tag): expected '97 tables; accounts: 1,admin,player'"; exit 1 }
+            if ($text -notmatch '(?m)^\[ OK \] 98 tables; accounts: 1,admin,player\s*$') { Write-Host "::error::setup ($Tag): expected '98 tables; accounts: 1,admin,player'"; exit 1 }
             $warned = $text -match 'insecure passwordless login'
             Write-Host "setup ($Tag): client $client; passwordless-login warning seen: $warned"
             return $text
@@ -321,7 +321,7 @@ jobs:
               $out | Out-Host
               Set-Content -Path "$env:RUNNER_TEMP\setup-smoke-retry.log" -Value $out -Encoding UTF8
               if ($setup -ne 0) { exit $setup }
-              if (($out -join "`n") -notmatch '(?m)^\[ OK \] 97 tables; accounts: 1,admin,player\s*$') { Write-Host '::error::-Reset before the retry did not restore the seed'; exit 1 }
+              if (($out -join "`n") -notmatch '(?m)^\[ OK \] 98 tables; accounts: 1,admin,player\s*$') { Write-Host '::error::-Reset before the retry did not restore the seed'; exit 1 }
             }
             $log = "$env:RUNNER_TEMP\server-$attempt.log"
             $p = Start-Process -FilePath "$dir\PokeNationServer.exe" -WorkingDirectory $dir -PassThru -NoNewWindow `

@@ -118,6 +118,86 @@ jobs:
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
   # --------------------------------------------------------------------------------------------
+  # Runtime check of the packaged Linux client against a real server: login, polls, PokeNation
+  # Shop, Pokemon UI, market and the two-client TV round trip (tools/pokenation_gui_smoke_ci.sh).
+  gui-smoke:
+    name: GUI smoke (packaged Linux client vs server, Xvfb)
+    needs: linux
+    runs-on: ubuntu-24.04
+    services:
+      mariadb:
+        image: mariadb:11
+        env:
+          MARIADB_ROOT_PASSWORD: root
+          MARIADB_DATABASE: psoul
+          MARIADB_USER: psoul
+          MARIADB_PASSWORD: ci-password
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd "healthcheck.sh --connect --innodb_initialized"
+          --health-interval 10s --health-timeout 5s --health-retries 10
+    env:
+      PSOUL_DB_HOST: 127.0.0.1
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: false
+      # Same cache key as build.yml: map.otbm (server) and data.spr (client Stage A assets).
+      - name: Compute LFS asset id
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+      - uses: actions/cache@v6
+        with:
+          path: .git/lfs
+          key: lfs-${{ hashFiles('.lfs-assets-id') }}
+      - name: Pull LFS objects
+        run: git lfs pull
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            build-essential cmake pkg-config mariadb-client \
+            libboost-system-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev libboost-chrono-dev \
+            liblua5.1-0-dev libxml2-dev libgmp-dev libmysqlclient-dev libsqlite3-dev libssl-dev zlib1g-dev \
+            libgl1 libglx-mesa0 libgl1-mesa-dri libx11-6 xvfb scrot
+      - name: Build server
+        run: tools/build_server_linux.sh
+      - name: Stage A assets
+        run: python3 tools/stage_pokenation_assets.py
+      - uses: actions/download-artifact@v8
+        with:
+          name: PokeNation-Client-Linux
+          path: dist
+      - name: Unpack client
+        run: mkdir -p /tmp/pkg && tar xzf dist/PokeNation-Client-Linux.tar.gz -C /tmp/pkg
+      - name: Initialise database and start the server
+        run: |
+          for f in mysql.sql psoul_extra_mysql.sql psoul_dev_seed.sql; do
+            mysql -h127.0.0.1 -uroot -proot psoul < "server/src/schemas/$f"
+          done
+          sed -E -e 's/^(\s*sqlHost\s*=\s*)"[^"]*"/\1"127.0.0.1"/' -e 's/^(\s*sqlUser\s*=\s*)"[^"]*"/\1"psoul"/' \
+                 -e 's/^(\s*sqlPass\s*=\s*)"[^"]*"/\1"ci-password"/' \
+                 -e 's/^(\s*sqlDatabase\s*=\s*)"[^"]*"/\1"psoul"/' server/config.example.lua > server/config.lua
+          (cd server && timeout 3000 ../build/linux-development/server/psoul-server > /tmp/server.log 2>&1 &)
+          for i in $(seq 1 240); do grep -q "^>> Cristal server Online" /tmp/server.log && break; sleep 1; done
+          grep -q "^>> Cristal server Online" /tmp/server.log || { tail -80 /tmp/server.log; exit 1; }
+      - name: GUI smoke (tools/pokenation_gui_smoke_ci.sh)
+        run: |
+          ALSOFT_DRIVERS=null tools/pokenation_gui_smoke_ci.sh --client /tmp/pkg/PokeNation-Client/PokeNationClient --out /tmp/gui-smoke
+      - name: Summary
+        if: always()
+        run: |
+          { echo "### PokeNation GUI smoke (RUNTIME, Xvfb)"; echo '```'; cat /tmp/gui-smoke/results.txt 2>/dev/null || echo "no results"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          cp /tmp/server.log /tmp/gui-smoke/ 2>/dev/null || true
+          pkill -TERM -x psoul-server || true
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: PokeNation-Phase3-Screenshots
+          path: /tmp/gui-smoke
+          if-no-files-found: warn
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+  # --------------------------------------------------------------------------------------------
   windows:
     name: Windows x64 (MSVC, static vcpkg)
     runs-on: windows-2025-vs2026

@@ -63,6 +63,7 @@ Unless a tutorial says otherwise, paths are relative to `server/`, except paths 
 |----------|----------------|
 | [add-command.md](add-command.md) | Add a chat command (talkaction), for players or GMs with an access level (model: `/autoloot`) |
 | [add-client-asset.md](add-client-asset.md) | Add a client image, sprite or item graphic, and the rule that the legacy client is a frozen reference |
+| [add-shop-product.md](add-shop-product.md) | Add a PokeNation Shop product (Soul Coins): one server catalog entry, grant types, price rules, testing |
 | [database-changes.md](database-changes.md) | Change the database safely: schema files, `ALTER TABLE` on existing databases, item/player data, backups |
 | [CHECKLISTS.md](CHECKLISTS.md) | All dependency checklists in one place, for reviewing a change before it is committed |
 
@@ -78,7 +79,7 @@ Unless a tutorial says otherwise, paths are relative to `server/`, except paths 
 | `docs/PHASE_2_TEST_MATRIX.md` | The tested GM/player flows whose exact messages the tutorials quote (P2-xx) |
 | `docs/BUG_TRIAGE.md` | The BUG-xx numbers referenced in the tutorials |
 
-GM test characters: **GM Admin** creates things (`/i`, `/m`, `/mypokemon`), but its Pokémon
-cannot use moves (BUG-05). Use **Tester** (`admin`/`admin`) or **Trainer** (`player`/`player`)
-for combat. Items created with `/i` land in a hidden backpack (BUG-12); use
+GM test characters: **GM Admin** creates things (`/i`, `/m`, `/mypokemon`). Its Pokémon can use
+moves but never spend energy (infinite-mana GM groups, BUG-05 fixed). Use **Tester**
+(`admin`/`admin`) or **Trainer** (`player`/`player`) whenever energy costs matter. Items created with `/i` land in a hidden backpack (BUG-12); use
 `/i <id>,<count>,true` to drop them on your tile instead.

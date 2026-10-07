@@ -1,0 +1,74 @@
+DetailsRow < UIWidget
+  height: 18
+  Label
+    id: key
+    width: 90
+    color: #b6b6b6
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+  Label
+    id: value
+    anchors.left: key.right
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+
+PokemonDetailsWindow < MainWindow
+  id: pokemonDetailsWindow
+  !text: tr('Pokemon')
+  size: 340 290
+  @onEscape: self:hide()
+
+  UIItem
+    id: portrait
+    size: 48 48
+    virtual: true
+    anchors.top: parent.top
+    anchors.left: parent.left
+
+  Label
+    id: name
+    font: terminus-14px-bold
+    anchors.top: parent.top
+    anchors.left: portrait.right
+    anchors.right: parent.right
+    margin-left: 8
+    margin-top: 4
+
+  Label
+    id: subtitle
+    color: #b6b6b6
+    anchors.top: prev.bottom
+    anchors.left: portrait.right
+    anchors.right: parent.right
+    margin-left: 8
+    margin-top: 4
+
+  UIWidget
+    id: rows
+    anchors.top: portrait.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+    layout:
+      type: verticalBox
+      fit-children: true
+
+  MultilineTextEdit
+    id: extra
+    anchors.top: rows.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: closeButton.top
+    margin-top: 6
+    margin-bottom: 6
+    text-wrap: true
+    editable: false
+    cursor-visible: false
+
+  Button
+    id: closeButton
+    !text: tr('Close')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: self:getParent():hide()

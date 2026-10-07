@@ -1326,6 +1326,8 @@ VERIFIED_COMMANDS = {
     "/cp": "P2-04",
     "/tc": "P2-16",
     "m1": "P2-06", "m2": "P2-06", "m3": "P2-06", "m4": "P2-06", "m5": "P2-06", "m6": "P2-06",
+    "/doubleexp": "tools/exp_event_test.py (2h, 3x 2h, 1m, off, player denied); restarts: FEATURES.md Server EXP event",
+    "/expevent": "tools/exp_event_test.py",
 }
 # Mentioned in the matrix but without an observed reply, so NOT counted as verified.
 EXERCISED_NO_REPLY = {"/help": "P2-14: sent, no reply observed"}
@@ -1336,7 +1338,7 @@ COMMAND_BUGS = {
     "/cupom": ("BUG-54: coupon types other than 0 consume the code without reward", True),
     "/i": ("BUG-12: created items land in the slot-3 backpack hidden by the client", False),
     "/lang": ("Phase-1 A3: overwritten by the login language at every login (harmless)", False),
-    "m1": ("BUG-05: GM groups (infinite mana) cannot use moves; works for players", False),
+    "m1": ("BUG-05 (fixed): GM groups (infinite mana) use moves without spending energy; tools/energy_test.py", False),
     "/n": ("BUG-38 note: `/n Soya` loads an NPC whose script `loot.lua` is missing", False),
     "/tvbanlist": ("Phase-1 report: script `tv/banlist.lua` missing (entry commented)", True),
 }

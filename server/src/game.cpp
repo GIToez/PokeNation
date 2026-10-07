@@ -82,6 +82,7 @@ Game::Game()
 	worldType = WORLD_TYPE_PVP;
 	map = NULL;
 	playersRecord = lastStageLevel = 0;
+	expEventMultiplier = -1.;
 	for(int32_t i = 0; i < 3; i++)
 		globalSaveMessage[i] = false;
 
@@ -6049,6 +6050,28 @@ double Game::getExperienceStage(uint32_t level, double divider/* = 1.*/)
 		return stages[lastStageLevel] * divider;
 
 	return stages[level] * divider;
+}
+
+double Game::getExpEventMultiplier() const
+{
+	if(expEventMultiplier >= 0.)
+		return expEventMultiplier;
+
+	double multiplier = g_config.getDouble(ConfigManager::SERVER_EXP_EVENT_MULTIPLIER);
+	if(!(multiplier > 0.) || multiplier > 100.)
+		return 1.;
+
+	return multiplier;
+}
+
+bool Game::setExpEventMultiplier(double multiplier)
+{
+	// !(x > 0) also rejects NaN
+	if(!(multiplier > 0.) || multiplier > 100.)
+		return false;
+
+	expEventMultiplier = multiplier;
+	return true;
 }
 
 bool Game::fetchBlacklist()

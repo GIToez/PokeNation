@@ -1,0 +1,10 @@
+Module
+  name: game_pokedex
+  description: PokeNation Pokedex (port of the legacy PSoul game_pokedex, packets 0xFF 0x0A-0x0C and 0x11)
+  author: PokeNation (behaviour from the legacy PSoul client)
+  website: https://github.com/GIToez/PokeNation
+  sandboxed: true
+  dependencies: [ pokenation_lib, game_interface ]
+  scripts: [ pokedex ]
+  @onLoad: init()
+  @onUnload: terminate()

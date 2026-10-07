@@ -10,6 +10,7 @@ PS_LIB_FUNCTIONS_DIR = PS_LIB_DIR .. "functions/"
 dofile(PS_LIB_OTHERS_DIR .. "constants.lua")
 dofile(PS_LIB_OTHERS_DIR .. "logger.lua")
 dofile(PS_LIB_OTHERS_DIR .. "outfits.lua")
+dofile(PS_LIB_OTHERS_DIR .. "json.lua")
 
 -- Configs
 dofile(PS_LIB_CONFIG_DIR .. "itemsAttributes.lua")

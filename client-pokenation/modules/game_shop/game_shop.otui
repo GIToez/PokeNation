@@ -212,25 +212,6 @@ ShopBalanceWidget < FlatPanel
     $on:
       image-source: images/coin_second
 
-ShopBalanceSecondWidget < FlatPanel
-  image-color: #A0A0A0
-  focusable: false
-
-  Label
-    id: value
-    anchors.fill: parent
-    margin-right: 20
-    text-align: right
-    text: 0
-    color: #C0C0C0
-
-  UIWidget
-    anchors.right: parent.right
-    anchors.verticalcenter: parent.verticalcenter
-    image-source: images/coin_second
-    margin-right: 3
-    phantom: true
-
 OfferPriceLabel < Label
   anchors.left: parent.left
   margin-right: 6
@@ -281,31 +262,6 @@ OfferWidget < FlatPanel
     margin-left: 4
     size: 70 70
 
-    UIWidget
-      id: image
-      anchors.fill: parent
-      margin: 3
-      visible: false
-      phantom: true
-    
-    UICreature
-      id: outfit
-      anchors.fill: parent
-      margin-right: 6
-      margin-bottom: 6
-      visible: false
-      phantom: true
-      animate: true
-    
-    UICreature
-      id: mount
-      anchors.fill: parent
-      margin-right: 8
-      margin-bottom: 8
-      visible: false
-      phantom: true
-      animate: true
-
     UIItem
       id: item
       anchors.centerIn: parent
@@ -327,7 +283,7 @@ OfferWidget < FlatPanel
 
 MainWindow
   id: shopWindow
-  !text: 'Store'
+  !text: tr('PokeNation Shop')
   size: 776 533
   color: #909090
   @onEscape: modules.game_shop.hide()
@@ -401,7 +357,7 @@ MainWindow
     margin-right: 5
     color: #C0C0C0
     focusable: false
-    @onClick: modules.game_shop.showHistory()
+    @onClick: modules.game_shop.requestHistory()
 
   ShopBalanceWidget
     id: balance
@@ -409,45 +365,14 @@ MainWindow
     anchors.left: parent.left
     anchors.bottom: parent.bottom
 
-  ShopBalanceSecondWidget
-    id: balanceSecond
-    size: 105 21
+  Label
+    id: currencyLabel
+    anchors.verticalcenter: prev.verticalcenter
+    anchors.left: prev.right
     margin-left: 6
-    anchors.top: prev.top
-    anchors.left: prev.right
-
-  Button
-    anchors.top: prev.top
-    anchors.left: prev.right
-    text: Get
-    text-align: left
-    text-offset: 16 0
+    !text: tr('Soul Coins')
+    text-auto-resize: true
     color: #C0C0C0
-    image-color: #89ff89
-    icon: images/coin
-    icon-size: 12 12
-    icon-offset: 40 5
-    size: 64 20
-    margin-left: 6
-    focusable: false
-    @onClick: modules.game_shop.buyPoints()
-    $pressed:
-      text-offset: 17 1
-      icon-offset: 41 5
-    $on:
-      icon: images/coin_second
-
-  Button
-    anchors.top: prev.top
-    anchors.left: prev.right
-    size: 87 20
-    margin-left: 6
-    icon: images/giftcoin
-    icon-offset: 0 0
-    focusable: false
-    @onClick: modules.game_shop.toggleGiftCoins()
-    $pressed:
-      icon-offset: 1 0
 
   FlatPanel
     id: history
@@ -582,28 +507,6 @@ MainWindow
         margin-top: 23
         margin-left: 5
         size: 130 130
-
-        UIWidget
-          id: image
-          anchors.fill: parent
-          margin: 3
-          visible: false
-        
-        UICreature
-          id: outfit
-          anchors.fill: parent
-          margin-right: 6
-          margin-bottom: 6
-          visible: false
-          animate: true
-        
-        UICreature
-          id: mount
-          anchors.fill: parent
-          margin-right: 8
-          margin-bottom: 8
-          visible: false
-          animate: true
 
         UIItem
           id: item

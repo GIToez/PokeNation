@@ -98,6 +98,14 @@ void ModuleManager::ensureModuleLoaded(const std::string_view moduleName)
         g_logger.fatal("Unable to load '{}' module", moduleName);
 }
 
+void ModuleManager::setModuleDisabled(const std::string& moduleName, const bool disabled)
+{
+    if (disabled)
+        m_disabledModules.emplace(moduleName);
+    else
+        m_disabledModules.erase(moduleName);
+}
+
 void ModuleManager::unloadModules()
 {
     const auto modulesBackup = m_modules;

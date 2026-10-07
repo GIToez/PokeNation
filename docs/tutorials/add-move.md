@@ -326,8 +326,8 @@ At startup, look for these lines:
 
 ## 13. Test steps
 
-GM Pokémon cannot use moves (BUG-05). Use **Tester** (`admin`/`admin`) or **Trainer**
-(`player`/`player`) for the move itself and GM Admin only to create things.
+GM Pokémon can use moves but never spend energy (BUG-05, fixed). Use **Tester** (`admin`/`admin`)
+or **Trainer** (`player`/`player`) to check the move's energy cost; GM Admin is fine for the rest.
 
 1. GM: `/mypokemon <Species>,<level ≥ move level>`, then move the ball to Tester, or test with
    a species Tester already owns.
@@ -369,7 +369,7 @@ GM Pokémon cannot use moves (BUG-05). Use **Tester** (`admin`/`admin`) or **Tra
 | Symptom | Cause |
 |---------|-------|
 | Saying `m3` does nothing at all | No `script_<Move>` spell, or the spell script failed to load |
-| "Sorry, your Pokemon has insufficient energy (N)." with a GM character | BUG-05 (infinite-mana flag); use Tester |
+| "Sorry, your Pokemon has insufficient energy (N)." | The trainer's energy is below the move's `requiredEnergy`; wait for regeneration. GM groups never see it (BUG-05, fixed) |
 | Empty or wrong icon on the move bar | `clientIconId` not in `data.dat`, or a client `MOVES` entry is missing |
 | `[Error - Spell Interface] …/scripts/<Move>.lua:onCastSpell … attempt to call global 'onTargetCreature_…'` | Callback name mismatch inside the script |
 | `[Error - LuaScriptInterface::loadFile] … data/lib/ps/config/skill.lua:77: attempt to compare nil with number` (or `:241`) at startup, followed by `[Warning - LuaScriptInterface::initState] Cannot load data/lib/` | `requiredEnergy` or `clientIconId` missing in some move file; the whole PSoul lib stops loading |

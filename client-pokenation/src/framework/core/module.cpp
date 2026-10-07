@@ -31,7 +31,7 @@ Module::Module(const std::string_view name) : m_sandboxEnv(g_lua.newSandboxEnv()
 
 bool Module::load()
 {
-    if (m_loaded || !m_enabled)
+    if (m_loaded || !m_enabled || g_modules.isModuleDisabled(m_name))
         return true;
 
     if (!m_supportedDevices.empty() && !hasSupportedDevice(g_platform.getDevice()))

@@ -439,6 +439,9 @@ function addKeyCombo(keyCombo, keySettings, focus)
     if not keyCombo then
         return
     end
+    if PokeNation.isMoveBarKey(keyCombo) then
+        return
+    end
     if modules.game_actionbar and modules.game_actionbar.removeHotkeyFromActionBar then
         modules.game_actionbar.removeHotkeyFromActionBar(keyCombo)
     end
@@ -885,8 +888,14 @@ end
 function hotkeyCapture(assignWindow, keyCode, keyboardModifiers)
     local keyCombo = determineKeyComboDesc(keyCode, keyboardModifiers)
     local comboPreview = assignWindow:getChildById('comboPreview')
-    comboPreview:setText(tr('Current hotkey to add: %s', keyCombo))
     comboPreview.keyCombo = keyCombo
+    if PokeNation.isMoveBarKey(keyCombo) then
+        comboPreview:setText(tr('%s is used by the Pokemon move bar', keyCombo))
+        comboPreview:resizeToText()
+        assignWindow:getChildById('addButton'):disable()
+        return true
+    end
+    comboPreview:setText(tr('Current hotkey to add: %s', keyCombo))
     comboPreview:resizeToText()
     assignWindow:getChildById('addButton'):enable()
     return true

@@ -225,7 +225,7 @@ Strings from P2-17. Use GM or Trainer.
 3. `/held`: "Your Pokemon Held item is at level 1 and has 0 experience points, he needs more 98800(100%) experience points to advance to level 2."
 4. Again on the same ball: "Your Pokemon already have got a Held Item."
 5. With the Pokémon out: "You can not do it while you have a Pokemon out of the ball."
-6. Damage (as Tester, BUG-05): compare the damage line of a move of that element before and
+6. Damage (as Tester or GM Admin): compare the damage line of a move of that element before and
    after installing ("Your <Pokémon> deals N damage to a Rattata.").
 7. Remove it at the held remover NPC (`npc/scripts/held_remove.lua`): say `hi`, `remove`, `yes`.
 

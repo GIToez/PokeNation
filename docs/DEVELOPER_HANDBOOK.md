@@ -330,6 +330,33 @@ Login path:
 To point the client at another server change `entergame.lua:191-192` (Lua only, no rebuild);
 see `docs/LOCAL_CLIENT_TESTING.md` §1.2.
 
+The steps above describe the **frozen legacy client** (`client/`). New client work goes into
+`client-pokenation/` (OTClient Redemption 4.1).
+
+### 5.1 PokeNation client (`client-pokenation/`)
+
+`client-pokenation/init.lua` differs from the legacy flow in three places
+(full list in [`REDEMPTION_CHANGES.md`](REDEMPTION_CHANGES.md)):
+
+1. **Server and protocol.** `Servers_init` has one entry, `127.0.0.1:7564`, with internal
+   version 854. `PokeNationConfig.protocolProfile = "psoul312"` makes `gamelib/pokenation.lua`
+   write 312 on the wire, send OS id `0x14–0x17`, and enable the `GamePSoulProtocol` feature,
+   which gates every PSoul packet read.
+2. **Module control.** After `discoverModules()`, every name in
+   `PokeNationConfig.disabledModules` (24 Redemption systems the 8.54 server lacks) is passed to
+   `g_modules.setModuleDisabled`. The `developerModules` list (4) is disabled the same way unless
+   `POKENATION_PROFILE=development`. The log then shows
+   `PokeNation build profile 'production', 28 module(s) disabled`. The decision for each module
+   is in [`REDEMPTION_MODULE_AUDIT.md`](REDEMPTION_MODULE_AUDIT.md).
+3. **Pokémon UI.** `pokenation_lib` loads in the library band. The Pokémon modules
+   (`game_pokebar`, `game_pokemoves`, `game_pokedex`, …) are in the `load-later` list of
+   `game_interface/interface.otmod`. Their reference is
+   [`reference/CLIENT_MODULES.md`](reference/CLIENT_MODULES.md).
+
+Extended opcodes are enabled only after the server's ACTIVATE (id 0), which arrives after
+`onGameStart`. A module that sends `0x32` must wait for `g_game.onExtendedOpcodeEnabled`, or
+send on a user action such as opening the shop window.
+
 ---
 
 ## 6. Server ↔ client protocol
@@ -341,7 +368,7 @@ Full byte layouts: `docs/SOURCE_AUDIT.md` §2 and [`docs/reference/OPCODES.md`](
 | Ports | login `7564`, game `8548` | `config.example.lua:95-96` (`loginPort`, `gamePort`) |
 | Advertised IP | `127.0.0.1` | `config.example.lua:93` (`ip`) |
 | Version | `312` on both sides (an invented id carried on 8.54-shaped packets) | server `server/src/resources.h:79-80`; client `protocollogin.lua:38`, `protocolgamesend.cpp:57` |
-| OTClient detection | OS id `0x0A–0x0C` | most PSoul extras are only sent when `player->isUsingOtclient()` |
+| OTClient detection | OS id `0x0A–0x0C` (legacy client), `0x14–0x17` (PokeNation client) | most PSoul extras are only sent when `player->isUsingOtclient()` |
 | PSoul extras | language byte at login, character-list extras + poll byte, `U16` light hour, 4 extra creature bytes, `U16` magic effects, `U16` channel count | `SOURCE_AUDIT.md` §2.2–2.4 |
 
 If you change any packet, you must change **both** `server/src/protocol*.cpp` and
@@ -393,9 +420,15 @@ so both binaries must be rebuilt.
 * Client → server: `g_game.getProtocolGame():sendExtendedOpcode(id, buffer)`
   (`client_options/options.lua:97`). The server handles only id 10 (dash walking) in C++
   (`server/src/game.cpp:7714-7731`). The engine registers a creature event named
-  `"ExtendedOpcode"` for OTClient players (`protocolgame.cpp:302-304`), but
-  `creaturescripts.xml` defines no `type="extendedopcode"` event, so there is no Lua handler
-  yet (BUG-38). To add one, define the event in `creaturescripts.xml` with that name.
+  `"ExtendedOpcode"` for OTClient players (`protocolgame.cpp:302-304`). Since Phase 3B,
+  `creaturescripts.xml` defines it (`type="extendedopcode"`) and
+  `lib/ps/events/creaturescripts/onExtendedOpcode.lua` dispatches Lua ids (≥ 100). The only one
+  so far is 201, `POKENATION_SHOP` (`lib/ps/systems/057-soulShop.lua`; JSON layout in
+  [`reference/OPCODES.md`](reference/OPCODES.md) §8.1).
+* To add a Lua id: list it in `server/src/extendedopcodes.h`, `EXTENDED_IDS` and the client
+  `ExtendedIds`, and add a branch in `onExtendedOpcode.lua`. Never trust a value the client
+  sends (price, balance, item id) without a server-side check; see
+  [`reference/SOUL_COINS.md`](reference/SOUL_COINS.md).
 
 ---
 
@@ -578,12 +611,27 @@ python3 -u tools/protocol_probe.py enter --account admin --password admin --char
   --wait-text "(Gotcha|ball broke):15"
 ```
 
+### 9.3.1 GUI smoke with the PokeNation client
+
+`tools/pokenation_client_smoke.py` starts the built `client-pokenation` under Xvfb. It logs in
+through the normal login window and runs the test mod `tools/pokenation_smoke/pn_smoke`, which
+is copied into a temporary directory and never packaged. Options: `--shop`, `--pokemon`,
+`--market`, `--tv record|watch`. Each check prints `[PASS]` or `[FAIL]`, and screenshots and
+`otclient.log` go to `--out`.
+
+`tools/pokenation_gui_smoke_ci.sh --client <PokeNationClient> --out <dir>` runs all scenarios,
+including the two-client TV pair. It re-seeds before each scenario with
+`tools/pokenation_smoke/seed_smoke.sql`, writes `<dir>/results.txt`, and exits non-zero on any
+failure. CI runs it in the `gui-smoke` job and uploads `PokeNation-Phase3-Screenshots`. A
+passing packet check does not prove the UI works: each UI row in
+[`PHASE_3_TEST_MATRIX.md`](PHASE_3_TEST_MATRIX.md) states which level it reached.
+
 ### 9.4 Which character to use
 
 | Character (account / password) | Use for |
 |--------------------------------|---------|
-| **GM Admin** (`admin`/`admin`, group 6) | GM commands (`/i`, `/m`, `/mypokemon`, `/goto`, `/reload`). **Its Pokémon cannot use moves**: groups 4–6 have `PlayerFlag_HasInfiniteMana` (bit 10, `server/src/const.h:496`; flags in `data/XML/groups.xml:6-8`) and PSoul uses mana as Pokémon energy (BUG-05). |
-| **Tester** (`admin`/`admin`, group 1) | Moves, battles, anything a normal player does. |
+| **GM Admin** (`admin`/`admin`, group 6) | GM commands (`/i`, `/m`, `/mypokemon`, `/goto`, `/reload`, `/doubleexp`). Its Pokémon can use moves without spending energy: groups 4–6 have `PlayerFlag_HasInfiniteMana` (bit 10, `server/src/const.h:496`; flags in `data/XML/groups.xml:6-8`), PSoul uses mana as Pokémon energy, and `hasPokemonEnoughEnergy` (`data/lib/ps/functions/pokemon.lua`) treats that flag as always enough (BUG-05, fixed). Cooldowns still apply. Use a normal character to test energy costs. |
+| **Tester** (`admin`/`admin`, group 1) | Moves, battles, energy costs, anything a normal player does. |
 | **Trainer** (`player`/`player`, group 1) | New-player path (Professor Oak starter) and the GUI client. |
 
 `replaceKickOnLogin = true` (`config.example.lua:110`): logging in on an account that is
@@ -671,6 +719,7 @@ Declared tables:
 | Range | Use | Declared in |
 |-------|-----|-------------|
 | 4962–5000, 5001–5152, 6000–6021, 6100–6105, 6150–6156 | **global** storages (events, Elite Four, highscore boards, mastery dungeons, bosses) | `lib/ps/config/globalStorages.lua:1-52` (ranges in the comments) |
+| 6200–6201 | **global**: server EXP event (`EXP_EVENT_MULTIPLIER` = multiplier × 100, `EXP_EVENT_EXPIRES_AT` = `os.time()` of the end; 0 = none) | `lib/ps/config/globalStorages.lua`, used by `systems/056-expEvent.lua` (§12.1) |
 | 7001–7078 | player flags (`playersStorages`) | `config/playersStorages.lua` (`base = 7000`) |
 | 7501–7521 | summon creature storages (`pokemonsStorages`) | `config/pokemonsStorages.lua` (`base = 7500`) |
 | 8001–8754 (+ a few up to 9681) | quests | `config/003-quest.lua` (`storage =`, `counterStorage =`), NPC `setRequiredStorage(…)` |
@@ -758,7 +807,11 @@ rg -n "\"$N\"|name=\"$N\"|\[\"$N\"\]" server/data \
 | move or add an NPC / wild spawn | `data/world/map-spawn.xml` (RME) | restart |
 | change a quest | `lib/ps/config/003-quest.lua`, quest NPC script | restart |
 | change rates, MOTD, ports, world type | `server/config.lua` (and `config.example.lua` if the default should change) | restart |
-| change group permissions (e.g. GM energy) | `data/XML/groups.xml` | restart (`/reload groups` does nothing) |
+| change group permissions | `data/XML/groups.xml` | restart (`/reload groups` does nothing) |
+| change how GM groups spend Pokémon energy | `hasPokemonEnoughEnergy` in `lib/ps/functions/pokemon.lua`; displayed value in `ProtocolGame::AddPlayerStats` | restart (C++: rebuild) |
+| run a double/triple EXP event | `/doubleexp 2h`, `/doubleexp 3x 2h`, `/doubleexp off` in game (access 4+); permanent default `serverExpEventMultiplier` in `server/config.lua` | none / restart (§12.1) |
+| change trainer kill EXP | stages in `data/XML/stages.xml`; formula `Player::rateExperience` (`server/src/player.cpp`) | restart / rebuild (§12.1) |
+| change Pokémon kill EXP | `doPlayerPokemonAddExperience` in `lib/ps/functions/player.lua` | restart (§12.1) |
 | add/translate a server message | text in Lua wrapped in `__L(cid, "…")`, Portuguese in `server/pt_br.loc` | restart; `docs/TRANSLATION.md` |
 | change the client's target server | `client/modules/client_entergame/entergame.lua:191-192` | restart client |
 | change a client window | `client/modules/game_<name>/*.lua` / `.otui` | restart client (no rebuild) |
@@ -766,6 +819,60 @@ rg -n "\"$N\"|name=\"$N\"|\[\"$N\"\]" server/data \
 | add a packet | `server/src/protocolgame.cpp` + `luascript.cpp` + `client/src-cpp/src/client/protocol*` | rebuild both (§6.1) |
 | add a database table | new `CREATE TABLE IF NOT EXISTS` block in `server/src/schemas/psoul_extra_mysql.sql` citing the code that uses it | apply to your DB (`mysql … < file` or `setup_database.sh --reset`) |
 | change engine behaviour | `server/src/*.cpp` | `tools/build_server.sh`, restart |
+
+### 12.1 Experience pipeline and the server EXP event
+
+A wild Pokémon killed by a player's Pokémon gives *raw* EXP
+`experience × (1 + level × experienceRate)` (`Monster::getLostExperience`, `monster.h`), split by
+damage share between every attacker (`Creature::getDamageRatio`; the trainer's own melee hits
+count as a separate share). Each share then goes through
+`Player::onGainExperience` (`server/src/player.cpp`):
+
+1. **Party:** with shared experience on, `Party::shareExperience` hands every member a share and
+   each member continues at step 2 with it.
+2. **Pokémon** (Lua creature event `onGainExperience` → `doPlayerPokemonAddExperience`,
+   `lib/ps/functions/player.lua`), receiving the raw share as an integer:
+   held item hook (`PokemonHeldItem.onGainExperience`, sees the raw amount) → Pokémon level stage
+   (×42 … ×1.5) → ×1.25 → `+ floor(e × getPlayerExtraExpRate)` (XP Boost) → **× event multiplier**.
+   Rare candy / lollipop call it with `multiplier = false` and skip the whole block, event included.
+   Returning `false` (e.g. Safari) also stops the trainer gain.
+3. **Trainer** (`Player::gainExperience` → `rateExperience`): `× (stage + extraExpRate)` (stage
+   from `data/XML/stages.xml`, XP Boost adds +0.15 to the stage) → stamina (×1.5 above
+   `staminaRatingLimitTop`, ×0.5 below `…Bottom`, 0 when empty) → **× event multiplier** →
+   truncated to an integer.
+
+The event multiplier is applied exactly once per final gain, after every existing modifier, so
+nothing else changes: stages, the Pokémon scaling and XP Boost keep their values and order. Fixed
+rewards given with `doPlayerAddExperience` (quests, NPC/Rocket battles, Pokédex, Ranger Club,
+catches) do not pass through `rateExperience` and are **not** multiplied. To include one, multiply
+its amount by `getServerExpEventMultiplier()` at the call site.
+
+**State.** The active multiplier lives in C++ (`Game::getExpEventMultiplier`, `game.cpp`), so all
+Lua states see the same value. Lua API: `getServerExpEventMultiplier()`;
+`setServerExpEventMultiplier(x)` (`false` unless 0 < x ≤ 100); `setServerExpEventMultiplier()` (no
+argument) falls back to `serverExpEventMultiplier` from `config.lua` (default 1.0; invalid values
+read as 1.0). `systems/056-expEvent.lua` (`ExpEvent`) adds the timed layer used by `/doubleexp`:
+
+- `ExpEvent.start(multiplier, seconds)` (1 < multiplier ≤ 10, 1 minute ≤ seconds ≤ 30 days),
+  `ExpEvent.stop()`, `ExpEvent.getActive()` → `multiplier, expiresAt`, `ExpEvent.getRemaining()`,
+  `ExpEvent.getStatusText(cid)`, `ExpEvent.parseCommand("3x 2h")`.
+- Persistence: global storages 6200/6201 (§11.1), written to memory *and* straight to
+  `global_storage` with `REPLACE INTO`, so a crash does not lose the event. `ExpEvent.onStartup`
+  (a `start.lua` STARTUP entry) restores an event that has not ended and clears an expired one.
+- Expiry: an `addEvent` timer (re-armed at most every hour; a timer whose stored end time no longer
+  matches does nothing) plus the `expEventCheck` globalevent every 30 s, which also covers timers
+  dropped by `/reload`.
+- `ExpEvent.onLogin` (from `login.lua`) shows the status to players logging in while it is active.
+
+**A future event** (e.g. a weekend event): call `ExpEvent.start(2, 48 * 3600)` from a
+`globalevents.xml` entry with `time="18:00"` and a day check, or run `/doubleexp 2d` by hand.
+Everything else (broadcasts, persistence, expiry) is handled.
+
+**Client (Phase 3).** The legacy client gets the status as text only (broadcast, login message,
+`/expevent`). The OTClient Redemption build should show a timer (e.g. `DOUBLE EXP 01:32:17`): send
+`ExpEvent.getActive()` (multiplier and `expiresAt`, or none) in an extended opcode `0x32` message
+from `ExpEvent.onLogin`, `ExpEvent.start`, `ExpEvent.stop` and the end of `finish`, and count down
+client-side. No protocol change is made for the legacy client.
 
 ---
 

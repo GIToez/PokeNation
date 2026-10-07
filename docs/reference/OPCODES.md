@@ -152,6 +152,13 @@ PokeNation client: all 26 sub-ids are parsed in
 sub-id throws, so Redemption logs the opcode with a hex dump and drops the rest of the message
 instead of desyncing. The U16 counts of `0x14` and `0x19` are read as U16.
 
+PokeNation client, verified in the GUI smoke (`tools/pokenation_gui_smoke_ci.sh`, Phase 3B) with
+the window or widget drawn: `0x01`, `0x04`, `0x06`, `0x09`, `0x0D`, `0x0E`, `0x11`, `0x13`,
+`0x18`, `0x19`, `0x1A`; `0x0A` received (386 entries). Not exercised: `0x02`, `0x03`, `0x05`,
+`0x07`, `0x08`, `0x0B`, `0x0C`, `0x0F`, `0x10`, `0x12`. Parsed but no module listens yet:
+`0x14`/`0x15` (doll case), `0x16` (slot machine), `0x17` (tips).
+The "GUI" column below is the legacy client.
+
 | Sub | Server function (`protocolgame.cpp`) | Payload | Client parser (`protocolgameparse.cpp`) → Lua event → module | GUI |
 |---:|---|---|---|---|
 | `0x01` | `sendPokemonSkills` `:3053` | `U16 iconItemId, U8 n, n×U16 moveIconId` | `parseMoveBarUpdate` `:1810` → `onPokemonMoves` → `game_pokemoves/pokemoves.lua:191` | **yes** |
@@ -258,10 +265,42 @@ Server Lua constants `EXTENDED_IDS` `server/data/lib/ps/others/constants.lua:33-
 | 8 | GameplayTutorialText | `creaturescripts/scripts/login.lua:69`, `quest_professorOak.lua:115`, `gameplayTutorial_shop.lua:14`, `quest_red.lua:40-53`, `lib/ps/config/003-quest.lua:169,202`, `gameplayTutorial_onKill.lua:8-14`, `activationTile.lua:1132-1149` | — | `game_guide/guide.lua:43` | — | ACTIVE, not GUI-verified |
 | 9 | GameplayTutorialImage | `login.lua:70` and the same scripts | — | `game_guide/guide.lua:44` | — | ACTIVE, not GUI-verified |
 | 10 | DashWalking | — | `client_options/options.lua:97,275` | — | C++ `game.cpp parsePlayerExtendedOpcode`, payload `"0"`/`"1"` only | ACTIVE, not GUI-verified |
-| 103 | (shop purchase failed, ad hoc) | none | — | `game_shop/shop.lua:3` (module **not loaded**) | — | UNUSED |
+| 103 | (legacy "Diamond Shop" purchase failed, ad hoc) | none | — | legacy `client/modules/game_shop/shop.lua:3` (module **not loaded**) | — | UNUSED |
+| 201 | POKENATION_SHOP | `057-soulShop.lua` replies | PokeNation client `game_shop` when the shop window opens or the player buys | `client-pokenation/modules/game_shop/game_shop.lua` | Lua `onExtendedOpcode` → `onSoulShopExtendedOpcode` (§8.1) | ACTIVE (verified, GUI smoke `--shop`) |
 
-Any other id reaching the server would go to Lua `onExtendedOpcode`
-(`creatureevent.cpp:2690`), but no script registers such an event — dead path.
+Ids ≥ 100 reach the Lua creature event `ExtendedOpcode`
+(`data/lib/ps/events/creaturescripts/onExtendedOpcode.lua`), which dispatches 201 and ignores
+the rest. Every Lua-handled id must be listed in `src/extendedopcodes.h` and here.
+
+### 8.1 POKENATION_SHOP (id 201)
+
+JSON in both directions, `{"action": <string>, "data": <object or array>}`, at most 4096 bytes
+per message. Server: `server/data/lib/ps/systems/057-soulShop.lua`. Client:
+`client-pokenation/modules/game_shop/game_shop.lua`. Rules and catalog:
+[`SOUL_COINS.md`](SOUL_COINS.md).
+
+Client → server (the client never sends a price or a balance; extra fields are ignored):
+
+| action | data | Server reply |
+|---|---|---|
+| `fetch` | `{}` | `catalog`, then `balance` |
+| `purchase` | `{"id": string, "count": int, "target"?: string}` | `balance` + `msg` (info) on success; `msg` (error) otherwise, plus `balance` when the charge failed |
+| `history` | `{}` | `history` |
+
+Requests of the same action from one player within 1 s are dropped (a dropped `purchase` gets
+`msg` "Please wait a moment before buying again.").
+
+Server → client:
+
+| action | data |
+|---|---|
+| `catalog` | `{"currency": "Soul Coins", "categories": [{"title", "iconId", "parent"?}], "offers": [{"id", "category", "name", "description", "price", "count", "maxQuantity", "clientItemId"}]}` |
+| `balance` | `{"coins": int}` (account balance `accounts.soulcoins`) |
+| `history` | `[{"date": "YYYY-MM-DD HH:MM", "name": "Nx product", "price": -int}]`, newest first, at most 50 |
+| `msg` | `{"type": "info" or "error", "msg": string, "close": bool}` |
+
+The client sends `fetch` only when the window opens with extended opcodes enabled (after
+ACTIVATE); nothing is sent at login. An unknown `action` from the server is logged and ignored.
 
 ---
 
@@ -311,9 +350,11 @@ stock Redemption are listed one by one in [`../REDEMPTION_CHANGES.md`](../REDEMP
 | Self-login light hour `U16` | `parseLogin` | `parseLogin`, Lua event `g_game.onLightHour` | yes (C-03) |
 | Creature extras `U8 summon, U8 attackable` | `getCreature` | `getCreature`, `Creature:isLocalPlayerSummon/isAttackable` | yes (C-06) |
 | `0xAB` channel list `U16` count | `parseChannelList` | same, under `GamePSoulProtocol` | yes (C-07) |
-| `0xFF` family | `protocolgameparse.cpp:62-183` | `protocolgameparsepsoul.cpp` (throws on unknown sub-id) | `0x0A` yes (C-08); others not yet |
+| `0xFF` family | `protocolgameparse.cpp:62-183` | `protocolgameparsepsoul.cpp` (throws on unknown sub-id) | yes for the sub-ids listed in §5 (Phase 3B GUI smoke) |
 | Ext opcode 0 / 1 | §8 | §8 | yes (C-05) |
-| Market `0xF4-0xF9` | `marketprotocol.lua` | `0xF6` enter: `parsePSoulMarketEnter` (`U64` balance, no vocation byte; stock reads `U32` + vocation at 854); `0xF7` leave: new `parseMarketLeave`; C→S create: `U32` price under the profile; the rest stock | yes: enter, create, browse item, browse own offers, cancel (C-14); `0xF7` S→C and accept not exercised |
+| Ext opcode 201 POKENATION_SHOP | legacy Diamond Shop (ext 103) not loaded | `game_shop` (§8.1) | yes, GUI smoke `--shop` |
+| Market `0xF4-0xF9` | `marketprotocol.lua` | `0xF6` enter: `parsePSoulMarketEnter` (`U64` balance, no vocation byte; stock reads `U32` + vocation at 854); `0xF7` leave: new `parseMarketLeave`; C→S create: `U32` price under the profile; the rest stock. `game_market` shows the `0xF6` bank balance (pre-10.x servers send no resource-balance packet) | packets yes: enter, create, browse item, browse own offers, cancel (C-14); window shown with the balance. Item list empty: the 8.54 `.dat` has no market attribute. `0xF7` S→C and accept not exercised |
 | Polls `0xFA/0xFB` + `0xFF 0x18` | `protocolgamesend.cpp:853-874` | `modules/gamelib/pokenation.lua` (`g_game.requestPollWindow/doPollVote/doPollVoteText`) | yes, option and text mode (C-13) |
 | Quest log `0xF0`, quest line `0xF1` | stock | stock (no mission id below 1200, matches) | yes (C-15) |
-| TV channel list (`0xAB`), TV map re-send, map marks `0xDD` | C++ | stock Redemption (shapes match at 854 by source) | no |
+| TV channel list (`0xAB`), TV map re-send | C++ | stock Redemption | yes, two clients (GUI smoke `--tv record` / `--tv watch`): list with "GM Admin's TV Channel", join re-sends the map around the recorder, leave returns. The viewer then sees the recorder twice and logs "got a thing with invalid stackpos" on join and leave (server keeps the owner as a known creature and swaps ids in `sendTVStart`) |
+| Map marks `0xDD` | C++ | stock Redemption (shape matches at 854 by source) | no |

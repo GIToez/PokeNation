@@ -66,7 +66,7 @@ step 1. Expected output:
        importing database\psoul_extra_mysql.sql ...
        importing database\psoul_dev_seed.sql ...
 [ OK ] schema and development accounts imported
-[ OK ] 97 tables; accounts: 1,admin,player
+[ OK ] 98 tables; accounts: 1,admin,player
 [ OK ] config.lua created from config.example.lua
 ```
 

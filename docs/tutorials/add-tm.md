@@ -207,7 +207,7 @@ and the PSoul library stops loading.
 
 ## 13. Test steps
 
-GM Admin can teach TMs (only using moves needs Tester, BUG-05). Strings from P2-16:
+GM Admin can teach and use TMs (GM Pokémon never spend energy, BUG-05 fixed). Strings from P2-16:
 
 1. `/mypokemon Eevee,30`, keep the Pokémon **inside** the ball (feet slot).
 2. `/i 17342,1` (lands in the hidden slot-3 backpack, BUG-12; with the client, use

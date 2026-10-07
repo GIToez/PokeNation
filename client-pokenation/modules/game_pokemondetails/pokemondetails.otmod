@@ -1,0 +1,10 @@
+Module
+  name: game_pokemondetails
+  description: PokeNation Pokemon details window for the "/pd N" answer (ball description sent by the server)
+  author: PokeNation
+  website: https://github.com/GIToez/PokeNation
+  sandboxed: true
+  dependencies: [ pokenation_lib, game_interface ]
+  scripts: [ pokemondetails ]
+  @onLoad: init()
+  @onUnload: terminate()

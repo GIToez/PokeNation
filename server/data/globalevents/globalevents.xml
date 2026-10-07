@@ -12,6 +12,8 @@
 	
 	<globalevent name="anniversary" interval="3600" event="script" value="../../lib/ps/events/globalevents/anniversary.lua"/>
 
+	<globalevent name="expEventCheck" interval="30" event="script" value="../../lib/ps/events/globalevents/expEventCheck.lua"/>
+
 	<!-- <globalevent name="timer_example" time="21:35" event="script" value="my_script.lua"/> -->
 	
 	<!-- DISABLED
