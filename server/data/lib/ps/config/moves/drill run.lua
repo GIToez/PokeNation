@@ -1,0 +1,20 @@
+MOVES["Drill Run"] = {
+    description = "Drill Run deals damage and has an increased critical hit ratio.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12071,
+    iconId = 0,
+    dType = DAMAGE_TYPE_GROUND,
+    functionName = "DrillRun",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 80,
+    requiredLevel = 25,
+    damage = 27,
+    damageType = ELEMENT_GROUND,
+    effect = EFFECT_SCRATCH_FOUR,
+    projectile = PROJECTILE_HORN,
+    maxDistance = 6,
+    cooldownTime = 15,
+    cooldownStorage = 15167,
+    criticalChance = 20
+}

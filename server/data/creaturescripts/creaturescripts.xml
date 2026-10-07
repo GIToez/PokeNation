@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creaturescripts>
+	<!-- PS -->
+	<event type="death" name="onDeath" event="script" value="../../lib/ps/events/creaturescripts/onDeath.lua" />
+	<event type="prepareDeath" name="npcPokemonDeath" event="script" value="../../lib/ps/events/creaturescripts/npcPokemonDeath.lua" />
+	<event type="kill" name="onKill" event="script" value="../../lib/ps/events/creaturescripts/onKill.lua" />
+	<event type="logout" name="onLogout" event="script" value="../../lib/ps/events/creaturescripts/onLogout.lua" />	
+	<event type="prepareDeath" name="onPokemonDeath" event="script" value="../../lib/ps/events/creaturescripts/onPokemonDeath.lua" />
+	<event type="gainexperience" name="onGainExperience" event="script" value="../../lib/ps/events/creaturescripts/onGainExperience.lua" />
+	<event type="addContainerItem" name="onAddContainerItem" event="script" value="../../lib/ps/events/creaturescripts/onAddContainerItem.lua" />
+	<event type="removeContainerItem" name="onRemoveContainerItem" event="script" value="../../lib/ps/events/creaturescripts/onRemoveContainerItem.lua" />
+	<event type="prepareDeath" name="onPrepareDeath" event="script" value="../../lib/ps/events/creaturescripts/onPrepareDeath.lua" />
+	<event type="target" name="onTarget" event="script" value="../../lib/ps/events/creaturescripts/onTarget.lua" />
+	<event type="joinChannel" name="onJoinChannel" event="script" value="../../lib/ps/events/creaturescripts/onJoinChannel.lua" />
+	<event type="reportBug" name="onReportBug" event="script" value="../../lib/ps/events/creaturescripts/onReportBug.lua" />
+	<event type="death" name="onDeath_Remove" event="script" value="../../lib/ps/events/creaturescripts/onDeath_Remove.lua" />
+	<event type="spawn" name="onSpawn" event="script" value="../../lib/ps/events/creaturescripts/onSpawn.lua" />
+	<event type="singleSpawn" name="onSingleSpawn" event="script" value="../../lib/ps/events/creaturescripts/onSingleSpawn.lua" />
+	<event type="traderequestaccept" name="onTradeRequestAccept" event="script" value="../../lib/ps/events/creaturescripts/onTradeRequestAccept.lua" />	
+	<event type="combat" name="onPokemonCombat" event="script" value="../../lib/ps/events/creaturescripts/onPokemonCombat.lua" />
+	<event type="statisticchange" name="onStatisticChange" event="script" value="../../lib/ps/events/creaturescripts/onStatisticChange.lua" />
+	<event type="questinfo" name="onQuestInfo" event="script" value="../../lib/ps/events/creaturescripts/onQuestInfo.lua" />
+	<event type="kicklogin" name="onKickLogin" event="script" value="../../lib/ps/events/creaturescripts/onKickLogin.lua" />
+	<event type="advance" name="onAdvance" event="script" value="../../lib/ps/events/creaturescripts/onAdvance.lua" />
+	<event type="textedit" name="onTextEdit" event="script" value="../../lib/ps/events/creaturescripts/onTextEdit.lua" />
+	<event type="talkchannel" name="onTalkChannel" event="script" value="../../lib/ps/events/creaturescripts/onTalkChannel.lua" />
+	<event type="leavechannel" name="onLeaveChannel" event="script" value="../../lib/ps/events/creaturescripts/onLeaveChannel.lua" />
+	<event type="tournamentstart" name="onTournamentStart" event="script" value="../../lib/ps/events/creaturescripts/onTournamentStart.lua" />
+	<event type="prepareDeath" name="onPrepareDeath_Remove" event="script" value="../../lib/ps/events/creaturescripts/onPrepareDeath_Remove.lua" />
+	<event type="tournamenthistory" name="onTournamentHistory" event="script" value="../../lib/ps/events/creaturescripts/onTournamentHistory.lua" />
+	<event type="staminachange" name="onStaminaChange" event="script" value="../../lib/ps/events/creaturescripts/onStaminaChange.lua" />
+	<event type="customoutfit" name="onCustomOutfit" event="script" value="../../lib/ps/events/creaturescripts/onCustomOutfit.lua" />
+	<!-- Quests -->
+	<event type="think" name="rocketBattle" event="script" value="../../lib/ps/events/creaturescripts/quests/rocketBattle.lua" />
+	<event type="statschange" name="bossGuardianKabutopsHealthChange" event="script" value="../../lib/ps/events/creaturescripts/quests/bossGuardianKabutopsHealthChange.lua" />
+	<event type="prepareDeath" name="guardianKabutopsDeath" event="script" value="../../lib/ps/events/creaturescripts/quests/guardianKabutopsDeath.lua" />
+	<event type="prepareDeath" name="angryBeedrillDeath" event="script" value="../../lib/ps/events/creaturescripts/quests/angryBeedrillDeath.lua" />
+	<event type="prepareDeath" name="thiefFearowDeath" event="script" value="../../lib/ps/events/creaturescripts/quests/thiefFearowDeath.lua" />
+	<event type="prepareDeath" name="oilySeakingDeath" event="script" value="../../lib/ps/events/creaturescripts/quests/oilySeakingDeath.lua" />
+	<event type="prepareDeath" name="darknessAlakazamDeath" event="script" value="../../lib/ps/events/creaturescripts/quests/darknessAlakazamDeath.lua" />
+	<event type="statschange" name="bossZapdosHealthChange" event="script" value="../../lib/ps/events/creaturescripts/quests/bossZapdosHealthChange.lua" />
+	<event type="prepareDeath" name="legendaryDeath" event="script" value="../../lib/ps/events/creaturescripts/quests/legendaryDeath.lua" />
+	<event type="statschange" name="bossMoltresHealthChange" event="script" value="../../lib/ps/events/creaturescripts/quests/bossMoltresHealthChange.lua" />
+	<event type="statschange" name="bossArticunoHealthChange" event="script" value="../../lib/ps/events/creaturescripts/quests/bossArticunoHealthChange.lua" />
+	<event type="prepareDeath" name="fronzenBossArticunoDeath" event="script" value="../../lib/ps/events/creaturescripts/quests/fronzenBossArticunoDeath.lua" />
+	<event type="prepareDeath" name="ancientDeath" event="script" value="../../lib/ps/events/creaturescripts/quests/ancientDeath.lua" />
+	<event type="prepareDeath" name="finalMewtwoDeath" event="script" value="../../lib/ps/events/creaturescripts/quests/finalMewtwoDeath.lua" />
+	<event type="kill" name="gameplayTutorial_onKill" event="script" value="../../lib/ps/events/creaturescripts/gameplayTutorial_onKill.lua" />
+	<!-- Dungeons -->
+	<event type="prepareDeath" name="dungeonEnd" event="script" value="../../lib/ps/events/creaturescripts/dungeons/dungeonEnd.lua" />
+	<event type="prepareDeath" name="dungeonEvolve" event="script" value="../../lib/ps/events/creaturescripts/dungeons/dungeonEvolve.lua" />
+	<!-- Boss -->
+	<event type="prepareDeath" name="bossReward" event="script" value="../../lib/ps/events/creaturescripts/boss/bossReward.lua" />
+	<!-- Ranger Club -->
+	<event type="prepareDeath" name="rangerClubBoss" event="script" value="../../lib/ps/events/creaturescripts/rangerClub/boss.lua" />
+	<event type="prepareDeath" name="rangerClubBossEvolve" event="script" value="../../lib/ps/events/creaturescripts/rangerClub/bossEvolve.lua" />
+		
+	<!-- Events -->
+	<event type="prepareDeath" name="halloween_CursedGengarMinion_beforeDeath" event="script" value="../../lib/ps/events/creaturescripts/events/halloween_CursedGengarMinion_beforeDeath.lua" />
+	<event type="prepareDeath" name="halloween_CursedGengar_beforeDeath" event="script" value="../../lib/ps/events/creaturescripts/events/halloween_CursedGengar_beforeDeath.lua" />
+	<event type="death" name="halloween_onDeath" event="script" value="../../lib/ps/events/creaturescripts/events/halloween_onDeath.lua" />
+	<event type="death" name="christmas_onDeath" event="script" value="../../lib/ps/events/creaturescripts/events/christmas_onDeath.lua" />
+	<event type="death" name="anniversary_onDeath" event="script" value="../../lib/ps/events/creaturescripts/events/anniversary_onDeath.lua" />
+	<!-- End PS -->
+	
+	<event type="login" name="PlayerLogin" event="script" value="login.lua"/>
+
+	<event type="joinchannel" name="GuildMotd" event="script" value="guildmotd.lua"/>
+	<event type="receivemail" name="Mail" event="script" value="mail.lua"/>
+	<!-- <event type="reportbug" name="SaveReportBug" script="reportbug.lua"/> -->
+	<event type="advance" name="AdvanceSave" event="script" value="advancesave.lua"/>
+
+	<event type="think" name="Idle" event="script" value="idle.lua"/>
+</creaturescripts>

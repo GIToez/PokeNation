@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<npc name="Jimi" script="tutorial_quests.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="1193" head="55" body="75" legs="75" feet="10"/>
+	<parameters>
+        <parameter key="message_greet" value="Hello |PLAYERNAME|. Do you know what is a {SOUL COIN}?"/>
+    </parameters>
+</npc>

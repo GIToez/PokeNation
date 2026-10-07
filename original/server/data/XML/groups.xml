@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups>
+	<group id="1" name="Player" flags="17592186044416"/>
+	<group id="2" name="Tutor" flags="17660922331136" customFlags="2" access="1" /> <!-- violationReasons="4" nameViolationFlags="2"-->
+	<group id="3" name="Senior Tutor" flags="17660922396672" customFlags="14" access="2" violationReasons="10" nameViolationFlags="2" statementViolationFlags="63" maxVips="200"/>
+	<group id="4" name="Gamemaster" flags="21400745008991" customFlags="257215" access="3" violationReasons="19" nameViolationFlags="10" statementViolationFlags="69" depotLimit="3000" maxVips="300" outfit="75"/>
+	<group id="5" name="Community Manager" flags="21432960393210" customFlags="781823" access="4" violationReasons="23" nameViolationFlags="42" statementViolationFlags="213" depotLimit="4000" maxVips="400" outfit="266"/>
+	<group id="6" name="God" flags="21437255491578" customFlags="2097151" access="5" violationReasons="23" nameViolationFlags="426" statementViolationFlags="469" depotLimit="5000" maxVips="500" outfit="302"/>
+	<group id="7" name="Player" flags="87960930222344"/>
+	<group id="8" name="Tutor" flags="88029666509064"/>
+	<group id="9" name="Senior Tutor" flags="88029666574600" customFlags="14" access="2" violationReasons="10" nameViolationFlags="2" statementViolationFlags="63" maxVips="200"/>
+</groups>
+
+<!--
+<group id="1" name="Player" flags="17592186044416"/>
+<group id="2" name="Tutor" flags="17660922331136" customFlags="2" access="1" violationReasons="4" nameViolationFlags="2"/>
+<group id="3" name="Senior Tutor" flags="17660922396672" customFlags="14" access="2" violationReasons="10" nameViolationFlags="2" statementViolationFlags="63" maxVips="200"/>
+<group id="4" name="Gamemaster" flags="21400745008991" customFlags="257215" access="3" violationReasons="19" nameViolationFlags="10" statementViolationFlags="69" depotLimit="3000" maxVips="300" outfit="75"/>
+<group id="5" name="Community Manager" flags="21432960393210" customFlags="781823" access="4" violationReasons="23" nameViolationFlags="42" statementViolationFlags="213" depotLimit="4000" maxVips="400" outfit="266"/>
+<group id="6" name="God" flags="21437255491578" customFlags="2097151" access="5" violationReasons="23" nameViolationFlags="426" statementViolationFlags="469" depotLimit="5000" maxVips="500" outfit="302"/>
+<group id="7" name="Player" flags="87960930222344"/>
+<group id="8" name="Tutor" flags="88029666509064"/>
+<group id="9" name="Senior Tutor" flags="88029666574600" customFlags="14" access="2" violationReasons="10" nameViolationFlags="2" statementViolationFlags="63" maxVips="200"/>
+-->

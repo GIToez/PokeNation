@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Spoink" nickname="Spoink" nameDescription="a Shiny Spoink" race="blood" experience="5" speed="260" manacost="0" minLevel="20" maxLevel="30">
+	<health now="60" max="60"/>
+	<look type="1884" corpse="29506"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1666" skill="24" attack="25"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="35"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SPOINK!"/>
+	</voices>
+	
+<loot><item id="12135" countmax="1" chance="20000"/><item id="12136" countmax="1" chance="8000"/><item id="12233" countmax="1" chance="2"/><item id="14464" countmax="5" chance="5000"/><item id="29049" countmax="1" chance="100"/><item id="17363" countmax="1" chance="1"/><item id="17379" countmax="1" chance="1"/><item id="18916" countmax="1" chance="1"/></loot></monster>

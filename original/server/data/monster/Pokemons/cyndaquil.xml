@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Cyndaquil" nameDescription="a Cyndaquil" shiny="Shiny Cyndaquil" race="blood" experience="7" speed="265" manacost="0" minLevel="20" maxLevel="30">
+	<health now="39" max="39"/>
+	<look type="953" head="0" body="0" legs="0" feet="0" corpse="17544"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1538" skill="24" attack="52"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="43"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="CYNDAQUILL!"/>
+		<voice sentence="CYNDAA!"/>
+	</voices>
+	
+	<script>
+        <event name="onPokemonCombat"/>	    
+	</script>
+<loot><item id="12087" countmax="1" chance="11111"/><item id="12101" countmax="3" chance="100000"/><item id="14513" countmax="1" chance="20000"/><item id="17800" countmax="1" chance="20000"/><item id="14464" countmax="5" chance="5000"/><item id="17955" countmax="1" chance="100"/><item id="12229" countmax="1" chance="2"/><item id="17372" countmax="1" chance="1"/></loot></monster>

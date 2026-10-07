@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Weepinbell" nameDescription="a Weepinbell" shiny="Shiny Weepinbell" race="blood" experience="10" speed="255" manacost="0" minLevel="25" maxLevel="35">
+	<health now="65" max="65"/>
+	<look type="421" head="0" body="0" legs="0" feet="0" corpse="11458"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="90"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="WEEPINBELL!"/>
+	</voices>
+	
+<loot><item id="12102" countmax="10" chance="89285"/><item id="12091" countmax="1" chance="34722"/><item id="13304" countmax="1" chance="23148"/><item id="13309" countmax="1" chance="23148"/><item id="12231" countmax="1" chance="25"/><item id="12235" countmax="1" chance="25"/><item id="17882" countmax="1" chance="100"/></loot></monster>

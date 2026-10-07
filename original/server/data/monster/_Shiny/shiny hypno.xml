@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Hypno" nameDescription="a Shiny Hypno" nickname="Hypno" race="blood" experience="12" speed="267" manacost="0" minLevel="50" maxLevel="60">
+	<health now="85" max="85" rate="1.1"/>
+	<look type="775" head="0" body="0" legs="0" feet="0" corpse="14102"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1492" skill="24" attack="73"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="70"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="HYPP!"/>
+		<voice sentence="HYPNO!"/>
+	</voices>
+	
+<loot><item id="14533" countmax="6" chance="93750"/><item id="14511" countmax="3" chance="75000"/><item id="14573" countmax="1" chance="9375"/><item id="14596" countmax="1" chance="7500"/><item id="14464" countmax="3" chance="3000"/><item id="14626" countmax="1" chance="4166"/><item id="12233" countmax="1" chance="100"/><item id="17907" countmax="1" chance="100"/><item id="17363" countmax="1" chance="10"/><item id="17375" countmax="1" chance="10"/><item id="23531" countmax="1" chance="20"/></loot></monster>

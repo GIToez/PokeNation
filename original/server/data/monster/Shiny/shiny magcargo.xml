@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Magcargo" nameDescription="a Shiny Magcargo" race="blood" experience="12" speed="230" manacost="0" minLevel="40" maxLevel="50">
+	<health now="50" max="50"/>
+	<look type="1655" head="0" body="0" legs="0" feet="0" corpse="27473"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="3333" skill="24" attack="50"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="120"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="MAGCAARRGOOO!"/>
+	</voices>
+	
+<loot><item id="14523" countmax="1" chance="12962"/><item id="14530" countmax="1" chance="58333"/><item id="14563" countmax="1" chance="2333"/><item id="13303" countmax="1" chance="6140"/><item id="13306" countmax="1" chance="2916"/><item id="13307" countmax="1" chance="5833"/><item id="14586" countmax="1" chance="291"/><item id="14597" countmax="1" chance="583"/><item id="14607" countmax="1" chance="1166"/><item id="14620" countmax="1" chance="2083"/><item id="14513" countmax="1" chance="23333"/><item id="14514" countmax="1" chance="4666"/><item id="17796" countmax="1" chance="7777"/><item id="17800" countmax="1" chance="23333"/><item id="17809" countmax="1" chance="2333"/><item id="12229" countmax="1" chance="50"/><item id="12234" countmax="1" chance="50"/><item id="13305" countmax="5" chance="5000"/><item id="18018" countmax="1" chance="100"/><item id="17381" countmax="1" chance="10"/><item id="23515" countmax="1" chance="20"/><item id="23517" countmax="1" chance="20"/></loot></monster>

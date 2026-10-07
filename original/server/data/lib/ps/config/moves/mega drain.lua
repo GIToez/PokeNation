@@ -1,0 +1,19 @@
+MOVES["Mega Drain"] = {
+    description = "Mega Drain inflicts damage, and 50% of the damage dealt to the target is restored to the user. The amount of HP recovered is always rounded down.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11737,
+    iconId = 13363,
+    dType = DAMAGE_TYPE_GRASS,
+    functionName = "MegaDrain",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 65,
+    requiredLevel = 20,
+    damage = 40,
+    damageType = ELEMENT_GRASS,
+    effect = EFFECT_BLOW,
+    projectile = nil,
+    backProjectile = PROJECTILE_GREEN_SHOT,
+    maxDistance = 1,
+    cooldownTime = 12,
+    cooldownStorage = 15045
+}

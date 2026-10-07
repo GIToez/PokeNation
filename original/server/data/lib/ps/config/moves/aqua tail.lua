@@ -1,0 +1,19 @@
+MOVES["Aqua Tail"] = {
+    description = "Aqua Tail deals damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12051,
+    iconId = 0,
+    dType = DAMAGE_TYPE_WATER,
+    functionName = "AquaTail",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 90,
+    requiredLevel = 40,
+    damage = 90,
+    damageType = ELEMENT_WATER,
+    effect = EFFECT_SPLASH,
+    projectile = PROJECTILE_BUBBLES,
+    maxDistance = 1,
+    cooldownTime = 14,
+    cooldownStorage = 15148
+}

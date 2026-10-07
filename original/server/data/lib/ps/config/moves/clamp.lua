@@ -1,0 +1,17 @@
+MOVES["Clamp"] = {
+    description = "The target is clamped and squeezed by the user's very thick and sturdy shell for four to five turns.",
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 27623,
+    iconId = 0,
+    dType = DAMAGE_TYPE_WATER,
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 90,
+    damage = 35,
+    damageType = ELEMENT_WATER,
+    effect = EFFECT_BLOW,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 15,
+    cooldownStorage = 15419,
+    makeContact = true,
+}

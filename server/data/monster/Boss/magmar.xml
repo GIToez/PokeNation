@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Flesh'n Fire" nameDescription="a Flesh'n Fire" race="blood" experience="17" speed="293" manacost="0" minLevel="100" maxLevel="100">
+	<health now="5760" max="5760"/>
+	<look type="1164" head="0" body="0" legs="0" feet="0" corpse="18127"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag boss="1"/>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1075" skill="24" attack="95"/>
+		<attack name="Moves" interval="500" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="57"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="MAGMAR!"/>
+	</voices>
+	<loot>
+		<item id="13303" countmax="1" chance="22556"/> <!-- flame orb -->
+		<item id="13305" countmax="5" chance="5000"/> <!-- lava cookie -->
+		<item id="13306" countmax="1" chance="10714"/> <!-- magma stone -->
+		<item id="13307" countmax="1" chance="21428"/> <!-- magmarizer -->
+		<item id="14482" countmax="1" chance="8571"/> <!-- eternal flames -->
+		<item id="14514" countmax="1" chance="17142"/> <!-- fire orb -->
+		<item id="14628" countmax="1" chance="4166"/> <!-- healing oil -->
+		<item id="12229" countmax="5" chance="100000"/> <!-- flame plate -->
+		<item id="17934" countmax="1" chance="10000"/> <!-- magmar doll -->
+		<item id="18123" countmax="1" chance="100000"/> <!-- Flesh'n Fire artifacts -->
+	</loot>
+	<script>
+        <event name="bossReward"/>	    
+	</script>
+</monster>

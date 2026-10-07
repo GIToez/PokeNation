@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Ernest Upper" script="quest_default.lua" walkinterval="500" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1185" head="55" body="35" legs="25" feet="55" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I'm in trouble!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

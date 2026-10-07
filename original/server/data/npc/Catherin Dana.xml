@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Catherin Dana" script="tm_remover.lua" walkinterval="0" floorchange="0">
+    <health now="150" max="150"/>
+    <look type="1302" head="50" body="50" legs="30" feet="200" corpse="2212"/>
+    <parameters>
+        <parameter key="idletime" value="180" />
+        <parameter key="module_shop" value="1"/>
+        <parameter key="message_greet" value="Hello |PLAYERNAME|. Do you want to sell Technichal Machines? Here you can also {remove} or {change} your Pokemon TM's!"/>
+        <parameter key="shop_sellable" value="
+		tm 01 mega punch, 17337;
+		tm 02 razor wind, 17338;
+		tm 03 swords dance, 17339;
+		tm 05 mega kick, 17341;
+		tm 06 toxic, 17342;
+		tm 07 horn drill, 17343;
+		tm 08 body slam, 17344;
+		tm 09 take down, 17345;
+		tm 10 double-edge, 17346;
+		tm 11 bubblebeam, 17347;
+		tm 12 water gun, 17348;
+		tm 13 ice beam, 17349;
+		tm 14 blizzard, 17350;
+		tm 15 hyper beam, 17351;
+		tm 16 submission, 17352;
+		tm 18 seismic toss, 17354;
+		tm 19 rage, 17355;
+		tm 20 mega drain, 17356;
+		tm 21 solar beam, 17357;
+		tm 22 dragon rage, 17358;
+		tm 23 thuderbolt, 17359;
+		tm 24 thunder, 17360;
+		tm 25 earthquake, 17361;
+		tm 26 fissure, 17362;
+		tm 27 psychic, 17363;
+		tm 32 metronome, 17368;
+		tm 34 egg bomb, 17370;
+		tm 35 fire blast, 17371;
+		tm 36 swift, 17372;
+		tm 37 skull bash, 17373;
+		tm 39 dream eater, 17375;
+		tm 40 sky attack, 17376;
+		tm 42 thunder wave, 17378;
+		tm 43 psywave, 17379;
+		tm 45 rock slide, 17381;
+		tm 46 tri attack, 17382;
+		tm 48, 18912;
+		tm 49, 18913;
+		tm 50, 18914;
+		tm 51, 18915;
+		tm 52, 18916;
+		tm 53, 18917;
+		tm 54, 18918;
+		tm 55, 18919;
+		tm 56, 18920;
+		tm 57, 18921;
+		tm 58, 18922;
+		tm 59, 18923;
+		tm 60, 18924;
+		tm 61, 18925;
+		tm 62, 18926;
+		tm 63, 18927;
+		tm 64, 18928;
+		tm 65, 18929;
+		tm 66, 18930;
+		tm 71, 24716;
+		tm 72, 24717;
+		tm 73, 24718;
+		tm 74, 24719;
+		tm 75, 24720;
+		tm 76, 24721;
+		tm 77, 24722;
+		tm 78, 24723;
+		tm 79, 29157;
+		tm 80, 29158;
+		tm 81, 29159;
+		tm 82, 29160;
+		tm 83, 29161;
+		tm 84, 29162;
+		tm 85, 29163;
+		tm 86, 29164;
+		tm 87, 29165;
+		tm 88, 29166;
+		tm 89, 29167;
+		tm 90, 29168;
+		tm 91, 29169;
+		tm 92, 29170;
+		tm 93, 29171;
+		tm 94, 29172
+		"/>
+    </parameters>
+</npc>

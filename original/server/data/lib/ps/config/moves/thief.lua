@@ -1,0 +1,17 @@
+MOVES["Thief"] = {
+    description = "The user attacks and steals the target's held item simultaneously. The user can't steal anything if it already holds an item.",
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 27578,
+    iconId = 0,
+    dType = DAMAGE_TYPE_DARK,
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 70,
+    damage = 60,
+    damageType = ELEMENT_DARK,
+    effect = EFFECT_THIEF_HAND,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 13,
+    cooldownStorage = 15413,
+    makeContact = true,
+}

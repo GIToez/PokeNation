@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Arold" script="quest_arold.lua" walkinterval="4000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="616" head="80" body="10" legs="25" feet="30" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi, what brings you to this strange place? Hahahaha!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,19 @@
+MOVES["False Swipe"] = {
+    description = "Tackle is one of the most common and basic moves a Pokemon learns. It deals damage with no additional effects.",
+    makeContact = false,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12026,
+    iconId = 13806,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Tackle",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 15,
+    requiredLevel = 0,
+    damage = 15,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BLOW,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 1,
+    cooldownStorage = 15086
+}

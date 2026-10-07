@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<globalevents>
+	<globalevent name="serverstart" type="start" event="script" value="start.lua"/>
+	<globalevent name="playersrecord" type="record" event="script" value="record.lua"/>
+	
+	<globalevent name="Gameplay Tutorial Rattata" interval="15" event="script" value="../../lib/ps/events/globalevents/gameplayTutorialRattata.lua"/>
+	
+	<globalevent name="eeveeRespawn" interval="10800" event="script" value="../../lib/ps/events/globalevents/eeveeRespawn.lua"/>
+	<globalevent name="sudowoodoTree" interval="3600" event="script" value="../../lib/ps/events/globalevents/sudowoodoTree.lua"/>
+	
+	<globalevent name="globalMessages" interval="2700" event="script" value="../../lib/ps/events/globalevents/globalMessages.lua"/>
+	
+	<globalevent name="anniversary" interval="3600" event="script" value="../../lib/ps/events/globalevents/anniversary.lua"/>
+
+	<!-- <globalevent name="timer_example" time="21:35" event="script" value="my_script.lua"/> -->
+	
+	<!-- DISABLED
+	<globalevent name="clean" interval="7200" event="script" value="clean.lua"/>
+	<globalevent name="save" interval="7200" event="script" value="save.lua"/>
+	<globalevent name="globalMessageTeamSpeak" interval="4600" event="script" value="../../lib/ps/events/globalevents/globalMessageTeamSpeak.lua"/>
+	<globalevent name="halloween" interval="2700" event="script" value="../../lib/ps/events/globalevents/halloween.lua"/>
+	-->
+</globalevents>

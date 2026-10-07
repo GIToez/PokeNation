@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Chandra Wigington" script="npcbattle_chandrawigington.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="621" head="90" body="30" legs="30" feet="22" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Stop right there, kid! You're ten thousand light-years from facing Brock!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

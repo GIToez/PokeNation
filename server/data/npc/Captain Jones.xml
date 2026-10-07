@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<npc name="Captain Jones" script="default.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="563" head="0" body="0" legs="0" feet="0"/>
+	<parameters>
+        <parameter key="module_travel" value="1"/>
+		<parameter key="message_greet" value="My pride is immense to be a sailor. No one can shake it. We are the captaincy of Vermillion! Tell your destiny! If you don't know where to flow, say {travel}."/>
+        <parameter key="travel_destinations" value="sunburst,3039,2642,6,325,false,-1,-1,23540;tangelo,2721,2860,6,350,false,-1,-1,23540;mikan,2679,2499,6,300,false,-1,-1,23540;cinnabar,3373,1087,6,50,false,-1,-1,23540;pummelo,3079,1741,6,200,false,-1,2,23540;"/>
+    </parameters>
+</npc>

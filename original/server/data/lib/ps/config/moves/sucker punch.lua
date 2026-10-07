@@ -1,0 +1,19 @@
+MOVES["Sucker Punch"] = {
+    description = "Sucker Punch deals damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12118,
+    iconId = 0,
+    dType = DAMAGE_TYPE_DARK,
+    functionName = "SuckerPunch",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 80,
+    requiredLevel = 25,
+    damage = 80,
+    damageType = ELEMENT_DARK,
+    effect = EFFECT_PUNCH,
+    projectile = nil,
+    maxDistance = 6,
+    cooldownTime = 12,
+    cooldownStorage = 15208
+}

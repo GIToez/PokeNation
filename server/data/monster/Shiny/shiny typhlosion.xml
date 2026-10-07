@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Typhlosion" nameDescription="a Shiny Typhlosion" nickname="Typhlosion" race="blood" experience="15" speed="300" manacost="0" minLevel="85" maxLevel="95">
+	<health now="78" max="78" rate="1.1"/>
+	<look type="1263" head="0" body="0" legs="0" feet="0" corpse="18972"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1000" skill="24" attack="84"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="78"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="TYPHLOSIIOONN!"/>
+	</voices>
+	
+	<script>
+        <event name="onPokemonCombat"/>	    
+	</script>
+<loot><item id="14523" countmax="1" chance="30303"/><item id="14530" countmax="3" chance="68181"/><item id="13303" countmax="1" chance="14354"/><item id="13307" countmax="1" chance="13636"/><item id="14586" countmax="1" chance="681"/><item id="14597" countmax="1" chance="1363"/><item id="14513" countmax="1" chance="54545"/><item id="14514" countmax="1" chance="10909"/><item id="17797" countmax="1" chance="6818"/><item id="17800" countmax="1" chance="54545"/><item id="17809" countmax="1" chance="5454"/><item id="12229" countmax="1" chance="100"/><item id="13305" countmax="5" chance="5000"/><item id="17957" countmax="1" chance="100"/><item id="17372" countmax="1" chance="10"/><item id="17346" countmax="1" chance="10"/><item id="18926" countmax="1" chance="10"/><item id="23515" countmax="1" chance="20"/></loot></monster>

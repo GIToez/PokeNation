@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Exeggutor" nameDescription="an Exeggutor" nickname="Dungeon Exeggutor" race="blood" experience="0" speed="255" manacost="0" minLevel="48" maxLevel="58">
+	<health now="95" max="95"/>
+	<look type="454" head="0" body="0" legs="0" feet="0" corpse="11491"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="95"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="85"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="EXEGGUTOR!"/>
+	</voices>
+	<loot>
+	</loot>
+</monster>

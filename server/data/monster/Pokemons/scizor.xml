@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Scizor" nameDescription="a Scizor" shiny="Shiny Scizor" race="blood" experience="15" speed="265" manacost="0" minLevel="85" maxLevel="95">
+	<health now="70" max="70"/>
+	<look type="1038" head="0" body="0" legs="0" feet="0" corpse="17601"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1538" skill="24" attack="130"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="100"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SCIZZOOORR!"/>
+	</voices>
+	
+<loot><item id="12108" countmax="1" chance="8571"/><item id="12113" countmax="1" chance="61224"/><item id="13308" countmax="1" chance="32967"/><item id="14468" countmax="3" chance="85714"/><item id="14493" countmax="1" chance="24489"/><item id="14500" countmax="1" chance="42857"/><item id="14503" countmax="1" chance="21428"/><item id="12241" countmax="1" chance="50"/><item id="17814" countmax="1" chance="50"/><item id="18011" countmax="1" chance="100"/><item id="18092" countmax="1" chance="200"/><item id="23519" countmax="1" chance="10"/><item id="23528" countmax="1" chance="10"/></loot></monster>

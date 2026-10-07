@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Sailor Barrie Kaeden" script="npcbattle_sailorBarrieKaeden.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="512"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi, what are you doing? Nothing!?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

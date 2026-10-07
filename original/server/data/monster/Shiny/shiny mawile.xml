@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Mawile" nickname="Mawile" nameDescription="a Shiny Mawile" race="blood" experience="10" speed="250" manacost="0" minLevel="40" maxLevel="50">
+	<health now="50" max="50"/>
+	<look type="1862" corpse="29484"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="24" attack="85"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="85"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="MAWILE!"/>
+	</voices>
+	
+<loot><item id="12138" countmax="1" chance="20000"/><item id="12140" countmax="1" chance="33333"/><item id="13308" countmax="1" chance="19230"/><item id="14493" countmax="1" chance="14285"/><item id="14500" countmax="1" chance="25000"/><item id="14517" countmax="1" chance="8333"/><item id="28879" countmax="1" chance="6250"/><item id="23946" countmax="1" chance="25"/><item id="17814" countmax="1" chance="25"/><item id="29027" countmax="1" chance="100"/><item id="23519" countmax="1" chance="10"/><item id="23523" countmax="1" chance="10"/></loot></monster>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Jamie Pals" script="npcbattle_jamiepals.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="618" head="13" body="64" legs="64" feet="32" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="The darkness will leave you so afraid... poor child."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

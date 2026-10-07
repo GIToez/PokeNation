@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lonnie Boedeker" script="npcbattle_lonnieboedeker.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="630" head="25" body="30" legs="30" feet="75" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Do you think that supports the strength of an entire mountain cockerel?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

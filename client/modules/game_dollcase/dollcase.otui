@@ -1,0 +1,65 @@
+DollStatusItem < Item
+  size: 32 32
+  virtual: true
+  border-width: 0
+  margin: 0
+  phantom: true
+  image-source: /images/ui/dollCaseItem
+
+DollCaseWindow < MiniWindow
+  !text: tr('Doll Case')
+  size: 300 429
+  image-source: /images/ui/dollcase
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 3
+    minimum: 48
+    maximum: 429
+    margin-left: 3
+    margin-right: 3
+    background: #ffffff88
+
+  UIItem
+    id: icon
+    virtual: true
+    size: 16 16
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 4
+    margin-left: 4
+
+  MiniWindowContents
+    ScrollableFlatPanel
+      id: ownDexContainer
+      image-source: ~
+      height: 225
+      anchors.top: parent.top
+      anchors.right: parent.right
+      anchors.left: parent.left
+      margin-top: 4
+      margin-bottom: 4
+      margin-left: 12
+      padding: 2
+      layout:
+        type: grid
+        cell-size: 36 36
+        flow: true
+        cell-spacing: 8
+      vertical-scrollbar: ownDexScrollBar
+
+    VerticalScrollBar
+      id: ownDexScrollBar
+      anchors.top: ownDexContainer.top
+      anchors.bottom: ownDexContainer.bottom
+      anchors.right: ownDexContainer.right
+      margin-top: 4
+      margin-bottom: 4
+      margin-right: 2
+      step: 36
+      pixels-scroll: true
+      $!on:
+        width: 0

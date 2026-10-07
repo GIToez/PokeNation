@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lilia Rickards" script="npcbattle_fi_liliarickards.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="625" head="100" body="150" legs="200" feet="250" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

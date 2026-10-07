@@ -1,0 +1,81 @@
+Panel
+  OptionCheckBox
+    id: enableAudio
+    !text: tr('Enable audio')
+
+  OptionCheckBox
+    id: enablePrivateMessageAlert
+    !text: tr('Enable private message alert')
+
+  OptionCheckBox
+    id: enableMusicSound
+    !text: tr('Enable music sound')
+
+  Label
+    id: musicSoundVolumeLabel
+    !text: tr('Music volume: %d', 100)
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 6
+    @onSetup: |
+      local value = modules.client_options.getOption('musicSoundVolume')
+      self:setText(tr('Music volume: %d', value))
+
+  OptionScrollbar
+    id: musicSoundVolume
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 3
+    minimum: 0
+    maximum: 100
+
+  OptionCheckBox
+    id: enableAmbientSound
+    !text: tr('Enable ambient sound')
+
+  Label
+    id: ambientSoundVolumeLabel
+    !text: tr('Ambient volume: %d', 100)
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 6
+    @onSetup: |
+      local value = modules.client_options.getOption('ambientSoundVolume')
+      self:setText(tr('Ambient volume: %d', value))
+
+  OptionScrollbar
+    id: ambientSoundVolume
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 3
+    minimum: 0
+    maximum: 100
+
+
+  OptionCheckBox
+    id: enableEffectSound
+    !text: tr('Enable effect sound')
+
+  Label
+    id: effectSoundVolumeLabel
+    !text: tr('Effect volume: %d', 100)
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 6
+    @onSetup: |
+      local value = modules.client_options.getOption('effectSoundVolume')
+      self:setText(tr('Effect volume: %d', value))
+
+  OptionScrollbar
+    id: effectSoundVolume
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 3
+    minimum: 0
+    maximum: 100

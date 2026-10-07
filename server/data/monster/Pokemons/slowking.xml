@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Slowking" nameDescription="a Slowking" shiny="Shiny Slowking" race="blood" experience="15" speed="230" manacost="0" minLevel="85" maxLevel="95">
+	<health now="95" max="95"/>
+	<look type="1000" head="0" body="0" legs="0" feet="0" corpse="17588"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="3333" skill="24" attack="75"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="80"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SLOWKIINNNGG!"/>
+	</voices>
+	
+<loot><item id="12100" countmax="22" chance="100000"/><item id="12112" countmax="1" chance="93750"/><item id="12085" countmax="1" chance="50000"/><item id="17807" countmax="1" chance="15000"/><item id="12230" countmax="1" chance="50"/><item id="12233" countmax="1" chance="50"/><item id="2682" countmax="5" chance="5000"/><item id="17999" countmax="1" chance="100"/><item id="17348" countmax="1" chance="10"/><item id="18091" countmax="1" chance="20"/><item id="17363" countmax="1" chance="10"/><item id="18914" countmax="1" chance="10"/><item id="23521" countmax="1" chance="10"/><item id="23531" countmax="1" chance="10"/></loot></monster>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Cody Tschida" script="npcbattle_codytschida.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="624" head="4" body="29" legs="37" feet="64" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="You will not ever wake up with my spores!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

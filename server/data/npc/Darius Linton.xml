@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Darius Linton" script="quest_deliverNewspaper.lua" walkinterval="3000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="636" head="60" body="27" legs="50" feet="50" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Trained Pokemon are stronger than the wild ones!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

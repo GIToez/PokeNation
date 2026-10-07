@@ -1,0 +1,17 @@
+MOVES["Metal Burst"] = {
+    description = "Metal Burst returns 1.5 times the damage dealt by the foe's last attack.",
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 27617,
+    iconId = 0,
+    dType = DAMAGE_TYPE_STEEL,
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 100,
+    damage = 0,
+    damageType = ELEMENT_STEEL,
+    effect = EFFECT_BLOW,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 6,
+    cooldownTime = 40,
+    cooldownStorage = 15426,
+    makeContact = false,
+}

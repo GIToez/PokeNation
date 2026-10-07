@@ -1,0 +1,27 @@
+POKEMON["Nincada"] = {
+    pTypes = { ELEMENT_BUG, ELEMENT_GROUND },
+    dexStorage = 10290,
+    atk = 45,
+    def = 90,
+    spAtk = 30,
+    spDef = 30,
+    energy = 100,
+    chance = 200,
+    portrait = -1,
+    dexPortrait = -1,
+    fastcallPortrait = 27283,
+    catchStorage = -1,
+    evolutions = {
+        { name = "Ninjask", requiredLevel = 35 },
+        { name = "Shedinja", requiredLevel = 35, extraPokemon = true },
+    },
+    description = "Because it lived almost entirely underground, it is nearly blind. It uses its antennae instead.",
+    skills = { "Tackle", 1, "Scratch", 5, "Absorb", 10, "Fury Swipes", 15, "Mud-Slap", 20, "Harden", 25, "Dig", 30 },
+    abilities = { "Cut", "Flash" },
+    eggGroup = { POKEMON_EGG_GROUP_BUG },
+    eggId = 28563,
+    eggChance = 20,
+    specialAbilities = { POKEMON_SPECIAL_ABILITY_IDS.COMPOUNDEYES },
+    learnableTms = { TM_IDS.TOXIC, TM_IDS.PROTECT, TM_IDS.SOLAR_BEAM, TM_IDS.SHADOW_BALL, TM_IDS.DOUBLE_TEAM, TM_IDS.AERIAL_ACE, TM_IDS.REST, TM_IDS.SUBSTITUTE, TM_IDS.SANDSTORM },
+    eggMoves = { "Bug Buzz", "Endure", "Faint Attack", "Final Gambit", "Gust", "Night Slash", "Silver Wind" }
+}

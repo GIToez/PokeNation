@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lucas Ross" script="quest_hiddenAndSeek.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1201" head="45" body="99" legs="150" feet="17" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="My wife only knows how to complain, so I came to take a walk."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

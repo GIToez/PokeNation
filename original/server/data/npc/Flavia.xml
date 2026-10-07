@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Flavia" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1210" head="79" body="100" legs="60" feet="44" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Beautiful day is not it?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

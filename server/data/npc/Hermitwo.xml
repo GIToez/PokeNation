@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Hermitwo" script="event_halloween_hermitwo.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1741" head="60" body="20" legs="80" feet="80" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Ya Ya! We no longer need to collect items to defeat Suramoon! But I can still create {potions} for you!"/>
+	</parameters>
+</npc>

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<npc name="Neesha's Wigglytuff" floorchange="0" walkinterval="1000">
+	<health now="100" max="100"/>
+	<look type="391" head="0" body="0" legs="0" feet="0"/>
+</npc>

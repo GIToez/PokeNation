@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Loyse" script="npcbattle_loyse.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="638" head="76" body="94" legs="10" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Why did you come here?"/>
+		<parameter key="idletime" value="20" />
+	</parameters>
+</npc>

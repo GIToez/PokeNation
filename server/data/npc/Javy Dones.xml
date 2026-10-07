@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Javy Dones" script="quest_halloween_javy_dones.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1715"/>
+	<parameters>
+		<parameter key="message_greet" value="Hum, are you looking for some service? We're on {vacation} for now."/>
+	</parameters>
+</npc>

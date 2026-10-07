@@ -1,0 +1,101 @@
+PollIcon < UIWidget
+  size: 53 119
+  margin: 10
+  image-source: /images/ui/pollicon
+  anchors.bottom: gameMapPanel.bottom
+  anchors.right: gameMapPanel.right
+
+PollCheckBox < CheckBox
+  @onCheckChange: modules.game_poll.setOption(self:getId(), self:isChecked())
+  height: 16
+  font: terminus-14px-bold
+  image-source: /images/ui/checkbox_light
+  text-wrap: true
+  text-auto-resize: true
+  border-color: #476150
+  border-width-bottom: 1
+
+  $first:
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+
+  $!first:
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 2
+
+PollWindow < MainWindow
+  id: pollWindow
+  !text: tr('PSoul Poll')
+  size: 580 400
+
+  Label
+    id: pollQuestionLabel
+    font: sans-bold-16px
+    text-auto-resize: true
+    margin-top: 15
+    text-align: center
+    anchors.top: parent.top
+    anchors.left: pollImage.right
+    anchors.right: parent.right
+    text-wrap: true
+    //border-color: #272727cc
+    //border-width: 1
+
+  ScrollableFlatPanel
+    id: pollQuestions
+    anchors.top: pollQuestionLabel.bottom
+    anchors.left: parent.left
+    anchors.right: pollQuestionsScrollBar.left
+    anchors.bottom: voteButton.top
+    margin-bottom: 5
+    margin-top: 5
+    padding: 3
+    layout:
+      type: anchor
+    vertical-scrollbar: pollQuestionsScrollBar
+    auto-focus: first
+    focusable: false
+
+  VerticalScrollBar
+    id: pollQuestionsScrollBar
+    anchors.top: pollQuestionLabel.bottom
+    anchors.right: parent.right
+    anchors.bottom: voteButton.top
+    margin-bottom: 5
+    margin-top: 5
+    step: 32
+    pixels-scroll: true
+
+  MultilineTextEdit
+    id: text
+    anchors.top: pollQuestions.top
+    anchors.left: pollQuestions.left
+    anchors.right: pollQuestions.right
+    anchors.bottom: pollQuestions.bottom
+    visible: false
+    text-wrap: true
+
+  UIWidget
+    id: pollImage
+    size: 64 64
+    image-source: /images/ui/bulb
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+
+  Button
+    id: voteButton
+    !text: tr('Vote')
+    anchors.bottom: parent.bottom
+    anchors.right: cancelButton.left
+    margin-right: 5
+    @onClick: modules.game_poll.onVote()
+
+  Button
+    id: cancelButton
+    !text: tr('Cancel')
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    @onClick: modules.game_poll.onCancel()

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Jigglypuff" nameDescription="a jigglypuff" nickname="The Singer" race="blood" experience="20" speed="300" manacost="0" minLevel="50" maxLevel="50">
+	<health now="415" max="415"/>
+	<look type="704" head="0" body="0" legs="0" feet="0" corpse="13859"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="5000" skill="24" attack="45"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="20"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="JIGGLYPUFF!!"/>
+		<voice sentence="JIGGLY!"/>
+	</voices>
+	<loot>
+		<item id="12099" countmax="1" chance="8000"/> <!-- microphone -->
+	</loot>
+</monster>

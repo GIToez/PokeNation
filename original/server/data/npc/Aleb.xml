@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Aleb" script="quest_aleb.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="634" head="39" body="42" legs="75" feet="66" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Uh... who calls me? Oh, hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Hilari" script="quest_hilari.lua" walkinterval="3000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1207" head="20" body="60" legs="10" feet="100" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hey |PLAYERNAME|, it is hot? This desert is getting worse."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

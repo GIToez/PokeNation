@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Robin Theobald" script="default_requirement.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="503" head="190" body="50" legs="39" feet="50" corpse="2212"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="I like the style! We have what you're looking dude. Remember that only premium account players can wear these clothes!"/>
+		<parameter key="shop_buyable" value="
+		clothes kit, 13481, 8000;
+		clothes kit, 13482, 5000;
+		clothes kit, 13483, 6000;
+		clothes kit, 13484, 1000;
+		clothes kit, 13485, 1000;
+		clothes kit, 13487, 1000;
+		clothes kit, 13488, 7000;
+		clothes kit, 13489, 3000;
+		clothes kit, 13490, 1000
+		"/>
+	</parameters>
+</npc>
+
+<!--
+Mais utilizadas
+<item id="13481" article="an" name="adventurer clothes kit" /> 1º
+<item id="13482" article="an" name="academy clothes kit" /> 4º
+<item id="13483" article="a" name="social clothes kit" /> 3º
+<item id="13484" article="a" name="jamaica clothes kit" /> 9º
+<item id="13485" article="a" name="punk clothes kit" /> 8º
+<item id="13486" article="a" name="fisher clothes kit" /> 5º
+<item id="13487" article="a" name="hiker clothes kit" /> 10º
+<item id="13488" article="a" name="mercenary clothes kit" /> 2º
+<item id="13489" article="a" name="rapper clothes kit" /> 6º
+<item id="13490" article="an" name="oriental clothes kit" /> 7º
+-->

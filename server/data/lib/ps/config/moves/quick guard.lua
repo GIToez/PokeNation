@@ -1,0 +1,17 @@
+MOVES["Quick Guard"] = {
+    description = "The user protects itself and its allies from the next damage.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 27653,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FIGHTING,
+    type = SKILLS_TYPES.STATS,
+    requiredEnergy = 100,
+    damage = 0,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_BIG_GREEN_PROTECTION,
+    projectile = nil,
+    maxDistance = 0,
+    cooldownTime = 60,
+    cooldownStorage = 15457,
+    makeContact = false,
+}

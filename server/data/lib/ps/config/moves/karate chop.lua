@@ -1,0 +1,20 @@
+MOVES["Karate Chop"] = {
+    description = "Karate Chop deals damage and has an increased critical hit ratio.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11731,
+    iconId = 13357,
+    dType = DAMAGE_TYPE_FIGHTING,
+    functionName = "KarateChop",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 60,
+    requiredLevel = 20,
+    damage = 50,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_PUNCH,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 10,
+    cooldownStorage = 15039,
+    criticalChance = 20
+}

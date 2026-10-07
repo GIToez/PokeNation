@@ -1,0 +1,17 @@
+MOVES["Rock Climb"] = {
+    description = "The user attacks the target by smashing into it with incredible force. This may also confuse the target.",
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 27661,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 90,
+    damage = 90,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_ROCK_SLIDE,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 14,
+    cooldownStorage = 15451,
+    makeContact = true,
+}

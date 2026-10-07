@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kade Leland" script="npcbattle_kadeLeland.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="614" head="20" body="100" legs="150" feet="30" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|! I'm Kade Leland, let's {battle}?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

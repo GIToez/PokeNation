@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Trevor" script="event_halloween.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="33" head="0" body="0" legs="30" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Heeellooo... I am here to exchange Halloween Tokens for some {halloween gifts}."/>
+	</parameters>
+</npc>

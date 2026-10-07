@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Delibird" nameDescription="a Shiny Delibird" race="blood" experience="10" speed="275" manacost="0" minLevel="30" maxLevel="40">
+	<health now="45" max="45"/>
+	<look type="1661" head="0" body="0" legs="0" feet="0" corpse="27479"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1333" skill="24" attack="55"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="45"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="DELIBRDD!"/>
+	</voices>
+	
+<loot><item id="12143" countmax="1" chance="16666"/><item id="12142" countmax="1" chance="55555"/><item id="14472" countmax="1" chance="10000"/><item id="14485" countmax="1" chance="25000"/><item id="14486" countmax="1" chance="20000"/><item id="12236" countmax="1" chance="25"/><item id="12232" countmax="1" chance="25"/><item id="7372" countmax="5" chance="5000"/><item id="7377" countmax="5" chance="5000"/><item id="7375" countmax="5" chance="5000"/><item id="18024" countmax="1" chance="100"/><item id="23522" countmax="1" chance="10"/><item id="23526" countmax="1" chance="10"/></loot></monster>

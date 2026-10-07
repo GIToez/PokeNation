@@ -1,0 +1,20 @@
+MOVES["Leech Seed"] = {
+    description = "Leech Seed plants a seed on the target. At the end of each turn that the target is under the effect of Leech Seed, the target's HP will be drained, and the same amount of HP will be restored to the target's opponent. Leech Seed will not work against Grass-type Pokemon.",
+    makeIndirectDamage = true,
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 11733,
+    iconId = 13359,
+    dType = DAMAGE_TYPE_GRASS,
+    functionName = "LeechSeed",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 65,
+    requiredLevel = 25,
+    damage = 5,
+    damageType = ELEMENT_GRASS,
+    effect = EFFECT_ROOTS,
+    projectile = PROJECTILE_SEED,
+    backProjectile = PROJECTILE_GREEN_SHOT,
+    maxDistance = 6,
+    cooldownTime = 20,
+    cooldownStorage = 15041
+}

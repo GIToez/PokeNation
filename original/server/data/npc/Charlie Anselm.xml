@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Charlie Anselm" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="612" head="62" body="32" legs="10" feet="90" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="When I have an appointment seek out an hour before the time."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

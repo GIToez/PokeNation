@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Rocket Derren Dwain" script="npcbattle_rocketDerrenDwain.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="533" head="87" body="11" legs="99" feet="33"/>
+	<parameters>
+		<parameter key="message_greet" value="I'll teach you a lesson!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

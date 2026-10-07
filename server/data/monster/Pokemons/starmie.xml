@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Starmie" nameDescription="a Starmie" shiny="Shiny Starmie" race="blood" experience="7" speed="315" manacost="0" minLevel="45" maxLevel="55" sex="2">
+	<health now="60" max="60"/>
+	<look type="472" head="0" body="0" legs="0" feet="0" corpse="11509"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="0869" skill="24" attack="75"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="85"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="STARR!"/>
+		<voice sentence="STARMIE!"/>
+	</voices>
+	
+<loot><item id="12100" countmax="10" chance="100000"/><item id="12112" countmax="1" chance="43750"/><item id="14515" countmax="1" chance="28000"/><item id="12130" countmax="1" chance="28000"/><item id="14480" countmax="1" chance="46666"/><item id="12230" countmax="1" chance="50"/><item id="12233" countmax="1" chance="50"/><item id="17929" countmax="1" chance="100"/><item id="18088" countmax="1" chance="20"/><item id="17347" countmax="1" chance="10"/><item id="17348" countmax="1" chance="10"/><item id="17372" countmax="1" chance="10"/><item id="23521" countmax="1" chance="10"/><item id="23531" countmax="1" chance="10"/></loot></monster>

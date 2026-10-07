@@ -1,0 +1,19 @@
+MOVES["Snore"] = {
+    description = "Snore can only be used whilst the user is sleeping and will fail if the user is not.",
+    makeSound = true,
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11763,
+    iconId = 13389,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Snore",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 60,
+    requiredLevel = 20,
+    damage = 50,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BLOW_TWO,
+    projectile = nil,
+    areaEffect = EFFECT_SLEEPING,
+    cooldownTime = 10,
+    cooldownStorage = 15071
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Nurse Joy" script="nurse_joy.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="560" head="0" body="0" legs="0" feet="0" addons="0"/>
+	<voices>
+		<voice text="Welcome to the Pokemon Center. We {restore} your tired Pokemon to full health. Just speak out 'hi' next to me!" interval2="10" margin="30000"/>
+	</voices>
+</npc>

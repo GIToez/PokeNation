@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Basam" script="npcbattle_basam.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="638" head="10" body="35" legs="10" feet="10" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="What a kid is doing here?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

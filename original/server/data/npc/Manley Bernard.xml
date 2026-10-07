@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Manley Bernard" script="rangerClub.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1206" head="74" body="22" legs="24" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi |PLAYERNAME|, welcome to the Ranger Club! You can view the {task} list, try your {promotion} inside the club or challenge the {bosses}."/>
+	</parameters>
+</npc>

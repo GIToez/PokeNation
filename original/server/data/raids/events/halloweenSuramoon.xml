@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="warning" message="Suramoon simulator has started!"/>
+	<areaspawn ref="yes" centerx="2424" centery="138" centerz="7" radius="0">
+		<monster name="Suramoon" amount="1"/>
+	</areaspawn>
+</raid>

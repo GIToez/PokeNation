@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Glalie" nickname="Glalie" nameDescription="a Shiny Glalie" race="blood" experience="10" speed="280" manacost="0" minLevel="40" maxLevel="50">
+	<health now="80" max="80"/>
+	<look type="1921" corpse="29543"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1250" skill="24" attack="80"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="80"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="GLALIE!"/>
+	</voices>
+	
+<loot><item id="12143" countmax="1" chance="19444"/><item id="14485" countmax="1" chance="29166"/><item id="14496" countmax="1" chance="23333"/><item id="14495" countmax="1" chance="9722"/><item id="14489" countmax="1" chance="11666"/><item id="28884" countmax="1" chance="14583"/><item id="12236" countmax="1" chance="50"/><item id="29086" countmax="1" chance="100"/><item id="17349" countmax="1" chance="10"/><item id="18913" countmax="1" chance="10"/><item id="18917" countmax="1" chance="10"/><item id="18918" countmax="1" chance="10"/><item id="23522" countmax="1" chance="20"/></loot></monster>

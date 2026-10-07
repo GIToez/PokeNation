@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Alakazam" nameDescription="an Alakazam" race="blood" experience="0" speed="320" manacost="0" minLevel="80" maxLevel="90">
+	<health now="55" max="55"/>
+	<look type="416" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<!-- <attack name="melee" interval="0833" skill="24" attack="50"/> -->
+		<attack name="physical" interval="0833" chance="34" range="7" min="-25" max="-55">
+			<attribute key="shootEffect" value="energy"/>
+		</attack>
+		<attack name="Moves" interval="500" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="45"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="ALAKAZAMM!"/>
+	</voices>
+	<loot>
+	</loot>
+</monster>

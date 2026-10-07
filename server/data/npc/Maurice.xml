@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Maurice" script="quest_maurice.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="503" head="152" body="73" legs="75" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|! I'm producing {TV cameras}. Have you used one?"/>
+	</parameters>
+</npc>

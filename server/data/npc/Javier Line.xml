@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Javier Line" script="npcbattle_fi_javierline.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="630" head="90" body="20" legs="20" feet="40" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Tilly Dianna" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="615" head="40" body="74" legs="61" feet="30" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello, I can not talk to you now."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

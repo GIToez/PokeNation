@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Ariados" nameDescription="an Ariados" race="blood" experience="10" speed="240" manacost="0" minLevel="30" maxLevel="40">
+	<health now="70" max="70"/>
+	<look type="1623" head="0" body="0" legs="0" feet="0" corpse="27441"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2500" skill="24" attack="90"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="70"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="ARIADDOOSS!"/>
+	</voices>
+	
+<loot><item id="12104" countmax="6" chance="89285"/><item id="14511" countmax="1" chance="35714"/><item id="17786" countmax="1" chance="23809"/><item id="17808" countmax="1" chance="23809"/><item id="17810" countmax="1" chance="35714"/><item id="17811" countmax="1" chance="17857"/><item id="17812" countmax="1" chance="7142"/><item id="12241" countmax="1" chance="25"/><item id="12235" countmax="1" chance="25"/><item id="17968" countmax="1" chance="100"/><item id="17363" countmax="1" chance="10"/><item id="23524" countmax="1" chance="10"/><item id="23528" countmax="1" chance="10"/></loot></monster>

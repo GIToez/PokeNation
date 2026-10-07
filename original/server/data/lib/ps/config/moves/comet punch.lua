@@ -1,0 +1,20 @@
+MOVES["Comet Punch"] = {
+    description = "Comet Punch hits 2-5 times per turn used",
+    makeContact = true,
+    makePunch = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 13107,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "CometPunch",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 75,
+    requiredLevel = 35,
+    damage = 18,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BIG_PUNCH,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 13,
+    cooldownStorage = 15246
+}

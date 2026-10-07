@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lt. Surge" script="npcbattle_ltsurge.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="558" head="0" body="0" legs="0" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hey, kid! What do you think you're doing here? You won't live long in combat! That's for sure! I tell you kid, electric Pokemon saved me during the war! They zapped my enemies into paralysis! The same as I'll do to you!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

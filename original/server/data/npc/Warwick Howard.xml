@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Warwick Howard" script="quest_default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="1370"/>
+	<parameters>
+		<parameter key="message_greet" value="Heeellooo! It's all right?? Have you seen any {Pokemon} out there?"/>
+	</parameters>
+</npc>

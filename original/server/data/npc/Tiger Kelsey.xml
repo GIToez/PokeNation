@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Tiger Kelsey" script="poketrader.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1321" head="114" feet="115"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|! I'm the PokeTrader! I'm here today, want to see some of my {offers}? I can show you your current {bids} and the remaing {time} to end my current offerts."/>
+	</parameters>
+</npc>

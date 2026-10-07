@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Leroi Bradley" script="wavearena.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1306" head="46" body="27" legs="94" feet="94" corpse="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|, welcome to the {Colosseum Arena}!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Helena" script="npcbattle_helena.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="637" head="0" body="13" legs="13" feet="30" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Who are you? How did you get here?"/>
+		<parameter key="idletime" value="20" />
+	</parameters>
+</npc>

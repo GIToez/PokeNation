@@ -1,0 +1,20 @@
+MOVES["Fire Punch"] = {
+    description = "Fire Punch does damage and has a 10% chance of burning the target.",
+    makeContact = true,
+    makePunch = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11715,
+    iconId = 13341,
+    dType = DAMAGE_TYPE_FIRE,
+    functionName = "FirePunch",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 80,
+    requiredLevel = 30,
+    damage = 75,
+    damageType = ELEMENT_FIRE,
+    effect = EFFECT_FIRE_PUNCH,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 12,
+    cooldownStorage = 15023
+}

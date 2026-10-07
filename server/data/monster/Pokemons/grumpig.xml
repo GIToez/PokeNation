@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Grumpig" nameDescription="a Grumpig" race="blood" experience="10" speed="280" manacost="0" minLevel="40" maxLevel="50">
+	<health now="80" max="80"/>
+	<look type="1505" corpse="28809"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1250" skill="24" attack="45"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="65"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="GRUMPIG!"/>
+	</voices>
+	
+<loot><item id="12135" countmax="1" chance="25000"/><item id="12136" countmax="1" chance="10000"/><item id="12148" countmax="1" chance="12500"/><item id="14477" countmax="1" chance="10000"/><item id="17807" countmax="1" chance="5000"/><item id="28870" countmax="1" chance="5000"/><item id="28882" countmax="1" chance="5000"/><item id="12233" countmax="1" chance="50"/><item id="14464" countmax="5" chance="5000"/><item id="29050" countmax="1" chance="100"/><item id="23531" countmax="1" chance="20"/><item id="17363" countmax="1" chance="5"/><item id="17379" countmax="1" chance="5"/><item id="18916" countmax="1" chance="5"/></loot></monster>

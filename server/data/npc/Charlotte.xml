@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Charlotte" script="default.lua" walkinterval="2000" floorchange="0">
+	<health now="1500" max="1500"/>
+	<look type="157" head="190" body="50" legs="39" feet="50" corpse="2212"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hello! What you know about {berries}? They have an amazing rejuvenating power."/>
+		<parameter key="shop_buyable" value="
+		pokemon antidote, 12249, 100;
+		pokemon elixir, 12250, 400
+		"/>
+	</parameters>
+</npc>

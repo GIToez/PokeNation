@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Drew Wisdom" script="quest_default.lua" walkinterval="1000" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="1255" head="50" body="76" legs="34" feet="34" corpse="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|! How about skiing? Hahaha! I think you're cold in this {outfit}."/>
+	</parameters>
+</npc>

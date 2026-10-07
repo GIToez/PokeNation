@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<npc name="Cletis" script="tutorial_quests.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="1197" head="60" body="5" legs="15" feet="15"/>
+	<parameters>
+        <parameter key="message_greet" value="Hello |PLAYERNAME|. You know the {TMS} or {VITAMINS}?"/>
+    </parameters>
+</npc>

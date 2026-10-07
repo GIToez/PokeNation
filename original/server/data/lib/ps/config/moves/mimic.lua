@@ -1,0 +1,19 @@
+MOVES["Mimic"] = {
+    description = "Mimic copies the target's last move. If there isn't a last move, copy random.",
+    mimicable = false,
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 11741,
+    iconId = 13367,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Mimic",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 130,
+    requiredLevel = 30,
+    damage = 0,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_NOTHING,
+    projectile = PROJECTILE_ENERGY,
+    maxDistance = 2,
+    cooldownTime = 25,
+    cooldownStorage = 15049
+}

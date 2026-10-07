@@ -1,0 +1,9 @@
+Module
+  name: game_statusbar
+  description: Status Bar
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ statusbar ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

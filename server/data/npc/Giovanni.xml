@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Giovanni" script="npcbattle_giovanni.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="552" head="0" body="0" legs="0" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Fwahahaha! This is my hideout! I planned to resurrect team rocket here! But, you have caught me again! So be it! This time, I'm not holding back! Once more, you shall face Giovanni, the greatest trainer!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

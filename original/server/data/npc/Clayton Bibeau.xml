@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Clayton Bibeau" script="npcbattle_claytonbibeau.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="636" head="15" body="30" legs="45" feet="60" addons="2"/>
+	<parameters>
+		<parameter key="message_greet" value="Beware of spores numb! My Bulbasaur will leave you caught!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

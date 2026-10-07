@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Swellow" nickname="Swellow" nameDescription="a Shiny Swellow" race="blood" experience="12" speed="325" manacost="0" minLevel="60" maxLevel="70">
+	<health now="60" max="60"/>
+	<look type="1836" corpse="29458"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="800" skill="24" attack="85"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="60"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SWELLOW!"/>
+	</voices>
+	
+<loot><item id="12142" countmax="1" chance="32407"/><item id="14468" countmax="1" chance="58333"/><item id="14469" countmax="3" chance="72916"/><item id="14472" countmax="1" chance="5833"/><item id="14478" countmax="1" chance="14583"/><item id="14484" countmax="1" chance="58333"/><item id="14502" countmax="1" chance="1944"/><item id="17786" countmax="1" chance="19444"/><item id="28881" countmax="1" chance="972"/><item id="28883" countmax="1" chance="9722"/><item id="28885" countmax="1" chance="5833"/><item id="28888" countmax="1" chance="7291"/><item id="12232" countmax="1" chance="25"/><item id="18081" countmax="1" chance="25"/><item id="29001" countmax="1" chance="100"/><item id="23526" countmax="1" chance="10"/><item id="23527" countmax="1" chance="10"/></loot></monster>

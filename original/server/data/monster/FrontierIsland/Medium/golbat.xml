@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Golbat" nameDescription="a Golbat" shiny="Shiny Golbat" race="blood" experience="0" speed="290" manacost="0" minLevel="30" maxLevel="40">
+	<health now="75" max="75"/>
+	<look type="393" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1111" skill="24" attack="80"/>
+		<attack name="Moves" interval="500" />
+		<attack name="Evolve" inverval="15000" chance="1" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="70"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="GOLBAT!"/>
+	</voices>
+	<loot>
+		<item id="12104" countmax="6" chance="89285"/> <!-- bottle of poison -->
+		<item id="12117" countmax="1" chance="39682"/> <!-- tooth -->
+		<item id="12124" countmax="1" chance="23809"/> <!-- bat wing -->
+		<item id="14511" countmax="1" chance="35714"/> <!-- venon pendant -->
+		<item id="2674" countmax="5" chance="5000"/> <!-- red apple -->
+		<item id="12235" countmax="1" chance="50"/> <!-- toxic plate -->
+		<item id="18081" countmax="1" chance="50"/> <!-- sky plate -->
+		<item id="17856" countmax="1" chance="100"/> <!-- golbat doll -->
+	</loot>
+</monster>

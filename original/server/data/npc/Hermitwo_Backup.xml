@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Hermitwo" script="quest_halloweenHermitwo.lua" walkinterval="3000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="157" head="60" body="20" legs="80" feet="80" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello my dear! You are already helping us to collect the necessary {ingredients}? I need them all to make the potion to defeat Suramoon, hurry up!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

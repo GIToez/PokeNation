@@ -1,0 +1,19 @@
+MOVES["Fury Attack"] = {
+    description = "Fury Attack does damage, hitting 2-5 times per use.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11718,
+    iconId = 13344,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "FuryAttack",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 45,
+    requiredLevel = 25,
+    damage = 15,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_SCRATCH,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 9,
+    cooldownStorage = 15026
+}

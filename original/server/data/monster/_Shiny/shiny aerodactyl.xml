@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Aerodactyl" nameDescription="a Shiny Aerodactyl" nickname="Aerodactyl" race="blood" experience="17" speed="330" manacost="0" minLevel="100" maxLevel="100">
+	<health now="80" max="80" rate="1.1"/>
+	<look type="841" head="0" body="0" legs="0" feet="0" corpse="14247"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="0769" skill="24" attack="105"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="65"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="AERODACTYLL!"/>
+	</voices>
+	
+<loot><item id="12234" countmax="1" chance="100"/><item id="18081" countmax="1" chance="100"/><item id="17947" countmax="1" chance="100"/><item id="17381" countmax="1" chance="10"/><item id="23517" countmax="1" chance="10"/><item id="23526" countmax="1" chance="10"/></loot></monster>

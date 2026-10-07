@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Medicham" nickname="Medicham" nameDescription="a Shiny Medicham" race="blood" experience="10" speed="280" manacost="0" minLevel="40" maxLevel="50">
+	<health now="60" max="60"/>
+	<look type="1867" corpse="29489"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1250" skill="24" attack="60"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="75"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="MEDICHAM!"/>
+	</voices>
+	
+<loot><item id="12133" countmax="1" chance="4375"/><item id="12151" countmax="1" chance="4375"/><item id="12135" countmax="1" chance="21875"/><item id="14512" countmax="1" chance="14583"/><item id="28870" countmax="1" chance="4375"/><item id="28876" countmax="1" chance="8750"/><item id="28879" countmax="1" chance="5468"/><item id="28882" countmax="1" chance="4375"/><item id="12243" countmax="1" chance="25"/><item id="12233" countmax="1" chance="25"/><item id="29032" countmax="1" chance="100"/><item id="23513" countmax="1" chance="10"/><item id="23531" countmax="1" chance="10"/><item id="18924" countmax="1" chance="10"/><item id="18927" countmax="1" chance="10"/><item id="18929" countmax="1" chance="10"/></loot></monster>

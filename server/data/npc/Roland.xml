@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Roland" script="default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="503" head="150" body="170" legs="0" feet="200" corpse="2212"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hi |PLAYERNAME|, are you looking for computers?"/>
+		<parameter key="shop_buyable" value="
+		notebook kit, 13269, 1000;
+		high computer kit, 13270, 900;
+		medium computer kit, 13271, 600;
+		low computer kit, 13272, 300
+		"/>
+	</parameters>
+</npc>

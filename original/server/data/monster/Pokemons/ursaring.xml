@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Ursaring" nameDescription="an Ursaring" race="blood" experience="15" speed="255" manacost="0" minLevel="85" maxLevel="95">
+	<health now="90" max="90"/>
+	<look type="1043" head="0" body="0" legs="0" feet="0" corpse="17606"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="130"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="75"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="URSARINNGG!"/>
+	</voices>
+	
+<loot><item id="12096" countmax="3" chance="53571"/><item id="12115" countmax="1" chance="83333"/><item id="14466" countmax="3" chance="75000"/><item id="14468" countmax="3" chance="75000"/><item id="14469" countmax="6" chance="93750"/><item id="14477" countmax="1" chance="15000"/><item id="14483" countmax="1" chance="15000"/><item id="17793" countmax="3" chance="75000"/><item id="12232" countmax="1" chance="50"/><item id="2674" countmax="5" chance="5000"/><item id="18016" countmax="1" chance="100"/><item id="18916" countmax="1" chance="10"/><item id="23527" countmax="1" chance="10"/></loot></monster>

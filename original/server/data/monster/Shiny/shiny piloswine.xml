@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Piloswine" nameDescription="a Shiny Piloswine" race="blood" experience="12" speed="250" manacost="0" minLevel="40" maxLevel="50">
+	<health now="100" max="100"/>
+	<look type="1657" head="0" body="0" legs="0" feet="0" corpse="27475"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="24" attack="100"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="80"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="PILOSWIINNEEE!"/>
+	</voices>
+	
+<loot><item id="12119" countmax="1" chance="26515"/><item id="14568" countmax="1" chance="2651"/><item id="14600" countmax="1" chance="3977"/><item id="14601" countmax="1" chance="3181"/><item id="14603" countmax="1" chance="265"/><item id="14604" countmax="1" chance="1590"/><item id="14609" countmax="1" chance="3977"/><item id="14495" countmax="1" chance="5303"/><item id="14611" countmax="1" chance="3181"/><item id="14546" countmax="1" chance="2272"/><item id="17799" countmax="1" chance="4545"/><item id="12236" countmax="1" chance="50"/><item id="13807" countmax="1" chance="50"/><item id="18020" countmax="1" chance="100"/><item id="18917" countmax="1" chance="10"/><item id="18923" countmax="1" chance="10"/><item id="23522" countmax="1" chance="10"/><item id="23529" countmax="1" chance="10"/></loot></monster>

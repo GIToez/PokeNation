@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Jane Hills" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1188" head="60" body="90" legs="120" feet="10" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Whenever you can visit unusual places. There is always something hidden there?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

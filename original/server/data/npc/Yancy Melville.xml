@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Yancy Melville" script="default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="503" head="66" body="70" legs="30" feet="20" corpse="2212"/>
+	<parameters>
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Welcome! If you need help just call."/>
+		<parameter key="shop_buyable" value="
+		cup, 28048, 2;
+		carpenter hammer, 2557, 500;
+		inox freezer kit, 13276, 600;
+		gray freezer kit, 13277, 400;
+		white freezer kit, 13278, 200;
+		small television kit, 13266, 800;
+		big television kit, 13267, 1800;
+		led television kit, 13268, 3000;
+		inox stove kit, 13263, 900;
+		black stove kit, 13264, 600;
+		white stove kit, 13265, 300;
+		notebook kit, 13269, 1000;
+		high computer kit, 13270, 900;
+		medium computer kit, 13271, 600;
+		low computer kit, 13272, 300;
+		red balcony kit, 13254, 50;
+		blue balcony kit, 13255, 50;
+		black balcony kit, 13256, 50;
+		wooden balcony kit, 13257, 50;
+		table kit, 13258, 50;
+		purple table kit, 13259, 50;
+		red table kit, 13260, 50;
+		glass table kit, 13261, 50;
+		wooden table kit, 13262, 50;
+		small black couch kit, 13281, 100;
+		small white couch kit, 13282, 100;
+		small orange couch kit, 13283, 100;
+		small purple couch kit, 13284, 100;
+		wooden chair,3901,60;
+		sofa chair,3902,100;
+		red cushioned chair,3903,100;
+		green cushioned chair,3904,100;
+		tusk chair,3905,100;
+		ivory chair,3906,100;
+		water-pipe,3907,100;
+		coal basin,3908,100;
+		big table,3909,100;
+		square table,3910,100;
+		round table,3911,100;
+		small table,3912,100;
+		stone table,3913,100;
+		tusk table,3914,100;
+		chest,3915,100;
+		barrel,3916,100;
+		harp,3917,100;
+		bird cage,3918,100;
+		bamboo table,3919,100;
+		bamboo drawer,3920,100;
+		drawer,3921,100;
+		exotic flower,3922,100;
+		potted flower,3923,100;
+		flower bowl,3924,100;
+		chest,3925,100;
+		piano,3926,100;
+		globe,3927,100;
+		rocking chair,3928,100;
+		indoor plant,3929,100;
+		crate,3930,100;
+		christmas tree,3931,100;
+		dresser,3932,100;
+		pendelum clock,3933,100;
+		locker,3934,100;
+		trough,3935,100;
+		time table,3936,100;
+		table lamp,3937,100;
+		bookcase,3938,100;
+		box,5086,100;
+		box2,5087,100;
+		barrel2,5088,100;
+		big flowerpot,6114,100;
+		large amphora,6115,100;
+		tree stump,6372,100;
+		mirror,6373,100;
+		large trunk,7503,100;
+		goldfish bowl,7700,100;
+		tree stump2,7960,100;
+		cuckoo clock,7961,100;
+		telescope,7962,100;
+		furnace,8692,100;
+		blue tapestry,1872,100;
+		green tapestry,1860,100;
+		orange tapestry,1866,100;
+		pink tapestry,1857,100;
+		red tapestry,1869,100;
+		white tapestry,1880,100;
+		yellow tapestry,1863,100;
+		small purple pillow,1678,100;
+		small green pillow,1679,100;
+		small red pillow,1680,100;
+		small blue pillow,1681,100;
+		small orange pillow,1683,100;
+		small turquiose pillow,1684,100;
+		small white pillow,1685,100;
+		heart pillow,1685,100;
+		blue pillow,1686,100;
+		red pillow,1687,100;
+		green pillow,1688,100;
+		yellow pillow,1689,100;
+		round blue pillow,1690,100;
+		round red pillow,1691,100;
+		round purple pillow,1692,100;
+		round turquiose pillow,1693,100;
+		oval mirror,1845,150;
+		round mirror,1848,150;
+		edged mirror,1851,150;
+		green bed,7904,1000;
+		red bed,7905,1000;
+		yellow bed,7906,1000;
+		bed removal,7907,100;
+		ball pillar,18650,100000;
+		berry pot,28957,150000;
+		black jeweled table,28959,500;
+		blue jeweled table,28961,500;
+		green jeweled table,28963,500;
+		orange jeweled table,28965,500;
+		pink jeweled table,28967,500;
+		purple jeweled table,28969,500;
+		red jeweled table,28971,500;
+		gray jeweled table,28973,500;
+		yellow jeweled table,28975,500;
+		black tapestry,29116,100;
+		pink tapestry,29560,100
+		"/>
+	</parameters>
+</npc>

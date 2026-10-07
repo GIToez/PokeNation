@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="The Turbo" nameDescription="a The Turbo" race="blood" experience="17" speed="305" manacost="0" minLevel="100" maxLevel="100">
+	<health now="5760" max="5760"/>
+	<look type="1157" head="0" body="0" legs="0" feet="0" corpse="18127"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag boss="1"/>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="0952" skill="24" attack="83"/>
+		<attack name="Moves" interval="500" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="57"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="ELECTABUZZ!"/>
+	</voices>
+	<loot>
+		<item id="12118" countmax="1" chance="66666"/> <!-- electrizer -->
+		<item id="12110" countmax="1" chance="12000"/> <!-- yellow tail -->
+		<item id="12140" countmax="1" chance="80000"/> <!-- magnet -->
+		<item id="12237" countmax="5" chance="100000"/> <!-- zap plate -->
+		<item id="17933" countmax="1" chance="10000"/> <!-- electabuzz doll -->
+		<item id="18122" countmax="1" chance="100000"/> <!-- The Turbo artifacts -->
+	</loot>
+	<script>
+        <event name="bossReward"/>	    
+	</script>
+</monster>

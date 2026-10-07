@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lonnie Sproles" script="npcbattle_fi_lonniesproles.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="626" head="85" body="40" legs="30" feet="40" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

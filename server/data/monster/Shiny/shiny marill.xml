@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Marill" nameDescription="a Shiny Marill" nickname="Marill" race="blood" experience="7" speed="240" manacost="0" minLevel="20" maxLevel="30">
+	<health now="70" max="70" rate="1.1"/>
+	<look type="1271" head="0" body="0" legs="0" feet="0" corpse="18979"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2500" skill="24" attack="20"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="MARIILLLL!"/>
+	</voices>
+	
+<loot><item id="14529" countmax="1" chance="66666"/><item id="14539" countmax="1" chance="4166"/><item id="14515" countmax="1" chance="10666"/><item id="17983" countmax="1" chance="100"/><item id="12230" countmax="1" chance="1"/><item id="23946" countmax="1" chance="1"/><item id="17348" countmax="1" chance="1"/><item id="18926" countmax="1" chance="1"/></loot></monster>

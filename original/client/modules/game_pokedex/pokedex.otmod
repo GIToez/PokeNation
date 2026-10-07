@@ -1,0 +1,9 @@
+Module
+  name: game_pokedex
+  description: Pokedex
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ pokedex ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

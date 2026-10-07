@@ -1,0 +1,20 @@
+MOVES["Sludge Bomb"] = {
+    description = "Sludge Bomb inflicts damage and has a 30% chance of poisoning the target.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11760,
+    iconId = 13386,
+    dType = DAMAGE_TYPE_POISON,
+    functionName = "SludgeBomb",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 105,
+    requiredLevel = 40,
+    damage = 90,
+    damageType = ELEMENT_POISON,
+    effect = EFFECT_POISON_TWO,
+    projectile = PROJECTILE_SLUDGE,
+    maxDistance = 5,
+    area = area3x3,
+    areaName = "area3x3",
+    cooldownTime = 21,
+    cooldownStorage = 15068
+}

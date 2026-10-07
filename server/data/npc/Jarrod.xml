@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Jarrod" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1181" head="100" body="75" legs="20" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello, how are you? Looking for something?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

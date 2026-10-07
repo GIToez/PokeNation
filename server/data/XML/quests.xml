@@ -1,0 +1,1820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quests>
+	<quest id="1" name="Around the continent" holder="true">
+		<mission name="Quimic experience" storageid="8001" startvalue="-1" endvalue="1">
+			<missionstate id="1" description="Help Jack Simps in him experience, get 25 apples bites and report back to him."/>
+			<missionstate id="2" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="The bats" storageid="8002" startvalue="-1" endvalue="1">
+			<missionstate id="1" description="Help John Rouver to complete his collection, get 10 bat wings and report back to him."/>
+			<missionstate id="2" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="Clean teeth" storageid="8003" startvalue="-1" endvalue="1">
+			<missionstate id="1" description="Help Mary Vinn to complete her collection of pokemon teeth, get 15 teeth and report back to her."/>
+			<missionstate id="2" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="Little help" storageid="8004" startvalue="-1" endvalue="1">
+			<missionstate id="1" description="Complete Rock Jhonson mission, get 10 razor fangs and report back to him."/>
+			<missionstate id="2" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="Fusion" storageid="8005" startvalue="-1" endvalue="1">
+			<missionstate id="1" description="Help Mary Nady to win her science fair, get 50 water gems, 50 bottles of poison and report back to him."/>
+			<missionstate id="2" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="Smell of nature" storageid="8006" startvalue="-1" endvalue="1">
+			<missionstate id="1" description="Do what Joe Tiff asked, get 13 pot of moss mug and report back to him."/>
+			<missionstate id="2" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="Sand Stuff" storageid="8007" startvalue="-1" endvalue="1">
+			<missionstate id="1" description="Do what Bob Lop asked, get 10 crab claws and report back to him."/>
+			<missionstate id="2" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="Getting Experience I" storageid="8008" startvalue="-1" endvalue="1">
+			<missionstate id="0" description="Help the professor oak in his search, dex 30 Pokemon and report back to him."/>
+			<missionstate id="1" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="Frustation" storageid="8009" startvalue="-1" endvalue="1">
+			<missionstate id="1" description="Help Eric Garinson to sit well with his family, get a pidgey and report back to him."/>
+			<missionstate id="2" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="Getting Experience II" storageid="8010" startvalue="-1" endvalue="1">
+			<missionstate id="0" description="Help the professor oak in his search, dex 50 Pokemon and report back to him."/>
+			<missionstate id="1" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="Getting Experience III" storageid="8011" startvalue="-1" endvalue="1">
+			<missionstate id="0" description="Help the professor oak in his search, dex 100 Pokemon and report back to him."/>
+			<missionstate id="1" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="Getting Experience IV" storageid="8012" startvalue="-1" endvalue="1">
+			<missionstate id="0" description="Help the professor oak in his search, dex 145 Pokemon and report back to him."/>
+			<missionstate id="1" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+		<mission name="Getting Experience V" storageid="8013" startvalue="-1" endvalue="1">
+			<missionstate id="0" description="Help the professor oak in his search, dex 151 Pokemon and report back to him."/>
+			<missionstate id="1" description="Congratulations! You helped a citzen of pokemon world and got your reward."/>
+		</mission>
+	</quest>
+	
+	<!--
+	<quest id="2" name="Tasks" startstorageid="20000" startstoragevalue="1">
+		<mission name="Rattata" storageid="20001" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 10 Rattata to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Caterpie" storageid="20003" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 10 Caterpie to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Weedle" storageid="20005" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 10 Weedle to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Zubat" storageid="20007" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 40 Zubat to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Pidgey" storageid="20009" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 50 Pidgey to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Metapod" storageid="20011" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 40 Metapod to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Kakuna" storageid="20013" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 40 Kakuna to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Magikarp" storageid="20015" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 60 Magikarp to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Krabby" storageid="20017" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 50 Krabby to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Poliwag" storageid="20019" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 50 Poliwag to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Horsea" storageid="20021" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 50 Horsea to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Goldeen" storageid="20023" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 50 Goldeen to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Geodude" storageid="20025" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 60 Geodude to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Machop" storageid="20027" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 60 Machop to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Oddish" storageid="20029" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 60 Oddish to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Bellsprout" storageid="20031" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 60 Bellsprout to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Tentacool" storageid="20033" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 60 Tentacool to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Shellder" storageid="20035" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 60 Shellder to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Sandshrew" storageid="20037" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 70 Sandshrew to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Clefairy" storageid="20039" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 40 Clefairy to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Jigglypuff" storageid="20041" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 40 Jigglypuff to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Squirtle" storageid="20043" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Squirtle to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Charmander" storageid="20045" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Charmander to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Bulbasaur" storageid="20047" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Bulbasaur to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Psyduck" storageid="20049" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Psyduck to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Growlithe" storageid="20051" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Growlithe to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Exeggcute" storageid="20053" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Exeggcute to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Abra" storageid="20055" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Abra to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Drowzee" storageid="20057" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Drowzee to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Magnemite" storageid="20059" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 90 Magnemite to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Voltorb" storageid="20061" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 90 Voltorb to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Gastly" storageid="20063" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 60 Gastly to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Seel" storageid="20065" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Seel to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Ivysaur" storageid="20067" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 100 Ivysaur to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Wartortle" storageid="20069" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 100 Wartortle to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Charmeleon" storageid="20071" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 100 Charmeleon to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Butterfree" storageid="20073" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Butterfree to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Beedrill" storageid="20075" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Beedrill to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Nidorina" storageid="20077" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 40 Nidorina to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Nidorino" storageid="20079" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 40 Nidorino to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Golbat" storageid="20081" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 110 Golbat to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Arbok" storageid="20083" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 110 Arbok to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Weezing" storageid="20085" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 110 Weezing to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Muk" storageid="20087" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 110 Muk to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Magneton" storageid="20089" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 110 Magneton to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Graveler" storageid="20091" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 120 Graveler to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Machoke" storageid="20093" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 120 Machoke to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Dugtrio" storageid="20095" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 120 Dugtrio to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Venomoth" storageid="20097" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 100 Venomoth to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Persian" storageid="20099" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 100 Persian to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Kadabra" storageid="20101" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 120 Kadabra to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Hypno" storageid="20103" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 120 Hypno to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Haunter" storageid="20105" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 120 Haunter to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Farfetchd" storageid="20107" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 50 Farfetchd to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Tangela" storageid="20109" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 80 Tangela to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Lickitung" storageid="20111" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 30 Lickitung to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Scyther" storageid="20113" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 15 Scyther to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Rapidash" storageid="20115" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 130 Rapidash to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Poliwrath" storageid="20117" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 130 Poliwrath to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Victreebel" storageid="20119" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 130 Victreebel to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Charizard" storageid="20121" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 140 Charizard to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Venusaur" storageid="20123" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 140 Venusaur to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Blastoise" storageid="20125" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 140 Blastoise to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Pidgeot" storageid="20127" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 140 Pidgeot to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Nidoqueen" storageid="20129" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 25 Nidoqueen to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Nidoking" storageid="20131" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 25 Nidoking to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Arcanine" storageid="20133" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 150 Arcanine to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Tentacruel" storageid="20135" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 150 Tentacruel to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Gyarados" storageid="20137" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 150 Gyarados to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Gengar" storageid="20139" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 150 Gengar to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Alakazam" storageid="20141" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 150 Alakazam to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Scyther" storageid="20143" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 60 Scyther to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Venusaur" storageid="20145" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 2000 Venusaur to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Tentacruel" storageid="20147" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 2000 Tentacruel to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Golem" storageid="20149" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 2000 Golem to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Marowak" storageid="20151" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 2000 Marowak to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Electabuzz" storageid="20153" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 500 Electabuzz to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Jynx" storageid="20155" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 500 Jynx to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Pidgeot" storageid="20157" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 2000 Pidgeot to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Blastoise" storageid="20159" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 2000 Blastoise to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Magmar" storageid="20161" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 500 Magmar to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Primeape" storageid="20163" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 1500 Primeape to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Gengar" storageid="20165" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 2000 Gengar to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Alakazam" storageid="20167" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 2000 Alakazam to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+		<mission name="Gyarados" storageid="20169" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 2000 Gyarados to get your reward."/>
+			<missionstate id="1" description="This task is done."/>
+		</mission>
+	</quest>
+	-->
+	
+	<quest id="3" name="Zazi, the old fisherman" startstorageid="8014" startstoragevalue="0">
+		<mission name="Find Zazi lost fishing rod" storageid="8014" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Help Zazi to find his fishing rod. Collect: 20 balls of wool, 10 stone orbs, 10 shell bells and 6 rubys."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Zazi gift" storageid="8035" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Take Zazi the items he needs to build a new fishing rod. Collect: 500 water gems, 200 metal spikes, 50 ball of wools, 100 screws, 50 electrizers, 20 tangela hairs and a splash plate."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="4" name="Professor Mark" startstorageid="8016" startstoragevalue="0">
+		<mission name="Old memories" storageid="8016" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find and bring back the notes of Professor Mark! He lost in the Pokemon Mansion on Cinnabar."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="5" name="Chanseys Mystery" startstorageid="8017" startstoragevalue="0">
+		<mission name="Find Chanseys!" storageid="8017" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Chanseys that are disappearing, probably this is the stuff of Team Rocket. There are rumors that one of the bases of Team Rocket is on Celadon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="6" name="Exploring Mt. Moon" startstorageid="8025" startstoragevalue="0">
+		<mission name="Grab your tools" storageid="8025" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Take your tools to begin your work. You will need: a Pick, a Flashlgiht and a Rope. The Pick you can buy from a blacksmith who lives in Mt Moon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Miner's life" storageid="8026" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to Mt Moon and look for the entry of the old mines, there go north until you find Earth Piles. Then use your Pick on the Earth Piles until you get 10 Iron Ores. Return with the Pick and 10 Iron Ores."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Exploring the old mine" storageid="8027" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Trawl through the old mine at Mt Moon and look for maps that are out there."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="In search of Moon Stone" storageid="8028" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Look for a hole in the mines of Mt Moon, there you will find a door and some paths. You should explore the area and find the Moon Stone fragment!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="7" name="Gary Oak tests" startstorageid="8030" startstoragevalue="0">
+		<mission name="Test #01" storageid="8030" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring these items to Gary's Assistant: 50x Water Gem, 50x Bottle of Poison, 7x Bitten Apple, 7x Tooth and 5x Bat Wing."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Test #02" storageid="8031" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring these items to Gary's Assistant: 12x Bulb, 200x Fire Element, 10x Pot of Lava, 15x Hull, 20x Electrizer and 200x Screw."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Test #03" storageid="8032" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring these items to Gary's Assistant: 25x Leaf, 10x Bulb, 20x Hull, 25x Pot of Lava, 10x Flame Orb, 35x Pot of Moss Mug, 15x Gracidea, 15x Revival Herb, 28x Water Pendant, 18x Stone Orb..."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Test #03 (Item list continuation)" storageid="8032" startvalue="0" endvalue="1">
+			<missionstate id="0" description="... 50x Feather, 40x Fur, 10x Tangela Hair, 30x Black Sludge, 400x Bottle of Poison, 10x Slowpoke Tail, 15x Metal Spikes and 30x Electrizer."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Test #04" storageid="8033" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring these items to Gary's Assistant: 20x Gyarados Tail, 10x Yellow Tail, 1x Scyther Razor, 5x Jynx Clothes, 20x Magma Stone, 20x Ruby, 30x Twisted Spoon, 20x Reaper Cloth, 200x Water Gem..."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Test #04 (Item list continuation)" storageid="8033" startvalue="0" endvalue="1">
+			<missionstate id="0" description="... 200x Fire Element, 200x Screw, 200x Seed, 50x Leaves, 30x Stone Orb, 30x Flame Orb and 30x Razor Fang."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="8" name="TV Camera" startstorageid="8034" startstoragevalue="0">
+		<mission name="Camera items" storageid="8034" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Maurice is producing TV cameras, take it to the following items: 200x Screws, 30x Electrizers and 30x Metal Spikes."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="9" name="Story between brothers" startstorageid="8037" startstoragevalue="0">
+		<mission name="Deliver to William Rock" storageid="8037" startvalue="0" endvalue="1">
+			<missionstate id="0" description="My brother is in a dig at Mt Moon, go there find him, deliver this letter and ask about the fossils."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="10" name="In search of fossils" startstorageid="8039" startstoragevalue="0">
+		<mission name="Researching" storageid="8039" startvalue="0" endvalue="1">
+			<missionstate id="0" description="At the end of this cave there is a special rock, try to do some digging in it with this shovel. Good luck, be careful there!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	<!-- Addons -->
+	<quest id="11" name="Social Addons" startstorageid="8042" startstoragevalue="0">
+		<mission name="Addon #01" storageid="8042" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Collect: 200x Fancy Fabrics, 200x Long Silks and 5000 dollars."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Addon #02" storageid="8043" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Collect: 50x Fire Orbs, 50x White Orbs and 50x Black Diamonds."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="12" name="Punk Addons" startstorageid="8044" startstoragevalue="0">
+		<mission name="Addon #01" storageid="8044" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Collect: 1500x Light Feathers and 100x Big Feathers."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Addon #02" storageid="8045" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Collect: 500x Downy Feather and 50x Resistant Fabric."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="13" name="Fisher Addons" startstorageid="8046" startstoragevalue="0">
+		<mission name="Addon #01" storageid="8046" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Collect: 50x Spool of Yarn and 500x Bamboo Leaves."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Addon #02" storageid="8047" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Collect: 100x Insect Skins and 150x Hard Nails."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="14" name="Oriental Addons" startstorageid="8048" startstoragevalue="0">
+		<mission name="Addon #01" storageid="8048" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Collect: 1000x Lightweight Fabrics and 100x Exquisite Silks."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Addon #02" storageid="8049" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Collect: 50x Healing Oil and 50x Old Bandage."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="15" name="Achievements" holder="true" />
+	
+	<quest id="16" name="After Kanto #01" startstorageid="8204" startstoragevalue="0">
+	<mission name="Helping friends" storageid="8204" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go help Misty at Cerulean."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Misty Egg" storageid="8205" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Help Misty find her Pokemon egg that was stolen by Team Rocket. The clues indicate that they fled to the north of Cerulean."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="17" name="Pokedex Upgrade" startstorageid="8338" startstoragevalue="0">
+		<mission name="Fixing Pokedex Upgrader" storageid="8338" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Dr. Oravaf and help him to fix the Pokedex Upgrader."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Helping Dr. Oravaf #01" storageid="8332" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to Power Plant and look for a Codex Motor, an Energy Transformer and a Bignose Gear. They can be found on the old machines."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Helping Dr. Oravaf #02" storageid="8333" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring Dr. Oravaf an Electrode."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="18" name="After Kanto #02" startstorageid="8206" startstoragevalue="0">
+		<mission name="Oak and a new adventure" storageid="8206" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Investigate about the Orange Archipelago and return to Professor Oak."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Looking for Arold" storageid="8340" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Arold."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Looking for Juhn" storageid="8341" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Juhn."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Looking for Denis" storageid="8342" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Denis."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Looking for Aleb" storageid="8343" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Aleb."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="19" name="After Kanto #03" startstorageid="8353" startstoragevalue="0">
+		<mission name="Orange Archipelago Map" storageid="8353" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Runford and asks for the Orange Archipelago map."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Looking for Runford" storageid="8207" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Pistachio and bring the Orange Archipelago map."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Looking for Pistachio #01" storageid="8208" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring 1x Burning Heart and 1x Frozen Heart."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Looking for Pistachio #02" storageid="8209" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring 1x Blastoise Hull and 1x Colourful Feather."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Looking for Pistachio #03" storageid="8210" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring 1x Petrified Scream and 1x Black Diamond."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Looking for Pistachio #04" storageid="8211" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring 1x Pincer Horn and 1x Scyther Razor."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Looking for Pistachio #05" storageid="8212" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring 1x Box Gloves and 1x Yellow Tail."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="20" name="Orange Archipelago Main #01" startstorageid="8213" startstoragevalue="0">
+		<mission name="A favor for Oak" storageid="8213" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Professor Ivy and take the GS ball to Professor Oak."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Recovering GS ball" storageid="8231" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Bill in Kanto and take the necessary tools to catch the Thief Aipom and recover the GS ball."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="21" name="Orange Archipelago Main #02" startstorageid="8214" startstoragevalue="0">
+		<mission name="Helping Professor Ivy" storageid="8214" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Investigate Tangelo Island and look for some Tangel Rue leaves."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="ECP approval" storageid="8215" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Take the Tangel Rue leaves to ECP in Mandarin Island and bring the extraction to Professor Ivy."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Albert assistant" storageid="8216" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Deliver to Albert an empty flask to achieve the plant extraction."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Testing cookies" storageid="8218" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Use the cookies on these young Pokemon: Paras, Butterfree, Vileplume, Raticate, Spinarak and Bellossom."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charity" storageid="8220" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring a Sunkern to Charity."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Hope" storageid="8221" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Talk with Sir John and ask him to fix the roof."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Sir John #01" storageid="8222" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring Sir John: 20x Piece of Royal Steel, 10x Ruby, 10x Cure Herb and 10x Pot of Water."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Sir John #02" storageid="8223" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring Sir John a Toolbox. You can buy one at Pummelo Island."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Faith" storageid="8224" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring Faith a Crystal Statue."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="22" name="Orange Archipelago Main #03" startstorageid="8226" startstoragevalue="0">
+		<mission name="Merv Kelley #01" storageid="8226" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Merv Kelley the Secret Recipe. It is hidden inside the Kanto Safari Zone."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Merv Kelley #02" storageid="8227" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Merv Kelley a Lichi Fruit. Located with the Wayne family on Ascorbi Island."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Merv Kelley #03" storageid="8228" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Merv Kelley an Orenji Fruit. Located center of the Mikan Island."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Merv Kelley #04" storageid="8229" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Merv Kelley a Wampi Fruit. Unkonwn location."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="23" name="Orange Archipelago Side #01" startstorageid="8329" startstoragevalue="0">
+		<mission name="Kimberly Downson" storageid="8329" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find the key and turn on the machine on Kimberly Downson house."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="24" name="Orange Archipelago Side #02" startstorageid="8244" startstoragevalue="0">
+		<mission name="Gord Scottie" storageid="8244" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Gord Scottie 20x Grape Fruit."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Queenie Jerrie" storageid="8245" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Queenie Jerrie 20x Grape Flower."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Curtis Sacheverell" storageid="8246" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Curtis Sacheverell 10x Grape Fruit."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Curtis Sacheverell message" storageid="8247" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Gord Scottie the letter from Curtis Sacheverell."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="25" name="Orange Archipelago Side #03" startstorageid="8248" startstoragevalue="0">
+		<mission name="Juanito Cruz" storageid="8248" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Juanito Cruz girlfriend."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Tereza Mendes" storageid="8249" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Tereza Mendes a Lipstick."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="26" name="Orange Archipelago Side #04" startstorageid="8250" startstoragevalue="0">
+		<mission name="Pepper Denis" storageid="8250" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find the hidden Pepper Denis friends. You must say 'hidden' when you're near them."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="27" name="Orange Archipelago Side #05" startstorageid="8256" startstoragevalue="0">
+		<mission name="Tilly Dianna" storageid="8256" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat the Spinaraks near Tilly Dianna house."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="28" name="Orange Archipelago Side #06" startstorageid="8258" startstoragevalue="0">
+		<mission name="Jewel Annice" storageid="8258" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find the thief Rocket and bring back to Jewel Annice her Pokemon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="29" name="Orange Archipelago Side #07" startstorageid="8259" startstoragevalue="0">
+		<mission name="Saruman" storageid="8259" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Saruman the lost Donphan Ball."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="30" name="Orange Archipelago Side #08" startstorageid="8260" startstoragevalue="0">
+		<mission name="Gollum" storageid="8260" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Gollum 15x Red Apples, 15x Oranges, 15x Blueberrys, 15x Melon, 15x Pears and 15x Strawberry."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="31" name="Orange Archipelago Side #09" startstorageid="8261" startstoragevalue="0">
+		<mission name="Slash" storageid="8261" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Slash 300x Screws and 50x Electrizers."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="32" name="Orange Archipelago Side #10" startstorageid="8262" startstoragevalue="0">
+		<mission name="Ernest Upper" storageid="8262" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Ernest Upper his lost Totodile."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="33" name="Orange Archipelago Side #11" startstorageid="8263" startstoragevalue="0">
+		<mission name="Farmer Steve" storageid="8263" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Plant 5 seeds on Farmer Steve field."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="34" name="Orange Archipelago Side #12" startstorageid="8346" startstoragevalue="0">
+		<mission name="Flavia" storageid="8346" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Use the Shovel to find Flavia necklace."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="35" name="Orange Archipelago Side #13" startstorageid="8352" startstoragevalue="0">
+		<mission name="Raymund Headley" storageid="8264" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Raymund Headley 30x Bitten Apple, 25x Sandbag, 40x Fur, 30x Gracidea and 10x Horn."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charlie Anselm #01" storageid="8265" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 30 Bellsprouts"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charlie Anselm #02" storageid="8267" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 30 Sunkern."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charlie Anselm #03" storageid="8268" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 30 Poliwag."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charlie Anselm #04" storageid="8269" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 30 Horsea."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charlie Anselm #05" storageid="8270" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 40 Tentacool."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charlie Anselm #06" storageid="8285" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Catch 2 Bellsprout."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charlie Anselm #07" storageid="8286" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Catch 2 Sunkern."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charlie Anselm #08" storageid="8287" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Catch 2 Poliwag."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charlie Anselm #09" storageid="8288" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Catch 2 Horsea."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charlie Anselm #10" storageid="8289" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Catch 2 Tentacool."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Sanford Fulk #01" storageid="8271" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Catch 2 Magnemite."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Sanford Fulk #02" storageid="8273" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Catch 2 Pikachu."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Paulina Megan" storageid="8274" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Paulina Megan 50x Empty Poke Ball and 50x Empty Ultra Ball."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Regena Loraine #01" storageid="8275" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 10x Ampharos."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Regena Loraine #02" storageid="8277" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 10x Crobat."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Regena Loraine #03" storageid="8278" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 10x Quagsire."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Regena Loraine #04" storageid="8279" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 10x Meganium."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Regena Loraine #05" storageid="8280" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat 10x Charizard."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Hettie Sibyl" storageid="8281" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Hettie Sibyl 1x Shiny Stone Orb, 1x Shiny Feather, 1x Shiny Bulb and 1x Shiny Pot of Lava."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Harmonie Rainbow" storageid="8282" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Harmonie Rainbow a Lemonade."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Flossie Cherise" storageid="8283" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Flossie Cherise 1x Butterfree doll, 1x Alakazam doll, 1x Charizard doll, 1x Pikachu doll, 1x Koffing doll, 1x Diglett doll and 1x Kingdra doll."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Joetta Mabella" storageid="8284" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Flossie Cherise 100x Fire Element, 100x Water Gem, 100x Seed, 100x Leaves, 100x Screw e 50x Energy Soil."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Nolan Peter" storageid="8290" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Flossie Cherise 10x Churros With Chocolate, 15x Burger, 20x Sushi, 10x Pizza and 15x Lemonade."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="36" name="Orange Archipelago Side #14" startstorageid="8291" startstoragevalue="0">
+		<mission name="Jane Hills" storageid="8291" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Jane Hills 20x Onigiri."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="37" name="Kurt Fastman McGaryson" startstorageid="8295" startstoragevalue="0">
+		<mission name="Deliver" storageid="8295" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Deliver Kurt Fastman McGaryson newspapers to his customers. The customers names can be found within the list that he gives."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Special Deliver" storageid="8296" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Deliver Kurt Fastman McGaryson newspapers to his special customer named Bud Jude. He can be found at Butwal Island"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="38" name="Mateo" startstorageid="8326" startstoragevalue="0">
+		<mission name="Crystal Onix" storageid="8326" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Investigate about the Crystal Onix. If you find him, take a picture with Mateo camera."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="39" name="Jarrod" startstorageid="8310" startstoragevalue="0">
+		<mission name="New Poke Ball" storageid="8310" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go inside Jarrod laboratory and test his new Poke Ball."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Coloured Ball Daily" storageid="8311" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Jarrod: 10x Electrizer, 5x Metal Spike, 50x Gear Wheel and 10x Magnet."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="40" name="Max Fegan" startstorageid="8315" startstoragevalue="0">
+		<mission name="Max Fegan #01" storageid="8315" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Woodworker Courts Ted and ask him for make the new fence."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Max Fegan #02" storageid="8319" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Max Fegan the second boards delivery."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Max Fegan #03" storageid="8322" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Max Fegan the third boards delivery."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Max Fegan Daily" storageid="8324" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Max Fegan 50x Orange."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Woodworker Courts Ted #01" storageid="8316" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Cut some trees arround Courts Ted house and bring him some wood."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Woodworker Courts Ted #02" storageid="8317" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Deliver the message from Courts Ted to his wife named Beatriz, she live on Celadon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Woodworker Courts Ted #03" storageid="8320" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Feed Courts Ted Machop, he lives underground the island."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Woodworker Courts Ted #04" storageid="8321" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Protect Courts Ted Machop from the aggressive Pokemon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="41" name="Oliver Terrel" startstorageid="8313" startstoragevalue="0">
+		<mission name="Oliver Terrel #01" storageid="8313" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to Oliver Terrel 6x Revive."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Oliver Terrel #02" storageid="8314" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find the Thief Pokemon and bring to Oliver Terrel his backpack."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Oliver Terrel #03" storageid="8350" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Look for the special item of Oliver, there are indications that it may be lost within the mountain."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="42" name="Baby's Challenge!" startstorageid="8339" startstoragevalue="0">
+		<mission name="Harold Sheen" storageid="8339" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go through the challenge with two players and find the baby ticket."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="43" name="Orange Archipelago Main #04" startstorageid="8240" startstoragevalue="0">
+		<mission name="Prophecy" storageid="8240" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Follow the Adventurer Lucy clues and find the mysterious prophecy in the Golden or Butwal Island."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Prophet Slowking" storageid="8242" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Help the three tribes to regain the balance that is breaking. The first step is grab the Pokemon Translator and then find the Sea Tribe."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Restore Stones" storageid="8243" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Talk to the chief of the tribe of the mountains and the chief of the tribe of the sky to find the two Restores Stones and bring them to Chief Vaporeon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	<quest id="44" name="Beginner Quests" startstorageid="8358" startstoragevalue="0">
+		<mission name="Ray Fitz #01" storageid="8358" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Release your Pokemon and then use the Pokedex that is in your inventory on the Pokemon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Ray Fitz #02" storageid="8359" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to the PokeMart and ask for Ray Fitz order."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Ray Fitz #03" storageid="8360" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to the sewers and defeat 1x Rattata."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Ray Fitz #04" storageid="8361" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to the sewers, defeat and catch 1x Rattata."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Ray Fitz #05" storageid="8362" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Use your Pokedex on 3 different Pokemon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Ray Fitz #06" storageid="8363" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Get next a river or lake and fish until you reach fishing skill 5."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Ray Fitz #07" storageid="8365" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to the PokeMart and type 'trade' then locate and buy 1x Pokemon Revive. You may defeat some Pokemon and grab the items that they drop to sell at the PokeMart and then buy the Pokemon Revive!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="45" name="Orange Archipelago Main #05" startstorageid="8368" startstoragevalue="0">
+		<mission name="Deepsoul" storageid="8368" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go talk to your professor, he is already aware of the situation. At the end go back to my presence. Good luck!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Isle of prophecy" storageid="8328" startvalue="0" endvalue="1">
+			<missionstate id="0" description="This stone is being kept on the Shamouti island. Run to the bottom of the main island and find the way. Go!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Ancient Times" storageid="8369" startvalue="0" endvalue="1">
+			<missionstate id="0" description="You have to go through a new trial. Decipher our little secret and go where no one dared to come."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="46" name="Helping Ash Ketchum" startstorageid="8377" startstoragevalue="0">
+		<mission name="Honey Pot" storageid="8377" startvalue="0" endvalue="1">
+			<missionstate id="0" description="My Ash need this honey pot to save sick Pokemon, please take it up. You will find him next to the boat S.S. Anne in Vermilion."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Angry Beedrill" storageid="8379" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to east of Fuchsia at route 15, on top of a mountain you will find a special tree. Use this honey on the tree and take good care, a hungry Beedrill will go behind you. Defeat this Beedrill and bring a special mushroom for us."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="47" name="Rock" startstorageid="8018" startstoragevalue="0">
+		<mission name="Rock #01" storageid="8018" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Now I'm a little hungry, bring me a burger I'll tell you something."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Rock #02" storageid="8319" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring me 50 stone orbs and 4 fist plates."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Rock #03" storageid="8020" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Ok, I have an old friend who does not see time, I want you to find it for me. You will be able to find it on the Ice Island. Bring something in there to prove that you were."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Rock #04" storageid="8022" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Beat the three Lee brothers, You'll find them on the Wind Island, north of the Ice Island."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Rock #05" storageid="8023" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to the south of this mountain, there is a secret passage to the Natural Mountain. Go there and bring to me a special stone, called Ancient Rune."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="48" name="Ranger Club" holder="true" />
+	
+	<quest id="49" name="Easter Rabbit" startstorageid="8384" startstoragevalue="0">
+		<mission name="Snap" storageid="8384" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find the Easter Rabbit and help him get back his other part."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Easter Rabbit Shadow" storageid="8385" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Search for Easter Rabbit Shadow."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Easter Rabbit Shadow Remains" storageid="8650" startvalue="0" endvalue="1">
+			<missionstate id="0" description="There remain some shadows of that creature yet! Please check back to that cave and defeat them."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="50" name="Into the Deep Sea" startstorageid="8387" startstoragevalue="0">
+		<mission name="Clothing Manufacturing" storageid="8387" startvalue="0" endvalue="1">
+			<missionstate id="0" description="You must bring me 200 fur's, 30 ape hair's, 5 gyarados tail's and 30 shell bell's."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Gooey Oil" storageid="8388" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Get the black oil for Alex. You can find the entrance to the south, remember to use your dive equipment and the empty bottle. Good luck!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="A Lower Level" storageid="8389" startvalue="0" endvalue="1">
+			<missionstate id="0" description="You will need to look into the depths of the ocean! Look for the old black shell, there you will find my pearl."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="51" name="Solid Ice" startstorageid="8391" startstoragevalue="0">
+		<mission name="Basic" storageid="8391" startvalue="0" endvalue="1">
+			<missionstate id="0" description="You must bring me 200 fur's, 30 jynx clothes, 40 frozen heart's and 60 shard's."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Special Cloth" storageid="8392" startvalue="0" endvalue="1">
+			<missionstate id="0" description="For the second part, you need to bring me a piece of special cloth. There are many of them in my house, I can take you there, but you have to be careful when handling them because they are very fragile and tear easily."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Precious" storageid="8393" startvalue="0" endvalue="1">
+			<missionstate id="0" description="There is a very rare stone called the ice yolk stone, she is at the end of a large cave and guarded by powerful ice pokemon. If you bring it to me so I will give you the ski clothing."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="52" name="Undercover" startstorageid="8396" startstoragevalue="0">
+		<mission name="Darion Clive" storageid="8396" startvalue="0" endvalue="1">
+			<missionstate id="0" description="There is a passage over that tile. Go there and follow the instructions of the dungeon. I'll be here waiting for your news."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="53" name="Memories" startstorageid="8383" startstoragevalue="0">
+		<mission name="Dr. Alan Grant" storageid="8383" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Extract the Old Amber DNA with the resynthesizer."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="54" name="Aldo Vumblevore" startstorageid="8406" startstoragevalue="0">
+		<mission name="Suramoon Relics" storageid="8406" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Defeat these evil creatures and bring me the seven relics. You will find the creatures at the invasions that he send to the towns."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="55" name="Selam" startstorageid="8408" startstoragevalue="0">
+		<mission name="Soul Purifier" storageid="8408" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Purify the evil creatures soul. But please, do very carefully, they have no guilt!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="56" name="Kanto Main #01 - A new mystery!" startstorageid="8410" startstoragevalue="0">
+		<mission name="Assistant Guyli" storageid="8410" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I'm sure there's someone who can help us in Pallet. A girl, yes! I do not remember his name... ask for {Pokemon stress}. Take a look on Pallet and return with good news!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Daisy Oak #01" storageid="8411" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I was going to see my brother Gary, he called me with a look of concern. You can check it for me while I go to the lab? Please back here after talking with him. He is at Viridian City."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Gary Oak #01" storageid="8413" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Take this magnifier, you may need. Use the magnifier in suspicious places. Report to me when you find something."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Gary Oak #02" storageid="8414" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Battle against Gary Oak."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Daisy Oak #02" storageid="8412" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Take this knife. Use it in the plant and return with a piece for me."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="57" name="Kanto Main #02 - Where is Ash?" startstorageid="8417" startstoragevalue="0">
+		<mission name="Gary Oak #01" storageid="8417" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go with this magnifier. See what you can do. I will mark on your map the location where you must begin the search, use the magnifier at all."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Gary Oak #02" storageid="8419" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to Pallet Town and talk to Delia, Ash's mom. Tell her we're making progress. When I you need I call."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Delia Ketchum" storageid="8418" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I received a letter from him days ago. I put it in my trunk upstairs."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="58" name="Kanto Main #03 - A warning sign!" startstorageid="8421" startstoragevalue="0">
+		<mission name="Bill #01" storageid="8421" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Meanwhile, go to Cerulean and warn the authorities about this case. When you do this, return."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Officer Jeny" storageid="8422" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Take these 8 posters. I'll mark on your map the locations that need to glue them. Will be 4 in each city."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Bill #02" storageid="8431" startvalue="0" endvalue="1">
+			<missionstate id="0" description="My device sends some signals from Vermilion. Go investigate."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="59" name="Kanto Main #04 - S. S. Anne and Rockets!" startstorageid="8433" startstoragevalue="0">
+		<mission name="Captain Neil Pace #01" storageid="8433" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go and prove your worth against my sailors. Defeat them all and then you will have your place in our ship!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Captain Neil Pace #02" storageid="8435" startvalue="0" endvalue="1">
+			<missionstate id="0" description="They fled with the ship ignition key, talk to First Mate and to see where they go! Please go fast!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="60" name="Kanto Main #05 - Celadon?" startstorageid="8436" startstoragevalue="0">
+		<mission name="Rocket Captain" storageid="8436" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Take this broom and help us clean up this mess. Use it to clean the floor of this room. Clean 7 places and return."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="61" name="Kanto Side #01" startstorageid="8439" startstoragevalue="0">
+		<mission name="Justin Flowers" storageid="8439" startvalue="0" endvalue="1">
+			<missionstate id="0" description="You must find a Blue Flute to wake the Pokemon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="62" name="Kanto Side #02" startstorageid="8441" startstoragevalue="0">
+		<mission name="London Hamnet #01" storageid="8441" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Take a look around to see from where comes this smell of poop!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="London Hamnet #02" storageid="8442" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Look for a mushroom around Mt. Moon. It is blue in color. Use a Pokemon to cut it. Bring to me and we can heal Weezing."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="London Hamnet #03" storageid="8444" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Take it to the Weezing. Once it heals, take him by the passage that I found when I went to visit him."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="63" name="Kanto Side #03" startstorageid="8446" startstoragevalue="0">
+		<mission name="Rick" storageid="8446" startvalue="0" endvalue="1">
+			<missionstate id="0" description="In this paper I gave you are the name of three persons here in Fuchsia who asked me for help. Complete these three tasks and then talk to me."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Chewba" storageid="8447" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I need you to plant these berries for me. They are eight. Go to the ground outside my house and use the tools there."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Luken" storageid="8449" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Light all the torches down there with some of your Fire Pokemon and I will be very grateful."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Lia" storageid="8450" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I have some wardrobes in my house that are old and I need to destroy them. Can you help me?"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="64" name="Kanto Side #04" startstorageid="8453" startstoragevalue="0">
+		<mission name="Rebbeca" storageid="8453" startvalue="0" endvalue="1">
+			<missionstate id="0" description="They all lost their special ribbons, this can only be a curse! Use every trick you know to try to find them, please. They are five."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="65" name="Kanto Side #05" startstorageid="8454" startstoragevalue="0">
+		<mission name="Hanzo Hasashi" storageid="8454" startvalue="0" endvalue="1">
+			<missionstate id="0" description="All you need to do is return him to his PokeBall. We'll have to put him to sleep. Try this device that I recently created."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="66" name="Kanto GYM #01 - Brocklings" startstorageid="8456" startstoragevalue="0">
+		<mission name="Brock" storageid="8456" startvalue="0" endvalue="1">
+			<missionstate id="0" description="My brother Forrest is in our house in need of a help."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Brockling Forrest" storageid="8457" startvalue="0" endvalue="1">
+			<missionstate id="0" description="First helps Salvadore. He is the eldest after me... you'll know who it is."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Brockling Salvadore #01" storageid="8458" startvalue="0" endvalue="1">
+			<missionstate id="0" description="We need to prepare 40 cooked onigiri. Now take this sauce and place on them."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Brockling Salvadore #02" storageid="8459" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Now take to the stove and serve two for each brother."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Brockling Yolanda" storageid="8460" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to the Golem and deliver this nugget that he loves. Then use this tool to polish the ends to let him faster in the battle. And lastly fill his pot of food with it."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Brockling Timmy" storageid="8461" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Our toy is in the basement and we forget that our brother Brock's Zubat is sleeping right now."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="67" name="Kanto GYM #02 - Love Present" startstorageid="8466" startstoragevalue="0">
+		<mission name="Misty #01" storageid="8466" startvalue="0" endvalue="1">
+			<missionstate id="0" description="The manufacturer gave me a list of materials that I needed to collect. Get them for me and you will have your reward."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Misty #02" storageid="8467" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Put them in this bag. Hand it to the bow manufacturer in Lavender. Once he does, return to me!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Luther Lacey #01" storageid="8468" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring the necessary items to make the Bow."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Luther Lacey #02" storageid="8469" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Very well. Come back in two hours and it will be ready."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="68" name="Kanto GYM #03 - Sr., Yeah! Sr!" startstorageid="8471" startstoragevalue="0">
+		<mission name="Lt. Surge" storageid="8471" startvalue="0" endvalue="1">
+			<missionstate id="0" description="You need to defeat the Electric type Pokemon to energize my battery, use the battery on them after defeat."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="69" name="Kanto GYM #04 - Berry Juice" startstorageid="8472" startstoragevalue="0">
+		<mission name="Erika" storageid="8472" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I developed a machine to extract the juice here in the gym. I need you to do 5 juices for me. It is the combination of five berries: Sitrus, Pecha, Leppa, Oran and Chesto."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="70" name="Kanto GYM #05 - Blue Pollen" startstorageid="8473" startstoragevalue="0">
+		<mission name="Koga" storageid="8473" startvalue="0" endvalue="1">
+			<missionstate id="0" description="The plants are on Route 13, all you need to do is use a Pokemon with CUT ability to collect them. Be careful because they are poisonous. I need 30 Blue Pollens. When finished, bring them to me."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="71" name="Tutorial Island" startstorageid="8489" startstoragevalue="0">
+		<mission name="Flanagan #1" storageid="8489" startvalue="0" endvalue="1">
+			<missionstate id="0" description="First 'Use' the Reward Chest right there to receive a Pikachu. Once you perform the action, get back here."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Flanagan #2" storageid="8490" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Place the Poke Ball at the Ball Slot and 'Use' the Ball Slot to call your Pokemon out."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Flanagan #3" storageid="8491" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Use the Order icon to move your Pokemon over the map."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Flanagan #4" storageid="8492" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Won me in a Pokemon battle. Remember, just say 'battle'."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Gosse #1" storageid="8493" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go through that door and catch one Magikarp. 'Use' the empty Poke Ball in your Backpack over the body lying on the floor."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Gosse #2" storageid="8494" startvalue="0" endvalue="1">
+			<missionstate id="0" description="There is a 'DIFFERENT' way to catch Pokemon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Shelley #1" storageid="8495" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Take your Pokedex and use it on the Psyduck. Just 'Use' the Pokedex and then select the Pokemon. See the details and come back to talk to me."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Shelley #2" storageid="8496" startvalue="0" endvalue="1">
+			<missionstate id="0" description="'Use' your Pokedex at the Skarmory."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Shelley #3" storageid="8497" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I will tell you how 'HM' works."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="72" name="Professor Oak" startstorageid="8498" startstoragevalue="0">
+		<mission name="A work for Oak" storageid="8498" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I made an order with the Pallet PokeMart. Please take it for me, his name is Patton."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Jofrey #1" storageid="8501" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Fish and defeat five (5) Magikarps."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Jofrey #2" storageid="8502" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Use the Caterpie Headbutt until reach Headbutting skill five (5)."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Doroty #1" storageid="8503" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Use the Seal at the Poke Ball and release the Pokemon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="73" name="Kanto GYM #06 - Dream World" startstorageid="8474" startstoragevalue="0">
+		<mission name="Sabrina" storageid="8474" startvalue="0" endvalue="1">
+			<missionstate id="0" description="You will be mesmerized by my Pokemon and you will be taken to the world of dreams. We will be connected to the Dream World, a world of Pokemon dreams. And there I created a challenge for trainers. Unravel the mystery and you will can."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="74" name="Kanto Main #06 - The Tower" startstorageid="8510" startstoragevalue="0">
+		<mission name="Bill" storageid="8510" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find and help Mr. Fuji at Lavender Tower."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Mr. Fuji" storageid="8511" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Rescue Mr. Fuji Pokemon: Fuji's Eevee, Fuji's Cubone, Fuji's Lickitung, Fuji's Totodile and Fuji's Pupitar."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="75" name="Kanto Main #07 - To Celadon!" startstorageid="8517" startstoragevalue="0">
+		<mission name="Bill" storageid="8517" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to Celadon, maybe we can help there. Contact with the owner of the hotel there, Briscoe Len."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Briscoe Len" storageid="8518" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Meet Briscoe Len at his room downstairs."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="76" name="Kanto Main #08 - Silph Co." startstorageid="8520" startstoragevalue="0">
+		<mission name="Gary Oak" storageid="8520" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Investigate Silph Co and look for Ash Ketchum."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Bill" storageid="8526" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Tell Bill about the events."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="77" name="Kanto Main #09 - Who is the masked?" startstorageid="8527" startstoragevalue="0">
+		<mission name="Bill" storageid="8527" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find and find out who is the Mystery Guy."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Mystery Guy" storageid="8529" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find the secret entrance for the laboratory on Cinnabar and collect information."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="78" name="Queter Phill" startstorageid="8541" startstoragevalue="0">
+		<mission name="Queter Phill" storageid="8541" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Enter in Queter Phill portal and collect the essence of Suramoon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="79" name="Grinch Quests" startstorageid="8563" startstoragevalue="0">
+		<mission name="The Misterious Monster" storageid="8563" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Grinch hideout. The sewers are a nice place to start out."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="PokeSherlock" storageid="8649" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go back to the place and use this machine that shows whether there is a false wall nearby, I will inform my superiors, we met there."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Trapped Officer" storageid="8641" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Please try to find some way to get me out, but beware, here is full of traps, the suspect is very cunning, stay tuned."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Martha May #1" storageid="8568" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring me 10 acorns and 20 strawberries."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Martha May #2" storageid="8569" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring me 5 lemons and 5 sample of sand wasp honey."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Martha May #3" storageid="8570" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring me 5 balls of wool and 2 spider silks."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Martha May #4" storageid="8571" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bring to grinch Martha May's presents."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Santa Claus" storageid="8639" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Help Rundolph to deliver the presents around Kanto cities."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="80" name="Kanto Main #10 - Team Rocket" startstorageid="8542" startstoragevalue="0">
+		<mission name="Bill" storageid="8542" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to the Team Rocket base, destroy the doors and look for more clues."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Briscoe Len" storageid="8544" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go back to the Team Rocket base and save Mistery Guy."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Mistery Guy" storageid="8546" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Save Mistery Guy."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="81" name="Kanto Main #11 - Master Ball" startstorageid="8550" startstoragevalue="0">
+		<mission name="Bill #1" storageid="8550" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Bill is analyzing the HD, come back after 1 hour."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Bill #2" storageid="8550" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to Silph Co. and ask Charley Aden about the Master Ball."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Charley Aden" storageid="8552" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Charley is creating a Master Ball prototype, come back after 1 hour."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Bill #3" storageid="8555" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to the island that Dr. Fuji spoke, find the laboratory and look for Mewtwo clues."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="82" name="Kanto Main #12 - Showdown!" startstorageid="8556" startstoragevalue="0">
+		<mission name="Dragorier" storageid="8556" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Go to Vermilion and get the boat to the New Island."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="83" name="Alliance of the 4 Seas" startstorageid="8556" startstoragevalue="0">
+		<mission name="Join the Alliance" storageid="8556" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Ask the mission to Peter Paul and then do all the initial missions of the 4 factions."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="Discover The Betrayer" storageid="8556" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find out who the traitor is in the alliance and its motives."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="Defeat this Traitor" storageid="8556" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find out who the traitor is and confront him."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="Choose your flag" storageid="8556" startvalue="0" endvalue="1">
+			<missionstate id="0" description="By defeating the traitor, you will have the confidence of all factions, but you must choose which one you will represent. This choice will give you a benefit in the future, which varies from faction to faction."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="84" name="Sea Dragons" startstorageid="8694" startstoragevalue="0">
+		<mission name="Nagumo's diary" storageid="8671" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find Nagumo's diary."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="Satoshi needs a new Telescope" storageid="8672" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Get a new Telescope for Sotashi."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="The Password" storageid="8673" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Prove to Nagumo that you are trusted by Calico and you will be trusted for it."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="Reestablishing communications" storageid="8674" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Take the radio to Ed Blackhood, keeping in touch with the factions."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<!--<mission name="Proving your skills" storageid="8556" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Challenge Sotashi."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>-->
+		
+		<!--<mission name="Confidence shaken" storageid="8675" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Find out if Calico is really trustworthy."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>-->
+		
+		<mission name="What are these drawings?" storageid="8675" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Give Nagumo a suspicious paper of Calico."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="An obscure secret" storageid="8676" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Give the drawings to Blackhood, he knows something."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<!--<mission name="The decision of Nagumo" storageid="8556" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Nagumo feels betrayed once more, and now she is willing to react."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>-->
+	</quest>
+	
+	<quest id="84" name="Guns and Roses" startstorageid="8695" startstoragevalue="0">
+		<!--<mission name="Try not to get beat up" storageid="8556" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Barba Roja wants to spank you..."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>-->
+		
+		<mission name="Stuffing" storageid="8684" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Barba Roja wants to pay you within rum."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="Finding the treasure" storageid="8685" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Barba Roja searches for his treasure."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<!--<mission name="Extortion" storageid="8556" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Pay what you should not."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>-->
+		
+		<mission name="Extortion again?" storageid="8686" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Cover the bank debt with Javy Dones."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="More debtors" storageid="8687" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Looks like Calico owes something to Javy Dones, cover it."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="85" name="Cold Waters" startstorageid="8697" startstoragevalue="0">
+		<!--<mission name="My radio" storageid="8556" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Give the radio over to Blackhood."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>-->
+		
+		<mission name="The Curious Case of Will" storageid="8677" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Give Will the rifle scope."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="Strange recipe" storageid="8678" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Get the ingredients for Ed."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="Opening portals" storageid="8681" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Activate the portals of Ed's boat."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="Reliable" storageid="8682" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Conquer everyone's trust in the alliance and you will have access to the portals."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="An obscure secret" storageid="8683" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Give Ed the letter with the strange drawings, he will know what it is."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="Someone is up to something" storageid="8698" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Someone has manipulated the facts, who will be and what is his intention?"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="86" name="Lunatticus" startstorageid="8696" startstoragevalue="0">
+		<!--<mission name="What do you think?" storageid="8556" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Your opinion can make a difference, or not."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>-->
+		
+		<mission name="Do you want tea?" storageid="8688" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Get tea for Jack Sparrow."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="I want that shell" storageid="8690" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Swallow the pretty shell for Jack Spearow."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<!--<mission name="The password" storageid="8692" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Say the secret words."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>-->
+		
+		<mission name="Delivering a message" storageid="8692" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Deliver the letter to Sotashi."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		
+		<mission name="Pay the debt" storageid="8693" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Give the diamond to Javy Dones."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="87" name="Kenelm Reilly" startstorageid="8723" startstoragevalue="0">		
+		<mission name="Kenelm Reilly #1" storageid="8723" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Very cool! That's right! Look for me the following: 5x Bitten Apple and 5x Mouldy Cheese."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>		
+		<mission name="Kenelm Reilly #2" storageid="8724" startvalue="0" endvalue="1">
+			<missionstate id="0" description="This time I will need the following items: 3x Tooth and 20x Bottle of Poison."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>	
+		<mission name="Kenelm Reilly #3" storageid="8725" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Actually they are two things, haha! 40x Water Gem and 40x Bottle of Poison."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+		<mission name="Kenelm Reilly #4" storageid="8726" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I knew I could count on you, bring me the following: 5x Bat Wing, 5x Tooth, 10x Mouldy Cheese, and 10x Bitten Apple."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>
+	</quest>
+	
+	<quest id="87" name="Arron Deforest" startstorageid="8727" startstoragevalue="0">		
+		<mission name="Arron Deforest #1" storageid="8727" startvalue="0" endvalue="1">
+			<missionstate id="0" description="My dream is to start my journey with a Rattata, my favorite Pokemon! If you bring one for me, I will give you a very good reward."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>			
+		
+		<mission name="Arron Deforest #2" storageid="8728" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I do not know what I do wrong, but no Pokemon wants to get into the Pokeballs I throw! Could you catch a Zubat for me?"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>			
+		
+		<mission name="Arron Deforest #3" storageid="8729" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Do you believe he never wanted to give me a Pokemon? Thanks to you I got now, but... can you bring a Poliwag for me? Thank you."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>				
+		
+		<mission name="Arron Deforest #4" storageid="8730" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Please, I need an Oddish."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>					
+		
+		<mission name="Arron Deforest #5" storageid="8731" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Do not tell anyone, but I need an Ekans. It will be my great triumph."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>		
+	</quest>
+	
+	<quest id="88" name="Warwick Howard" startstorageid="8732" startstoragevalue="0">		
+		<mission name="Warwick Howard #1" storageid="8732" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I need you to collect information from 5 Pokemon with your Pokedex!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>			
+		<mission name="Warwick Howard #2" storageid="8733" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Okay, now I need you to gather information from 10 Pokemon."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>			
+		<mission name="Warwick Howard #3" storageid="8734" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Now, I'm going to need 20 Pokemon information!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>			
+		<mission name="Warwick Howard #4" storageid="8735" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Hehe! I need 30 Pokemon now."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>	
+		<mission name="Warwick Howard #5" storageid="8736" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Can you bring me... 50 Pokemon information?!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>				
+	</quest>
+	
+	<quest id="89" name="Bertina Stacy" startstorageid="8737" startstoragevalue="0">		
+		<mission name="Bertina Stacy #1" storageid="8737" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Okay, I need you to defeat 10x Rattata in the city manholes."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>			
+		<mission name="Bertina Stacy #2" storageid="8738" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Are those Zubats who are eating all my flowers, could you defeat 5x Zubat?"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>			
+		<mission name="Bertina Stacy #3" storageid="8739" startvalue="0" endvalue="1">
+			<missionstate id="0" description="I thought it was over, but these terrible ones showed up. Please defeat 5x Weedle."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>			
+		<mission name="Bertina Stacy #4" storageid="8740" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Yes, they are very dangerous. I need you to defeat 10x Ekans."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>					
+	</quest>
+	
+	<quest id="90" name="Rusty Barret" startstorageid="8741" startstoragevalue="0">		
+		<mission name="Rusty Barret #1" storageid="8741" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Okay, first reach fishing level 5."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>		
+		<mission name="Rusty Barret #2" storageid="8742" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Now reach fishing level 10."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>	
+		<mission name="Rusty Barret #3" storageid="8743" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Now you have to reach fishing level 15."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>		
+		<mission name="Rusty Barret #4" storageid="8744" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Reach fishing level 20!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>		
+		<mission name="Rusty Barret #5" storageid="8745" startvalue="0" endvalue="1">
+			<missionstate id="0" description="Show me what you are capable of, reach 30 level of fishing!"/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>	
+		<mission name="Rusty Barret #6" storageid="8746" startvalue="0" endvalue="1">
+			<missionstate id="0" description="After this last step, you are officially a professional fisherman. Reach level 50 fishing."/>
+			<missionstate id="1" description="This mission is done."/>
+		</mission>							
+	</quest>
+</quests>

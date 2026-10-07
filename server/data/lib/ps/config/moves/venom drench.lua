@@ -1,0 +1,17 @@
+MOVES["Venom Drench"] = {
+    description = "Opposing Pokemon are drenched in an odd poisonous liquid. This lowers the Attack, Sp. Atk, and Speed stats of a poisoned target.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 27666,
+    iconId = 0,
+    dType = DAMAGE_TYPE_POISON,
+    type = SKILLS_TYPES.STATS,
+    requiredEnergy = 50,
+    damage = 0,
+    damageType = ELEMENT_POISON,
+    effect = EFFECT_SHADOW_CLAW,
+    projectile = nil,
+    maxDistance = 0,
+    cooldownTime = 30,
+    cooldownStorage = 15443,
+    makeContact = false,
+}

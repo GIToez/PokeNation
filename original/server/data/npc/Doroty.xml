@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Doroty" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1313" head="1" body="129" feet="114"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|, I am responsible for taking care of the Poke Balls technology here. Can I help you?"/>
+	</parameters>
+</npc>

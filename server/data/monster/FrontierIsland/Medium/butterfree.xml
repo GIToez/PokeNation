@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Butterfree" nameDescription="a Butterfree" shiny="Shiny Butterfree" race="blood" experience="0" speed="270" manacost="0" minLevel="30" maxLevel="40">
+	<health now="60" max="60"/>
+	<look type="363" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1428" skill="24" attack="45"/>
+		<attack name="Moves" interval="500" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="BUTTERFREE!"/>
+		<voice sentence="FREE! FREE!"/>
+	</voices>
+	<loot>
+		<item id="12113" countmax="1" chance="50000"/> <!-- pot of moss mug -->
+		<item id="14503" countmax="1" chance="17500"/> <!-- sample of sand wasp honey -->
+		<item id="2674" countmax="3" chance="5000"/> <!-- red apple -->
+		<item id="14625" countmax="1" chance="8333"/> <!-- insect skin -->
+		<item id="12241" countmax="1" chance="50"/> <!-- insect plate -->
+		<item id="18081" countmax="1" chance="50"/> <!-- sky plate -->
+		<item id="17830" countmax="1" chance="100"/> <!-- butterfree doll -->
+	</loot>
+</monster>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Croconaw" nameDescription="a Croconaw" race="blood" experience="0" speed="258" manacost="0" minLevel="40" maxLevel="50">
+	<health now="65" max="65"/>
+	<look type="960" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1724" skill="24" attack="80"/>
+		<attack name="Moves" interval="500" />
+		<attack name="Evolve" inverval="15000" chance="1" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="80"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="CROCONAWW!"/>
+	</voices>
+	<loot>
+		<item id="12096" countmax="1" chance="83333"/> <!-- razor fang -->
+		<item id="12100" countmax="9" chance="97222"/> <!-- water gem -->
+		<item id="14477" countmax="1" chance="11666"/> <!-- cutting fang -->
+		<item id="14515" countmax="1" chance="23333"/> <!-- pot of water -->
+		<item id="12230" countmax="1" chance="50"/> <!-- splash plate -->
+		<item id="14464" countmax="5" chance="5000"/> <!-- onigiri -->
+		<item id="17959" countmax="1" chance="100"/> <!-- croconaw doll -->
+	</loot>
+</monster>

@@ -1,0 +1,19 @@
+MOVES["Thrash"] = {
+    description = "The user attacks for 2-3 turns and then becomes confused.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12123,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Thrash",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 115,
+    requiredLevel = 50,
+    damage = 40,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_TRIPLE_SPARK_TWO,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 12,
+    cooldownStorage = 15217
+}

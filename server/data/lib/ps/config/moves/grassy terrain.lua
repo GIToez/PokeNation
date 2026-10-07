@@ -1,0 +1,17 @@
+MOVES["Grassy Terrain"] = {
+    description = "The user turns the ground to grass for five turns. This restores the HP of Pokemon on the ground a little every turn.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 27658,
+    iconId = 0,
+    dType = DAMAGE_TYPE_GRASS,
+    type = SKILLS_TYPES.STATS,
+    requiredEnergy = 100,
+    damage = 0,
+    damageType = ELEMENT_GRASS,
+    effect = EFFECT_BIG_GREEN_ENERGYZE,
+    projectile = nil,
+    maxDistance = 0,
+    cooldownTime = 60,
+    cooldownStorage = 15453,
+    makeContact = false,
+}

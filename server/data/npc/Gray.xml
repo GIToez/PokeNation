@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<npc name="Gray" script="tutorial_quests.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="1202" head="20" body="30" legs="40" feet="20"/>
+	<parameters>
+        <parameter key="message_greet" value="Hello |PLAYERNAME|. You want to hear about the {FRONTIER ISLAND} or the {RANGER CLUB}?"/>
+    </parameters>
+</npc>

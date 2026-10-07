@@ -1,0 +1,21 @@
+MOVES["Punishment"] = {
+    description = "Punishment deals varying damage based on the opponent's stat increases. It starts at base power 60 and increases by 20 for every net stat boost of the opponent.",
+    makeContact = true,
+    wildBlock = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 16676,
+    iconId = 0,
+    dType = DAMAGE_TYPE_DARK,
+    functionName = "Punishment",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 100,
+    requiredLevel = 15,
+    damage = 60,
+    damageType = ELEMENT_DARK,
+    effect = EFFECT_BIG_PURPLE_BALL,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 20,
+    cooldownStorage = 15304,
+    damageText = "??"
+}

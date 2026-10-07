@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Maricela Giannone" script="npcbattle_fi_maricelagiannone.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="627" head="75" body="30" legs="84" feet="22" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Tropius" nickname="Tropius" nameDescription="a Shiny Tropius" race="blood" experience="15" speed="251" manacost="0" minLevel="70" maxLevel="80">
+	<health now="99" max="99"/>
+	<look type="1916" corpse="29538"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1960" skill="24" attack="68"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="83"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="TROPIUS!"/>
+	</voices>
+	
+<loot><item id="12091" countmax="1" chance="23809"/><item id="12102" countmax="7" chance="85714"/><item id="13304" countmax="1" chance="15873"/><item id="13309" countmax="1" chance="15873"/><item id="14466" countmax="1" chance="85714"/><item id="14467" countmax="1" chance="17142"/><item id="14487" countmax="1" chance="85714"/><item id="14510" countmax="1" chance="42857"/><item id="17802" countmax="1" chance="21428"/><item id="28876" countmax="1" chance="8571"/><item id="28880" countmax="1" chance="2142"/><item id="28886" countmax="1" chance="17142"/><item id="28887" countmax="1" chance="21428"/><item id="28888" countmax="1" chance="10714"/><item id="12231" countmax="1" chance="50"/><item id="18081" countmax="1" chance="50"/><item id="14464" countmax="5" chance="5000"/><item id="29081" countmax="1" chance="100"/><item id="23520" countmax="1" chance="10"/><item id="23526" countmax="1" chance="10"/><item id="17357" countmax="1" chance="10"/></loot></monster>

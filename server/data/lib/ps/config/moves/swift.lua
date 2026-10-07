@@ -1,0 +1,20 @@
+MOVES["Swift"] = {
+    description = "Swift deals damage and ignores changes to the Accuracy and Evasion stats.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11770,
+    iconId = 13396,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Swift",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 60,
+    requiredLevel = 18,
+    damage = 60,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_SPARK,
+    projectile = PROJECTILE_STARS,
+    maxDistance = 6,
+    cooldownTime = 9,
+    cooldownStorage = 15078,
+    ignoreEvasion = true,
+    ignoreAccuracy = true
+}

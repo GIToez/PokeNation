@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Edna Lacy" script="npcbattle_ednaLacy.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1204" head="28" body="14" legs="87" feet="70"/>
+	<parameters>
+		<parameter key="message_greet" value="!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

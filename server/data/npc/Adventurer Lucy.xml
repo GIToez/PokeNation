@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Adventurer Lucy" script="quest_adventurerLucy.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1202" head="10" body="80" legs="15" feet="15" addons="0"/>
+</npc>

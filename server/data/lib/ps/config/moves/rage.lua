@@ -1,0 +1,19 @@
+MOVES["Rage"] = {
+    description = "Rage inflicts damage, hitting the target 2-5 times per use.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12065,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Rage",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 100,
+    requiredLevel = 35,
+    damage = 20,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BLOW,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 15,
+    cooldownStorage = 15161
+}

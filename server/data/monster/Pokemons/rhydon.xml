@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Rhydon" nameDescription="a Rhydon" shiny="Shiny Rhydon" race="blood" experience="15" speed="240" manacost="0" minLevel="65" maxLevel="75">
+	<health now="105" max="105"/>
+	<look type="463" head="0" body="0" legs="0" feet="0" corpse="11500"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2500" skill="24" attack="130"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="120"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="RHYDON!"/>
+	</voices>
+	
+<loot><item id="12138" countmax="1" chance="48000"/><item id="12120" countmax="1" chance="80000"/><item id="14477" countmax="1" chance="24000"/><item id="14492" countmax="1" chance="24000"/><item id="14505" countmax="1" chance="42857"/><item id="14629" countmax="1" chance="83333"/><item id="12234" countmax="1" chance="50"/><item id="13807" countmax="1" chance="50"/><item id="17921" countmax="1" chance="100"/><item id="23517" countmax="1" chance="10"/><item id="23529" countmax="1" chance="10"/></loot></monster>

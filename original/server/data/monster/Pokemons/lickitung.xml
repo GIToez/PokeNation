@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Lickitung" nameDescription="a Lickitung" shiny="Shiny Lickitung" race="blood" experience="15" speed="230" manacost="0" minLevel="50" maxLevel="60">
+	<health now="90" max="90"/>
+	<look type="459" head="0" body="0" legs="0" feet="0" corpse="11496"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="3333" skill="24" attack="55"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="75"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="LICKI!"/>
+		<voice sentence="LICKITUNG!"/>
+	</voices>
+	
+<loot><item id="12152" countmax="1" chance="19444"/><item id="12121" countmax="1" chance="53030"/><item id="14480" countmax="1" chance="77777"/><item id="2687" countmax="5" chance="5000"/><item id="2680" countmax="5" chance="5000"/><item id="12232" countmax="1" chance="50"/><item id="17917" countmax="1" chance="100"/><item id="18926" countmax="1" chance="10"/><item id="23527" countmax="1" chance="10"/></loot></monster>

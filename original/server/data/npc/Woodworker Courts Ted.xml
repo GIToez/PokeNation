@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Woodworker Courts Ted" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="630" head="100" body="70" legs="60" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Stop right there, kid!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="George Carter" script="quest_georgeCarter.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="630" head="152" body="73" legs="75" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello! I'm George Carter, an archeologist. I'm in Pewter to do {research} and excavations!"/>
+	</parameters>
+</npc>

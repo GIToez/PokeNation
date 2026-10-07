@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Omanyte" nameDescription="a Shiny Omanyte" nickname="Omanyte" race="blood" experience="7" speed="235" manacost="0" minLevel="20" maxLevel="30">
+	<health now="35" max="35" rate="1.1"/>
+	<look type="837" head="0" body="0" legs="0" feet="0" corpse="14243"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2857" skill="24" attack="40"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+	</attacks>
+	<defenses armor="10" defense="100"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="OMANYTE!"/>
+	</voices>
+	
+<loot><item id="12267" countmax="1" chance="100"/><item id="12230" countmax="1" chance="2"/><item id="12234" countmax="1" chance="2"/><item id="17348" countmax="1" chance="1"/><item id="18918" countmax="1" chance="1"/></loot></monster>

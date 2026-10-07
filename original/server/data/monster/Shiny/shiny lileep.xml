@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Lileep" nickname="Lileep" nameDescription="a Shiny Lileep" race="blood" experience="5" speed="223" manacost="0" minLevel="20" maxLevel="30">
+	<health now="66" max="66"/>
+	<look type="1904" corpse="29526"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="4347" skill="24" attack="41"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="77"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="LILEEP!"/>
+	</voices>
+	
+<loot><item id="12119" countmax="1" chance="6060"/><item id="12138" countmax="1" chance="2909"/><item id="14492" countmax="1" chance="1454"/><item id="14505" countmax="1" chance="2597"/><item id="14512" countmax="1" chance="2424"/><item id="12091" countmax="1" chance="4040"/><item id="12102" countmax="1" chance="72727"/><item id="14487" countmax="1" chance="14545"/><item id="14510" countmax="1" chance="7272"/><item id="17802" countmax="1" chance="3636"/><item id="28887" countmax="1" chance="3636"/><item id="12234" countmax="1" chance="1"/><item id="12231" countmax="1" chance="1"/><item id="29069" countmax="1" chance="100"/><item id="18920" countmax="1" chance="1"/></loot></monster>

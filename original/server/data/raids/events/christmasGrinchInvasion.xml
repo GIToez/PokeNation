@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="warning" message="Grinch is coming!"/>
+		<script file="christmasGrinchInvasion.lua"/>
+</raid>

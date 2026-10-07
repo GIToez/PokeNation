@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Forretress" nameDescription="a Shiny Forretress" race="blood" experience="12" speed="240" manacost="0" minLevel="40" maxLevel="50">
+	<health now="75" max="75"/>
+	<look type="1643" head="0" body="0" legs="0" feet="0" corpse="27461"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2500" skill="24" attack="90"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="140"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="FORRETREESSS!"/>
+	</voices>
+	
+<loot><item id="12113" countmax="1" chance="50000"/><item id="13308" countmax="1" chance="26923"/><item id="13302" countmax="1" chance="35000"/><item id="14493" countmax="1" chance="20000"/><item id="14500" countmax="1" chance="35000"/><item id="12241" countmax="1" chance="50"/><item id="17814" countmax="1" chance="50"/><item id="18004" countmax="1" chance="100"/><item id="17346" countmax="1" chance="10"/><item id="18915" countmax="1" chance="10"/><item id="23519" countmax="1" chance="10"/><item id="23528" countmax="1" chance="10"/></loot></monster>

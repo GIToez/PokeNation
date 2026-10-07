@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Camerupt" nickname="Camerupt" nameDescription="a Shiny Camerupt" race="blood" experience="10" speed="240" manacost="0" minLevel="40" maxLevel="50">
+	<health now="70" max="70"/>
+	<look type="1882" corpse="29504"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2500" skill="24" attack="100"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="70"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="CAMERUPT!"/>
+	</voices>
+	
+<loot><item id="12087" countmax="1" chance="19444"/><item id="12101" countmax="6" chance="87500"/><item id="13303" countmax="1" chance="9210"/><item id="13307" countmax="1" chance="8750"/><item id="14471" countmax="1" chance="1750"/><item id="14482" countmax="1" chance="3500"/><item id="14513" countmax="1" chance="35000"/><item id="14514" countmax="1" chance="7000"/><item id="12138" countmax="1" chance="14000"/><item id="14519" countmax="1" chance="5000"/><item id="12229" countmax="1" chance="50"/><item id="13807" countmax="1" chance="50"/><item id="13305" countmax="5" chance="5000"/><item id="29047" countmax="1" chance="100"/><item id="23515" countmax="1" chance="10"/><item id="23529" countmax="1" chance="10"/><item id="17362" countmax="1" chance="10"/><item id="17381" countmax="1" chance="10"/><item id="18914" countmax="1" chance="10"/></loot></monster>

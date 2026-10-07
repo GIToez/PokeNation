@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Christmas Spearow" nameDescription="a Spearow" race="blood" experience="7" speed="270" manacost="0" minLevel="5" maxLevel="15">
+	<health now="40" max="40"/>
+	<look type="1417" head="0" body="0" legs="0" feet="0" corpse="25287"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1428" skill="24" attack="60"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="30"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SPEAROW!"/>
+		<voice sentence="SPEEE!"/>
+	</voices>
+	
+<loot><item id="12142" countmax="1" chance="29629"/><item id="14469" countmax="3" chance="66666"/><item id="14478" countmax="1" chance="13333"/><item id="2674" countmax="3" chance="5000"/><item id="17838" countmax="1" chance="100"/></loot></monster>

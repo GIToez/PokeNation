@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Veronika" script="npcbattle_veronika.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="637" head="35" body="100" legs="27" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="How can you not see the beauty of our evil?"/>
+		<parameter key="idletime" value="20" />
+	</parameters>
+</npc>

@@ -1,0 +1,19 @@
+MOVES["Smoke Screen"] = {
+    description = "Smoke Screen lowers the target's Accuracy by one stage.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 12049,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "SmokeScreen",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 50,
+    requiredLevel = 20,
+    damage = 0,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_POISON_TWO,
+    projectile = PROJECTILE_SLUDGE,
+    maxDistance = 6,
+    areaEffect = EFFECT_POISON_GAS_TWO,
+    cooldownTime = 15,
+    cooldownStorage = 15143
+}

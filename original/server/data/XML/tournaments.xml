@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tournaments>
+	<tournament id="1" name="Titan" capacity="32" interval="2" hour="20" days="1;2;3;4;5" minLevel="80" maxLevel="100" inscriptionPrice="0" gainScore="10" enabled="1" exitPositionX="4721" exitPositionY="107" exitPositionZ="7" securePositionX="4721" securePositionY="100" securePositionZ="7">
+		<arena name="Fire" playerAPositionX="4864" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4870" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Water" playerAPositionX="4904" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Leaf" playerAPositionX="4944" playerAPositionY="101" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="101" playerBPositionZ="6"/>
+		<arena name="Florest" playerAPositionX="4865" playerAPositionY="137" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="137" playerBPositionZ="6"/>
+		<arena name="Electric" playerAPositionX="4904" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Jungle" playerAPositionX="4945" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Dark" playerAPositionX="4864" playerAPositionY="173" playerAPositionZ="7" playerBPositionX="4870" playerBPositionY="173" playerBPositionZ="7"/>
+		<arena name="Desert" playerAPositionX="4903" playerAPositionY="170" playerAPositionZ="6" playerBPositionX="4909" playerBPositionY="170" playerBPositionZ="6"/>
+		<arena name="Ground" playerAPositionX="4945" playerAPositionY="172" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="172" playerBPositionZ="6"/>
+		<arena name="Ice" playerAPositionX="4863" playerAPositionY="206" playerAPositionZ="6" playerBPositionX="4869" playerBPositionY="206" playerBPositionZ="6"/>
+		<arena name="Rock" playerAPositionX="4902" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4908" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Crystal" playerAPositionX="4944" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Ghost" playerAPositionX="4865" playerAPositionY="242" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="242" playerBPositionZ="6"/>
+		<arena name="Bug" playerAPositionX="4904" playerAPositionY="240" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="240" playerBPositionZ="6"/>
+		<reward itemid="2160" count="1" reason="2" unique="0"/>
+		<reward itemid="14648" count="20" reason="2" unique="1"/>
+		<reward itemid="14648" count="2" reason="1" unique="1"/>
+		<reward itemid="14648" count="6" reason="0" unique="1"/>
+	</tournament>
+	
+	<!--<tournament id="2" name="Elite" capacity="32" interval="2" hour="20" days="1;2;3;4;5" minLevel="66" maxLevel="80" inscriptionPrice="0" gainScore="7" enabled="1" exitPositionX="4721" exitPositionY="107" exitPositionZ="7" securePositionX="4721" securePositionY="100" securePositionZ="7">
+		<arena name="Fire" playerAPositionX="4864" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4870" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Water" playerAPositionX="4904" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Leaf" playerAPositionX="4944" playerAPositionY="101" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="101" playerBPositionZ="6"/>
+		<arena name="Florest" playerAPositionX="2515" playerAPositionY="137" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="137" playerBPositionZ="6"/>
+		<arena name="Electric" playerAPositionX="4904" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Jungle" playerAPositionX="4945" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Dark" playerAPositionX="4864" playerAPositionY="173" playerAPositionZ="7" playerBPositionX="4870" playerBPositionY="173" playerBPositionZ="7"/>
+		<arena name="Desert" playerAPositionX="4903" playerAPositionY="170" playerAPositionZ="6" playerBPositionX="4909" playerBPositionY="170" playerBPositionZ="6"/>
+		<arena name="Ground" playerAPositionX="4945" playerAPositionY="172" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="172" playerBPositionZ="6"/>
+		<arena name="Ice" playerAPositionX="4863" playerAPositionY="206" playerAPositionZ="6" playerBPositionX="4869" playerBPositionY="206" playerBPositionZ="6"/>
+		<arena name="Rock" playerAPositionX="4902" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4908" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Crystal" playerAPositionX="4944" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Ghost" playerAPositionX="4865" playerAPositionY="242" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="242" playerBPositionZ="6"/>
+		<arena name="Bug" playerAPositionX="4904" playerAPositionY="240" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="240" playerBPositionZ="6"/>
+		<reward itemid="2152" count="80" reason="2" unique="0"/>
+		<reward itemid="14648" count="15" reason="2" unique="1"/>
+		<reward itemid="14648" count="1" reason="1" unique="1"/>
+		<reward itemid="14648" count="5" reason="0" unique="1"/>
+	</tournament>
+	
+	<tournament id="3" name="Master" capacity="32" interval="2" hour="19" days="1;2;3;4;5" minLevel="51" maxLevel="65" inscriptionPrice="0" gainScore="5" enabled="1" exitPositionX="4721" exitPositionY="107" exitPositionZ="7" securePositionX="4721" securePositionY="100" securePositionZ="7">
+		<arena name="Fire" playerAPositionX="4864" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4870" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Water" playerAPositionX="4904" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Leaf" playerAPositionX="4944" playerAPositionY="101" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="101" playerBPositionZ="6"/>
+		<arena name="Florest" playerAPositionX="4865" playerAPositionY="137" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="137" playerBPositionZ="6"/>
+		<arena name="Electric" playerAPositionX="4904" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Jungle" playerAPositionX="4945" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Dark" playerAPositionX="4864" playerAPositionY="173" playerAPositionZ="7" playerBPositionX="4870" playerBPositionY="173" playerBPositionZ="7"/>
+		<arena name="Desert" playerAPositionX="4903" playerAPositionY="170" playerAPositionZ="6" playerBPositionX="4909" playerBPositionY="170" playerBPositionZ="6"/>
+		<arena name="Ground" playerAPositionX="4945" playerAPositionY="172" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="172" playerBPositionZ="6"/>
+		<arena name="Ice" playerAPositionX="4863" playerAPositionY="206" playerAPositionZ="6" playerBPositionX="4869" playerBPositionY="206" playerBPositionZ="6"/>
+		<arena name="Rock" playerAPositionX="4902" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4908" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Crystal" playerAPositionX="4944" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Ghost" playerAPositionX="4865" playerAPositionY="242" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="242" playerBPositionZ="6"/>
+		<arena name="Bug" playerAPositionX="4904" playerAPositionY="240" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="240" playerBPositionZ="6"/>
+		<reward itemid="2152" count="60" reason="2" unique="0"/>
+		<reward itemid="14648" count="10" reason="2" unique="1"/>
+		<reward itemid="14648" count="1" reason="1" unique="1"/>
+		<reward itemid="14648" count="4" reason="0" unique="1"/>
+	</tournament>-->
+	
+	<tournament id="4" name="Pro" capacity="32" interval="2" hour="19" days="1;2;3;4;5" minLevel="41" maxLevel="50" inscriptionPrice="0" gainScore="3" enabled="1" exitPositionX="4721" exitPositionY="107" exitPositionZ="7" securePositionX="4721" securePositionY="100" securePositionZ="7">
+		<arena name="Fire" playerAPositionX="4864" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4870" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Water" playerAPositionX="4904" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Leaf" playerAPositionX="4944" playerAPositionY="101" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="101" playerBPositionZ="6"/>
+		<arena name="Florest" playerAPositionX="4865" playerAPositionY="137" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="137" playerBPositionZ="6"/>
+		<arena name="Electric" playerAPositionX="4904" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Jungle" playerAPositionX="4945" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Dark" playerAPositionX="4864" playerAPositionY="173" playerAPositionZ="7" playerBPositionX="4870" playerBPositionY="173" playerBPositionZ="7"/>
+		<arena name="Desert" playerAPositionX="4903" playerAPositionY="170" playerAPositionZ="6" playerBPositionX="4909" playerBPositionY="170" playerBPositionZ="6"/>
+		<arena name="Ground" playerAPositionX="4945" playerAPositionY="172" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="172" playerBPositionZ="6"/>
+		<arena name="Ice" playerAPositionX="4863" playerAPositionY="206" playerAPositionZ="6" playerBPositionX="4869" playerBPositionY="206" playerBPositionZ="6"/>
+		<arena name="Rock" playerAPositionX="4902" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4908" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Crystal" playerAPositionX="4944" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Ghost" playerAPositionX="4865" playerAPositionY="242" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="242" playerBPositionZ="6"/>
+		<arena name="Bug" playerAPositionX="4904" playerAPositionY="240" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="240" playerBPositionZ="6"/>
+		<reward itemid="2152" count="40" reason="2" unique="0"/>
+		<reward itemid="14648" count="7" reason="2" unique="1"/>
+		<reward itemid="14648" count="1" reason="1" unique="1"/>
+		<reward itemid="14648" count="3" reason="0" unique="1"/>
+	</tournament>
+	
+	<tournament id="5" name="Starter" capacity="32" interval="2" hour="18" days="1;2;3;4;5" minLevel="20" maxLevel="40" inscriptionPrice="0" gainScore="1" enabled="1" exitPositionX="4721" exitPositionY="107" exitPositionZ="7" securePositionX="4721" securePositionY="100" securePositionZ="7">
+		<arena name="Fire" playerAPositionX="4864" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4870" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Water" playerAPositionX="4904" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Leaf" playerAPositionX="4944" playerAPositionY="101" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="101" playerBPositionZ="6"/>
+		<arena name="Florest" playerAPositionX="4865" playerAPositionY="137" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="137" playerBPositionZ="6"/>
+		<arena name="Electric" playerAPositionX="4904" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Jungle" playerAPositionX="4945" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Dark" playerAPositionX="4864" playerAPositionY="173" playerAPositionZ="7" playerBPositionX="4870" playerBPositionY="173" playerBPositionZ="7"/>
+		<arena name="Desert" playerAPositionX="4903" playerAPositionY="170" playerAPositionZ="6" playerBPositionX="4909" playerBPositionY="170" playerBPositionZ="6"/>
+		<arena name="Ground" playerAPositionX="4945" playerAPositionY="172" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="172" playerBPositionZ="6"/>
+		<arena name="Ice" playerAPositionX="4863" playerAPositionY="206" playerAPositionZ="6" playerBPositionX="4869" playerBPositionY="206" playerBPositionZ="6"/>
+		<arena name="Rock" playerAPositionX="4902" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4908" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Crystal" playerAPositionX="4944" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Ghost" playerAPositionX="4865" playerAPositionY="242" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="242" playerBPositionZ="6"/>
+		<arena name="Bug" playerAPositionX="4904" playerAPositionY="240" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="240" playerBPositionZ="6"/>
+		<reward itemid="2152" count="20" reason="2" unique="0"/>
+		<reward itemid="14648" count="5" reason="2" unique="1"/>
+		<reward itemid="14648" count="1" reason="1" unique="1"/>
+		<reward itemid="14648" count="2" reason="0" unique="1"/>
+	</tournament>
+	
+	<tournament id="6" name="Epic 1" minTrainerLevel="50" type="1" capacity="64" interval="2" hour="17" days="0;6" minLevel="45" maxLevel="100" inscriptionPrice="0" gainScore="1" enabled="1" exitPositionX="4721" exitPositionY="107" exitPositionZ="7" securePositionX="4721" securePositionY="100" securePositionZ="7">
+		<arena name="Fire" playerAPositionX="4864" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4870" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Water" playerAPositionX="4904" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Leaf" playerAPositionX="4944" playerAPositionY="101" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="101" playerBPositionZ="6"/>
+		<arena name="Florest" playerAPositionX="4865" playerAPositionY="137" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="137" playerBPositionZ="6"/>
+		<arena name="Electric" playerAPositionX="4904" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Jungle" playerAPositionX="4945" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Dark" playerAPositionX="4864" playerAPositionY="173" playerAPositionZ="7" playerBPositionX="4870" playerBPositionY="173" playerBPositionZ="7"/>
+		<arena name="Desert" playerAPositionX="4903" playerAPositionY="170" playerAPositionZ="6" playerBPositionX="4909" playerBPositionY="170" playerBPositionZ="6"/>
+		<arena name="Ground" playerAPositionX="4945" playerAPositionY="172" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="172" playerBPositionZ="6"/>
+		<arena name="Ice" playerAPositionX="4863" playerAPositionY="206" playerAPositionZ="6" playerBPositionX="4869" playerBPositionY="206" playerBPositionZ="6"/>
+		<arena name="Rock" playerAPositionX="4902" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4908" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Crystal" playerAPositionX="4944" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Ghost" playerAPositionX="4865" playerAPositionY="242" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="242" playerBPositionZ="6"/>
+		<arena name="Bug" playerAPositionX="4904" playerAPositionY="240" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="240" playerBPositionZ="6"/>
+		<reward itemid="2152" count="20" reason="2" unique="0"/>
+		<reward itemid="24607" count="5" reason="2" unique="1"/>
+		<reward itemid="24607" count="1" reason="1" unique="1"/>
+		<reward itemid="24607" count="2" reason="0" unique="1"/>
+	</tournament>
+	
+	<tournament id="7" name="Epic 2" minTrainerLevel="50" type="1" capacity="64" interval="2" hour="19" days="0;6" minLevel="45" maxLevel="100" inscriptionPrice="0" gainScore="1" enabled="1" exitPositionX="4721" exitPositionY="107" exitPositionZ="7" securePositionX="4721" securePositionY="100" securePositionZ="7">
+		<arena name="Fire" playerAPositionX="4864" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4870" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Water" playerAPositionX="4904" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Leaf" playerAPositionX="4944" playerAPositionY="101" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="101" playerBPositionZ="6"/>
+		<arena name="Florest" playerAPositionX="4865" playerAPositionY="137" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="137" playerBPositionZ="6"/>
+		<arena name="Electric" playerAPositionX="4904" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Jungle" playerAPositionX="4945" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Dark" playerAPositionX="4864" playerAPositionY="173" playerAPositionZ="7" playerBPositionX="4870" playerBPositionY="173" playerBPositionZ="7"/>
+		<arena name="Desert" playerAPositionX="4903" playerAPositionY="170" playerAPositionZ="6" playerBPositionX="4909" playerBPositionY="170" playerBPositionZ="6"/>
+		<arena name="Ground" playerAPositionX="4945" playerAPositionY="172" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="172" playerBPositionZ="6"/>
+		<arena name="Ice" playerAPositionX="4863" playerAPositionY="206" playerAPositionZ="6" playerBPositionX="4869" playerBPositionY="206" playerBPositionZ="6"/>
+		<arena name="Rock" playerAPositionX="4902" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4908" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Crystal" playerAPositionX="4944" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Ghost" playerAPositionX="4865" playerAPositionY="242" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="242" playerBPositionZ="6"/>
+		<arena name="Bug" playerAPositionX="4904" playerAPositionY="240" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="240" playerBPositionZ="6"/>
+		<reward itemid="2152" count="20" reason="2" unique="0"/>
+		<reward itemid="24607" count="5" reason="2" unique="1"/>
+		<reward itemid="24607" count="1" reason="1" unique="1"/>
+		<reward itemid="24607" count="2" reason="0" unique="1"/>
+	</tournament>
+	
+	<tournament id="8" name="Epic 3" minTrainerLevel="50" type="1" capacity="64" interval="2" hour="21" days="0;6" minLevel="45" maxLevel="100" inscriptionPrice="0" gainScore="1" enabled="1" exitPositionX="4721" exitPositionY="107" exitPositionZ="7" securePositionX="4721" securePositionY="100" securePositionZ="7">
+		<arena name="Fire" playerAPositionX="4864" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4870" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Water" playerAPositionX="4904" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Leaf" playerAPositionX="4944" playerAPositionY="101" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="101" playerBPositionZ="6"/>
+		<arena name="Florest" playerAPositionX="4865" playerAPositionY="137" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="137" playerBPositionZ="6"/>
+		<arena name="Electric" playerAPositionX="4904" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Jungle" playerAPositionX="4945" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Dark" playerAPositionX="4864" playerAPositionY="173" playerAPositionZ="7" playerBPositionX="4870" playerBPositionY="173" playerBPositionZ="7"/>
+		<arena name="Desert" playerAPositionX="4903" playerAPositionY="170" playerAPositionZ="6" playerBPositionX="4909" playerBPositionY="170" playerBPositionZ="6"/>
+		<arena name="Ground" playerAPositionX="4945" playerAPositionY="172" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="172" playerBPositionZ="6"/>
+		<arena name="Ice" playerAPositionX="4863" playerAPositionY="206" playerAPositionZ="6" playerBPositionX="4869" playerBPositionY="206" playerBPositionZ="6"/>
+		<arena name="Rock" playerAPositionX="4902" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4908" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Crystal" playerAPositionX="4944" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Ghost" playerAPositionX="4865" playerAPositionY="242" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="242" playerBPositionZ="6"/>
+		<arena name="Bug" playerAPositionX="4904" playerAPositionY="240" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="240" playerBPositionZ="6"/>
+		<reward itemid="2152" count="20" reason="2" unique="0"/>
+		<reward itemid="24607" count="5" reason="2" unique="1"/>
+		<reward itemid="24607" count="1" reason="1" unique="1"/>
+		<reward itemid="24607" count="2" reason="0" unique="1"/>
+	</tournament>
+	
+	<tournament id="9" name="Mastery" minTrainerLevel="85" type="2" capacity="64" interval="2" hour="18" days="0;6" minLevel="50" maxLevel="100" inscriptionPrice="0" gainScore="1" enabled="1" exitPositionX="4721" exitPositionY="107" exitPositionZ="7" securePositionX="4721" securePositionY="100" securePositionZ="7">
+		<arena name="Fire" playerAPositionX="4864" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4870" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Water" playerAPositionX="4904" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Leaf" playerAPositionX="4944" playerAPositionY="101" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="101" playerBPositionZ="6"/>
+		<arena name="Florest" playerAPositionX="4865" playerAPositionY="137" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="137" playerBPositionZ="6"/>
+		<arena name="Electric" playerAPositionX="4904" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Jungle" playerAPositionX="4945" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Dark" playerAPositionX="4864" playerAPositionY="173" playerAPositionZ="7" playerBPositionX="4870" playerBPositionY="173" playerBPositionZ="7"/>
+		<arena name="Desert" playerAPositionX="4903" playerAPositionY="170" playerAPositionZ="6" playerBPositionX="4909" playerBPositionY="170" playerBPositionZ="6"/>
+		<arena name="Ground" playerAPositionX="4945" playerAPositionY="172" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="172" playerBPositionZ="6"/>
+		<arena name="Ice" playerAPositionX="4863" playerAPositionY="206" playerAPositionZ="6" playerBPositionX="4869" playerBPositionY="206" playerBPositionZ="6"/>
+		<arena name="Rock" playerAPositionX="4902" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4908" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Crystal" playerAPositionX="4944" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Ghost" playerAPositionX="4865" playerAPositionY="242" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="242" playerBPositionZ="6"/>
+		<arena name="Bug" playerAPositionX="4904" playerAPositionY="240" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="240" playerBPositionZ="6"/>
+		<reward itemid="29863" count="5" reason="2" unique="1"/>
+		<reward itemid="29863" count="1" reason="1" unique="1"/>
+		<reward itemid="29863" count="2" reason="0" unique="1"/>
+	</tournament>
+	
+	<tournament id="10" name="Epic" minTrainerLevel="50" type="1" capacity="64" interval="2" hour="21" days="1;2;3;4;5" minLevel="45" maxLevel="100" inscriptionPrice="0" gainScore="1" enabled="1" exitPositionX="4721" exitPositionY="107" exitPositionZ="7" securePositionX="4721" securePositionY="100" securePositionZ="7">
+		<arena name="Fire" playerAPositionX="4864" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4870" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Water" playerAPositionX="4904" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Leaf" playerAPositionX="4944" playerAPositionY="101" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="101" playerBPositionZ="6"/>
+		<arena name="Florest" playerAPositionX="4865" playerAPositionY="137" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="137" playerBPositionZ="6"/>
+		<arena name="Electric" playerAPositionX="4904" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Jungle" playerAPositionX="4945" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Dark" playerAPositionX="4864" playerAPositionY="173" playerAPositionZ="7" playerBPositionX="4870" playerBPositionY="173" playerBPositionZ="7"/>
+		<arena name="Desert" playerAPositionX="4903" playerAPositionY="170" playerAPositionZ="6" playerBPositionX="4909" playerBPositionY="170" playerBPositionZ="6"/>
+		<arena name="Ground" playerAPositionX="4945" playerAPositionY="172" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="172" playerBPositionZ="6"/>
+		<arena name="Ice" playerAPositionX="4863" playerAPositionY="206" playerAPositionZ="6" playerBPositionX="4869" playerBPositionY="206" playerBPositionZ="6"/>
+		<arena name="Rock" playerAPositionX="4902" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4908" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Crystal" playerAPositionX="4944" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Ghost" playerAPositionX="4865" playerAPositionY="242" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="242" playerBPositionZ="6"/>
+		<arena name="Bug" playerAPositionX="4904" playerAPositionY="240" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="240" playerBPositionZ="6"/>
+		<reward itemid="2152" count="20" reason="2" unique="0"/>
+		<reward itemid="24607" count="5" reason="2" unique="1"/>
+		<reward itemid="24607" count="1" reason="1" unique="1"/>
+		<reward itemid="24607" count="2" reason="0" unique="1"/>
+	</tournament>
+	<!--
+	<tournament id="1" name="Test" capacity="2" interval="2" hour="19" days="0;1;2;3;4;5" minLevel="0" maxLevel="100" inscriptionPrice="1000" gainScore="5" enabled="1" exitPositionX="4721" exitPositionY="107" exitPositionZ="7" securePositionX="4721" securePositionY="100" securePositionZ="7">
+		<arena name="Fire" playerAPositionX="4864" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4870" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Water" playerAPositionX="4904" playerAPositionY="102" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="102" playerBPositionZ="6"/>
+		<arena name="Leaf" playerAPositionX="4944" playerAPositionY="101" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="101" playerBPositionZ="6"/>
+		<arena name="Florest" playerAPositionX="4865" playerAPositionY="137" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="137" playerBPositionZ="6"/>
+		<arena name="Electric" playerAPositionX="4904" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Jungle" playerAPositionX="4945" playerAPositionY="136" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="136" playerBPositionZ="6"/>
+		<arena name="Dark" playerAPositionX="4864" playerAPositionY="173" playerAPositionZ="7" playerBPositionX="4870" playerBPositionY="173" playerBPositionZ="7"/>
+		<arena name="Desert" playerAPositionX="4903" playerAPositionY="170" playerAPositionZ="6" playerBPositionX="4909" playerBPositionY="170" playerBPositionZ="6"/>
+		<arena name="Ground" playerAPositionX="4945" playerAPositionY="172" playerAPositionZ="6" playerBPositionX="4951" playerBPositionY="172" playerBPositionZ="6"/>
+		<arena name="Ice" playerAPositionX="4863" playerAPositionY="206" playerAPositionZ="6" playerBPositionX="4869" playerBPositionY="206" playerBPositionZ="6"/>
+		<arena name="Rock" playerAPositionX="4902" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4908" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Crystal" playerAPositionX="4944" playerAPositionY="205" playerAPositionZ="6" playerBPositionX="4950" playerBPositionY="205" playerBPositionZ="6"/>
+		<arena name="Ghost" playerAPositionX="4865" playerAPositionY="242" playerAPositionZ="6" playerBPositionX="4871" playerBPositionY="242" playerBPositionZ="6"/>
+		<arena name="Bug" playerAPositionX="4904" playerAPositionY="240" playerAPositionZ="6" playerBPositionX="4910" playerBPositionY="240" playerBPositionZ="6"/>
+		<reward itemid="2152" count="10" reason="2" unique="0"/>
+		<reward itemid="14648" count="10" reason="2" unique="1"/>
+		<reward itemid="14648" count="1" reason="1" unique="1"/>
+		<reward itemid="14648" count="3" reason="0" unique="1"/>
+	</tournament>
+	-->
+</tournaments>
+<!--
+name: Tournament name
+capacity: Players capacity, must be pair and higher then 0
+interval: Weeks to the next tournament
+hour: Hour
+day: Weekday (0 = Sunday ... 6 = Saturday
+minlevel: Minimum pokemon level
+maxlevel: Maximum pokemon level
+inscriptionPrice: The price to enter
+gainScore: Players that win battles will receive this amount of tournament score
+enabled: If it's working or not
+
+securePosition: Where the players will wait until the tournament start.
+exitPosition: Where the players will be telepoted after win/lose a battle on the tournament.
+
+[Reward]
+itemid: Item ID
+count: Count
+reason: When will receive - 0(Win battle), 1(Loss Battle), 2(Win Tournament)
+unique: If the item is unique or no
+
+
+
+
+
+20	36.1715
+21	36.0102
+19	35.2340
+18	33.3573
+22	33.3136
+17	32.0637
+15	31.4214
+14	31.3963
+16	31.0017
+13	29.6961
+23	28.3655
+12	26.1501
+11	23.1390
+0	21.9888
+10	18.6290
+1	16.3192
+9	12.8868
+2	11.5372
+8	7.7721
+3	7.6479
+4	4.9628
+7	4.2073
+5	3.2569
+6	2.4070
+-->

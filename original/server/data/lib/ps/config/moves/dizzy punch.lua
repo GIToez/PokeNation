@@ -1,0 +1,21 @@
+MOVES["Dizzy Punch"] = {
+    description = "Dizzy Punch deals damage and has a 20% chance of confusing the target.",
+    makeJump = true,
+    makeContact = true,
+    makePunch = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11706,
+    iconId = 13332,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "DizzyPunch",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 75,
+    requiredLevel = 25,
+    damage = 70,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_YELLOW_BLOW_TWO,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 11,
+    cooldownStorage = 15014
+}

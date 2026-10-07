@@ -1,0 +1,9 @@
+Module
+  name: game_slotmachine
+  description: Slot Machine
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ slotmachine ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

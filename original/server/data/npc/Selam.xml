@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Selam" script="event_halloween_selam.lua" walkinterval="3000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1742"/>
+	<parameters>
+		<parameter key="message_greet" value="Yes, I can speak!! I can help you build magic {balls} to catch Halloween Pokemons!"/>
+	</parameters>
+</npc>

@@ -1,0 +1,17 @@
+MOVES["Block"] = {
+    description = "The user blocks the target's way with arms spread wide to prevent escape.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 27660,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    type = SKILLS_TYPES.STATS,
+    requiredEnergy = 100,
+    damage = 0,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_BIG_SHIELD,
+    projectile = nil,
+    maxDistance = 0,
+    cooldownTime = 60,
+    cooldownStorage = 15445,
+    makeContact = false,
+}

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Gloom" nameDescription="a gloom" nickname="The Poisonous Plant" race="blood" experience="30" speed="300" manacost="0" minLevel="75" maxLevel="75">
+	<health now="610" max="610"/>
+	<look type="709" head="0" body="0" legs="0" feet="0" corpse="13864"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2500" skill="24" attack="65"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="70"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="GLOOM!"/>
+	</voices>
+	<loot>
+		<item id="12091" countmax="1" chance="13000"/> <!-- leaves -->
+	</loot>
+</monster>

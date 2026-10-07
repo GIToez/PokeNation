@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Testserver Held" script="testserver_held.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="1201" head="35" body="22" legs="67" feet="35" corpse="0"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|. I can give you Pokemon Held Itens! I have the held {list} here."/>
+	</parameters>
+</npc>

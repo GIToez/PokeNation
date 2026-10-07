@@ -1,0 +1,74 @@
+TM 31 Mimic / Offensive / Level 60 / unique	
+TM 2 Razor Wind / Offensive / Level 40	
+TM 8 Body Slam / Offensive / Level 40	
+TM 32 Double Team / Support / Level 60 / unique	
+TM 33 Reflect / Support / Level 60 / unique	
+TM 34 Bide / Offensive / Level 60 / unique	
+TM 35 Metronome / Offensive / Level 40	
+TM 9 Take Down / Offensive / Level 40	
+TM 36 Selfdestruct / Offensive / Level 40 / unique	
+TM 37 Egg Bomb / Offensive / Level 40	
+TM 38 Fire Blast / Offensive / Level 60	
+TM 39 Swift / Offensive / Level 20	
+TM 10 Double-Edge / Offensive / Level 40	
+TM 40 Skull Bash / Offensive / Level 40	
+TM 41 Softboiled / Heal / Level 40 / unique	
+TM 42 Dream Eater / Offensive / Level 40	
+TM 43 Sky Attack / Offensive / Level 40	
+TM 11 Bubblebeam / Offensive / Level 20	
+TM 44 Rest / Heal / Level 60 / unique	
+TM 45 Thunder Wave / Support / Level 20	
+TM 46 Psywave / Offensive / Level 60	
+TM 3 Swords Dance / Support / Level 20	
+TM 12 Water Gun / Offensive / Level 20	
+TM 48 Rock Slide / Offensive / Level 40	
+TM 49 Tri Attack / Offensive / Level 40	
+TM 50 Substitute / Support / Level 60 / unique	
+TM 51 Dynamic Punch / Offensive / Level 60	
+TM 13 Ice Beam / Offensive / Level 40	
+TM 52 Headbutt / Offensive / Level 20	
+TM 53 Curse / Support / Level 20	
+TM 54 Zap Cannon / Offensive / Level 60	
+TM 55 Snore / Offensive / Level 20	
+TM 14 Blizzard / Offensive / Level 60	
+TM 56 Icy Wind / Offensive / Level 40	
+TM 57 Protect / Support / Level 20	
+TM 58 Rain Dance / Support / Level 20	
+TM 59 Giga Drain / Offensive / Level 40	
+TM 15 Hyper Beam / Offensive / Level 60	
+TM 60 Iron Tail / Offensive / Level 40	
+TM 61 Shadow Ball / Offensive / Level 40	
+TM 62 Mud-Slap / Offensive / Level 20	
+TM 1 Mega Punch / Offensive / Level 40	
+TM 63 Ice Punch / Offensive / Level 40	
+TM 64 Sludge Bomb / Offensive / Level 40	
+TM 65 Defense Curl / Support / Level 20	
+TM 66 Thunder Punch / Offensive / Level 40	
+TM 17 Submission / Offensive / Level 40	
+TM 68 Fire Punch / Offensive / Level 40	
+TM 69 Fury Cutter / Offensive / Level 20	
+TM 70 Nightmare / Offensive / Level 60 / unique	
+TM 18 Counter / Support / Level 60 / unique	
+TM 72 Rock Tomb / Offensive / Level 40	
+TM 73 Aerial Ace / Offensive / Level 40	
+TM 74 Flamethrower / Offensive / Level 40	
+TM 19 Seismic Toss / Offensive / Level 40	
+TM 76 Drain Punch / Offensive / Level 40	
+TM 77 Poison Jab / Offensive / Level 40	
+TM 5 Mega Kick / Offensive / Level 60	
+TM 20 Rage / Offensive / Level 20	
+TM 21 Mega Drain / Offensive / Level 20	
+TM 22 Solar Beam / Offensive / Level 60	
+TM 23 Dragon Rage / Offensive / Level 20	
+TM 6 Toxic / Offensive / Level 20	
+TM 24 Thunderbolt / Offensive / Level 20	
+TM 25 Thunder / Offensive / Level 60	
+TM 26 Earthquake / Offensive / Level 60	
+TM 27 Fissure / Offensive / Level 60	
+TM 7 Horn Drill / Offensive / Level 40	
+TM 29 Psychic / Offensive / Level 40	
+TM 78 Avalanche / Offensive / Level 40	
+TM 75 Energy Ball / Offensive / Level 40	
+TM 71 Water Pulse / Offensive / Level 40	
+TM 67 Steel Wing / Offensive / Level 40	
+TM 47 Explosion / Offensive / Level 60

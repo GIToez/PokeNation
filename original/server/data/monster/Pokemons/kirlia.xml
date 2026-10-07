@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Kirlia" nameDescription="a Kirlia" race="blood" experience="10" speed="250" manacost="0" minLevel="40" maxLevel="50">
+	<health now="38" max="38"/>
+	<look type="1750" corpse="28764"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="24" attack="35"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="35"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="KIRLIA!"/>
+	</voices>
+	
+<loot><item id="12135" countmax="1" chance="43750"/><item id="12136" countmax="1" chance="17500"/><item id="12148" countmax="1" chance="21875"/><item id="14477" countmax="1" chance="17500"/><item id="12233" countmax="1" chance="25"/><item id="23946" countmax="1" chance="25"/><item id="14464" countmax="5" chance="5000"/><item id="29005" countmax="1" chance="100"/><item id="17372" countmax="1" chance="5"/><item id="17363" countmax="1" chance="5"/><item id="17375" countmax="1" chance="5"/></loot></monster>

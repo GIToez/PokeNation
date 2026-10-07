@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Golduck" nameDescription="a Shiny Golduck" nickname="Golduck" race="blood" experience="15" speed="285" manacost="0" minLevel="55" maxLevel="65">
+	<health now="80" max="80" rate="1.1"/>
+	<look type="733" head="0" body="0" legs="0" feet="0" corpse="14060"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1176" skill="24" attack="82"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="78"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="GOLDUCKK!"/>
+	</voices>
+	
+<loot><item id="14529" countmax="4" chance="72916"/><item id="14539" countmax="1" chance="13671"/><item id="14556" countmax="1" chance="7291"/><item id="14515" countmax="1" chance="35000"/><item id="2674" countmax="5" chance="5000"/><item id="12230" countmax="1" chance="100"/><item id="17868" countmax="1" chance="100"/><item id="17348" countmax="1" chance="10"/><item id="17363" countmax="1" chance="10"/><item id="23521" countmax="1" chance="20"/></loot></monster>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Carlene Nulph" script="npcbattle_carlenenulph.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="631" head="25" body="50" legs="50" feet="25" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Pleased to meet you. My hobby is Pokemon training."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

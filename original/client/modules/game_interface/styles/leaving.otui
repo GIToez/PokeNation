@@ -1,0 +1,70 @@
+LeavingWindow < MainWindow
+  id: leavingWindow
+  !text: tr('Exit')
+  size: 580 400
+
+  UIWidget
+    id: sadImage
+    size: 64 64
+    image-source: /images/ui/leaving
+    anchors.top: parent.top
+    anchors.left: parent.left
+
+  Label
+    font: sans-bold-16px
+    text-auto-resize: true
+    margin-top: 15
+    text-align: center
+    anchors.top: parent.top
+    anchors.left: sadImage.right
+    anchors.right: parent.right
+    !text: tr('Why you are leaving so early?\nPlease leave a message to our development team, thank you.')
+    text-wrap: true
+
+  MultilineTextEdit
+    id: text
+    anchors.top: textScroll.top
+    anchors.left: parent.left
+    anchors.right: textScroll.left
+    anchors.bottom: textScroll.bottom
+    vertical-scrollbar: textScroll
+    text-wrap: true
+
+  VerticalScrollBar
+    id: textScroll
+    anchors.top: sadImage.bottom
+    anchors.right: parent.right
+    margin-top: 10
+    margin-bottom: 10
+    step: 16
+    pixels-scroll: true
+    height: 200
+
+  Button
+    id: sendAndExitButton
+    !text: tr('Send and Exit')
+    anchors.top: text.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 10
+    margin-bottom: 10
+    height: 44
+    @onClick: modules.game_interface.onSendAndExit()
+
+  Button
+    id: exitNowButton
+    !text: tr('Exit Now')
+    anchors.top: sendAndExitButton.bottom
+    anchors.left: parent.left
+    width: 230
+    margin-top: 10
+    @onClick: modules.game_interface.onExitNow()
+
+  Button
+    id: cancelButton
+    !text: tr('Cancel')
+    anchors.top: sendAndExitButton.bottom
+    anchors.right: parent.right
+    width: 230
+    margin-top: 10
+    @onClick: modules.game_interface.onCancelExit()

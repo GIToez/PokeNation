@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Azumarill" nameDescription="an Azumarill" shiny="Shiny Azumarill" race="blood" experience="12" speed="250" manacost="0" minLevel="40" maxLevel="50">
+	<health now="100" max="100"/>
+	<look type="985" head="0" body="0" legs="0" feet="0" corpse="17573"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="24" attack="50"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="80"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="AZUMARIIILL!"/>
+		<voice sentence="MARILL!"/>
+	</voices>
+	
+<loot><item id="12100" countmax="10" chance="100000"/><item id="12112" countmax="1" chance="43750"/><item id="14515" countmax="1" chance="28000"/><item id="14489" countmax="1" chance="14000"/><item id="14474" countmax="1" chance="8750"/><item id="12230" countmax="1" chance="25"/><item id="23946" countmax="1" chance="25"/><item id="17984" countmax="1" chance="100"/><item id="17347" countmax="1" chance="10"/><item id="17348" countmax="1" chance="10"/><item id="18919" countmax="1" chance="10"/><item id="18926" countmax="1" chance="10"/><item id="23521" countmax="1" chance="10"/><item id="23523" countmax="1" chance="10"/></loot></monster>

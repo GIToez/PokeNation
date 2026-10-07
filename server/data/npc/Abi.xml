@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Abi" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="635" head="55" body="35" legs="25" feet="55" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Hey |PLAYERNAME|, it is hot? This desert is getting worse."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lester Darien" script="npcbattle_lesterDarien.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="638" head="90" body="60" legs="30" feet="90" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="You broke into our operation?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

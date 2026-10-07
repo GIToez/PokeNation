@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channels>
+	<!-- README:
+		0 - dynamic, reserved for guilds
+		1 - always acts as Party channel, only "name" tag available
+		3 - always acts as Rule Violations channel
+		9 - acts as Help channel- clientsided message
+		13 - acts as Tournament channel
+		65535 - DO NOT CHANGE THE ID- only "name", "enabled", "active" and "logged" tags available
+	 -->
+	<channel id="1" name="Party"/>
+	<channel id="2" name="Staff" logged="yes" access="3"/>
+	<channel id="3" name="Rule Violations" logged="yes"/>
+	<channel id="4" name="Counselor" logged="yes" access="1"/>
+	<channel id="5" name="Troca" logged="yes" level="10" muted="120" conditionId="2" conditionMessage="You may only place one offer in two minutes." />
+		<!--<vocation id="1-8"/>
+	</channel>
+	<channel id="7" name="Trade-Rookgaard" level="2" muted="120" conditionId="3" conditionMessage="You may only place one offer in two minutes.">
+		<vocation id="0"/>
+	</channel>-->
+	<!-- <channel id="6" name="RL-Chat" logged="yes" level="10" muted="2" conditionId="4" conditionMessage="You're muted on this channel."/> -->
+	<channel id="9" name="Help" logged="yes" muted="10" conditionId="3" conditionMessage="You may only place one question in 10 seconds." talkEvent="1"/>
+	<channel id="8" name="Game-Chat[PT-BR]" logged="yes" level="10" muted="2" conditionId="4" conditionMessage="You're muted on this channel."/>
+	<channel id="7" name="Game-Chat[EN-US]" logged="yes" level="10" muted="2" conditionId="4" conditionMessage="You're muted on this channel."/>
+	<channel id="10" name="Game-Chat[ESP]" logged="yes" level="10" muted="2" conditionId="4" conditionMessage="You're muted on this channel."/>
+	<!-- <channel id="11" name="Game-Chat[PL]" logged="yes" level="10" muted="2" conditionId="4" conditionMessage="You're muted on this channel."/> -->
+	<!-- <channel id="12" name="Game-Chat[ALL]" logged="yes" level="10" muted="2" conditionId="4" conditionMessage="You're muted on this channel."/> -->
+	<!-- <channel id="12" name="Quest Service" logged="yes" level="10" muted="120" conditionId="5" conditionMessage="You may only place one message in two minutes."/> -->
+	<channel id="13" name="Tournament" logged="yes" level="10" locked="1"/>
+	<channel id="65533" name="TV Channel"/>
+	<channel id="65535" name="Private Chat Channel"/>
+	
+	<!-- Duel -->
+	<channel id="100" name="1 Pokemon" active="no"/>
+	<channel id="101" name="2 Pokemon" active="no"/>
+	<channel id="102" name="3 Pokemon" active="no"/>
+	<channel id="103" name="4 Pokemon" active="no"/>
+	<channel id="104" name="5 Pokemon" active="no"/>
+	<channel id="105" name="6 Pokemon" active="no"/>
+	<channel id="106" name="1 X 1 Player Duel" active="no"/>
+	<channel id="107" name="2 X 2 Player Duel" active="no"/>
+	<channel id="108" name="3 X 3 Player Duel" active="no"/>
+	<channel id="109" name="4 X 4 Player Duel" active="no"/>
+	<channel id="110" name="5 X 5 Player Duel" active="no"/>
+	<channel id="111" name="6 X 6 Player Duel" active="no"/>	
+	<!-- Highscores -->
+	<channel id="112" name="Highscores" active="no"/> <!-- Category -->	
+	<channel id="113" name="Duel Win" active="no"/>	
+	<channel id="114" name="Duel Loss" active="no"/>	
+	<channel id="115" name="Battle Win" active="no"/>	
+	<channel id="116" name="Battle Loss" active="no"/>	
+	<channel id="117" name="Headbutting" active="no"/>	
+	<channel id="118" name="Catching" active="no"/>	
+	<channel id="119" name="Fishing" active="no"/>
+	<channel id="120" name="Caughts" active="no"/>	<!-- Category -->
+	<channel id="121" name="Total" active="no"/>
+	<channel id="122" name="Bulbasaur" active="no"/>
+	<channel id="123" name="Ivysaur" active="no"/>
+	<channel id="124" name="Venusaur" active="no"/>
+	<channel id="125" name="Charmander" active="no"/>
+	<channel id="126" name="Charmeleon" active="no"/>
+	<channel id="127" name="Charizard" active="no"/>
+	<channel id="128" name="Squirtle" active="no"/>
+	<channel id="129" name="Wartortle" active="no"/>
+	<channel id="130" name="Blastoise" active="no"/>
+	<channel id="131" name="Caterpie" active="no"/>
+	<channel id="132" name="Metapod" active="no"/>
+	<channel id="133" name="Butterfree" active="no"/>
+	<channel id="134" name="Weedle" active="no"/>
+	<channel id="135" name="Kakuna" active="no"/>
+	<channel id="136" name="Beedrill" active="no"/>
+	<channel id="137" name="Pidgey" active="no"/>
+	<channel id="138" name="Pidgeotto" active="no"/>
+	<channel id="139" name="Pidgeot" active="no"/>
+	<channel id="140" name="Rattata" active="no"/>
+	<channel id="141" name="Raticate" active="no"/>
+	<channel id="142" name="Spearow" active="no"/>
+	<channel id="143" name="Fearow" active="no"/>
+	<channel id="144" name="Ekans" active="no"/>
+	<channel id="145" name="Arbok" active="no"/>
+	<channel id="146" name="Pikachu" active="no"/>
+	<channel id="147" name="Raichu" active="no"/>
+	<channel id="148" name="Sandshrew" active="no"/>
+	<channel id="149" name="Sandslash" active="no"/>
+	<channel id="150" name="Nidorana" active="no"/>
+	<channel id="151" name="Nidorina" active="no"/>
+	<channel id="152" name="Nidoqueen" active="no"/>
+	<channel id="153" name="Nidorano" active="no"/>
+	<channel id="154" name="Nidorino" active="no"/>
+	<channel id="155" name="Nidoking" active="no"/>
+	<channel id="156" name="Clefairy" active="no"/>
+	<channel id="157" name="Clefable" active="no"/>
+	<channel id="158" name="Vulpix" active="no"/>
+	<channel id="159" name="Ninetales" active="no"/>
+	<channel id="160" name="Jigglypuff" active="no"/>
+	<channel id="161" name="Wigglytuff" active="no"/>
+	<channel id="162" name="Zubat" active="no"/>
+	<channel id="163" name="Golbat" active="no"/>
+	<channel id="164" name="Oddish" active="no"/>
+	<channel id="165" name="Gloom" active="no"/>
+	<channel id="166" name="Vileplume" active="no"/>
+	<channel id="167" name="Paras" active="no"/>
+	<channel id="168" name="Parasect" active="no"/>
+	<channel id="169" name="Venonat" active="no"/>
+	<channel id="170" name="Venomoth" active="no"/>
+	<channel id="171" name="Diglett" active="no"/>
+	<channel id="172" name="Dugtrio" active="no"/>
+	<channel id="173" name="Meowth" active="no"/>
+	<channel id="174" name="Persian" active="no"/>
+	<channel id="175" name="Psyduck" active="no"/>
+	<channel id="176" name="Golduck" active="no"/>
+	<channel id="177" name="Mankey" active="no"/>
+	<channel id="178" name="Primeape" active="no"/>
+	<channel id="179" name="Growlithe" active="no"/>
+	<channel id="180" name="Arcanine" active="no"/>
+	<channel id="181" name="Poliwag" active="no"/>
+	<channel id="182" name="Poliwhirl" active="no"/>
+	<channel id="183" name="Poliwrath" active="no"/>
+	<channel id="184" name="Abra" active="no"/>
+	<channel id="185" name="Kadabra" active="no"/>
+	<channel id="186" name="Alakazam" active="no"/>
+	<channel id="187" name="Machop" active="no"/>
+	<channel id="188" name="Machoke" active="no"/>
+	<channel id="189" name="Machamp" active="no"/>
+	<channel id="190" name="Bellsprout" active="no"/>
+	<channel id="191" name="Weepinbell" active="no"/>
+	<channel id="192" name="Victreebel" active="no"/>
+	<channel id="193" name="Tentacool" active="no"/>
+	<channel id="194" name="Tentacruel" active="no"/>
+	<channel id="195" name="Geodude" active="no"/>
+	<channel id="196" name="Graveler" active="no"/>
+	<channel id="197" name="Golem" active="no"/>
+	<channel id="198" name="Ponyta" active="no"/>
+	<channel id="199" name="Rapidash" active="no"/>
+	<channel id="200" name="Slowpoke" active="no"/>
+	<channel id="201" name="Slowbro" active="no"/>
+	<channel id="202" name="Magnemite" active="no"/>
+	<channel id="203" name="Magneton" active="no"/>
+	<channel id="204" name="Farfetchd" active="no"/>
+	<channel id="205" name="Doduo" active="no"/>
+	<channel id="206" name="Dodrio" active="no"/>
+	<channel id="207" name="Seel" active="no"/>
+	<channel id="208" name="Dewgong" active="no"/>
+	<channel id="209" name="Grimer" active="no"/>
+	<channel id="210" name="Muk" active="no"/>
+	<channel id="211" name="Shellder" active="no"/>
+	<channel id="212" name="Cloyster" active="no"/>
+	<channel id="213" name="Gastly" active="no"/>
+	<channel id="214" name="Haunter" active="no"/>
+	<channel id="215" name="Gengar" active="no"/>
+	<channel id="216" name="Onix" active="no"/>
+	<channel id="217" name="Drowzee" active="no"/>
+	<channel id="218" name="Hypno" active="no"/>
+	<channel id="219" name="Krabby" active="no"/>
+	<channel id="220" name="Kingler" active="no"/>
+	<channel id="221" name="Voltorb" active="no"/>
+	<channel id="222" name="Electrode" active="no"/>
+	<channel id="223" name="Exeggcute" active="no"/>
+	<channel id="224" name="Exeggutor" active="no"/>
+	<channel id="225" name="Cubone" active="no"/>
+	<channel id="226" name="Marowak" active="no"/>
+	<channel id="227" name="Hitmonlee" active="no"/>
+	<channel id="228" name="Hitmonchan" active="no"/>
+	<channel id="229" name="Lickitung" active="no"/>
+	<channel id="230" name="Koffing" active="no"/>
+	<channel id="231" name="Weezing" active="no"/>
+	<channel id="232" name="Rhyhorn" active="no"/>
+	<channel id="233" name="Rhydon" active="no"/>
+	<channel id="234" name="Chansey" active="no"/>
+	<channel id="235" name="Tangela" active="no"/>
+	<channel id="236" name="Kangaskhan" active="no"/>
+	<channel id="237" name="Horsea" active="no"/>
+	<channel id="238" name="Seadra" active="no"/>
+	<channel id="239" name="Goldeen" active="no"/>
+	<channel id="240" name="Seaking" active="no"/>
+	<channel id="241" name="Staryu" active="no"/>
+	<channel id="242" name="Starmie" active="no"/>
+	<channel id="243" name="Mr. Mime" active="no"/>
+	<channel id="244" name="Scyther" active="no"/>
+	<channel id="245" name="Jynx" active="no"/>
+	<channel id="246" name="Electabuzz" active="no"/>
+	<channel id="247" name="Magmar" active="no"/>
+	<channel id="248" name="Pinsir" active="no"/>
+	<channel id="249" name="Tauros" active="no"/>
+	<channel id="250" name="Magikarp" active="no"/>
+	<channel id="251" name="Gyarados" active="no"/>
+	<channel id="252" name="Lapras" active="no"/>
+	<channel id="253" name="Ditto" active="no"/>
+	<channel id="254" name="Eevee" active="no"/>
+	<channel id="255" name="Vaporeon" active="no"/>
+	<channel id="256" name="Jolteon" active="no"/>
+	<channel id="257" name="Flareon" active="no"/>
+	<channel id="258" name="Porygon" active="no"/>
+	<channel id="259" name="Omanyte" active="no"/>
+	<channel id="260" name="Omastar" active="no"/>
+	<channel id="261" name="Kabuto" active="no"/>
+	<channel id="262" name="Kabutops" active="no"/>
+	<channel id="263" name="Aerodactyl" active="no"/>
+	<channel id="264" name="Snorlax" active="no"/>
+	<channel id="265" name="Articuno" active="no"/>
+	<channel id="266" name="Zapdos" active="no"/>
+	<channel id="267" name="Moltres" active="no"/>
+	<channel id="268" name="Dratini" active="no"/>
+	<channel id="269" name="Dragonair" active="no"/>
+	<channel id="270" name="Dragonite" active="no"/>
+	<channel id="271" name="Mewtwo" active="no"/>
+	<channel id="272" name="Mew" active="no"/>
+	
+	<channel id="273" name="Tournament" active="no"/>
+	<!-- PvP Arena -->
+	<channel id="274" name="Arena #1 - Team Blue" private="yes" />
+	<channel id="275" name="Arena #1 - Team Red" private="yes" />
+	<channel id="276" name="Arena #2 - Team Blue" private="yes" />
+	<channel id="277" name="Arena #2 - Team Red" private="yes" />
+	<channel id="278" name="Arena #3 - Team Blue" private="yes" />
+	<channel id="279" name="Arena #3 - Team Red" private="yes" />
+	<channel id="280" name="Arena #4 - Team Blue" private="yes" />
+	<channel id="281" name="Arena #4 - Team Red" private="yes" />
+	<channel id="282" name="Arena #5 - Team Blue" private="yes" />
+	<channel id="283" name="Arena #5 - Team Red" private="yes" />
+	<channel id="284" name="Arena #6 - Team Blue" private="yes" />
+	<channel id="285" name="Arena #6 - Team Red" private="yes" />
+	<channel id="286" name="Arena #7 - Team Blue" private="yes" />
+	<channel id="287" name="Arena #7 - Team Red" private="yes" />
+	<channel id="288" name="Arena #8 - Team Blue" private="yes" />
+	<channel id="289" name="Arena #8 - Team Red" private="yes" />
+	<channel id="290" name="Arena #9 - Team Blue" private="yes" />
+	<channel id="291" name="Arena #9 - Team Red" private="yes" />
+	<channel id="292" name="Arena #10 - Team Blue" private="yes" />
+	<channel id="293" name="Arena #10 - Team Red" private="yes" />
+	<channel id="294" name="Arena #11 - Team Blue" private="yes" />
+	<channel id="295" name="Arena #11 - Team Red" private="yes" />
+	<channel id="296" name="Arena #12 - Team Blue" private="yes" />
+	<channel id="297" name="Arena #12 - Team Red" private="yes" />
+	<channel id="298" name="Arena #13 - Team Blue" private="yes" />
+	<channel id="299" name="Arena #13 - Team Red" private="yes" />
+	<channel id="300" name="Arena #14 - Team Blue" private="yes" />
+	<channel id="301" name="Arena #14 - Team Red" private="yes" />
+	<channel id="302" name="Arena #15 - Team Blue" private="yes" />
+	<channel id="303" name="Arena #15 - Team Red" private="yes" />
+	<!-- Highscore Pokemon 2nd Gen -->
+	<channel id="304" name="Chikorita" active="no"/>
+	<channel id="305" name="Bayleef" active="no"/>
+	<channel id="306" name="Meganium" active="no"/>
+	<channel id="307" name="Cyndaquil" active="no"/>
+	<channel id="308" name="Quilava" active="no"/>
+	<channel id="309" name="Typhlosion" active="no"/>
+	<channel id="310" name="Totodile" active="no"/>
+	<channel id="311" name="Croconaw" active="no"/>
+	<channel id="312" name="Feraligatr" active="no"/>
+	<channel id="313" name="Sentret" active="no"/>
+	<channel id="314" name="Furret" active="no"/>
+	<channel id="315" name="Hoothoot" active="no"/>
+	<channel id="316" name="Noctowl" active="no"/>
+	<channel id="317" name="Ledyba" active="no"/>
+	<channel id="318" name="Ledian" active="no"/>
+	<channel id="319" name="Spinarak" active="no"/>
+	<channel id="320" name="Ariados" active="no"/>
+	<channel id="321" name="Crobat" active="no"/>
+	<channel id="322" name="Chinchou" active="no"/>
+	<channel id="323" name="Lanturn" active="no"/>
+	<channel id="324" name="Pichu" active="no"/>
+	<channel id="325" name="Cleffa" active="no"/>
+	<channel id="326" name="Igglybuff" active="no"/>
+	<channel id="327" name="Togepi" active="no"/>
+	<channel id="328" name="Togetic" active="no"/>
+	<channel id="329" name="Natu" active="no"/>
+	<channel id="330" name="Xatu" active="no"/>
+	<channel id="331" name="Mareep" active="no"/>
+	<channel id="332" name="Flaaffy" active="no"/>
+	<channel id="333" name="Ampharos" active="no"/>
+	<channel id="334" name="Bellossom" active="no"/>
+	<channel id="335" name="Marill" active="no"/>
+	<channel id="336" name="Azumarill" active="no"/>
+	<channel id="337" name="Sudowoodo" active="no"/>
+	<channel id="338" name="Politoed" active="no"/>
+	<channel id="339" name="Hoppip" active="no"/>
+	<channel id="340" name="Skiploom" active="no"/>
+	<channel id="341" name="Jumpluff" active="no"/>
+	<channel id="342" name="Aipom" active="no"/>
+	<channel id="343" name="Sunkern" active="no"/>
+	<channel id="344" name="Sunflora" active="no"/>
+	<channel id="345" name="Yanma" active="no"/>
+	<channel id="346" name="Wooper" active="no"/>
+	<channel id="347" name="Quagsire" active="no"/>
+	<channel id="348" name="Espeon" active="no"/>
+	<channel id="349" name="Umbreon" active="no"/>
+	<channel id="350" name="Murkrow" active="no"/>
+	<channel id="351" name="Slowking" active="no"/>
+	<channel id="352" name="Misdreavus" active="no"/>
+	<channel id="353" name="Unown" active="no"/>
+	<channel id="354" name="Wobbuffet" active="no"/>
+	<channel id="355" name="Girafarig" active="no"/>
+	<channel id="356" name="Pineco" active="no"/>
+	<channel id="357" name="Forretress" active="no"/>
+	<channel id="358" name="Dunsparce" active="no"/>
+	<channel id="359" name="Gligar" active="no"/>
+	<channel id="360" name="Steelix" active="no"/>
+	<channel id="361" name="Snubbull" active="no"/>
+	<channel id="362" name="Granbull" active="no"/>
+	<channel id="363" name="Qwilfish" active="no"/>
+	<channel id="364" name="Scizor" active="no"/>
+	<channel id="365" name="Shuckle" active="no"/>
+	<channel id="366" name="Heracross" active="no"/>
+	<channel id="367" name="Sneasel" active="no"/>
+	<channel id="368" name="Teddiursa" active="no"/>
+	<channel id="369" name="Ursaring" active="no"/>
+	<channel id="370" name="Slugma" active="no"/>
+	<channel id="371" name="Magcargo" active="no"/>
+	<channel id="372" name="Swinub" active="no"/>
+	<channel id="373" name="Piloswine" active="no"/>
+	<channel id="374" name="Corsola" active="no"/>
+	<channel id="375" name="Remoraid" active="no"/>
+	<channel id="376" name="Octillery" active="no"/>
+	<channel id="377" name="Delibird" active="no"/>
+	<channel id="378" name="Mantine" active="no"/>
+	<channel id="379" name="Skarmory" active="no"/>
+	<channel id="380" name="Houndour" active="no"/>
+	<channel id="381" name="Houndoom" active="no"/>
+	<channel id="382" name="Kingdra" active="no"/>
+	<channel id="383" name="Phanpy" active="no"/>
+	<channel id="384" name="Donphan" active="no"/>
+	<channel id="385" name="Porygon2" active="no"/>
+	<channel id="386" name="Stantler" active="no"/>
+	<channel id="387" name="Smeargle" active="no"/>
+	<channel id="388" name="Tyrogue" active="no"/>
+	<channel id="389" name="Hitmontop" active="no"/>
+	<channel id="390" name="Smoochum" active="no"/>
+	<channel id="391" name="Elekid" active="no"/>
+	<channel id="392" name="Magby" active="no"/>
+	<channel id="393" name="Miltank" active="no"/>
+	<channel id="394" name="Blissey" active="no"/>
+	<channel id="395" name="Raikou" active="no"/>
+	<channel id="396" name="Entei" active="no"/>
+	<channel id="397" name="Suicune" active="no"/>
+	<channel id="398" name="Larvitar" active="no"/>
+	<channel id="399" name="Pupitar" active="no"/>
+	<channel id="400" name="Tyranitar" active="no"/>
+	<channel id="401" name="Lugia" active="no"/>
+	<channel id="402" name="Ho-Oh" active="no"/>
+	<channel id="403" name="Celebi" active="no"/>
+	<channel id="404" name="Frontier Island" active="no"/>	<!-- Category -->
+	<channel id="405" name="Gladiator" active="no"/>
+	<channel id="406" name="Cooperative Elite" active="no"/>
+	<channel id="407" name="Cooperative Titan" active="no"/>
+	<channel id="408" name="Survive Challenge" active="no"/>
+	<channel id="409" name="Battle Tower Twenty" active="no"/>
+	<channel id="410" name="Battle Tower Fifteen" active="no"/>
+	<channel id="411" name="Battle Tower Ten" active="no"/>
+	<channel id="412" name="Frontier Island General" active="no"/>
+	<channel id="413" name="Survive Hardcore" active="no"/>
+	<channel id="414" name="Achievements" active="no"/>
+	<channel id="415" name="Level" active="no"/> <!-- Highscore -->
+	<channel id="416" name="House" active="no"/> <!-- Destionation -->
+	<channel id="417" name="Guild House" active="no"/> <!-- Destionation -->
+	<channel id="418" name="Viridian" active="no"/> <!-- Destionation -->
+	<channel id="419" name="Pewter" active="no"/> <!-- Destionation -->
+	<channel id="420" name="Cerulean" active="no"/> <!-- Destionation -->
+	<channel id="421" name="Saffron" active="no"/> <!-- Destionation -->
+	<channel id="422" name="Celadon" active="no"/> <!-- Destionation -->
+	<channel id="423" name="Vermilion" active="no"/> <!-- Destionation -->
+	<channel id="424" name="Lavender" active="no"/> <!-- Destionation -->
+	<channel id="425" name="Fuchsia" active="no"/> <!-- Destionation -->
+	<channel id="426" name="Cinnabar" active="no"/> <!-- Destionation -->
+	<channel id="427" name="Tangelo" active="no"/> <!-- Destionation -->
+	<channel id="428" name="Sunburst" active="no"/> <!-- Destionation -->
+	<channel id="429" name="Mikan" active="no"/> <!-- Destionation -->
+	<channel id="430" name="Pummelo" active="no"/> <!-- Destionation -->
+	<channel id="431" name="Pinkan" active="no"/> <!-- Destionation -->
+	<channel id="432" name="Valencia" active="no"/> <!-- Destionation -->
+	<channel id="433" name="Hamlin" active="no"/> <!-- Destionation -->
+	<channel id="434" name="Kumquat" active="no"/> <!-- Destionation -->
+	<channel id="435" name="Tarroco" active="no"/> <!-- Destionation -->
+	<channel id="436" name="Butwal" active="no"/> <!-- Destionation -->
+	<channel id="437" name="Navel" active="no"/> <!-- Destionation -->
+	<channel id="438" name="Mandarin North" active="no"/> <!-- Destionation -->
+	<channel id="439" name="Ascorbia" active="no"/> <!-- Destionation -->
+	<channel id="440" name="Seven Grapefruit" active="no"/> <!-- Destionation -->
+	<channel id="441" name="Moro" active="no"/> <!-- Destionation -->
+	<channel id="442" name="Shamouti" active="no"/> <!-- Destionation -->
+	<channel id="443" name="Murcott" active="no"/> <!-- Destionation -->
+	<channel id="444" name="Trovitopolis" active="no"/> <!-- Destionation -->
+	<channel id="445" name="Mandarin South" active="no"/> <!-- Destionation -->
+	<channel id="446" name="Duel Without Bet" active="no"/>
+	<channel id="447" name="Duel With Bet" active="no"/>
+	<channel id="448" name="Ranger Club" active="no"/>
+	<channel id="449" name="Wiki Chat" talkEvent="1"/>
+	<channel id="450" name="Caught Species" active="no"/>
+	<channel id="451" name="Lotad" active="no"/>
+	<channel id="452" name="Wynaut" active="no"/>
+	<channel id="453" name="Shelgon" active="no"/>
+	<channel id="454" name="Sceptile" active="no"/>
+	<channel id="455" name="Wingull" active="no"/>
+	<channel id="456" name="Huntail" active="no"/>
+	<channel id="457" name="Taillow" active="no"/>
+	<channel id="458" name="Mawile" active="no"/>
+	<channel id="459" name="Mightyena" active="no"/>
+	<channel id="460" name="Flygon" active="no"/>
+	<channel id="461" name="Feebas" active="no"/>
+	<channel id="462" name="Metang" active="no"/>
+	<channel id="463" name="Wurmple" active="no"/>
+	<channel id="464" name="Sealeo" active="no"/>
+	<channel id="465" name="Gulpin" active="no"/>
+	<channel id="466" name="Salamence" active="no"/>
+	<channel id="467" name="Ludicolo" active="no"/>
+	<channel id="468" name="Camerupt" active="no"/>
+	<channel id="469" name="Swampert" active="no"/>
+	<channel id="470" name="Banette" active="no"/>
+	<channel id="471" name="Clamperl" active="no"/>
+	<channel id="472" name="Bagon" active="no"/>
+	<channel id="473" name="Surskit" active="no"/>
+	<channel id="474" name="Swellow" active="no"/>
+	<channel id="475" name="Meditite" active="no"/>
+	<channel id="476" name="Baltoy" active="no"/>
+	<channel id="477" name="Nuzleaf" active="no"/>
+	<channel id="478" name="Mudkip" active="no"/>
+	<channel id="479" name="Latias" active="no"/>
+	<channel id="480" name="Cradily" active="no"/>
+	<channel id="481" name="Sharpedo" active="no"/>
+	<channel id="482" name="Registeel" active="no"/>
+	<channel id="483" name="Cascoon" active="no"/>
+	<channel id="484" name="Nosepass" active="no"/>
+	<channel id="485" name="Shroomish" active="no"/>
+	<channel id="486" name="Whismur" active="no"/>
+	<channel id="487" name="Azurill" active="no"/>
+	<channel id="488" name="Spoink" active="no"/>
+	<channel id="489" name="Rayquaza" active="no"/>
+	<channel id="490" name="Exploud" active="no"/>
+	<channel id="491" name="Carvanha" active="no"/>
+	<channel id="492" name="Gardevoir" active="no"/>
+	<channel id="493" name="Seviper" active="no"/>
+	<channel id="494" name="Marshtomp" active="no"/>
+	<channel id="495" name="Metagross" active="no"/>
+	<channel id="496" name="Makuhita" active="no"/>
+	<channel id="497" name="Sableye" active="no"/>
+	<channel id="498" name="Lairon" active="no"/>
+	<channel id="499" name="Dustox" active="no"/>
+	<channel id="500" name="Silcoon" active="no"/>
+	<channel id="501" name="Slaking" active="no"/>
+	<channel id="502" name="Delcatty" active="no"/>
+	<channel id="503" name="Aron" active="no"/>
+	<channel id="504" name="Trapinch" active="no"/>
+	<channel id="505" name="Tropius" active="no"/>
+	<channel id="506" name="Lombre" active="no"/>
+	<channel id="507" name="Masquerain" active="no"/>
+	<channel id="508" name="Wailmer" active="no"/>
+	<channel id="509" name="Gorebyss" active="no"/>
+	<channel id="510" name="Breloom" active="no"/>
+	<channel id="511" name="Jirachi" active="no"/>
+	<channel id="512" name="Shuppet" active="no"/>
+	<channel id="513" name="Beldum" active="no"/>
+	<channel id="514" name="Blaziken" active="no"/>
+	<channel id="515" name="Latios" active="no"/>
+	<channel id="516" name="Beautifly" active="no"/>
+	<channel id="517" name="Chimecho" active="no"/>
+	<channel id="518" name="Lunatone" active="no"/>
+	<channel id="519" name="Poochyena" active="no"/>
+	<channel id="520" name="Grumpig" active="no"/>
+	<channel id="521" name="Cacnea" active="no"/>
+	<channel id="522" name="Snorunt" active="no"/>
+	<channel id="523" name="Shedinja" active="no"/>
+	<channel id="524" name="Walrein" active="no"/>
+	<channel id="525" name="Ninjask" active="no"/>
+	<channel id="526" name="Manectric" active="no"/>
+	<channel id="527" name="Vigoroth" active="no"/>
+	<channel id="528" name="Electrike" active="no"/>
+	<channel id="529" name="Numel" active="no"/>
+	<channel id="530" name="Corphish" active="no"/>
+	<channel id="531" name="Treecko" active="no"/>
+	<channel id="532" name="Linoone" active="no"/>
+	<channel id="533" name="Cacturne" active="no"/>
+	<channel id="534" name="Combusken" active="no"/>
+	<channel id="535" name="Volbeat" active="no"/>
+	<channel id="536" name="Shiftry" active="no"/>
+	<channel id="537" name="Altaria" active="no"/>
+	<channel id="538" name="Armaldo" active="no"/>
+	<channel id="539" name="Pelipper" active="no"/>
+	<channel id="540" name="Kirlia" active="no"/>
+	<channel id="541" name="Anorith" active="no"/>
+	<channel id="542" name="Glalie" active="no"/>
+	<channel id="543" name="Solrock" active="no"/>
+	<channel id="544" name="Slakoth" active="no"/>
+	<channel id="545" name="Torchic" active="no"/>
+	<channel id="546" name="Roselia" active="no"/>
+	<channel id="547" name="Relicanth" active="no"/>
+	<channel id="548" name="Groudon" active="no"/>
+	<channel id="549" name="Hariyama" active="no"/>
+	<channel id="550" name="Zangoose" active="no"/>
+	<channel id="551" name="Skitty" active="no"/>
+	<channel id="552" name="Kyogre" active="no"/>
+	<channel id="553" name="Regice" active="no"/>
+	<channel id="554" name="Whiscash" active="no"/>
+	<channel id="555" name="Zigzagoon" active="no"/>
+	<channel id="556" name="Torkoal" active="no"/>
+	<channel id="557" name="Luvdisc" active="no"/>
+	<channel id="558" name="Deoxys" active="no"/>
+	<channel id="559" name="Dusclops" active="no"/>
+	<channel id="560" name="Spheal" active="no"/>
+	<channel id="561" name="Absol" active="no"/>
+	<channel id="562" name="Loudred" active="no"/>
+	<channel id="563" name="Duskull" active="no"/>
+	<channel id="564" name="Grovyle" active="no"/>
+	<channel id="565" name="Kecleon" active="no"/>
+	<channel id="566" name="Castform" active="no"/>
+	<channel id="567" name="Vibrava" active="no"/>
+	<channel id="568" name="Lileep" active="no"/>
+	<channel id="569" name="Claydol" active="no"/>
+	<channel id="570" name="Seedot" active="no"/>
+	<channel id="571" name="Barboach" active="no"/>
+	<channel id="572" name="Crawdaunt" active="no"/>
+	<channel id="573" name="Aggron" active="no"/>
+	<channel id="574" name="Swalot" active="no"/>
+	<channel id="575" name="Swablu" active="no"/>
+	<channel id="576" name="Medicham" active="no"/>
+	<channel id="577" name="Milotic" active="no"/>
+	<channel id="578" name="Spinda" active="no"/>
+	<channel id="579" name="Regirock" active="no"/>
+	<channel id="580" name="Wailord" active="no"/>
+	<channel id="581" name="Illumise" active="no"/>
+	<channel id="582" name="Minun" active="no"/>
+	<channel id="583" name="Plusle" active="no"/>
+	<channel id="584" name="Nincada" active="no"/>
+	<channel id="585" name="Ralts" active="no"/>
+	<channel id="586" name="Littleroot" active="no"/> <!-- Destionation -->
+	<channel id="587" name="Oldale" active="no"/> <!-- Destionation -->
+	<channel id="588" name="Petalburg" active="no"/> <!-- Destionation -->
+	<channel id="589" name="Rustboro" active="no"/> <!-- Destionation -->
+	<channel id="590" name="Dewford" active="no"/> <!-- Destionation -->
+	<channel id="591" name="Slateport" active="no"/> <!-- Destionation -->
+	<channel id="592" name="Mauville" active="no"/> <!-- Destionation -->
+	<channel id="593" name="Verdanturf" active="no"/> <!-- Destionation -->
+	<channel id="594" name="Fallarbor" active="no"/> <!-- Destionation -->
+	<channel id="595" name="Lavaridge" active="no"/> <!-- Destionation -->
+	<channel id="596" name="Fortree" active="no"/> <!-- Destionation -->
+	<channel id="597" name="Lilycove" active="no"/> <!-- Destionation -->
+	<channel id="598" name="Mossdeep" active="no"/> <!-- Destionation -->
+	<channel id="599" name="Sootopolis" active="no"/> <!-- Destionation -->
+	<channel id="600" name="Pacifidlog" active="no"/> <!-- Destionation -->
+</channels>

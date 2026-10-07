@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Dragonite" nameDescription="a Shiny Dragonite" nickname="Dragonite" race="blood" experience="17" speed="280" manacost="0" minLevel="100" maxLevel="110">
+	<health now="91" max="91" rate="1.1"/>
+	<look type="848" head="0" body="0" legs="0" feet="0" corpse="14254"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1250" skill="24" attack="134"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="95"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="DRAGONITE!!"/>
+	</voices>
+	
+<loot><item id="12240" countmax="1" chance="50"/><item id="18081" countmax="1" chance="50"/><item id="17951" countmax="1" chance="100"/><item id="17358" countmax="1" chance="10"/><item id="17378" countmax="1" chance="10"/><item id="18927" countmax="1" chance="10"/><item id="18929" countmax="1" chance="10"/><item id="23516" countmax="1" chance="10"/><item id="23526" countmax="1" chance="10"/></loot></monster>

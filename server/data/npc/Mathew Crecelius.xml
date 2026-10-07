@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Mathew Crecelius" script="npcbattle_mathewcrecelius.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="620" head="35" body="95" legs="95" feet="12" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Swim, swim, swim! Spend your energy!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

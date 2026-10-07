@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Regice" nameDescription="a Regice" race="blood" experience="15" speed="250" manacost="0" minLevel="100" maxLevel="100" sex="2">
+	<health now="80" max="80"/>
+	<look type="1557" corpse="28861"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="24" attack="50"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="100"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="REGICE!"/>
+	</voices>
+	
+<loot><item id="12236" countmax="1" chance="100"/><item id="29102" countmax="1" chance="100"/><item id="17349" countmax="1" chance="100"/><item id="18914" countmax="1" chance="100"/><item id="18915" countmax="1" chance="100"/><item id="18917" countmax="1" chance="100"/><item id="23522" countmax="1" chance="100"/></loot></monster>

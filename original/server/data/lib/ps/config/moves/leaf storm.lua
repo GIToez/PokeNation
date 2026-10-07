@@ -1,0 +1,19 @@
+MOVES["Leaf Storm"] = {
+    description = "Leaf Storm deals damage but lowers the user's Special Attack by two stages after attacking.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 12102,
+    iconId = 0,
+    dType = DAMAGE_TYPE_GRASS,
+    functionName = "LeafStorm",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 140,
+    requiredLevel = 60,
+    damage = 13,
+    damageType = ELEMENT_GRASS,
+    effect = EFFECT_ROOTS_FOUR,
+    projectile = PROJECTILE_LEAF,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 32,
+    cooldownStorage = 15197
+}

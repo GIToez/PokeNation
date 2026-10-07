@@ -1,0 +1,20 @@
+MOVES["Headbutt"] = {
+    description = "Headbutt deals damage and has a 30% chance of causing the target to flinch.",
+    makeJump = true,
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11723,
+    iconId = 13349,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "Headbutt",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 70,
+    requiredLevel = 20,
+    damage = 70,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_YELLOW_BLOW,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 11,
+    cooldownStorage = 15031
+}

@@ -1,0 +1,96 @@
+TutorialIcon < UIWidget
+  size: 64 64
+  image-source: /images/topbuttons/tutorial_animated.png
+  anchors.bottom: gameMapPanel.bottom
+  anchors.right: gameMapPanel.right
+
+TutorialLabel < Label
+  font: verdana-11px-monochrome
+  text-offset: 2 0
+  focusable: true
+  color: #aaaaaa
+  background-color: alpha
+
+  $on:
+    color: #00aa00
+  $!on:
+    color: #aaaaaa
+
+  $focus:
+    background-color: #444444
+
+  $on focus:
+    color: #00ff00
+  $!on focus:
+    color: #ffffff
+
+TutorialTitleLabel < Label
+  font: sans-bold-16px
+  text-auto-resize: true
+  margin: 5
+  text-align: center
+
+TutorialText < MultilineTextEdit
+  text-wrap: true
+  editable: false
+  cursor-visible: false
+  text-auto-resize: true
+  margin: 5
+  font: terminus-10px
+
+TutorialImage < UIWidget
+  size: 300 300
+  margin: 5
+  border-width: 1
+  border-color: #A4A4A4
+
+TutorialWindow < MainWindow
+  id: tutorialWindow
+  !text: tr('Game Help')
+  size: 700 600
+  @onEscape: self:destroy()
+
+  TextList
+    id: tutorialList
+    anchors.top: parent.top
+    anchors.bottom: closeButton.top
+    anchors.left: parent.left
+    width: 230
+    margin-bottom: 10
+    focusable: false
+    vertical-scrollbar: tutorialListScrollBar
+
+  VerticalScrollBar
+    id: tutorialListScrollBar
+    anchors.top: parent.top
+    anchors.bottom: closeButton.top
+    anchors.right: tutorialList.right
+    margin-bottom: 10
+    step: 14
+    pixels-scroll: true
+
+  Button
+    id: closeButton
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    !text: tr('Close')
+    width: 90
+    @onClick: self:getParent():destroy()
+
+  ScrollableFlatPanel
+    id: content
+    anchors.top: parent.top
+    anchors.left: tutorialListScrollBar.right
+    anchors.right: textScroll.left
+    anchors.bottom: tutorialList.bottom
+    vertical-scrollbar: textScroll
+    border-width: 1
+    border-color: #000000
+
+  VerticalScrollBar
+    id: textScroll
+    anchors.top: tutorialList.top
+    anchors.bottom: tutorialList.bottom
+    anchors.right: parent.right
+    step: 32
+    pixels-scroll: true

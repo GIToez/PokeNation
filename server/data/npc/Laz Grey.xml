@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Laz Grey" script="npcbattle_lazGrey.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1205" head="78" body="20" legs="30" feet="44"/>
+	<parameters>
+		<parameter key="message_greet" value="!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

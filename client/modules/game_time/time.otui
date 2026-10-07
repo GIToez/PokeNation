@@ -1,0 +1,41 @@
+HeadlessWindow
+  id: timeWindow
+  focusable: false
+  draggable: false
+  //image-color: #ffffffee
+  image-source: ~
+  size: 256 48
+  anchors.top: gameMapPanel.top
+  anchors.left: gameMapPanel.left
+  //background-color: #898989bb
+  //border-color: #272727cc
+  //border-width: 1
+  margin-left: 4
+  margin-top: 3
+
+  UIWidget
+    id: timeImage
+    height: 24
+    anchors.left: parent.left
+    anchors.top: parent.top
+
+  UILabel
+    id: timeLabel
+    height: 24
+    text-align: center
+    anchors.left: prev.right
+    anchors.top: parent.top
+
+  Label
+    id: location
+    !text: ''
+    font: terminus-10px
+    color: #FFFFFF
+    //text-align: center
+    background-color: alpha
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    text-offset: 2 0
+    text-auto-resize: true
+    margin-top: 3

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Ed Blackhood" script="quest_halloween_ed_blackhood.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1711"/>
+	<parameters>
+		<parameter key="message_greet" value="Hmmm, you do not look like a {Sea Dragon}, what are you doing here?"/>
+	</parameters>
+</npc>

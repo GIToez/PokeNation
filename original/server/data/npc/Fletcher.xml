@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Fletcher" script="default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="153" head="50" body="50" legs="30" feet="200" corpse="2212"/>
+	<parameters>
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Heeellloooo."/>
+		<parameter key="shop_buyable" value="pick, 2553, 50"/>
+	</parameters>
+</npc>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Andy" script="default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="503" head="190" body="50" legs="39" feet="50" corpse="2212"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hey |PLAYERNAME|, how I can help? You can buy bikes here, just say {trade}."/>
+		<parameter key="shop_buyable" value="
+		mach bike, 13218, 1000
+		"/>
+	</parameters>
+</npc>

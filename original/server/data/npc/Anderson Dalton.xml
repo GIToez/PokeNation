@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Anderson Dalton" script="default.lua" walkinterval="0" floorchange="0">
+    <health now="150" max="150"/>
+    <look type="503" head="19" body="10" legs="10" feet="0" corpse="2212"/>
+    <parameters>
+        <parameter key="idletime" value="180" />
+        <parameter key="module_shop" value="1"/>
+        <parameter key="message_greet" value="Hello |PLAYERNAME|. Thirsty? So you came to the right place."/>
+        <parameter key="shop_buyable" value="
+		coconut water, 12211, 4;
+		sushi, 12208, 5;
+		lemonade, 12212, 3"/>
+    </parameters>
+</npc>

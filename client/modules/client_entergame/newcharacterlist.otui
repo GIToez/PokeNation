@@ -1,0 +1,232 @@
+Character < Creature
+  fixed-creature-size: true
+  anchors.top: parent.top
+  anchors.left: parent.left
+  margin-top: 30
+  margin-left: -10
+  image-source: ~
+
+CharacterWidget < UIWidget
+  image-source: /images/trainerCards/trainer
+  background-color: alpha
+  margin: 4
+  &updateOnStates: |
+    function(self)
+      local children = self:getChildren()
+      for i=1,#children do
+        children[i]:setOn(self:isFocused())
+      end
+    end
+  @onFocusChange: self:updateOnStates()
+  @onSetup: self:updateOnStates()
+  opacity: 0.6
+
+  $focus:
+    opacity: 1.0
+
+  Label
+    id: name
+    color: #aaaaaa
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    font: verdana-11px-monochrome
+    text-auto-resize: true
+    background-color: alpha
+    text-offset: 2 0
+    text-align: center
+    margin-top: 8
+    margin-left: 5
+
+    $on:
+      color: #ffffff
+
+  Label
+    visible: false
+    id: worldName
+    color: #ffffff
+    color: #aaaaaa
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-right: 5
+    margin-top: 8
+    font: verdana-11px-monochrome
+    text-auto-resize: true
+    background-color: alpha
+    &baseText: 'Server %s'
+
+    $on:
+      color: #ffffff
+
+  Label
+    id: level
+    color: #5C5C5C
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 40
+    font: sans-bold-16px
+    text-align: center
+    background-color: alpha
+    width: 75
+
+    $on:
+      color: #7F7F7F
+
+  UIWidget
+    id: pokemon1
+    color: #5C5C5C
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 30
+    margin-left: 78
+    image-source: ~
+    size: 50 54
+
+  UIWidget
+    id: pokemon2
+    color: #5C5C5C
+    anchors.top: pokemon1.top
+    anchors.left: pokemon1.right
+    image-source: ~
+    size: 50 54
+
+  UIWidget
+    id: pokemon3
+    color: #5C5C5C
+    anchors.top: pokemon1.top
+    anchors.left: pokemon2.right
+    image-source: ~
+    size: 50 54
+
+  UIWidget
+    id: pokemon4
+    color: #5C5C5C
+    anchors.top: pokemon1.bottom
+    anchors.left: pokemon1.left
+    image-source: ~
+    size: 50 54
+
+  UIWidget
+    id: pokemon5
+    color: #5C5C5C
+    anchors.top: pokemon4.top
+    anchors.left: pokemon4.right
+    image-source: ~
+    size: 50 54
+
+  UIWidget
+    id: pokemon6
+    color: #5C5C5C
+    anchors.top: pokemon4.top
+    anchors.left: pokemon5.right
+    image-source: ~
+    size: 50 54
+
+MainWindow
+  id: charactersWindow
+  !text: tr('Character List')
+  size: 540 600
+  visible: false
+  @onEnter: CharacterList.doLogin()
+  @onEscape: CharacterList.hide(true)
+  @onSetup: |
+    g_keyboard.bindKeyPress('Up', function() self:getChildById('characters'):focusPreviousChild(KeyboardFocusReason) end, self)
+    g_keyboard.bindKeyPress('Down', function() self:getChildById('characters'):focusNextChild(KeyboardFocusReason) end, self)
+
+  ScrollableFlatPanel
+    id: characters
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: characterListScrollBar.left
+    anchors.bottom: accountStatusCaption.top
+    margin-bottom: 5
+    padding: 1
+    layout:
+      type: grid
+      cell-size: 245 158
+      flow: true
+      cell-spacing: 1
+    vertical-scrollbar: characterListScrollBar
+    auto-focus: first
+    focusable: false
+
+  VerticalScrollBar
+    id: characterListScrollBar
+    anchors.top: parent.top
+    anchors.bottom: accountStatusCaption.top
+    anchors.right: parent.right
+    margin-bottom: 5
+    step: 158
+    pixels-scroll: true
+
+  Label
+    id: accountStatusCaption
+    !text: tr('Account Status') .. ':'
+    anchors.left: parent.left
+    anchors.bottom: separator.top
+    margin-bottom: 5
+
+  Label
+    id: accountStatusLabel
+    !text: tr('Free Account')
+    anchors.left: accountStatusCaption.right
+    anchors.right: parent.right
+    anchors.bottom: separator.top
+    margin-left: 5
+    margin-bottom: 5
+    text-auto-resize: true
+
+    $on:
+      color: #FF0000
+
+  HorizontalSeparator
+    id: separator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: next.top
+    margin-bottom: 10
+
+  //CheckBox
+  //  id: charAutoLoginBox
+  //  !text: tr('Auto login')
+  //  !tooltip: tr('Auto login selected character on next charlist load')
+  //  anchors.left: parent.left
+  //  anchors.right: parent.right
+  //  anchors.bottom: next.top
+  //  margin-bottom: 6
+  //  margin-left: 18
+  //  margin-right: 18
+
+  Button
+    id: buttonOk
+    !text: tr('Ok')
+    width: 64
+    anchors.right: next.left
+    anchors.bottom: parent.bottom
+    margin-right: 10
+    @onClick: CharacterList.doLogin()
+
+  Button
+    id: buttonCancel
+    !text: tr('Cancel')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: CharacterList.hide(true)
+
+  Button
+    id: buttonNewCharacter
+    !text: tr('New Character')
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    width: 128
+    @onClick: g_platform.openUrl("http://www.psoul.net/players/createCharacter")
+
+  Button
+    id: buttonDonate
+    !text: tr('Donate')
+    anchors.left: buttonNewCharacter.right
+    anchors.bottom: parent.bottom
+    width: 128
+    margin-left: 10
+    @onClick: g_platform.openUrl("http://www.psoul.net/accounts/donate")

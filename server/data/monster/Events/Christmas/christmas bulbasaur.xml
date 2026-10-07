@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Christmas Bulbasaur" nameDescription="a Bulbasaur" race="blood" experience="10" speed="245" manacost="0" minLevel="20" maxLevel="30">
+	<health now="45" max="45"/>
+	<look type="1412" head="0" body="0" legs="0" feet="0" corpse="25280"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2222" skill="24" attack="49"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="49"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="BULBAAA"/>
+		<voice sentence="SAUR! SAUR!"/>
+	</voices>
+	
+<loot><item id="12091" countmax="1" chance="22222"/><item id="12090" countmax="1" chance="11428"/><item id="12271" countmax="1" chance="100"/><item id="2673" countmax="5" chance="5000"/><item id="12231" countmax="1" chance="1"/><item id="12235" countmax="1" chance="1"/><item id="18913" countmax="1" chance="1"/></loot></monster>

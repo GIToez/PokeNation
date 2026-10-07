@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Tanisha Saterfiel" script="npcbattle_fi_tanishasaterfiel.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="635" head="66" body="25" legs="5" feet="79" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

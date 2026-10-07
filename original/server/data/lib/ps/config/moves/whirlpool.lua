@@ -1,0 +1,17 @@
+MOVES["Whirlpool"] = {
+    description = "The user traps the target in a violent swirling whirlpool for four to five turns.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 27620,
+    iconId = 0,
+    dType = DAMAGE_TYPE_WATER,
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 100,
+    damage = 35,
+    damageType = ELEMENT_WATER,
+    effect = EFFECT_WATER_EMERGE,
+    projectile = nil,
+    maxDistance = 6,
+    cooldownTime = 20,
+    cooldownStorage = 15415,
+    makeContact = false,
+}

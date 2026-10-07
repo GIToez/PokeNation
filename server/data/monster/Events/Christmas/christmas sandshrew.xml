@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Christmas Sandshrew" nameDescription="a Sandshrew" race="blood" experience="10" speed="240" manacost="0" minLevel="10" maxLevel="20">
+	<health now="50" max="50"/>
+	<look type="1419" head="0" body="0" legs="0" feet="0" corpse="25290"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2500" skill="24" attack="75"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="85"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SAND!"/>
+		<voice sentence="SANDSHREW!"/>
+	</voices>
+	
+<loot><item id="12155" countmax="1" chance="29629"/><item id="14477" countmax="1" chance="5333"/><item id="14519" countmax="1" chance="3809"/><item id="2687" countmax="5" chance="3000"/><item id="2675" countmax="5" chance="3000"/><item id="17842" countmax="1" chance="100"/><item id="13807" countmax="1" chance="2"/><item id="18918" countmax="1" chance="1"/><item id="18926" countmax="1" chance="1"/></loot></monster>

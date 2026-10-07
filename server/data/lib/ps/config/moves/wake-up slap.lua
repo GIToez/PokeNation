@@ -1,0 +1,19 @@
+MOVES["Wake-Up Slap"] = {
+    description = "Wake-Up Slap deals damage and will have double the power when the target is sleeping. It will also wake the target up.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12082,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FIGHTING,
+    functionName = "WakeUpSlap",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 75,
+    requiredLevel = 15,
+    damage = 70,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_MULTIPLE_BLOW,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 9,
+    cooldownStorage = 15178
+}

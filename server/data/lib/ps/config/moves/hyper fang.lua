@@ -1,0 +1,19 @@
+MOVES["Hyper Fang"] = {
+    description = "Hyper Fang deals damage and has a 10% chance of causing the target to flinch.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11726,
+    iconId = 13352,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "HyperFang",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 80,
+    requiredLevel = 20,
+    damage = 80,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BIG_BITE,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 12,
+    cooldownStorage = 15034
+}

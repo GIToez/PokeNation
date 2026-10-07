@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Sabrina" script="npcbattle_sabrina.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="554" head="0" body="0" legs="0" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I had a vision of your arrival! I have had psychic powers since I was a child. I first learned to bend spoons with my mind. I dislike fighting, but if you wish, I will show you my powers!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

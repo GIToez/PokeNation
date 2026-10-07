@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Dodrio" nameDescription="a Shiny Dodrio" nickname="Dodrio" race="blood" experience="12" speed="300" manacost="0" minLevel="45" maxLevel="55">
+	<health now="60" max="60" rate="1.1"/>
+	<look type="763" head="0" body="0" legs="0" feet="0" corpse="14090"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1000" skill="24" attack="110"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="70"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="DODRIO!"/>
+	</voices>
+	
+<loot><item id="14567" countmax="1" chance="19444"/><item id="14599" countmax="1" chance="35000"/><item id="14584" countmax="1" chance="87500"/><item id="14593" countmax="1" chance="8750"/><item id="14587" countmax="1" chance="3500"/><item id="12232" countmax="1" chance="25"/><item id="18081" countmax="1" chance="25"/><item id="17896" countmax="1" chance="100"/><item id="17355" countmax="1" chance="5"/><item id="17382" countmax="1" chance="5"/><item id="23526" countmax="1" chance="10"/><item id="23527" countmax="1" chance="10"/></loot></monster>

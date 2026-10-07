@@ -1,0 +1,20 @@
+MOVES["Ice Punch"] = {
+    description = "Ice Punch does damage and has a 10% chance of freezing the target.",
+    makeContact = true,
+    makePunch = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11728,
+    iconId = 13354,
+    dType = DAMAGE_TYPE_ICE,
+    functionName = "IcePunch",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 75,
+    requiredLevel = 30,
+    damage = 75,
+    damageType = ELEMENT_ICE,
+    effect = EFFECT_ICE_PUNCH,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 12,
+    cooldownStorage = 15036
+}

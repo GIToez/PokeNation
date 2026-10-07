@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Teddiursa" nameDescription="a Teddiursa" race="blood" experience="10" speed="240" manacost="0" minLevel="30" maxLevel="40">
+	<health now="60" max="60"/>
+	<look type="1042" head="0" body="0" legs="0" feet="0" corpse="17605"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2500" skill="24" attack="80"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="TEDDIURRSSAA!"/>
+	</voices>
+	
+<loot><item id="12096" countmax="1" chance="44642"/><item id="12115" countmax="1" chance="34722"/><item id="12121" countmax="1" chance="14204"/><item id="12129" countmax="1" chance="12500"/><item id="14468" countmax="1" chance="62500"/><item id="14469" countmax="3" chance="78125"/><item id="14474" countmax="1" chance="3906"/><item id="14483" countmax="1" chance="6250"/><item id="2674" countmax="5" chance="5000"/><item id="18015" countmax="1" chance="100"/><item id="12232" countmax="1" chance="2"/><item id="18916" countmax="1" chance="5"/></loot></monster>

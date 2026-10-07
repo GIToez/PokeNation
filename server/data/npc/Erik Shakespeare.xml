@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Erik Shakespeare" script="npcbattle_erikshakespeare.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="626" head="35" body="20" legs="35" feet="20" addons="2"/>
+	<parameters>
+		<parameter key="message_greet" value="I managed to climb Mt Moon without equipment! You're no match for me."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

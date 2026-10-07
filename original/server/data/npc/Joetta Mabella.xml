@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Joetta Mabella" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="633" head="10" body="20" legs="30" feet="40" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I have 6 Pokemon with me, you can also carry this amount."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,9 @@
+Module
+  name: game_time
+  description: Time
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ time ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

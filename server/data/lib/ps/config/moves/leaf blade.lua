@@ -1,0 +1,20 @@
+MOVES["Leaf Blade"] = {
+    description = "Leaf Blade deals damage and has an increased critical hit ratio.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12101,
+    iconId = 0,
+    dType = DAMAGE_TYPE_GRASS,
+    functionName = "LeafBlade",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 90,
+    requiredLevel = 35,
+    damage = 90,
+    damageType = ELEMENT_GRASS,
+    effect = EFFECT_GREEN_SLASH,
+    projectile = PROJECTILE_LEAF_TWO,
+    maxDistance = 6,
+    cooldownTime = 14,
+    cooldownStorage = 15196,
+    criticalChance = 20
+}

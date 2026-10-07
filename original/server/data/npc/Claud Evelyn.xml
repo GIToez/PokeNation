@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Claud Evelyn" script="travels.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="1201" head="57" body="33" legs="14" feet="67" corpse="0"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|. Here you can {travel}."/>
+	</parameters>
+</npc>

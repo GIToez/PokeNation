@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<npc name="Neesha's Rapidash" floorchange="0" walkinterval="600">
+	<health now="100" max="100"/>
+	<look type="429" head="0" body="0" legs="0" feet="0"/>
+</npc>

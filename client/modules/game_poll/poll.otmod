@@ -1,0 +1,9 @@
+Module
+  name: game_poll
+  description: Poll
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ poll ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

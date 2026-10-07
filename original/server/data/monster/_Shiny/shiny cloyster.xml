@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Cloyster" nameDescription="a Shiny Cloyster" nickname="Cloyster" race="blood" experience="15" speed="270" manacost="0" minLevel="65" maxLevel="75">
+	<health now="50" max="50" rate="1.1"/>
+	<look type="769" head="0" body="0" legs="0" feet="0" corpse="14096"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1428" skill="24" attack="95"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="180"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="CLOYSTER!"/>
+	</voices>
+	
+<loot><item id="14529" countmax="3" chance="93750"/><item id="14539" countmax="1" chance="11718"/><item id="14570" countmax="1" chance="9375"/><item id="14600" countmax="1" chance="9375"/><item id="14601" countmax="1" chance="7500"/><item id="14521" countmax="1" chance="6250"/><item id="14609" countmax="1" chance="9375"/><item id="14621" countmax="1" chance="6696"/><item id="7372" countmax="1" chance="2000"/><item id="7377" countmax="1" chance="2000"/><item id="7375" countmax="1" chance="2000"/><item id="12230" countmax="1" chance="50"/><item id="12236" countmax="1" chance="50"/><item id="17901" countmax="1" chance="100"/><item id="18088" countmax="1" chance="20"/><item id="18913" countmax="1" chance="10"/><item id="18918" countmax="1" chance="10"/><item id="23521" countmax="1" chance="10"/><item id="23522" countmax="1" chance="10"/></loot></monster>

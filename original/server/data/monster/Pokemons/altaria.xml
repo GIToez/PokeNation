@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Altaria" nameDescription="an Altaria" race="blood" experience="10" speed="280" manacost="0" minLevel="40" maxLevel="50">
+	<health now="75" max="75"/>
+	<look type="1513" corpse="28817"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1250" skill="24" attack="70"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="90"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="ALTARIA!"/>
+	</voices>
+	
+<loot><item id="12142" countmax="1" chance="43209"/><item id="14468" countmax="1" chance="77777"/><item id="14469" countmax="3" chance="97222"/><item id="14472" countmax="1" chance="7777"/><item id="14478" countmax="1" chance="19444"/><item id="14484" countmax="1" chance="77777"/><item id="14502" countmax="1" chance="2592"/><item id="17786" countmax="1" chance="25925"/><item id="28881" countmax="1" chance="1296"/><item id="12240" countmax="1" chance="50"/><item id="18081" countmax="1" chance="50"/><item id="29058" countmax="1" chance="100"/><item id="23526" countmax="1" chance="10"/><item id="23516" countmax="1" chance="10"/><item id="17376" countmax="1" chance="10"/></loot></monster>

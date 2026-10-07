@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Chansey" nameDescription="a Shiny Chansey" nickname="Chansey" race="blood" experience="15" speed="250" manacost="0" sex="0" minLevel="60" maxLevel="70">
+	<health now="250" max="250" rate="1.1"/>
+	<look type="812" head="0" body="0" legs="0" feet="0" corpse="14218"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="24" attack="5"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="5"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="CHANSEY!!"/>
+	</voices>
+	
+<loot><item id="12154" countmax="1" chance="0"/><item id="12232" countmax="1" chance="50"/><item id="12268" countmax="1" chance="100"/><item id="17346" countmax="1" chance="10"/><item id="17370" countmax="1" chance="10"/><item id="18926" countmax="1" chance="10"/></loot></monster>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Merv Kelley" script="quest_mervKelley.lua" walkinterval="3000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1181" head="60" body="45" legs="90" feet="90" addons="0"/>
+	<parameters>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

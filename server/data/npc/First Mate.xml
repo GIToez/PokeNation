@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="First Mate" script="quest_firstMate.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="512"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello recruit, they were toward the engine room, our sailors pursued them there. Go on, I'm calling the authorities!"/>
+	</parameters>
+</npc>

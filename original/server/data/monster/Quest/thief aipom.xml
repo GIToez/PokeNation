@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Thief Aipom" nameDescription="a Thief Aipom" race="blood" experience="0" speed="500" manacost="0" minLevel="50" maxLevel="50">
+	<health now="55" max="55"/>
+	<look type="991" head="0" body="0" legs="0" feet="0" corpse="17579"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="0"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="999999"/>
+	</flags>
+	<attacks>
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="AIPOMM!"/>
+	</voices>
+	<loot>
+	</loot>
+</monster>

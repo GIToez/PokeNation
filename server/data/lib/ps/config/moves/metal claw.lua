@@ -1,0 +1,19 @@
+MOVES["Metal Claw"] = {
+    description = "Metal Claw deals damage and has a 10% chance of raising the user's Attack by one stage.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12048,
+    iconId = 0,
+    dType = DAMAGE_TYPE_STEEL,
+    functionName = "MetalClaw",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 50,
+    requiredLevel = 25,
+    damage = 50,
+    damageType = ELEMENT_STEEL,
+    effect = EFFECT_METAL_CLAW,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 8,
+    cooldownStorage = 15142
+}

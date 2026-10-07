@@ -1,0 +1,17 @@
+MOVES["Simple Beam"] = {
+    description = "The user's mysterious psychic wave changes the target's Ability to Simple.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 27663,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    type = SKILLS_TYPES.STATS,
+    requiredEnergy = 50,
+    damage = 0,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_PURPLE_CRYSTAL_BROKE,
+    projectile = PROJECTILE_NIGHT_SHADE,
+    maxDistance = 3,
+    cooldownTime = 60,
+    cooldownStorage = 15455,
+    makeContact = false,
+}

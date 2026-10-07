@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Unown" nameDescription="an Unown" race="blood" experience="10" speed="248" manacost="0" minLevel="30" maxLevel="40">
+	<health now="48" max="48"/>
+	<look type="1027" head="0" body="0" legs="0" feet="0" corpse="17590"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2083" skill="24" attack="72"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="48"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="UNNOOWWNN!"/>
+	</voices>
+	
+<loot><item id="12136" countmax="1" chance="25000"/><item id="17807" countmax="1" chance="12500"/><item id="12233" countmax="1" chance="50"/><item id="23531" countmax="1" chance="20"/></loot></monster>

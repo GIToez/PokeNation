@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Max Tippins" script="npcbattle_maxtippins.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="630" head="45" body="65" legs="45" feet="65" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Look around |PLAYERNAME|, it will consume you all soon!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,20 @@
+MOVES["Thunder Punch"] = {
+    description = "Thunder Punch does damage and has a 10% chance of paralyzing the opponent.",
+    makeContact = true,
+    makePunch = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11772,
+    iconId = 13398,
+    dType = DAMAGE_TYPE_ELECTRIC,
+    functionName = "ThunderPunch",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 75,
+    requiredLevel = 30,
+    damage = 75,
+    damageType = ELEMENT_ELECTRIC,
+    effect = EFFECT_ELECTRIC_PUNCH,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 12,
+    cooldownStorage = 15080
+}

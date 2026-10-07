@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Skiploom" nameDescription="a Skiploom" shiny="Shiny Skiploom" race="blood" experience="10" speed="280" manacost="0" minLevel="30" maxLevel="40">
+	<health now="55" max="55"/>
+	<look type="989" head="0" body="0" legs="0" feet="0" corpse="17577"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1250" skill="24" attack="45"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SKIPLOOOMMM!"/>
+	</voices>
+	
+<loot><item id="12091" countmax="1" chance="15432"/><item id="12102" countmax="4" chance="92592"/><item id="13304" countmax="1" chance="10288"/><item id="13309" countmax="1" chance="10288"/><item id="14466" countmax="1" chance="55555"/><item id="14467" countmax="1" chance="11111"/><item id="14487" countmax="1" chance="55555"/><item id="14510" countmax="1" chance="27777"/><item id="17802" countmax="1" chance="13888"/><item id="12231" countmax="1" chance="25"/><item id="18081" countmax="1" chance="25"/><item id="14464" countmax="5" chance="5000"/><item id="17988" countmax="1" chance="100"/><item id="17356" countmax="1" chance="5"/><item id="18920" countmax="1" chance="5"/></loot></monster>

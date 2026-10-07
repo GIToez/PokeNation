@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raid>
+	<announce delay="0" type="default" message="[Pvp Arena #3]: The Poisonous Plant raid will begin in 10 minutes!"/>
+	<areaspawn delay="600000" centerx="1089" centery="1609" centerz="7" radius="30">
+		<monster name="PvP Gloom" minamount="100" maxamount="100"/>
+	</areaspawn>
+	<singlespawn delay="605000" name="The Poisonous Plant" ref="yes" x="1090" y="1621" z="7"/>
+</raid>

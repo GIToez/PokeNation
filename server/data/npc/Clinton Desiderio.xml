@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Clinton Desiderio" script="npcbattle_fi_clintondesiderio.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="628" head="48" body="67" legs="35" feet="25" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Cesar, The Simian" nameDescription="a Cesar, The Simian" race="blood" experience="15" speed="295" manacost="0" minLevel="100" maxLevel="100">
+	<health now="5760" max="5760"/>
+	<look type="1168" head="0" body="0" legs="0" feet="0" corpse="18127"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag boss="1"/>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1052" skill="24" attack="105"/>
+		<attack name="Moves" interval="500" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="60"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="PRIMEAPEE!"/>
+	</voices>
+	<loot>
+		<item id="12123" countmax="1" chance="48611"/> <!-- fur -->
+		<item id="14466" countmax="3" chance="58333"/> <!-- bamboo leaves -->
+		<item id="14468" countmax="3" chance="58333"/> <!-- bunch of sugar cane -->
+		<item id="14465" countmax="1" chance="7291"/> <!-- ape hair -->
+		<item id="2687" countmax="3" chance="3000"/> <!-- cookie -->
+		<item id="14464" countmax="3" chance="3000"/> <!-- onigiri -->
+		<item id="12243" countmax="5" chance="100000"/> <!-- fist plate -->
+		<item id="17870" countmax="1" chance="10000"/> <!-- primeape doll -->
+		<item id="18111" countmax="1" chance="100000"/> <!-- Cesar, The Simian artifacts -->
+	</loot>
+	<script>
+        <event name="bossReward"/>	    
+	</script>
+</monster>

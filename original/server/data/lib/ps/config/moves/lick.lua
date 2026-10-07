@@ -1,0 +1,19 @@
+MOVES["Lick"] = {
+    description = "Lick deals damage and has a 30% chance of paralyzing the target.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11734,
+    iconId = 13360,
+    dType = DAMAGE_TYPE_GHOST,
+    functionName = "Lick",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 30,
+    requiredLevel = 5,
+    damage = 30,
+    damageType = ELEMENT_GHOST,
+    effect = EFFECT_LICK,
+    projectile = nil,
+    maxDistance = 2,
+    cooldownTime = 5,
+    cooldownStorage = 15042
+}

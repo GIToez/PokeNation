@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Randy Hayden" script="default.lua" walkinterval="0" floorchange="0" walkable="0">
+    <health now="150" max="150"/>
+    <look type="1302" head="5" body="76" legs="156" feet="12" corpse="2212"/>
+    <parameters>
+        <parameter key="idletime" value="180" />
+        <parameter key="module_shop" value="1"/>
+        <parameter key="message_greet" value="Hello |PLAYERNAME|. You can buy here all the necessary equipment to start planting your Pokemon berries."/>
+        <parameter key="shop_buyable" value="
+		watering can, 13174, 100;
+		hoe, 2552, 200;
+		seed of cheri berry, 13176, 500;
+		seed of chesto berry, 13177, 500;
+		seed of pecha berry, 13178, 500;
+		seed of rawst berry, 13179, 500;
+		seed of aspear berry, 14791, 500;
+		seed of leppa berry, 13180, 500;
+		seed of oran berry, 14792, 500;
+		seed of persim berry, 14793, 500
+		"/>
+    </parameters>
+</npc>

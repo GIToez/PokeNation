@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Saxon Ashton" script="sketch_reset.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="1189" head="50" body="50" legs="30" feet="200" corpse="2212"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|. Do you want to {reset} your Smeargle Sketchs?"/>
+	</parameters>
+</npc>

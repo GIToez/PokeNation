@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Robby Drummond" script="quest_deliverNewspaper.lua" walkinterval="500" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1187" head="100" body="20" legs="90" feet="90" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Dad took me to a great party on S.S.ANNE at VERMILION CITY!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

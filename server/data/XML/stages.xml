@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stages>
+	<!--<world id="0" multiplier="1">-->
+<!-- DOUBLE EXP
+		<stage minlevel="1" maxlevel="10" multiplier="14.0"/>
+		<stage minlevel="11" maxlevel="15" multiplier="12.0"/>
+		<stage minlevel="16" maxlevel="20" multiplier="8.0"/>
+		<stage minlevel="21" maxlevel="30" multiplier="6.0"/>
+		<stage minlevel="31" maxlevel="50" multiplier="4.0"/>
+		<stage minlevel="51" maxlevel="70" multiplier="2.0"/>
+		<stage minlevel="71" maxlevel="100" multiplier="1.0"/>
+		<stage minlevel="101" multiplier="0.5"/>-->
+
+	<!-- OLD EXP
+	<stage minlevel="1" maxlevel="10" multiplier="7.0"/>
+	<stage minlevel="11" maxlevel="15" multiplier="6.0"/>
+	<stage minlevel="16" maxlevel="20" multiplier="4.0"/>
+	<stage minlevel="21" maxlevel="30" multiplier="3.0"/>
+	<stage minlevel="31" maxlevel="50" multiplier="2.0"/>
+	<stage minlevel="51" maxlevel="70" multiplier="1.0"/>
+	<stage minlevel="71" maxlevel="100" multiplier="0.5"/>
+	<stage minlevel="101" multiplier="0.3"/>
+	-->
+
+<!-- NORMAL EXP -->
+		<stage minlevel="1" maxlevel="10" multiplier="5.25"/>
+		<stage minlevel="11" maxlevel="15" multiplier="4.5"/>
+		<stage minlevel="16" maxlevel="20" multiplier="3.0"/>
+		<stage minlevel="21" maxlevel="30" multiplier="2.25"/>
+		<stage minlevel="31" maxlevel="50" multiplier="1.5"/>
+		<stage minlevel="51" maxlevel="70" multiplier="0.75"/>
+		<stage minlevel="71" maxlevel="100" multiplier="0.375"/>
+		<stage minlevel="101" multiplier="0.225"/>
+		<!--
+		<stage minlevel="101" maxlevel="130" multiplier="0.3"/>
+		<stage minlevel="131" multiplier="0.1"/>
+		-->
+	<!--</world>-->
+</stages>

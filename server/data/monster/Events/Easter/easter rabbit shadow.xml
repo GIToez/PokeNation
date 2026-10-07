@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Easter Rabbit Shadow" nameDescription="an Easter Rabbit Shadow" race="blood" experience="0" speed="290" manacost="0" minLevel="80" maxLevel="80">
+	<health now="5760" max="5760"/>
+	<look type="1253" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1111" skill="24" attack="55"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="30"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+	</voices>
+	<loot>
+	</loot>
+</monster>

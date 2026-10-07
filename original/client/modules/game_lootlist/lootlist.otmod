@@ -1,0 +1,9 @@
+Module
+  name: game_lootlist
+  description: Loot List
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ lootlist ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

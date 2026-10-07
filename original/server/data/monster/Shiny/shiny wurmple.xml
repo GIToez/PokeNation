@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Wurmple" nickname="Wurmple" nameDescription="a Shiny Wurmple" race="blood" experience="5" speed="220" manacost="0" minLevel="1" maxLevel="10">
+	<health now="45" max="45"/>
+	<look type="1824" corpse="29446"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="5000" skill="24" attack="45"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="35"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="WURMPLE!"/>
+	</voices>
+	
+<loot><item id="12113" countmax="1" chance="14285"/><item id="13302" countmax="1" chance="10000"/><item id="17786" countmax="1" chance="13333"/><item id="28878" countmax="1" chance="5000"/><item id="28989" countmax="1" chance="100"/><item id="12241" countmax="1" chance="2"/></loot></monster>

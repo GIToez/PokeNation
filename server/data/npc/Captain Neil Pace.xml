@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Captain Neil Pace" script="quest_default.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="563"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello matey, what you looking at my quarters? If you don't know where to flow, say {travel}."/>
+		<parameter key="module_travel" value="1"/>
+        <parameter key="travel_destinations" value="slateport,752,1738,6,250,true;sunburst,3039,2642,6,325,false,-1,-1,23540;tangelo,2721,2860,6,350,false,-1,-1,23540;mikan,2679,2499,6,300,false,-1,-1,23540;cinnabar,3373,1087,6,50,false,-1,-1,23540;pummelo,3079,1741,6,200,false,-1,2,23540;new island,5443,125,5,0,false,8556,1,25192"/>
+	</parameters>
+</npc>

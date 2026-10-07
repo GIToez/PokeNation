@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Gyarados" nameDescription="a Gyarados" shiny="Shiny Gyarados" race="blood" experience="15" speed="281" manacost="0" minLevel="75" maxLevel="85">
+	<health now="95" max="95"/>
+	<look type="481" head="0" body="0" legs="0" feet="0" corpse="11518"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1234" skill="24" attack="125"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="79"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="GYARADOS!!"/>
+	</voices>
+	
+<loot><item id="12100" countmax="15" chance="100000"/><item id="12086" countmax="1" chance="10000"/><item id="12112" countmax="1" chance="62500"/><item id="14477" countmax="1" chance="20000"/><item id="14515" countmax="1" chance="40000"/><item id="14479" countmax="1" chance="28571"/><item id="14630" countmax="1" chance="16666"/><item id="12230" countmax="1" chance="100"/><item id="18081" countmax="1" chance="50"/><item id="17938" countmax="1" chance="100"/><item id="17358" countmax="1" chance="10"/><item id="18913" countmax="1" chance="10"/><item id="18919" countmax="1" chance="10"/><item id="23521" countmax="1" chance="10"/><item id="23526" countmax="1" chance="10"/></loot></monster>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Sea Dragon Ori" script="quest_halloween_sea_dragon_entrance.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1716"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi there, Stranger, I'm a on business fron the {Exile}, What would you want?"/>
+	</parameters>
+</npc>

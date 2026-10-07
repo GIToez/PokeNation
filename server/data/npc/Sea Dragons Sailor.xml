@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Sea Dragons Sailor" script="quest_default.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1716"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello friend! I am recruiting {volunteers} to help me in the fight against evil and darkness!"/>		
+	</parameters>
+</npc>

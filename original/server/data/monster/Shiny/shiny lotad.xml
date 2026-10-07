@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Lotad" nickname="Lotad" nameDescription="a Shiny Lotad" race="blood" experience="5" speed="230" manacost="0" minLevel="20" maxLevel="30">
+	<health now="40" max="40"/>
+	<look type="1829" corpse="29451"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="3333" skill="24" attack="30"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="30"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="LOTAD!"/>
+	</voices>
+	
+<loot><item id="12096" countmax="1" chance="19047"/><item id="12100" countmax="3" chance="66666"/><item id="14477" countmax="1" chance="2666"/><item id="14515" countmax="1" chance="5333"/><item id="12091" countmax="1" chance="7407"/><item id="12102" countmax="3" chance="66666"/><item id="12230" countmax="1" chance="1"/><item id="12231" countmax="1" chance="1"/><item id="14464" countmax="5" chance="5000"/><item id="28994" countmax="1" chance="100"/><item id="17347" countmax="1" chance="1"/><item id="17356" countmax="1" chance="1"/><item id="18919" countmax="1" chance="1"/><item id="18920" countmax="1" chance="1"/></loot></monster>

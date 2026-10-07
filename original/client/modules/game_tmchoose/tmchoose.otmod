@@ -1,0 +1,9 @@
+Module
+  name: game_tmchoose
+  description: TM Choose
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ tmchoose ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

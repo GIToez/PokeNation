@@ -1,0 +1,22 @@
+MOVES["Flare Blitz"] = {
+    description = "Flare Blitz will thaw out the user if it is frozen, and then inflict damage on the target.",
+    makeContact = true,
+    makeRecoil = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12092,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FIRE,
+    functionName = "FlareBlitz",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 130,
+    requiredLevel = 45,
+    damage = 12,
+    damageType = ELEMENT_FIRE,
+    effect = EFFECT_FIRE,
+    projectile = nil,
+    areaEffect = EFFECT_BIG_FLAMES,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 27,
+    cooldownStorage = 15188
+}

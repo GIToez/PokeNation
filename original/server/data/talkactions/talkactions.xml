@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talkactions>
+	<!-- PS -->
+		<!-- Others -->
+		<talkaction words="/addon" event="script" value="../../lib/ps/events/talkactions/pokemonAddon.lua" description="Show Pokemon addons." />
+		<talkaction words="/cupom;/coupon" event="script" value="../../lib/ps/events/talkactions/coupon.lua" description="Uses a coupon." />
+		<talkaction words="/afk" event="script" value="../../lib/ps/events/talkactions/afk.lua" description="Set AFK state." />
+		<talkaction words="/time" event="script" value="../../lib/ps/events/talkactions/time.lua" description="Show game time." />
+		<talkaction words="/help;/command;/commands;/comando;/comandos" hidden="yes" event="script" value="../../lib/ps/events/talkactions/commands.lua" />
+		<talkaction words="/megusta;/trollface;/yaomingface;/pokerface;/foreveralone" event="script" value="../../lib/ps/events/talkactions/memes.lua" description="Show a meme."/>
+		<talkaction words="/autoloot" case-sensitive="no" event="script" value="../../lib/ps/events/talkactions/autoLoot.lua" description="Automatic loot from corpses."/>
+		<talkaction words="/dv" hidden="yes" case-sensitive="no" event="script" value="../../lib/ps/events/talkactions/dexView.lua"/>
+		<talkaction words="/exp" event="script" value="../../lib/ps/events/talkactions/pokemonExperience.lua" description="Show information about your Pokemon experience." />
+		<talkaction words="/held" event="script" value="../../lib/ps/events/talkactions/heldExperience.lua" description="Show information about your Pokemon Held item experience." />
+		<talkaction words="/love" event="script" value="../../lib/ps/events/talkactions/love.lua" description="Show a love emoticon."/>
+		<talkaction words="t1;t2;t3;t4" event="script" value="../../lib/ps/events/talkactions/turn.lua" description="Turn your Pokemon direction."/>
+		<talkaction words="/autoWalk" case-sensitive="no" event="script" value="../../lib/ps/events/talkactions/autoWalk.lua" description="Automatic walk's straight."/>
+		<talkaction words="/sd" hidden="yes" case-sensitive="no" event="script" value="../../lib/ps/events/talkactions/client/skillDescription.lua"/>
+		<talkaction words="/cp" hidden="yes" case-sensitive="no" event="script" value="../../lib/ps/events/talkactions/client/callPokemon.lua"/>
+		<talkaction words="/pd" hidden="yes" case-sensitive="no" event="script" value="../../lib/ps/events/talkactions/client/pokemonDescription.lua"/>
+		<talkaction words="/tc" hidden="yes" case-sensitive="no" event="script" value="../../lib/ps/events/talkactions/client/tmChoose.lua"/>
+		<talkaction words="/d1;/d2" event="script" value="../../lib/ps/events/talkactions/transformMemory.lua" description="Order your Pokemon to transform into the corresponding memory slot."/>
+		<talkaction words="/boss" event="script" value="../../lib/ps/events/talkactions/bossRewardCheck.lua" description="Show remaining time to be able to receive another World Boss reward." />		
+		<talkaction words="/lang" event="script" value="../../lib/ps/events/talkactions/setLanguage.lua" description="Set current game language." />		
+		<!-- Skills -->
+		<talkaction words="s1;s2;s3;s4;s5;s6;s7;s8;s9;s10;s11;s12;s13;s14;s15;s16;m1;m2;m3;m4;m5;m6;m7;m8;m9;m10;m11;m12;m13;m14;m15;m16" case-sensitive="no" hidden="yes" event="script" value="../../lib/ps/events/talkactions/skill.lua" />
+		<!-- Abilities -->
+		<talkaction words="/teleport;/tele;/tp" event="script" value="../../lib/ps/events/talkactions/teleport.lua" description="Command for Teleport ability."/>
+		<talkaction words="/up" event="script" value="../../lib/ps/events/talkactions/flyUp.lua" description="Up a floor when flying."/>
+		<talkaction words="/down" event="script" value="../../lib/ps/events/talkactions/flyDown.lua" description="Down a floor when flying."/>
+		<talkaction words="/find" event="script" value="../../lib/ps/events/talkactions/find.lua" description="Command for Find ability."/>
+		<!-- TV -->
+		<talkaction words="/tvname" event="script" value="../../lib/ps/events/talkactions/tv/name.lua" description="Rename TV Channel when broadcasting."/>
+		<talkaction words="/tvlist" event="script" value="../../lib/ps/events/talkactions/tv/list.lua" description="List of viewers when broadcasting."/>
+		<talkaction words="/tvkick" event="script" value="../../lib/ps/events/talkactions/tv/kick.lua" description="Kick a viewer when broadcasting."/>
+		<talkaction words="/tvban" event="script" value="../../lib/ps/events/talkactions/tv/ban.lua" description="Ban a viewer when broadcasting."/>
+		<talkaction words="/tvunban" event="script" value="../../lib/ps/events/talkactions/tv/unban.lua" description="Unban a viewer when broadcasting."/>
+		<talkaction words="/tvpassword" event="script" value="../../lib/ps/events/talkactions/tv/password.lua" description="Create a required password to watch the channel."/>
+		<!-- Guild -->
+		<talkaction words="/list" event="script" value="../../lib/ps/events/talkactions/guildList.lua" description="Show online guild members."/>
+		<talkaction words="/setrank" event="script" value="../../lib/ps/events/talkactions/guildRank.lua" description="Change a guild member rank."/>
+		<!--
+		<talkaction words="/tvbanlist" event="script" value="../../lib/ps/events/talkactions/tv/banlist.lua"/>
+		-->
+		<!--
+		<talkaction words="/gl" event="script" value="../../lib/ps/tools/generateLoot.lua" />
+		-->
+
+	<!-- End PS -->
+	
+	<!-- Gods -->
+	<talkaction log="yes" words="/addskill" access="5" event="function" value="addSkill"/>
+	<talkaction log="yes" words="/attr" access="5" event="function" value="thingProporties"/>
+	<talkaction log="yes" words="/serverdiag" access="5" event="function" value="diagnostics"/>
+	<talkaction log="yes" words="/closeserver" access="5" event="script" value="closeopen.lua"/>
+	<talkaction log="yes" words="/openserver" access="5" event="script" value="closeopen.lua"/>
+	<talkaction log="yes" words="/promote;/demote" access="5" event="script" value="promote.lua"/>
+	<talkaction log="yes" words="/shutdown" access="5" event="script" value="shutdown.lua"/>
+	<talkaction log="yes" words="/mode" access="5" event="script" value="mode.lua"/>
+	<talkaction log="yes" words="/createnpc" access="5" event="script" value="createNpc.lua"/>
+	<talkaction log="yes" words="/mypokemon" access="5" event="script" value="pokemon.lua"/>
+	<talkaction log="yes" words="/s" access="5" event="script" value="summon.lua"/>
+	<talkaction log="yes" words="/n" access="5" event="script" value="creature.lua"/>
+	<talkaction log="yes" words="/m" access="5" event="script" value="creature.lua" description="Summon monster."/>
+	<talkaction log="yes" words="/reload" access="5" event="script" value="reload.lua"/>
+	<talkaction log="yes" words="/raid" access="5" event="script" value="raid.lua"/>
+	<talkaction log="yes" words="/r" access="5" event="script" value="remove.lua" description="Remove thing."/>
+	<talkaction log="yes" words="/addoutfit" access="5" event="script" value="../../lib/ps/events/talkactions/addOutfit.lua" description="Add outfit to player."/>
+	<talkaction log="yes" words="/sendplayeruniqueitem" access="5" event="script" value="../../lib/ps/events/talkactions/sendPlayerUniqueItem.lua" description="Send an unique item to player."/>
+
+	<!-- Community Managers -->
+	<talkaction log="yes" words="/newtype" access="4" event="script" value="newtype.lua"/>
+	<talkaction log="yes" words="/owner" access="4" event="script" value="owner.lua"/>
+	<talkaction log="yes" words="/storage" access="4" event="script" value="storage.lua"/>
+	<talkaction log="yes" words="/config" access="4" event="script" value="configinfo.lua"/>
+	<talkaction log="yes" words="/i" access="4" event="script" value="createitem.lua"/>
+	<talkaction access="4" words="/z" event="script" value="magiceffect.lua" description="Show magic effects."/>
+	<talkaction access="4" words="/x" event="script" value="animationeffect.lua" description="Show projectiles."/>
+	<talkaction access="4" words="/y" event="script" value="animatedtext.lua" description="Show animated texts."/>
+	<talkaction log="yes" words="/bc" access="4" event="script" value="broadcastclass.lua"/>
+	<talkaction log="yes" access="4" words="/mkick" event="script" value="masskick.lua"/>
+
+	<!-- Gamemasters -->
+	<talkaction log="yes" words="/ghost" access="3" event="function" value="ghost" description="Invisible."/>
+	<talkaction log="yes" words="/squelch" access="3" event="script" value="gamemaster.lua" description="Ignore private messages."/>
+	<talkaction log="yes" words="/cliport" access="3" event="script" value="gamemaster.lua" description="Map click teleport."/>
+	<talkaction log="yes" words="/t" access="3" event="script" value="teleportmaster.lua"/>
+	<talkaction log="yes" words="/c" access="3" event="script" value="teleporthere.lua"/>
+	<talkaction log="yes" words="/goto" access="3" event="script" value="teleportto.lua"/>
+	<talkaction log="yes" words="/a" access="3" event="script" value="teleporttiles.lua"/>
+	<talkaction log="yes" words="/kick" access="3" event="script" value="kick.lua"/>
+	<talkaction log="yes" words="/send" access="3" event="script" value="teleportsend.lua"/>
+	<talkaction log="yes" words="/unban" access="3" event="script" value="unban.lua"/>
+	<talkaction log="yes" words="/town" access="3" event="script" value="teleporttown.lua"/>
+	<!--<talkaction log="yes" words="/up" access="3" event="script" value="teleportfloor.lua"/>
+	<talkaction log="yes" words="/down" access="3" event="script" value="teleportfloor.lua"/>-->
+	<talkaction log="yes" words="/save" access="3" event="script" value="save.lua"/>
+	<talkaction log="yes" words="/clean" access="3" event="script" value="clean.lua"/>
+	<talkaction log="yes" words="/reports" access="3" event="script" value="reports.lua"/>
+	<talkaction log="yes" access="3" words="/wp" event="script" value="waypoints.lua"/>
+	<talkaction access="3" words="/online" event="script" value="online.lua"/>
+	<talkaction log="yes" words="/info" access="3" event="script" value="playerinfo.lua"/>
+	<talkaction log="yes" access="3" words="/b" event="script" value="broadcast.lua" description="Broadcast message. (Name visible)"/>
+	<talkaction log="yes" access="3" words="/gmcheck" event="script" value="../../lib/ps/events/talkactions/gmCheck.lua" description="Check players"/>
+
+	<!-- Senior Tutors -->
+	<talkaction log="yes" words="/notations" access="2" event="script" value="notations.lua"/>
+	<talkaction log="yes" words="/gethouse" access="2" event="script" value="gethouse.lua"/>
+	<talkaction log="yes" words="/mc" access="2" event="script" value="multicheck.lua"/>
+	<talkaction log="yes" words="/baninfo" access="2" event="function" value="banishmentInfo"/>
+	
+	<!-- Tutors -->
+	<talkaction log="yes" words="/chatban" access="1" event="script" value="../../lib/ps/events/talkactions/chatBan.lua"/>
+
+	<!-- Players -->
+	<talkaction words="/autoTrade" case-sensitive="no" event="script" value="../../lib/ps/events/talkactions/trade.lua" description="Automatic yell offerts on trade channel."/>
+
+<!--
+	<talkaction words="!frags" event="script" value="frags.lua"/>
+	<talkaction words="!uptime" event="script" value="uptime.lua"/>
+	<talkaction words="!deathlist" event="script" value="deathlist.lua"/>
+	<talkaction words="!pvp" event="script" value="pvp.lua"/>
+	<talkaction words="!q" event="script" value="money.lua"/>
+	<talkaction words="!serverinfo" event="script" value="serverinfo.lua"/>
+	<talkaction words="/commands" event="script" value="commands.lua"/>
+-->
+
+	<!-- Houses -->
+	<talkaction words="/house buy" filter="word-spaced" event="function" value="houseBuy" description="Buy a house if it's in front of it."/>
+	<talkaction words="/house sell" filter="word-spaced" event="function" value="houseSell" description="Sell current owning house."/>
+	<talkaction words="/house kick" filter="word-spaced" event="function" value="houseKick" description="Kick self or someone from house."/>
+	<talkaction words="/house door" filter="word-spaced" event="function" value="houseDoorList" description="List players that can open the door."/>
+	<talkaction words="/house guest" filter="word-spaced" event="function" value="houseGuestList" description="List of house guests."/>
+	<talkaction words="/house sub" filter="word-spaced" event="function" value="houseSubOwnerList" description="List of house sub-owners."/>
+	<talkaction words="/house leave" filter="word-spaced" event="script" value="leavehouse.lua" description="Abandon current house."/>
+
+	<!-- Guilds -->
+	<!-- <talkaction words="!createguild" event="function" value="guildCreate"/> -->
+	<talkaction words="!joinguild;/joinguild" event="function" value="guildJoin" description="Accept a guild invite."/>
+
+	<!-- (Deprecated) Redirect old '/' to '!' -->
+	<!--<talkaction words="/online" hide="yes" event="script" value="online.lua"/>
+	<talkaction words="/uptime" hide="yes" event="script" value="uptime.lua"/>
+	<talkaction words="/deathlist" hide="yes" event="script" value="deathlist.lua"/>
+	<talkaction words="/pvp" hide="yes" event="script" value="pvp.lua"/>
+	<talkaction words="/serverinfo" hide="yes" event="script" value="serverinfo.lua"/>
+	<talkaction log="yes" access="1" hide="yes" words="!pos" event="script" value="position.lua"/>-->
+</talkactions>

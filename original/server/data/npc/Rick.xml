@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Rick" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1203" head="18" body="83" legs="75" feet="11"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello trainer."/>
+	</parameters>
+</npc>

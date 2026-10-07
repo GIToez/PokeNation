@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kelly Klemm" script="npcbattle_kellyklemm.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="612" head="90" body="90" legs="30" feet="30" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="We are the most opportunistic, not lower your guard child."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,8 @@
+TUTORIALS['pt'][#TUTORIALS['pt'] + 1] = {
+    name = "Seu Personagem",
+    contents = {
+        {type = CONTENT_TYPES.IMAGE, value = "/images/tutorial/character.png"},
+        {type = CONTENT_TYPES.TEXT, value = "No centro da janela do jogo você encontrará o seu personagem, ele sempre estará exatamente no meio da tela. Dentro do mundo do PSoul o seu personagem é livre, você pode explorar todos os cantos do mapa, interagir com todos objetos e criaturas que encontrar da maneira que quiser.\n\nPara movimentar seu personagem você pode utilizar dois métodos:\n\n1. Clicando diretamente no lugar onde você quer ir.\n\n2. Usando as setas direcionais do seu teclado.\n\nPara interagir com os objetos do mapa, dê um clique com o botão direito do seu mouse no objeto desejado. Um pequeno menu com as opções que você tem será mostrado. Por exemplo, a opção “Olhar” é utilizada para ver a descrição do objeto. Já a opção “Usar” é utilizada para executar a ação do objeto. Note que cada tipo de objeto tem as suas opções, mochilas mostrarão “Abrir” para abrir, cadeiras mostrarão “Girar” para girar e assim por diante.\n\nDa mesma maneira, se você clicar em um personagem ou NPC um menu também será mostrado. As opções mais comuns nestes casos serão “Seguir” para seguir e “Atacar” para atacar. Dica: Olhe as opções que aparecem ao você clicar no seu personagem!" },
+        {type = CONTENT_TYPES.IMAGE, value = "/images/tutorial/self_options.png"},
+    }
+}

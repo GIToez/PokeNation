@@ -1,0 +1,21 @@
+MOVES["Double-Edge"] = {
+    description = "Double-Edge deals damage and has no secondary effect.",
+    makeJump = true,
+    makeContact = true,
+    makeRecoil = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11707,
+    iconId = 13333,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "DoubleEdge",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 120,
+    requiredLevel = 50,
+    damage = 120,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_SCRATCH_TWO,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 18,
+    cooldownStorage = 15015
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Oddish" nameDescription="an Oddish" shiny="Shiny Oddish" race="blood" experience="7" speed="230" manacost="0" minLevel="5" maxLevel="15">
+	<health now="45" max="45"/>
+	<look type="394" head="0" body="0" legs="0" feet="0" corpse="11431"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="3333" skill="24" attack="50"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="55"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="ODDI!"/>
+		<voice sentence="ODDISH!"/>
+	</voices>
+	
+<loot><item id="12091" countmax="1" chance="7407"/><item id="12102" countmax="3" chance="66666"/><item id="13304" countmax="1" chance="4938"/><item id="2680" countmax="3" chance="5000"/><item id="17857" countmax="1" chance="100"/></loot></monster>

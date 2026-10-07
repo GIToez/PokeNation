@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Evil Rocket Bot" nameDescription="an Evil Rocket Bot" race="blood" experience="17" speed="290" manacost="0" minLevel="100" maxLevel="100" sex="2">
+	<health now="1000" max="1000"/>
+	<look type="1226" head="0" body="0" legs="0" feet="0" corpse="18751"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="script_Blizzard" interval="2000" chance="30" />
+		<attack name="script_Confusion" interval="4000" chance="30" />
+		<attack name="script_Earthquake" interval="6000" chance="30" />
+		<attack name="script_Flame Wheel" interval="8000" chance="30" />
+		<attack name="script_Hydro Pump" interval="10000" chance="30" />
+		<attack name="script_Sing" interval="12000" chance="30" />
+		<attack name="script_Sleep Powder" interval="14000" chance="30" />
+		<attack name="script_Thunder" interval="16000" chance="30" />
+		<attack name="script_Hurricane" interval="18000" chance="30" />
+		<attack name="script_Inferno" interval="20000" chance="30" />
+		<attack name="script_Earth Power" interval="22000" chance="30" />
+		<attack name="script_Flare Blitz" interval="24000" chance="30" />
+		<attack name="script_Leaf Storm" interval="26000" chance="30" />
+		<attack name="script_Sludge Wave" interval="28000" chance="30" />
+		<attack name="script_Stomp" interval="30000" chance="30" />
+	</attacks>
+	<defenses armor="10" defense="90"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+	</voices>
+	<loot>
+	</loot>
+	<script>
+        <event name="christmas_onDeath"/>                	    
+	</script>
+</monster>

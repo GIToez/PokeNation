@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lonnie Lasko" script="npcbattle_lonnielasko.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="612" head="49" body="74" legs="34" feet="26" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Do not cover much, we know you can not."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

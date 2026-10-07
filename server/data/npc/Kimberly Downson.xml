@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kimberly Downson" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1210" head="60" body="90" legs="30" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Winter is the best season for me."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

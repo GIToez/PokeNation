@@ -1,0 +1,17 @@
+MOVES["Nature Power"] = {
+    description = "This attack makes use of nature's power. Its effects vary depending on the user's environment.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 27662,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    type = SKILLS_TYPES.STATS,
+    requiredEnergy = 100,
+    damage = 80,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BIG_SHIELD,
+    projectile = nil,
+    maxDistance = 0,
+    cooldownTime = 18,
+    cooldownStorage = 15452,
+    makeContact = false,
+}

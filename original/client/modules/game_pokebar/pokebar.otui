@@ -1,0 +1,58 @@
+HealthLabel < UILabel
+  font: verdana-11px-antialised
+  color: #00FF33
+  text-align: center
+
+PokeItem < Item
+  size: 36 36
+  virtual: true
+  border-width: 0
+  margin: 3
+  image-source: ~
+  $hover:
+    border-color: white
+    border-width: 1
+
+BeltItem < UIWidget
+  size: 44 63
+  virtual: true
+  border-width: 0
+  margin: 0
+  margin: 4
+  image-source: /images/ui/pokebelt_item
+  $hover:
+    border-color: white
+    border-width: 1
+
+  Item
+    id: portrait
+    size: 42 42
+    virtual: true
+    phantom: true
+    border-width: 0
+    margin: 0
+    image-source: ~
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    $hover:
+      border-color: white
+      border-width: 1
+
+  UILabel
+    id: health
+    font: verdana-11px-antialised
+    color: #00FF33
+    anchors.top: portrait.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    text-align: center
+    margin-top: 5
+    text-horizontal-auto-resize: true
+
+HeadlessWindow
+  id: pokebar
+  focusable: false
+  image-color: #ffffffee
+  size: 233 65
+  image-source: /images/ui/pokebelth
+  anchors.bottom: gameMapPanel.bottom
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter

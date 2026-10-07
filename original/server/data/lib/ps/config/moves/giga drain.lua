@@ -1,0 +1,19 @@
+MOVES["Giga Drain"] = {
+    description = "Giga Drain deals damage and the user will recover 50% of the HP drained.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11720,
+    iconId = 13346,
+    dType = DAMAGE_TYPE_GRASS,
+    functionName = "GigaDrain",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 95,
+    requiredLevel = 40,
+    damage = 75,
+    damageType = ELEMENT_GRASS,
+    effect = EFFECT_BLOW,
+    projectile = PROJECTILE_GREEN_SHOT,
+    backProjectile = PROJECTILE_GREEN_SHOT,
+    maxDistance = 1,
+    cooldownTime = 12,
+    cooldownStorage = 15028
+}

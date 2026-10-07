@@ -1,0 +1,113 @@
+# ---- Downloaded archives (never commit the original package into normal history) ----
+*.rar
+*.7z
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+Projeto*/
+
+# ---- Build output (compiler output only; see docs/BUILDING.md) ----
+/build/
+build/
+build-*/
+bin/
+obj/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CMakeUserPresets.json
+CTestTestfile.cmake
+_deps/
+.ninja_deps
+.ninja_log
+build.ninja
+compile_commands.json
+Makefile.generated
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.exe
+*.dll
+*.pdb
+*.exp
+*.map.txt
+*.idb
+*.ilk
+*.res
+*.gch
+*.pch
+server/theforgottenserver
+server/psoul-server
+
+# ---- IDE / tool caches ----
+.idea/
+.vscode/
+.vs/
+ipch/
+*.VC.db
+*.VC.opendb
+.cache/
+.clangd/
+.ccls-cache/
+*.sdf
+*.opensdf
+*.suo
+*.user
+*.sln.docstates
+*.swp
+*~
+Thumbs.db
+desktop.ini
+.DS_Store
+__pycache__/
+*.pyc
+
+# ---- Server runtime output ----
+server/logs/
+*.log
+server/data/logs/
+server/settings.sav
+# crash dumps (anchored so that framework/core/ source directories are not ignored)
+/core
+/server/core
+/client/core
+core.[0-9]*
+*.dmp
+*.mdmp
+crash_report.log
+
+# ---- Local secrets / local-only configuration ----
+# Copy server/config.example.lua to server/config.lua and keep your real DB password there.
+server/config.lua
+*.local.lua
+.env
+
+# ---- Temporary / generated database files ----
+*.s3db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.sql.bak
+*.dump
+*.tmp
+*.temp
+*.db-wal
+*.db-shm
+
+# ---- Keep tracked example files even though their patterns are ignored above ----
+!server/config.example.lua
+!**/.gitignore.upstream
+# The untouched reference copy is complete by definition (it contains its own old logs/config).
+!original/**
+
+# ---- Runtime-generated NPC files (data/lib/ps/systems/027-citizens.lua rewrites them on every startup) ----
+server/data/npc/tmpCitizen_*.xml
+
+# ---- Packaged builds (tools/package.sh): dist/<platform>/{server,client}, dist/debug/, archives ----
+/dist/
+*.sha256

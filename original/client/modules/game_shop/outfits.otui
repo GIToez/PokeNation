@@ -1,0 +1,25 @@
+OutfitsButton < ShopButton
+OutfitsButtonSale < ShopButtonSale
+OutfitsPrize < ShopPrize
+
+Panel
+  VerticalScrollBar
+    id: scrollBar
+    step: 50
+    pixels-scroll: true
+    anchors.top: parent.top
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+
+  ScrollablePanel
+    vertical-scrollbar: scrollBar
+    anchors.fill: parent
+    margin-right: 15
+
+    OutfitsButton
+      text: Deadpool
+      icon: /images/game/shop/outfits/deadpool
+      anchors.top: parent.top
+      margin-top: 0
+      OutfitsPrize
+        text: 5

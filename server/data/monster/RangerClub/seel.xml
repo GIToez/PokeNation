@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="RC Seel" nameDescription="a Shiny Seel" nickname="Seel" race="blood" experience="10" speed="245" manacost="0" minLevel="40" maxLevel="40">
+	<health now="1170" max="1170" rate="1.1"/>
+	<look type="764" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag boss="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2222" skill="24" attack="45"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="55"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SEEL!"/>
+	</voices>
+	<loot>
+	</loot>
+	<script>
+        <event name="rangerClubBoss"/>	    
+	</script>
+</monster>

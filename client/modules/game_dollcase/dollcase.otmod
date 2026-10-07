@@ -1,0 +1,9 @@
+Module
+  name: game_dollcase
+  description: Doll Case
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ dollcase ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Oak's Assistant" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1181" head="25" body="79" legs="30" feet="30" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hey buddy, do you need something?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

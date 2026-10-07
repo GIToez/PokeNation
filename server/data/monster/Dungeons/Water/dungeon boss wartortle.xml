@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Wartortle" nameDescription="a Shiny Wartortle" nickname="Elite Wartortle" race="blood" experience="0" speed="258" manacost="0" minLevel="50" maxLevel="50">
+	<health now="118" max="118"/>
+	<look type="673" head="0" body="0" legs="0" feet="0" corpse="11396"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag boss="1"/>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1724" skill="24" attack="63"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="80"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="WARTORTLEE!"/>
+		<voice sentence="WARTORTLE! WARTORTLE!"/>
+	</voices>
+	<loot>
+	</loot>
+	<script>
+        <event name="dungeonEvolve"/>                	    
+	</script>
+</monster>

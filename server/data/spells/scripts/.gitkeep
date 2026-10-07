@@ -1,0 +1,3 @@
+# Intentionally empty.
+# spells.xml references scripts as "../../lib/ps/events/spells/..." relative to data/spells/scripts/.
+# Windows resolves ".." lexically, but on Linux the intermediate directory must exist.

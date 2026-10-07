@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Daisy Oak" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1322" head="41" body="77" legs="114"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello."/>
+	</parameters>
+</npc>

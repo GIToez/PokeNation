@@ -1,0 +1,19 @@
+MOVES["Sludge Wave"] = {
+    description = "Sludge Wave inflicts damage and has a 10% chance of poisoning the target.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 12104,
+    iconId = 0,
+    dType = DAMAGE_TYPE_POISON,
+    functionName = "SludgeWave",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 105,
+    requiredLevel = 45,
+    damage = 9.5,
+    damageType = ELEMENT_POISON,
+    effect = EFFECT_POISON_SPLASH,
+    areaEffect = EFFECT_POISON_GAS_TWO,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 22,
+    cooldownStorage = 15199
+}

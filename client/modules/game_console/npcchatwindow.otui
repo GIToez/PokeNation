@@ -1,0 +1,92 @@
+NpcDialogCheckBox < CheckBox
+  @onCheckChange: modules.console.setNpcDialogOption(self:getId(), self:isChecked())
+  height: 16
+  font: terminus-14px-bold
+  image-source: /images/ui/checkbox_light
+  text-wrap: true
+  text-auto-resize: true
+  border-color: #476150
+  border-width-bottom: 1
+
+  $first:
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+
+  $!first:
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 2
+
+MainWindow
+  id: npcChatWindow
+  !text: tr('NPC Chat')
+  size: 515 410
+  @onEscape: self:destroy()
+
+  ScrollablePanel
+    id: consoleBuffer
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 150
+    margin-right: 12
+    vertical-scrollbar: consoleScrollBar
+    layout:
+      type: verticalBox
+      align-bottom: true
+    border-width: 1
+    border-color: #202327
+    background: #00000066
+    inverted-scroll: true
+    padding: 1
+
+  VerticalScrollBar
+    id: consoleScrollBar
+    anchors.top: parent.top
+    anchors.bottom: consoleBuffer.bottom
+    anchors.right: parent.right
+    step: 14
+    pixels-scroll: true
+
+  Creature
+    id: npcCreatureBox
+    anchors.top: consoleBuffer.bottom
+    anchors.left: parent.left
+    margin-top: 20
+    padding: 4 4 4 4
+    fixed-creature-size: true
+
+  Label
+    id: npcName
+    !text: tr('NPC')
+    width: 115
+    anchors.bottom: npcCreatureBox.top
+    anchors.left: npcCreatureBox.left
+    margin-bottom: 2
+
+  ScrollableFlatPanel
+    id: npcDialogOptions
+    anchors.top: consoleBuffer.bottom
+    anchors.left: npcCreatureBox.right
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-bottom: 5
+    margin-top: 5
+    padding: 3
+    layout:
+      type: anchor
+    vertical-scrollbar: npcDialogOptionsScrollBar
+    auto-focus: first
+    focusable: false
+
+  VerticalScrollBar
+    id: npcDialogOptionsScrollBar
+    anchors.top: npcDialogOptions.top
+    anchors.right: parent.right
+    anchors.bottom: npcDialogOptions.bottom
+    margin-bottom: 5
+    margin-top: 5
+    step: 32
+    pixels-scroll: true

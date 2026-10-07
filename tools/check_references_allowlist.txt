@@ -1,0 +1,46 @@
+# Known REAL ERROR references accepted by `check_references.py --strict`.
+# Format: <check>|<file>|<target>  # comment. Remove a line when the reference is fixed.
+client.otui|client/data/styles/30-minimap.otui|/images/game/minimap/mapflags  # client/data/styles/30-minimap.otui:98 -- minimap flag icons render blank (mapflags.png missing; only flag0.png ships)
+client.otui|client/modules/game_market/ui/general/marketcombobox.otui|/images/combobox_rounded  # client/modules/game_market/ui/general/marketcombobox.otui:7 -- market combobox has no background image
+client.otui|client/modules/game_minimap/flagwindow.otui|/images/game/minimap/mapflags  # client/modules/game_minimap/flagwindow.otui:7 -- minimap flag icons render blank (mapflags.png missing; only flag0.png ships)
+lua.createMonster|server/data/actions/scripts/tools/shovel.lua|Scarab  # server/data/actions/scripts/tools/shovel.lua:21 -- stock TFS shovel: 15% of digs log 'monster not found' (no Scarab here)
+lua.creatureEvent|server/data/lib/ps/systems/049-eliteFour.lua|onLogout_EliteFour  # server/data/lib/ps/systems/049-eliteFour.lua:97 -- registration returns false; inert because the generic onLogout.lua:37-38 already removes the Elite Four challenger
+pokemon.ability|server/data/lib/ps/config/pokemon|Strenght  # absol.lua:17, aggron.lua:17, armaldo.lua:17, aron.lua:17 ... -- species never get the Strength field ability (BUG-30 lists 11; 59 are affected) [BUG-30]
+pokemon.ability|server/data/lib/ps/config/pokemon|Rock Slide  # flygon.lua:17, trapinch.lua:17, vibrava.lua:17 -- 'Rock Slide' is a move, not a field ability; entry is ignored
+pokemon.ability|server/data/lib/ps/config/pokemon|RockMSmash  # mewtwo.lua:17 -- Mewtwo never gets Rock Smash
+pokemon.eggMove.typo|server/data/lib/ps/config/pokemon|'Psybeam '  # ariados.lua:23, spinarak.lua:23 -- egg move silently dropped at startup by doUpdatePokemonEggMovesList(); never offered
+pokemon.eggMove.typo|server/data/lib/ps/config/pokemon|Singal Beam  # ariados.lua:23, spinarak.lua:23 -- egg move silently dropped at startup by doUpdatePokemonEggMovesList(); never offered
+pokemon.eggMove.typo|server/data/lib/ps/config/pokemon|Copycate  # azumarill.lua:23, marill.lua:23 -- egg move silently dropped at startup by doUpdatePokemonEggMovesList(); never offered
+pokemon.eggMove.typo|server/data/lib/ps/config/pokemon|Screeh  # corsola.lua:23, misdreavus.lua:23 -- egg move silently dropped at startup by doUpdatePokemonEggMovesList(); never offered
+pokemon.eggMove.typo|server/data/lib/ps/config/pokemon|Fake Teasr  # croconaw.lua:23, feraligatr.lua:23, totodile.lua:23 -- egg move silently dropped at startup by doUpdatePokemonEggMovesList(); never offered
+pokemon.eggMove.typo|server/data/lib/ps/config/pokemon|Sacry Face  # fearow.lua:25, spearow.lua:23 -- egg move silently dropped at startup by doUpdatePokemonEggMovesList(); never offered
+pokemon.eggMove.typo|server/data/lib/ps/config/pokemon|Heall Bell  # granbull.lua:23, snubbull.lua:23 -- egg move silently dropped at startup by doUpdatePokemonEggMovesList(); never offered
+pokemon.eggMove.typo|server/data/lib/ps/config/pokemon|Freezy-Dry  # lapras.lua:23 -- egg move silently dropped at startup by doUpdatePokemonEggMovesList(); never offered
+pokemon.eggMove.typo|server/data/lib/ps/config/pokemon|Harmmer Arm  # miltank.lua:23 -- egg move silently dropped at startup by doUpdatePokemonEggMovesList(); never offered
+pokemon.eggMove.typo|server/data/lib/ps/config/pokemon|Mirro Move  # murkrow.lua:23 -- egg move silently dropped at startup by doUpdatePokemonEggMovesList(); never offered
+pokemon.eggMove.typo|server/data/lib/ps/config/pokemon|Iciel Crash  # piloswine.lua:23, swinub.lua:23 -- egg move silently dropped at startup by doUpdatePokemonEggMovesList(); never offered
+pokemon.itemid|server/data/lib/ps/config/pokemon|135600  # kingler.lua:11 -- Kingler dexPortrait typo (13600 intended); inert, getPokemonDexPortraitId() has no caller
+pokemon.specialAbility|server/data/lib/ps/config/pokemon|POKEMON_SPECIAL_ABILITY_IDS.SOLID_ROCK  # camerupt.lua:21 -- species silently lacks that special ability (nil entry)
+pokemon.specialAbility|server/data/lib/ps/config/pokemon|POKEMON_SPECIAL_ABILITY_IDS.MARVEL_SCALE  # milotic.lua:21 -- species silently lacks that special ability (nil entry)
+pokemon.specialAbility|server/data/lib/ps/config/pokemon|POKEMON_SPECIAL_ABILITY_IDS.FOREWARN  # smoochum.lua:21, test smoochum.lua:21 -- species silently lacks that special ability (nil entry)
+pokemon.specialAbility|server/data/lib/ps/config/pokemon|POKEMON_SPECIAL_ABILITY_IDS.WHITE_SMOKE  # torkoal.lua:21 -- species silently lacks that special ability (nil entry)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.TAUNT  # abra.lua:22, absol.lua:22, aerodactyl.lua:22, aggron.lua:22 ... -- no Taunt TM exists, so nothing is lost; the nil hole can make table.random(#t) in npcbattle_{lorelei,lance,agatha,bruno}.lua:28 pick nil
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.ROARBRICK_BREAK  # bagon.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.FOCUS_PUNHC  # blastoise.lua:22, squirtle.lua:22, wartortle.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.CARVANHA  # carvanha.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.LIGHT_SCRREN  # cleffa.lua:22, igglybuff.lua:22, pichu.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.SKUL_BASH  # dodrio.lua:22, doduo.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.SEISMC_TOSS  # gengar.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.JUMPLUFF  # jumpluff.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.BUBBLEABEAM  # jynx.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.SANDSTORMONIX  # lickitung.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.SKULL_BASh  # meowth.lua:22, paras.lua:22, parasect.lua:22, persian.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.SWFIT  # moltres.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.BE  # paras.lua:22, parasect.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.SHOKC_WAVE  # raticate.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.SHOCK__WAVE  # regice.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+pokemon.tm|server/data/lib/ps/config/pokemon|TM_IDS.SWORDS_DANCCE  # tangela.lua:22 -- the species cannot learn that TM (nil in learnableTms; table.find skips it)
+protocol.psoul.listener|client/src-cpp/src/client/protocolgameparse.cpp|onMoveBarClose  # client/src-cpp/src/client/protocolgameparse.cpp:1823 -- 0xFF/0x02 and 0x03 (move bar close/open) reach no Lua handler: game_pokemoves listens to onPokemonMovesOpen/Close, so the move bar is never hidden by the server (stale bar after recall); inherited from the archive
+protocol.psoul.listener|client/src-cpp/src/client/protocolgameparse.cpp|onMoveBarOpen  # client/src-cpp/src/client/protocolgameparse.cpp:1828 -- 0xFF/0x02 and 0x03 (move bar close/open) reach no Lua handler: game_pokemoves listens to onPokemonMovesOpen/Close, so the move bar is never hidden by the server (stale bar after recall); inherited from the archive
+quest.npc.unspawned|server/data/lib/ps/config/003-quest.lua|London Hamnet  # server/data/lib/ps/config/003-quest.lua:6060 -- quest NPC with QUESTS_CONFIG entry is not on the map; quest unreachable [BUG-15]
+sql.table|server/src/iologindata.cpp|parcels  # server/src/iologindata.cpp:1243 -- every player-to-player parcel logs an SQL error ('PS - Parcel log', IOLoginData::playerMail); the parcel itself is delivered

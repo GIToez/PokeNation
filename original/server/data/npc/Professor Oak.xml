@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Professor Oak" script="quest_professorOak.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="562" head="0" body="0" legs="0" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|, how are you? You're taking good care of your {Pokemon}?"/>
+	</parameters>
+	<voices>
+		<voice text="Welcome to my Lab. If you wanna talk with me, just speak out 'hi' next to me!" interval2="10" margin="30000"/>
+	</voices>
+</npc>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Venonat" nameDescription="a Venonat" shiny="Shiny Venonat" race="blood" experience="12" speed="245" manacost="0" minLevel="18" maxLevel="28">
+	<health now="60" max="60"/>
+	<look type="399" head="0" body="0" legs="0" feet="0" corpse="11436"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2222" skill="24" attack="55"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="50"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="VENO!"/>
+		<voice sentence="VENONAT!"/>
+	</voices>
+	
+<loot><item id="12126" countmax="1" chance="13333"/><item id="14511" countmax="1" chance="40000"/><item id="14464" countmax="3" chance="3000"/><item id="17862" countmax="1" chance="100"/><item id="12241" countmax="1" chance="2"/><item id="12235" countmax="1" chance="2"/></loot></monster>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Illumise" nameDescription="an Illumise" race="blood" experience="10" speed="285" manacost="0" minLevel="40" maxLevel="50" sex="0">
+	<health now="65" max="65"/>
+	<look type="1493" corpse="28797"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1176" skill="24" attack="73"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="75"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="ILLUMISE!"/>
+	</voices>
+	
+<loot><item id="12113" countmax="1" chance="59523"/><item id="13302" countmax="1" chance="41666"/><item id="17786" countmax="1" chance="55555"/><item id="29038" countmax="1" chance="100"/><item id="12241" countmax="1" chance="25"/><item id="23528" countmax="1" chance="10"/></loot></monster>

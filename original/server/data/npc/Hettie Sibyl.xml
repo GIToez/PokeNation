@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Hettie Sibyl" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="625" head="44" body="60" legs="44" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I've exhausted my Poke Balls to capture the new Pokemon. You should always carry some extras."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

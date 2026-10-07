@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Maricela Boyter" script="npcbattle_maricelaboyter.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="625" head="22" body="22" legs="50" feet="70" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="The powers of the mind are invincible!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

@@ -1,0 +1,17 @@
+MOVES["Spikes"] = {
+    description = "Spikes does damage and has no secondary effect.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 27659,
+    iconId = 0,
+    dType = DAMAGE_TYPE_GROUND,
+    type = SKILLS_TYPES.STATS,
+    requiredEnergy = 100,
+    damage = 60,
+    damageType = ELEMENT_GROUND,
+    effect = EFFECT_BIG_SHIELD,
+    projectile = nil,
+    maxDistance = 6,
+    cooldownTime = 9,
+    cooldownStorage = 15439,
+    makeContact = false,
+}

@@ -1,0 +1,17 @@
+MOVES["Smelling Salts"] = {
+    description = "Smelling Salts deals damage. Its base power will double against a paralyzed target, but it will also cure the target of paralysis.",
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 27601,
+    iconId = 0,
+    dType = DAMAGE_TYPE_NORMAL,
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 90,
+    damage = 70,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_BIG_BLOW,
+    projectile = PROJECTILE_GRAVEL,
+    maxDistance = 1,
+    cooldownTime = 16,
+    cooldownStorage = 15410,
+    makeContact = true,
+}

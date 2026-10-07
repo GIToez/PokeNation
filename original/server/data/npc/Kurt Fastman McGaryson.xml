@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kurt Fastman McGaryson" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="626" head="90" body="150" legs="70" feet="60" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|, what's up? Need a delivery?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

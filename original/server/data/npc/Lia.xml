@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lia" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1198" head="41" body="41" legs="63" feet="36"/>
+	<parameters>
+		<parameter key="message_greet" value="What's UP!? Ha ha!"/>
+	</parameters>
+</npc>

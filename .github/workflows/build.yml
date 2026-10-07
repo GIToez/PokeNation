@@ -1,0 +1,443 @@
+# Validates the Lua/XML content, builds the PSoul/PokeNation server and the frozen legacy client
+# from the source in this repository, runs runtime smoke tests and uploads development packages
+# as workflow artifacts (never as a public Release):
+#
+#   PokeNation-Server-Windows        PokeNation-Server-Windows-Dev.zip        (+ .sha256)
+#   PokeNation-LegacyClient-Windows  PokeNation-LegacyClient-Windows-Dev.zip  (+ .sha256)
+#   PokeNation-Server-Linux          PokeNation-Server-Linux-Dev.tar.gz       (+ .sha256)
+#   PokeNation-LegacyClient-Linux    PokeNation-LegacyClient-Linux-Dev.tar.gz (+ .sha256)
+#
+# Nothing from the original archive's precompiled binaries is used; every executable is compiled
+# here by tools/build_*.sh and packaged by tools/package.sh. See docs/BUILDING.md.
+name: Build development packages
+
+on:
+  push:
+    branches: ["**"]
+    paths-ignore: ["docs/**", "original/**", "**/*.md"]
+  pull_request:
+    paths-ignore: ["docs/**", "original/**", "**/*.md"]
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  ARTIFACT_RETENTION_DAYS: 14
+  BUILD_TYPE: development
+
+jobs:
+  # --------------------------------------------------------------------------------------------
+  validate:
+    name: Validate Lua/XML and references
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: false
+      - name: Install tools
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends lua5.1 libxml2-utils
+      - name: Lua/XML syntax check
+        run: tools/check_syntax.sh
+      - name: Broken reference check (fails only on new REAL ERRORs, see docs/BROKEN_REFERENCES.md)
+        run: python3 tools/check_references.py --strict
+      - name: Shell script syntax
+        run: for f in tools/*.sh tools/package-files/linux/*/*.sh; do bash -n "$f" || exit 1; done
+
+  # --------------------------------------------------------------------------------------------
+  linux:
+    name: Linux x64 build, smoke test, package
+    needs: validate
+    runs-on: ubuntu-24.04
+    # The schemas use MariaDB syntax (ALTER TABLE ... ADD COLUMN IF NOT EXISTS) and MariaDB is the
+    # documented database, so the smoke test uses MariaDB instead of the runner's MySQL 8.
+    services:
+      mariadb:
+        image: mariadb:11
+        env:
+          MARIADB_ROOT_PASSWORD: root
+          MARIADB_DATABASE: psoul
+          MARIADB_USER: psoul
+          MARIADB_PASSWORD: ci-password
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd "healthcheck.sh --connect --innodb_initialized"
+          --health-interval 10s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: false
+
+      # Git LFS bandwidth is metered; cache the two big assets (map.otbm, data.spr) between runs.
+      - name: Compute LFS asset id
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+      - uses: actions/cache@v6
+        with:
+          path: .git/lfs
+          key: lfs-${{ hashFiles('.lfs-assets-id') }}
+      - name: Pull LFS objects
+        run: git lfs pull
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            build-essential cmake pkg-config mariadb-client \
+            libboost-system-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev libboost-chrono-dev \
+            liblua5.1-0-dev libxml2-dev libgmp-dev libmysqlclient-dev libsqlite3-dev libssl-dev \
+            libphysfs-dev libopenal-dev libglew-dev libvorbis-dev libogg-dev zlib1g-dev \
+            libgl1-mesa-dev libglu1-mesa-dev libx11-dev xvfb mesa-utils
+
+      - name: Build server
+        run: tools/build_server_linux.sh
+      - name: Build legacy client
+        run: tools/build_legacy_client_linux.sh
+
+      - name: Package
+        run: tools/package.sh all
+
+      - name: Initialise database from the seed (as the packaged setup would)
+        run: |
+          D=dist/linux/server
+          for f in mysql.sql psoul_extra_mysql.sql psoul_dev_seed.sql; do
+            mysql -h127.0.0.1 -uroot -proot psoul < "$D/database/$f"
+          done
+          sed -E -e 's/^(\s*sqlHost\s*=\s*)"[^"]*"/\1"127.0.0.1"/' -e 's/^(\s*sqlUser\s*=\s*)"[^"]*"/\1"psoul"/' \
+                 -e 's/^(\s*sqlPass\s*=\s*)"[^"]*"/\1"ci-password"/' \
+                 -e 's/^(\s*sqlDatabase\s*=\s*)"[^"]*"/\1"psoul"/' "$D/config.example.lua" > "$D/config.lua"
+
+      - name: Smoke test packaged server (startup, logins, starter, summon, battle, catch, logout)
+        # smoke_test.py exits 2 when the starter faints before the kill (random battle outcome). The
+        # second attempt starts again from a fresh seed database; a second exit 2 is a warning.
+        run: |
+          D=dist/linux/server
+          for attempt in 1 2; do
+            if [ "$attempt" = 2 ]; then
+              mysql -h127.0.0.1 -uroot -proot -e "DROP DATABASE psoul; CREATE DATABASE psoul;"
+              for f in mysql.sql psoul_extra_mysql.sql psoul_dev_seed.sql; do
+                mysql -h127.0.0.1 -uroot -proot psoul < "$D/database/$f"
+              done
+            fi
+            log=/tmp/server-$attempt.log
+            (cd "$D" && timeout 900 ./psoul-server > "$log" 2>&1 &)
+            for i in $(seq 1 170); do grep -q "^>> Cristal server Online" "$log" && break; sleep 1; done
+            grep -q "^>> Cristal server Online" "$log" || { tail -80 "$log"; exit 1; }
+            python3 tools/protocol_probe.py login --account admin --password admin | tee /tmp/probe.log
+            grep -q "GM Admin" /tmp/probe.log
+            python3 tools/smoke_test.py > /tmp/smoke-$attempt.log 2>&1 && rc=0 || rc=$?
+            cat /tmp/smoke-$attempt.log
+            # BUG-72: the server does not exit after SIGTERM
+            pkill -TERM -x psoul-server || true; sleep 5; pkill -KILL -x psoul-server || true; sleep 2
+            [ "$rc" = 2 ] || break
+          done
+          if [ "$rc" = 2 ]; then echo "::warning::smoke test: starter fainted before the kill in both attempts (random battle outcome); defeat/catch checks skipped"; rc=0; fi
+          cp /tmp/server-1.log /tmp/server.log
+          echo "---- warnings/errors printed during startup ----"
+          grep -nE "Warning|Error|error" /tmp/server.log || true
+          exit $rc
+
+      - name: Smoke test packaged legacy client (Xvfb, loads modules)
+        run: |
+          cd dist/linux/client
+          rm -f ~/psoul.log
+          ALSOFT_DRIVERS=null timeout 40 xvfb-run -a -s "-screen 0 1280x800x24" ./psoulclient > /tmp/client.log 2>&1 || true
+          grep -q "Loaded module 'game_interface'" /tmp/client.log || { cat /tmp/client.log; exit 1; }
+          ! grep -q "Application crashed" /tmp/client.log
+
+      - name: Collect logs
+        if: always()
+        run: mkdir -p /tmp/ci-logs && cp /tmp/*.log /tmp/ci-logs/ 2>/dev/null || true
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: logs-linux
+          path: /tmp/ci-logs
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: PokeNation-Server-Linux
+          path: |
+            dist/PokeNation-Server-Linux-Dev.tar.gz
+            dist/PokeNation-Server-Linux-Dev.tar.gz.sha256
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - uses: actions/upload-artifact@v7
+        with:
+          name: PokeNation-LegacyClient-Linux
+          path: |
+            dist/PokeNation-LegacyClient-Linux-Dev.tar.gz
+            dist/PokeNation-LegacyClient-Linux-Dev.tar.gz.sha256
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+  # --------------------------------------------------------------------------------------------
+  windows:
+    name: Windows x64 build (MSYS2 MinGW-w64), smoke test, package
+    needs: validate
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: false
+
+      - name: Compute LFS asset id
+        shell: bash
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+      - uses: actions/cache@v6
+        with:
+          path: .git/lfs
+          key: lfs-${{ hashFiles('.lfs-assets-id') }}
+      - name: Pull LFS objects
+        shell: bash
+        run: git lfs pull
+
+      # BUG-74 regression test of the launchers' mysql helper, under both PowerShell editions.
+      - name: Test-PokeNationCommon.ps1 (Windows PowerShell 5.1)
+        shell: powershell
+        run: |
+          & tools\windows\Test-PokeNationCommon.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Test-PokeNationCommon.ps1 (PowerShell 7)
+        shell: pwsh
+        run: |
+          & tools\windows\Test-PokeNationCommon.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      # Same package list as tools/windows/Build-PokeNation-Windows.ps1 -InstallDependencies.
+      - uses: msys2/setup-msys2@v2
+        id: msys2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            git zip
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-pkgconf
+            mingw-w64-x86_64-boost
+            mingw-w64-x86_64-lua51
+            mingw-w64-x86_64-libxml2
+            mingw-w64-x86_64-gmp
+            mingw-w64-x86_64-libmariadbclient
+            mingw-w64-x86_64-sqlite3
+            mingw-w64-x86_64-openssl
+            mingw-w64-x86_64-zlib
+            mingw-w64-x86_64-physfs
+            mingw-w64-x86_64-openal
+            mingw-w64-x86_64-glew
+            mingw-w64-x86_64-libvorbis
+            mingw-w64-x86_64-libogg
+
+      - name: Build and package with Build-PokeNation-Windows.ps1
+        shell: powershell
+        run: |
+          git config --global --add safe.directory '*'
+          & tools\windows\Build-PokeNation-Windows.ps1 -MsysRoot '${{ steps.msys2.outputs.msys2-location }}'
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Get-ChildItem dist\windows\server\*.exe, dist\windows\client\*.exe, dist\*.zip, dist\*.sha256 | Format-Table Name, Length
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: PokeNation-Server-Windows
+          path: |
+            dist/PokeNation-Server-Windows-Dev.zip
+            dist/PokeNation-Server-Windows-Dev.zip.sha256
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - uses: actions/upload-artifact@v7
+        with:
+          name: PokeNation-LegacyClient-Windows
+          path: |
+            dist/PokeNation-LegacyClient-Windows-Dev.zip
+            dist/PokeNation-LegacyClient-Windows-Dev.zip.sha256
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+      # ---- Windows runtime smoke test of the packaged files, using the packaged launchers ----
+      - name: Install MariaDB
+        shell: powershell
+        run: |
+          choco install mariadb -y --no-progress
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Get-Service -Name 'MariaDB*', 'MySQL*' -ErrorAction SilentlyContinue | Format-Table Name, Status
+
+      # Root has no password here, as on a fresh MariaDB install; MariaDB 11.4+ clients then print
+      # "insecure passwordless login" on stderr, which broke schema detection before BUG-74 was fixed.
+      - name: Setup-PokeNation-Database.ps1 (fresh database, re-run, -Reset) with the MariaDB client
+        shell: powershell
+        working-directory: dist/windows/server
+        run: |
+          function Invoke-Setup([string]$Tag, [switch]$Reset) {
+            $log = "$env:RUNNER_TEMP\setup-$Tag.log"
+            $out = .\Setup-PokeNation-Database.ps1 -NonInteractive -RootPassword '' -Reset:$Reset *>&1 | ForEach-Object { "$_" }
+            $code = $LASTEXITCODE
+            Set-Content -Path $log -Value $out -Encoding UTF8
+            $out | Out-Host
+            if ($code -ne 0) { Write-Host "::error::setup ($Tag) exited with $code"; exit 1 }
+            $text = $out -join "`n"
+            $client = if ($text -match '\[ OK \] MariaDB client: (.+)') { $Matches[1].Trim() } else { '(none)' }
+            if ($client -notmatch '\\MariaDB[^\\]*\\bin\\(mariadb|mysql)\.exe$') { Write-Host "::error::setup ($Tag) did not use the MariaDB client: $client"; exit 1 }
+            if ($text -notmatch '(?m)^\[ OK \] 97 tables; accounts: 1,admin,player\s*$') { Write-Host "::error::setup ($Tag): expected '97 tables; accounts: 1,admin,player'"; exit 1 }
+            $warned = $text -match 'insecure passwordless login'
+            Write-Host "setup ($Tag): client $client; passwordless-login warning seen: $warned"
+            return $text
+          }
+          Get-ChildItem 'C:\Program Files\MariaDB*\bin\mariadb.exe', 'C:\Program Files\MySQL\MySQL Server*\bin\mysql.exe' -ErrorAction SilentlyContinue | ForEach-Object { & $_.FullName --version }
+          Write-Host '---- fresh database'
+          $fresh = Invoke-Setup 'fresh'
+          if ($fresh -notmatch 'schema and development accounts imported') { Write-Host '::error::fresh setup did not import the schema'; exit 1 }
+          if ($fresh -notmatch 'insecure passwordless login') { Write-Host '::warning::the MariaDB client did not print the passwordless-login warning (older than 11.4?)' }
+          Write-Host '---- second run (tables exist)'
+          $again = Invoke-Setup 'again'
+          if ($again -notmatch 'tables already exist - import skipped') { Write-Host '::error::second run did not detect the existing tables'; exit 1 }
+          Write-Host '---- -Reset'
+          $reset = Invoke-Setup 'reset' -Reset
+          if ($reset -notmatch "-Reset: dropping database 'psoul'" -or $reset -notmatch 'schema and development accounts imported') { Write-Host '::error::-Reset did not drop and re-import'; exit 1 }
+
+      - name: Start-PokeNation-Server.ps1 -CheckOnly
+        shell: powershell
+        working-directory: dist/windows/server
+        run: |
+          $out = .\Start-PokeNation-Server.ps1 -CheckOnly *>&1 | ForEach-Object { "$_" }
+          $code = $LASTEXITCODE
+          $out | Out-Host
+          Set-Content -Path "$env:RUNNER_TEMP\checkonly.log" -Value $out -Encoding UTF8
+          if ($code -ne 0) { exit $code }
+          if (($out -join "`n") -notmatch "database 'psoul' is initialised \(3 accounts\)") { Write-Host '::error::-CheckOnly did not report 3 accounts'; exit 1 }
+
+      - name: Smoke test PokeNationServer.exe (startup, logins, starter, summon, battle, catch, logout)
+        shell: powershell
+        # Exit 2 from smoke_test.py = the starter fainted (random); retry once on a fresh database.
+        run: |
+          $dir = (Resolve-Path dist\windows\server).Path
+          for ($attempt = 1; $attempt -le 2; $attempt++) {
+            if ($attempt -eq 2) {
+              Push-Location $dir
+              $out = .\Setup-PokeNation-Database.ps1 -NonInteractive -RootPassword '' -Reset *>&1 | ForEach-Object { "$_" }
+              $setup = $LASTEXITCODE
+              Pop-Location
+              $out | Out-Host
+              Set-Content -Path "$env:RUNNER_TEMP\setup-smoke-retry.log" -Value $out -Encoding UTF8
+              if ($setup -ne 0) { exit $setup }
+              if (($out -join "`n") -notmatch '(?m)^\[ OK \] 97 tables; accounts: 1,admin,player\s*$') { Write-Host '::error::-Reset before the retry did not restore the seed'; exit 1 }
+            }
+            $log = "$env:RUNNER_TEMP\server-$attempt.log"
+            $p = Start-Process -FilePath "$dir\PokeNationServer.exe" -WorkingDirectory $dir -PassThru -NoNewWindow `
+                   -RedirectStandardOutput $log -RedirectStandardError "$env:RUNNER_TEMP\server-stderr-$attempt.log"
+            $online = $false
+            for ($i = 0; $i -lt 240; $i++) {
+              Start-Sleep -Seconds 1
+              if ($p.HasExited) { break }
+              if (Select-String -Path $log -Pattern '^>> Cristal server Online' -Quiet) { $online = $true; break }
+            }
+            if (-not $online) { Get-Content $log -Tail 80; Get-Content "$env:RUNNER_TEMP\server-stderr-$attempt.log"; exit 1 }
+            Write-Host "attempt ${attempt}: server online after $i s"
+            python tools\protocol_probe.py login --account admin --password admin | Tee-Object -FilePath "$env:RUNNER_TEMP\probe.log"
+            if (-not (Select-String -Path "$env:RUNNER_TEMP\probe.log" -Pattern 'GM Admin' -Quiet)) { exit 1 }
+            python tools\smoke_test.py | Tee-Object -FilePath "$env:RUNNER_TEMP\smoke-$attempt.log"
+            $code = $LASTEXITCODE
+            Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+            Start-Sleep -Seconds 3
+            if ($code -ne 2) { break }
+          }
+          if ($code -eq 2) { Write-Host "::warning::smoke test: starter fainted before the kill in both attempts (random battle outcome); defeat/catch checks skipped"; $code = 0 }
+          Write-Host "---- warnings/errors printed during startup ----"
+          Select-String -Path "$env:RUNNER_TEMP\server-1.log" -Pattern 'Warning|Error|error' | ForEach-Object { $_.Line }
+          exit $code
+
+      # Informational: hosted runners have no GPU (only the GDI OpenGL 1.1 fallback), while the client
+      # targets OpenGL 2. A failure here is reported in the job summary but does not fail the build.
+      # Attempt 1 uses the packaged files as shipped; attempt 2 adds Mesa's software opengl32.dll
+      # (llvmpipe) next to a copy of the client, which is how a GPU-less PC could run it.
+      - name: Prepare Mesa software OpenGL copy of the client (informational)
+        continue-on-error: true
+        shell: msys2 {0}
+        run: |
+          pacman -S --needed --noconfirm mingw-w64-x86_64-mesa
+          rm -rf dist-mesa && mkdir -p dist-mesa && cp -r dist/windows/client dist-mesa/client
+          for f in opengl32.dll libgallium_wgl.dll; do
+            [ -f "/mingw64/bin/$f" ] && cp "/mingw64/bin/$f" dist-mesa/client/
+          done
+          for f in dist-mesa/client/opengl32.dll dist-mesa/client/libgallium_wgl.dll; do
+            [ -f "$f" ] && ldd "$f" | awk 'tolower($3) ~ /mingw64/ {print $3}' | sort -u | while read -r d; do cp -n "$d" dist-mesa/client/; done
+          done
+          ls dist-mesa/client/*.dll | wc -l
+
+      - name: Launch PokeNationLegacyClient.exe (informational)
+        id: client
+        continue-on-error: true
+        shell: powershell
+        run: |
+          Add-Type -AssemblyName System.Windows.Forms, System.Drawing
+          function Save-Screen([string]$Path) {
+            $b = [System.Windows.Forms.SystemInformation]::VirtualScreen
+            $bmp = New-Object System.Drawing.Bitmap $b.Width, $b.Height
+            [System.Drawing.Graphics]::FromImage($bmp).CopyFromScreen($b.Left, $b.Top, 0, 0, $bmp.Size)
+            $bmp.Save($Path)
+          }
+          function Test-Client([string]$Dir, [string]$Tag) {
+            $log = Join-Path $env:USERPROFILE 'psoul.log'
+            Remove-Item $log -ErrorAction SilentlyContinue
+            $p = Start-Process -FilePath "$Dir\PokeNationLegacyClient.exe" -WorkingDirectory $Dir -PassThru
+            $null = $p.Handle
+            $exitedAt = $null
+            for ($i = 1; $i -le 30; $i++) {
+              Start-Sleep -Seconds 1
+              if ($i -eq 15 -and -not $p.HasExited) { Save-Screen "$env:RUNNER_TEMP\client-$Tag.png" }
+              if ($p.HasExited) { $exitedAt = $i; break }
+            }
+            if ($p.HasExited) { $code = '0x{0:X8}' -f $p.ExitCode } else { $code = 'still running'; Stop-Process -Id $p.Id -Force }
+            Copy-Item $log "$env:RUNNER_TEMP\client-$Tag-psoul.log" -ErrorAction SilentlyContinue
+            $modules = 0
+            if (Test-Path $log) { $modules = (Select-String -Path $log -Pattern "Loaded module" | Measure-Object).Count }
+            $line = "[$Tag] modules loaded: $modules; exited after: $exitedAt s; exit code: $code"
+            Write-Host $line
+            Add-Content "$env:RUNNER_TEMP\client-result.txt" $line
+            # Out-Host: anything left in the pipeline would become part of the return value.
+            if (Test-Path $log) { Get-Content $log -Tail 8 | Out-Host }
+            return [bool]($modules -ge 48 -and $code -eq 'still running')
+          }
+          $ok = Test-Client (Resolve-Path dist\windows\client).Path 'as-shipped'
+          # Without GALLIUM_DRIVER, Mesa picks its d3d12 driver on the runner, which exits in SwapBuffers.
+          $env:GALLIUM_DRIVER = 'llvmpipe'
+          if (-not $ok -and (Test-Path dist-mesa\client\opengl32.dll)) { $ok = Test-Client (Resolve-Path dist-mesa\client).Path 'mesa' }
+          if (-not $ok) { exit 1 }
+
+      # Informational: backtrace of the client start-up with the unstripped build/ binary under gdb.
+      - name: Legacy client under gdb (informational)
+        if: steps.client.outcome == 'failure'
+        continue-on-error: true
+        shell: msys2 {0}
+        run: |
+          pacman -S --needed --noconfirm mingw-w64-x86_64-gdb > /dev/null
+          T=$(cygpath "$RUNNER_TEMP")
+          for v in as-shipped mesa; do
+            src=dist/windows/client; unset GALLIUM_DRIVER
+            [ "$v" = mesa ] && { src=dist-mesa/client; export GALLIUM_DRIVER=llvmpipe; }
+            [ -d "$src" ] || continue
+            rm -rf "dist-gdb-$v" && cp -r "$src" "dist-gdb-$v"
+            cp build/windows-*/client/psoulclient.exe "dist-gdb-$v/PokeNationLegacyClient.exe"
+            ( cd "dist-gdb-$v" && timeout 180 gdb -batch -ex "set pagination off" -ex "set breakpoint pending on" \
+                -ex "break abort" -ex "break ExitProcess" -ex run -ex "bt 40" -ex "info registers rip" \
+                -ex "thread apply all bt 12" --args ./PokeNationLegacyClient.exe ) > "$T/client-gdb-$v.log" 2>&1 || true
+            echo "===== $v"; grep -vE "^\[(New|Thread) " "$T/client-gdb-$v.log" | tail -80
+          done
+
+      - name: Job summary
+        if: always()
+        shell: powershell
+        run: |
+          $c = '${{ steps.client.outcome }}'
+          $d = if (Test-Path "$env:RUNNER_TEMP\client-result.txt") { (Get-Content "$env:RUNNER_TEMP\client-result.txt") -join '; ' } else { 'not run' }
+          "### Windows runtime`n- Server smoke test: see step log`n- Legacy client launch on the hosted runner: $c ($d)" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: logs-windows
+          path: |
+            ${{ runner.temp }}/*.log
+            ${{ runner.temp }}/*.png
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}

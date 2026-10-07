@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Slaking" nameDescription="a Slaking" race="blood" experience="15" speed="300" manacost="0" minLevel="85" maxLevel="95">
+	<health now="150" max="150"/>
+	<look type="1468" corpse="28772"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1000" skill="24" attack="56"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="100"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SLAKING!"/>
+	</voices>
+	
+<loot><item id="12115" countmax="1" chance="66666"/><item id="14466" countmax="3" chance="60000"/><item id="14469" countmax="4" chance="100000"/><item id="17786" countmax="1" chance="40000"/><item id="17793" countmax="3" chance="60000"/><item id="12123" countmax="1" chance="50000"/><item id="14465" countmax="1" chance="7500"/><item id="28876" countmax="1" chance="12000"/><item id="28885" countmax="1" chance="12000"/><item id="28887" countmax="1" chance="30000"/><item id="12232" countmax="1" chance="100"/><item id="2687" countmax="5" chance="5000"/><item id="2674" countmax="5" chance="5000"/><item id="29013" countmax="1" chance="100"/><item id="23527" countmax="1" chance="20"/></loot></monster>

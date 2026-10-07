@@ -1,0 +1,9 @@
+Module
+  name: game_tips
+  description: Tips
+  author: PSoul
+  website: Unk
+  sandboxed: true
+  scripts: [ tips ]
+  @onLoad: onInit()
+  @onUnload: onTerminate()

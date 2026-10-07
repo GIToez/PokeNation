@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Rocket Grunt" nameDescription="a Rocket Grunt" race="blood" experience="0" speed="300" manacost="0" minLevel="60" maxLevel="60">
+	<health now="65" max="65"/>
+	<look type="533" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="0"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="4"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+	</attacks>
+	<defenses armor="10" defense="65"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="MHUAUHAMHUA!"/>
+	</voices>
+	<loot>
+	</loot>
+	<script>
+        <event name="rocketBattle"/>	    
+		<event name="onSingleSpawn"/>	
+	</script>
+</monster>

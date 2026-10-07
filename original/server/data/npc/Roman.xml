@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Roman" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="626" head="20" body="5" legs="5" feet="100" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Hey |PLAYERNAME|, are you searching flying Pokemon? I have the necessary equipment to deal with them!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

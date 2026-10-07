@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Umbreon" nameDescription="a Shiny Umbreon" nickname="Umbreon" race="blood" experience="15" speed="265" manacost="0" minLevel="85" maxLevel="95">
+	<health now="95" max="95" rate="1.1"/>
+	<look type="1239" head="0" body="0" legs="0" feet="0" corpse="18771"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1538" skill="24" attack="65"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="110"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="UMBREEOONN!"/>
+	</voices>
+	
+<loot><item id="14561" countmax="1" chance="4285"/><item id="14592" countmax="1" chance="4285"/><item id="14512" countmax="1" chance="28571"/><item id="14518" countmax="1" chance="85714"/><item id="17803" countmax="1" chance="14285"/><item id="17804" countmax="1" chance="8571"/><item id="17807" countmax="1" chance="8571"/><item id="12242" countmax="1" chance="100"/><item id="14464" countmax="5" chance="5000"/><item id="17997" countmax="1" chance="100"/><item id="18093" countmax="1" chance="20"/><item id="18914" countmax="1" chance="10"/><item id="18921" countmax="1" chance="10"/></loot></monster>

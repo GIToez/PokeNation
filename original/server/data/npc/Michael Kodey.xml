@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Michael Kodey" script="travels.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="626" head="66" body="12" legs="87" feet="54" addons="3" corpse="0"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|. Here you can {travel}."/>
+	</parameters>
+</npc>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kurt Petrillose" script="fi_stadiumarena.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="616" head="50" body="50" legs="30" feet="200" corpse="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|, welcome to the {Frontier Island}! I am responsible for the {Stadium Arena}."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

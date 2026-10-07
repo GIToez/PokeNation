@@ -1,0 +1,20 @@
+MOVES["Tailwind"] = {
+    description = "Tailwind doubles the speed of all Pokemon in the user's party for 10 seconds.",
+    category = MOVE_CATEGORY.STATUS,
+    clientIconId = 12060,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FLYING,
+    functionName = "Tailwind",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 80,
+    requiredLevel = 35,
+    damage = 0,
+    damageType = ELEMENT_FLYING,
+    effect = EFFECT_GREEN_BUFF,
+    projectile = nil,
+    areaEffect = EFFECT_WIND,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 40,
+    cooldownStorage = 15152
+}

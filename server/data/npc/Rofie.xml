@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Rofie" script="shop_ballPaint.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="622" head="70" body="24" legs="60" feet="15" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello! How may I help you? Want to {paint} your pokeballs?"/>
+	</parameters>
+</npc>

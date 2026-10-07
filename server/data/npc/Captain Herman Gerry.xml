@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<npc name="Captain Herman Gerry" script="default.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="563" head="0" body="0" legs="0" feet="0"/>
+	<parameters>
+        <parameter key="module_travel" value="1"/>
+		<parameter key="message_greet" value="Here in Cinnabar much we respect the fire. But we captains fear the sea. What is your destination? If you don't know where to flow, say {travel}."/>
+        <parameter key="travel_destinations" value="slateport,752,1738,6,250,true;vermilion,3858,641,5,50,false;sunburst,3039,2642,6,325,false;tangelo,2721,2860,6,350,false;mikan,2679,2499,6,300,false;pummelo,3079,1741,6,200,false,-1,2;"/>
+    </parameters>
+</npc>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Jayla Nonie" script="quest_hiddenAndSeek.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1184" head="25" body="60" legs="60" feet="10" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="I am creating Pokemon! When they become too strong will protect me!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

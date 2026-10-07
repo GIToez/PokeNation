@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Zubat" nameDescription="a Zubat" shiny="Shiny Zubat" race="blood" experience="7" speed="255" manacost="0" minLevel="5" maxLevel="15">
+	<health now="40" max="40"/>
+	<look type="392" head="0" body="0" legs="0" feet="0" corpse="11429"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="45"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Evolve" inverval="15000" chance="1"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="35"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="ZUBATT!"/>
+	</voices>
+	
+<loot><item id="12104" countmax="3" chance="66666"/><item id="12117" countmax="1" chance="14814"/><item id="12124" countmax="1" chance="8888"/><item id="2674" countmax="5" chance="5000"/><item id="17855" countmax="1" chance="100"/></loot></monster>

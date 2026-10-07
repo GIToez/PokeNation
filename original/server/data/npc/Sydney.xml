@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Sydney" script="default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="503" head="0" body="100" legs="120" feet="20" corpse="2212"/>
+	<parameters>
+		<parameter key="idletime" value="180" />
+		<parameter key="module_shop" value="1"/>
+		<parameter key="message_greet" value="Hi |PLAYERNAME|, are you looking for video games?"/>
+		<parameter key="shop_buyable" value="
+		game cube kit, 13273, 400;
+		super nintendo kit, 13274, 100;
+		playstation 2 kit, 13275, 400
+		"/>
+	</parameters>
+</npc>

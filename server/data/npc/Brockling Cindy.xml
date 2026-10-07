@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Brockling Cindy" script="default.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1351"/>
+	<parameters>
+		<parameter key="message_greet" value="Hiho! How are you?."/>
+	</parameters>
+</npc>

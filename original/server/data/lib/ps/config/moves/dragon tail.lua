@@ -1,0 +1,19 @@
+MOVES["Dragon Tail"] = {
+    description = "Dragon Tail deals damage and has no secondary effect.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12762,
+    iconId = 0,
+    dType = DAMAGE_TYPE_DRAGON,
+    functionName = "DragonTail",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 60,
+    requiredLevel = 20,
+    damage = 60,
+    damageType = ELEMENT_DRAGON,
+    effect = EFFECT_BLOW_THREE,
+    projectile = nil,
+    maxDistance = 1,
+    cooldownTime = 10,
+    cooldownStorage = 15239
+}

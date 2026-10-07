@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<npc name="Tracy" script="tutorial_quests.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="1200" head="90" body="85" legs="86" feet="10"/>
+	<parameters>
+        <parameter key="message_greet" value="Hello |PLAYERNAME|. Looking to know about {BERRIES}?"/>
+    </parameters>
+</npc>

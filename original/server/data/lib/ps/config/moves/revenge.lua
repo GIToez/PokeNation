@@ -1,0 +1,19 @@
+MOVES["Revenge"] = {
+    description = "Revenge charge during 5 turns and then deals damage.",
+    makeContact = true,
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 12099,
+    iconId = 0,
+    dType = DAMAGE_TYPE_FIGHTING,
+    functionName = "Revenge",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 120,
+    requiredLevel = 40,
+    damage = 120,
+    damageType = ELEMENT_FIGHT,
+    effect = EFFECT_CUT_TWO,
+    projectile = nil,
+    maxDistance = 10,
+    cooldownTime = 18,
+    cooldownStorage = 15195
+}

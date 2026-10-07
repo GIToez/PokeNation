@@ -1,0 +1,19 @@
+MOVES["Dream Eater"] = {
+    description = "Dream Eater deals damage only on sleeping foes and the user will recover 50% of the HP drained.",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 11710,
+    iconId = 13336,
+    dType = DAMAGE_TYPE_PSYCHIC,
+    functionName = "DreamEater",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 120,
+    requiredLevel = 35,
+    damage = 100,
+    damageType = ELEMENT_PSYCHIC,
+    effect = EFFECT_PURPLE_BITE,
+    projectile = PROJECTILE_RED_SHOT,
+    backProjectile = PROJECTILE_RED_SHOT,
+    maxDistance = 3,
+    cooldownTime = 15,
+    cooldownStorage = 15018
+}

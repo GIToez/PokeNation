@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Gurtab" script="quest_mastery.lua" walkinterval="4000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="907" head="25" body="35" legs="35" feet="25" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="What? Fire items? No... not cigars."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

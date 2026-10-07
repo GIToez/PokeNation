@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<npc name="Gosse" script="tutorial_quests.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="1203" head="94" body="76" legs="114" feet="79"/>
+	<parameters>
+        <parameter key="message_greet" value="Hello |PLAYERNAME|. How your {MISSIONS} are going? [You can {skip} this tutorial whenever you want.]"/>
+    </parameters>
+</npc>

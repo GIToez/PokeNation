@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Juanito Cruz" script="quest_juanitoCruz.lua" walkinterval="3000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="632" head="15" body="100" legs="100" feet="50" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello... you found my {letters}?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

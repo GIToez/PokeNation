@@ -1,0 +1,20 @@
+MOVES["Egg Bomb"] = {
+    description = "Egg Bomb inflicts damage and has no secondary effect.",
+    category = MOVE_CATEGORY.PHYSICAL,
+    clientIconId = 11713,
+    iconId = 13339,
+    dType = DAMAGE_TYPE_NORMAL,
+    functionName = "EggBomb",
+    type = SKILLS_TYPES.TARGET,
+    requiredEnergy = 120,
+    requiredLevel = 45,
+    damage = 100,
+    damageType = ELEMENT_NORMAL,
+    effect = EFFECT_EXPLOSION,
+    projectile = nil,
+    maxDistance = 5,
+    area = area3x3,
+    areaName = "area3x3",
+    cooldownTime = 23,
+    cooldownStorage = 15021
+}

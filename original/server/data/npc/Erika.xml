@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Erika" script="npcbattle_erika.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="556" head="0" body="0" legs="0" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="...Oh dear... I must have dozed off. Welcome. My name is Erika. I am the leader of Celadon Gym. I teach the art of flowing arranging. My Pokemon are of the grass-type."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

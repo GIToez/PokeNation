@@ -1,0 +1,20 @@
+MOVES["Discharge"] = {
+    description = "Discharge deals damage and has a 30% chance of paralyzing the target(s).",
+    category = MOVE_CATEGORY.SPECIAL,
+    clientIconId = 12076,
+    iconId = 0,
+    dType = DAMAGE_TYPE_ELECTRIC,
+    functionName = "Discharge",
+    type = SKILLS_TYPES.AREA,
+    requiredEnergy = 90,
+    requiredLevel = 40,
+    damage = 8,
+    damageType = ELEMENT_ELECTRIC,
+    effect = EFFECT_ELECTRIC_SPARK,
+    projectile = PROJECTILE_DOUBLE_THUNDER,
+    areaEffect = EFFECT_ELECTRIC_DISCHARGE,
+    areaName = "bigArea",
+    area = bigArea,
+    cooldownTime = 18,
+    cooldownStorage = 15173
+}

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Hitmonchan" nameDescription="a Hitmonchan" nickname="Dungeon Hitmonchan" race="blood" experience="0" speed="276" manacost="0" sex="1" minLevel="60" maxLevel="70">
+	<health now="50" max="50"/>
+	<look type="458" head="0" body="0" legs="0" feet="0" corpse="11495"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag catchable="0"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1315" skill="24" attack="105"/>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="79"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="HITMONCHAN!"/>
+	</voices>
+	<loot>
+	</loot>
+</monster>

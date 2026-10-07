@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Rebbeca" script="quest_default.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="1196" head="11" body="55" legs="55" feet="11"/>
+	<parameters>
+		<parameter key="message_greet" value="Argh! I didn't saw you."/>
+	</parameters>
+</npc>

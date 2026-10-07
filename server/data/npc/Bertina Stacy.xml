@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Bertina Stacy" script="quest_default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="631" head="114" body="129" legs="114" feet="128"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|. Are you all right? Let me tell you, I really don't like {Pokemon}!"/>
+	</parameters>
+</npc>

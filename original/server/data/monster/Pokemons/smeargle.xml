@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Smeargle" nameDescription="a Smeargle" race="blood" experience="12" speed="275" manacost="0" minLevel="80" maxLevel="90">
+	<health now="55" max="55"/>
+	<look type="1061" head="0" body="0" legs="0" feet="0" corpse="17624"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1333" skill="24" attack="20"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="35"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SMEARRGLLEEE!"/>
+	</voices>
+	
+<loot><item id="17788" countmax="1" chance="2916"/><item id="17789" countmax="1" chance="4375"/><item id="17790" countmax="1" chance="17500"/><item id="17791" countmax="1" chance="1750"/><item id="12232" countmax="1" chance="50"/><item id="18034" countmax="1" chance="100"/><item id="23527" countmax="1" chance="10"/></loot></monster>

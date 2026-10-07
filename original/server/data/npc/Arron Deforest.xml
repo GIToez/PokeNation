@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Arron Deforest" script="quest_default.lua" walkinterval="0" floorchange="0">
+	<health now="150" max="150"/>
+	<look type="632" head="79" body="115" legs="115"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi! I see you're a Pokemon {trainer}! Like me!"/>
+	</parameters>
+</npc>

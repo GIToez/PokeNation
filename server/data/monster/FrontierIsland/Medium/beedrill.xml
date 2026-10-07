@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Beedrill" nameDescription="a Beedrill" shiny="Shiny Beedrill" race="blood" experience="0" speed="275" manacost="0" minLevel="25" maxLevel="35">
+	<health now="65" max="65"/>
+	<look type="366" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1333" skill="24" attack="80"/>
+		<attack name="Moves" interval="500" />
+		<attack name="Berries" inverval="60000" chance="1" target="1" />
+	</attacks>
+	<defenses armor="10" defense="40"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="BEE!"/>
+		<voice sentence="BEEDRILL!"/>
+	</voices>
+	<loot>
+		<item id="12113" countmax="1" chance="50000"/> <!-- pot of moss mug -->
+		<item id="14503" countmax="1" chance="17500"/> <!-- sample of sand wasp honey -->
+		<item id="2674" countmax="3" chance="3000"/> <!-- red apple -->
+		<item id="2675" countmax="3" chance="3000"/> <!-- orange -->
+		<item id="14625" countmax="1" chance="8333"/> <!-- insect skin -->
+		<item id="12241" countmax="1" chance="50"/> <!-- insect plate -->
+		<item id="12235" countmax="1" chance="50"/> <!-- toxic plate -->
+		<item id="17833" countmax="1" chance="100"/> <!-- beedrill doll -->
+	</loot>
+</monster>

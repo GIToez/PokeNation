@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Christmas Ekans" nameDescription="an Ekans" race="blood" experience="7" speed="255" manacost="0" minLevel="12" maxLevel="22">
+	<health now="35" max="35"/>
+	<look type="1418" head="0" body="0" legs="0" feet="0" corpse="25288"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="60"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="44"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SSSSS!"/>
+		<voice sentence="EKANSS!"/>
+	</voices>
+	
+<loot><item id="12104" countmax="4" chance="88888"/><item id="12117" countmax="1" chance="29629"/><item id="14511" countmax="1" chance="26666"/><item id="17840" countmax="1" chance="100"/></loot></monster>

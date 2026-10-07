@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Kadabra" nameDescription="a kadabra" nick="PvP Kadabra" race="blood" experience="0" speed="200" manacost="0" minLevel="45" maxLevel="55">
+	<health now="40" max="40"/>
+	<look type="415" head="0" body="0" legs="0" feet="0" corpse="0"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="0952" skill="24" attack="35"/>
+		<attack name="physical" interval="1000" chance="34" range="7" min="-25" max="-55">
+			<attribute key="shootEffect" value="energy"/>
+		</attack>
+		<attack name="Moves" interval="500" />
+	</attacks>
+	<defenses armor="10" defense="30"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="KADABRA!"/>
+	</voices>
+	<loot>
+	</loot>
+</monster>

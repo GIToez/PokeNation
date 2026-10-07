@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Tucker" script="quest_mastery.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="919" head="55" body="35" legs="25" feet="55" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Did you know the water is the fountain of life? How about you prove it to me?"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

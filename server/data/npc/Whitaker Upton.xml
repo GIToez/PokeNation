@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<npc name="Whitaker Upton" script="bank.lua" floorchange="0" walkinterval="0">
+	<health now="150" max="150"/>
+	<look type="622" head="100" body="50" legs="20" feet="20"/>
+	<parameters>
+		<parameter key="message_greet" value="What's the news my friend? Your options are: {balance}, {deposit}, {deposit all}, {withdraw}, {withdraw all} and {transfer}."/>
+	</parameters>
+</npc>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Earnestine Veale" script="npcbattle_earnestineveale.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="613" head="10" body="10" legs="30" feet="30" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="The Lt. Surge has been to war, were the electric Pokemon in battle that saved him."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

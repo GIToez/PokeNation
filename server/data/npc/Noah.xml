@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Noah" script="quest_mastery.lua" walkinterval="400" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="907" head="75" body="25" legs="15" feet="75" addons="3"/>
+	<parameters>
+		<parameter key="message_greet" value="Perhaps you're the one who is going to prove that the fire is supreme."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

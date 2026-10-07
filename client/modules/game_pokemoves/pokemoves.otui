@@ -1,0 +1,31 @@
+CooldownLabel < UILabel
+  font: verdana-11px-rounded
+  color: #FFFFFF
+  size: 32 32
+  text-align: center
+
+MoveItem < Item
+  size: 32 32
+  virtual: true
+  border-width: 0
+  padding: 0
+  margin: 1 0 0 1
+  image-source: ~
+  $hover:
+    border-color: white
+    border-width: 1
+
+  ProgressRect
+    id: progressRect
+    margin: -1
+    percent: 100
+    background-color: #000000bb
+
+HeadlessWindow
+  id: movesWindow
+  focusable: false
+  image-color: #ffffffee
+  size: 42 42
+  anchors.bottom: gameMapPanel.bottom
+  anchors.horizontalCenter: gameMapPanel.horizontalCenter
+  margin-right: 120

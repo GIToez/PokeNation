@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kurt Bufford" script="npcbattle_kurtbufford.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="539" head="15" body="50" legs="50" feet="26" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Whenever I need to come to energize Gym, the best place for electric Pokemon!"/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

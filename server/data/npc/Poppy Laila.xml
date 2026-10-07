@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Poppy Laila" script="default.lua" walkinterval="0" floorchange="0" walkable="0">
+    <health now="150" max="150"/>
+    <look type="1302" head="80" body="80" legs="20" feet="20" corpse="2212"/>
+    <parameters>
+        <parameter key="module_shop" value="1"/>
+        <parameter key="message_greet" value="Hello |PLAYERNAME|. The best pizza in the world or your money back."/>
+        <parameter key="shop_buyable" value="
+		pizza, 12210, 4"/>
+    </parameters>
+</npc>

@@ -1,0 +1,161 @@
+DexStatusItem < Item
+  size: 32 32
+  virtual: true
+  border-width: 0
+  image-source: ~
+  phantom: true
+
+DexWindow < MiniWindow
+  !text: tr('Pokedex')
+  size: 754 429
+  image-source: /images/ui/dex
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 3
+    minimum: 48
+    maximum: 429
+    margin-left: 3
+    margin-right: 3
+    background: #ffffff88
+
+  UIItem
+    id: dexItem
+    virtual: true
+    size: 16 16
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 4
+    margin-left: 4
+
+  MiniWindowContents
+    ScrollableFlatPanel
+      id: ownDexContainer
+      width: 200
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin-top: 4
+      margin-bottom: 4
+      padding: 2
+      layout:
+        type: grid
+        cell-size: 36 36
+        flow: true
+        cell-spacing: 1
+      vertical-scrollbar: ownDexScrollBar
+
+    VerticalScrollBar
+      id: ownDexScrollBar
+      anchors.top: ownDexContainer.top
+      anchors.bottom: ownDexContainer.bottom
+      anchors.right: ownDexContainer.right
+      margin-top: 4
+      margin-bottom: 4
+      margin-right: 2
+      step: 36
+      pixels-scroll: true
+      $!on:
+        width: 0
+
+    Panel
+      id: dexContent
+      margin-right: 44
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: ownDexContainer.left
+
+    UIWidget
+      id: pokePicture
+      size: 100 100
+      anchors.top: dexContent.top
+      anchors.left: pokeType1.right
+      margin-left: 5
+      image-source: /images/pictures/0
+      image-size: 100 100
+      image-smooth: true
+
+    ScrollableFlatPanel
+      id: family
+      size: 110 100
+      anchors.top: dexContent.top
+      anchors.left: pokePicture.right
+      margin-left: 45
+      margin-top: 15
+      image-source: ~
+      layout:
+        type: grid
+        cell-size: 32 32
+        flow: true
+        cell-spacing: 1
+        auto-spacing: true
+
+    Label
+      id: pokeName
+      !text: tr('Unknown')
+      color: #aaaaaa
+      anchors.top: pokePicture.bottom
+      anchors.horizontalCenter: pokePicture.horizontalCenter
+      font: sans-bold-16px
+      text-auto-resize: true
+      background-color: alpha
+      text-offset: 2 0
+
+      $on:
+        color: #ffffff
+
+    UIWidget
+      id: pokeType1
+      size: 32 32
+      anchors.top: dexContent.top
+      anchors.left: dexContent.left
+      image-size: 32 32
+      image-smooth: true
+      margin-left: 85
+      margin-top: 20
+
+    UIWidget
+      id: pokeType2
+      size: 32 32
+      anchors.top: pokeType1.bottom
+      anchors.left: dexContent.left
+      image-size: 32 32
+      image-smooth: true
+      margin-top: 4
+      margin-left: 85
+
+    Label
+      id: pokeId
+      !text: '#000'
+      color: #aaaaaa
+      anchors.top: pokeType2.bottom
+      anchors.left: dexContent.left
+      font: verdana-11px-monochrome
+      text-auto-resize: true
+      background-color: alpha
+      text-offset: 2 0
+      margin-left: 82
+      margin-top: 19
+
+      $on:
+        color: #ffffff
+
+    TabBarVertical
+      width: 56
+      id: optionsTabBar
+      anchors.top: pokeName.bottom
+      anchors.left: dexContent.left
+      anchors.bottom: dexContent.bottom
+      margin-top: 10
+
+    Panel
+      id: optionsTabContent
+      anchors.top: pokeName.bottom
+      anchors.left: optionsTabBar.right
+      anchors.right: dexContent.right
+      anchors.bottom: dexContent.bottom
+      margin-top: 10

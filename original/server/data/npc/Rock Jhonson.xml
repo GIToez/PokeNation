@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Rock Jhonson" script="quest_default.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="618" head="100" body="200" legs="150" feet="0" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|, can I help you?"/>
+	</parameters>
+</npc>

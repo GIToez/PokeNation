@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Tangela" nameDescription="a Tangela" shiny="Shiny Tangela" race="blood" experience="12" speed="260" manacost="0" minLevel="40" maxLevel="50">
+	<health now="65" max="65"/>
+	<look type="465" head="0" body="0" legs="0" feet="0" corpse="11502"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag pacific="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1666" skill="24" attack="55"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="115"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="TANGELA!!"/>
+	</voices>
+	
+<loot><item id="12102" countmax="9" chance="97222"/><item id="12091" countmax="1" chance="32407"/><item id="12106" countmax="1" chance="17676"/><item id="14467" countmax="1" chance="23333"/><item id="14487" countmax="3" chance="58333"/><item id="14510" countmax="1" chance="58333"/><item id="12231" countmax="1" chance="100"/><item id="17922" countmax="1" chance="100"/><item id="17356" countmax="1" chance="10"/><item id="23520" countmax="1" chance="20"/></loot></monster>

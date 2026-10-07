@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shiny Machamp" nameDescription="a Shiny Machamp" nickname="Machamp" race="blood" experience="15" speed="255" manacost="0" minLevel="70" maxLevel="80">
+	<health now="90" max="90" rate="1.1"/>
+	<look type="746" head="0" body="0" legs="0" feet="0" corpse="14073"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag shiny="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1818" skill="24" attack="130"/>
+		<attack name="Moves" interval="500"/>
+	</attacks>
+	<defenses armor="10" defense="80"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="MACHAMP!"/>
+	</voices>
+	
+<loot><item id="14563" countmax="1" chance="30000"/><item id="14558" countmax="1" chance="7500"/><item id="12243" countmax="1" chance="100"/><item id="17880" countmax="1" chance="100"/><item id="17352" countmax="1" chance="10"/><item id="18912" countmax="1" chance="10"/><item id="23513" countmax="1" chance="20"/></loot></monster>

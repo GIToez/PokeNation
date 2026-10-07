@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Neil Aslinger" script="npcbattle_fi_neilaslinger.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="616" head="150" body="60" legs="10" feet="60" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>

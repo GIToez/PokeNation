@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Christmas Squirtle" nameDescription="a Squirtle" race="blood" experience="10" speed="243" manacost="0" minLevel="20" maxLevel="30">
+	<health now="44" max="44"/>
+	<look type="1416" head="0" body="0" legs="0" feet="0" corpse="25282"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="0"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2325" skill="24" attack="48"/>
+		<attack name="Moves" interval="500"/>
+		<attack name="Berries" inverval="60000" chance="1" target="1"/>
+	</attacks>
+	<defenses armor="10" defense="65"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="SQUIRTLEE!"/>
+		<voice sentence="SQUIRTLE! SQUIRTLE!"/>
+	</voices>
+	
+<loot><item id="12100" countmax="6" chance="100000"/><item id="12097" countmax="1" chance="16000"/><item id="2677" countmax="5" chance="5000"/><item id="17825" countmax="1" chance="100"/><item id="12230" countmax="1" chance="2"/><item id="17348" countmax="1" chance="1"/><item id="18918" countmax="1" chance="1"/></loot></monster>

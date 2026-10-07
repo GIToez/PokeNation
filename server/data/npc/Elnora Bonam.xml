@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Elnora Bonam" script="npcbattle_fi_elnorabonam.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="615" head="90" body="45" legs="90" feet="45" addons="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Hi."/>
+		<parameter key="idletime" value="30" />
+	</parameters>
+</npc>
