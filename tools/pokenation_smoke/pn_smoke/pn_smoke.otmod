@@ -1,0 +1,9 @@
+Module
+  name: pn_smoke
+  description: PokeNation client protocol smoke test, run by tools/pokenation_client_smoke.sh. Never packaged.
+  autoload: true
+  autoload-priority: 9000
+  sandboxed: false
+  scripts: [ pn_smoke ]
+  @onLoad: PNSmoke.init()
+  @onUnload: PNSmoke.terminate()

@@ -14,9 +14,9 @@ name: Build development packages
 on:
   push:
     branches: ["**"]
-    paths-ignore: ["docs/**", "original/**", "**/*.md"]
+    paths-ignore: ["docs/**", "original/**", "**/*.md", "client-pokenation/**", ".github/workflows/pokenation-client.yml", "tools/*pokenation*", "tools/windows/*PokeNationClient*"]
   pull_request:
-    paths-ignore: ["docs/**", "original/**", "**/*.md"]
+    paths-ignore: ["docs/**", "original/**", "**/*.md", "client-pokenation/**", ".github/workflows/pokenation-client.yml", "tools/*pokenation*", "tools/windows/*PokeNationClient*"]
   workflow_dispatch:
 
 concurrency:

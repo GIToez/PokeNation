@@ -83,10 +83,14 @@ bool ProtocolLogin::parseFirstPacket(NetworkMessage& msg)
 	uint16_t operatingSystem = msg.GetU16();/*msg.SkipBytes(2);*/
 	uint16_t version = msg.GetU16();
 	
+	// Legacy PSoul clients send their language here (BUG-09); the PokeNation client sends it
+	// later as extended opcode 1. Out-of-range values are ignored (BUG-08).
 	int16_t lang = -1;
-    if ((operatingSystem >= CLIENTOS_OTCLIENT_WINDOWS && operatingSystem <= CLIENTOS_OTCLIENT_MAC) && version >= 293) {
-        lang = msg.GetByte();
-    }
+	if (isLegacyOtclientOs(operatingSystem) && version >= 293) {
+		lang = msg.GetByte();
+		if (lang > LANG_LAST)
+			lang = -1;
+	}
 
 	msg.SkipBytes(12);
 	if(!RSA_decrypt(msg))
@@ -260,7 +264,7 @@ bool ProtocolLogin::parseFirstPacket(NetworkMessage& msg)
 			output->AddU16(it->second->getPort());
 			#endif
 
-			if (operatingSystem >= CLIENTOS_OTCLIENT_WINDOWS && operatingSystem <= CLIENTOS_OTCLIENT_MAC) {
+			if (isOtclientOs(operatingSystem)) {
                 #ifndef __LOGIN_SERVER__
                 output->AddU16(IOLoginData::getInstance()->getPlayerLevel((*it)));
                 output->AddByte(IOLoginData::getInstance()->getPlayerVocation((*it)));
@@ -293,7 +297,7 @@ bool ProtocolLogin::parseFirstPacket(NetworkMessage& msg)
 		else
 			output->AddU16(account.premiumDays);
 			
-		if (operatingSystem >= CLIENTOS_OTCLIENT_WINDOWS && operatingSystem <= CLIENTOS_OTCLIENT_MAC) {
+		if (isOtclientOs(operatingSystem)) {
             output->AddByte(Polls::getInstance()->getAvailablePollForAccount(account.number) ? true : false);
         }
 

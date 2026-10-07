@@ -25,9 +25,10 @@ Related: system inventory [`../FULL_SOURCE_AUDIT.md`](../FULL_SOURCE_AUDIT.md), 
 | Frame | `U16 len, U32 adler32, payload`; after login XTEA (32 rounds) | `server/src/protocol.cpp`, `client/src-cpp/src/framework/net/protocol.cpp` |
 | RSA | OTServ 1024-bit key, `e = 65537` | `server/src/otserv.cpp:648-651`, `client/modules/gamelib/const.lua` (`OTSERV_RSA`) |
 | Protocol version | `CLIENT_VERSION_MIN = MAX = 312` (8.54 packet shapes) | `server/src/resources.h`; client sends 312 at `client/modules/gamelib/protocollogin.lua:38` |
-| OTClient OS ids | `0x0A` Windows, `0x0B` Linux, `0x0C` Mac | `server/src/enums.h:58-63` |
-| Gate | most PSoul extensions are sent only when `player->isUsingOtclient()` (OS in `0x0A..0x0C`); 14 call sites in `server/src/*.cpp` | e.g. `protocolgame.cpp:2794`, `:4307`, `:4313`, `:1837` |
+| OTClient OS ids | legacy client: `0x0A` Windows, `0x0B` Linux, `0x0C` Mac. PokeNation client (Phase 3): `0x14` Windows, `0x15` Linux, `0x16` Mac, `0x17` Android | `server/src/enums.h` (`isLegacyOtclientOs`, `isPokeNationClientOs`, `isOtclientOs`) |
+| Gate | most PSoul extensions are sent only when `player->isUsingOtclient()` (OS in `0x0A..0x0C` or `0x14..0x17`); 14 call sites in `server/src/*.cpp` | e.g. `protocolgame.cpp:2794`, `:4307`, `:4313`, `:1837` |
 | Client features forced | `GameMagicEffectU16`, `GameCreatureIcons`, `GameSpritesAlphaChannel`, `GamePlayerMarket` | `client/modules/gamelib/protocollogin.lua:29-32` |
+| PokeNation client profile | explicit `psoul312` profile: internal client version 854, wire version 312, OS `0x14..0x17`, OTServ RSA, feature `GamePSoulProtocol` (137) plus the features above; no version detection | `client-pokenation/modules/gamelib/pokenation.lua`; see §10 |
 | Status protocol `0xFF` (service) | not registered (`otserv.cpp:877` commented) | SOURCE_AUDIT §2.1 (re-confirmed) |
 
 ---
@@ -41,14 +42,16 @@ Related: system inventory [`../FULL_SOURCE_AUDIT.md`](../FULL_SOURCE_AUDIT.md), 
 | `U8 0x01` | — | `protocollogin.lua:36` |
 | `U16 os` | `protocollogin.cpp:83` | `:37` |
 | `U16 version` (312) | `:84`; checked at `:116` | `:38` |
-| **custom `U8 language`** (only if OTC OS and version ≥ 293) | `:86-89` | `:39` (`client_locales.getCurrentLocale().id`) |
+| **custom `U8 language`** (only legacy OS ids `0x0A..0x0C` and version ≥ 293; never sent by the PokeNation client) | `protocollogin.cpp:86-93` | `:39` (`client_locales.getCurrentLocale().id`) |
 | `U32 dat, U32 spr, U32 pic` signatures | skipped `:91` (`SkipBytes(12)`) | `:45-47` |
 | RSA block: `U8 0`, `4×U32 xtea` | `:92-101` | `:55-64` |
 | `string account`, `string password` | `:103` | `:67-73` (account names feature) |
 | extended login data string (optional) | not read | `:75-78` |
 
-Language handling: stored into `accounts.lang_id` when it differs (`protocollogin.cpp:162-165`),
-value not range-checked (BUG-08). Stock OTClient does not send this byte (BUG-09).
+Language handling: stored into `accounts.lang_id` when it differs; values above `LANG_LAST` (2)
+are ignored (BUG-08, fixed). The PokeNation client (OS `0x14..0x17`) sends the stock 8.54 packet
+without this byte and reports its language after the game login with extended opcode 1 (§8,
+BUG-09, fixed). The charlist extras and the poll byte below are sent to both client families.
 GUI: **yes** (P2-01, P2-33).
 
 ### 2.2 S→C responses
@@ -85,12 +88,15 @@ U8 pollAvailable                                                          :296-2
 
 | Step | Dir | Payload | Server | Client | GUI |
 |---|---|---|---|---|---|
-| challenge `0x1F` | S→C (unencrypted) | `U16 rand, U16 0, U8 rand` | `protocolgame.cpp:438-452` (`onConnect`) | stock `parseChallenge` | yes |
-| enter game `0x0A` | C→S | `U16 os, U16 312`, RSA: `U8 0, 4×U32 xtea, U8 gamemaster, string account, string character, string password`, then challenge `U32 + U8` (client) | `parseFirstPacket` `protocolgame.cpp:459-488`; `SkipBytes(6)` at `:487` — the challenge is **not validated** | `protocolgamesend.cpp:51-112` | yes |
+| challenge `0x1F` | S→C (unencrypted) | `U32 timestamp` (random 0..0xFFFF), `U8 random` (the same bytes as before Phase 3: `U16 rand, U16 0, U8 rand`) | `protocolgame.cpp` `onConnect`, values kept in `m_challengeTimestamp` / `m_challengeRandom` | stock `parseChallenge` | yes |
+| enter game `0x0A` | C→S | `U16 os, U16 312`, RSA: `U8 0, 4×U32 xtea, U8 gamemaster, string account, string character, string password`, then challenge `U32 + U8` (client) | `parseFirstPacket` `protocolgame.cpp`; since Phase 3 the echoed challenge must equal the sent one, otherwise `login challenge mismatch` is logged and the connection closed (BUG-68) | `protocolgamesend.cpp:51-112` | yes |
 | self login `0x0A` | S→C | `U32 playerId, U16 0x32 (beat), U8 canReportBugs`, **custom `U16 realLightHour` (OTC only)** | `protocolgame.cpp:2790-2796` | `protocolgameparse.cpp:482-499` (always reads `lightHour`, forwards to `g_game.onLightHour` → `game_time/time.lua:87`) | yes |
 | error `0x14` | S→C | `string` | `disconnectClient` | stock | yes |
 
-Language of the game session comes from `accounts.lang_id` (`protocolgame.cpp:294`).
+Language of the game session comes from `accounts.lang_id` (`protocolgame.cpp:294`), passed
+through `Localization::sanitize`. Right after login the server sends extended opcode 0
+(ACTIVATE, empty payload) to every OTClient-family client, which enables the client's `0x32`
+sending (Redemption gates it on this).
 The server also registers a creature event named `"ExtendedOpcode"` at login
 (`protocolgame.cpp:302-304`) that no XML defines (BUG-38).
 
@@ -140,6 +146,11 @@ silently dropped and the rest of the message is then parsed as normal opcodes (l
 line given is the function definition (the `AddByte(0xFF)` follows within ~10 lines). Lua
 `doPlayerSend…` bindings are registered in `server/src/luascript.cpp` around `:1600-1700` and
 `:2750-2810`.
+
+PokeNation client: all 26 sub-ids are parsed in
+`client-pokenation/src/client/protocolgameparsepsoul.cpp` and fire the same Lua events; an unknown
+sub-id throws, so Redemption logs the opcode with a hex dump and drops the rest of the message
+instead of desyncing. The U16 counts of `0x14` and `0x19` are read as U16.
 
 | Sub | Server function (`protocolgame.cpp`) | Payload | Client parser (`protocolgameparse.cpp`) → Lua event → module | GUI |
 |---:|---|---|---|---|
@@ -194,6 +205,8 @@ Client-side count truncation (new, see FULL_SOURCE_AUDIT §10):
 | C→S | `0xF7` cancel | `U32 timestamp, U16 counter` | `:867` | same | no |
 | C→S | `0xF8` accept | `U32 timestamp, U16 counter, U16 amount` | `:868` | same | no |
 
+PokeNation client: see §10 (two shape fixes and one missing handler versus stock Redemption).
+
 Client opcode enums: `protocolcodes.h:145-148` (S→C 246-249) and `:276-280` (C→S 244-248).
 Market config keys (`marketOfferDuration`, `premiumToCreateMarketOffer`, …) are read by
 `configmanager.cpp:301-304` but absent from `config.lua` (BUG-52).
@@ -210,13 +223,21 @@ Market config keys (`marketOfferDuration`, `premiumToCreateMarketOffer`, …) ar
 | C→S | `0xFB` | `U8 optionId` or `string text` | `:870`, `:1808-1823`; minimum level `minimumLevelToPollVote` (`configmanager.cpp:305`, absent from config → 25) | `protocolgamesend.cpp:862-874` | no |
 
 Poll content exists only in `polls` / `poll_options` / `poll_texts` rows that the (missing)
-website wrote; the server only inserts `poll_votes`.
+website wrote; the server only inserts `poll_votes` / `poll_texts`. The server reloads polls every
+10 s but never drops deleted or edited ones until restart (BUG-76).
+
+The PokeNation client sends `0xFA` / `0xFB` from Lua (§10); both modes were verified against the
+server with seeded test polls (`PHASE_3_TEST_MATRIX.md` C-13).
 
 ---
 
 ## 8. Extended opcode `0x32` ids
 
-Server constants `EXTENDED_IDS` `server/data/lib/ps/others/constants.lua:33-45`; client
+C++ constants: `server/src/extendedopcodes.h` (`ExtendedOpcode_t`, ids 0–99 reserved for the
+engine and the clients, `EXTENDED_OPCODE_MAX_PAYLOAD` = 4096 bytes). `Game::parsePlayerExtendedOpcode`
+rejects larger payloads, handles 1 and 10 itself with validation, ignores client-sent
+server→client ids (0, 8, 9) and passes everything else to Lua `onExtendedOpcode` creature events.
+Server Lua constants `EXTENDED_IDS` `server/data/lib/ps/others/constants.lua:33-45`; client
 `ExtendedIds` `client/modules/gamelib/const.lua:241-253`. Server Lua sender:
 `doSendPlayerExtendedOpcode` (`luascript.cpp:2761`, impl `:13641-13649`) →
 `ProtocolGame::sendExtendedOpcode` `protocolgame.cpp:1834` (OTC only). Client Lua receive:
@@ -226,8 +247,8 @@ Server constants `EXTENDED_IDS` `server/data/lib/ps/others/constants.lua:33-45`;
 
 | Id | Name | S→C sender | C→S sender | Client handler | Server handler | Status |
 |---:|---|---|---|---|---|---|
-| 0 | Activate | none | — | C++ `:1787-1788` | — | UNUSED |
-| 1 | Locale | none | commented (`client_locales/locales.lua:8-15`) | `locales.lua:80` | none | UNUSED (language travels in the login byte instead) |
+| 0 | Activate | `protocolgame.cpp` after login (Phase 3), empty payload; arrives after the map description | — | C++ `:1787-1788` (legacy); PokeNation client `parseExtendedOpcode` enables sending and fires Lua `g_game.onExtendedOpcodeEnabled` | — | ACTIVE (verified with the PokeNation client, C-05) |
+| 1 | Locale | none | PokeNation client on `onExtendedOpcodeEnabled` and on language change (`client-pokenation/modules/client_locales/locales.lua`); legacy: commented (`client_locales/locales.lua:8-15`) | — | `game.cpp parsePlayerExtendedOpcode`: payload exactly one char `"0"`…`"2"` (en, pt-BR, es), else ignored; sets the session language and `accounts.lang_id` | ACTIVE (verified with the PokeNation client, C-05) |
 | 2 | Ping | none | `protocolgamesend.cpp:128-131` only with `GameExtendedClientPing` (not enabled) | C++ `:1789-1790` | none | UNUSED |
 | 3 | Sound | none | — | none (would be `game_environment`, not loaded) | — | UNUSED |
 | 4 | Game | none | — | none | — | UNUSED |
@@ -236,7 +257,7 @@ Server constants `EXTENDED_IDS` `server/data/lib/ps/others/constants.lua:33-45`;
 | 7 | NeedsUpdate | none | — | none | — | UNUSED |
 | 8 | GameplayTutorialText | `creaturescripts/scripts/login.lua:69`, `quest_professorOak.lua:115`, `gameplayTutorial_shop.lua:14`, `quest_red.lua:40-53`, `lib/ps/config/003-quest.lua:169,202`, `gameplayTutorial_onKill.lua:8-14`, `activationTile.lua:1132-1149` | — | `game_guide/guide.lua:43` | — | ACTIVE, not GUI-verified |
 | 9 | GameplayTutorialImage | `login.lua:70` and the same scripts | — | `game_guide/guide.lua:44` | — | ACTIVE, not GUI-verified |
-| 10 | DashWalking | — | `client_options/options.lua:97,275` | — | C++ `game.cpp:7714-7730` | ACTIVE, not GUI-verified |
+| 10 | DashWalking | — | `client_options/options.lua:97,275` | — | C++ `game.cpp parsePlayerExtendedOpcode`, payload `"0"`/`"1"` only | ACTIVE, not GUI-verified |
 | 103 | (shop purchase failed, ad hoc) | none | — | `game_shop/shop.lua:3` (module **not loaded**) | — | UNUSED |
 
 Any other id reaching the server would go to Lua `onExtendedOpcode`
@@ -273,3 +294,26 @@ Corrections:
    (`:4710`, `:4725`).
 8. Client `0x32` sending is not gated by `m_enableSendExtendedOpcode` (commented at
    `protocolgamesend.cpp:40`), so the client sends id 10 without the server ever sending id 0.
+   Since Phase 3 the server does send id 0 at login, which the Redemption client needs.
+
+---
+
+## 10. PokeNation client (`client-pokenation/`, Redemption 4.1)
+
+The new client implements every packet in §2–§8 the way the legacy client reads it. Changes to
+stock Redemption are listed one by one in [`../REDEMPTION_CHANGES.md`](../REDEMPTION_CHANGES.md).
+
+| Packet | Legacy client | PokeNation client | Verified |
+|---|---|---|---|
+| Login `0x01` version | `312` | `g_game.getWireProtocolVersion()` = 312 (internal 854) | yes (C-01) |
+| Login OS | `0x0A..0x0C` + language byte | `0x14..0x17` (`g_game.setCustomOs`), no language byte | yes (C-01) |
+| Charlist extras + poll byte | `protocollogin.lua` | `modules/gamelib/protocollogin.lua` under `GamePSoulProtocol` | yes (C-02) |
+| Self-login light hour `U16` | `parseLogin` | `parseLogin`, Lua event `g_game.onLightHour` | yes (C-03) |
+| Creature extras `U8 summon, U8 attackable` | `getCreature` | `getCreature`, `Creature:isLocalPlayerSummon/isAttackable` | yes (C-06) |
+| `0xAB` channel list `U16` count | `parseChannelList` | same, under `GamePSoulProtocol` | yes (C-07) |
+| `0xFF` family | `protocolgameparse.cpp:62-183` | `protocolgameparsepsoul.cpp` (throws on unknown sub-id) | `0x0A` yes (C-08); others not yet |
+| Ext opcode 0 / 1 | §8 | §8 | yes (C-05) |
+| Market `0xF4-0xF9` | `marketprotocol.lua` | `0xF6` enter: `parsePSoulMarketEnter` (`U64` balance, no vocation byte; stock reads `U32` + vocation at 854); `0xF7` leave: new `parseMarketLeave`; C→S create: `U32` price under the profile; the rest stock | yes: enter, create, browse item, browse own offers, cancel (C-14); `0xF7` S→C and accept not exercised |
+| Polls `0xFA/0xFB` + `0xFF 0x18` | `protocolgamesend.cpp:853-874` | `modules/gamelib/pokenation.lua` (`g_game.requestPollWindow/doPollVote/doPollVoteText`) | yes, option and text mode (C-13) |
+| Quest log `0xF0`, quest line `0xF1` | stock | stock (no mission id below 1200, matches) | yes (C-15) |
+| TV channel list (`0xAB`), TV map re-send, map marks `0xDD` | C++ | stock Redemption (shapes match at 854 by source) | no |

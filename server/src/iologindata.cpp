@@ -59,7 +59,7 @@ Account IOLoginData::loadAccount(uint32_t accountId, bool preLoad/* = false*/)
 	account.lastDay = result->getDataInt("lastday");
 	account.recoveryKey = result->getDataString("key");
 	account.warnings = result->getDataInt("warnings");
-	account.language = (LocalizationLang_t)result->getDataInt("lang_id");
+	account.language = Localization::sanitize(result->getDataInt("lang_id"));
 	account.client = result->getDataInt("client_id");
 
 	query.str("");
@@ -106,7 +106,7 @@ LocalizationLang_t IOLoginData::getAccountLanguage(uint32_t accountId)
 	if(!(result = db->storeQuery(query.str())))
 		return LANG_EN_US;
 
-	LocalizationLang_t lang = (LocalizationLang_t)result->getDataInt("lang_id");
+	LocalizationLang_t lang = Localization::sanitize(result->getDataInt("lang_id"));
 	result->free();
 	return lang;
 }

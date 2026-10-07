@@ -15,15 +15,15 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 
 | ID | Sev | Status | Title | Before Redemption |
 |---|---|---|---|---|
-| BUG-01 | P1 | fixed (config) | `worldType = "no-pvp"` makes every NPC trainer battle unwinnable | yes (keep `pvp`) |
+| BUG-01 | P1 | **fixed (Phase 3, C++)** | `worldType = "no-pvp"` made every NPC trainer battle unwinnable | done; `no-pvp` restored |
 | BUG-02 | P0 | fixed | Server and client do not compile with current Boost / libxml2 / CMake | yes |
 | BUG-03 | P0 | fixed | Client crash (Lua stack) on monster yell StaticText | yes |
 | BUG-04 | P3 | open | Autoloot OFF is never persisted | no |
 | BUG-05 | P3 | open | GM groups (infinite mana) cannot use Pokémon moves | no |
 | BUG-06 | P3 | open | `onLogout.lua` Lua errors when a player disconnects mid NPC battle | no |
 | BUG-07 | P4 | open | Fractional experience in messages ("1153.125 experience points") | no |
-| BUG-08 | P2 | open | Unvalidated login language byte can null-dereference `Localization::t` | yes |
-| BUG-09 | P0 (port) | open | Custom locale byte in the login packet is incompatible with stock OTClient | yes (migration) |
+| BUG-08 | P2 | **fixed (Phase 3)** | Unvalidated login language byte can null-dereference `Localization::t` | done |
+| BUG-09 | P0 (port) | **fixed (Phase 3)** | Custom locale byte in the login packet is incompatible with stock OTClient | done (extended opcode 1) |
 | BUG-10 | P3 | fixed (seed) | Evolve icon (13204) missing from the dev starting kit | no |
 | BUG-11 | P3 | open | Client: Pokémon bar overlaps the move bar | yes (UI rewrite) |
 | BUG-12 | P3 | open | Client hides inventory slots 2 and 3; `/i` items land in the hidden backpack | yes (UI rewrite) |
@@ -82,7 +82,7 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-65 | P4 | open (inferred, Phase 2A) | `rateMonsterExperienceMultiplier` read but unused | no |
 | BUG-66 | P4 | open (inferred, Phase 2A) | `blessingsOnlyPremium` vs `blessingOnlyPremium` | no |
 | BUG-67 | P4 | open (inferred, Phase 2A) | Client `0xFF` dispatcher has no `default` case | yes |
-| BUG-68 | P3 (security) | open (inferred, Phase 2A) | Game-login challenge bytes skipped, never compared | yes |
+| BUG-68 | P3 (security) | **fixed (Phase 3)** | Game-login challenge bytes skipped, never compared | done |
 | BUG-69 | P4 | open (inferred, Phase 2A) | `game_environment` module (ambient sound/shaders) never loaded | yes (client) |
 | BUG-70 | P4 (ops) | open (Phase 2A) | Test-server NPCs (`npc/scripts/testserver_*.lua`) ship in the datapack | no |
 | BUG-71 | P4 (dev seed) | open, verified (Phase 2A) | Dev seed pre-fills the starting kit that Oak hands out again → duplicate kit | no |
@@ -90,24 +90,34 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
 | BUG-73 | P2 (low-end GPUs) | open, verified (Phase 2A, Windows CI) | Client crashes 2-3 s after start when the 1920x1080 animated background exceeds the GPU's maximum texture size (`AnimatedTexture` left half-initialised) | yes |
 | BUG-74 | P0 (Windows setup) | fixed (Phase 2A; found on a real PC, fix verified in Windows CI) | `Setup-PokeNation-Database.ps1` fails with `ERROR 1146 … 'psoul.accounts' doesn't exist`: the MariaDB 11.4+ client's passwordless-login warning on stderr was read as the query result, so the schema import was skipped | no (launchers only) |
 | BUG-75 | P0 (Windows development client) | fixed (Phase 2A; found on a real PC, verified locally on Linux) | `Assertion failed! … eventdispatcher.cpp Line: 85 Expression: delay >= 0` when a Pokémon uses a move that makes the target jump (Headbutt, e.g. Bulbasaur's second move): `Creature::updateJump()` schedules its next step in the past | yes |
+| BUG-76 | P4 | open, verified (Phase 3) | Deleted or edited polls stay active until the server restarts (periodic reload only adds polls) | no |
 
 ---
 
 ## P0 / P1
 
-### BUG-01 — `worldType = "no-pvp"` makes NPC trainer battles unwinnable — **verified, fixed in config**
+### BUG-01 — `worldType = "no-pvp"` makes NPC trainer battles unwinnable — **verified, fixed in C++ (Phase 3)**
 - Description: with the archive's `worldType = "no-pvp"`, starting a battle with any NPC trainer
   works, but every attack by the player's Pokémon is refused with "You may not attack this
   creature." while the NPC's Pokémon attacks freely; the player cannot log out ("You can't logout
   while you're battleing.") until defeated.
 - Repro: Tester at Chandra Wigington (3299,246,10): `hi`, `battle`, `yes`, attack the Golem.
-- Source: `server/src/combat.cpp:298-331` (`Combat::canDoCombat`): line 313 refuses any attack on a
-  creature with a master under `WORLD_TYPE_NO_PVP` unless both are in a PvP zone, before the
-  NPC-opponent exception at 322-326 is reached.
-- Fix applied (Phase 2): `worldType = "pvp"` in `server/config.example.lua:58-63` with a comment;
-  player-vs-player is still blocked by `combat.cpp:272-284` (duel/arena only), so this is
-  behaviour-neutral for players. Proper fix: move the NPC-opponent check above the no-pvp check.
-- Before Redemption: keep `pvp`, or fix the ordering in C++.
+- Cause: `Combat::canDoCombat` refused, under `WORLD_TYPE_NO_PVP`, any attack on a creature with
+  a master unless both stood on PvP-zone tiles, *before* the consented-fight exceptions (NPC
+  battle opponent, duel, PvP/survive arena, wild monster's summon). Duels outside PvP zones were
+  therefore refused too.
+- Phase 2 workaround: `worldType = "pvp"`.
+- Phase 3 fix (`server/src/combat.cpp`, mastered-target branch): the exceptions decide; every
+  other attack on a mastered creature is refused in every world type, so the world-type test was
+  removed from that branch. `worldType = "no-pvp"` is restored in `config.example.lua`, which also
+  brings back its other effects (no skulls; direct attacks on players refused in normal zones,
+  `player.cpp:1492`).
+- Verified under `no-pvp` (2026-10-07, probe, see `PHASE_3_TEST_MATRIX.md` S-05…S-08): Chandra
+  Wigington battle won ("You won Chandra Wigington."); Brock gym battle won ("You won Brock and
+  received your reward.", "Congratulations! You received the boulder badge from Brock.", TM 33);
+  a 1×1 duel without bet fought to the end with damage on both sides; outside a duel a player's
+  Pokémon attacking another player's Pokémon gets "You may not attack this creature." and a
+  player attacking a player "You may not attack this player.".
 
 ### BUG-02 — Build breaks on modern toolchains — **verified, fixed**
 - Server: Boost.Asio deprecated API (`io_service`, `deadline_timer`, `resolver::iterator`),
@@ -121,19 +131,27 @@ code. "Before Redemption" = should be fixed before or during the OTClient Redemp
   style yells) → `assert` in RelWithDebInfo. Fixed in `client/src-cpp` (Phase 2), the GUI client
   now sits in combat without crashing.
 
-### BUG-08 — Unvalidated language byte → null dereference — **inferred**
-- `server/src/protocollogin.cpp:83-89,162-165` stores any byte as `accounts.lang_id`;
-  `server/src/localization.cpp:335-344` does `(*languages[lang])` on a map populated only for
-  1 and 2 → NULL deref for ids ≥ 3 on the first `__L()` call after login. Fix: clamp in
-  `protocollogin.cpp`, validate in `IOLoginData::getAccountLanguage`, `find()` with fallback in
-  `Localization::t`. Before Redemption: yes.
+### BUG-08 — Unvalidated language byte → null dereference — **fixed (Phase 3)**
+- `server/src/protocollogin.cpp` stored any byte as `accounts.lang_id`;
+  `server/src/localization.cpp` did `(*languages[lang])` on a map populated only for 1 and 2 →
+  NULL deref for ids ≥ 3 on the first `__L()` call after login.
+- Fix: the login byte is ignored when `> LANG_LAST` (`protocollogin.cpp`); stored values are
+  passed through `Localization::sanitize` when loaded (`iologindata.cpp`); `Localization::t`
+  only looks up `LANG_EN_US < lang <= LANG_LAST`; extended opcode 1 accepts only `"0"`…`"2"`.
+- Verified: login with language byte 99 keeps the stored language; an account with `lang_id = 7`
+  in the database logs in and plays; smoke test check "out-of-range language byte is ignored".
 
-### BUG-09 — Login locale byte incompatible with stock OTClient — **inferred, migration item**
-- `client/modules/gamelib/protocollogin.lua:36-39` appends a `U8` locale after OS/version; the
-  server consumes it for OTClient OS ids with `version >= 293` (`protocollogin.cpp:86-89`). A stock
-  Redemption `ProtocolLogin` does not send it → RSA block misaligned → disconnect. Must be handled
-  in the protocol work (drop the byte server-side and take the language from `/lang` or an
-  extended opcode).
+### BUG-09 — Login locale byte incompatible with stock OTClient — **fixed (Phase 3)**
+- `client/modules/gamelib/protocollogin.lua:36-39` (legacy client) appends a `U8` locale after
+  OS/version; the server read it for OTClient OS ids with `version >= 293`. A stock Redemption
+  `ProtocolLogin` does not send it → RSA block misaligned → disconnect.
+- Fix: new client OS ids `0x14`–`0x17` (PokeNation Windows/Linux/Mac/Android, `enums.h`). Only the
+  legacy ids 10–12 still carry the byte; the PokeNation client sends the stock 8.54 login packet
+  and its language afterwards as extended opcode 1 (LOCALE, payload `"0"`…`"2"`), which the
+  server validates, applies and stores (`game.cpp parsePlayerExtendedOpcode`). See
+  `reference/OPCODES.md` §1 and §8.
+- Verified: OS `0x14` logs in without the byte and receives the PSoul character-list extras;
+  LOCALE `2` then `0` updates `accounts.lang_id`; `9`, `xx` and an empty payload are ignored.
 
 ## P2
 
@@ -463,3 +481,32 @@ Related latent risk, not seen in practice and not changed: `Missile::setPath`
 (`client/src-cpp/src/client/missile.cpp:68-82`) schedules `150 * sqrt(length)`, and
 `TPoint::length()` (`framework/util/point.h:76`) squares `int` coordinates, which would overflow
 only for distances above 46340 tiles.
+
+### BUG-76 — Deleted or edited polls stay active until the server restarts — verified, open
+`Polls::checkPolls` (`server/src/polls.cpp`) re-runs `IOPoll::loadPolls` every 10 s, but
+`Polls::registerPoll` ignores ids it already has and nothing removes polls whose rows are gone;
+only `Polls::load()` (startup) clears the map. Found while testing the poll packets with the
+PokeNation client: after deleting the test rows from `polls`, `poll_options` and `poll_votes`, the
+next login still announced the poll and accepted a vote for it (a new `poll_votes` row). Changing
+the question, deadline or options of an existing poll is likewise not picked up. Not
+migration-blocking (polls are managed by the future portal, which can trigger a reload); left
+unchanged in Phase 3. Workaround: restart the server after editing polls.
+
+---
+
+## Phase 3 fixes (server side of the client migration)
+
+Only migration-blocking server defects are fixed in Phase 3: BUG-01, BUG-08, BUG-09 (sections
+above) and BUG-68 below, plus the extended-opcode dispatcher (`server/src/extendedopcodes.h`,
+`reference/OPCODES.md` §8). Evidence: `PHASE_3_TEST_MATRIX.md` (server section) and the CI smoke
+test (`tools/smoke_test.py`, 16 checks).
+
+### BUG-68 — Game-login challenge never compared — **fixed (Phase 3)**
+- `ProtocolGame::onConnect` sent `0x1F, U32 timestamp, U8 random`; `parseFirstPacket` skipped the
+  6 echoed bytes (`SkipBytes(6)`), so any value was accepted.
+- Fix: both values are kept per connection (`m_challengeTimestamp`, `m_challengeRandom`) and
+  compared after the version check; a mismatch logs `login challenge mismatch from <ip>` and
+  closes the connection. The bytes on the wire are unchanged, so the legacy client (which echoes
+  them) is unaffected; `tools/protocol_probe.py` now echoes them too.
+- Verified: correct echo → in game; `--bad-challenge` → disconnected with the warning; smoke test
+  check "wrong login challenge is refused".

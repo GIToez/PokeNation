@@ -310,9 +310,10 @@ ReturnValue Combat::canDoCombat(const Creature* attacker, const Creature* target
 			if(target->getMaster())
 			{
                 checkZones = true;
-				if(g_game.getWorldType() == WORLD_TYPE_NO_PVP && !Combat::isInPvpZone(attacker, target))
-					return RET_YOUMAYNOTATTACKTHISCREATURE;
-				else if(const Player* targetMaster = target->getTopMaster()->getPlayer())
+                // Only consented fights reach a mastered Pokemon: a duel, an arena, the NPC trainer's
+                // battle opponent, or a wild monster's summon. These hold in every world type; a
+                // no-pvp check in front of them made NPC battles and duels impossible (BUG-01).
+				if(const Player* targetMaster = target->getTopMaster()->getPlayer())
 				{
                     if((attackerPlayer->getDueling() && attackerPlayer->isOpponentPartyDuel(targetMaster)) ||
                        (attackerPlayer->getPvpArena() && attackerPlayer->getPvpArenaTeam() != targetMaster->getPvpArenaTeam()) ||

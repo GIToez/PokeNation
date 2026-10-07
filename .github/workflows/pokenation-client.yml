@@ -1,0 +1,277 @@
+# Builds the PokeNation client (client-pokenation/, OTClient Redemption 4.1 based) for Linux,
+# Windows and Android and uploads development artifacts (never a public Release):
+#
+#   PokeNation-Client-Linux        PokeNation-Client-Linux.tar.gz        (+ .sha256)
+#   PokeNation-Client-Windows-x64  PokeNation-Client-Windows-x64.zip     (+ .sha256)
+#   PokeNation-Android             PokeNation-Android.apk                (+ .sha256, debug-signed)
+#
+# Independent of build.yml: a failure here never removes the server or legacy client artifacts.
+# vcpkg binaries are cached as files archives (VCPKG_DEFAULT_BINARY_CACHE) with actions/cache.
+name: PokeNation client
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "client-pokenation/**"
+      - ".github/workflows/pokenation-client.yml"
+      - "tools/*pokenation*"
+      - "tools/dev_env.sh"
+      - "tools/windows/*PokeNationClient*"
+      - "tools/pokenation_smoke/**"
+      - "client/data/things/data.*"
+  pull_request:
+    paths:
+      - "client-pokenation/**"
+      - "tools/pokenation_smoke/**"
+      - "client/data/things/data.*"
+      - ".github/workflows/pokenation-client.yml"
+      - "tools/*pokenation*"
+      - "tools/dev_env.sh"
+      - "tools/windows/*PokeNationClient*"
+  workflow_dispatch:
+
+concurrency:
+  group: pokenation-client-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  ARTIFACT_RETENTION_DAYS: 14
+  BUILD_TYPE: development
+
+jobs:
+  # --------------------------------------------------------------------------------------------
+  linux:
+    name: Linux x64 (GCC 14, vcpkg)
+    runs-on: ubuntu-24.04
+    env:
+      VCPKG_ROOT: ${{ github.workspace }}/.vcpkg
+      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/.vcpkg-archives
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: false
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            autoconf autoconf-archive automake gcc-14 g++-14 libgl1-mesa-dev libglu1-mesa-dev \
+            libltdl-dev libtool libtool-bin libx11-dev libxcursor-dev libxi-dev libxinerama-dev \
+            libxrandr-dev linux-libc-dev make ninja-build perl pkg-config xvfb mesa-utils
+      - name: vcpkg baseline
+        id: vcpkg
+        run: echo "baseline=$(python3 -c 'import json; print(json.load(open("client-pokenation/vcpkg.json"))["builtin-baseline"])')" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@v6
+        with:
+          path: .vcpkg-archives
+          key: vcpkg-linux-${{ steps.vcpkg.outputs.baseline }}-${{ hashFiles('client-pokenation/vcpkg.json') }}-${{ github.run_id }}
+          restore-keys: |
+            vcpkg-linux-${{ steps.vcpkg.outputs.baseline }}-${{ hashFiles('client-pokenation/vcpkg.json') }}-
+            vcpkg-linux-${{ steps.vcpkg.outputs.baseline }}-
+      - name: Build (tools/build_pokenation_client.sh)
+        run: tools/build_pokenation_client.sh
+      - uses: actions/cache/save@v6
+        if: always()
+        with:
+          path: .vcpkg-archives
+          key: vcpkg-linux-${{ steps.vcpkg.outputs.baseline }}-${{ hashFiles('client-pokenation/vcpkg.json') }}-${{ github.run_id }}
+      # Stage A assets: the legacy client's data.dat/data.spr, unchanged (data.spr is Git LFS;
+      # LFS bandwidth is metered, so only that object is pulled and the LFS store is cached).
+      - name: Stage A assets (oid)
+        run: git lfs ls-files -l -I client/data/things/data.spr | cut -d' ' -f1 > .lfs-things-id
+      - uses: actions/cache@v6
+        with:
+          path: .git/lfs
+          key: lfs-things-${{ hashFiles('.lfs-things-id') }}
+      - name: Stage A assets
+        run: |
+          git lfs pull --include client/data/things/data.spr
+          python3 tools/stage_pokenation_assets.py
+      - name: Package
+        run: python3 tools/package_pokenation_client.py linux
+      - name: Smoke test packaged client (Xvfb, reaches "Startup done")
+        run: |
+          mkdir -p /tmp/pkg && tar xzf dist/PokeNation-Client-Linux.tar.gz -C /tmp/pkg
+          cd /tmp/pkg/PokeNation-Client
+          ALSOFT_DRIVERS=null timeout 40 xvfb-run -a -s "-screen 0 1280x800x24" ./PokeNationClient > /tmp/client.log 2>&1 || true
+          cat /tmp/client.log
+          grep -q "Startup done" /tmp/client.log
+      - uses: actions/upload-artifact@v7
+        with:
+          name: PokeNation-Client-Linux
+          path: |
+            dist/PokeNation-Client-Linux.tar.gz
+            dist/PokeNation-Client-Linux.tar.gz.sha256
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: logs-pokenation-client-linux
+          path: |
+            /tmp/client.log
+            build/client-pokenation/*/vcpkg-manifest-install.log
+            ${{ env.VCPKG_ROOT }}/buildtrees/*/*.log
+          if-no-files-found: ignore
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+  # --------------------------------------------------------------------------------------------
+  windows:
+    name: Windows x64 (MSVC, static vcpkg)
+    runs-on: windows-2025-vs2026
+    env:
+      VCPKG_ROOT: ${{ github.workspace }}\.vcpkg
+      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}\.vcpkg-archives
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: false
+      - name: vcpkg baseline
+        id: vcpkg
+        shell: bash
+        run: |
+          echo "baseline=$(python -c 'import json; print(json.load(open("client-pokenation/vcpkg.json"))["builtin-baseline"])')" >> "$GITHUB_OUTPUT"
+          mkdir -p .vcpkg-archives
+      - uses: actions/cache/restore@v6
+        with:
+          path: .vcpkg-archives
+          key: vcpkg-windows-${{ steps.vcpkg.outputs.baseline }}-${{ hashFiles('client-pokenation/vcpkg.json') }}-${{ github.run_id }}
+          restore-keys: |
+            vcpkg-windows-${{ steps.vcpkg.outputs.baseline }}-${{ hashFiles('client-pokenation/vcpkg.json') }}-
+            vcpkg-windows-${{ steps.vcpkg.outputs.baseline }}-
+      - name: Build (Build-PokeNationClient-Windows.ps1)
+        shell: powershell
+        run: |
+          & tools\windows\Build-PokeNationClient-Windows.ps1 -BuildType $env:BUILD_TYPE
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/cache/save@v6
+        if: always()
+        with:
+          path: .vcpkg-archives
+          key: vcpkg-windows-${{ steps.vcpkg.outputs.baseline }}-${{ hashFiles('client-pokenation/vcpkg.json') }}-${{ github.run_id }}
+      - name: Stage A assets (oid)
+        shell: bash
+        run: git lfs ls-files -l -I client/data/things/data.spr | cut -d' ' -f1 > .lfs-things-id
+      - uses: actions/cache@v6
+        with:
+          path: .git/lfs
+          key: lfs-things-${{ hashFiles('.lfs-things-id') }}
+      - name: Stage A assets
+        shell: bash
+        run: |
+          git lfs pull --include client/data/things/data.spr
+          python tools/stage_pokenation_assets.py
+      - name: Package
+        shell: bash
+        run: python tools/package_pokenation_client.py windows
+      # Informational: hosted runners have no GPU; the start-up check reports but does not fail.
+      - name: Launch PokeNationClient.exe (informational)
+        continue-on-error: true
+        shell: powershell
+        run: |
+          Expand-Archive dist\PokeNation-Client-Windows-x64.zip -DestinationPath "$env:RUNNER_TEMP\pkg"
+          $dir = "$env:RUNNER_TEMP\pkg\PokeNation-Client"
+          $p = Start-Process -FilePath "$dir\PokeNationClient.exe" -WorkingDirectory $dir -PassThru
+          Start-Sleep -Seconds 25
+          $state = if ($p.HasExited) { 'exited 0x{0:X8}' -f $p.ExitCode } else { 'still running' }
+          if (-not $p.HasExited) { Stop-Process -Id $p.Id -Force }
+          Get-ChildItem $dir, "$env:APPDATA" -Recurse -Filter '*.log' -ErrorAction SilentlyContinue |
+            Where-Object { $_.FullName -match 'otclient|PokeNation' } | ForEach-Object { Write-Host "---- $($_.FullName)"; Get-Content $_.FullName -Tail 30 }
+          "### PokeNation client (Windows)`n- Launch on the hosted runner: $state" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
+          if ($state -ne 'still running') { exit 1 }
+      - uses: actions/upload-artifact@v7
+        with:
+          name: PokeNation-Client-Windows-x64
+          path: |
+            dist/PokeNation-Client-Windows-x64.zip
+            dist/PokeNation-Client-Windows-x64.zip.sha256
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: logs-pokenation-client-windows
+          path: |
+            build/client-pokenation/*/vcpkg-manifest-install.log
+            .vcpkg/buildtrees/*/*.log
+          if-no-files-found: ignore
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+  # --------------------------------------------------------------------------------------------
+  android:
+    name: Android APK (arm64-v8a, NDK 29)
+    runs-on: ubuntu-24.04
+    env:
+      NDK_VERSION: "29.0.13599879"
+      VCPKG_ROOT: ${{ github.workspace }}/.vcpkg
+      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/.vcpkg-archives
+      OTCLIENT_ANDROID_ABIS: arm64-v8a
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: false
+      - uses: actions/setup-java@v5
+        with:
+          java-version: "17"
+          distribution: temurin
+      # The runner image ships the Android SDK and cmdline-tools (android-actions/setup-android@v3
+      # fails there: it still installs the removed "tools" package).
+      - name: Install host and SDK packages
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            build-essential g++-multilib gcc-multilib ninja-build pkg-config zip unzip
+          sdk="${ANDROID_HOME:-$ANDROID_SDK_ROOT}"
+          sdkmanager="$(ls -d "$sdk"/cmdline-tools/*/bin | sort -V | tail -n1)/sdkmanager"
+          yes | "$sdkmanager" --licenses > /dev/null || true
+          "$sdkmanager" --install "platform-tools" "platforms;android-36" "build-tools;36.0.0" "cmake;3.22.1" "ndk;${NDK_VERSION}"
+          echo "ANDROID_HOME=$sdk" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$sdk" >> "$GITHUB_ENV"
+          echo "ANDROID_NDK_HOME=$sdk/ndk/${NDK_VERSION}" >> "$GITHUB_ENV"
+      - name: vcpkg baseline and bootstrap
+        id: vcpkg
+        run: |
+          baseline="$(python3 -c 'import json; print(json.load(open("client-pokenation/vcpkg.json"))["builtin-baseline"])')"
+          echo "baseline=$baseline" >> "$GITHUB_OUTPUT"
+          git clone -q https://github.com/microsoft/vcpkg.git "$VCPKG_ROOT"
+          git -C "$VCPKG_ROOT" checkout -q "$baseline"
+          "$VCPKG_ROOT/bootstrap-vcpkg.sh" -disableMetrics
+          mkdir -p "$VCPKG_DEFAULT_BINARY_CACHE"
+      - uses: actions/cache/restore@v6
+        with:
+          path: .vcpkg-archives
+          key: vcpkg-android-${{ steps.vcpkg.outputs.baseline }}-${{ hashFiles('client-pokenation/vcpkg.json') }}-${{ github.run_id }}
+          restore-keys: |
+            vcpkg-android-${{ steps.vcpkg.outputs.baseline }}-${{ hashFiles('client-pokenation/vcpkg.json') }}-
+            vcpkg-android-${{ steps.vcpkg.outputs.baseline }}-
+      - name: Stage A assets (oid)
+        run: git lfs ls-files -l -I client/data/things/data.spr | cut -d' ' -f1 > .lfs-things-id
+      - uses: actions/cache@v6
+        with:
+          path: .git/lfs
+          key: lfs-things-${{ hashFiles('.lfs-things-id') }}
+      - name: Stage A assets
+        run: |
+          git lfs pull --include client/data/things/data.spr
+          python3 tools/stage_pokenation_assets.py
+      - name: Build APK (tools/build_pokenation_android.sh)
+        run: tools/build_pokenation_android.sh
+      - uses: actions/cache/save@v6
+        if: always()
+        with:
+          path: .vcpkg-archives
+          key: vcpkg-android-${{ steps.vcpkg.outputs.baseline }}-${{ hashFiles('client-pokenation/vcpkg.json') }}-${{ github.run_id }}
+      - name: Checksum
+        run: |
+          mkdir -p dist
+          cp build/client-pokenation/android/PokeNation-Android.apk dist/
+          (cd dist && sha256sum PokeNation-Android.apk > PokeNation-Android.apk.sha256 && cat PokeNation-Android.apk.sha256)
+          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump badging dist/PokeNation-Android.apk | head -5 || true
+      - uses: actions/upload-artifact@v7
+        with:
+          name: PokeNation-Android
+          path: |
+            dist/PokeNation-Android.apk
+            dist/PokeNation-Android.apk.sha256
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
