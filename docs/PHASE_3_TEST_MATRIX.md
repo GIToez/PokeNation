@@ -46,5 +46,31 @@ NPCs → market/social).
 |---|---|---|---|---|
 | Build (Linux) | PASS (Phase 2A CI) | PASS (stock Redemption 4.1, local and CI) | build | `tools/build_pokenation_client.sh` |
 | Starts (Linux, Xvfb) | PASS | PASS (stock: "Startup done :]") | client | packaged `PokeNation-Client-Linux.tar.gz` |
-| Build (Windows) | PASS (Phase 2A CI) | NOT TESTED (CI run pending) | build | |
-| Build (Android) | n/a | NOT TESTED (CI fix pending) | build | |
+| Build (Windows) | PASS (Phase 2A CI) | PASS (CI run 37563373089, build only; not run on Windows) | build | |
+| Build (Android) | n/a | PASS (CI run 37563373089, APK built; not installed on a device) | build | |
+
+### 2.1 PokeNation client against the server (Phase 3A, step by step)
+
+Run with `tools/pokenation_client_smoke.py --account admin --password admin --character Tester`:
+the real client binary (built from this branch, `psoul312` profile, Stage A assets from
+`tools/stage_pokenation_assets.py`) runs under Xvfb with the test-only mod
+`tools/pokenation_smoke/pn_smoke`, which drives the normal Enter Game and character list UI and
+logs `CHECK PASS/FAIL` lines. Last run: `RESULT PASS 10/10`, 2026-10-07.
+
+| Id | Test | Result | Evidence |
+|---|---|---|---|
+| C-01 | Login with wire version 312, OS `0x15`, RSA, Adler-32, XTEA | PASS | character list received; server accepted the version and OS |
+| C-02 | Character list PSoul extras and poll flag | PASS | `GM Admin level=100 vocation=1 looktype=302`, `Tester level=5 looktype=611`, `hasPoll=false`; screenshot `02-charlist.png` |
+| C-03 | Enter game: challenge echo, self-login light hour | PASS | `light hour read (279)`; no challenge mismatch in the server log |
+| C-04 | Profile active in game | PASS | `GamePSoulProtocol=true wire=312 protocol=854 os=21` |
+| C-05 | ACTIVATE then LOCALE (BUG-09) | PASS | `extended opcode 0 received`; with locale pt `accounts.lang_id` became 1, with en back to 0 |
+| C-06 | Creature descriptions with summon/attackable bytes | PASS | 4 spectators parsed, no desync; world rendered with the legacy sprites (`03-world.png`) |
+| C-07 | `0xAB` channel list with U16 count | PASS | 10 channels |
+| C-08 | `0xFF 0x0A` Pokédex status | PASS | 386 entries received; no Pokédex UI yet (p5) |
+| C-09 | Walk | PASS | south step `3307,301,7 → 3307,302,7` accepted (`04-after-walk.png`) |
+| C-10 | Logout | PASS | `onGameEnd` |
+| C-11 | Pokémon bar, moves, summon, battle, catch, NPC, market, polls | NOT TESTED | Pokémon UI modules not ported yet (p5); polls `0xFA/0xFB` not ported |
+| C-12 | Legacy GUI client against the Phase 3 server | NOT TESTED | planned for the Phase 3A comparison |
+
+Known non-fatal log line: `Unable to send extended opcode 201` from the stock Redemption `game_shop`
+module (layer: client Lua/UI); it will be disabled with the other inapplicable stock modules.
