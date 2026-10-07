@@ -292,9 +292,16 @@ local function onMarketEnter(items, offerCount, balance, vocation)
     if market.stage == 'enter' then
         check('0xF6 market enter (U64 balance, depot items)', balance == MARKET_BALANCE and apples == 5,
             string.format('balance %s, %d apples', tostring(balance), apples))
-        shot('05-market')
-        market.stage = 'create'
-        g_game.createMarketOffer(0, MARKET_ITEM, 0, 1, MARKET_PRICE, 0)
+        -- game_market opens its window from the same event; let it render before the screenshot.
+        scheduleEvent(function()
+            local window = modules.game_market.marketWindow
+            check('market window shown', window ~= nil and window:isVisible())
+            local shown = window and window.contentPanel.moneyPanel.gold:getText() or ''
+            check('market window shows the 0xF6 balance', shown == comma_value(MARKET_BALANCE), 'label ' .. shown)
+            shot('05-market')
+            market.stage = 'create'
+            g_game.createMarketOffer(0, MARKET_ITEM, 0, 1, MARKET_PRICE, 0)
+        end, 800)
     elseif market.stage == 'create' then
         market.createBalance = balance
     elseif market.stage == 'cancel' then

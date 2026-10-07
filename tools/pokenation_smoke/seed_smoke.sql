@@ -40,3 +40,13 @@ INSERT INTO `poll_options` (`id`, `poll_id`, `name`) VALUES
 -- --tv watch: Trainer (account "player") starts next to the GM spawn so it sees the television the
 -- recorder places; the viewer walks south of it by itself.
 UPDATE `players` SET `posx` = 3309, `posy` = 309, `posz` = 7, `town_id` = 3 WHERE `id` = 4;
+
+-- --market (PHASE_3_TEST_MATRIX.md C-14): GM Admin with bank balance 12345 and a locker in depot 0
+-- holding 5 red apples (server 2674, client 3585, has a ware id); no offers or history left over.
+UPDATE `players` SET `balance` = 12345 WHERE `id` = 2;
+DELETE FROM `player_depotitems` WHERE `player_id` = 2;
+INSERT INTO `player_depotitems` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `attributes`) VALUES
+	(2,   0, 101, 2589, 1, ''),
+	(2, 101, 102, 2674, 5, '');
+DELETE FROM `market_offers` WHERE `player_id` = 2;
+DELETE FROM `market_history` WHERE `player_id` = 2;
